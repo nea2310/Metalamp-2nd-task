@@ -1,0 +1,1 @@
+import './air-datepicker/js/datepicker.min.js';

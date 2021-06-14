@@ -1,0 +1,16 @@
+.date {
+	&__wrapper {
+		display: flex;
+		justify-content: space-between;
+		width: 370px;
+		position: relative;
+	}
+	&__input {
+		width: 150px;
+	}
+	&__calendarWrapper {
+		position: absolute;
+		top: 50px;
+		left: 50px;
+	}
+}
