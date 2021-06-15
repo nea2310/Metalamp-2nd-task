@@ -1,0 +1,24 @@
+input {
+	outline: none;
+}
+
+.input {
+	height: 44px;
+	text-indent: 12px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 1px solid rgba(31, 32, 65, 0.25);
+
+	&:hover {
+		border-color: rgba(31, 32, 65, 0.5);
+	}
+	&-focused {
+		border-color: rgba(31, 32, 65, 0.5);
+	}
+	&-wide {
+		width: 320px;
+	}
+	&-narrow {
+		width: 150px;
+	}
+}
