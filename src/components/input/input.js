@@ -1,4 +1,5 @@
 export let a = function () {
+
 	let inputs = document.querySelectorAll('.input');
 	for (let input of inputs) {
 		input.addEventListener('focus', (e) => {
@@ -8,6 +9,7 @@ export let a = function () {
 			e.target.classList.remove('input-focused');
 		});
 	}
+
 };
 
 
