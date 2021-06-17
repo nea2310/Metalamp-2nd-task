@@ -83,14 +83,14 @@ class DatePicker {
 					this.inputDateFrom.value = dateArr[0];
 					this.inputDateTo.value = dateArr[1];
 				}
-				this._updateLocalStorage();
 			}
 		}).data('datepicker');
 	}
 
 	/*Ввод даты в инпут с клавиатуры или очистка инпута*/
 	datePrint() {
-		this.wrapper.addEventListener('change', (e) => {
+		//обработчик кастомного события окончания ввода в инпут по маске ДД.ММ.ГГГГ
+		this.wrapper.addEventListener('inputDate', (e) => {
 
 			if (e.target == this.inputDateFrom ||
 				e.target == this.inputDateTo) {
@@ -124,21 +124,8 @@ class DatePicker {
 				}
 			}
 		});
-		this._updateLocalStorage();
-
-	}
-
-
-	_updateLocalStorage() {
-		localStorage.setItem('dateFrom',
-			JSON.stringify(this.inputDateFrom.value));
-		localStorage.setItem('dateTo',
-			JSON.stringify(this.inputDateTo.value));
-		console.log(localStorage);
 	}
 }
 
 new DatePicker('#date__wrapper');
 
-
-console.log(localStorage);
