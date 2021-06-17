@@ -1,6 +1,6 @@
 $font-adres: "../fonts/";
 
-$font-name: ("OpenSans");
+$font-name: ("OpenSans", "Montserrat-Regular", "Montserrat-Bold");
 
 @each $current-font in $font-name {
 	@font-face {

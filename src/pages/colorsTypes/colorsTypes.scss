@@ -1,0 +1,89 @@
+$colorDarkShade100: #1f2041;
+$colorDarkShade75: rgba(31, 32, 65, 0.75);
+$colorDarkShade50: rgba(31, 32, 65, 0.5);
+$colorDarkShade25: rgba(31, 32, 65, 0.25);
+$colorDarkShade5: rgba(31, 32, 65, 0.05);
+$colorPurple: #bc9cff;
+$colorGreen: #6fcf97;
+@mixin fontBody() {
+	font-family: "Montserrat-Regular";
+	font-size: 14px;
+	line-height: 24px;
+	color: $colorDarkShade75;
+}
+
+h1 {
+	font-family: "Montserrat-Bold";
+	font-style: normal;
+	font-size: 24px;
+	line-height: 29px;
+	color: $colorDarkShade100;
+}
+
+h2 {
+	font-family: "Montserrat-Bold";
+	font-size: 19px;
+	line-height: 23px;
+	color: $colorDarkShade100;
+}
+
+h3 {
+	font-family: "Montserrat-Bold";
+	font-size: 12px;
+	line-height: 15px;
+	color: $colorDarkShade100;
+	text-transform: uppercase;
+}
+
+p {
+	@include fontBody;
+}
+
+.colorsTypes__wrapper {
+	display: flex;
+}
+
+.colorCard {
+	font-size: 19px;
+	line-height: 28px;
+	color: $colorDarkShade100;
+	&__color {
+		width: 70px;
+		height: 70px;
+		border-radius: 6px;
+		&-colorDarkShade100 {
+			background-color: $colorDarkShade100;
+		}
+		&-colorDarkShade75 {
+			background-color: $colorDarkShade75;
+		}
+		&-colorDarkShade50 {
+			background-color: $colorDarkShade50;
+		}
+		&-colorDarkShade25 {
+			background-color: $colorDarkShade25;
+		}
+		&-colorDarkShade5 {
+			background-color: $colorDarkShade5;
+		}
+		&-colorPurple {
+			background-color: $colorPurple;
+		}
+		&-colorGreen {
+			background-color: $colorGreen;
+		}
+	}
+	&__name {
+		font-family: "Montserrat-Bold";
+	}
+	&__code {
+		font-family: "Montserrat-Regular";
+	}
+}
+
+.typeCard {
+	&__name {
+		color: $colorDarkShade25;
+		font-family: "Montserrat-Regular";
+	}
+}
