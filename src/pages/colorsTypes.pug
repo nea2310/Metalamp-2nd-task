@@ -9,24 +9,24 @@ mixin colorCard(classList="", name="", code="")
 mixin typeCard(classList="", name="", text="")
 	-
 		var classList = "typeCard__name" + classList
-	div(class="typeCard")
-		div(class=classList)=name
-		div(class="typeCard__text")=text
+	span(class="typeCard")
+		span(class=classList)=name
+		span(class="typeCard__text")=text
 +logo-grey()
 div(class="colorsTypes__wrapper")
 	div(class="colors__wrapper")
-		+colorCard(" colorCard__color-colorDarkShade100", "Dark Shade 100%", "#F2041")
-		+colorCard(" colorCard__color-colorDarkShade75", "Dark Shade 75%", "#F2041")
-		+colorCard(" colorCard__color-colorDarkShade50", "Dark Shade 50%", "#F2041")
-		+colorCard(" colorCard__color-colorDarkShade25", "Dark Shade 25%", "#F2041")
-		+colorCard(" colorCard__color-colorDarkShade5", "Dark Shade 5%", "#F2041")
+		+colorCard(" colorCard__color-colorDarkShade100", "Dark Shade 100%", "#1F2041")
+		+colorCard(" colorCard__color-colorDarkShade75", "Dark Shade 75%", "#1F2041")
+		+colorCard(" colorCard__color-colorDarkShade50", "Dark Shade 50%", "#1F2041")
+		+colorCard(" colorCard__color-colorDarkShade25", "Dark Shade 25%", "#1F2041")
+		+colorCard(" colorCard__color-colorDarkShade5", "Dark Shade 5%", "#1F2041")
 		+colorCard(" colorCard__color-colorPurple", "Purple", "#BC9CFF")
 		+colorCard(" colorCard__color-colorGreen", "Green", "#6FCF97")
 	div(class="types__wrapper")
 		h1
 			+typeCard("", "H1", "This one is the sub-section or widget title")
 		h2
-			+typeCard("", "H2", "This one is the item title inside widgets")
+			+typeCard("", "H2", "Next one is the item title inside widgets")
 		h3
 			+typeCard("", "H3", "This is a label or cta text")
 		p

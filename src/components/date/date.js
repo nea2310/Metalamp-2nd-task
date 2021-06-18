@@ -20,7 +20,6 @@ class DatePicker {
 					let dateArr = [];
 					let a = this.inputDateFrom.value.split('.');
 					let b = this.inputDateTo.value.split('.');
-
 					dateArr.push(a[2] + '-' + a[1] + '-' + a[0]);
 					dateArr.push(b[2] + '-' + b[1] + '-' + b[0]);
 					this.myDatepicker.clear();
@@ -50,18 +49,15 @@ class DatePicker {
 					} else {/*очередной выбор даты, когда уже есть выбранный диапазон
 						(в соотв. с дефолтными настройками календаря, при этом диапазон деактивируется и активируется одиночная вновь выбранная дата)
 						*/
-
 						let a = dateArr[0].split('.');
 						let b = datePrevArr[0].split('.');
 						let c = datePrevArr[1].split('.');
-
 						let currentDate =
 							new Date(a[2] + '-' + a[1] + '-' + a[0]);
 						let prevDateFrom =
 							new Date(b[2] + '-' + b[1] + '-' + b[0]);
 						let prevDateTo =
 							new Date(c[2] + '-' + c[1] + '-' + c[0]);
-
 						if (currentDate < prevDateFrom) {//Новая дата раньше обеих старых дат
 							this.myDatepicker.selectDate(currentDate);
 							this.myDatepicker.selectDate(prevDateFrom);
@@ -91,7 +87,6 @@ class DatePicker {
 	datePrint() {
 		//обработчик кастомного события окончания ввода в инпут по маске ДД.ММ.ГГГГ
 		this.wrapper.addEventListener('inputDate', (e) => {
-
 			if (e.target == this.inputDateFrom ||
 				e.target == this.inputDateTo) {
 				let dateArr = [];
@@ -102,7 +97,6 @@ class DatePicker {
 						this.secondInput = this.inputDateFrom;
 					let a = this.currentInput.value.split('.');
 					let b = this.secondInput.value.split('.');
-
 					if (this.secondInput.value) {// заполнены оба инпута
 						dateArr.push(b[2] + '-' + b[1] + '-' + b[0]);
 						dateArr.push(a[2] + '-' + a[1] + '-' + a[0]);
