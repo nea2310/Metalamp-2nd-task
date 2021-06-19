@@ -8,7 +8,6 @@
 	&__calendarWrapper {
 		position: absolute;
 		top: 68px;
-		//left: 50px;
 	}
 }
 
@@ -70,50 +69,72 @@
 	&--buttons {
 		border: none !important;
 	}
-}
 
-.-disabled- {
-	color: $colorDarkShade25 !important;
-}
+	&--cell-day {
+		&.-disabled- {
+			color: $colorDarkShade25 !important;
+		}
 
-.-focus-,
-.-selected- {
-	position: relative;
-	border-radius: 50% !important;
-	background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
-}
+		&.-current- {
+			border-radius: 50% !important;
+			background: linear-gradient(#6fcf97 0%, #66d2ea 100%);
+		}
 
-.-current- {
-	border-radius: 50% !important;
-	background: linear-gradient(#6fcf97 0%, #66d2ea 100%);
-}
+		&.-range-from-::after {
+			position: absolute;
+			content: "";
+			height: 39px;
+			width: 40px;
 
-.-in-range- {
-	background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
-	opacity: 0.5;
-	position: absolute;
-}
+			background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
+			opacity: 0.5;
+			border-bottom-left-radius: 50%;
+			border-top-left-radius: 50%;
+		}
 
-.-range-from-::after {
-	position: absolute;
-	content: "";
-	height: 43px;
-	width: 44.5px;
+		&.-range-to-::before {
+			position: absolute;
+			content: "";
+			height: 39px;
+			width: 40px;
 
-	background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
-	opacity: 0.5;
-	border-bottom-left-radius: 50%;
-	border-top-left-radius: 50%;
-}
+			background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
+			opacity: 0.5;
+			border-bottom-right-radius: 50%;
+			border-top-right-radius: 50%;
+		}
 
-.-range-to-::before {
-	position: absolute;
-	content: "";
-	height: 43px;
-	width: 44.5px;
+		&.-focus- {
+			position: relative;
+			border-radius: 50% !important;
+			background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
+		}
 
-	background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
-	opacity: 0.5;
-	border-bottom-right-radius: 50%;
-	border-top-right-radius: 50%;
+		&.-selected- {
+			position: relative;
+			border-radius: 50% !important;
+			background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
+		}
+
+		&.-in-range- {
+			background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
+			opacity: 0.5;
+		}
+
+		&.-in-range-.-focus- {
+			position: relative;
+			border-radius: 50% !important;
+			background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
+			opacity: 1;
+			&::before {
+				position: absolute;
+				content: "";
+				height: 39px;
+				width: 40px;
+
+				background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
+				opacity: 0.5;
+			}
+		}
+	}
 }
