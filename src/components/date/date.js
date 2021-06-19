@@ -4,13 +4,45 @@ class DatePicker {
 		this.inputDateFrom = this.wrapper.querySelector('.date__input-from');
 		this.inputDateTo = this.wrapper.querySelector('.date__input-to');
 		this.clWrapper = this.wrapper.querySelector('.date__calendarWrapper');
+		this.btnClear = this.wrapper.querySelector('.date__button-clear');
+		this.btnApply = this.wrapper.querySelector('.date__button-apply');
 		this.datePick();
 		this.datePrint();
 		this.preventDateReset();
+		this.clear();
+		this.apply();
+		this.show();
 
 	}
 
 
+	clear() {
+		this.btnClear.addEventListener('click', (e) => {
+			//	console.log(e);
+			this.myDatepicker.clear();
+			this.inputDateFrom.value = '';
+			this.inputDateTo.value = '';
+		});
+	}
+
+
+	apply() {
+		this.btnApply.addEventListener('click', (e) => {
+			//	console.log(e);
+			this.clWrapper.classList.add('hidden');
+			//	this.myDatepicker.hide();
+		});
+	}
+
+
+	show() {
+		this.inputDateFrom.addEventListener('click', (e) => {
+			this.clWrapper.classList.remove('hidden');
+		});
+		this.inputDateTo.addEventListener('click', (e) => {
+			this.clWrapper.classList.remove('hidden');
+		});
+	}
 
 
 	/*Запретить деактивацию ранее выбранной даты при повторном клике на нее же*/
@@ -36,7 +68,6 @@ class DatePicker {
 	datePick() {
 		let datePrevArr;
 		this.myDatepicker = $(this.clWrapper).datepicker({
-			clearButton: true,
 			navTitles: {
 				days: 'MM <i>yyyy</i>',
 			},

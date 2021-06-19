@@ -6,7 +6,7 @@
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
-		padding-top: 145px;
+		padding-top: 144px;
 		//padding-left: 145px;
 		background-color: gray;
 		//	padding-top: 100px;
@@ -23,11 +23,18 @@
 	&-marginTop2 {
 		margin-top: 23px;
 	}
+	&-marginTop3 {
+		margin-top: 41px;
+	}
+
+	&-marginTop4 {
+		margin-top: 100px;
+	}
 	&-marginBottom1 {
 		margin-bottom: 5px;
 	}
 }
 
 .date__wrapper {
-	margin-top: 42px;
+	margin-top: 40px;
 }

@@ -1,14 +1,17 @@
-include ../input/input.pug
+include ../input-masked/input-masked.pug
 include ../label/label.pug
-mixin date(options={})
+mixin date()
 	div(class="date__wrapper" id="date__wrapper")
-		div
+		div(class="date__input")
 			+label(" label-marginBottom1", "date dropdown")
-			+input(' input-narrow input-masked date__input-from')
-		div
+			+input-masked(' input-narrow date__input-from')
+		div(class="date__input")
 			+label(" label-marginBottom1", "date dropdown")
-			+input(' input-narrow input-masked date__input-to')
-		div(class="date__calendarWrapper")
+			+input-masked(' input-narrow date__input-to')
+		div(class="date__calendarWrapper hidden")
+				div(class="date__buttons")
+					button(class="date__button date__button-clear") очистить
+					button(class="date__button date__button-apply") применить
 
 
 

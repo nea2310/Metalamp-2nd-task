@@ -1,6 +1,8 @@
 include ../input/input.pug
-mixin input-masked()
-	+input(' input-wide input-masked')
+mixin input-masked(classList='')
+	-
+		var classList = " input-masked" + classList
+	+input(classList)
 
 
 

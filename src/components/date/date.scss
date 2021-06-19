@@ -9,6 +9,10 @@
 		position: absolute;
 		top: 68px;
 	}
+	&__buttons {
+		position: absolute;
+		bottom: 1px;
+	}
 }
 
 .datepicker {
@@ -64,7 +68,7 @@
 		}
 	}
 	&--content {
-		padding: 15px 18px 0px 20px !important;
+		padding: 15px 18px 30px 20px !important;
 	}
 	&--buttons {
 		border: none !important;
@@ -137,4 +141,8 @@
 			}
 		}
 	}
+}
+
+.hidden {
+	display: none;
 }
