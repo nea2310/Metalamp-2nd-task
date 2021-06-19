@@ -1,0 +1,16 @@
+include ../input-masked/input-masked.pug
+include ../date/date.pug
+include ../label/label.pug
+mixin date-dropdown()
+	div(class="date__wrapper" id="date__wrapper")
+		div(class="date__input")
+			+label(" label-marginBottom1", "date dropdown")
+			+input-masked(' input-narrow date__input-from')
+		div(class="date__input")
+			+label(" label-marginBottom1", "date dropdown")
+			+input-masked(' input-narrow date__input-to')
+		+date()
+
+
+
+

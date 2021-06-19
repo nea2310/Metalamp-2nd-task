@@ -169,4 +169,5 @@ class DatePicker {
 }
 
 new DatePicker('#date__wrapper');
+// new DatePicker('#datefilter');
 

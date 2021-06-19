@@ -1,6 +1,6 @@
 include ../components/logo/logo.pug
 include ../components/label/label.pug
-include ../components/date/date.pug
+include ../components/date-dropdown/date-dropdown.pug
 include ../components/input-masked/input-masked.pug
 include ../components/input-text/input-text.pug
 include ../components/input-subscription/input-subscription.pug
@@ -16,11 +16,6 @@ div(class="formElements__wrapper")
 		+input-text()
 		+label(" label-marginTop2 label-marginBottom1", "masked text field")
 		+input-masked(" input-wide")
-		+date()
-		+label(" label-marginTop3 label-marginBottom1", "filter date dropdown")
-		+date-filter()
+		+date-dropdown()
 		+label(" label-marginTop3 label-marginBottom1", "subscription text field")
 		+input-subscription()
-		+label(" label-marginTop4 label-marginBottom1", "dropdown")
-	
-	
