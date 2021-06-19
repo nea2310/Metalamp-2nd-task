@@ -12,8 +12,8 @@ mixin typeCard(classList="", name="", text="")
 	span(class="typeCard")
 		span(class=classList)=name
 		span(class="typeCard__text")=text
-+logo-grey()
 div(class="colorsTypes__wrapper")
+	+logo-grey()
 	div(class="colors__wrapper")
 		+colorCard(" colorCard__color-colorDarkShade100", "Dark Shade 100%", "#1F2041")
 		+colorCard(" colorCard__color-colorDarkShade75", "Dark Shade 75%", "#1F2041")
@@ -23,11 +23,11 @@ div(class="colorsTypes__wrapper")
 		+colorCard(" colorCard__color-colorPurple", "Purple", "#BC9CFF")
 		+colorCard(" colorCard__color-colorGreen", "Green", "#6FCF97")
 	div(class="types__wrapper")
-		h1
+		h1(class="types-h1")
 			+typeCard("", "H1", "This one is the sub-section or widget title")
-		h2
+		h2(class="types-h2")
 			+typeCard("", "H2", "Next one is the item title inside widgets")
-		h3
+		h3(class="types-h3")
 			+typeCard("", "H3", "This is a label or cta text")
-		p
+		p(class="types-body")
 			+typeCard("", "Body", "This is the body text which is used for most of the design, like paragraphs, lists, etc.")
