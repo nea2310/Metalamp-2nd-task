@@ -1,7 +1,18 @@
 include ../components/logo/logo.pug
+include ../components/label/label.pug
 include ../components/date/date.pug
 include ../components/input-masked/input-masked.pug
+include ../components/input-text/input-text.pug
 div(class="formElements__wrapper")
 	+logo-grey()
-	+input-masked()
-	+date()
+	div(class="formElements__col1")
+		+label(" label-marginBottom1", "text field")
+		+input-text()
+		+label(" label-marginTop1 label-marginBottom1", "text field")
+		+input-text()
+		+label(" label-marginTop1 label-marginBottom1", "dropdown")
+		+input-text()
+		+label(" label-marginTop2 label-marginBottom1", "masked text field")
+		+input-masked()
+		+date()
+	

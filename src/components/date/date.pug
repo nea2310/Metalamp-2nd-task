@@ -1,8 +1,13 @@
 include ../input/input.pug
+include ../label/label.pug
 mixin date(options={})
 	div(class="date__wrapper" id="date__wrapper")
-		+input(' input-narrow input-masked date__input-from')
-		+input(' input-narrow input-masked date__input-to')
+		div
+			+label(" label-marginBottom1", "date dropdown")
+			+input(' input-narrow input-masked date__input-from')
+		div
+			+label(" label-marginBottom1", "date dropdown")
+			+input(' input-narrow input-masked date__input-to')
 		div(class="date__calendarWrapper")
 
 

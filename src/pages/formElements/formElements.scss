@@ -1,3 +1,33 @@
-.formElements__wrapper {
-	padding-top: 100px;
+.formElements {
+	&__wrapper {
+		position: relative;
+		width: 100%;
+		max-width: 1440px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		padding-top: 145px;
+		//padding-left: 145px;
+		background-color: gray;
+		//	padding-top: 100px;
+	}
+	&__col1 {
+		margin-left: 141px;
+	}
+}
+
+.label {
+	&-marginTop1 {
+		margin-top: 20px;
+	}
+	&-marginTop2 {
+		margin-top: 23px;
+	}
+	&-marginBottom1 {
+		margin-bottom: 5px;
+	}
+}
+
+.date__wrapper {
+	margin-top: 42px;
 }
