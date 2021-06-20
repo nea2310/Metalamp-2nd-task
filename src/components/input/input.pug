@@ -1,7 +1,7 @@
-mixin input(classList='')
+mixin input(classList="", val="", readonly=false)
 	-
 		var classList = "input" + classList
-	input(class=classList)
+	input(class=classList, value=val, readonly=readonly)
 
 
 

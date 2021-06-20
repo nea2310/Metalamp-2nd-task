@@ -1,8 +1,8 @@
 include ../input/input.pug
-mixin input-datefilter(classList='')
+mixin input-datefilter(classList="", val="", readonly="true")
 	-
 		var classList = " input-datefilter" + classList
-	+input(classList)
+	+input(classList, val, readonly)
 
 
 
