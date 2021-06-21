@@ -36,8 +36,8 @@ dateToTxt = formatDate(dateToTxt);
 
 let inputsMasked = document.querySelectorAll('.input-masked');
 for (let input of inputsMasked) {
-	input.setAttribute("type", "text");
-	input.setAttribute("placeholder", "ДД.ММ.ГГГГ");
+	// input.setAttribute("type", "text");
+	// input.setAttribute("placeholder", "ДД.ММ.ГГГГ");
 	/*запретить все типы ввода, кроме перечисленных*/
 	input.addEventListener('input', (e) => {
 		let inpTypeAllowed = false;

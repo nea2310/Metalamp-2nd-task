@@ -3,6 +3,9 @@ input {
 }
 
 .input {
+	&::placeholder {
+		color: $colorDarkShade25;
+	}
 	@include fontBody;
 	height: 44px;
 	text-indent: 12px;
