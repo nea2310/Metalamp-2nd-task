@@ -10,12 +10,6 @@ const dateTo = new Date(+dateFrom +
 const regexpDate = /^\d{2}\.\d{2}\.\d{4}$/; // формат даты
 const regexInput = /[^0-9.]/g; // формат ввода в инпут - все, кроме цифр и точек(будет заменяться на пустую строку)
 
-//кастомное событие ввода в инпут
-let dateInputCompleted = new CustomEvent('inputDate', {
-	bubbles: true,
-	cancelable: true,
-});
-
 let dateFromTxt = '' + dateFrom.getDate() +
 	'.' + (dateFrom.getMonth() + 1) +
 	'.' + dateFrom.getFullYear();
@@ -107,8 +101,6 @@ for (let input of inputsMasked) {
 					dateFromTxt + ' до ' + dateToTxt);
 				e.target.value = dateFromTxt;//в случае некорректного ввода - устанавливаем текущую дату
 			}
-			//вызываем кастомное событие, информирующее о завершении ввода в инпут
-			e.target.dispatchEvent(dateInputCompleted);
 		}
 	});
 }
