@@ -1,9 +1,0 @@
-include ../input-datefilter/input-datefilter.pug
-include ../date/date.pug
-include ../label/label.pug
-mixin date-filter()
-	div(class="date__wrapper date__wrapper-dateFilter" id="dateFilter")
-		div(class="date__input")
-			+label(" label-marginBottom1", "filter date dropdown")
-			+input-datefilter(' input-wide date__input-fromto', '2022-01-01,2022-01-03')
-		+date()

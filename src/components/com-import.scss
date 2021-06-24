@@ -3,16 +3,10 @@
 @import "header/header.scss";
 @import "footer/footer.scss";
 @import "sidebar/sidebar.scss";
-@import "date/date.scss";
-@import "input/input.scss";
-@import "input-masked/input-masked.scss";
-@import "input-text/input-text.scss";
-@import "input-subscription/input-subscription.scss";
-@import "input-datefilter/input-datefilter.scss";
+@import "input-field/input-field.scss";
 @import "logo/logo.scss";
-@import "label/label.scss";
-@import "date-filter/date-filter.scss";
 @import "date-dropdown/date-dropdown.scss";
+@import "dropdown/dropdown.scss";
 
 /* --------- Медиа запросы компонентов --------- */
 @import "base/media_base.scss";

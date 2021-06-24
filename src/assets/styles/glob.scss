@@ -13,7 +13,6 @@ $font-size: 16;
 @mixin font-rem($size) {
 	font-size: #{$size / $font-size}rem;
 }
-//  @include font-rem(32);
 
 @mixin absolute-center {
 	top: 0;
@@ -117,4 +116,83 @@ input[type="radio"].visually-hidden {
 .modButton:focus {
 	background-color: #7c8d33 !important;
 	transition: 0.3s ease-out;
+}
+
+$colorDarkShade100: #1f2041;
+$colorDarkShade75: rgba(31, 32, 65, 0.75);
+$colorDarkShade50: rgba(31, 32, 65, 0.5);
+$colorDarkShade25: rgba(31, 32, 65, 0.25);
+$colorDarkShade5: rgba(31, 32, 65, 0.05);
+$colorPurple: #bc9cff;
+$colorGreen: #6fcf97;
+@mixin fontBody() {
+	font-family: "Montserrat-Regular";
+	font-size: 14px;
+	line-height: 24px;
+	color: $colorDarkShade75;
+}
+
+@mixin subHeader() {
+	font-family: "Montserrat-Bold";
+	font-size: 12px;
+	line-height: 15px;
+	color: $colorDarkShade100;
+	text-transform: uppercase;
+}
+
+h1 {
+	font-family: "Montserrat-Bold";
+	font-style: normal;
+	font-size: 24px;
+	line-height: 29px;
+	color: $colorDarkShade100;
+}
+
+h2 {
+	font-family: "Montserrat-Bold";
+	font-size: 19px;
+	line-height: 23px;
+	color: $colorDarkShade100;
+}
+
+h3 {
+	@include subHeader;
+}
+
+p {
+	@include fontBody;
+}
+
+.inputBase {
+	&::placeholder {
+		color: $colorDarkShade25;
+	}
+	@include fontBody;
+	height: 44px;
+	text-indent: 12px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border: 1px solid $colorDarkShade25;
+
+	&:hover {
+		border-color: $colorDarkShade50;
+	}
+	&:focus {
+		border-color: $colorDarkShade50;
+	}
+}
+
+.inputWide {
+	width: 320px;
+}
+
+.inputMedium {
+	width: 266px;
+}
+.inputNarrow {
+	width: 150px;
+}
+.inputRounded {
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 }

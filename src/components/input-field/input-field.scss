@@ -1,0 +1,22 @@
+input {
+	outline: none;
+}
+
+.inputField {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+	&__label {
+		margin-bottom: 4px;
+		@include subHeader;
+	}
+	&__link {
+		position: absolute;
+		top: 32px;
+		right: 118px;
+		width: 16px;
+		height: 19px;
+		cursor: pointer;
+	}
+}

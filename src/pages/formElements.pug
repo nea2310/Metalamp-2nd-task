@@ -1,22 +1,14 @@
 include ../components/logo/logo.pug
-include ../components/label/label.pug
 include ../components/date-dropdown/date-dropdown.pug
-include ../components/input-masked/input-masked.pug
-include ../components/input-text/input-text.pug
-include ../components/input-subscription/input-subscription.pug
-include ../components/date-filter/date-filter.pug
+include ../components/input-field/input-field.pug
 div(class="formElements__wrapper")
 	+logo-grey()
-	div(class="formElements__col1")
-		+label(" label-marginBottom1", "text field")
-		+input-text("Email")
-		+label(" label-marginTop1 label-marginBottom1", "text field")
-		+input-text("Email")
-		+label(" label-marginTop1 label-marginBottom1", "dropdown")
-		+input-text()
-		+label(" label-marginTop2 label-marginBottom1", "masked text field")
-		+input-masked(" input-wide")
-		+date-dropdown()
-		+label(" label-marginTop3 label-marginBottom1", "subscription text field")
-		+input-subscription()
-		+date-filter()
+	div(class="formElements__col formElements__col-left")
+		+input("inputField-1 inputField", "text field", " inputBase inputWide inputRounded", "Email", )
+		+input("inputField-2 inputField", "text field", " inputBase inputWide inputRounded", "Email", )
+		+input("inputField-3 inputField", "dropdown", " inputBase inputWide inputRounded", "Email", )
+		+input("inputField-4 inputField", "masked text field", " masked inputBase inputWide inputRounded", "ДД.ММ.ГГГГ",)
+		+date-dropdown("dateDropDown")
+		+date-dropdown("filterDateDropDown")
+		+input("inputField-5 inputField", "subscription text field", " inputSubscribe inputBase inputMedium inputRounded", "Email", "arrow", )
+

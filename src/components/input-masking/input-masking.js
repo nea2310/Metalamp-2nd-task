@@ -1,7 +1,3 @@
-import { a } from '../input/input.js';
-
-a();
-
 //dateFrom =  текущая дате
 const dateFrom = new Date();
 //dateTo = плюс один год к текущей дате
@@ -9,12 +5,6 @@ const dateTo = new Date(+dateFrom +
 	(new Date("2020-12-31") - new Date("2020-01-01")));
 const regexpDate = /^\d{2}\.\d{2}\.\d{4}$/; // формат даты
 const regexInput = /[^0-9.]/g; // формат ввода в инпут - все, кроме цифр и точек(будет заменяться на пустую строку)
-
-//кастомное событие ввода в инпут
-let dateInputCompleted = new CustomEvent('inputDate', {
-	bubbles: true,
-	cancelable: true,
-});
 
 let dateFromTxt = '' + dateFrom.getDate() +
 	'.' + (dateFrom.getMonth() + 1) +
@@ -40,10 +30,8 @@ function formatDate(date) {
 dateFromTxt = formatDate(dateFromTxt);
 dateToTxt = formatDate(dateToTxt);
 
-let inputsMasked = document.querySelectorAll('.input-masked');
+let inputsMasked = document.querySelectorAll('.inputMasked');
 for (let input of inputsMasked) {
-	input.setAttribute("type", "text");
-	input.setAttribute("placeholder", "ДД.ММ.ГГГГ");
 	/*запретить все типы ввода, кроме перечисленных*/
 	input.addEventListener('input', (e) => {
 		let inpTypeAllowed = false;
@@ -103,11 +91,10 @@ for (let input of inputsMasked) {
 			let dateSelected = new Date(a[2] + '-' + a[1] + '-' + a[0]);
 			if (dateSelected < dateFrom || dateSelected > dateTo ||
 				dateSelected == 'Invalid Date') {
-				alert('Введите дату от ' + dateFromTxt + ' до ' + dateToTxt);
+				alert('Введите дату от ' +
+					dateFromTxt + ' до ' + dateToTxt);
 				e.target.value = dateFromTxt;//в случае некорректного ввода - устанавливаем текущую дату
 			}
-			//вызываем кастомное событие, информирующее о завершении ввода в инпут
-			e.target.dispatchEvent(dateInputCompleted);
 		}
 	});
 }

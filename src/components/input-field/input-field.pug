@@ -1,0 +1,12 @@
+mixin input(elemName, label="", classList="", placeholder="", img="",)
+	div(class=elemName)
+		label(class=elemName+"__label")=label
+		if img=="arrow"
+			a(class=elemName+"__link")
+				img(class=elemName+"__img", src="assets/img/interface/arrow_forward.svg")
+		input(class=elemName+"__input"+classList, placeholder=placeholder, type="text")
+
+
+
+
+
