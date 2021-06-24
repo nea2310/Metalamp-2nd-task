@@ -32,7 +32,7 @@ class DropDown {
 
 
 	initialCounterList(counterList) {
-		let counterListArr = [];
+		this.counters = [];
 		for (let i = 0; i < counterList.length; i++) {
 			let elemObj = {};
 			let catName =
@@ -59,13 +59,11 @@ class DropDown {
 				elemObj.isMin = false;
 			}
 
-			counterListArr.push(elemObj);
+			this.counters.push(elemObj);
 		}
 		// localStorage.setItem('counters', JSON.stringify(counterListArr));
 		// console.log(this.counters);
 		// this.counters = JSON.parse(localStorage.getItem('counters'));
-		this.counters = counterListArr;
-		//console.log(this.counters);
 	}
 
 
@@ -73,6 +71,11 @@ class DropDown {
 		for (let elem of this.counts) {
 			//console.log(this.counts);
 			elem.addEventListener('click', (e) => {
+				// console.log(e.target);
+				// console.log(e.target.nextSibling.className);
+				// console.log(e.target.previousElementSibling.className);
+				// console.log(e.target.parentNode.className);
+
 				const text = e.target.parentElement.parentElement.
 					firstElementChild.innerText.toLowerCase();
 				//	console.log(text);
@@ -85,7 +88,7 @@ class DropDown {
 					elem.parentElement.lastElementChild.disabled = false;
 					//Уменьшить счетчик на единицу
 					let currentCounter =
-						parseInt(e.target.nextSibling.innerText);
+						parseInt(e.target.nextElementSibling.innerText);
 					editedCounter = String(currentCounter - 1);
 				}
 
@@ -95,7 +98,7 @@ class DropDown {
 					elem.parentElement.firstElementChild.disabled = false;
 					//Увеличить счетчик на единицу
 					let currentCounter =
-						parseInt(e.target.previousSibling.innerText);
+						parseInt(e.target.previousElementSibling.innerText);
 					editedCounter = String(currentCounter + 1);
 				}
 				this.changeCounter2(text, editedCounter);
@@ -106,7 +109,10 @@ class DropDown {
 
 	changeCounter2(text, editedCounter) {
 		console.log(text);
-		console.log(this.counters);
+		console.log(editedCounter);
+
+
+
 
 		//Формируем this.counters - они содержат все категории
 		this.counters = this.counters.map(function test(counter) {
@@ -133,15 +139,17 @@ class DropDown {
 			else return counter;
 		}
 		);
-		// this._commitCounterList(this.counters);
+
 		this.changeCounterToDisplay(this.counters);
 	}
 
 
 	changeCounterToDisplay(changedCounters) {
+		console.log(changedCounters);
+
 
 		//! Здесь еще нужно добавить склонение названий по падежам!
-		let arr = [];
+		this.countersToDisplay = [];
 		for (let i = 0; i < changedCounters.length; i++) {
 			// Если категории такого типа еще нет
 			if (i == 0 || i > 0 &&
@@ -153,27 +161,27 @@ class DropDown {
 				elem.type = type;
 				elem.cnt = cnt;
 				// То добавить в массив, который в конце будет присвоен changedCountersToDisplay				
-				arr.push(elem);
+				this.countersToDisplay.push(elem);
 			}
 			// Если  категория такого типа уже есть
 			if (i > 0 && changedCounters[i].type ==
 				changedCounters[i - 1].type) {
 				//console.log('РАВНЫ');
-				let elem = arr.find(item => item.type ==
+				let elem = this.countersToDisplay.find(item => item.type ==
 					changedCounters[i].type);
 				// То в массив не добавлять, а прибавить значение к значению счетчика этой категории				
 				elem.cnt = String(parseInt(elem.cnt) +
 					parseInt(changedCounters[i].cnt))
 			}
 		}
-		this.countersToDisplay = arr;
+
 		this.updateChangedCountersToDisplay(this.countersToDisplay);
 	}
 
 
 
 	updateChangedCountersToDisplay(countersToDisplay) {
-		console.log(countersToDisplay);
+		//	console.log(countersToDisplay);
 
 		let value = '';
 		countersToDisplay.forEach(counter => {
