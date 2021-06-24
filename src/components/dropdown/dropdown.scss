@@ -1,0 +1,15 @@
+.dropDownGuests {
+	border: 1px solid blue;
+	//width: 320px;
+	position: relative;
+	&__listWrapper {
+		background-color: white;
+		width: 100%;
+		position: absolute;
+		z-index: 1;
+		border: 1px solid red;
+	}
+	&__catWrapper {
+		display: flex;
+	}
+}

@@ -1,0 +1,20 @@
+mixin dropdown(elemName, categories = {})
+	-
+		var test=""
+		var minus = '-'
+		var plus = '+'
+	div(class=elemName)
+		input(class=elemName+"__input inputBase inputRounded inputWide")
+		div(class=elemName+"__listWrapper")
+			ul(class=elemName+"__list")
+				each val, index in categories
+					li(class=elemName+"__catWrapper")
+						p(class=elemName+"__cat", data-type=val.type)=val.diasplayName
+						div(class=elemName+"__countWrapper")
+							button(class=elemName+"__count "+elemName+"__count-decrem", data-min=val.minCnt)=minus
+							span(class=elemName+"__countVal")=val.defaultCnt
+							button(class=elemName+"__count "+elemName+"__count-increm", data-max=val.maxCnt)=plus
+			if (elemName=="dropDownGuests")
+				div(class=elemName+"__buttons")
+					button(class=elemName+"__button-clear") очистить
+					button(class=elemName+"__button-apply") применить
