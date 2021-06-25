@@ -1,9 +1,14 @@
-mixin dropdown(elemName, categories = {})
+mixin dropdown(elemName, categories = {}, labelText)
 	-
 		var minus = '-'
 		var plus = '+'
 	div(class=elemName)
-		input(class=elemName+"__input inputBase inputRounded inputWide")
+		div(class=elemName+"__inputWrapper")
+			label(class=elemName+"__label")
+				if labelText
+					p(class=elemName+"__labelText")=labelText
+				img(class=elemName+"__img "+elemName+"__img-from collapsed", src="assets/img/interface/expand_more.svg")
+				input(class=elemName+"__input inputBase inputRounded inputWide")
 		div(class=elemName+"__listWrapper")
 			ul(class=elemName+"__list")
 				each val, index in categories

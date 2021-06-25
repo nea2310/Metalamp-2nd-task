@@ -37,7 +37,7 @@ class DropDown {
 				querySelector(`.${this.elemName}__count-increm`);
 			let catDecrem = counterList[i].
 				querySelector(`.${this.elemName}__count-decrem`);
-			elemObj.text = catName.innerText;
+			elemObj.text = catName.innerText.toLowerCase();
 			elemObj.type = catName.getAttribute('data-type');
 			elemObj.cnt = catCnt.innerText;
 			elemObj.maxCnt = catIncrem.getAttribute('data-max');
@@ -79,6 +79,8 @@ class DropDown {
 	changeCounter() {
 		for (let elem of this.counts) {
 			elem.addEventListener('click', (e) => {
+				console.log();
+
 				const text = e.target.parentElement.parentElement.
 					firstElementChild.innerText.toLowerCase();
 				let editedCounter;
@@ -103,6 +105,9 @@ class DropDown {
 						parseInt(e.target.previousElementSibling.innerText);
 					editedCounter = String(currentCounter + 1);
 					e.target.previousElementSibling.innerText = editedCounter;
+					//		console.log(e.target.previousElementSibling.innerText);
+					//		console.log(e.target.previousElementSibling);
+
 				}
 				this.updateCounterList(text, editedCounter);
 			});
@@ -111,8 +116,14 @@ class DropDown {
 
 	/*обновление состояния счетчиков*/
 	updateCounterList(text, editedCounter) {
+		console.log(text);
+		console.log(editedCounter);
+
 		this.counters = this.counters.map(function test(counter) {
 			if (counter.text === text) {
+				console.log(counter.text);
+				console.log(text);
+
 				let obj = {
 					text: counter.text,
 					type: counter.type,
@@ -136,6 +147,7 @@ class DropDown {
 		}
 		);
 
+		console.log(this.counters);
 
 		this.updateButtons(this.counters);
 		this.updateCategoriesList(this.counters);
@@ -165,6 +177,8 @@ class DropDown {
 	/*Обновление списка категорий, которые выводятся в инпуте*/
 
 	updateCategoriesList(changedCounters) {
+		//	console.log('!!!!!');
+
 		//! Здесь еще нужно добавить склонение названий по падежам!
 		this.countersToDisplay = [];
 		for (let i = 0; i < changedCounters.length; i++) {
@@ -199,6 +213,8 @@ class DropDown {
 	/*обновление значения в инпуте*/
 
 	updateInput(countersToDisplay) {
+		//	console.log(countersToDisplay);
+
 		let value = '';
 		countersToDisplay.forEach(counter => {
 			value += counter.cnt + ' ' + counter.type + ', ';
@@ -209,3 +225,4 @@ class DropDown {
 
 
 new DropDown("dropDownGuests");
+new DropDown("dropDownRooms");

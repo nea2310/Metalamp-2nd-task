@@ -1,15 +1,66 @@
-.dropDownGuests {
-	border: 1px solid blue;
+.dropDownGuests,
+.dropDownRooms {
+	//border: 1px solid blue;
 	//width: 320px;
 	position: relative;
+
+	&__label {
+		position: relative;
+	}
+	&__labelText {
+		@include subHeader;
+	}
+
+	&__img {
+		position: absolute;
+		bottom: 7px;
+		right: 16px;
+	}
+
+	&__input {
+		margin-top: 5px;
+	}
 	&__listWrapper {
 		background-color: white;
 		width: 100%;
 		position: absolute;
 		z-index: 1;
-		border: 1px solid red;
+		border: 1px solid $colorDarkShade25;
+		box-sizing: border-box;
 	}
 	&__catWrapper {
 		display: flex;
+		justify-content: space-between;
+		height: 37px;
+		align-items: center;
+	}
+	&__cat {
+		@include subHeader;
+		margin-left: 14px;
+	}
+	&__countWrapper {
+		box-sizing: border-box;
+		//border: 1px solid red;
+		margin-right: 5px;
+		width: 94px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__count {
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background-color: white;
+		border: 1px solid $colorDarkShade50;
+		color: $colorDarkShade50;
+		&[disabled] {
+			border: 1px solid $colorDarkShade25;
+			color: $colorDarkShade25;
+		}
+	}
+
+	&__countVal {
+		@include subHeader;
 	}
 }
