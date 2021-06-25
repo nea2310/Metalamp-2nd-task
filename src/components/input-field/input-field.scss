@@ -3,25 +3,19 @@ input {
 }
 
 .inputField {
-	//	border: 1px solid red;
 	display: flex;
 	flex-direction: column;
 
 	&__label {
-		//	border: 1px solid blue;
-
 		position: relative;
 	}
 	&__labelText {
-		//	border: 1px solid blue;
-
 		@include subHeader;
 	}
 	&__link {
-		//	border: 1px solid green;
 		position: absolute;
-		bottom: 12px;
-		right: 123px;
+		bottom: 13px;
+		right: 124px;
 		width: 16px;
 		height: 19px;
 		cursor: pointer;
@@ -30,7 +24,6 @@ input {
 	}
 
 	&__input {
-		//	border: 1px solid green;
 		margin-top: 4px;
 	}
 }
