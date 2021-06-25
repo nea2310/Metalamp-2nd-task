@@ -8,7 +8,7 @@ function testEmail(value) {
 }
 for (let input of inputsSubscribe) {
 	let inputWrapper = input.parentNode;
-	let link = inputWrapper.querySelector('a')
+	let link = inputWrapper.querySelector('button')
 	input.addEventListener('change', () => {
 		testEmail(input.value);
 	});
