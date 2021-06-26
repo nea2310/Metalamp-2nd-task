@@ -3,9 +3,6 @@
 		width: 320px;
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
-		&-collapsed {
-			//	border-bottom: none;
-		}
 		&-expanded {
 			border-color: $colorDarkShade50;
 			border-bottom: none;
@@ -18,8 +15,6 @@
 .dropDownRooms {
 	&__input {
 		width: 266px;
-		&-collapsed {
-		}
 		&-expanded {
 			border-bottom: none;
 		}
@@ -28,8 +23,6 @@
 
 .dropDownGuests,
 .dropDownRooms {
-	//border: 1px solid blue;
-	//width: 320px;
 	position: relative;
 
 	&__label {
@@ -59,12 +52,14 @@
 		margin-top: 5px;
 	}
 	&__listWrapper {
-		background-color: white;
+		background-color: $colorWhite;
 		width: 100%;
 		position: absolute;
 		z-index: 1;
 		border: 1px solid $colorDarkShade50;
 		box-sizing: border-box;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
 		&-hidden {
 			display: none;
 		}
@@ -81,7 +76,6 @@
 	}
 	&__countWrapper {
 		box-sizing: border-box;
-		//border: 1px solid red;
 		margin-right: 5px;
 		width: 94px;
 		display: flex;
@@ -92,7 +86,7 @@
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;
-		background-color: white;
+		background-color: $colorWhite;
 		border: 1px solid $colorDarkShade50;
 		color: $colorDarkShade50;
 		&[disabled] {
