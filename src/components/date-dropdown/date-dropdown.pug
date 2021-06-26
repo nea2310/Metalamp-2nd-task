@@ -1,32 +1,35 @@
-mixin date-dropdown(elemName, labelTextFrom, labelTextTo, labelTextFromTo, options={})
+mixin date-dropdown(options={})
 	-
 		var modificator=""
-		elemName=="filterDateDropDown"?modificator=elemName+"__calendarWrapper-narrow":modificator=""
-	div(class=elemName+" "+elemName+"-"+options.width)
-		if elemName=='dateDropDown'
-			div(class=elemName+"__inputWrapper")
-				label(class=elemName+"__label")
-					if labelTextFrom
-						p(class=elemName+"__labelText")=labelTextFrom
-					img(class=elemName+"__img "+elemName+"__img-from "+elemName+"__img-collapsed", src="assets/img/interface/expand_more.svg")
-					input(class=elemName+"__input "+elemName+"__input-from "+elemName+"__input-narrow inputMasked", placeholder="ДД.ММ.ГГГГ", type=text)
-			div(class=elemName+"__inputWrapper")
-				label(class=elemName+"__label")
-					if labelTextTo
-						p(class=elemName+"__labelText")=labelTextTo
-					img(class=elemName+"__img "+elemName+"__img-to "+elemName+"__img-collapsed", src="assets/img/interface/expand_more.svg")
-					input(class=elemName+"__input "+elemName+"__input-to "+elemName+"__input-narrow inputMasked", placeholder="ДД.ММ.ГГГГ", type=text)
-		if elemName=="filterDateDropDown"
-			div(class=elemName+"__inputWrapper")
-				label(class=elemName+"__label")
-					if labelTextFromTo
-						p(class=elemName+"__labelText")=labelTextFromTo
-					img(class=elemName+"__img "+elemName+"__img-fromto "+elemName+"__img-collapsed", src="assets/img/interface/expand_more.svg")
-					input(class=elemName+"__input "+elemName+"__input-fromto "+elemName+"__input-wide inputMasked", value="2021-08-19,2021-08-23", type=text, readonly=true)
-		div(class=elemName+"__calendarWrapper "+elemName+"__calendarWrapper-hidden "+modificator)
-			div(class=elemName+"__buttons")
-				button(class=elemName+"__button-clear") очистить
-				button(class=elemName+"__button-apply") применить
+		var width=""
+		var scr="assets/img/interface/expand_more.svg"
+		options.type=="filterDateDropDown"?modificator=options.elemName+"__calendarWrapper-narrow":modificator=""
+		options.type=="filterDateDropDown"?width="-narrow":width="-wide"
+	div(class=options.elemName+" "+options.elemName+width)
+		if options.type=='dateDropDown'
+			div(class=options.elemName+"__inputWrapper")
+				label(class=options.elemName+"__label")
+					if options.labelTextFrom
+						p(class=options.elemName+"__labelText")=options.labelTextFrom
+					img(class=options.elemName+"__img "+options.elemName+"__img-from "+options.elemName+"__img-collapsed", src=scr)
+					input(class=options.elemName+"__input "+options.elemName+"__input-from "+options.elemName+"__input-narrow inputMasked", placeholder="ДД.ММ.ГГГГ", type=text)
+			div(class=options.elemName+"__inputWrapper")
+				label(class=options.elemName+"__label")
+					if options.labelTextTo
+						p(class=options.elemName+"__labelText")=options.labelTextTo
+					img(class=options.elemName+"__img "+options.elemName+"__img-to "+options.elemName+"__img-collapsed", src=scr)
+					input(class=options.elemName+"__input "+options.elemName+"__input-to "+options.elemName+"__input-narrow inputMasked", placeholder="ДД.ММ.ГГГГ", type=text)
+		if options.type=="filterDateDropDown"
+			div(class=options.elemName+"__inputWrapper")
+				label(class=options.elemName+"__label")
+					if options.labelTextFromTo
+						p(class=options.elemName+"__labelText")=options.labelTextFromTo
+					img(class=options.elemName+"__img "+options.elemName+"__img-fromto "+options.elemName+"__img-collapsed", src=scr)
+					input(class=options.elemName+"__input "+options.elemName+"__input-fromto "+options.elemName+"__input-wide ", value="2021-08-19,2021-08-23", type=text, readonly=true)
+		div(class=options.elemName+"__calendarWrapper "+options.elemName+"__calendarWrapper-hidden "+modificator)
+			div(class=options.elemName+"__buttons")
+				button(class=options.elemName+"__button-clear") очистить
+				button(class=options.elemName+"__button-apply") применить
 
 
 

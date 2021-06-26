@@ -1,12 +1,12 @@
-mixin input(elemName, labelText, classList="", placeholder="", img, options={})
-	div(class=elemName+" "+elemName+"-"+options.width)
-		label(class=elemName+"__label")
-			if labelText
-				p(class=elemName+"__labelText")=labelText
-			if img
-				button(class=elemName+"__link")
-					img(class=elemName+"__img", src="assets/img/interface/arrow_forward.svg")
-			input(class=elemName+"__input"+classList, placeholder=placeholder, type="text")
+mixin input(options={})
+	div(class=options.elemName+" "+options.elemName+"-"+options.width)
+		label(class=options.elemName+"__label")
+			if options.labelText
+				p(class=options.elemName+"__labelText")=options.labelText
+			if options.img
+				button(class=options.elemName+"__link")
+					img(class=options.elemName+"__img", src="assets/img/interface/arrow_forward.svg")
+			input(class=options.elemName+"__input"+options.classList, placeholder=options.placeholder, type="text")
 
 
 
