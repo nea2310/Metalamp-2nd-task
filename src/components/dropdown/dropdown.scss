@@ -1,6 +1,6 @@
 .dropDownGuests {
 	&__input {
-		width: 320px;
+		//	width: 320px;
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
 		&-expanded {
@@ -14,7 +14,7 @@
 
 .dropDownRooms {
 	&__input {
-		width: 266px;
+		//		width: 266px;
 		&-expanded {
 			border-bottom: none;
 		}
@@ -23,6 +23,13 @@
 
 .dropDownGuests,
 .dropDownRooms {
+	&-wide {
+		width: 320px;
+	}
+	&-medium {
+		width: 266px;
+	}
+	border: 1px solid red;
 	position: relative;
 
 	&__label {
@@ -49,7 +56,23 @@
 	}
 
 	&__input {
+		&::placeholder {
+			color: $colorDarkShade25;
+		}
+		@include fontBody;
+		height: 44px;
+		text-indent: 12px;
+		border-top-left-radius: 5px;
+		border-top-right-radius: 5px;
+		border: 1px solid $colorDarkShade25;
 		margin-top: 5px;
+		width: 100%;
+		&:hover {
+			border-color: $colorDarkShade50;
+		}
+		&:focus {
+			border-color: $colorDarkShade50;
+		}
 	}
 	&__listWrapper {
 		background-color: $colorWhite;

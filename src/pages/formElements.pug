@@ -5,11 +5,26 @@ include ../components/dropdown/dropdown.pug
 div(class="formElements__wrapper")
 	+logo-grey()
 	div(class="formElements__col formElements__col-left")
-		+input("inputField", "text field", " inputField-1 inputBase inputWide inputRounded", "Email", )
-		+input("inputField", "text field", " inputField-2 inputBase inputWide inputRounded", "Email", )
-		+dropdown("dropDownGuests", {cat1: {diasplayName: 'взрослые', type: 'гость', defaultCnt: 1, minCnt: 1, maxCnt: 99}, cat2: {diasplayName: 'дети', type: 'гость', defaultCnt: 0, minCnt: 0, maxCnt: 99}, cat3: {diasplayName: 'младенцы', type: 'младенец', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, "dropdown", "Сколько гостей")
-		+input("inputField", "masked text field", " inputField-4 inputMasked inputBase inputWide inputRounded", "ДД.ММ.ГГГГ",)
-		+date-dropdown("dateDropDown", "date dropdown", "date dropdown")
-		+date-dropdown("filterDateDropDown", "", "", "filter date dropdown")
-		+input("inputField", "subscription text field", " inputField-5 inputSubscribe inputBase inputMedium inputRounded", "Email", true, )
-		+dropdown("dropDownRooms", {cat1: {diasplayName: 'спальни', type: 'спальня', defaultCnt: 2, minCnt: 0, maxCnt: 5}, cat2: {diasplayName: 'кровати', type: 'кровать', defaultCnt: 2, minCnt: 1, maxCnt: 10}, cat3: {diasplayName: 'ванные комнаты', type: 'ванная комната', defaultCnt: 1, minCnt: 0, maxCnt: 3}}, "dropdown", "Сколько комнат")
+		+input("inputField", "text field", " inputField-1", "Email","", {width: "wide"} )
+		+input("inputField", "text field", " inputField-2", "Email","", {width: "wide"} )
+		+dropdown("dropDownGuests",
+					{cat1: {diasplayName: 'взрослые', type: 'гость', defaultCnt: 1, minCnt: 1, maxCnt: 99}, 
+					cat2: {diasplayName: 'дети', type: 'гость', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+					cat3: {diasplayName: 'младенцы', type: 'младенец', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+					"dropdown", 
+					"Сколько гостей",
+					{buttons: true,
+					width: "wide"
+					})
+		+input("inputField", "masked text field", " inputField-4 inputMasked", "ДД.ММ.ГГГГ","", {width: "wide"})
+		+date-dropdown("dateDropDown", "date dropdown", "date dropdown", "", {width:"wide"})
+		+date-dropdown("filterDateDropDown", "", "", "filter date dropdown", {width:"narrow"})
+		+input("inputField", "subscription text field", " inputField-5 inputSubscribe", "Email", true, {width: "medium"})
+		+dropdown("dropDownRooms", 
+					{cat1: {diasplayName: 'спальни', type: 'спальня', defaultCnt: 2, minCnt: 0, maxCnt: 5}, 
+					cat2: {diasplayName: 'кровати', type: 'кровать', defaultCnt: 2, minCnt: 1, maxCnt: 10}, 
+					cat3: {diasplayName: 'ванные комнаты', type: 'ванная комната', defaultCnt: 1, minCnt: 0, maxCnt: 3}}, 
+					"dropdown", 
+					"Сколько комнат",
+					{width: "medium"
+					})

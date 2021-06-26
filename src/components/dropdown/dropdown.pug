@@ -1,14 +1,14 @@
-mixin dropdown(elemName, categories = {}, labelText, placeholder="")
+mixin dropdown(elemName, categories = {}, labelText, placeholder="", options={})
 	-
 		var minus = '-'
 		var plus = '+'
-	div(class=elemName)
-		div(class=elemName+"__inputWrapper")
+	div(class=elemName+" "+elemName+"-"+options.width)
+		div(class=elemName+"__inputWrapper ")
 			label(class=elemName+"__label")
 				if labelText
 					p(class=elemName+"__labelText")=labelText
 				img(class=elemName+"__img "+elemName+"__img-collapsed", src="assets/img/interface/expand_more.svg")
-				input(class=elemName+"__input "+elemName+"__input-collapsed inputBase", readonly=true, value="", placeholder=placeholder)
+				input(class=elemName+"__input "+elemName+"__input-collapsed", readonly=true, value="", placeholder=placeholder)
 		div(class=elemName+"__listWrapper "+elemName+"__listWrapper-hidden")
 			ul(class=elemName+"__list")
 				each val, index in categories
@@ -18,7 +18,7 @@ mixin dropdown(elemName, categories = {}, labelText, placeholder="")
 							button(class=elemName+"__count "+elemName+"__count-decrem", data-min=val.minCnt)=minus
 							span(class=elemName+"__countVal")=val.defaultCnt
 							button(class=elemName+"__count "+elemName+"__count-increm", data-max=val.maxCnt)=plus
-			if (elemName=="dropDownGuests")
+			if (options.buttons)
 				div(class=elemName+"__buttons")
 					button(class=elemName+"__button-clear") очистить
 					button(class=elemName+"__button-apply") применить

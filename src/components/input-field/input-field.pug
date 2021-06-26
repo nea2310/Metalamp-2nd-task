@@ -1,5 +1,5 @@
-mixin input(elemName, labelText, classList="", placeholder="", img)
-	div(class=elemName)
+mixin input(elemName, labelText, classList="", placeholder="", img, options={})
+	div(class=elemName+" "+elemName+"-"+options.width)
 		label(class=elemName+"__label")
 			if labelText
 				p(class=elemName+"__labelText")=labelText

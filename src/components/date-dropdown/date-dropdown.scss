@@ -1,9 +1,17 @@
 .dateDropDown,
 .filterDateDropDown {
+	&-wide {
+		width: 320px;
+	}
+	&-narrow {
+		width: 266px;
+	}
+	border: 1px solid red;
 	display: flex;
 	justify-content: flex-start;
 	position: relative;
 	&__label {
+		width: 100%;
 		position: relative;
 	}
 	&__labelText {
@@ -67,7 +75,28 @@
 		padding-left: 20px;
 	}
 	&__input {
+		&::placeholder {
+			color: $colorDarkShade25;
+		}
+		@include fontBody;
+		height: 44px;
+		text-indent: 12px;
+		border-radius: 5px;
+		border: 1px solid $colorDarkShade25;
 		margin-top: 5px;
+
+		&:hover {
+			border-color: $colorDarkShade50;
+		}
+		&:focus {
+			border-color: $colorDarkShade50;
+		}
+		&-narrow {
+			width: 150px;
+		}
+		&-wide {
+			width: 266px;
+		}
 	}
 }
 

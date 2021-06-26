@@ -3,6 +3,13 @@ input {
 }
 
 .inputField {
+	&-wide {
+		width: 320px;
+	}
+	&-medium {
+		width: 266px;
+	}
+	border: 1px solid red;
 	display: flex;
 	flex-direction: column;
 
@@ -15,15 +22,30 @@ input {
 	&__link {
 		position: absolute;
 		bottom: 13px;
-		right: 124px;
+		right: 21px;
 		width: 16px;
 		height: 19px;
 		cursor: pointer;
-		background-color: white;
+		background-color: $colorWhite;
 		border: none;
 	}
 
 	&__input {
+		&::placeholder {
+			color: $colorDarkShade25;
+		}
+		@include fontBody;
+		height: 44px;
+		text-indent: 12px;
+		border-radius: 5px;
+		border: 1px solid $colorDarkShade25;
 		margin-top: 4px;
+		width: 100%;
+		&:hover {
+			border-color: $colorDarkShade50;
+		}
+		&:focus {
+			border-color: $colorDarkShade50;
+		}
 	}
 }

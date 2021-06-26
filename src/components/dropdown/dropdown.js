@@ -46,8 +46,6 @@ class DropDown {
 		this.clicked = false;
 		this.clickedInside = false;
 		this.input = this.wrapper.querySelector(`.${this.elemName}__input`);
-		let elemWidth = this.input.offsetWidth;
-		this.wrapper.style.width = elemWidth;
 		this.listWrapper =
 			this.wrapper.querySelector(`.${this.elemName}__listWrapper`);
 		this.counts = this.wrapper.querySelectorAll(`.${this.elemName}__count`);

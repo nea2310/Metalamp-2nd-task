@@ -1,28 +1,28 @@
-mixin date-dropdown(elemName, labelTextFrom, labelTextTo, labelTextFromTo)
+mixin date-dropdown(elemName, labelTextFrom, labelTextTo, labelTextFromTo, options={})
 	-
 		var modificator=""
 		elemName=="filterDateDropDown"?modificator=elemName+"__calendarWrapper-narrow":modificator=""
-	div(class=elemName)
+	div(class=elemName+" "+elemName+"-"+options.width)
 		if elemName=='dateDropDown'
 			div(class=elemName+"__inputWrapper")
 				label(class=elemName+"__label")
 					if labelTextFrom
 						p(class=elemName+"__labelText")=labelTextFrom
 					img(class=elemName+"__img "+elemName+"__img-from "+elemName+"__img-collapsed", src="assets/img/interface/expand_more.svg")
-					input(class=elemName+"__input "+elemName+"__input-from inputBase inputRounded inputNarrow inputMasked", placeholder="ДД.ММ.ГГГГ", type=text)
+					input(class=elemName+"__input "+elemName+"__input-from "+elemName+"__input-narrow inputMasked", placeholder="ДД.ММ.ГГГГ", type=text)
 			div(class=elemName+"__inputWrapper")
 				label(class=elemName+"__label")
 					if labelTextTo
 						p(class=elemName+"__labelText")=labelTextTo
 					img(class=elemName+"__img "+elemName+"__img-to "+elemName+"__img-collapsed", src="assets/img/interface/expand_more.svg")
-					input(class=elemName+"__input "+elemName+"__input-to inputBase inputRounded inputNarrow inputMasked", placeholder="ДД.ММ.ГГГГ", type=text)
+					input(class=elemName+"__input "+elemName+"__input-to "+elemName+"__input-narrow inputMasked", placeholder="ДД.ММ.ГГГГ", type=text)
 		if elemName=="filterDateDropDown"
 			div(class=elemName+"__inputWrapper")
 				label(class=elemName+"__label")
 					if labelTextFromTo
 						p(class=elemName+"__labelText")=labelTextFromTo
 					img(class=elemName+"__img "+elemName+"__img-fromto "+elemName+"__img-collapsed", src="assets/img/interface/expand_more.svg")
-					input(class=elemName+"__input "+elemName+"__input-fromto inputBase inputRounded inputMedium inputMasked", value="2022-01-01,2022-01-03", type=text, readonly=true)
+					input(class=elemName+"__input "+elemName+"__input-fromto "+elemName+"__input-wide inputMasked", value="2021-08-19,2021-08-23", type=text, readonly=true)
 		div(class=elemName+"__calendarWrapper "+elemName+"__calendarWrapper-hidden "+modificator)
 			div(class=elemName+"__buttons")
 				button(class=elemName+"__button-clear") очистить
