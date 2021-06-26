@@ -1,3 +1,31 @@
+.dropDownGuests {
+	&__input {
+		width: 320px;
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
+		&-collapsed {
+			//	border-bottom: none;
+		}
+		&-expanded {
+			border-color: $colorDarkShade50;
+			border-bottom: none;
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+	}
+}
+
+.dropDownRooms {
+	&__input {
+		width: 266px;
+		&-collapsed {
+		}
+		&-expanded {
+			border-bottom: none;
+		}
+	}
+}
+
 .dropDownGuests,
 .dropDownRooms {
 	//border: 1px solid blue;
@@ -35,7 +63,7 @@
 		width: 100%;
 		position: absolute;
 		z-index: 1;
-		border: 1px solid $colorDarkShade25;
+		border: 1px solid $colorDarkShade50;
 		box-sizing: border-box;
 		&-hidden {
 			display: none;

@@ -45,6 +45,8 @@ class DropDown {
 
 		this.tip.classList.toggle(`${this.elemName}__img-expanded`);
 		this.tip.classList.toggle(`${this.elemName}__img-collapsed`);
+		this.input.classList.toggle(`${this.elemName}__input-expanded`);
+		this.input.classList.toggle(`${this.elemName}__input-collapsed`);
 	}
 
 	clickInput() {
