@@ -5,6 +5,9 @@ class DropDown {
 		this.render();
 		this.changeCounter();
 		this.clear();
+		this.clickInput();
+		this.apply();
+
 
 	}
 
@@ -27,12 +30,35 @@ class DropDown {
 			querySelectorAll(`.${this.elemName}__catWrapper`);
 		this.btnsMinus =
 			this.wrapper.querySelectorAll(`.${this.elemName}__count-decrem`);
+		this.tip = this.wrapper.querySelector(`.${this.elemName}__img`);
 		this.clearApplyBtns;
 		if (this.btnClear != null && this.btnApply != null) {
 			this.clearApplyBtns = true;
 		}
 		this.getInitialCounterList(this.counterList);
+	}
 
+	toggle() {
+		this.listWrapper.classList.
+			toggle(`${this.elemName}__listWrapper-hidden`);
+		console.log(this.tip);
+
+		this.tip.classList.toggle(`${this.elemName}__img-expanded`);
+		this.tip.classList.toggle(`${this.elemName}__img-collapsed`);
+	}
+
+	clickInput() {
+		this.input.addEventListener("click", () => {
+			this.toggle();
+		});
+	}
+
+	apply() {
+		if (this.clearApplyBtns) {
+			this.btnApply.addEventListener("click", () => {
+				this.toggle();
+			});
+		}
 	}
 
 	/*Получение начального состояния счетчиков (текущее значение; является ли оно минимальным или максимальным; название и тип категории)*/

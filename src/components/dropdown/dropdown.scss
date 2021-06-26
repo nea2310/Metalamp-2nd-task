@@ -15,6 +15,16 @@
 		position: absolute;
 		bottom: 7px;
 		right: 16px;
+
+		&-expanded {
+			transform: rotate(180deg);
+			transition: all 0.9s ease 0s;
+		}
+
+		&-collapsed {
+			transform: rotate(0deg);
+			transition: all 0.9s ease 0s;
+		}
 	}
 
 	&__input {
@@ -27,6 +37,9 @@
 		z-index: 1;
 		border: 1px solid $colorDarkShade25;
 		box-sizing: border-box;
+		&-hidden {
+			display: none;
+		}
 	}
 	&__catWrapper {
 		display: flex;
