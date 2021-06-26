@@ -10,6 +10,8 @@ class DatePicker {
 		this.show();
 		this.apply();
 		this.clear();
+		//this.collapseByClick();
+		//	this.test();
 	}
 	render() {
 		let a = this.wrapper.
@@ -35,6 +37,8 @@ class DatePicker {
 			this.defaultDates = this.inputDate.value.split(',');
 		}
 
+
+
 		this.tips = this.wrapper.
 			querySelectorAll(`.${this.elemName}__img`);
 		this.clWrapper =
@@ -45,6 +49,57 @@ class DatePicker {
 			this.wrapper.querySelector(`.${this.elemName}__button-apply`);
 		//console.log(this.tipTo);
 	}
+
+
+	//проверка, клик был снаружи или внутри виджета
+	insideClick(elem, parentElemSelector) {
+		if (elem.closest(parentElemSelector)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	//проверка, клик был снаружи или внутри календаря
+	insideCalendarClick() {
+		this.calendar.addEventListener("click", (e) => {
+			//console.log('КЛИК ПО КАЛЕНДАРЮ');
+			this.clickOnCalendar = true;
+
+		});
+	}
+
+	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
+	collapseByClick() {
+		document.addEventListener("click", (e) => {
+			if (this.insideClick(e.target, `.${this.elemName}`) ||
+				this.clickOnCalendar) {
+				//	console.log('КЛИК ВНУТРИ');
+				e.preventDefault();
+				this.clickOnCalendar = false;
+			}
+			else {
+				//	console.log('КЛИК СНАРУЖИ');
+				this.clWrapper.classList.
+					add(`${this.elemName}__calendarWrapper-hidden`);
+				if (!this.isFilter) {
+					this.tipTo.
+						classList.remove(`${this.elemName}__img-expanded`);
+					this.tipTo.classList.add(`${this.elemName}__img-collapsed`);
+					this.tipFrom.
+						classList.remove(`${this.elemName}__img-expanded`);
+					this.tipFrom.
+						classList.add(`${this.elemName}__img-collapsed`);
+				} else {
+					this.tip.classList.remove(`${this.elemName}__img-expanded`);
+					this.tip.classList.add(`${this.elemName}__img-collapsed`);
+				}
+			}
+		});
+	}
+
+
 
 	/*Выбор даты в календаре*/
 	init() {
@@ -76,6 +131,10 @@ class DatePicker {
 				}
 			}
 		}).data('datepicker');
+		this.calendar = this.wrapper.
+			querySelector(".datepicker-inline");
+		this.collapseByClick();
+		this.insideCalendarClick();
 	}
 	/*Установка даты из поля value в верстке*/
 	setDefaultDate() {
@@ -135,7 +194,7 @@ class DatePicker {
 			}
 		});
 	}
-
+	//Показ календаря
 	show() {
 		if (!this.isFilter) {
 			this.inputDateFrom.addEventListener('click', () => {
@@ -157,13 +216,14 @@ class DatePicker {
 	}
 
 
-
+	//клик по кнопке [Применить]
 	apply() {
 		this.btnApply.addEventListener('click', () => {
 			if (this.myDatepicker.selectedDates.length == 1) {
 				alert("Введите дату выезда");
 			} else {
-				this.clWrapper.classList.add('hidden');
+				this.clWrapper.classList.
+					add(`${this.elemName}__calendarWrapper-hidden`);
 				if (!this.isFilter) {
 					this.expand(false);
 				} else {
@@ -173,7 +233,7 @@ class DatePicker {
 		});
 	}
 
-
+	//клик по кнопке [Очистить]
 	clear() {
 		this.btnClear.addEventListener('click', () => {
 			this.myDatepicker.clear();
@@ -187,27 +247,32 @@ class DatePicker {
 
 	expand(flag) {
 		if (flag) {
-			this.clWrapper.classList.remove('hidden');
+			this.clWrapper.classList.
+				remove(`${this.elemName}__calendarWrapper-hidden`);
 			if (!this.isFilter) {
-				this.tipFrom.classList.add("expanded");
-				this.tipTo.classList.add("expanded");
-				this.tipFrom.classList.remove("collapsed");
-				this.tipTo.classList.remove("collapsed");
+				this.tipFrom.classList.add(`${this.elemName}__img-expanded`);
+				this.tipTo.classList.add(`${this.elemName}__img-expanded`);
+				this.tipFrom.classList.
+					remove(`${this.elemName}__img-collapsed`);
+				this.tipTo.classList.
+					remove(`${this.elemName}__img-collapsed`);
 			} else {
-				this.tip.classList.add("expanded");
-				this.tip.classList.remove("collapsed");
+				this.tip.classList.add(`${this.elemName}__img-expanded`);
+				this.tip.classList.remove(`${this.elemName}__img-collapsed`);
 			}
 
 		} else {
-			this.clWrapper.classList.add('hidden');
+			this.clWrapper.classList.
+				add(`${this.elemName}__calendarWrapper-hidden`);
 			if (!this.isFilter) {
-				this.tipFrom.classList.remove("expanded");
-				this.tipTo.classList.remove("expanded");
-				this.tipFrom.classList.add("collapsed");
-				this.tipTo.classList.add("collapsed");
+				this.tipFrom.classList.
+					remove(`${this.elemName}__img-expanded`);
+				this.tipTo.classList.remove(`${this.elemName}__img-expanded`);
+				this.tipFrom.classList.add(`${this.elemName}__img-collapsed`);
+				this.tipTo.classList.add(`${this.elemName}__img-collapsed`);
 			} else {
-				this.tip.classList.remove("expanded");
-				this.tip.classList.add("collapsed");
+				this.tip.classList.remove(`${this.elemName}__img-expanded`);
+				this.tip.classList.add(`${this.elemName}__img-collapsed`);
 			}
 		}
 	}

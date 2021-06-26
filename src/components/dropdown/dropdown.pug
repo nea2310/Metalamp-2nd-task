@@ -8,7 +8,7 @@ mixin dropdown(elemName, categories = {}, labelText)
 				if labelText
 					p(class=elemName+"__labelText")=labelText
 				img(class=elemName+"__img "+elemName+"__img-collapsed", src="assets/img/interface/expand_more.svg")
-				input(class=elemName+"__input "+elemName+"__input-collapsed inputBase", readonly=true)
+				input(class=elemName+"__input "+elemName+"__input-collapsed inputBase", readonly=true, value="")
 		div(class=elemName+"__listWrapper "+elemName+"__listWrapper-hidden")
 			ul(class=elemName+"__list")
 				each val, index in categories

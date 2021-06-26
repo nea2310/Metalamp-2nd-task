@@ -1,3 +1,4 @@
+
 class DropDown {
 	constructor(elemName) {
 		this.elemName = elemName;
@@ -7,11 +8,43 @@ class DropDown {
 		this.clear();
 		this.clickInput();
 		this.apply();
-
-
+		this.collapseByClick();
 	}
 
+	//проверка, клик был снаружи или внутри виджета
+	insideClick(elem, parentElemSelector) {
+		if (elem.closest(parentElemSelector)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
+	collapseByClick() {
+		document.addEventListener("click", (e) => {
+			if (this.insideClick(e.target, `.${this.elemName}`)) {
+				//console.log('КЛИК ВНУТРИ');
+				e.preventDefault();
+			}
+			else {
+				//	console.log('КЛИК СНАРУЖИ');
+				this.listWrapper.classList.
+					add(`${this.elemName}__listWrapper-hidden`);
+				this.tip.classList.remove(`${this.elemName}__img-expanded`);
+				this.tip.classList.add(`${this.elemName}__img-collapsed`);
+				this.input.classList.remove(`${this.elemName}__input-expanded`);
+				this.input.classList.add(`${this.elemName}__input-collapsed`);
+			}
+		});
+	}
+
+
+
 	render() {
+		this.clicked = false;
+		this.clickedInside = false;
 		this.input = this.wrapper.querySelector(`.${this.elemName}__input`);
 		let elemWidth = this.input.offsetWidth;
 		this.wrapper.style.width = elemWidth;
@@ -38,11 +71,12 @@ class DropDown {
 		this.getInitialCounterList(this.counterList);
 	}
 
+
+
+
 	toggle() {
 		this.listWrapper.classList.
 			toggle(`${this.elemName}__listWrapper-hidden`);
-		console.log(this.tip);
-
 		this.tip.classList.toggle(`${this.elemName}__img-expanded`);
 		this.tip.classList.toggle(`${this.elemName}__img-collapsed`);
 		this.input.classList.toggle(`${this.elemName}__input-expanded`);
