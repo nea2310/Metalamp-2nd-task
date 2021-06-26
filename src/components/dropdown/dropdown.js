@@ -71,9 +71,6 @@ class DropDown {
 		this.getInitialCounterList(this.counterList);
 	}
 
-
-
-
 	toggle() {
 		this.listWrapper.classList.
 			toggle(`${this.elemName}__listWrapper-hidden`);
@@ -128,7 +125,6 @@ class DropDown {
 			this.counters.push(elemObj);
 		}
 		this.initializeButtons(this.counters);
-		this.updateCategoriesList(this.counters);
 		if (this.clearApplyBtns) {
 			this.hideBtnClear(this.btnsMinus);
 		}
@@ -268,6 +264,7 @@ class DropDown {
 						this.countVals[i].innerText
 					);
 				}
+				this.input.value = "";
 			});
 		}
 	}

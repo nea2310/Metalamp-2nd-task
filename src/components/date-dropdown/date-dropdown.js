@@ -10,8 +10,6 @@ class DatePicker {
 		this.show();
 		this.apply();
 		this.clear();
-		//this.collapseByClick();
-		//	this.test();
 	}
 	render() {
 		let a = this.wrapper.
@@ -47,7 +45,6 @@ class DatePicker {
 			this.wrapper.querySelector(`.${this.elemName}__button-clear`);
 		this.btnApply =
 			this.wrapper.querySelector(`.${this.elemName}__button-apply`);
-		//console.log(this.tipTo);
 	}
 
 
