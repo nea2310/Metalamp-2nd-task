@@ -4,6 +4,8 @@ class DropDown {
 		this.wrapper = document.querySelector(`.${this.elemName}`);
 		this.render();
 		this.changeCounter();
+		this.clear();
+
 	}
 
 	render() {
@@ -13,6 +15,8 @@ class DropDown {
 		this.listWrapper =
 			this.wrapper.querySelector(`.${this.elemName}__listWrapper`);
 		this.counts = this.wrapper.querySelectorAll(`.${this.elemName}__count`);
+		this.countVals =
+			this.wrapper.querySelectorAll(`.${this.elemName}__countVal`);
 		this.listElems = this.wrapper.
 			querySelectorAll(`.${this.elemName}__catWrapper`);
 		this.btnClear =
@@ -21,7 +25,14 @@ class DropDown {
 			this.wrapper.querySelector(`.${this.elemName}__button-apply`);
 		this.counterList = this.wrapper.
 			querySelectorAll(`.${this.elemName}__catWrapper`);
+		this.btnsMinus =
+			this.wrapper.querySelectorAll(`.${this.elemName}__count-decrem`);
+		this.clearApplyBtns;
+		if (this.btnClear != null && this.btnApply != null) {
+			this.clearApplyBtns = true;
+		}
 		this.getInitialCounterList(this.counterList);
+
 	}
 
 	/*Получение начального состояния счетчиков (текущее значение; является ли оно минимальным или максимальным; название и тип категории)*/
@@ -55,7 +66,11 @@ class DropDown {
 			this.counters.push(elemObj);
 		}
 		this.initializeButtons(this.counters);
-		this.updateCategoriesList(this.counters)
+		this.updateCategoriesList(this.counters);
+		if (this.clearApplyBtns) {
+			this.hideBtnClear(this.btnsMinus);
+		}
+
 	}
 
 	/*определяем неактивные кнопки (если начальное значение счетчика - минимальное или максимальное)*/
@@ -79,8 +94,6 @@ class DropDown {
 	changeCounter() {
 		for (let elem of this.counts) {
 			elem.addEventListener('click', (e) => {
-				console.log();
-
 				const text = e.target.parentElement.parentElement.
 					firstElementChild.innerText.toLowerCase();
 				let editedCounter;
@@ -95,19 +108,19 @@ class DropDown {
 					editedCounter = String(currentCounter - 1);
 					e.target.nextElementSibling.innerText = editedCounter;
 				}
-
 				//Для кнопки "плюс"
 				else {
 					// Сделать активной кнопку "минус" при клике на кнопку "плюс"				
 					elem.parentElement.firstElementChild.disabled = false;
+					if (this.clearApplyBtns) {//Показать кнопку [Очистить]
+						this.btnClear.
+							classList.remove(`${this.elemName}__button-hidden`);
+					}
 					//Увеличить счетчик на единицу
 					let currentCounter =
 						parseInt(e.target.previousElementSibling.innerText);
 					editedCounter = String(currentCounter + 1);
 					e.target.previousElementSibling.innerText = editedCounter;
-					//		console.log(e.target.previousElementSibling.innerText);
-					//		console.log(e.target.previousElementSibling);
-
 				}
 				this.updateCounterList(text, editedCounter);
 			});
@@ -116,14 +129,8 @@ class DropDown {
 
 	/*обновление состояния счетчиков*/
 	updateCounterList(text, editedCounter) {
-		console.log(text);
-		console.log(editedCounter);
-
 		this.counters = this.counters.map(function test(counter) {
 			if (counter.text === text) {
-				console.log(counter.text);
-				console.log(text);
-
 				let obj = {
 					text: counter.text,
 					type: counter.type,
@@ -146,9 +153,6 @@ class DropDown {
 			else return counter;
 		}
 		);
-
-		console.log(this.counters);
-
 		this.updateButtons(this.counters);
 		this.updateCategoriesList(this.counters);
 	}
@@ -171,14 +175,44 @@ class DropDown {
 				//	console.log('ДЕАКТИВИРОВАТЬ ПЛЮС');
 			}
 		}
+		if (this.clearApplyBtns) {
+			this.hideBtnClear(this.btnsMinus);
+		}
+	}
+
+	//Скрыть кнопку [очистить]
+	hideBtnClear(btnsMinus) {
+		let arr = [];
+		for (let btn of btnsMinus) {
+			arr.push(btn.disabled);
+		}
+		//есть ли среди кнопок "Минус" активные (disabled==false)
+		let isCleared = arr.find(item => item ==
+			false);
+		//если активные кнопки не обнаружены - isCleared=true
+		if (isCleared == undefined) {
+			isCleared = true;
+			//скрыть кнопку [Очистить]
+			this.btnClear.classList.add(`${this.elemName}__button-hidden`);
+		}
+	}
+	// установить значения счетчиков равными минимальным значеням
+	clear() {
+		if (this.clearApplyBtns) {
+			this.btnClear.addEventListener("click", () => {
+				for (let i = 0; i < this.countVals.length; i++) {
+					this.countVals[i].innerText = this.counters[i].minCnt;
+					this.updateCounterList(this.counters[i].text,
+						this.countVals[i].innerText
+					);
+				}
+			});
+		}
 	}
 
 
 	/*Обновление списка категорий, которые выводятся в инпуте*/
-
 	updateCategoriesList(changedCounters) {
-		//	console.log('!!!!!');
-
 		//! Здесь еще нужно добавить склонение названий по падежам!
 		this.countersToDisplay = [];
 		for (let i = 0; i < changedCounters.length; i++) {
@@ -208,13 +242,8 @@ class DropDown {
 		this.updateInput(this.countersToDisplay);
 	}
 
-
-
 	/*обновление значения в инпуте*/
-
 	updateInput(countersToDisplay) {
-		//	console.log(countersToDisplay);
-
 		let value = '';
 		countersToDisplay.forEach(counter => {
 			value += counter.cnt + ' ' + counter.type + ', ';

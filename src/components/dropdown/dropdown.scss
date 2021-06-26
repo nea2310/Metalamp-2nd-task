@@ -63,4 +63,10 @@
 	&__countVal {
 		@include subHeader;
 	}
+
+	&__button {
+		&-hidden {
+			display: none;
+		}
+	}
 }
