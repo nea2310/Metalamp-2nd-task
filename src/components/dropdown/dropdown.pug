@@ -4,8 +4,9 @@ mixin dropdown(options={})
 		var plus = '+'
 		var width=''
 		var inputStyle=''
-		options.type=='dropDownRooms'?width='_narrow':width='_wide'
-		options.type=='dropDownRooms'?inputStyle='_notrounded':inputStyle='_rounded'
+		let flType = options.type=='dropDownRooms'
+		width = flType ? '_narrow' : '_wide'
+		inputStyle = flType ? '_notrounded' : '_rounded'
 	div(class=options.elemName+' '+options.elemName+width)
 		div(class=options.elemName+'__input-wrapper ')
 			label(class=options.elemName+'__label')
@@ -17,7 +18,7 @@ mixin dropdown(options={})
 			ul(class=options.elemName+'__list')
 				each val, index in options.categories
 					li(class=options.elemName+'__cat-wrapper')
-						p(class=options.elemName+'__cat', data-type=val.type)=val.displayName
+						p(class=options.elemName+'__cat', data-type=val.type, data-typeforms=val.typeforms)=val.displayName
 						div(class=options.elemName+'__count-wrapper')
 							button(class=options.elemName+'__count-decrem', data-min=val.minCnt)=minus
 							span(class=options.elemName+'__count-val')=val.defaultCnt

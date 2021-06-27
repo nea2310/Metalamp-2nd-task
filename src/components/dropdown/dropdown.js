@@ -109,6 +109,7 @@ class DropDown {
 				querySelector(`.${this.elemName}__count-decrem`);
 			elemObj.text = catName.innerText.toLowerCase();
 			elemObj.type = catName.getAttribute('data-type');
+			elemObj.typeforms = catName.getAttribute('data-typeforms');
 			elemObj.cnt = catCnt.innerText;
 			elemObj.maxCnt = catIncrem.getAttribute('data-max');
 			elemObj.minCnt = catDecrem.getAttribute('data-min');
@@ -192,6 +193,7 @@ class DropDown {
 				let obj = {
 					text: counter.text,
 					type: counter.type,
+					typeforms: counter.typeforms,
 					cnt: editedCounter,
 					minCnt: counter.minCnt,
 					maxCnt: counter.maxCnt,
@@ -272,6 +274,8 @@ class DropDown {
 
 	/*Обновление списка категорий, которые выводятся в инпуте*/
 	updateCategoriesList(changedCounters) {
+		//	console.log(changedCounters);
+
 		//! Здесь еще нужно добавить склонение названий по падежам!
 		this.countersToDisplay = [];
 		for (let i = 0; i < changedCounters.length; i++) {
@@ -280,9 +284,11 @@ class DropDown {
 				changedCounters[i].type != changedCounters[i - 1].type) {
 				//console.log('НЕРАВНЫ');
 				let type = changedCounters[i].type;
+				let typeforms = changedCounters[i].typeforms;
 				let cnt = changedCounters[i].cnt;
 				let elem = {};
 				elem.type = type;
+				elem.typeforms = typeforms.split(',');
 				elem.cnt = cnt;
 				// То добавить в массив, который в конце будет присвоен changedCountersToDisplay				
 				this.countersToDisplay.push(elem);
@@ -301,13 +307,27 @@ class DropDown {
 		this.updateInput(this.countersToDisplay);
 	}
 
+	numWord(value, words) {
+		value = Math.abs(value) % 100;
+		let num = value % 10;
+		if (value > 10 && value < 20) return words[2];
+		if (num > 1 && num < 5) return words[1];
+		if (num == 1) return words[0];
+		return words[2];
+	}
+
 	/*обновление значения в инпуте*/
 	updateInput(countersToDisplay) {
+
 		let value = '';
 		countersToDisplay.forEach(counter => {
-			value += counter.cnt + ' ' + counter.type + ', ';
+			//исключаем категории, у которых счетчик = 0
+			if (parseInt(counter.cnt) != 0)
+				value += counter.cnt + ' '
+					+ this.numWord(parseInt(counter.cnt),
+						counter.typeforms) + ', ';
 		});
-		this.input.value = value;
+		this.input.value = value.substring(0, value.length - 2);
 	}
 }
 

@@ -67,6 +67,8 @@ $colorWhite: #ffffff;
 	}
 
 	&__input {
+		text-overflow: ellipsis;
+		padding-right: 100px;
 		&::placeholder {
 			color: $colorDarkShade25;
 		}
