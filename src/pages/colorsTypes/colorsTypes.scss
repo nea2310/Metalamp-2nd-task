@@ -1,4 +1,41 @@
-.colorsTypes__wrapper {
+$colorDarkShade100: #1f2041;
+$colorDarkShade75: rgba(31, 32, 65, 0.75);
+$colorDarkShade50: rgba(31, 32, 65, 0.5);
+$colorDarkShade25: rgba(31, 32, 65, 0.25);
+$colorDarkShade5: rgba(31, 32, 65, 0.05);
+$colorPurple: #bc9cff;
+$colorGreen: #6fcf97;
+$colorWhite: #ffffff;
+
+@mixin font-h1() {
+	font-family: "Montserrat-Bold";
+	font-size: 24px;
+	line-height: 29px;
+	color: $colorDarkShade100;
+}
+
+@mixin font-h2() {
+	font-family: "Montserrat-Bold";
+	font-size: 19px;
+	line-height: 23px;
+	color: $colorDarkShade100;
+}
+
+@mixin font-h3() {
+	font-family: "Montserrat-Bold";
+	font-size: 12px;
+	line-height: 15px;
+	color: $colorDarkShade100;
+	text-transform: uppercase;
+}
+@mixin font-body() {
+	font-family: "Montserrat-Regular";
+	font-size: 14px;
+	line-height: 24px;
+	color: $colorDarkShade75;
+}
+
+.colors-types__wrapper {
 	position: relative;
 	width: 100%;
 	max-width: 1440px;
@@ -12,15 +49,14 @@
 	padding-left: 150px;
 }
 .types__wrapper {
-	padding-right: 100px;
+	padding-right: 99px;
 }
 
-.colorCard {
+.color-card {
 	margin-bottom: 20px;
 	font-size: 19px;
 	line-height: 28px;
 	color: $colorDarkShade100;
-
 	display: grid;
 	grid-template-rows: repeat(2, 35px);
 	grid-template-columns: 70px 180px;
@@ -32,25 +68,25 @@
 	&__color {
 		grid-area: post-1;
 		border-radius: 6px;
-		&-colorDarkShade100 {
+		&_dark-shade-100 {
 			background-color: $colorDarkShade100;
 		}
-		&-colorDarkShade75 {
+		&_dark-shade-75 {
 			background-color: $colorDarkShade75;
 		}
-		&-colorDarkShade50 {
+		&_dark-shade-50 {
 			background-color: $colorDarkShade50;
 		}
-		&-colorDarkShade25 {
+		&_dark-shade-25 {
 			background-color: $colorDarkShade25;
 		}
-		&-colorDarkShade5 {
+		&_dark-shade-5 {
 			background-color: $colorDarkShade5;
 		}
-		&-colorPurple {
+		&_purple {
 			background-color: $colorPurple;
 		}
-		&-colorGreen {
+		&_green {
 			background-color: $colorGreen;
 		}
 	}
@@ -66,38 +102,64 @@
 	}
 }
 
-.typeCard {
+.type-card {
 	display: grid;
 	grid-template-rows: 60px;
 	grid-template-columns: 40px 457px;
 	grid-template-areas: "post-1 post-2";
+	&:nth-child(1) {
+		margin-top: 1px;
+		margin-bottom: 49px;
+	}
+
+	&:nth-child(2) {
+		margin-bottom: 39px;
+	}
+	&:nth-child(3) {
+		margin-bottom: 2px;
+	}
+
 	&__name {
 		text-align: right;
 		grid-area: post-1;
-		font-family: "Montserrat-Regular";
-		color: $colorDarkShade25;
+
+		&_h1 {
+			@include font-h1;
+			color: $colorDarkShade25;
+			font-family: "Montserrat-Regular";
+		}
+		&_h2 {
+			@include font-h2;
+			color: $colorDarkShade25;
+			font-family: "Montserrat-Regular";
+		}
+		&_h3 {
+			@include font-h3;
+			color: $colorDarkShade25;
+			font-family: "Montserrat-Regular";
+		}
+		&_body {
+			@include font-body;
+			color: $colorDarkShade25;
+		}
 	}
 	&__text {
 		padding-left: 30px;
 		grid-area: post-2;
-	}
-}
-.types {
-	&__wrapper {
-		padding-top: 1px;
-	}
-	&-h1 {
-		margin-bottom: 49px;
-	}
-	&-h2 {
-		margin-bottom: 39px;
-		& .typeCard .typeCard__text {
-			padding-right: 35px;
+
+		&_h1 {
+			@include font-h1;
 		}
-	}
-	&-body {
-		& .typeCard .typeCard__text {
-			padding-right: 110px;
+		&_h2 {
+			@include font-h2;
+			max-width: 315px;
+		}
+		&_h3 {
+			@include font-h3;
+		}
+		&_body {
+			@include font-body;
+			max-width: 305px;
 		}
 	}
 }
