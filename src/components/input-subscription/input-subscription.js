@@ -1,5 +1,5 @@
 
-let inputsSubscribe = document.querySelectorAll('.check-email');
+let inputsSubscribe = document.querySelectorAll('.js-check-email');
 function testEmail(value) {
 	let test = /.+@.+\..+/i.test(value);
 	if (value && !test) {

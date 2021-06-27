@@ -12,13 +12,13 @@ mixin date-dropdown(options={})
 					if options.labelTextFrom
 						p(class=options.elemName+'__label-text')=options.labelTextFrom
 					img(class=options.elemName+'__img '+options.elemName+'__img_from '+options.elemName+'__img_collapsed', src=src)
-					input(class=options.elemName+'__input '+options.elemName+'__input_from '+options.elemName+'__input_narrow masked', placeholder="ДД.ММ.ГГГГ", type=text)
+					input(class=options.elemName+'__input '+options.elemName+'__input_from '+options.elemName+'__input_narrow js-masked', placeholder="ДД.ММ.ГГГГ", type=text)
 			div(class=options.elemName+'__input-wrapper')
 				label(class=options.elemName+'__label')
 					if options.labelTextTo
 						p(class=options.elemName+'__label-text')=options.labelTextTo
 					img(class=options.elemName+'__img '+options.elemName+'__img_to '+options.elemName+'__img_collapsed', src=src)
-					input(class=options.elemName+'__input '+options.elemName+'__input_to '+options.elemName+'__input_narrow masked', placeholder="ДД.ММ.ГГГГ", type=text)
+					input(class=options.elemName+'__input '+options.elemName+'__input_to '+options.elemName+'__input_narrow js-masked', placeholder="ДД.ММ.ГГГГ", type=text)
 		if options.type=='filterDateDropDown'
 			div(class=options.elemName+'__input-wrapper')
 				label(class=options.elemName+'__label')

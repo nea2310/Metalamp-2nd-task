@@ -30,7 +30,7 @@ function formatDate(date) {
 dateFromTxt = formatDate(dateFromTxt);
 dateToTxt = formatDate(dateToTxt);
 
-let inputsMasked = document.querySelectorAll('.masked');
+let inputsMasked = document.querySelectorAll('.js-masked');
 
 for (let input of inputsMasked) {
 	/*запретить все типы ввода, кроме перечисленных*/
