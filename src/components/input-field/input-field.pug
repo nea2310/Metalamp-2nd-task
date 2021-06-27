@@ -1,12 +1,12 @@
 mixin input(options={})
-	div(class=options.elemName+" "+options.elemName+"-"+options.width)
-		label(class=options.elemName+"__label")
+	div(class=options.elemName+' '+options.elemName+'-'+options.width)
+		label(class=options.elemName+'__label')
 			if options.labelText
-				p(class=options.elemName+"__labelText")=options.labelText
+				p(class=options.elemName+'__label-text')=options.labelText
 			if options.img
-				button(class=options.elemName+"__link")
-					img(class=options.elemName+"__img", src="assets/img/interface/arrow_forward.svg")
-			input(class=options.elemName+"__input"+options.classList, placeholder=options.placeholder, type="text")
+				button(class=options.elemName+'__link')
+					img(class=options.elemName+'__img', src="assets/img/interface/arrow_forward.svg")
+			input(class=options.elemName+'__input'+options.classList, placeholder=options.placeholder, type='text')
 
 
 

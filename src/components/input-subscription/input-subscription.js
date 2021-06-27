@@ -1,5 +1,5 @@
 
-let inputsSubscribe = document.querySelectorAll('.inputSubscribe');
+let inputsSubscribe = document.querySelectorAll('.check-email');
 function testEmail(value) {
 	let test = /.+@.+\..+/i.test(value);
 	if (value && !test) {
@@ -8,7 +8,7 @@ function testEmail(value) {
 }
 for (let input of inputsSubscribe) {
 	let inputWrapper = input.parentNode;
-	let link = inputWrapper.querySelector('button')
+	let link = inputWrapper.querySelector('button');
 	input.addEventListener('change', () => {
 		testEmail(input.value);
 	});

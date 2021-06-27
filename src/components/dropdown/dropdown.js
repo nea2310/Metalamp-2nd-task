@@ -31,11 +31,11 @@ class DropDown {
 			else {
 				//	console.log('КЛИК СНАРУЖИ');
 				this.listWrapper.classList.
-					add(`${this.elemName}__listWrapper-hidden`);
+					add(`${this.elemName}__list-wrapper_hidden`);
 				this.tip.classList.remove(`${this.elemName}__img-expanded`);
-				this.tip.classList.add(`${this.elemName}__img-collapsed`);
+				this.tip.classList.add(`${this.elemName}__img_collapsed`);
 				this.input.classList.remove(`${this.elemName}__input-expanded`);
-				this.input.classList.add(`${this.elemName}__input-collapsed`);
+				this.input.classList.add(`${this.elemName}__input_collapsed`);
 			}
 		});
 	}
@@ -47,18 +47,20 @@ class DropDown {
 		this.clickedInside = false;
 		this.input = this.wrapper.querySelector(`.${this.elemName}__input`);
 		this.listWrapper =
-			this.wrapper.querySelector(`.${this.elemName}__listWrapper`);
-		this.counts = this.wrapper.querySelectorAll(`.${this.elemName}__count`);
+			this.wrapper.querySelector(`.${this.elemName}__list-wrapper`);
+		this.counts = this.wrapper.
+			querySelectorAll(`.${this.elemName}__count-decrem,
+		 .${this.elemName}__count-increm`);
 		this.countVals =
-			this.wrapper.querySelectorAll(`.${this.elemName}__countVal`);
+			this.wrapper.querySelectorAll(`.${this.elemName}__count-val`);
 		this.listElems = this.wrapper.
-			querySelectorAll(`.${this.elemName}__catWrapper`);
+			querySelectorAll(`.${this.elemName}__cat-wrapper`);
 		this.btnClear =
 			this.wrapper.querySelector(`.${this.elemName}__button-clear`);
 		this.btnApply =
 			this.wrapper.querySelector(`.${this.elemName}__button-apply`);
 		this.counterList = this.wrapper.
-			querySelectorAll(`.${this.elemName}__catWrapper`);
+			querySelectorAll(`.${this.elemName}__cat-wrapper`);
 		this.btnsMinus =
 			this.wrapper.querySelectorAll(`.${this.elemName}__count-decrem`);
 		this.tip = this.wrapper.querySelector(`.${this.elemName}__img`);
@@ -71,11 +73,11 @@ class DropDown {
 
 	toggle() {
 		this.listWrapper.classList.
-			toggle(`${this.elemName}__listWrapper-hidden`);
+			toggle(`${this.elemName}__list-wrapper_hidden`);
 		this.tip.classList.toggle(`${this.elemName}__img-expanded`);
-		this.tip.classList.toggle(`${this.elemName}__img-collapsed`);
+		this.tip.classList.toggle(`${this.elemName}__img_collapsed`);
 		this.input.classList.toggle(`${this.elemName}__input-expanded`);
-		this.input.classList.toggle(`${this.elemName}__input-collapsed`);
+		this.input.classList.toggle(`${this.elemName}__input_collapsed`);
 	}
 
 	clickInput() {
@@ -100,7 +102,7 @@ class DropDown {
 			let catName =
 				counterList[i].querySelector(`.${this.elemName}__cat`);
 			let catCnt = counterList[i].
-				querySelector(`.${this.elemName}__countVal`);
+				querySelector(`.${this.elemName}__count-val`);
 			let catIncrem = counterList[i].
 				querySelector(`.${this.elemName}__count-increm`);
 			let catDecrem = counterList[i].
@@ -170,7 +172,7 @@ class DropDown {
 					elem.parentElement.firstElementChild.disabled = false;
 					if (this.clearApplyBtns) {//Показать кнопку [Очистить]
 						this.btnClear.
-							classList.remove(`${this.elemName}__button-hidden`);
+							classList.remove(`${this.elemName}__button_hidden`);
 					}
 					//Увеличить счетчик на единицу
 					let currentCounter =
@@ -218,7 +220,7 @@ class DropDown {
 		for (let i = 0; i < counters.length; i++) {
 			let cnt = counters[i].cnt;
 			let cntToChange = this.listElems[i]
-				.querySelector(`.${this.elemName}__countVal`);
+				.querySelector(`.${this.elemName}__count-val`);
 			cntToChange.innerText = cnt;
 			//Если обновленное значение - минимальное разрешенное значение, то сделать кнопку "минус" неактивной
 			if (counters[i].isMin) {
@@ -249,7 +251,7 @@ class DropDown {
 		if (isCleared == undefined) {
 			isCleared = true;
 			//скрыть кнопку [Очистить]
-			this.btnClear.classList.add(`${this.elemName}__button-hidden`);
+			this.btnClear.classList.add(`${this.elemName}__button_hidden`);
 		}
 	}
 	// установить значения счетчиков равными минимальным значеням

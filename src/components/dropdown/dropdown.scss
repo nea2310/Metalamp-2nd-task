@@ -1,19 +1,19 @@
-.dropDownGuests__input-rounded.dropDownGuests__input-expanded {
+.dropDownGuests__input_rounded.dropDownGuests__input-expanded {
 	border-color: $colorDarkShade50;
 	border-bottom: none;
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
 }
-.dropDownRooms__input-notrounded.dropDownRooms__input-expanded {
+.dropDownRooms__input_notrounded.dropDownRooms__input-expanded {
 	border-color: $colorDarkShade50;
 	border-bottom: none;
 }
 .dropDownGuests,
 .dropDownRooms {
-	&-wide {
+	&_wide {
 		width: 320px;
 	}
-	&-narrow {
+	&_narrow {
 		width: 266px;
 	}
 	//	border: 1px solid red;
@@ -22,7 +22,7 @@
 	&__label {
 		position: relative;
 	}
-	&__labelText {
+	&__label-text {
 		@include subHeader;
 	}
 
@@ -36,7 +36,7 @@
 			transition: all 0.9s ease 0s;
 		}
 
-		&-collapsed {
+		&_collapsed {
 			transform: rotate(0deg);
 			transition: all 0.9s ease 0s;
 		}
@@ -60,12 +60,12 @@
 		&:focus {
 			border-color: $colorDarkShade50;
 		}
-		&-rounded {
+		&_rounded {
 			border-bottom-left-radius: 5px;
 			border-bottom-right-radius: 5px;
 		}
 	}
-	&__listWrapper {
+	&__list-wrapper {
 		background-color: $colorWhite;
 		width: 100%;
 		position: absolute;
@@ -74,11 +74,11 @@
 		box-sizing: border-box;
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
-		&-hidden {
+		&_hidden {
 			display: none;
 		}
 	}
-	&__catWrapper {
+	&__cat-wrapper {
 		display: flex;
 		justify-content: space-between;
 		height: 37px;
@@ -88,7 +88,7 @@
 		@include subHeader;
 		margin-left: 14px;
 	}
-	&__countWrapper {
+	&__count-wrapper {
 		box-sizing: border-box;
 		margin-right: 5px;
 		width: 94px;
@@ -96,7 +96,8 @@
 		justify-content: space-between;
 		align-items: center;
 	}
-	&__count {
+	&__count-increm,
+	&__count-decrem {
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;
@@ -109,12 +110,12 @@
 		}
 	}
 
-	&__countVal {
+	&__count-val {
 		@include subHeader;
 	}
 
 	&__button {
-		&-hidden {
+		&_hidden {
 			display: none;
 		}
 	}

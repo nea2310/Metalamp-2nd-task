@@ -13,25 +13,25 @@ class DatePicker {
 	}
 	render() {
 		let a = this.wrapper.
-			querySelectorAll(`.${this.elemName}__inputWrapper`);
+			querySelectorAll(`.${this.elemName}__input-wrapper`);
 		a.length == 1 ? this.isFilter = true : this.isFilter = false;
 		if (!this.isFilter) {
 			this.inputDateFrom =
 				this.wrapper.
-					querySelector(`.${this.elemName}__input-from`);
+					querySelector(`.${this.elemName}__input_from`);
 			this.tipFrom = this.wrapper.
-				querySelector(`.${this.elemName}__img-from`);
+				querySelector(`.${this.elemName}__img_from`);
 			this.inputDateTo =
 				this.wrapper.
-					querySelector(`.${this.elemName}__input-to`);
+					querySelector(`.${this.elemName}__input_to`);
 			this.tipTo = this.wrapper.
-				querySelector(`.${this.elemName}__img-to`);
+				querySelector(`.${this.elemName}__img_to`);
 		} else {
 			this.inputDate =
 				this.wrapper.
-					querySelector(`.${this.elemName}__input-fromto`);
+					querySelector(`.${this.elemName}__input_fromto`);
 			this.tip = this.wrapper.
-				querySelector(`.${this.elemName}__img-fromto`);
+				querySelector(`.${this.elemName}__img_fromto`);
 			this.defaultDates = this.inputDate.value.split(',');
 		}
 
@@ -40,7 +40,7 @@ class DatePicker {
 		this.tips = this.wrapper.
 			querySelectorAll(`.${this.elemName}__img`);
 		this.clWrapper =
-			this.wrapper.querySelector(`.${this.elemName}__calendarWrapper`);
+			this.wrapper.querySelector(`.${this.elemName}__calendar-wrapper`);
 		this.btnClear =
 			this.wrapper.querySelector(`.${this.elemName}__button-clear`);
 		this.btnApply =
@@ -60,7 +60,7 @@ class DatePicker {
 
 	//проверка, клик был снаружи или внутри календаря
 	insideCalendarClick() {
-		this.calendar.addEventListener("click", (e) => {
+		this.calendar.addEventListener('click', (e) => {
 			//console.log('КЛИК ПО КАЛЕНДАРЮ');
 			this.clickOnCalendar = true;
 
@@ -69,7 +69,7 @@ class DatePicker {
 
 	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
 	collapseByClick() {
-		document.addEventListener("click", (e) => {
+		document.addEventListener('click', (e) => {
 			if (this.insideClick(e.target, `.${this.elemName}`) ||
 				this.clickOnCalendar) {
 				//	console.log('КЛИК ВНУТРИ');
@@ -79,18 +79,18 @@ class DatePicker {
 			else {
 				//	console.log('КЛИК СНАРУЖИ');
 				this.clWrapper.classList.
-					add(`${this.elemName}__calendarWrapper-hidden`);
+					add(`${this.elemName}__calendar-wrapper_hidden`);
 				if (!this.isFilter) {
 					this.tipTo.
 						classList.remove(`${this.elemName}__img-expanded`);
-					this.tipTo.classList.add(`${this.elemName}__img-collapsed`);
+					this.tipTo.classList.add(`${this.elemName}__img_collapsed`);
 					this.tipFrom.
 						classList.remove(`${this.elemName}__img-expanded`);
 					this.tipFrom.
-						classList.add(`${this.elemName}__img-collapsed`);
+						classList.add(`${this.elemName}__img_collapsed`);
 				} else {
 					this.tip.classList.remove(`${this.elemName}__img-expanded`);
-					this.tip.classList.add(`${this.elemName}__img-collapsed`);
+					this.tip.classList.add(`${this.elemName}__img_collapsed`);
 				}
 			}
 		});
@@ -101,10 +101,10 @@ class DatePicker {
 	/*Выбор даты в календаре*/
 	init() {
 		let separator;
-		this.isFilter ? separator = " - " : separator = ",";
+		this.isFilter ? separator = ' - ' : separator = ',';
 		this.myDatepicker = $(this.clWrapper).datepicker({
 			altField: $(this.inputDate),
-			altFieldDateFormat: "dd M",
+			altFieldDateFormat: 'dd M',
 			multipleDatesSeparator: separator,
 			navTitles: {
 				days: 'MM <i>yyyy</i>',
@@ -129,7 +129,7 @@ class DatePicker {
 			}
 		}).data('datepicker');
 		this.calendar = this.wrapper.
-			querySelector(".datepicker-inline");
+			querySelector('.datepicker-inline');
 		this.collapseByClick();
 		this.insideCalendarClick();
 	}
@@ -151,7 +151,7 @@ class DatePicker {
 				e.target == this.inputDateTo) && e.target.value.length == 10) {
 				this.currentInput = e.target;
 				this.currentInput.classList.
-					contains(`.${this.elemName}__input-from`) ?
+					contains(`.${this.elemName}__input_from`) ?
 					this.secondInput = this.inputDateTo :
 					this.secondInput = this.inputDateFrom;
 				if (this.secondInput.value) {// заполнены оба инпута
@@ -206,7 +206,7 @@ class DatePicker {
 			});
 		}
 		for (let tip of this.tips) {
-			tip.addEventListener('click', (e) => {
+			tip.addEventListener('click', () => {
 				this.expand(true);
 			});
 		}
@@ -217,10 +217,10 @@ class DatePicker {
 	apply() {
 		this.btnApply.addEventListener('click', () => {
 			if (this.myDatepicker.selectedDates.length == 1) {
-				alert("Введите дату выезда");
+				alert('Введите дату выезда');
 			} else {
 				this.clWrapper.classList.
-					add(`${this.elemName}__calendarWrapper-hidden`);
+					add(`${this.elemName}__calendar-wrapper_hidden`);
 				if (!this.isFilter) {
 					this.expand(false);
 				} else {
@@ -245,37 +245,37 @@ class DatePicker {
 	expand(flag) {
 		if (flag) {
 			this.clWrapper.classList.
-				remove(`${this.elemName}__calendarWrapper-hidden`);
+				remove(`${this.elemName}__calendar-wrapper_hidden`);
 			if (!this.isFilter) {
 				this.tipFrom.classList.add(`${this.elemName}__img-expanded`);
 				this.tipTo.classList.add(`${this.elemName}__img-expanded`);
 				this.tipFrom.classList.
-					remove(`${this.elemName}__img-collapsed`);
+					remove(`${this.elemName}__img_collapsed`);
 				this.tipTo.classList.
-					remove(`${this.elemName}__img-collapsed`);
+					remove(`${this.elemName}__img_collapsed`);
 			} else {
 				this.tip.classList.add(`${this.elemName}__img-expanded`);
-				this.tip.classList.remove(`${this.elemName}__img-collapsed`);
+				this.tip.classList.remove(`${this.elemName}__img_collapsed`);
 			}
 
 		} else {
 			this.clWrapper.classList.
-				add(`${this.elemName}__calendarWrapper-hidden`);
+				add(`${this.elemName}__calendar-wrapper_hidden`);
 			if (!this.isFilter) {
 				this.tipFrom.classList.
 					remove(`${this.elemName}__img-expanded`);
 				this.tipTo.classList.remove(`${this.elemName}__img-expanded`);
-				this.tipFrom.classList.add(`${this.elemName}__img-collapsed`);
-				this.tipTo.classList.add(`${this.elemName}__img-collapsed`);
+				this.tipFrom.classList.add(`${this.elemName}__img_collapsed`);
+				this.tipTo.classList.add(`${this.elemName}__img_collapsed`);
 			} else {
 				this.tip.classList.remove(`${this.elemName}__img-expanded`);
-				this.tip.classList.add(`${this.elemName}__img-collapsed`);
+				this.tip.classList.add(`${this.elemName}__img_collapsed`);
 			}
 		}
 	}
 }
 
 
-new DatePicker("dateDropDown");
-new DatePicker("filterDateDropDown");
+new DatePicker('dateDropDown');
+new DatePicker('filterDateDropDown');
 

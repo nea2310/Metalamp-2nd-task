@@ -1,9 +1,9 @@
 .dateDropDown,
 .filterDateDropDown {
-	&-wide {
+	&_wide {
 		width: 320px;
 	}
-	&-narrow {
+	&_narrow {
 		width: 266px;
 	}
 	//border: 1px solid red;
@@ -14,18 +14,18 @@
 		width: 100%;
 		position: relative;
 	}
-	&__labelText {
+	&__label-text {
 		@include subHeader;
 	}
-	&__calendarWrapper {
+	&__calendar-wrapper {
 		position: absolute;
 		z-index: 1;
 		top: 68px;
-		&-hidden {
+		&_hidden {
 			display: none;
 		}
 
-		&-narrow {
+		&_narrow {
 			& .datepicker-inline .datepicker {
 				width: 266px !important;
 				&--cell {
@@ -52,7 +52,7 @@
 		position: absolute;
 		bottom: 1px;
 	}
-	&__inputWrapper {
+	&__input-wrapper {
 		display: flex;
 		flex-direction: column;
 	}
@@ -66,12 +66,12 @@
 			transition: all 0.9s ease 0s;
 		}
 
-		&-collapsed {
+		&_collapsed {
 			transform: rotate(0deg);
 			transition: all 0.9s ease 0s;
 		}
 	}
-	&__inputWrapper:nth-child(2) {
+	&__input-wrapper:nth-child(2) {
 		padding-left: 20px;
 	}
 	&__input {
@@ -91,10 +91,10 @@
 		&:focus {
 			border-color: $colorDarkShade50;
 		}
-		&-narrow {
+		&_narrow {
 			width: 150px;
 		}
-		&-wide {
+		&_wide {
 			width: 266px;
 		}
 	}
@@ -176,7 +176,6 @@
 				content: "";
 				height: 39px;
 				width: 40px;
-
 				background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
 				opacity: 0.5;
 				border-bottom-left-radius: 50%;
@@ -191,7 +190,6 @@
 				content: "";
 				height: 39px;
 				width: 40px;
-
 				background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
 				opacity: 0.5;
 				border-bottom-right-radius: 50%;
@@ -226,14 +224,9 @@
 				content: "";
 				height: 39px;
 				width: 40px;
-
 				background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
 				opacity: 0.5;
 			}
 		}
 	}
 }
-
-// .hidden {
-// 	display: none;
-// }

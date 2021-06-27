@@ -1,35 +1,35 @@
 mixin date-dropdown(options={})
 	-
-		var modificator=""
-		var width=""
-		var scr="assets/img/interface/expand_more.svg"
-		options.type=="filterDateDropDown"?modificator=options.elemName+"__calendarWrapper-narrow":modificator=""
-		options.type=="filterDateDropDown"?width="-narrow":width="-wide"
-	div(class=options.elemName+" "+options.elemName+width)
+		var modificator=''
+		var width=''
+		var src='assets/img/interface/expand_more.svg'
+		options.type=='filterDateDropDown'?modificator=options.elemName+'__calendar-wrapper_narrow':modificator=''
+		options.type=='filterDateDropDown'?width='_narrow':width='_wide'
+	div(class=options.elemName+' '+options.elemName+width)
 		if options.type=='dateDropDown'
-			div(class=options.elemName+"__inputWrapper")
-				label(class=options.elemName+"__label")
+			div(class=options.elemName+'__input-wrapper')
+				label(class=options.elemName+'__label')
 					if options.labelTextFrom
-						p(class=options.elemName+"__labelText")=options.labelTextFrom
-					img(class=options.elemName+"__img "+options.elemName+"__img-from "+options.elemName+"__img-collapsed", src=scr)
-					input(class=options.elemName+"__input "+options.elemName+"__input-from "+options.elemName+"__input-narrow inputMasked", placeholder="ДД.ММ.ГГГГ", type=text)
-			div(class=options.elemName+"__inputWrapper")
-				label(class=options.elemName+"__label")
+						p(class=options.elemName+'__label-text')=options.labelTextFrom
+					img(class=options.elemName+'__img '+options.elemName+'__img_from '+options.elemName+'__img_collapsed', src=src)
+					input(class=options.elemName+'__input '+options.elemName+'__input_from '+options.elemName+'__input_narrow masked', placeholder="ДД.ММ.ГГГГ", type=text)
+			div(class=options.elemName+'__input-wrapper')
+				label(class=options.elemName+'__label')
 					if options.labelTextTo
-						p(class=options.elemName+"__labelText")=options.labelTextTo
-					img(class=options.elemName+"__img "+options.elemName+"__img-to "+options.elemName+"__img-collapsed", src=scr)
-					input(class=options.elemName+"__input "+options.elemName+"__input-to "+options.elemName+"__input-narrow inputMasked", placeholder="ДД.ММ.ГГГГ", type=text)
-		if options.type=="filterDateDropDown"
-			div(class=options.elemName+"__inputWrapper")
-				label(class=options.elemName+"__label")
+						p(class=options.elemName+'__label-text')=options.labelTextTo
+					img(class=options.elemName+'__img '+options.elemName+'__img_to '+options.elemName+'__img_collapsed', src=src)
+					input(class=options.elemName+'__input '+options.elemName+'__input_to '+options.elemName+'__input_narrow masked', placeholder="ДД.ММ.ГГГГ", type=text)
+		if options.type=='filterDateDropDown'
+			div(class=options.elemName+'__input-wrapper')
+				label(class=options.elemName+'__label')
 					if options.labelTextFromTo
-						p(class=options.elemName+"__labelText")=options.labelTextFromTo
-					img(class=options.elemName+"__img "+options.elemName+"__img-fromto "+options.elemName+"__img-collapsed", src=scr)
-					input(class=options.elemName+"__input "+options.elemName+"__input-fromto "+options.elemName+"__input-wide ", value="2021-08-19,2021-08-23", type=text, readonly=true)
-		div(class=options.elemName+"__calendarWrapper "+options.elemName+"__calendarWrapper-hidden "+modificator)
-			div(class=options.elemName+"__buttons")
-				button(class=options.elemName+"__button-clear") очистить
-				button(class=options.elemName+"__button-apply") применить
+						p(class=options.elemName+'__label-text')=options.labelTextFromTo
+					img(class=options.elemName+'__img '+options.elemName+'__img_fromto '+options.elemName+'__img_collapsed', src=src)
+					input(class=options.elemName+'__input '+options.elemName+'__input_fromto '+options.elemName+'__input_wide ', value="2021-08-19,2021-08-23", type=text, readonly=true)
+		div(class=options.elemName+'__calendar-wrapper '+options.elemName+'__calendar-wrapper_hidden '+modificator)
+			div(class=options.elemName+'__buttons')
+				button(class=options.elemName+'__button-clear') очистить
+				button(class=options.elemName+'__button-apply') применить
 
 
 
