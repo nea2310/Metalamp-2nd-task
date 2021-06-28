@@ -5,6 +5,11 @@ include ../components/dropdown/dropdown.pug
 div(class='formElements__wrapper')
 	+logo-grey()
 	div(class='formElements__col formElements__col-left')
+		+date-dropdown(
+			{width:'narrow',
+			type: 'filterDateDropDown',
+			labelTextFromTo: 'filter date dropdown'}
+			)
 		+input(
 					{width: 'wide',
 					placeholder: 'Email',

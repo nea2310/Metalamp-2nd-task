@@ -126,32 +126,29 @@ class DatePicker {
 	//проверка, клик был снаружи или внутри календаря
 	insideCalendarClick() {
 		this.calendar.addEventListener('click', (e) => {
-			//console.log('КЛИК ПО КАЛЕНДАРЮ');
 			this.clickOnCalendar = true;
 		});
 	}
 
 	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
 	collapseByClick() {
-		let wrap = this.elemName + '__';
 		document.addEventListener('click', (e) => {
-			if (e.target.closest(`.${this.elemName}`) == null
-				&& this.clickOnCalendar == false) {
-				//console.log('КЛИК СНАРУЖИ');
-				this.clWrapper.classList.
-					add(wrap + 'calendar-wrapper_hidden');
-				for (let tip of this.tips) {
-					tip.classList.remove(wrap + 'img-expanded');
-					tip.classList.add(wrap + 'img_collapsed');
-				}
+			if (
+				(this.isFilter && e.target != this.inputDate ||//условие #1
+					!this.isFilter && (//условие #2
+						e.target != this.inputDateFrom &&
+						e.target != this.inputDateTo) ||
+					e.target.closest(`.${this.elemName}`) == null)//условие #3
+				&& this.clickOnCalendar == false//общее условие для условий #1, #2, #3
+			) {
+				this.toggle(false);
 			} else {
-				//console.log('КЛИК ВНУТРИ');
 				this.clickOnCalendar = false;
 			}
 		});
 	}
 
-	//Показ / скрытие календаря
+	//Показ / скрытие календаря при клике по инпуту (скрытие - только для filter dropdown)
 	showHide() {
 		if (!this.isFilter) {
 			this.inputDateFrom.addEventListener('click', () => {
@@ -176,7 +173,7 @@ class DatePicker {
 		}
 	}
 
-	// Открывание/ закрывание дропдауна
+	// Открывание/ закрывание календаря
 	toggle(flag) {
 		let wrap = this.elemName + '__';
 		if (flag) {
@@ -213,7 +210,7 @@ class DatePicker {
 		});
 	}
 
-	/*Удаление даты из инпута*/
+	//Удаление даты из инпута
 	dateClear() {
 		this.wrapper.addEventListener('input', (e) => {
 			if (e.target == this.inputDateFrom ||

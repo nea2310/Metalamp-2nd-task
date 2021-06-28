@@ -284,15 +284,29 @@ class DropDown {
 		let wrap = this.elemName + '__';
 		document.addEventListener("click", (e) => {
 			if (e.target.closest(`.${this.elemName}`) == null) {
-				//		console.log('КЛИК СНАРУЖИ');
+				//	console.log('КЛИК СНАРУЖИ');
 				this.listWrapper.classList.
 					add(wrap + 'list-wrapper_hidden');
 				this.tip.classList.remove(wrap + 'img-expanded');
 				this.tip.classList.add(wrap + 'img_collapsed');
 				this.input.classList.remove(wrap + 'input-expanded');
 				this.input.classList.add(wrap + 'input_collapsed');
+			} else {
+				console.log('КЛИК ВНУТРИ');
+				if (e.target != this.input) {
+					this.listWrapper.classList.
+						add(wrap + 'list-wrapper_hidden');
+					this.tip.classList.remove(wrap + 'img-expanded');
+					this.tip.classList.add(wrap + 'img_collapsed');
+					this.input.classList.remove(wrap + 'input-expanded');
+					this.input.classList.add(wrap + 'input_collapsed');
+				}
+
+
+
 			}
 		});
+
 	}
 
 
