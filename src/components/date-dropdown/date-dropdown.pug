@@ -11,20 +11,20 @@ mixin date-dropdown(options={})
 				label(class=options.elemName+'__label')
 					if options.labelTextFrom
 						p(class=options.elemName+'__label-text')=options.labelTextFrom
-					img(class=options.elemName+'__img '+options.elemName+'__img_from '+options.elemName+'__img_collapsed', src=src)
+					img(class=options.elemName+'__img '+options.elemName+'__img_collapsed', src=src)
 					input(class=options.elemName+'__input '+options.elemName+'__input_from '+options.elemName+'__input_narrow js-masked', placeholder="ДД.ММ.ГГГГ", type=text)
 			div(class=options.elemName+'__input-wrapper')
 				label(class=options.elemName+'__label')
 					if options.labelTextTo
 						p(class=options.elemName+'__label-text')=options.labelTextTo
-					img(class=options.elemName+'__img '+options.elemName+'__img_to '+options.elemName+'__img_collapsed', src=src)
+					img(class=options.elemName+'__img '+options.elemName+'__img_collapsed', src=src)
 					input(class=options.elemName+'__input '+options.elemName+'__input_to '+options.elemName+'__input_narrow js-masked', placeholder="ДД.ММ.ГГГГ", type=text)
 		if options.type=='filterDateDropDown'
 			div(class=options.elemName+'__input-wrapper')
 				label(class=options.elemName+'__label')
 					if options.labelTextFromTo
 						p(class=options.elemName+'__label-text')=options.labelTextFromTo
-					img(class=options.elemName+'__img '+options.elemName+'__img_fromto '+options.elemName+'__img_collapsed', src=src)
+					img(class=options.elemName+'__img '+options.elemName+'__img_collapsed', src=src)
 					input(class=options.elemName+'__input '+options.elemName+'__input_fromto '+options.elemName+'__input_wide ', value="2021-08-19,2021-08-23", type=text, readonly=true)
 		div(class=options.elemName+'__calendar-wrapper '+options.elemName+'__calendar-wrapper_hidden '+modificator)
 			div(class=options.elemName+'__buttons')

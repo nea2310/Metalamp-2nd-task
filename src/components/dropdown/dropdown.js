@@ -4,9 +4,9 @@ class DropDown {
 		this.elemName = elemName;
 		this.wrapper = elem;
 		this.render();
+		this.clickInput();
 		this.changeCounter();
 		this.clear();
-		this.clickInput();
 		this.apply();
 		this.collapseByClick();
 	}
@@ -96,39 +96,7 @@ class DropDown {
 			}
 		}
 	}
-	// Открывание/ закрывание дропдауна
-	toggle() {
-		let wrap = this.elemName + '__';
-		this.listWrapper.classList.
-			toggle(wrap + 'list-wrapper_hidden');
-		this.tip.classList.toggle(wrap + 'img-expanded');
-		this.tip.classList.toggle(wrap + 'img_collapsed');
-		this.input.classList.toggle(wrap + 'input-expanded');
-		this.input.classList.toggle(wrap + 'input_collapsed');
-	}
-	// клик по инпуту
-	clickInput() {
-		this.input.addEventListener("click", () => {
-			this.toggle();
-		});
-	}
 
-
-	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
-	collapseByClick() {
-		document.addEventListener("click", (e) => {
-			if (e.target.closest(`.${this.elemName}`) == null) {
-				//		console.log('КЛИК СНАРУЖИ');
-				let wrap = this.elemName + '__';
-				this.listWrapper.classList.
-					add(wrap + 'list-wrapper_hidden');
-				this.tip.classList.remove(wrap + 'img-expanded');
-				this.tip.classList.add(wrap + 'img_collapsed');
-				this.input.classList.remove(wrap + 'input-expanded');
-				this.input.classList.add(wrap + 'input_collapsed');
-			}
-		});
-	}
 
 	//обработка клика по кнопкам Плюс / Минус
 	changeCounter() {
@@ -271,28 +239,62 @@ class DropDown {
 		this.updateInput(this.countersToDisplay);
 	}
 
-	getWordForm(value, words) {
-		value = Math.abs(value) % 100;
-		let num = value % 10;
-		if (value > 10 && value < 20) return words[2];
-		if (num > 1 && num < 5) return words[1];
-		if (num == 1) return words[0];
-		return words[2];
-	}
-
 	/*обновление значения в инпуте*/
 	updateInput(countersToDisplay) {
-
+		//Определение падежа категории в зависимости от значения счетчика
+		function getWordForm(value, words) {
+			value = Math.abs(value) % 100;
+			let num = value % 10;
+			if (value > 10 && value < 20) return words[2];
+			if (num > 1 && num < 5) return words[1];
+			if (num == 1) return words[0];
+			return words[2];
+		}
 		let value = '';
 		countersToDisplay.forEach(counter => {
 			//исключаем категории, у которых счетчик = 0
 			if (parseInt(counter.cnt) != 0)
 				value += counter.cnt + ' '
-					+ this.getWordForm(parseInt(counter.cnt),
+					+ getWordForm(parseInt(counter.cnt),
 						counter.typeforms) + ', ';
 		});
 		this.input.value = value.substring(0, value.length - 2);
 	}
+
+	// Открывание/ закрывание дропдауна
+	toggle() {
+		let wrap = this.elemName + '__';
+		this.listWrapper.classList.
+			toggle(wrap + 'list-wrapper_hidden');
+		this.tip.classList.toggle(wrap + 'img-expanded');
+		this.tip.classList.toggle(wrap + 'img_collapsed');
+		this.input.classList.toggle(wrap + 'input-expanded');
+		this.input.classList.toggle(wrap + 'input_collapsed');
+	}
+	// клик по инпуту
+	clickInput() {
+		this.input.addEventListener("click", () => {
+			this.toggle();
+		});
+	}
+
+
+	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
+	collapseByClick() {
+		let wrap = this.elemName + '__';
+		document.addEventListener("click", (e) => {
+			if (e.target.closest(`.${this.elemName}`) == null) {
+				//		console.log('КЛИК СНАРУЖИ');
+				this.listWrapper.classList.
+					add(wrap + 'list-wrapper_hidden');
+				this.tip.classList.remove(wrap + 'img-expanded');
+				this.tip.classList.add(wrap + 'img_collapsed');
+				this.input.classList.remove(wrap + 'input-expanded');
+				this.input.classList.add(wrap + 'input_collapsed');
+			}
+		});
+	}
+
 
 	//клик по кнопке [Применить]
 	apply() {
@@ -322,7 +324,7 @@ class DropDown {
 function renderDropDowns() {
 	let dropDowns = document.querySelectorAll('.dropdown');
 	for (let dropDown of dropDowns) {
-		new DropDown("dropdown", dropDown);
+		new DropDown('dropdown', dropDown);
 	}
 }
 renderDropDowns();

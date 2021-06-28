@@ -1,102 +1,47 @@
 class DatePicker {
-	constructor(elemName) {
+	constructor(elemName, elem) {
 		this.elemName = elemName;
-		this.wrapper = document.querySelector(`.${this.elemName}`);
+		this.wrapper = elem;
 		this.render();
 		this.init();
 		this.setDefaultDate();
 		this.datePrint();
 		this.dateClear();
-		this.show();
+		this.showHide();
 		this.apply();
 		this.clear();
 	}
+
+	getElem(selector, wrapper = this.wrapper) {
+		return wrapper.
+			querySelector('.' + this.elemName + '__' + selector);
+	}
+
+	getElems(selectors) {
+		let sel = '';
+		for (let selector of selectors) {
+			sel += '.' + this.elemName + '__' + selector + ',';
+		}
+		sel = sel.substring(0, sel.length - 1);
+		return this.wrapper.
+			querySelectorAll(sel);
+	}
+
 	render() {
-		let a = this.wrapper.
-			querySelectorAll(`.${this.elemName}__input-wrapper`);
+		let a = this.getElems(['input-wrapper']);
 		a.length == 1 ? this.isFilter = true : this.isFilter = false;
 		if (!this.isFilter) {
-			this.inputDateFrom =
-				this.wrapper.
-					querySelector(`.${this.elemName}__input_from`);
-			this.tipFrom = this.wrapper.
-				querySelector(`.${this.elemName}__img_from`);
-			this.inputDateTo =
-				this.wrapper.
-					querySelector(`.${this.elemName}__input_to`);
-			this.tipTo = this.wrapper.
-				querySelector(`.${this.elemName}__img_to`);
+			this.inputDateFrom = this.getElem('input_from');
+			this.inputDateTo = this.getElem('input_to');
 		} else {
-			this.inputDate =
-				this.wrapper.
-					querySelector(`.${this.elemName}__input_fromto`);
-			this.tip = this.wrapper.
-				querySelector(`.${this.elemName}__img_fromto`);
+			this.inputDate = this.getElem('input_fromto');
 			this.defaultDates = this.inputDate.value.split(',');
 		}
-
-
-
-		this.tips = this.wrapper.
-			querySelectorAll(`.${this.elemName}__img`);
-		this.clWrapper =
-			this.wrapper.querySelector(`.${this.elemName}__calendar-wrapper`);
-		this.btnClear =
-			this.wrapper.querySelector(`.${this.elemName}__button-clear`);
-		this.btnApply =
-			this.wrapper.querySelector(`.${this.elemName}__button-apply`);
+		this.tips = this.getElems(['img']);
+		this.clWrapper = this.getElem('calendar-wrapper');
+		this.btnClear = this.getElem('button-clear');
+		this.btnApply = this.getElem('button-apply');
 	}
-
-
-	//проверка, клик был снаружи или внутри виджета
-	insideClick(elem, parentElemSelector) {
-		if (elem.closest(parentElemSelector)) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-
-	//проверка, клик был снаружи или внутри календаря
-	insideCalendarClick() {
-		this.calendar.addEventListener('click', (e) => {
-			//console.log('КЛИК ПО КАЛЕНДАРЮ');
-			this.clickOnCalendar = true;
-
-		});
-	}
-
-	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
-	collapseByClick() {
-		document.addEventListener('click', (e) => {
-			if (this.insideClick(e.target, `.${this.elemName}`) ||
-				this.clickOnCalendar) {
-				//	console.log('КЛИК ВНУТРИ');
-				e.preventDefault();
-				this.clickOnCalendar = false;
-			}
-			else {
-				//	console.log('КЛИК СНАРУЖИ');
-				this.clWrapper.classList.
-					add(`${this.elemName}__calendar-wrapper_hidden`);
-				if (!this.isFilter) {
-					this.tipTo.
-						classList.remove(`${this.elemName}__img-expanded`);
-					this.tipTo.classList.add(`${this.elemName}__img_collapsed`);
-					this.tipFrom.
-						classList.remove(`${this.elemName}__img-expanded`);
-					this.tipFrom.
-						classList.add(`${this.elemName}__img_collapsed`);
-				} else {
-					this.tip.classList.remove(`${this.elemName}__img-expanded`);
-					this.tip.classList.add(`${this.elemName}__img_collapsed`);
-				}
-			}
-		});
-	}
-
-
 
 	/*Выбор даты в календаре*/
 	init() {
@@ -125,6 +70,9 @@ class DatePicker {
 					}
 					this.inputDateFrom.value = dateArr[0];
 					this.inputDateTo.value = val;
+				} else {
+					this.inputDate.value =
+						this.inputDate.value.toLowerCase();
 				}
 			}
 		}).data('datepicker');
@@ -133,6 +81,7 @@ class DatePicker {
 		this.collapseByClick();
 		this.insideCalendarClick();
 	}
+
 	/*Установка даты из поля value в верстке*/
 	setDefaultDate() {
 		if (this.isFilter) {
@@ -174,6 +123,96 @@ class DatePicker {
 		});
 	}
 
+	//проверка, клик был снаружи или внутри календаря
+	insideCalendarClick() {
+		this.calendar.addEventListener('click', (e) => {
+			//console.log('КЛИК ПО КАЛЕНДАРЮ');
+			this.clickOnCalendar = true;
+		});
+	}
+
+	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
+	collapseByClick() {
+		let wrap = this.elemName + '__';
+		document.addEventListener('click', (e) => {
+			if (e.target.closest(`.${this.elemName}`) == null
+				&& this.clickOnCalendar == false) {
+				//console.log('КЛИК СНАРУЖИ');
+				this.clWrapper.classList.
+					add(wrap + 'calendar-wrapper_hidden');
+				for (let tip of this.tips) {
+					tip.classList.remove(wrap + 'img-expanded');
+					tip.classList.add(wrap + 'img_collapsed');
+				}
+			} else {
+				//console.log('КЛИК ВНУТРИ');
+				this.clickOnCalendar = false;
+			}
+		});
+	}
+
+	//Показ / скрытие календаря
+	showHide() {
+		if (!this.isFilter) {
+			this.inputDateFrom.addEventListener('click', () => {
+				if (this.clWrapper.classList.
+					contains(`${this.elemName}__calendar-wrapper_hidden`))
+					this.toggle(true);
+			});
+			this.inputDateTo.addEventListener('click', () => {
+				if (this.clWrapper.classList.
+					contains(`${this.elemName}__calendar-wrapper_hidden`))
+					this.toggle(true);
+			});
+		} else {
+			this.inputDate.addEventListener('click', () => {
+				if (this.clWrapper.classList.
+					contains(`${this.elemName}__calendar-wrapper_hidden`)) {
+					this.toggle(true);
+				} else {
+					this.toggle(false);
+				}
+			});
+		}
+	}
+
+	// Открывание/ закрывание дропдауна
+	toggle(flag) {
+		let wrap = this.elemName + '__';
+		if (flag) {
+			this.clWrapper.classList.
+				remove(wrap + 'calendar-wrapper_hidden');
+			for (let tip of this.tips) {
+				tip.classList.add(wrap + 'img-expanded');
+				tip.classList.remove(wrap + 'img_collapsed');
+			}
+		} else {
+			this.clWrapper.classList.
+				add(wrap + 'calendar-wrapper_hidden');
+			for (let tip of this.tips) {
+				tip.classList.remove(wrap + 'img-expanded');
+				tip.classList.add(wrap + 'img_collapsed');
+			}
+		}
+	}
+
+	//клик по кнопке [Применить]
+	apply() {
+		this.btnApply.addEventListener('click', () => {
+			if (this.myDatepicker.selectedDates.length == 1) {
+				alert('Введите дату выезда');
+			} else {
+				this.clWrapper.classList.
+					add(`${this.elemName}__calendar-wrapper_hidden`);
+				if (!this.isFilter) {
+					this.toggle(false);
+				} else {
+					this.toggle(false);
+				}
+			}
+		});
+	}
+
 	/*Удаление даты из инпута*/
 	dateClear() {
 		this.wrapper.addEventListener('input', (e) => {
@@ -191,44 +230,6 @@ class DatePicker {
 			}
 		});
 	}
-	//Показ календаря
-	show() {
-		if (!this.isFilter) {
-			this.inputDateFrom.addEventListener('click', () => {
-				this.expand(true);
-			});
-			this.inputDateTo.addEventListener('click', () => {
-				this.expand(true);
-			});
-		} else {
-			this.inputDate.addEventListener('click', () => {
-				this.expand(true);
-			});
-		}
-		for (let tip of this.tips) {
-			tip.addEventListener('click', () => {
-				this.expand(true);
-			});
-		}
-	}
-
-
-	//клик по кнопке [Применить]
-	apply() {
-		this.btnApply.addEventListener('click', () => {
-			if (this.myDatepicker.selectedDates.length == 1) {
-				alert('Введите дату выезда');
-			} else {
-				this.clWrapper.classList.
-					add(`${this.elemName}__calendar-wrapper_hidden`);
-				if (!this.isFilter) {
-					this.expand(false);
-				} else {
-					this.expand(false);
-				}
-			}
-		});
-	}
 
 	//клик по кнопке [Очистить]
 	clear() {
@@ -240,42 +241,12 @@ class DatePicker {
 			}
 		});
 	}
-
-
-	expand(flag) {
-		if (flag) {
-			this.clWrapper.classList.
-				remove(`${this.elemName}__calendar-wrapper_hidden`);
-			if (!this.isFilter) {
-				this.tipFrom.classList.add(`${this.elemName}__img-expanded`);
-				this.tipTo.classList.add(`${this.elemName}__img-expanded`);
-				this.tipFrom.classList.
-					remove(`${this.elemName}__img_collapsed`);
-				this.tipTo.classList.
-					remove(`${this.elemName}__img_collapsed`);
-			} else {
-				this.tip.classList.add(`${this.elemName}__img-expanded`);
-				this.tip.classList.remove(`${this.elemName}__img_collapsed`);
-			}
-
-		} else {
-			this.clWrapper.classList.
-				add(`${this.elemName}__calendar-wrapper_hidden`);
-			if (!this.isFilter) {
-				this.tipFrom.classList.
-					remove(`${this.elemName}__img-expanded`);
-				this.tipTo.classList.remove(`${this.elemName}__img-expanded`);
-				this.tipFrom.classList.add(`${this.elemName}__img_collapsed`);
-				this.tipTo.classList.add(`${this.elemName}__img_collapsed`);
-			} else {
-				this.tip.classList.remove(`${this.elemName}__img-expanded`);
-				this.tip.classList.add(`${this.elemName}__img_collapsed`);
-			}
-		}
-	}
 }
 
-
-new DatePicker('dateDropDown');
-new DatePicker('filterDateDropDown');
-
+function renderDateDropDowns() {
+	let dropDowns = document.querySelectorAll('.date-dropdown');
+	for (let dateDropDown of dropDowns) {
+		new DatePicker('date-dropdown', dateDropDown);
+	}
+}
+renderDateDropDowns();
