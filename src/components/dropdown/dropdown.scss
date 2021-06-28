@@ -22,18 +22,17 @@ $colorPurple: #bc9cff;
 $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
-.dropDownGuests__input_rounded.dropDownGuests__input-expanded {
+.dropDown__input_rounded.dropDown__input-expanded {
 	border-color: $colorDarkShade50;
 	border-bottom: none;
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
 }
-.dropDownRooms__input_notrounded.dropDownRooms__input-expanded {
+.dropDown__input_notrounded.dropDown__input-expanded {
 	border-color: $colorDarkShade50;
 	border-bottom: none;
 }
-.dropDownGuests,
-.dropDownRooms {
+.dropDown {
 	&_wide {
 		width: 320px;
 	}

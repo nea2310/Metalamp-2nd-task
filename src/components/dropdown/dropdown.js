@@ -1,8 +1,8 @@
 
 class DropDown {
-	constructor(elemName) {
+	constructor(elemName, elem) {
 		this.elemName = elemName;
-		this.wrapper = document.querySelector(`.${this.elemName}`);
+		this.wrapper = elem;
 		this.render();
 		this.changeCounter();
 		this.clear();
@@ -11,120 +11,70 @@ class DropDown {
 		this.collapseByClick();
 	}
 
-	//проверка, клик был снаружи или внутри виджета
-	insideClick(elem, parentElemSelector) {
-		if (elem.closest(parentElemSelector)) {
-			return true;
-		}
-		else {
-			return false;
-		}
+	getElem(selector, wrapper = this.wrapper) {
+		return wrapper.
+			querySelector('.' + this.elemName + '__' + selector);
 	}
 
-	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
-	collapseByClick() {
-		document.addEventListener("click", (e) => {
-			if (this.insideClick(e.target, `.${this.elemName}`)) {
-				//console.log('КЛИК ВНУТРИ');
-				e.preventDefault();
-			}
-			else {
-				//	console.log('КЛИК СНАРУЖИ');
-				this.listWrapper.classList.
-					add(`${this.elemName}__list-wrapper_hidden`);
-				this.tip.classList.remove(`${this.elemName}__img-expanded`);
-				this.tip.classList.add(`${this.elemName}__img_collapsed`);
-				this.input.classList.remove(`${this.elemName}__input-expanded`);
-				this.input.classList.add(`${this.elemName}__input_collapsed`);
-			}
-		});
+	getElems(selectors) {
+		let sel = '';
+		for (let selector of selectors) {
+			sel += '.' + this.elemName + '__' + selector + ',';
+		}
+		sel = sel.substring(0, sel.length - 1);
+		return this.wrapper.
+			querySelectorAll(sel);
 	}
-
-
 
 	render() {
 		this.clicked = false;
 		this.clickedInside = false;
-		this.input = this.wrapper.querySelector(`.${this.elemName}__input`);
-		this.listWrapper =
-			this.wrapper.querySelector(`.${this.elemName}__list-wrapper`);
-		this.counts = this.wrapper.
-			querySelectorAll(`.${this.elemName}__count-decrem,
-		 .${this.elemName}__count-increm`);
-		this.countVals =
-			this.wrapper.querySelectorAll(`.${this.elemName}__count-val`);
-		this.listElems = this.wrapper.
-			querySelectorAll(`.${this.elemName}__cat-wrapper`);
-		this.btnClear =
-			this.wrapper.querySelector(`.${this.elemName}__button-clear`);
-		this.btnApply =
-			this.wrapper.querySelector(`.${this.elemName}__button-apply`);
-		this.counterList = this.wrapper.
-			querySelectorAll(`.${this.elemName}__cat-wrapper`);
-		this.btnsMinus =
-			this.wrapper.querySelectorAll(`.${this.elemName}__count-decrem`);
-		this.tip = this.wrapper.querySelector(`.${this.elemName}__img`);
-		this.clearApplyBtns;
-		if (this.btnClear != null && this.btnApply != null) {
-			this.clearApplyBtns = true;
-		}
-		this.getInitialCounterList(this.counterList);
+
+		this.input = this.getElem('input');
+		this.listWrapper = this.getElem('list-wrapper');
+		this.counts = this.getElems(['count-decrem', 'count-increm']);
+		this.countVals = this.getElems(['count-val']);
+		this.listElems = this.getElems(['cat-wrapper']);
+		this.btnClear = this.getElem('button-clear');
+		this.btnApply = this.getElem('button-apply');
+		this.btnsMinus = this.getElems(['count-decrem']);
+		this.tip = this.getElem('img');
+
+		this.btnClear != null && this.btnApply != null ?
+			this.clearApplyBtns = true :
+			this.clearApplyBtns = false;
+		this.getInitialCounterList(this.listElems);
 	}
 
-	toggle() {
-		this.listWrapper.classList.
-			toggle(`${this.elemName}__list-wrapper_hidden`);
-		this.tip.classList.toggle(`${this.elemName}__img-expanded`);
-		this.tip.classList.toggle(`${this.elemName}__img_collapsed`);
-		this.input.classList.toggle(`${this.elemName}__input-expanded`);
-		this.input.classList.toggle(`${this.elemName}__input_collapsed`);
-	}
-
-	clickInput() {
-		this.input.addEventListener("click", () => {
-			this.toggle();
-		});
-	}
-
-	apply() {
-		if (this.clearApplyBtns) {
-			this.btnApply.addEventListener("click", () => {
-				this.toggle();
-			});
-		}
-	}
 
 	/*Получение начального состояния счетчиков (текущее значение; является ли оно минимальным или максимальным; название и тип категории)*/
 	getInitialCounterList(counterList) {
 		this.counters = [];
 		for (let i = 0; i < counterList.length; i++) {
 			let elemObj = {};
-			let catName =
-				counterList[i].querySelector(`.${this.elemName}__cat`);
-			let catCnt = counterList[i].
-				querySelector(`.${this.elemName}__count-val`);
-			let catIncrem = counterList[i].
-				querySelector(`.${this.elemName}__count-increm`);
-			let catDecrem = counterList[i].
-				querySelector(`.${this.elemName}__count-decrem`);
+			let catName = this.getElem('cat', counterList[i]);
+			let catCnt = this.getElem('count-val', counterList[i]);
+			let catIncrem = this.getElem('count-increm', counterList[i]);
+			let catDecrem = this.getElem('count-decrem', counterList[i]);
+
 			elemObj.text = catName.innerText.toLowerCase();
 			elemObj.type = catName.getAttribute('data-type');
 			elemObj.typeforms = catName.getAttribute('data-typeforms');
 			elemObj.cnt = catCnt.innerText;
 			elemObj.maxCnt = catIncrem.getAttribute('data-max');
 			elemObj.minCnt = catDecrem.getAttribute('data-min');
-			if (elemObj.cnt == elemObj.maxCnt) {
-				elemObj.isMax = true;
-			} else {
+
+			elemObj.cnt == elemObj.maxCnt ?
+				elemObj.isMax = true :
 				elemObj.isMax = false;
-			}
-			if (elemObj.cnt == elemObj.minCnt) {
-				elemObj.isMin = true;
-			} else {
+
+			elemObj.cnt == elemObj.minCnt ?
+				elemObj.isMin = true :
 				elemObj.isMin = false;
-			}
+
 			this.counters.push(elemObj);
 		}
+
 		this.initializeButtons(this.counters);
 		if (this.clearApplyBtns) {
 			this.hideBtnClear(this.btnsMinus);
@@ -137,19 +87,50 @@ class DropDown {
 		for (let i = 0; i < counterList.length; i++) {
 			let elem = this.listElems[i];
 			if (counterList[i].isMin) {
-				let minus = elem.
-					querySelector(`.${this.elemName}__count-decrem`);
+				let minus = this.getElem('count-decrem', elem);
 				minus.disabled = true;
 			}
 			if (counterList[i].isMax) {
-				let plus = elem.
-					querySelector(`.${this.elemName}__count-increm`);
+				let plus = this.getElem('count-increm', elem);
 				plus.disabled = true;
 			}
 		}
 	}
+	// Открывание/ закрывание дропдауна
+	toggle() {
+		let wrap = this.elemName + '__';
+		this.listWrapper.classList.
+			toggle(wrap + 'list-wrapper_hidden');
+		this.tip.classList.toggle(wrap + 'img-expanded');
+		this.tip.classList.toggle(wrap + 'img_collapsed');
+		this.input.classList.toggle(wrap + 'input-expanded');
+		this.input.classList.toggle(wrap + 'input_collapsed');
+	}
+	// клик по инпуту
+	clickInput() {
+		this.input.addEventListener("click", () => {
+			this.toggle();
+		});
+	}
 
-	/*обработка клика по кнопкам Плюс / Минус*/
+
+	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
+	collapseByClick() {
+		document.addEventListener("click", (e) => {
+			if (e.target.closest(`.${this.elemName}`) == null) {
+				//		console.log('КЛИК СНАРУЖИ');
+				let wrap = this.elemName + '__';
+				this.listWrapper.classList.
+					add(wrap + 'list-wrapper_hidden');
+				this.tip.classList.remove(wrap + 'img-expanded');
+				this.tip.classList.add(wrap + 'img_collapsed');
+				this.input.classList.remove(wrap + 'input-expanded');
+				this.input.classList.add(wrap + 'input_collapsed');
+			}
+		});
+	}
+
+	//обработка клика по кнопкам Плюс / Минус
 	changeCounter() {
 		for (let elem of this.counts) {
 			elem.addEventListener('click', (e) => {
@@ -198,15 +179,16 @@ class DropDown {
 					minCnt: counter.minCnt,
 					maxCnt: counter.maxCnt,
 				};
-				if (editedCounter == counter.minCnt) {
-					obj.isMin = true;
-				}
-				else if (editedCounter == counter.maxCnt) {
-					obj.isMax = true;
-				}
-				else {
-					obj.isMin = false;
-					obj.isMax = false;
+				switch (editedCounter) {
+					case counter.minCnt:
+						obj.isMin = true;
+						break;
+					case counter.maxCnt:
+						obj.isMax = true;
+						break;
+					default:
+						obj.isMin = false;
+						obj.isMax = false;
 				}
 				return obj;
 			}
@@ -256,27 +238,9 @@ class DropDown {
 			this.btnClear.classList.add(`${this.elemName}__button_hidden`);
 		}
 	}
-	// установить значения счетчиков равными минимальным значеням
-	clear() {
-		if (this.clearApplyBtns) {
-			this.btnClear.addEventListener("click", () => {
-				for (let i = 0; i < this.countVals.length; i++) {
-					this.countVals[i].innerText = this.counters[i].minCnt;
-					this.updateCounterList(this.counters[i].text,
-						this.countVals[i].innerText
-					);
-				}
-				this.input.value = "";
-			});
-		}
-	}
-
 
 	/*Обновление списка категорий, которые выводятся в инпуте*/
 	updateCategoriesList(changedCounters) {
-		//	console.log(changedCounters);
-
-		//! Здесь еще нужно добавить склонение названий по падежам!
 		this.countersToDisplay = [];
 		for (let i = 0; i < changedCounters.length; i++) {
 			// Если категории такого типа еще нет
@@ -307,7 +271,7 @@ class DropDown {
 		this.updateInput(this.countersToDisplay);
 	}
 
-	numWord(value, words) {
+	getWordForm(value, words) {
 		value = Math.abs(value) % 100;
 		let num = value % 10;
 		if (value > 10 && value < 20) return words[2];
@@ -324,13 +288,42 @@ class DropDown {
 			//исключаем категории, у которых счетчик = 0
 			if (parseInt(counter.cnt) != 0)
 				value += counter.cnt + ' '
-					+ this.numWord(parseInt(counter.cnt),
+					+ this.getWordForm(parseInt(counter.cnt),
 						counter.typeforms) + ', ';
 		});
 		this.input.value = value.substring(0, value.length - 2);
 	}
+
+	//клик по кнопке [Применить]
+	apply() {
+		if (this.clearApplyBtns) {
+			this.btnApply.addEventListener("click", () => {
+				this.toggle();
+			});
+		}
+	}
+
+	// клик по кнопке [очистить]
+	clear() {
+		if (this.clearApplyBtns) {
+			this.btnClear.addEventListener("click", () => {
+				for (let i = 0; i < this.countVals.length; i++) {
+					this.countVals[i].innerText = this.counters[i].minCnt;
+					this.updateCounterList(this.counters[i].text,
+						this.countVals[i].innerText
+					);
+				}
+				this.input.value = "";
+			});
+		}
+	}
 }
 
+function renderDropDowns() {
+	let dropDowns = document.querySelectorAll('.dropdown');
+	for (let dropDown of dropDowns) {
+		new DropDown("dropdown", dropDown);
+	}
+}
+renderDropDowns();
 
-new DropDown("dropDownGuests");
-new DropDown("dropDownRooms");
