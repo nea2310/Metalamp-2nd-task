@@ -1,29 +1,30 @@
 mixin dropdown(options={})
 	-
-		var minus = '-'
-		var plus = '+'
-		var width=''
-		var inputStyle=''
+		let elemName='dropdown'
+		let minus = '-'
+		let plus = '+'
+		let width = ''
+		let inputStyle = ''
 		let flType = options.type=='dropDownRooms'
 		width = flType ? '_narrow' : '_wide'
 		inputStyle = flType ? '_notrounded' : '_rounded'
-	div(class=options.elemName+' '+options.elemName+width)
-		div(class=options.elemName+'__input-wrapper ')
-			label(class=options.elemName+'__label')
+	div(class = elemName + ' ' + elemName + width)
+		div(class = elemName + '__input-wrapper ')
+			label(class = elemName + '__label')
 				if options.labelText
-					p(class=options.elemName+'__label-text')=options.labelText
-				img(class=options.elemName+'__img '+options.elemName+'__img_collapsed', src="assets/img/interface/expand_more.svg")
-				input(class=options.elemName+'__input '+options.elemName+'__input_collapsed '+options.elemName+'__input'+inputStyle, readonly=true, value='', placeholder=options.placeholder)
-		div(class=options.elemName+'__list-wrapper '+options.elemName+'__list-wrapper_hidden')
-			ul(class=options.elemName+'__list')
+					p(class = elemName + '__label-text')=options.labelText
+				img(class = elemName + '__img ' + elemName + '__img_collapsed', src = "assets/img/interface/expand_more.svg")
+				input(class = elemName + '__input ' + elemName + '__input_collapsed ' + elemName + '__input' + inputStyle, readonly = true, value = '', placeholder = options.placeholder)
+		div(class = elemName + '__list-wrapper ' + elemName + '__list-wrapper_hidden')
+			ul(class = elemName + '__list')
 				each val, index in options.categories
-					li(class=options.elemName+'__cat-wrapper')
-						p(class=options.elemName+'__cat', data-type=val.type, data-typeforms=val.typeforms)=val.displayName
-						div(class=options.elemName+'__count-wrapper')
-							button(class=options.elemName+'__count-decrem', data-min=val.minCnt)=minus
-							span(class=options.elemName+'__count-val')=val.defaultCnt
-							button(class=options.elemName+'__count-increm', data-max=val.maxCnt)=plus
+					li(class = elemName + '__cat-wrapper')
+						p(class = elemName + '__cat', data-type = val.type, data-typeforms = val.typeforms)=val.displayName
+						div(class = elemName + '__count-wrapper')
+							button(class = elemName + '__count-decrem', data-min = val.minCnt)=minus
+							span(class = elemName + '__count-val')=val.defaultCnt
+							button(class = elemName + '__count-increm', data-max = val.maxCnt)=plus
 			if (options.buttons)
-				div(class=options.elemName+'__buttons')
-					button(class=options.elemName+'__button-clear') очистить
-					button(class=options.elemName+'__button-apply') применить
+				div(class = elemName+'__buttons')
+					button(class = elemName + '__button-clear') очистить
+					button(class = elemName + '__button-apply') применить
