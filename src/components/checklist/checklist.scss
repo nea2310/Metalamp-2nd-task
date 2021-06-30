@@ -39,6 +39,9 @@ $colorWhite: #ffffff;
 	&__list-wrapper {
 		//	border: 1px solid green;
 		margin-top: 17px;
+		&_hidden {
+			display: none;
+		}
 	}
 	&__cat-wrapper {
 		margin-bottom: 6px;
