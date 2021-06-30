@@ -7,15 +7,12 @@ class CheckList {
 		this.clickInput();
 		this.insideListClick();
 		this.collapseByClick();
-
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
 		return wrapper.
 			querySelector('.' + this.elemName + '__' + selector);
 	}
-
-
 
 	render() {
 		this.clicked = false;
@@ -24,29 +21,34 @@ class CheckList {
 		this.listWrapper = this.getElem('list-wrapper');
 		this.tip = this.getElem('img');
 		this.clickOnList = false;
-
 	}
-
-
-
-
-
 
 	// Открывание/ закрывание дропдауна
-	toggle() {
+	toggle(flag) {
 		let wrap = this.elemName + '__';
-		this.listWrapper.classList.
-			toggle(wrap + 'list-wrapper_hidden');
-		this.tip.classList.toggle(wrap + 'img-expanded');
-		this.tip.classList.toggle(wrap + 'img_collapsed');
+		if (this.label.classList.contains(wrap + 'label_collapsed') ||
+			this.label.classList.contains(wrap + 'label_expanded')) {
+			if (flag) {
+				this.listWrapper.classList.
+					toggle(wrap + 'list-wrapper_hidden');
+				this.tip.classList.toggle(wrap + 'img-expanded');
+				this.tip.classList.toggle(wrap + 'img_collapsed');
+			} else {
+				this.listWrapper.classList.
+					add(wrap + 'list-wrapper_hidden');
+				this.tip.classList.remove(wrap + 'img-expanded');
+				this.tip.classList.add(wrap + 'img_collapsed');
+			}
+		}
 	}
-	// клик по инпуту
+	// клик по лейблу
 	clickInput() {
 		this.label.addEventListener("click", () => {
-			this.toggle();
+			this.toggle(true);
 		});
 	}
 
+	//проверка, клик был снаружи или внутри списка
 	insideListClick() {
 		this.wrapper.addEventListener('click', (e) => {
 			console.log('CLICK INSIDE');
@@ -54,27 +56,20 @@ class CheckList {
 		});
 	}
 
-
 	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
 	collapseByClick() {
-		let wrap = this.elemName + '__';
 		document.addEventListener("click", (e) => {
 			if (e.target.closest(`.${this.elemName}` == null) ||
 				this.clickOnList == false) {
-				console.log('КЛИК СНАРУЖИ');
-				this.listWrapper.classList.
-					add(wrap + 'list-wrapper_hidden');
+				//	console.log('КЛИК СНАРУЖИ');
+				this.toggle(false);
 			}
 			else {
-				console.log('КЛИК ВНУТРИ');
+				//	console.log('КЛИК ВНУТРИ');
 				this.clickOnList = false;
 			}
 		});
 	}
-
-
-
-
 }
 
 function renderCheckLists() {

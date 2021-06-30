@@ -262,19 +262,28 @@ class DropDown {
 	}
 
 	// Открывание/ закрывание дропдауна
-	toggle() {
+	toggle(flag) {
 		let wrap = this.elemName + '__';
-		this.listWrapper.classList.
-			toggle(wrap + 'list-wrapper_hidden');
-		this.tip.classList.toggle(wrap + 'img-expanded');
-		this.tip.classList.toggle(wrap + 'img_collapsed');
-		this.input.classList.toggle(wrap + 'input-expanded');
-		this.input.classList.toggle(wrap + 'input_collapsed');
+		if (flag) {
+			this.listWrapper.classList.
+				toggle(wrap + 'list-wrapper_hidden');
+			this.tip.classList.toggle(wrap + 'img-expanded');
+			this.tip.classList.toggle(wrap + 'img_collapsed');
+			this.input.classList.toggle(wrap + 'input-expanded');
+			this.input.classList.toggle(wrap + 'input_collapsed');
+		} else {
+			this.listWrapper.classList.
+				add(wrap + 'list-wrapper_hidden');
+			this.tip.classList.remove(wrap + 'img-expanded');
+			this.tip.classList.add(wrap + 'img_collapsed');
+			this.input.classList.remove(wrap + 'input-expanded');
+			this.input.classList.add(wrap + 'input_collapsed');
+		}
 	}
 	// клик по инпуту
 	clickInput() {
 		this.input.addEventListener("click", () => {
-			this.toggle();
+			this.toggle(true);
 		});
 	}
 
@@ -289,17 +298,11 @@ class DropDown {
 
 	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
 	collapseByClick() {
-		let wrap = this.elemName + '__';
 		document.addEventListener("click", (e) => {
 			if (e.target.closest(`.${this.elemName}` == null) ||
 				this.clickOnList == false) {
 				//	console.log('КЛИК СНАРУЖИ');
-				this.listWrapper.classList.
-					add(wrap + 'list-wrapper_hidden');
-				this.tip.classList.remove(wrap + 'img-expanded');
-				this.tip.classList.add(wrap + 'img_collapsed');
-				this.input.classList.remove(wrap + 'input-expanded');
-				this.input.classList.add(wrap + 'input_collapsed');
+				this.toggle(false);
 			} else {
 				console.log('КЛИК ВНУТРИ');
 				this.clickOnList = false;
@@ -316,7 +319,7 @@ class DropDown {
 	apply() {
 		if (this.clearApplyBtns) {
 			this.btnApply.addEventListener("click", () => {
-				this.toggle();
+				this.toggle(true);
 			});
 		}
 	}

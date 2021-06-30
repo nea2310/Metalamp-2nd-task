@@ -27,6 +27,7 @@ $colorWhite: #ffffff;
 	user-select: none;
 	width: 266px;
 	&__label {
+		cursor: pointer;
 		@include font-h3;
 		position: relative;
 	}
@@ -34,6 +35,15 @@ $colorWhite: #ffffff;
 		position: absolute;
 		right: 15px;
 		top: 3px;
+		&-expanded {
+			transform: rotate(180deg);
+			transition: all 0.9s ease 0s;
+		}
+
+		&_collapsed {
+			transform: rotate(0deg);
+			transition: all 0.9s ease 0s;
+		}
 	}
 
 	&__list-wrapper {
@@ -75,6 +85,7 @@ $colorWhite: #ffffff;
 	}
 
 	&__cat-checkmark {
+		cursor: pointer;
 		display: inline-block;
 		position: relative;
 		border: 1px solid $colorDarkShade25;
@@ -91,6 +102,7 @@ $colorWhite: #ffffff;
 	}
 
 	&__cat-name {
+		cursor: pointer;
 		@include font-body;
 		padding-top: 2px;
 		//border: 1px solid orange;
@@ -98,6 +110,7 @@ $colorWhite: #ffffff;
 		//vertical-align: text-top;
 	}
 	&__cat-descr {
+		cursor: pointer;
 		//	border: 1px solid red;
 		font-family: "Montserrat-Regular";
 		font-size: 12px;
