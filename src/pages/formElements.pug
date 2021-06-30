@@ -67,6 +67,7 @@ div(class="form-elements")
 						placeholder: 'Сколько комнат',
 						labelText: 'dropdown',}
 						)
+		div(class="form-elements__comp-wrapper")
 			+checklist(
 						{categories:
 							{cat1: {name:'Завтрак'}, 
@@ -92,4 +93,19 @@ div(class="form-elements")
 						)
 	div(class="form-elements__col form-elements__col_center")
 		div(class="form-elements__comp-wrapper")
+			+checklist(
+						{categories:
+							{cat1: {name:'Можно курить'}, 
+							cat2:{name:'Можно с питомцами'}, 
+							cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
+							type: 'nonExpandable', 
+						labelText: 'checkbox buttons',}
+						)
 		div(class="form-elements__comp-wrapper")
+			+checklist(
+						{categories:
+							{cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
+							cat2:{name:'Помощник для инвалидов', descr: 'На 1 этаже вас встретит специалист и проводит до номера'}},
+							type: 'rich', 
+						labelText: 'rich checkbox buttons',}
+						)

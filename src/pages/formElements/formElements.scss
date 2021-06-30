@@ -1,16 +1,15 @@
 //$wrapper: '.form-elements__comp-wrapper';
 
 .form-elements {
-	&__wrapper {
-		position: relative;
-		width: 100%;
-		max-width: 1440px;
-		margin: 0 auto;
-		display: flex;
-		justify-content: space-between;
-		padding-top: 144px;
-		//background-color: gray;
-	}
+	position: relative;
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 144px;
+	//background-color: gray;
+
 	&__col {
 		&_left {
 			margin-left: 141px;
@@ -40,10 +39,10 @@
 					margin-top: 101px;
 				}
 				&:nth-child(9) {
-					margin-top: 320px;
+					margin-top: 256px;
 				}
 				&:nth-child(10) {
-					margin-top: 30px;
+					margin-top: 50px;
 				}
 				&:nth-child(11) {
 					margin-top: 30px;

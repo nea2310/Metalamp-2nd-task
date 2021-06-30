@@ -51,7 +51,6 @@ class CheckList {
 	//проверка, клик был снаружи или внутри списка
 	insideListClick() {
 		this.wrapper.addEventListener('click', (e) => {
-			console.log('CLICK INSIDE');
 			this.clickOnList = true;
 		});
 	}

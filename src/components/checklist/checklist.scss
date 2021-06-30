@@ -1,7 +1,7 @@
 @mixin font-body() {
 	font-family: "Montserrat-Regular";
 	font-size: 14px;
-	//line-height: 24px;
+	line-height: 19px;
 	color: $colorDarkShade75;
 }
 
@@ -62,7 +62,7 @@ $colorWhite: #ffffff;
 		display: inline-flex;
 	}
 	&__cat-text {
-		margin-left: 8px;
+		margin-left: 9px;
 	}
 
 	&__cat-checkbox {
@@ -105,11 +105,14 @@ $colorWhite: #ffffff;
 		cursor: pointer;
 		@include font-body;
 		padding-top: 2px;
-		//border: 1px solid orange;
-
-		//vertical-align: text-top;
+		max-width: 215px;
+		&_rich {
+			font-family: "Montserrat-Bold";
+			margin-bottom: 5px;
+		}
 	}
 	&__cat-descr {
+		max-width: 230px;
 		cursor: pointer;
 		//	border: 1px solid red;
 		font-family: "Montserrat-Regular";

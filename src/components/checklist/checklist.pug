@@ -2,9 +2,11 @@ mixin checklist(options={type: '', labelText: '',})
 	-
 		let elemName='checklist'
 		let listStyle = ''
-		if (options.type == 'expandable')
-			listStyle = elemName+'__list-wrapper_hidden'
-			labelStyle = elemName+'__label_collapsed'
+		let labelStyle = ''
+		let nameStyle = ''
+		options.type == 'expandable' ? listStyle = elemName + '__list-wrapper_hidden' : listStyle = ''
+		options.type == 'expandable' ? labelStyle = elemName + '__label_collapsed' : labelStyle = ''
+		options.type == 'rich' ? nameStyle = elemName + '__cat-name_rich' : nameStyle = ''
 	div(class = elemName)
 		p(class = elemName + '__label ' + labelStyle)=options.labelText
 			if (options.type == 'expandable')
@@ -17,5 +19,5 @@ mixin checklist(options={type: '', labelText: '',})
 							input(class = elemName + '__cat-checkbox', type="checkbox")
 							span(class = elemName + '__cat-checkmark')
 							div(class = elemName + '__cat-text')
-								p(class = elemName + '__cat-name')=val.name
+								p(class = elemName + '__cat-name ' + nameStyle)=val.name
 								p(class = elemName + '__cat-descr')=val.descr
