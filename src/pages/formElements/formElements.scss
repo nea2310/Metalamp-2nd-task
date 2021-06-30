@@ -1,4 +1,6 @@
-.formElements {
+//$wrapper: '.form-elements__comp-wrapper';
+
+.form-elements {
 	&__wrapper {
 		position: relative;
 		width: 100%;
@@ -10,69 +12,70 @@
 		//background-color: gray;
 	}
 	&__col {
-		&-left {
+		&_left {
 			margin-left: 141px;
-			display: grid;
-			grid-template-rows: 84px 84px 87px 104px 105px 105px 100px 100px;
-			grid-template-columns: 370px;
-			grid-template-areas:
-				"post-1"
-				"post-2"
-				"post-3"
-				"post-4"
-				"post-5"
-				"post-6"
-				"post-7"
-				"post-8";
+			& > .form-elements__comp-wrapper {
+				&:nth-child(1) {
+					margin-top: 144px;
+				}
+				&:nth-child(2) {
+					margin-top: 21px;
+				}
+				&:nth-child(3) {
+					margin-top: 21px;
+				}
+				&:nth-child(4) {
+					margin-top: 24px;
+				}
+				&:nth-child(5) {
+					margin-top: 41px;
+				}
+				&:nth-child(6) {
+					margin-top: 42px;
+				}
+				&:nth-child(7) {
+					margin-top: 42px;
+				}
+				&:nth-child(8) {
+					margin-top: 101px;
+				}
+				&:nth-child(9) {
+					margin-top: 30px;
+				}
+				&:nth-child(10) {
+					margin-top: 30px;
+				}
+				&:nth-child(11) {
+					margin-top: 30px;
+				}
+			}
+		}
+
+		&_center {
+			& > .form-elements__comp-wrapper {
+				&:nth-child(1) {
+					margin-top: 144px;
+				}
+				&:nth-child(2) {
+					margin-top: 21px;
+				}
+				&:nth-child(3) {
+					margin-top: 21px;
+				}
+			}
+			&_right {
+				& > .form-elements__comp-wrapper {
+					&:nth-child(1) {
+						margin-top: 144px;
+					}
+					&:nth-child(2) {
+						margin-top: 21px;
+					}
+					&:nth-child(3) {
+						margin-top: 21px;
+					}
+				}
+			}
 		}
 	}
-}
-
-.inputField-1 {
-	grid-area: post-1;
-}
-.inputField-2 {
-	grid-area: post-2;
-}
-.dropDownGuests {
-	grid-area: post-3;
-}
-.inputField-4 {
-	grid-area: post-4;
-}
-.dateDropDown {
-	grid-area: post-5;
-}
-.filterDateDropDown {
-	grid-area: post-6;
-}
-.inputField-5 {
-	grid-area: post-7;
-}
-
-.dropDownRoom {
-	grid-area: post-8;
-}
-
-.label {
-	&-marginTop1 {
-		margin-top: 20px;
-	}
-	&-marginTop2 {
-		margin-top: 23px;
-	}
-	&-marginTop3 {
-		margin-top: 41px;
-	}
-
-	&-marginTop4 {
-		margin-top: 100px;
-	}
-	&-marginBottom1 {
-		margin-bottom: 5px;
-	}
-}
-
-.date__wrapper {
-	margin-top: 40px;
 }

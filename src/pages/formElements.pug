@@ -2,66 +2,71 @@ include ../components/logo/logo.pug
 include ../components/date-dropdown/date-dropdown.pug
 include ../components/input-field/input-field.pug
 include ../components/dropdown/dropdown.pug
-div(class='formElements__wrapper')
+div(class="form-elements")
 	+logo-grey()
-	div(class='formElements__col formElements__col-left')
-		+date-dropdown(
-			{width:'narrow',
-			type: 'filterDateDropDown',
-			labelTextFromTo: 'filter date dropdown'}
-			)
-		+input(
-					{width: 'wide',
-					placeholder: 'Email',
-					classList:' inputField-1',
-					labelText: 'text field'} 
-					)
-		+input(
-					{width: 'wide',
-					placeholder: 'Email',
-					classList:' inputField-2',
-					labelText: 'text field'} 
-					)
-		+dropdown(
-					{categories:
-						{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-						cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-						cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
-					type: 'dropDownGuests',
-					placeholder: 'Сколько гостей',
-					buttons: true,
-					labelText: 'dropdown'}
-					)
-		+input(
-					{width: 'wide',
-					placeholder: 'ДД.ММ.ГГГГ',
-					classList:' inputField-4 js-masked',
-					labelText: 'masked text field'}
-					)
-		+date-dropdown(
-					{width:'wide',
-					type:'dateDropDown',
-					labelTextFrom: 'date dropdown',
-					labelTextTo: 'date dropdown'}
-					)
-		+date-dropdown(
-					{width:'narrow',
-					type: 'filterDateDropDown',
-					labelTextFromTo: 'filter date dropdown'}
-					)
-		+input(
-					{width: 'medium',
-					placeholder: 'Email',
-					classList:' inputField-5 js-check-email',
-					labelText: 'subscription text field',
-					img: true}
-					)
-		+dropdown(
-					{categories:
-						{cat1: {displayName: 'спальни', type: 'спальня', typeforms: 'спальня,спальни,спален', defaultCnt: 0, minCnt: 0, maxCnt: 5}, 
-						cat2: {displayName: 'кровати', type: 'кровать', typeforms: 'кровать,кровати,кроватей', defaultCnt: 0, minCnt: 0, maxCnt: 10}, 
-						cat3: {displayName: 'ванные комнаты', type: 'ванная комната', typeforms: 'ванная комната,ванные комнаты,ванных комнат', defaultCnt: 0, minCnt: 0, maxCnt: 3}}, 
-					type: 'dropDownRooms',
-					placeholder: 'Сколько комнат',
-					labelText: 'dropdown',}
-					)
+	div(class="form-elements__col form-elements__col_left")
+		div(class="form-elements__comp-wrapper")
+			+input(
+						{width: 'wide',
+						placeholder: 'Email',
+						labelText: 'text field'} 
+						)
+		div(class="form-elements__comp-wrapper")
+			+date-dropdown(
+						{width:'narrow',
+						type: 'filterDateDropDown',
+						labelTextFromTo: 'filter date dropdown'}
+				)
+		div(class="form-elements__comp-wrapper")
+			+dropdown(
+						{categories:
+							{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+							cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+							cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+						type: 'dropDownGuests',
+						placeholder: 'Сколько гостей',
+						buttons: true,
+						labelText: 'dropdown'}
+						)
+		div(class="form-elements__comp-wrapper")
+			+input(
+						{width: 'wide',
+						placeholder: 'ДД.ММ.ГГГГ',
+						extra:' js-masked',
+						labelText: 'masked text field'}
+						)
+		div(class="form-elements__comp-wrapper")
+			+date-dropdown(
+						{width:'wide',
+						type:'dateDropDown',
+						labelTextFrom: 'date dropdown',
+						labelTextTo: 'date dropdown'}
+						)
+		div(class="form-elements__comp-wrapper")
+			+date-dropdown(
+						{width:'narrow',
+						type: 'filterDateDropDown',
+						labelTextFromTo: 'filter date dropdown'}
+						)
+		div(class="form-elements__comp-wrapper")
+			+input(
+						{width: 'medium',
+						placeholder: 'Email',
+						extra:' js-check-email',
+						labelText: 'subscription text field',
+						img: true}
+						)
+		div(class="form-elements__comp-wrapper")
+			+dropdown(
+						{categories:
+							{cat1: {displayName: 'спальни', type: 'спальня', typeforms: 'спальня,спальни,спален', defaultCnt: 0, minCnt: 0, maxCnt: 5}, 
+							cat2: {displayName: 'кровати', type: 'кровать', typeforms: 'кровать,кровати,кроватей', defaultCnt: 0, minCnt: 0, maxCnt: 10}, 
+							cat3: {displayName: 'ванные комнаты', type: 'ванная комната', typeforms: 'ванная комната,ванные комнаты,ванных комнат', defaultCnt: 0, minCnt: 0, maxCnt: 3}}, 
+						type: 'dropDownRooms',
+						placeholder: 'Сколько комнат',
+						labelText: 'dropdown',}
+						)
+		div(class="form-elements__comp-wrapper_left")
+	div(class="form-elements__col form-elements__col_center")
+		div(class="form-elements__comp-wrapper")
+		div(class="form-elements__comp-wrapper")
