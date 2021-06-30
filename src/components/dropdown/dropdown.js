@@ -9,6 +9,7 @@ class DropDown {
 		this.clear();
 		this.apply();
 		this.collapseByClick();
+		this.insideListClick();
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
@@ -27,8 +28,7 @@ class DropDown {
 	}
 
 	render() {
-		this.clicked = false;
-		this.clickedInside = false;
+		this.clickOnList = false;
 
 		this.input = this.getElem('input');
 		this.listWrapper = this.getElem('list-wrapper');
@@ -279,11 +279,20 @@ class DropDown {
 	}
 
 
+	insideListClick() {
+		this.wrapper.addEventListener('click', (e) => {
+			console.log('CLICK INSIDE');
+			this.clickOnList = true;
+		});
+	}
+
+
 	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
 	collapseByClick() {
 		let wrap = this.elemName + '__';
 		document.addEventListener("click", (e) => {
-			if (e.target.closest(`.${this.elemName}`) == null) {
+			if (e.target.closest(`.${this.elemName}` == null) ||
+				this.clickOnList == false) {
 				//	console.log('КЛИК СНАРУЖИ');
 				this.listWrapper.classList.
 					add(wrap + 'list-wrapper_hidden');
@@ -293,14 +302,7 @@ class DropDown {
 				this.input.classList.add(wrap + 'input_collapsed');
 			} else {
 				console.log('КЛИК ВНУТРИ');
-				if (e.target != this.input) {
-					this.listWrapper.classList.
-						add(wrap + 'list-wrapper_hidden');
-					this.tip.classList.remove(wrap + 'img-expanded');
-					this.tip.classList.add(wrap + 'img_collapsed');
-					this.input.classList.remove(wrap + 'input-expanded');
-					this.input.classList.add(wrap + 'input_collapsed');
-				}
+				this.clickOnList = false;
 
 
 
