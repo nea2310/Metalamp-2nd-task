@@ -33,6 +33,7 @@ $colorWhite: #ffffff;
 	border-bottom: none;
 }
 .dropDown {
+	user-select: none;
 	&_wide {
 		width: 320px;
 	}

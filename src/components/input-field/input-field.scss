@@ -27,6 +27,7 @@ input {
 }
 
 .input-field {
+	user-select: none;
 	&-wide {
 		width: 320px;
 	}

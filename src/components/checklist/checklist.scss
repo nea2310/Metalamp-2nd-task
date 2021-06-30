@@ -1,7 +1,7 @@
 @mixin font-body() {
 	font-family: "Montserrat-Regular";
 	font-size: 14px;
-	line-height: 24px;
+	//line-height: 24px;
 	color: $colorDarkShade75;
 }
 
@@ -23,46 +23,82 @@ $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
 .checklist {
-	&__cat-wrapper {
-		display: block;
-		margin: 0 0 10px 0;
-		cursor: pointer;
-		user-select: none;
+	//border: 1px solid blue;
+	user-select: none;
+	width: 266px;
+	&__label {
+		@include font-h3;
 		position: relative;
+	}
+	&__img {
+		position: absolute;
+		right: 15px;
+		top: 3px;
+	}
 
-		& input[type="checkbox"] {
-			position: absolute;
-			z-index: -1;
-			opacity: 0;
-			display: block;
-			width: 0;
-			height: 0;
-		}
-		& span {
-			display: inline-block;
-			position: relative;
-			border: 1px solid $colorDarkShade25;
-			width: 18px;
-			height: 18px;
-			border-radius: 5px;
-		}
+	&__list-wrapper {
+		//	border: 1px solid green;
+		margin-top: 17px;
+	}
+	&__cat-wrapper {
+		margin-bottom: 6px;
+	}
 
-		& span:before {
+	&__cat {
+		//	border: 1px solid red;
+		display: inline-flex;
+	}
+	&__cat-text {
+		margin-left: 8px;
+	}
+
+	&__cat-checkbox {
+		position: absolute;
+		z-index: -1;
+		opacity: 0;
+		display: block;
+		width: 0;
+		height: 0;
+
+		&:checked + .checklist__cat-checkmark {
+			border: 1px solid $colorPurple;
+			&:before {
+				background-image: url(/assets/img/interface/vector.svg);
+				background-position-y: 42%;
+				background-position-x: 40%;
+				background-repeat: no-repeat;
+			}
+		}
+	}
+
+	&__cat-checkmark {
+		display: inline-block;
+		position: relative;
+		border: 1px solid $colorDarkShade25;
+		width: 18px;
+		height: 18px;
+		border-radius: 5px;
+
+		&:before {
 			content: "";
 			display: inline-block;
 			width: 20px;
 			height: 20px;
 		}
+	}
 
-		& input[type="checkbox"]:checked + span:before {
-			background-image: url(/assets/img/interface/vector.svg);
-			background-position-y: 42%;
-			background-position-x: 40%;
-			background-repeat: no-repeat;
-		}
+	&__cat-name {
+		@include font-body;
+		padding-top: 2px;
+		//border: 1px solid orange;
 
-		& input[type="checkbox"]:checked + span {
-			border: 1px solid $colorPurple;
-		}
+		//vertical-align: text-top;
+	}
+	&__cat-descr {
+		//	border: 1px solid red;
+		font-family: "Montserrat-Regular";
+		font-size: 12px;
+		line-height: 14px;
+		color: $colorDarkShade75;
 	}
 }

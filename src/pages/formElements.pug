@@ -67,6 +67,17 @@ div(class="form-elements")
 						placeholder: 'Сколько комнат',
 						labelText: 'dropdown',}
 						)
+			+checklist(
+						{categories:
+							{cat1: {name:'Завтрак'}, 
+							cat2:{name:'Письменный стол'}, 
+							cat3:{name:'Стул для кормления'}, 
+							cat4:{name:'Кроватка'}, 
+							cat5:{name:'Телевизор'}, 
+							cat6:{name:'Шампунь'},},
+						type: 'expandable', 
+						labelText: 'expandable checkbox list',}
+						)
 		div(class="form-elements__comp-wrapper")
 			+checklist(
 						{categories:
@@ -77,7 +88,7 @@ div(class="form-elements")
 							cat5:{name:'Телевизор'}, 
 							cat6:{name:'Шампунь'},},
 						type: 'expandable', 
-						labelText: 'expandable checkbox buttons',}
+						labelText: 'expandable checkbox list',}
 						)
 	div(class="form-elements__col form-elements__col_center")
 		div(class="form-elements__comp-wrapper")

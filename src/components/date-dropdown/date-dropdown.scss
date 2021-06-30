@@ -23,6 +23,7 @@ $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
 .date-dropdown {
+	user-select: none;
 	&_wide {
 		width: 320px;
 	}

@@ -15,5 +15,6 @@ mixin checklist(options={type: '', labelText: '',})
 						label(class = elemName + '__cat')
 							input(class = elemName + '__cat-checkbox', type="checkbox")
 							span(class = elemName + '__cat-checkmark')
-							p(class = elemName + '__cat-name')=val.name
-							p(class = elemName + '__cat-descr')=val.descr
+							div(class = elemName + '__cat-text')
+								p(class = elemName + '__cat-name')=val.name
+								p(class = elemName + '__cat-descr')=val.descr
