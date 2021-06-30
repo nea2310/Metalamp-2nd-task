@@ -2,6 +2,7 @@ include ../components/logo/logo.pug
 include ../components/date-dropdown/date-dropdown.pug
 include ../components/input-field/input-field.pug
 include ../components/dropdown/dropdown.pug
+include ../components/checklist/checklist.pug
 div(class="form-elements")
 	+logo-grey()
 	div(class="form-elements__col form-elements__col_left")
@@ -66,7 +67,18 @@ div(class="form-elements")
 						placeholder: 'Сколько комнат',
 						labelText: 'dropdown',}
 						)
-		div(class="form-elements__comp-wrapper_left")
+		div(class="form-elements__comp-wrapper")
+			+checklist(
+						{categories:
+							{cat1: {name:'Завтрак'}, 
+							cat2:{name:'Письменный стол'}, 
+							cat3:{name:'Стул для кормления'}, 
+							cat4:{name:'Кроватка'}, 
+							cat5:{name:'Телевизор'}, 
+							cat6:{name:'Шампунь'},},
+						type: 'expandable', 
+						labelText: 'expandable checkbox buttons',}
+						)
 	div(class="form-elements__col form-elements__col_center")
 		div(class="form-elements__comp-wrapper")
 		div(class="form-elements__comp-wrapper")

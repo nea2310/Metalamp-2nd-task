@@ -1,0 +1,19 @@
+mixin checklist(options={type: '', labelText: '',})
+	-
+		let elemName='checklist'
+		let listStyle = ''
+		if (options.type == 'expandable')
+			listStyle = elemName+'__list-wrapper_collapsing'
+	div(class = elemName)
+		p(class = elemName + '__label')=options.labelText
+			if (options.type == 'expandable')
+				img(class = elemName + '__img ' + elemName + '__img_collapsed', src = "assets/img/interface/expand_more.svg")
+		div(class = elemName + '__list-wrapper ' + listStyle)
+			ul(class = elemName + '__list')
+				each val, index in options.categories
+					li(class = elemName + '__cat-wrapper')
+						label(class = elemName + '__cat')
+							input(class = elemName + '__cat-checkbox', type="checkbox")
+							span(class = elemName + '__cat-checkmark')
+							p(class = elemName + '__cat-name')=val.name
+							p(class = elemName + '__cat-descr')=val.descr
