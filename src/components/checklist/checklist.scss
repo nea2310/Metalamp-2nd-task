@@ -22,6 +22,9 @@ $colorPurple: #bc9cff;
 $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
+fieldset {
+	border: none;
+}
 .checklist {
 	//border: 1px solid blue;
 	user-select: none;
