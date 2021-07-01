@@ -31,10 +31,8 @@ $colorWhite: #ffffff;
 
 .simple-rating::before {
 	content: "★★★★★";
-	//	background-image: url(/assets/img/interface/star-border.svg);
-	//	background-position: center;
-	//background-repeat: no-repeat;
 	display: block;
+	color: $colorWhite;
 }
 
 .simple-rating__items {
@@ -69,7 +67,6 @@ $colorWhite: #ffffff;
 .simple-rating__label::before {
 	content: url(/assets/img/interface/star-border.svg);
 	position: absolute;
-	//	left: -10px;
 }
 
 .simple-rating__label:hover::before,
@@ -77,10 +74,9 @@ $colorWhite: #ffffff;
 	content: url(/assets/img/interface/star.svg);
 }
 
-.simple-rating__label:checked::before,
-.simple-rating__label:checked ~ .simple-rating__label::before {
+.simple-rating__item:checked + .simple-rating__label::before,
+.simple-rating__item:checked ~ .simple-rating__label::before {
 	content: url(/assets/img/interface/star.svg);
-	//color: $colorPurple;
 }
 
 // .rate-button {
