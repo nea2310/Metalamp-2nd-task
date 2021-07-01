@@ -3,8 +3,9 @@ class LikeButton {
 	constructor(elemName, elem) {
 		this.elemName = elemName;
 		this.wrapper = elem;
-		// this.render();
-		// this.clickInput();
+		this.render();
+		this.click();
+		this.updLikeStatus();
 
 	}
 
@@ -14,36 +15,43 @@ class LikeButton {
 	}
 
 	render() {
-		this.clicked = false;
-		this.clickedInside = false;
-		this.label = this.getElem('label');
-		this.listWrapper = this.getElem('list-wrapper');
-		this.tip = this.getElem('img');
-		this.clickOnList = false;
+		this.button = this.getElem('button');
+		this.img = this.getElem('img');
+		this.counter = this.getElem('counter');
+
+		this.iconLike = 'assets/img/interface/favorite.svg';
+		this.iconUnlike = 'assets/img/interface/favorite-border.svg';
 	}
 
-	// Открывание/ закрывание дропдауна
-	toggle(flag) {
-		let wrap = this.elemName + '__';
-		if (this.label.classList.contains(wrap + 'label_collapsing') ||
-			this.label.classList.contains(wrap + 'label_expanded')) {
-			if (flag) {
-				this.listWrapper.classList.
-					toggle(wrap + 'list-wrapper_hidden');
-				this.tip.classList.toggle(wrap + 'img-expanded');
-				this.tip.classList.toggle(wrap + 'img_collapsed');
+
+	// клик по кнопке
+	click() {
+		this.button.addEventListener("click", () => {
+			let val = parseInt(this.counter.innerText);
+			this.button.classList.toggle(this.elemName + '_liked');
+			if (this.button.classList.contains(this.elemName + '_liked')) {
+				this.img.src = this.iconLike;
+				this.counter.innerText = val + 1;
+				localStorage.setItem('isLiked', 'liked');
 			} else {
-				this.listWrapper.classList.
-					add(wrap + 'list-wrapper_hidden');
-				this.tip.classList.remove(wrap + 'img-expanded');
-				this.tip.classList.add(wrap + 'img_collapsed');
+				this.img.src = this.iconUnlike;
+				this.counter.innerText = val - 1;
+				localStorage.setItem('isLiked', 'unliked');
 			}
-		}
+		});
 	}
-	// клик по лейблу
-	clickInput() {
-		this.label.addEventListener("click", () => {
-			this.toggle(true);
+
+	updLikeStatus() {
+		window.addEventListener('load', () => {
+			if (localStorage.getItem('isLiked') == 'liked') {
+				//console.log('LIKED');
+				this.button.classList.add(this.elemName + '_liked');
+				this.img.src = this.iconLike;
+			} else {
+				//console.log('NOT LIKED');
+				this.button.classList.remove(this.elemName + '_liked');
+				this.img.src = this.iconUnlike;
+			}
 		});
 	}
 
