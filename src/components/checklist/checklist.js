@@ -26,7 +26,7 @@ class CheckList {
 	// Открывание/ закрывание дропдауна
 	toggle(flag) {
 		let wrap = this.elemName + '__';
-		if (this.label.classList.contains(wrap + 'label_collapsed') ||
+		if (this.label.classList.contains(wrap + 'label_collapsing') ||
 			this.label.classList.contains(wrap + 'label_expanded')) {
 			if (flag) {
 				this.listWrapper.classList.

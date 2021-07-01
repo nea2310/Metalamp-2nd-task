@@ -22,28 +22,17 @@ $colorPurple: #bc9cff;
 $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
-.radiobuttons {
+.toggle {
 	user-select: none;
-	width: 220px;
-	&__label {
-		@include font-h3;
-		position: relative;
-	}
+	@include font-h3;
+	margin-left: 20px;
 
-	&__list {
-		margin-top: 17px;
+	&__wrapper {
+		margin-top: 16px;
 		display: flex;
-		justify-content: space-between;
 	}
 
-	&__cat {
-		display: inline-flex;
-	}
-	&__cat-text {
-		margin-left: 9px;
-	}
-
-	&__cat-checkbox {
+	&__checkbox {
 		position: absolute;
 		z-index: -1;
 		opacity: 0;
@@ -51,36 +40,46 @@ $colorWhite: #ffffff;
 		width: 0;
 		height: 0;
 
-		&:checked + .radiobuttons__cat-radiomark {
+		& + .toggle__checkmark {
+			border: 1px solid $colorDarkShade25;
+			&:before {
+				background-image: url(/assets/img/interface/rectangle-inactive.svg);
+				background-position-y: 62%;
+				background-position-x: 13%;
+				background-repeat: no-repeat;
+			}
+		}
+
+		&:checked + .toggle__checkmark {
 			border: 1px solid $colorPurple;
 			&:before {
 				background-image: url(/assets/img/interface/rectangle.svg);
-				background-position: center;
-				background-repeat: no-repeat;
+				background-position-x: 87%;
 			}
 		}
 	}
 
-	&__cat-radiomark {
+	&__checkmark {
 		cursor: pointer;
 		display: inline-block;
 		position: relative;
 		border: 1px solid $colorDarkShade25;
-		width: 18px;
+		width: 38px;
 		height: 18px;
-		border-radius: 50%;
+		border-radius: 22px;
 
 		&:before {
 			content: "";
 			display: inline-block;
-			width: 18px;
+			width: 38px;
 			height: 18px;
 		}
 	}
 
-	&__cat-name {
+	&__name {
 		cursor: pointer;
 		@include font-body;
 		padding-left: 10px;
+		text-transform: none;
 	}
 }

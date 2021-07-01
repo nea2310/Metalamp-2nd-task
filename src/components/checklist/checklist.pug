@@ -5,7 +5,7 @@ mixin checklist(options={type: '', labelText: '',})
 		let labelStyle = ''
 		let nameStyle = ''
 		options.type == 'expandable' ? listStyle = elemName + '__list-wrapper_hidden' : listStyle = ''
-		options.type == 'expandable' ? labelStyle = elemName + '__label_collapsed' : labelStyle = ''
+		options.type == 'expandable' ? labelStyle = elemName + '__label_collapsing' : labelStyle = ''
 		options.type == 'rich' ? nameStyle = elemName + '__cat-name_rich' : nameStyle = ''
 	fieldset(class = elemName)
 		p(class = elemName + '__label ' + labelStyle)=options.labelText
@@ -15,7 +15,7 @@ mixin checklist(options={type: '', labelText: '',})
 			each val, index in options.categories
 				li(class = elemName + '__cat-wrapper')
 					label(class = elemName + '__cat')
-						input(class = elemName + '__cat-checkbox', type="checkbox")
+						input(class = elemName + '__cat-checkbox', type="checkbox", name = options.checkListName, value = val.name,)
 						span(class = elemName + '__cat-checkmark')
 						div(class = elemName + '__cat-text')
 							p(class = elemName + '__cat-name ' + nameStyle)=val.name

@@ -7,6 +7,6 @@ mixin radiobuttons(options={type: '', labelText: '',})
 			each val, index in options.categories
 				li(class = elemName + '__cat-wrapper')
 					label(class = elemName + '__cat')
-						input(class = elemName + '__cat-checkbox', type = "radio", name = options.radioGroupName, value = val.name)
+						input(class = elemName + '__cat-checkbox', type = "radio", name = options.radioGroupName, value = val.name, checked = val.checked)
 						span(class = elemName + '__cat-radiomark')
 						p(class = elemName + '__cat-name ')=val.name

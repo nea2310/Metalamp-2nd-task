@@ -4,6 +4,7 @@ include ../components/input-field/input-field.pug
 include ../components/dropdown/dropdown.pug
 include ../components/checklist/checklist.pug
 include ../components/radiobuttons/radiobuttons.pug
+include ../components/toggle/toggle.pug
 div(class="form-elements")
 	+logo-grey()
 	div(class="form-elements__col form-elements__col_left")
@@ -90,7 +91,8 @@ div(class="form-elements")
 							cat5:{name:'Телевизор'}, 
 							cat6:{name:'Шампунь'},},
 						type: 'expandable', 
-						labelText: 'expandable checkbox list',}
+						labelText: 'expandable checkbox list',
+						checkListName: 'expandable checkbox list'}
 						)
 	div(class="form-elements__col form-elements__col_center")
 		div(class="form-elements__comp-wrapper")
@@ -100,11 +102,12 @@ div(class="form-elements")
 							cat2:{name:'Можно с питомцами'}, 
 							cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
 							type: 'nonExpandable', 
-						labelText: 'checkbox buttons',}
+						labelText: 'checkbox buttons',
+						checkListName: 'checkbox buttons'}
 						)
 		div(class="form-elements__comp-wrapper")
 			+radiobuttons({categories:
-							{cat1: {name:'Мужчина'}, 
+							{cat1: {name:'Мужчина', checked: true}, 
 							cat2:{name:'Женщина'}},
 							labelText: 'radio buttons',
 							radioGroupName: 'gender'})
@@ -114,5 +117,11 @@ div(class="form-elements")
 							{cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
 							cat2:{name:'Помощник для инвалидов', descr: 'На 1 этаже вас встретит специалист и проводит до номера'}},
 							type: 'rich', 
-						labelText: 'rich checkbox buttons',}
+						labelText: 'rich checkbox buttons',
+						checkListName: 'rich checkbox buttons'}
+						)
+		div(class="form-elements__comp-wrapper")
+			+toggle(
+						{labelText: 'toggle',
+						name: 'Получать спецпредложения'}
 						)

@@ -29,9 +29,11 @@ fieldset {
 	user-select: none;
 	width: 266px;
 	&__label {
-		cursor: pointer;
 		@include font-h3;
 		position: relative;
+		&_collapsing {
+			cursor: pointer;
+		}
 	}
 	&__img {
 		position: absolute;
