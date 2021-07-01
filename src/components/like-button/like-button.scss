@@ -24,7 +24,9 @@ $colorWhite: #ffffff;
 
 .like-button {
 	user-select: none;
-	&__label {
+	&__label-text {
+		max-width: 100px;
+		margin-bottom: 15px;
 		@include font-h3;
 		&-text {
 			margin-bottom: 16px;
