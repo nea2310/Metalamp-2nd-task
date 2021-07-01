@@ -43,7 +43,7 @@ $colorWhite: #ffffff;
 		& + .toggle__checkmark {
 			border: 1px solid $colorDarkShade25;
 			&:before {
-				background-image: url(/assets/img/interface/rectangle-inactive.svg);
+				background-image: url(/assets/img/interface/rectangle-border.svg);
 				background-position-y: 50%;
 				background-position-x: 13%;
 				background-repeat: no-repeat;

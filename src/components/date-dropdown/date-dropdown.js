@@ -57,8 +57,8 @@ class DatePicker {
 			minDate: new Date(),
 			range: true,
 			multipleDates: true,
-			prevHtml: `<img src="assets/img/interface/arrow_back.svg">`,
-			nextHtml: `<img src="assets/img/interface/arrow_forward.svg">`,
+			prevHtml: `<img src="assets/img/interface/arrow-back.svg">`,
+			nextHtml: `<img src="assets/img/interface/arrow-forward.svg">`,
 			onSelect: (selectedDate) => {
 				if (!this.isFilter) {
 					let dateArr = selectedDate.split(',');

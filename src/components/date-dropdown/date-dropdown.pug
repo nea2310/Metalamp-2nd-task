@@ -3,7 +3,7 @@ mixin date-dropdown(options={type: '', labelTextFrom: '', labelTextTo: '', label
 		let elemName='date-dropdown'
 		let modificator = ''
 		let width = ''
-		let src = 'assets/img/interface/expand_more.svg'
+		let src = 'assets/img/interface/expand-more.svg'
 		options.type == 'filterDateDropDown' ? modificator = elemName + '__calendar-wrapper_narrow' : modificator = ''
 		options.type == 'filterDateDropDown' ? width = '_narrow' : width = '_wide'
 	div(class=elemName + ' ' + elemName + width)

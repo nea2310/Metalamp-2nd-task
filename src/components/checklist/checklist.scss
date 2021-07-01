@@ -78,7 +78,7 @@ fieldset {
 		&:checked + .checklist__cat-checkmark {
 			border: 1px solid $colorPurple;
 			&:before {
-				background-image: url(/assets/img/interface/vector.svg);
+				background-image: url(/assets/img/interface/tip.svg);
 				background-position-y: 42%;
 				background-position-x: 40%;
 				background-repeat: no-repeat;

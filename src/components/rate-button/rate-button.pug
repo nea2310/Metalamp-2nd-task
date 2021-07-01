@@ -1,0 +1,10 @@
+mixin rate-button(options={})
+	-
+		let elemName='rate-button'
+	div(class = elemName)
+		label(class = elemName+'__label')
+			if options.labelText
+				p(class = elemName+'__label-text')=options.labelText
+			button(class = elemName + '__button')
+				img(class = elemName + '__img' src = "assets/img/interface/favorite-border.svg")
+				span(class = elemName + '__counter') 2
