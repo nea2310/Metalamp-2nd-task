@@ -6,3 +6,4 @@ import './input-masking/input-masking.js';
 import './input-subscription/input-subscription.js';
 import './dropdown/dropdown.js';
 import './checklist/checklist.js';
+import './like-button/like-button.js';

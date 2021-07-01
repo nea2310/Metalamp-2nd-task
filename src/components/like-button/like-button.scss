@@ -22,7 +22,7 @@ $colorPurple: #bc9cff;
 $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
-.toggle {
+.like {
 	user-select: none;
 	@include font-h3;
 	//	margin-left: 20px;
@@ -44,7 +44,7 @@ $colorWhite: #ffffff;
 			border: 1px solid $colorDarkShade25;
 			&:before {
 				background-image: url(/assets/img/interface/rectangle-inactive.svg);
-				background-position-y: 50%;
+				background-position-y: 62%;
 				background-position-x: 13%;
 				background-repeat: no-repeat;
 			}

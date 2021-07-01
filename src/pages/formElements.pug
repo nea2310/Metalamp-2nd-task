@@ -5,6 +5,7 @@ include ../components/dropdown/dropdown.pug
 include ../components/checklist/checklist.pug
 include ../components/radiobuttons/radiobuttons.pug
 include ../components/toggle/toggle.pug
+include ../components/like-button/like-button.pug
 div(class="form-elements")
 	+logo-grey()
 	div(class="form-elements__col form-elements__col_left")
@@ -112,6 +113,14 @@ div(class="form-elements")
 							labelText: 'radio buttons',
 							radioGroupName: 'gender'})
 		div(class="form-elements__comp-wrapper")
+			+toggle(
+						{labelText: 'toggle',
+						name: 'Получать спецпредложения'}
+						)
+		div(class="form-elements__comp-wrapper")
+			+like-button()
+		div(class="form-elements__comp-wrapper")
+		div(class="form-elements__comp-wrapper")
 			+checklist(
 						{categories:
 							{cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
@@ -119,9 +128,4 @@ div(class="form-elements")
 							type: 'rich', 
 						labelText: 'rich checkbox buttons',
 						checkListName: 'rich checkbox buttons'}
-						)
-		div(class="form-elements__comp-wrapper")
-			+toggle(
-						{labelText: 'toggle',
-						name: 'Получать спецпредложения'}
 						)
