@@ -1,10 +1,15 @@
 mixin rate-button(options={})
 	-
-		let elemName='rate-button'
+		let elemName='simple-rating'
 	div(class = elemName)
-		label(class = elemName+'__label')
-			if options.labelText
-				p(class = elemName+'__label-text')=options.labelText
-			button(class = elemName + '__button')
-				img(class = elemName + '__img' src = "assets/img/interface/favorite-border.svg")
-				span(class = elemName + '__counter') 2
+		div(class = elemName+'__items')
+			input(class =elemName+'__item', type = "radio", name = 'simple-rating' value="5" id = 'simple-rating__5')
+			label(for='simple-rating__5', class =elemName+'__label')
+			input(class =elemName+'__item', type = "radio", name = 'simple-rating' value="4" id = 'simple-rating__4')
+			label(for='simple-rating__4', class =elemName+'__label')
+			input(class =elemName+'__item', type = "radio", name = 'simple-rating' value="3" id = 'simple-rating__3')
+			label(for='simple-rating__3', class =elemName+'__label')
+			input(class =elemName+'__item', type = "radio", name = 'simple-rating' value="2" id = 'simple-rating__2')
+			label(for='simple-rating__2', class =elemName+'__label')
+			input(class =elemName+'__item', type = "radio", name = 'simple-rating' value="1" id = 'simple-rating__1')
+			label(for='simple-rating__1', class =elemName+'__label')

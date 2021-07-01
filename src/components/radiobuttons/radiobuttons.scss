@@ -26,6 +26,7 @@ $colorWhite: #ffffff;
 	user-select: none;
 	width: 220px;
 	&__label {
+		//cursor: pointer;
 		@include font-h3;
 		position: relative;
 	}

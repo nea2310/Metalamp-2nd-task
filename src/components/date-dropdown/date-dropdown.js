@@ -13,8 +13,8 @@ class DatePicker {
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
-		return wrapper.
-			querySelector('.' + this.elemName + '__' + selector);
+		return wrapper.querySelector(
+			'.' + this.elemName + '__' + selector);
 	}
 
 	getElems(selectors) {
@@ -23,8 +23,7 @@ class DatePicker {
 			sel += '.' + this.elemName + '__' + selector + ',';
 		}
 		sel = sel.substring(0, sel.length - 1);
-		return this.wrapper.
-			querySelectorAll(sel);
+		return this.wrapper.querySelectorAll(sel);
 	}
 
 	render() {
