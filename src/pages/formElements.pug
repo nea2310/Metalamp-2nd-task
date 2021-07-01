@@ -3,6 +3,7 @@ include ../components/date-dropdown/date-dropdown.pug
 include ../components/input-field/input-field.pug
 include ../components/dropdown/dropdown.pug
 include ../components/checklist/checklist.pug
+include ../components/radiobuttons/radiobuttons.pug
 div(class="form-elements")
 	+logo-grey()
 	div(class="form-elements__col form-elements__col_left")
@@ -101,6 +102,12 @@ div(class="form-elements")
 							type: 'nonExpandable', 
 						labelText: 'checkbox buttons',}
 						)
+		div(class="form-elements__comp-wrapper")
+			+radiobuttons({categories:
+							{cat1: {name:'Мужчина'}, 
+							cat2:{name:'Женщина'}},
+							labelText: 'radio buttons',
+							radioGroupName: 'gender'})
 		div(class="form-elements__comp-wrapper")
 			+checklist(
 						{categories:

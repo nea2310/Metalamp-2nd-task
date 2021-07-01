@@ -22,40 +22,19 @@ $colorPurple: #bc9cff;
 $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
-fieldset {
-	border: none;
-}
-.checklist {
+.radiobuttons {
 	user-select: none;
-	width: 266px;
+	width: 220px;
 	&__label {
 		cursor: pointer;
 		@include font-h3;
 		position: relative;
 	}
-	&__img {
-		position: absolute;
-		right: 15px;
-		top: 3px;
-		&-expanded {
-			transform: rotate(180deg);
-			transition: all 0.9s ease 0s;
-		}
 
-		&_collapsed {
-			transform: rotate(0deg);
-			transition: all 0.9s ease 0s;
-		}
-	}
-
-	&__list-wrapper {
+	&__list {
 		margin-top: 17px;
-		&_hidden {
-			display: none;
-		}
-	}
-	&__cat-wrapper {
-		margin-bottom: 6px;
+		display: flex;
+		justify-content: space-between;
 	}
 
 	&__cat {
@@ -73,50 +52,36 @@ fieldset {
 		width: 0;
 		height: 0;
 
-		&:checked + .checklist__cat-checkmark {
+		&:checked + .radiobuttons__cat-radiomark {
 			border: 1px solid $colorPurple;
 			&:before {
-				background-image: url(/assets/img/interface/vector.svg);
-				background-position-y: 42%;
-				background-position-x: 40%;
+				background-image: url(/assets/img/interface/rectangle.svg);
+				background-position: center;
 				background-repeat: no-repeat;
 			}
 		}
 	}
 
-	&__cat-checkmark {
+	&__cat-radiomark {
 		cursor: pointer;
 		display: inline-block;
 		position: relative;
 		border: 1px solid $colorDarkShade25;
 		width: 18px;
 		height: 18px;
-		border-radius: 5px;
+		border-radius: 50%;
 
 		&:before {
 			content: "";
 			display: inline-block;
-			width: 20px;
-			height: 20px;
+			width: 18px;
+			height: 18px;
 		}
 	}
 
 	&__cat-name {
 		cursor: pointer;
 		@include font-body;
-		padding-top: 2px;
-		max-width: 215px;
-		&_rich {
-			font-family: "Montserrat-Bold";
-			margin-bottom: 5px;
-		}
-	}
-	&__cat-descr {
-		max-width: 230px;
-		cursor: pointer;
-		font-family: "Montserrat-Regular";
-		font-size: 12px;
-		line-height: 14px;
-		color: $colorDarkShade75;
+		padding-left: 10px;
 	}
 }
