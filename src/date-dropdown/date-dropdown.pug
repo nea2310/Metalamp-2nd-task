@@ -1,0 +1,36 @@
+mixin date-dropdown(options={type: '', labelTextFrom: '', labelTextTo: '', labelTextFromTo: '',})
+	-
+		let elemName='date-dropdown'
+		let modificator = ''
+		let width = ''
+		let src = 'assets/img/interface/expand-more.svg'
+		options.type == 'filterDateDropDown' ? modificator = elemName + '__calendar-wrapper_narrow' : modificator = ''
+		options.type == 'filterDateDropDown' ? width = '_narrow' : width = '_wide'
+	div(class=elemName + ' ' + elemName + width)
+		if options.type == 'dateDropDown'
+			div(class = elemName + '__input-wrapper')
+				label(class = elemName + '__label')
+					if options.labelTextFrom
+						p(class = elemName + '__label-text')=options.labelTextFrom
+					img(class = elemName + '__img ' + elemName + '__img_collapsed', src=src)
+					input(class = elemName + '__input ' + elemName + '__input_from ' + elemName + '__input_narrow js-masked', placeholder = "ДД.ММ.ГГГГ", type = text)
+			div(class = elemName + '__input-wrapper')
+				label(class = elemName + '__label')
+					if options.labelTextTo
+						p(class = elemName + '__label-text')=options.labelTextTo
+					img(class = elemName + '__img ' + elemName + '__img_collapsed', src = src)
+					input(class = elemName + '__input ' + elemName + '__input_to ' + elemName + '__input_narrow js-masked', placeholder = "ДД.ММ.ГГГГ", type = text)
+		if options.type == 'filterDateDropDown'
+			div(class = elemName + '__input-wrapper')
+				label(class = elemName + '__label')
+					if options.labelTextFromTo
+						p(class = elemName + '__label-text')=options.labelTextFromTo
+					img(class=elemName + '__img ' + elemName + '__img_collapsed', src = src)
+					input(class=elemName + '__input ' + elemName + '__input_fromto ' + elemName+'__input_wide ', value = "2021-08-19,2021-08-23", type = text, readonly = true)
+		div(class = elemName + '__calendar-wrapper ' + elemName+'__calendar-wrapper_hidden ' + modificator)
+			div(class = elemName+'__buttons')
+				button(class = elemName + '__button-clear') очистить
+				button(class = elemName + '__button-apply') применить
+
+
+

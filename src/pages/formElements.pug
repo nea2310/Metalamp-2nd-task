@@ -7,6 +7,7 @@ include ../components/radiobuttons/radiobuttons.pug
 include ../components/toggle/toggle.pug
 include ../components/like-button/like-button.pug
 include ../components/rate-button/rate-button.pug
+include ../components/range-slider/range-slider.pug
 div(class="form-elements")
 	+logo-grey()
 	div(class="form-elements__col form-elements__col_left")
@@ -146,3 +147,6 @@ div(class="form-elements")
 						labelText: 'rich checkbox buttons',
 						checkListName: 'rich checkbox buttons'}
 						)
+	div(class="form-elements__col form-elements__col_right")
+		div(class="form-elements__comp-wrapper")
+			+range-slider()

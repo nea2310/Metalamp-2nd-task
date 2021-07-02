@@ -8,3 +8,4 @@ import './dropdown/dropdown.js';
 import './checklist/checklist.js';
 import './like-button/like-button.js';
 import './rate-button/rate-button.js';
+import './range-slider/range-slider.js';
