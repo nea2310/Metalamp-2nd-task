@@ -230,6 +230,7 @@ class DatePicker {
 	//клик по кнопке [Очистить]
 	clear() {
 		this.btnClear.addEventListener('click', () => {
+			this.clickOnCalendar = true;
 			this.myDatepicker.clear();
 			if (!this.isFilter) {
 				this.inputDateFrom.value = '';
