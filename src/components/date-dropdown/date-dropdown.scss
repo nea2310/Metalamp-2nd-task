@@ -100,7 +100,7 @@ $colorWhite: #ffffff;
 	}
 	&__input {
 		&::placeholder {
-			color: $colorDarkShade25;
+			color: $colorDarkShade75;
 		}
 		@include font-body;
 		height: 44px;
