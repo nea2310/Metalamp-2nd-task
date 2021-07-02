@@ -26,7 +26,6 @@ $colorWhite: #ffffff;
 	user-select: none;
 	width: 220px;
 	&__label {
-		//cursor: pointer;
 		@include font-h3;
 		position: relative;
 	}
@@ -54,11 +53,8 @@ $colorWhite: #ffffff;
 
 		&:checked + .radiobuttons__cat-radiomark {
 			border: 1px solid $colorPurple;
-			&:before {
-				background-image: url(/assets/img/interface/rectangle.svg);
-				background-position: center;
-				background-repeat: no-repeat;
-			}
+			box-shadow: inset 0px 0px 0px 3.5px $colorWhite;
+			background: linear-gradient(180deg, $colorPurple 0%, #8ba4f9 100%);
 		}
 	}
 
@@ -70,13 +66,10 @@ $colorWhite: #ffffff;
 		width: 18px;
 		height: 18px;
 		border-radius: 50%;
-
-		&:before {
-			content: "";
-			display: inline-block;
-			width: 18px;
-			height: 18px;
-		}
+		content: "";
+		display: inline-block;
+		width: 18px;
+		height: 18px;
 	}
 
 	&__cat-name {
