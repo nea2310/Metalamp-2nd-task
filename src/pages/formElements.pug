@@ -127,6 +127,17 @@ div(class="form-elements")
 						{labelText: 'rate button',
 						})
 		div(class="form-elements__comp-wrapper")
+			+dropdown(
+						{categories:
+							{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+							cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+							cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+						type: 'dropDownGuests',
+						placeholder: 'Сколько гостей',
+						buttons: true,
+						labelText: 'dropdown'}
+						)
+		div(class="form-elements__comp-wrapper")
 			+checklist(
 						{categories:
 							{cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
