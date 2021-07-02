@@ -53,12 +53,7 @@ $colorWhite: #ffffff;
 
 	&__item {
 		position: absolute;
-		width: 0%;
-		height: 0%;
-		opacity: 0;
-		visibility: hidden;
-		top: 0;
-		left: 0;
+		appearance: none;
 
 		&:checked + .rate-button__label::before,
 		&:checked ~ .rate-button__label::before {
