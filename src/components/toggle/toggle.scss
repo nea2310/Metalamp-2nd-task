@@ -42,16 +42,15 @@ $colorWhite: #ffffff;
 
 		& + .toggle__checkmark {
 			border: 1px solid $colorDarkShade25;
-			background-image: url(/assets/img/interface/rectangle-border.svg);
-			background-position-y: 50%;
-			background-position-x: 13%;
-			background-repeat: no-repeat;
+
+			box-shadow: inset 0px 0px 0px 3.5px $colorWhite, inset -20px 0px 0px 3.5px $colorWhite;
+			background-color: $colorDarkShade25;
 		}
 
 		&:checked + .toggle__checkmark {
 			border: 1px solid $colorPurple;
-			background-image: url(/assets/img/interface/rectangle.svg);
-			background-position-x: 87%;
+			box-shadow: inset 20px 0px 0px 3.5px $colorWhite, inset 0px 0px 0px 3.5px $colorWhite;
+			background: linear-gradient(180deg, $colorPurple 0%, #8ba4f9 100%);
 		}
 	}
 
