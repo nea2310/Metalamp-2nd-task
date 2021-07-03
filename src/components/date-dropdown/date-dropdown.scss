@@ -19,8 +19,12 @@ $colorDarkShade50: rgba(31, 32, 65, 0.5);
 $colorDarkShade25: rgba(31, 32, 65, 0.25);
 $colorDarkShade5: rgba(31, 32, 65, 0.05);
 $colorPurple: #bc9cff;
+$colorBlue: #8ba4f9;
 $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
+$colorLightBlue: #66d2ea;
+$gradientPurple: linear-gradient($colorPurple 0%, $colorBlue 100%);
+$gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 
 .date-dropdown {
 	user-select: none;
@@ -30,7 +34,6 @@ $colorWhite: #ffffff;
 	&_narrow {
 		width: 266px;
 	}
-	//border: 1px solid red;
 	display: flex;
 	justify-content: flex-start;
 	position: relative;
@@ -51,9 +54,9 @@ $colorWhite: #ffffff;
 
 		&_narrow {
 			& .datepicker-inline .datepicker {
-				width: 266px !important;
+				width: 266px;
 				&--cell {
-					height: 32px !important;
+					height: 32px;
 				}
 				&--cell-day {
 					&.-range-from-::after {
@@ -122,134 +125,143 @@ $colorWhite: #ffffff;
 			width: 266px;
 		}
 	}
-}
 
-.datepicker {
-	box-sizing: border-box !important;
-	width: 320px !important;
-	&--nav {
-		border: none !important;
-		padding: 4px 16px 4px 16px !important;
-		min-height: 55px !important;
-		&-title {
-			font-family: "Montserrat-Bold";
-			font-size: 19px;
-			line-height: 23px;
-			color: $colorDarkShade100 !important;
-			i {
-				color: $colorDarkShade100 !important;
+	.datepicker {
+		box-sizing: border-box;
+		width: 320px;
+		&--nav {
+			border: none;
+			padding: 4px 16px 4px 16px;
+			min-height: 55px;
+			&-title {
+				font-family: "Montserrat-Bold";
+				font-size: 19px;
+				line-height: 23px;
+				color: $colorDarkShade100;
+				i {
+					color: $colorDarkShade100;
+				}
+			}
+			&-action {
+				& path {
+					fill: $colorPurple;
+					stroke: none;
+				}
+				& svg {
+					width: 17px;
+					height: 18px;
+				}
 			}
 		}
-		&-action {
-			& path {
-				fill: $colorPurple !important;
-				stroke: none !important;
+		&--day {
+			&-name {
+				color: $colorPurple;
+				font-family: "Montserrat-Bold";
+				font-weight: 700;
+				font-size: 12px;
+				line-height: 14.63px;
+				text-transform: capitalize;
 			}
-			& svg {
-				width: 17px !important;
-				height: 18px !important;
+		}
+
+		&--cells {
+			padding-top: 13px;
+		}
+
+		&--cell {
+			height: 39px;
+			&-day {
+				color: $colorDarkShade50;
+				font-family: "Montserrat-Regular";
+				font-weight: 400;
+				font-size: 12px;
+				line-height: 14.63px;
 			}
 		}
-	}
-	&--day {
-		&-name {
-			color: $colorPurple !important;
-			font-family: "Montserrat-Bold" !important;
-			font-weight: 700 !important;
-			font-size: 12px !important;
-			line-height: 14.63px !important;
-			text-transform: capitalize !important;
+		&--content {
+			padding: 15px 18px 30px 20px;
 		}
-	}
-
-	&--cells {
-		padding-top: 13px;
-	}
-
-	&--cell {
-		height: 39px !important;
-		&-day {
-			color: $colorDarkShade50 !important;
-			font-family: "Montserrat-Regular" !important;
-			font-weight: 400 !important;
-			font-size: 12px !important;
-			line-height: 14.63px !important;
-		}
-	}
-	&--content {
-		padding: 15px 18px 30px 20px !important;
-	}
-	&--buttons {
-		border: none !important;
-	}
-
-	&--cell-day {
-		&.-disabled- {
-			color: $colorDarkShade25 !important;
+		&--buttons {
+			border: none;
 		}
 
-		&.-current- {
-			border-radius: 50% !important;
-			background: linear-gradient(#6fcf97 0%, #66d2ea 100%);
-		}
+		&--cell-day {
+			&.-disabled- {
+				color: $colorDarkShade25;
+			}
 
-		&.-range-from- {
-			border: none !important;
-			&::after {
-				position: absolute;
-				content: "";
-				height: 39px;
-				width: 40px;
-				background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
+			&.-current- {
+				border-radius: 50%;
+				background: $gradientGreen;
+			}
+
+			&.-range-from- {
+				border: none;
+				&::after {
+					position: absolute;
+					z-index: -1;
+					content: "";
+					height: 39px;
+					width: 40px;
+					background: $gradientPurple;
+					opacity: 0.5;
+					border-bottom-left-radius: 50%;
+					border-top-left-radius: 50%;
+				}
+			}
+
+			&.-range-to- {
+				border: none;
+				&::before {
+					position: absolute;
+					z-index: -1;
+					content: "";
+					height: 39px;
+					width: 40px;
+					background: $gradientPurple;
+					opacity: 0.5;
+					border-bottom-right-radius: 50%;
+					border-top-right-radius: 50%;
+				}
+			}
+
+			&.-focus- {
+				font-weight: 700;
+				position: relative;
+				border-radius: 50%;
+				background: $gradientPurple;
+			}
+
+			&.-selected- {
+				font-weight: 700;
+				position: relative;
+				border-radius: 50%;
+				background: $gradientPurple;
+			}
+
+			&.-focus-.-selected- {
+				background: $gradientPurple;
+				font-weight: 700;
+			}
+
+			&.-in-range- {
+				background: $gradientPurple;
 				opacity: 0.5;
-				border-bottom-left-radius: 50%;
-				border-top-left-radius: 50%;
 			}
-		}
 
-		&.-range-to- {
-			border: none !important;
-			&::before {
-				position: absolute;
-				content: "";
-				height: 39px;
-				width: 40px;
-				background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
-				opacity: 0.5;
-				border-bottom-right-radius: 50%;
-				border-top-right-radius: 50%;
-			}
-		}
-
-		&.-focus- {
-			position: relative;
-			border-radius: 50% !important;
-			background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
-		}
-
-		&.-selected- {
-			position: relative;
-			border-radius: 50% !important;
-			background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
-		}
-
-		&.-in-range- {
-			background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
-			opacity: 0.5;
-		}
-
-		&.-in-range-.-focus- {
-			position: relative;
-			border-radius: 50% !important;
-			background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
-			opacity: 1;
-			&::before {
-				position: absolute;
-				content: "";
-				height: 39px;
-				width: 40px;
-				background: linear-gradient(#bc9cff 0%, #8ba4f9 100%) !important;
-				opacity: 0.5;
+			&.-in-range-.-focus- {
+				position: relative;
+				border-radius: 50%;
+				background: $gradientPurple;
+				opacity: 1;
+				&::before {
+					position: absolute;
+					content: "";
+					height: 39px;
+					width: 40px;
+					background: $gradientPurple;
+					opacity: 0.5;
+				}
 			}
 		}
 	}

@@ -24,33 +24,22 @@ $colorWhite: #ffffff;
 $colorBlue: #66d2ea;
 
 .range-slider {
-	//	border: 1px solid orange;
-}
-
-.range-slider {
 	&__wrapper {
 		width: 266px;
 	}
 	&__title-wrapper {
 		display: flex;
 		justify-content: space-between;
-		//	border: 1px solid red;
 		margin-bottom: -3px;
 	}
 
 	&__title {
 		white-space: nowrap;
-
 		@include font-h3;
 		width: 50%;
-
-		// .header-block {
-		// 	padding: 0;
-		// }
 	}
 	&__price {
 		width: 50%;
-		//border: 1px solid blue;
 		width: 100%;
 		text-align: end;
 		border: none;
