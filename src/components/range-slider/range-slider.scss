@@ -23,33 +23,34 @@ $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
 .range-slider {
-	border: 1px solid red;
+	border: 1px solid orange;
 }
 
-.rangeslider__wrapper {
-	position: relative;
-}
 .range-slider {
-	width: 266px;
-	//
-
-	.r-title {
+	&__wrapper {
+		width: 266px;
+	}
+	&__title-wrapper {
 		display: flex;
-		justify-content: space-between;
-		margin-bottom: -5px;
+	}
 
-		.header-block {
-			padding: 0;
-		}
+	&__title {
+		border: 1px solid red;
+		@include font-h3;
+
+		// .header-block {
+		// 	padding: 0;
+		// }
 	}
 	&__price {
+		border: 1px solid blue;
 		width: 100%;
-		text-align: end;
+		text-align: start;
 		border: none;
 		pointer-events: none;
 		font-size: 12px;
 		text-transform: uppercase;
-		@include font-h3;
+		@include font-body;
 	}
 
 	span.irs.irs--flat {

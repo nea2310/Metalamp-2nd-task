@@ -1,9 +1,10 @@
 mixin range-slider({ type='double', min=1000, max=15000, step=1, from=5000, to=10000, isMinMaxHidden=true, isFromToHidden=true}={})
 	-
-		let elemName='range-slider'
+		let elemName='range-slider js-range-slider'
 	div(class = elemName)
-		div(class = 'range-slider js-range-slider')
-			div(class = 'r-title')
+		div(class = 'range-slider__wrapper')
+			div(class = 'range-slider__title-wrapper')
+				p(class = 'range-slider__title') RANGE SLIDER
 				input(type='text' readonly class='range-slider__price js-range-slider__price')
 			div(class = 'r-slider')
 				input(class = 'range-slider__slider js-range-slider__slider' type='text' data-type=`${type}` data-min=`${min}` data-max=`${max}` data-step=`${step}` data-from=`${from}` data-to=`${to}` data-hide-min-max=`${isMinMaxHidden}` data-hide-from-to=`${isFromToHidden}`)

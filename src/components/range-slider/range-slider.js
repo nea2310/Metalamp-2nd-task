@@ -29,27 +29,20 @@ class RangeSlider {
 
 	init() {
 		const { price } = this;
-		//	console.log(price);
+		let displayPrice = (data) => {
+			const { from, to } = data;
+			price.value = from.toLocaleString() + '₽ - '
+				+ to.toLocaleString() + '₽';
+		};
 		$(this.slider).ionRangeSlider({
 			onStart(data) {
-				console.log(price);
-				const { from, to } = data;
-				console.log(from);
-				console.log(to);
-				price.value = (`${from.toLocaleString()}₽ -
-				 ${to.toLocaleString()}₽`);
+				displayPrice(data);
 			},
-
 			onChange(data) {
-				const { from, to } = data;
-				price.value = (`${from.toLocaleString()}₽ -
-				 ${to.toLocaleString()}₽`);
+				displayPrice(data);
 			}
-
 		});
 	}
-
-
 }
 
 function renderRangeSliders() {
