@@ -1,7 +1,7 @@
 @mixin font-body() {
 	font-family: "Montserrat-Regular";
-	font-size: 14px;
-	line-height: 24px;
+	font-size: 12px;
+	//line-height: 24px;
 	color: $colorDarkShade75;
 }
 
@@ -23,7 +23,7 @@ $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
 .range-slider {
-	border: 1px solid orange;
+	//	border: 1px solid orange;
 }
 
 .range-slider {
@@ -32,20 +32,26 @@ $colorWhite: #ffffff;
 	}
 	&__title-wrapper {
 		display: flex;
+		justify-content: space-between;
+		//	border: 1px solid red;
+		margin-bottom: -3px;
 	}
 
 	&__title {
-		border: 1px solid red;
+		white-space: nowrap;
+
 		@include font-h3;
+		width: 50%;
 
 		// .header-block {
 		// 	padding: 0;
 		// }
 	}
 	&__price {
-		border: 1px solid blue;
+		width: 50%;
+		//border: 1px solid blue;
 		width: 100%;
-		text-align: start;
+		text-align: end;
 		border: none;
 		pointer-events: none;
 		font-size: 12px;
