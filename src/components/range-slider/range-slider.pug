@@ -1,13 +1,13 @@
-mixin range-slider({ type='double', min=1000, max=15000, step=1, from=5000, to=10000, isMinMaxHidden=true, isFromToHidden=true}={})
+mixin range-slider(options = {})
 	-
-		let elemName='range-slider js-range-slider'
+		let elemName = 'range-slider'
 	div(class = elemName)
-		div(class = 'range-slider__wrapper')
-			div(class = 'range-slider__title-wrapper')
-				p(class = 'range-slider__title') RANGE SLIDER
-				input(type='text' readonly class='range-slider__price js-range-slider__price')
-			div(class = 'r-slider')
-				input(class = 'range-slider__slider js-range-slider__slider' type='text' data-type=`${type}` data-min=`${min}` data-max=`${max}` data-step=`${step}` data-from=`${from}` data-to=`${to}` data-hide-min-max=`${isMinMaxHidden}` data-hide-from-to=`${isFromToHidden}`)
+		div(class = elemName + '__wrapper')
+			div(class = elemName + '__title-wrapper')
+				if options.labelText
+					p(class = elemName + '__title')= options.labelText
+				input(class = elemName + '__price' type = 'text' readonly)
+			input(class = elemName + '__slider' type = 'text' data-type = options.type data-min = options.min data-max = options.max data-step = options.step data-from = options.from data-to = options.to data-hide-min-max = options.isMinMaxHidden data-hide-from-to = options.isFromToHidden)
 
 
 

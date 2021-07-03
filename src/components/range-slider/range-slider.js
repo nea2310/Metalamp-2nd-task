@@ -22,8 +22,8 @@ class RangeSlider {
 	}
 
 	render() {
-		this.slider = this.wrapper.querySelector('.js-range-slider__slider');
-		this.price = this.wrapper.querySelector('.js-range-slider__price');
+		this.slider = this.getElem('slider');
+		this.price = this.getElem('price');
 		this.init();
 	}
 

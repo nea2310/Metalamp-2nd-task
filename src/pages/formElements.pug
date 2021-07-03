@@ -149,4 +149,14 @@ div(class="form-elements")
 						)
 	div(class="form-elements__col form-elements__col_right")
 		div(class="form-elements__comp-wrapper")
-			+range-slider()
+			+range-slider(
+						{labelText: 'range slider',
+						type: 'double', 
+						min:1000, 
+						max:15000, 
+						step:1, 
+						from:5000, 
+						to:10000, 
+						isMinMaxHidden:'true', 
+						isFromToHidden:'true'}
+						)

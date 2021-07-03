@@ -21,6 +21,7 @@ $colorDarkShade5: rgba(31, 32, 65, 0.05);
 $colorPurple: #bc9cff;
 $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
+$colorBlue: #66d2ea;
 
 .range-slider {
 	//	border: 1px solid orange;
@@ -64,7 +65,7 @@ $colorWhite: #ffffff;
 			max-width: 266px;
 			width: 100%;
 			height: 6px;
-			background: #ffffff;
+			background: $colorWhite;
 			border: 1px solid $colorDarkShade25;
 			box-sizing: border-box;
 			border-radius: 3px;
@@ -74,8 +75,8 @@ $colorWhite: #ffffff;
 			width: 14px;
 			height: 14px;
 			margin-top: -1px;
-			background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-			border: 2px solid #ffffff;
+			background: linear-gradient(180deg, $colorGreen 0%, $colorBlue 100%);
+			border: 2px solid $colorWhite;
 			border-radius: 50%;
 			box-sizing: border-box;
 			outline: none;
@@ -88,7 +89,7 @@ $colorWhite: #ffffff;
 
 		.irs-bar {
 			height: 6px;
-			background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+			background: linear-gradient(180deg, $colorGreen 0%, $colorBlue 100%);
 			border-radius: 3px;
 		}
 	}
