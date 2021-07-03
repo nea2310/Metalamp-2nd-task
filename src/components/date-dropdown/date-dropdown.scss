@@ -1,12 +1,14 @@
 @mixin font-body() {
-	font-family: "Montserrat-Regular";
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: normal;
 	font-size: 14px;
 	line-height: 24px;
 	color: $colorDarkShade75;
 }
 
 @mixin font-h3() {
-	font-family: "Montserrat-Bold";
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	font-size: 12px;
 	line-height: 15px;
 	color: $colorDarkShade100;
@@ -134,7 +136,8 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 			padding: 4px 16px 4px 16px;
 			min-height: 55px;
 			&-title {
-				font-family: "Montserrat-Bold";
+				font-family: "Montserrat", Arial, Helvetica, sans-serif;
+				font-weight: bold;
 				font-size: 19px;
 				line-height: 23px;
 				color: $colorDarkShade100;
@@ -156,7 +159,8 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 		&--day {
 			&-name {
 				color: $colorPurple;
-				font-family: "Montserrat-Bold";
+				font-family: "Montserrat", Arial, Helvetica, sans-serif;
+				font-weight: bold;
 				font-weight: 700;
 				font-size: 12px;
 				line-height: 14.63px;
@@ -172,7 +176,8 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 			height: 39px;
 			&-day {
 				color: $colorDarkShade50;
-				font-family: "Montserrat-Regular";
+				font-family: "Montserrat", Arial, Helvetica, sans-serif;
+				font-weight: normal;
 				font-weight: 400;
 				font-size: 12px;
 				line-height: 14.63px;

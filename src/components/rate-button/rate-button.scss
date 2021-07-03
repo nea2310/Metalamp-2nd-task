@@ -1,12 +1,14 @@
 @mixin font-body() {
-	font-family: "Montserrat-Regular";
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: normal;
 	font-size: 10px;
 	line-height: 12.19px;
 	color: $colorDarkShade25;
 }
 
 @mixin font-h3() {
-	font-family: "Montserrat-Bold";
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	font-size: 12px;
 	line-height: 15px;
 	color: $colorDarkShade100;
