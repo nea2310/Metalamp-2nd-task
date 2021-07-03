@@ -49,7 +49,7 @@ $colorWhite: #ffffff;
 		pointer-events: none;
 		font-size: 12px;
 		text-transform: uppercase;
-		//	@include font__Montserrat_grey;
+		@include font-h3;
 	}
 
 	span.irs.irs--flat {
@@ -58,7 +58,7 @@ $colorWhite: #ffffff;
 			width: 100%;
 			height: 6px;
 			background: #ffffff;
-			//	border: 1px solid $color_grey_opaque;
+			border: 1px solid $colorDarkShade25;
 			box-sizing: border-box;
 			border-radius: 3px;
 		}
