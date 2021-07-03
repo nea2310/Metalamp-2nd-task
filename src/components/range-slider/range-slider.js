@@ -2,7 +2,8 @@ class RangeSlider {
 	constructor(elemName, elem) {
 		this.elemName = elemName;
 		this.wrapper = elem;
-		//		this.render();
+		this.render();
+
 
 	}
 
@@ -21,7 +22,31 @@ class RangeSlider {
 	}
 
 	render() {
+		this.slider = this.wrapper.querySelector('.js-range-slider__slider');
+		this.price = this.wrapper.querySelector('.js-range-slider__price');
+		this.init();
+	}
 
+	init() {
+		const { price } = this;
+		//	console.log(price);
+		$(this.slider).ionRangeSlider({
+			onStart(data) {
+				console.log(price);
+				const { from, to } = data;
+				console.log(from);
+				console.log(to);
+				price.value = (`${from.toLocaleString()}₽ -
+				 ${to.toLocaleString()}₽`);
+			},
+
+			onChange(data) {
+				const { from, to } = data;
+				price.value = (`${from.toLocaleString()}₽ -
+				 ${to.toLocaleString()}₽`);
+			}
+
+		});
 	}
 
 
@@ -33,4 +58,4 @@ function renderRangeSliders() {
 		new RangeSlider('range-slider', rangeSlider);
 	}
 }
-//renderRangeSliders();
+renderRangeSliders();
