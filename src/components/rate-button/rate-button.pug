@@ -1,10 +1,11 @@
 mixin rate-button(options={})
 	-
 		let elemName = 'rate-button'
-	if options.labelText
-		p(class = elemName + '__label-text')=options.labelText
-		div(class = elemName + '__stars-wrapper')
-			div(class = elemName + '__items')
-				each val in [5,4,3,2,1]
-					input(class = elemName+'__item' type = "radio" name = elemName value = val id = elemName + '__' + val)
-					label(for = elemName + '__' + val class = elemName + '__label')
+	fieldset(class = elemName)
+		legend(class = elemName+'__caption')= options.labelText
+		div(class = elemName+'__group')
+			input(class = elemName+'__star' type = "radio" name = elemName value = '1' aria-label = "Очень плохо")
+			input(class = elemName+'__star' type = "radio" name = elemName value = '2' aria-label = "Плохо")
+			input(class = elemName+'__star' type = "radio" name = elemName value = '3' aria-label = "Удовлетворительно")
+			input(class = elemName+'__star' type = "radio" name = elemName value = '4' aria-label = "Хорошо" checked)
+			input(class = elemName+'__star' type = "radio" name = elemName value = '5' aria-label = "Отлично")
