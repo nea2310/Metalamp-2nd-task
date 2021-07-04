@@ -8,6 +8,7 @@ include ../components/toggle/toggle.pug
 include ../components/like-button/like-button.pug
 include ../components/rate-button/rate-button.pug
 include ../components/range-slider/range-slider.pug
+include ../components/rate-button2/rate-button2.pug
 div(class="form-elements")
 	+logo-grey()
 	div(class="form-elements__col form-elements__col_left")
@@ -160,3 +161,5 @@ div(class="form-elements")
 						isMinMaxHidden:'true', 
 						isFromToHidden:'true'}
 						)
+		div(class="form-elements__comp-wrapper")
+			+rate-button2()
