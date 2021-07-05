@@ -11,6 +11,8 @@ class DropDown {
 		this.apply();
 		this.collapseByClick();
 		this.insideListClick();
+		this.collapseByFocus();
+		this.insideListFocus();
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
@@ -30,6 +32,7 @@ class DropDown {
 
 	render() {
 		this.clickOnList = false;
+		this.focusOnList = false;
 		this.mouseDown = false;
 
 		this.input = this.getElem('input');
@@ -291,29 +294,21 @@ class DropDown {
 
 
 		this.input.addEventListener("mouseup", () => {
-			//	if (this.mouseDown == true) {
-			// console.log('КЛИК');
 			this.toggle(true);
 			this.mouseDown = false;
-			//	}
 		});
 	}
 
 	// фокус на инпут
 	focusInput() {
 		this.input.addEventListener("focus", (e) => {
-			console.log(this.mouseDown);
 			if (this.listWrapper.classList.
 				contains(this.elemName + '__list-wrapper_hidden') &&
 				this.mouseDown == false) {
-
 				this.toggle(true);
 			}
 		});
 	}
-
-
-
 
 	insideListClick() {
 		this.wrapper.addEventListener('click', (e) => {
@@ -321,7 +316,6 @@ class DropDown {
 			this.clickOnList = true;
 		});
 	}
-
 
 	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
 	collapseByClick() {
@@ -333,12 +327,28 @@ class DropDown {
 			} else {
 				console.log('КЛИК ВНУТРИ');
 				this.clickOnList = false;
-
-
-
 			}
 		});
+	}
 
+	insideListFocus() {
+		this.wrapper.addEventListener('focusin', (e) => {
+			//	console.log('FOCUS INSIDE');
+			this.focusOnList = true;
+		});
+	}
+	//отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
+	collapseByFocus() {
+		document.addEventListener("focusin", (e) => {
+			if (e.target.closest(`.${this.elemName}` == null) ||
+				this.focusOnList == false) {
+				//	console.log('ФОКУС СНАРУЖИ');
+				this.toggle(false);
+			} else {
+				//	console.log('ФОКУС ВНУТРИ');
+				this.focusOnList = false;
+			}
+		});
 	}
 
 
