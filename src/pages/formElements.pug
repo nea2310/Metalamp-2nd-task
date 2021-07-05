@@ -161,6 +161,7 @@ div(class="form-elements")
 						isMinMaxHidden:'true', 
 						isFromToHidden:'true'}
 						)
+		span(class='form-elements__label') buttons
 		div(class="form-elements__comp-wrapper")
 			+btn(
 						{text: 'click me',
@@ -169,6 +170,7 @@ div(class="form-elements")
 						width: 'wide',
 						color: 'dark'}
 						)
+		div(class="form-elements__comp-wrapper")
 			+btn(
 						{text: 'click me',
 							type: 'link',
@@ -176,17 +178,21 @@ div(class="form-elements")
 						width: 'wide',
 						color: 'light'}
 						)
-			+btn(
-						{text: 'click me',
-							type: 'submit',
-							length: 'very-long',
-						width: 'wide',
-						color: 'dark'}
-						)
+		div(class="form-elements__comp-wrapper")
 			+btn(
 						{text: 'click me',
 						type: 'plain-text'}
 						)
+		div(class="form-elements__comp-wrapper")
+			+btn(
+						{text: 'перейти к оплате',
+							type: 'submit',
+							length: 'very-long',
+						width: 'wide',
+						color: 'dark',
+						img: true}
+						)
+		div(class="form-elements__comp-wrapper")
 			+btn(
 						{text: 'click me',
 							type: 'link',
@@ -194,6 +200,7 @@ div(class="form-elements")
 						width: 'narrow',
 						color: 'dark'}
 						)
+		div(class="form-elements__comp-wrapper")
 			+btn(
 						{text: 'click me',
 							type: 'link',

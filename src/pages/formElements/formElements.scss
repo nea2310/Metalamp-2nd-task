@@ -6,10 +6,17 @@
 	display: flex;
 	justify-content: space-between;
 	padding-top: 143px;
-
+	&__label {
+		font-family: "Montserrat", Arial, Helvetica, sans-serif;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: 15px;
+		color: #1f2041;
+		text-transform: uppercase;
+	}
 	&__col {
 		&_left {
-			margin-left: 140px;
+			margin-left: 117px;
 			& > .form-elements__comp-wrapper {
 				&:nth-child(2) {
 					margin-top: 21px;
@@ -33,54 +40,66 @@
 					margin-top: 101px;
 				}
 				&:nth-child(9) {
-					margin-top: 252px;
+					margin-top: 257px;
 				}
 				&:nth-child(10) {
-					margin-top: 34px;
+					margin-top: 50px;
 				}
 			}
 		}
 
 		&_center {
-			margin-left: 54px;
+			padding-left: 54px;
 			& > .form-elements__comp-wrapper {
+				&:nth-child(1) {
+					margin-top: 0px;
+				}
 				&:nth-child(2) {
-					margin-top: 11px;
+					margin-top: 32px;
 				}
 				&:nth-child(3) {
-					margin-top: 28px;
+					margin-top: 37px;
 				}
 				&:nth-child(4) {
 					margin-top: 79px;
 				}
 				&:nth-child(5) {
-					margin-top: 40px;
+					margin-top: 42px;
 				}
 				&:nth-child(6) {
-					margin-top: 196px;
+					margin-top: 199px;
 				}
 				&:nth-child(7) {
-					margin-top: 251px;
+					margin-top: 256px;
 				}
 			}
 		}
 		&_right {
-			margin-right: 196px;
+			margin-right: 165px;
 			& > .form-elements__comp-wrapper {
+				&:nth-child(1) {
+					margin-bottom: 36px;
+				}
 				&:nth-child(2) {
 					margin-top: 0px;
 				}
 				&:nth-child(3) {
-					margin-top: 0px;
+					margin-top: 16px;
 				}
 				&:nth-child(4) {
-					margin-top: 0px;
+					margin-top: 31px;
 				}
 				&:nth-child(5) {
-					margin-top: 0px;
+					margin-top: 32px;
 				}
 				&:nth-child(6) {
-					margin-top: 0px;
+					margin-top: 30px;
+				}
+				&:nth-child(7) {
+					margin-top: 20px;
+				}
+				&:nth-child(8) {
+					margin-top: 20px;
 				}
 			}
 		}

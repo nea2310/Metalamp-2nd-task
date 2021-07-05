@@ -11,6 +11,8 @@ mixin btn(options={})
 			button(class = elemName + ' ' + elemName + '_' + length + ' ' + elemName + '_' + width + ' ' + elemName + '_' + color type = 'button')= text
 		when 'submit'
 			button(class = elemName + ' ' + elemName + '_' + length + ' ' + elemName + '_' + width + ' ' + elemName + '_' + color type = 'submit')= text
+				if options.img
+					img(class = elemName+'__img', src = "assets/img/interface/arrow-forward-white.svg")
 		when 'link'
 			a(class = elemName + ' ' + elemName + '_' + length + ' ' + elemName + '_' + width + ' ' + elemName + '_' + color href = options.href)= text
 		when 'plain-text'

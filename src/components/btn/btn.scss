@@ -21,47 +21,114 @@ $colorDarkShade50: rgba(31, 32, 65, 0.5);
 $colorDarkShade25: rgba(31, 32, 65, 0.25);
 $colorDarkShade5: rgba(31, 32, 65, 0.05);
 $colorPurple: #bc9cff;
+$colorBlue: #8ba4f9;
 $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
-
+$gradientPurple: linear-gradient($colorPurple 0%, $colorBlue 100%);
+$borderWidth: 2px;
+button {
+	border: none;
+}
 .btn {
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+	position: relative;
 	@include font-h3;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border: 1px solid grey;
 	box-sizing: border-box;
 	user-select: none;
-	&_very-long {
+	border-radius: 22px;
+
+	&_very-long.btn_dark {
 		width: 320px;
 	}
 
-	&_long {
+	&_long.btn_dark {
 		width: 196px;
 	}
 
-	&_short {
+	&_short.btn_dark {
 		width: 99px;
 	}
-	&_very-short {
+	&_very-short.btn_dark {
 		width: 87px;
 	}
 
-	&_wide {
+	&_wide.btn_dark {
 		height: 44px;
 	}
 
-	&_narrow {
+	&_narrow.btn_dark {
 		height: 34px;
 	}
+
+	&_very-long.btn_light {
+		width: calc(320px - #{$borderWidth});
+	}
+
+	&_long.btn_light {
+		width: calc(196px - #{$borderWidth});
+	}
+
+	&_short.btn_light {
+		width: calc(99px - #{$borderWidth});
+	}
+	&_very-short.btn_light {
+		width: calc(87px - #{$borderWidth});
+	}
+
+	&_wide.btn_light {
+		height: calc(44px - #{$borderWidth});
+	}
+
+	&_narrow.btn_light {
+		height: calc(34px - #{$borderWidth});
+	}
+
 	&_plain-text {
+		color: $colorPurple;
 		border: none;
 		background: none;
+		&:hover,
+		&:focus {
+			color: $colorDarkShade50;
+		}
 	}
 	&_dark {
-		background-color: $colorPurple;
+		background: $gradientPurple;
+		color: $colorWhite;
+		&:hover,
+		&:focus {
+			opacity: 0.5;
+		}
 	}
 	&_light {
 		background-color: $colorWhite;
+		color: $colorPurple;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
+			margin: -$borderWidth;
+			border-radius: inherit;
+			background: $gradientPurple;
+		}
+		&:hover::before,
+		&:focus::before {
+			opacity: 0.5;
+		}
+	}
+	&__img {
+		position: absolute;
+		top: 14px;
+		right: 14px;
 	}
 }
