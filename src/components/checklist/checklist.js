@@ -5,8 +5,11 @@ class CheckList {
 		this.wrapper = elem;
 		this.render();
 		this.clickInput();
+		this.focusInput();
 		this.insideListClick();
 		this.collapseByClick();
+		this.insideListFocus();
+		this.collapseByFocus();
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
@@ -15,8 +18,9 @@ class CheckList {
 	}
 
 	render() {
-		this.clicked = false;
-		this.clickedInside = false;
+		this.clickOnList = false;
+		this.focusOnList = false;
+		this.mouseDown = false;
 		this.label = this.getElem('label');
 		this.listWrapper = this.getElem('list-wrapper');
 		this.tip = this.getElem('img');
@@ -41,10 +45,26 @@ class CheckList {
 			}
 		}
 	}
+
 	// клик по лейблу
 	clickInput() {
-		this.label.addEventListener("click", () => {
+		this.label.addEventListener("mousedown", () => {
+			this.mouseDown = true;
+		});
+		this.label.addEventListener("mouseup", () => {
 			this.toggle(true);
+			this.mouseDown = false;
+		});
+	}
+
+	// фокус на лейбл
+	focusInput() {
+		this.label.addEventListener("focus", (e) => {
+			if (this.listWrapper.classList.
+				contains(this.elemName + '__list-wrapper_hidden') &&
+				this.mouseDown == false) {
+				this.toggle(true);
+			}
 		});
 	}
 
@@ -66,6 +86,28 @@ class CheckList {
 			else {
 				//	console.log('КЛИК ВНУТРИ');
 				this.clickOnList = false;
+			}
+		});
+	}
+
+	//проверка, фокус был снаружи или внутри списка
+	insideListFocus() {
+		this.wrapper.addEventListener('focusin', (e) => {
+			//	console.log('FOCUS INSIDE');
+			this.focusOnList = true;
+		});
+	}
+
+	//отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
+	collapseByFocus() {
+		document.addEventListener("focusin", (e) => {
+			if (e.target.closest(`.${this.elemName}` == null) ||
+				this.focusOnList == false) {
+				//	console.log('ФОКУС СНАРУЖИ');
+				this.toggle(false);
+			} else {
+				//	console.log('ФОКУС ВНУТРИ');
+				this.focusOnList = false;
 			}
 		});
 	}

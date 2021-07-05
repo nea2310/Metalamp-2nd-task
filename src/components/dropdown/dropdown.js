@@ -310,6 +310,7 @@ class DropDown {
 		});
 	}
 
+	//проверка, клик был снаружи или внутри виджета
 	insideListClick() {
 		this.wrapper.addEventListener('click', (e) => {
 			console.log('CLICK INSIDE');
@@ -331,12 +332,14 @@ class DropDown {
 		});
 	}
 
+	//проверка, фокус был снаружи или внутри виджета
 	insideListFocus() {
 		this.wrapper.addEventListener('focusin', (e) => {
 			//	console.log('FOCUS INSIDE');
 			this.focusOnList = true;
 		});
 	}
+
 	//отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
 	collapseByFocus() {
 		document.addEventListener("focusin", (e) => {
@@ -350,7 +353,6 @@ class DropDown {
 			}
 		});
 	}
-
 
 	//клик по кнопке [Применить]
 	apply() {

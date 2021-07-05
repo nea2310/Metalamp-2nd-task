@@ -8,7 +8,7 @@ mixin checklist(options={type: '', labelText: '',})
 		options.type == 'expandable' ? labelStyle = elemName + '__label_collapsing' : labelStyle = ''
 		options.type == 'rich' ? nameStyle = elemName + '__cat-name_rich' : nameStyle = ''
 	fieldset(class = elemName)
-		p(class = elemName + '__label ' + labelStyle)=options.labelText
+		p(class = elemName + '__label ' + labelStyle tabindex="0")=options.labelText
 			if (options.type == 'expandable')
 				img(class = elemName + '__img ' + elemName + '__img_collapsed', src = "assets/img/interface/expand-more.svg")
 		ul(class = elemName + '__list-wrapper ' + listStyle)

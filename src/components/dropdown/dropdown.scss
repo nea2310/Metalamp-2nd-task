@@ -135,9 +135,6 @@ $colorWhite: #ffffff;
 			border: 1px solid $colorDarkShade25;
 			color: $colorDarkShade25;
 		}
-		&:focus {
-			outline: solid 1px $colorDarkShade25;
-		}
 	}
 
 	&__count-val {

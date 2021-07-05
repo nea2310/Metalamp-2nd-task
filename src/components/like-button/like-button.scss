@@ -46,9 +46,6 @@ $colorWhite: #ffffff;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
-		&:focus {
-			outline: 1px solid $colorDarkShade25;
-		}
 	}
 
 	&__counter {

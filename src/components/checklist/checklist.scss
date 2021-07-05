@@ -66,9 +66,6 @@ fieldset {
 
 	&__cat {
 		display: inline-flex;
-		&:focus-within {
-			outline: solid 1px $colorDarkShade25;
-		}
 	}
 	&__cat-text {
 		margin-left: 9px;

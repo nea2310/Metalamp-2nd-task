@@ -42,9 +42,6 @@ $colorWhite: #ffffff;
 		position: relative;
 		width: 116px;
 		height: 19px;
-		&:focus-within {
-			outline: solid 1px $colorDarkShade25;
-		}
 	}
 
 	&__star {

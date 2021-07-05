@@ -31,9 +31,6 @@ $colorWhite: #ffffff;
 	&__wrapper {
 		margin-top: 16px;
 		display: flex;
-		&:focus-within {
-			outline: solid 1px $colorDarkShade25;
-		}
 	}
 
 	&__checkbox {
