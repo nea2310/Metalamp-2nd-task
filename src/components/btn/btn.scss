@@ -25,54 +25,43 @@ $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
 .btn {
+	@include font-h3;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid grey;
+	box-sizing: border-box;
 	user-select: none;
-	&-wide {
+	&_very-long {
 		width: 320px;
 	}
-	&-medium {
-		width: 266px;
-	}
-	//border: 1px solid red;
-	display: flex;
-	flex-direction: column;
 
-	&__label {
-		position: relative;
-	}
-	&__label-text {
-		@include font-h3;
-	}
-	&__link {
-		position: absolute;
-		bottom: 13px;
-		right: 21px;
-		width: 16px;
-		height: 19px;
-		cursor: pointer;
-		background-color: $colorWhite;
-		border: none;
-		width: 30px;
-		&:focus {
-			outline: solid 1px $colorDarkShade25;
-		}
+	&_long {
+		width: 196px;
 	}
 
-	&__input {
-		&::placeholder {
-			color: $colorDarkShade25;
-		}
-		@include font-body;
+	&_short {
+		width: 99px;
+	}
+	&_very-short {
+		width: 87px;
+	}
+
+	&_wide {
 		height: 44px;
-		text-indent: 12px;
-		border-radius: 5px;
-		border: 1px solid $colorDarkShade25;
-		margin-top: 4px;
-		width: 100%;
-		&:hover {
-			border-color: $colorDarkShade50;
-		}
-		&:focus {
-			border-color: $colorDarkShade50;
-		}
+	}
+
+	&_narrow {
+		height: 34px;
+	}
+	&_plain-text {
+		border: none;
+		background: none;
+	}
+	&_dark {
+		background-color: $colorPurple;
+	}
+	&_light {
+		background-color: $colorWhite;
 	}
 }
