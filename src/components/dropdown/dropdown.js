@@ -5,6 +5,7 @@ class DropDown {
 		this.wrapper = elem;
 		this.render();
 		this.clickInput();
+		this.focusInput();
 		this.changeCounter();
 		this.clear();
 		this.apply();
@@ -29,6 +30,7 @@ class DropDown {
 
 	render() {
 		this.clickOnList = false;
+		this.mouseDown = false;
 
 		this.input = this.getElem('input');
 		this.listWrapper = this.getElem('list-wrapper');
@@ -282,10 +284,36 @@ class DropDown {
 	}
 	// клик по инпуту
 	clickInput() {
-		this.input.addEventListener("click", () => {
+
+		this.input.addEventListener("mousedown", () => {
+			this.mouseDown = true;
 			this.toggle(true);
 		});
+
+
+		this.input.addEventListener("mouseup", () => {
+			if (!this.listWrapper.classList.
+				contains(this.elemName + '__list-wrapper_hidden')) {
+				// console.log('КЛИК');
+				// this.toggle(true);
+				this.mouseDown = false;
+			}
+		});
 	}
+
+	// фокус на инпут
+	focusInput() {
+		this.input.addEventListener("focus", (e) => {
+			if (this.listWrapper.classList.
+				contains(this.elemName + '__list-wrapper_hidden') &&
+				this.mouseDown == false) {
+				console.log('ФОКУС');
+				this.toggle(true);
+			}
+		});
+	}
+
+
 
 
 	insideListClick() {
