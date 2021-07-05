@@ -66,6 +66,9 @@ fieldset {
 
 	&__cat {
 		display: inline-flex;
+		&:focus-within {
+			outline: solid 1px $colorDarkShade25;
+		}
 	}
 	&__cat-text {
 		margin-left: 9px;
@@ -75,12 +78,16 @@ fieldset {
 		position: absolute;
 		appearance: none;
 
-		&:checked + .checklist__cat-checkmark {
+		&:checked + .checklist__cat-checkmark,
+		&:checked:focus + .checklist__cat-checkmark {
 			border: 1px solid $colorPurple;
 			background-image: url(/assets/img/interface/tip.svg);
 			background-position-y: 42%;
 			background-position-x: 40%;
 			background-repeat: no-repeat;
+		}
+		&:focus + .checklist__cat-checkmark {
+			border: 1px solid $colorPurple;
 		}
 	}
 

@@ -55,6 +55,10 @@ input {
 		cursor: pointer;
 		background-color: $colorWhite;
 		border: none;
+		width: 30px;
+		&:focus {
+			outline: solid 1px $colorDarkShade25;
+		}
 	}
 
 	&__input {

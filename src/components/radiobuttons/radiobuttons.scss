@@ -29,6 +29,7 @@ $colorWhite: #ffffff;
 	margin-left: 0;
 	user-select: none;
 	width: 220px;
+
 	&__label {
 		@include font-h3;
 		position: relative;
@@ -42,6 +43,9 @@ $colorWhite: #ffffff;
 
 	&__cat {
 		display: inline-flex;
+		&:focus-within {
+			outline: 1px solid $colorDarkShade25;
+		}
 	}
 	&__cat-text {
 		margin-left: 9px;
