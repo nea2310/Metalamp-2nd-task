@@ -287,27 +287,26 @@ class DropDown {
 
 		this.input.addEventListener("mousedown", () => {
 			this.mouseDown = true;
-			this.toggle(true);
 		});
 
 
 		this.input.addEventListener("mouseup", () => {
-			if (!this.listWrapper.classList.
-				contains(this.elemName + '__list-wrapper_hidden')) {
-				// console.log('КЛИК');
-				// this.toggle(true);
-				this.mouseDown = false;
-			}
+			//	if (this.mouseDown == true) {
+			// console.log('КЛИК');
+			this.toggle(true);
+			this.mouseDown = false;
+			//	}
 		});
 	}
 
 	// фокус на инпут
 	focusInput() {
 		this.input.addEventListener("focus", (e) => {
+			console.log(this.mouseDown);
 			if (this.listWrapper.classList.
 				contains(this.elemName + '__list-wrapper_hidden') &&
 				this.mouseDown == false) {
-				console.log('ФОКУС');
+
 				this.toggle(true);
 			}
 		});
