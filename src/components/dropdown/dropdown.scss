@@ -146,4 +146,9 @@ $colorWhite: #ffffff;
 			display: none;
 		}
 	}
+	&__buttons {
+		display: flex;
+		justify-content: space-between;
+		margin: 20px 7px 13px 14px;
+	}
 }

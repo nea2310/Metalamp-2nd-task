@@ -77,10 +77,18 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 			}
 		}
 	}
-	&__buttons {
+
+	&__button-clear {
 		position: absolute;
-		bottom: 1px;
+		bottom: 20px;
+		left: 20px;
 	}
+	&__button-apply {
+		position: absolute;
+		bottom: 20px;
+		right: 20px;
+	}
+
 	&__input-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -184,7 +192,7 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 			}
 		}
 		&--content {
-			padding: 15px 18px 30px 20px;
+			padding: 15px 18px 50px 20px;
 		}
 		&--buttons {
 			border: none;

@@ -1,3 +1,4 @@
+include ../btn/btn.pug
 mixin dropdown(options={type: '', labelText: '', categories: {}, buttons: false})
 	-
 		let elemName='dropdown'
@@ -26,5 +27,13 @@ mixin dropdown(options={type: '', labelText: '', categories: {}, buttons: false}
 							button(class = elemName + '__count-increm', data-max = val.maxCnt)=plus
 			if (options.buttons)
 				div(class = elemName+'__buttons')
-					button(class = elemName + '__button-clear') очистить
-					button(class = elemName + '__button-apply') применить
+					div(class = elemName + '__button-clear')
+						+btn(
+							{text: 'очистить',
+							type: 'plain-text'}
+							)
+					div(class = elemName + '__button-apply')
+						+btn(
+							{text: 'применить',
+							type: 'plain-text'}
+							)

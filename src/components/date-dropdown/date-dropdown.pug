@@ -1,3 +1,4 @@
+include ../btn/btn.pug
 mixin date-dropdown(options={type: '', labelTextFrom: '', labelTextTo: '', labelTextFromTo: '',})
 	-
 		let elemName='date-dropdown'
@@ -28,9 +29,17 @@ mixin date-dropdown(options={type: '', labelTextFrom: '', labelTextTo: '', label
 					img(class=elemName + '__img ' + elemName + '__img_collapsed', src = src)
 					input(class=elemName + '__input ' + elemName + '__input_fromto ' + elemName+'__input_wide ', value = "2021-08-19,2021-08-23", type = text, readonly = true)
 		div(class = elemName + '__calendar-wrapper ' + elemName+'__calendar-wrapper_hidden ' + modificator)
-			div(class = elemName+'__buttons')
-				button(class = elemName + '__button-clear') очистить
-				button(class = elemName + '__button-apply') применить
+			div(class = elemName + '__buttons')
+				div(class = elemName + '__button-clear')
+					+btn(
+						{text: 'очистить',
+						type: 'plain-text'}
+						)
+				div(class = elemName + '__button-apply')
+					+btn(
+						{text: 'применить',
+						type: 'plain-text'}
+						)
 
 
 
