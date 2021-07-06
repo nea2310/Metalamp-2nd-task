@@ -36,12 +36,12 @@ $colorWhite: #ffffff;
 	}
 
 	&__group {
-		background-image: url(/assets/img/interface/star-border.svg);
-		background-repeat: space;
-		background-size: 20px auto;
 		position: relative;
 		width: 116px;
 		height: 19px;
+		background-image: url(/assets/img/interface/star-border.svg);
+		background-size: 20px auto;
+		background-repeat: space;
 	}
 
 	&__star {
@@ -57,7 +57,16 @@ $colorWhite: #ffffff;
 		background-repeat: space;
 
 		&:focus {
-			outline: none;
+			outline: 1;
+		}
+
+		&:checked,
+		&:hover {
+			background-image: url(/assets/img/interface/star.svg);
+			cursor: pointer;
+		}
+		&:hover ~ .rate-button__star {
+			opacity: 0;
 		}
 		&:nth-of-type(1) {
 			width: 20px;
@@ -80,14 +89,6 @@ $colorWhite: #ffffff;
 		&:nth-of-type(5) {
 			width: 116px;
 			z-index: 1;
-		}
-		&:checked,
-		&:hover {
-			background-image: url(/assets/img/interface/star.svg);
-			cursor: pointer;
-		}
-		&:hover ~ .rating__star {
-			opacity: 0;
 		}
 	}
 }
