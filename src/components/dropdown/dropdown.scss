@@ -145,10 +145,13 @@ $colorWhite: #ffffff;
 		&_hidden {
 			display: none;
 		}
+		&-apply {
+			margin-left: 140px;
+		}
 	}
 	&__buttons {
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-end;
 		margin: 20px 7px 13px 14px;
 	}
 }

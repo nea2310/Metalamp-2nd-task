@@ -268,6 +268,7 @@ class DropDown {
 
 	// Открывание/ закрывание дропдауна
 	toggle(flag) {
+		console.log('toggle');
 		let wrap = this.elemName + '__';
 		if (flag) {
 			this.listWrapper.classList.
@@ -321,8 +322,7 @@ class DropDown {
 	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
 	collapseByClick() {
 		document.addEventListener("click", (e) => {
-			if (e.target.closest(`.${this.elemName}` == null) ||
-				this.clickOnList == false) {
+			if (this.clickOnList == false) {
 				//	console.log('КЛИК СНАРУЖИ');
 				this.toggle(false);
 			} else {
@@ -343,8 +343,7 @@ class DropDown {
 	//отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
 	collapseByFocus() {
 		document.addEventListener("focusin", (e) => {
-			if (e.target.closest(`.${this.elemName}` == null) ||
-				this.focusOnList == false) {
+			if (this.focusOnList == false) {
 				//	console.log('ФОКУС СНАРУЖИ');
 				this.toggle(false);
 			} else {
