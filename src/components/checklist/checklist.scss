@@ -55,6 +55,9 @@ fieldset {
 	}
 
 	&__list-wrapper {
+		background-color: $colorWhite;
+		position: absolute;
+		z-index: 1;
 		margin-top: 17px;
 		&_hidden {
 			display: none;
