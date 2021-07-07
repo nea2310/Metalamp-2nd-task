@@ -21,7 +21,9 @@ $colorDarkShade50: rgba(31, 32, 65, 0.5);
 $colorDarkShade25: rgba(31, 32, 65, 0.25);
 $colorDarkShade5: rgba(31, 32, 65, 0.05);
 $colorPurple: #bc9cff;
+$colorPurpleOpaque: rgba(188, 156, 255, 0.5);
 $colorBlue: #8ba4f9;
+$colorBlueOpaque: rgba(139, 164, 249, 0.5);
 $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 $gradientPurple: linear-gradient($colorPurple 0%, $colorBlue 100%);
@@ -42,50 +44,27 @@ button {
 	user-select: none;
 	border-radius: 22px;
 
-	&_very-long.btn_dark {
+	&_very-long {
 		width: 320px;
 	}
 
-	&_long.btn_dark {
+	&_long {
 		width: 196px;
 	}
 
-	&_short.btn_dark {
+	&_short {
 		width: 99px;
 	}
-	&_very-short.btn_dark {
+	&_very-short {
 		width: 87px;
 	}
 
-	&_wide.btn_dark {
+	&_wide {
 		height: 44px;
 	}
 
-	&_narrow.btn_dark {
+	&_narrow {
 		height: 34px;
-	}
-
-	&_very-long.btn_light {
-		width: calc(320px - #{$borderWidth});
-	}
-
-	&_long.btn_light {
-		width: calc(196px - #{$borderWidth});
-	}
-
-	&_short.btn_light {
-		width: calc(99px - #{$borderWidth});
-	}
-	&_very-short.btn_light {
-		width: calc(87px - #{$borderWidth});
-	}
-
-	&_wide.btn_light {
-		height: calc(44px - #{$borderWidth});
-	}
-
-	&_narrow.btn_light {
-		height: calc(34px - #{$borderWidth});
 	}
 
 	&_plain-text {
@@ -107,23 +86,12 @@ button {
 	}
 	&_light {
 		background-color: $colorWhite;
+		box-shadow: inset 0px 2px 1px 0px $colorPurple, inset 0px 0px 0px 2px $colorBlue;
 		color: $colorPurple;
 
-		&::before {
-			content: "";
-			position: absolute;
-			top: 0;
-			right: 0;
-			bottom: 0;
-			left: 0;
-			z-index: -1;
-			margin: -$borderWidth;
-			border-radius: inherit;
-			background: $gradientPurple;
-		}
-		&:hover::before,
-		&:focus::before {
-			opacity: 0.5;
+		&:hover,
+		&:focus {
+			box-shadow: inset 0px 2px 1px 0px $colorPurpleOpaque, inset 0px 0px 0px 2px $colorBlueOpaque;
 		}
 	}
 	&__img {
