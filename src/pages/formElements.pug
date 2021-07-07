@@ -13,8 +13,9 @@ include ../components/feature/feature.pug
 include ../components/feedback/feedback.pug
 include ../components/bullet-list/bullet-list.pug
 include ../components/pagination/pagination.pug
-div(class="form-elements")
+div(class='logo-wrapper')
 	+logo-grey()
+div(class="form-elements")
 	div(class="form-elements__col form-elements__col_left form-elements__col_left-top")
 		div(class="form-elements__comp-wrapper")
 			+input(
@@ -23,11 +24,11 @@ div(class="form-elements")
 						labelText: 'text field'} 
 						)
 		div(class="form-elements__comp-wrapper")
-			+date-dropdown(
-						{width:'narrow',
-						type: 'filterDateDropDown',
-						labelTextFromTo: 'filter date dropdown'}
-				)
+			+input(
+						{width: 'wide',
+						placeholder: 'Email',
+						labelText: 'text field'} 
+						)
 		div(class="form-elements__comp-wrapper")
 			+dropdown(
 						{categories:
@@ -200,27 +201,22 @@ div(class="form-elements")
 		div(class="form-elements__comp-wrapper")
 			+pagination()
 		div(class="form-elements__comp-wrapper")
+			+dropdown(
+						{categories:
+							{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+							cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+							cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+						type: 'dropDownGuests',
+						placeholder: 'Сколько гостей',
+						buttons: true,
+						labelText: 'dropdown'}
+						)
+		div(class="form-elements__comp-wrapper")
 			+bullet-list(
 						{labelText: 'bullet list', 
 						categories: ['Нельзя с питомцами',
 										'Без вечеринок и мероприятий',
 										'Время прибытия — после 13:00, а выезд до 12:00']}
-						)
-		div(class="form-elements__comp-wrapper")
-			+btn(
-						{text: 'click me',
-						type: 'link',
-						length: 'long',
-						width: 'narrow',
-						color: 'dark'}
-						)
-		div(class="form-elements__comp-wrapper")
-			+btn(
-						{text: 'click me',
-						type: 'link',
-						length: 'very-short',
-						width: 'narrow',
-						color: 'light'}
 						)
 div(class="form-elements")
 	div(class="form-elements__col form-elements__col_left form-elements__col_left-bottom")
@@ -244,3 +240,26 @@ div(class="form-elements")
 						date: '5 дней назад',
 						descr: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'}
 						)
+		div(class="form-elements__comp-wrapper")
+			+btn(
+						{text: 'click me',
+						type: 'link',
+						length: 'long',
+						width: 'narrow',
+						color: 'dark'}
+						)
+		div(class="form-elements__comp-wrapper")
+			+btn(
+						{text: 'click me',
+						type: 'link',
+						length: 'very-short',
+						width: 'narrow',
+						color: 'light'}
+						)
+		div(class="form-elements__comp-wrapper")
+			+feature(
+						{img: 'assets/img/interface/fireplace.svg',
+						name: 'Уют',
+						descr: 'Номер оснащен камином'}
+						)
+			

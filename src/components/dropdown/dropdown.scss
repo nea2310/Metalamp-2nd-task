@@ -65,6 +65,7 @@ $colorWhite: #ffffff;
 	}
 
 	&__input {
+		cursor: pointer;
 		text-overflow: ellipsis;
 		padding-right: 100px;
 		&::placeholder {
@@ -142,8 +143,8 @@ $colorWhite: #ffffff;
 		&_hidden {
 			display: none;
 		}
-		&-apply {
-			margin-left: 140px;
+		&-clear {
+			flex-grow: 1;
 		}
 	}
 	&__buttons {
