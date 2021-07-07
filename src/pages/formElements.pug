@@ -12,6 +12,7 @@ include ../components/btn/btn.pug
 include ../components/feature/feature.pug
 include ../components/feedback/feedback.pug
 include ../components/bullet-list/bullet-list.pug
+include ../components/pagination/pagination.pug
 div(class="form-elements")
 	+logo-grey()
 	div(class="form-elements__col form-elements__col_left form-elements__col_left-top")
@@ -195,6 +196,16 @@ div(class="form-elements")
 						color: 'dark',
 						img: true}
 						)
+		span(class='form-elements__label') pagination
+		div(class="form-elements__comp-wrapper")
+			+pagination()
+		div(class="form-elements__comp-wrapper")
+			+bullet-list(
+						{labelText: 'bullet list', 
+						categories: ['Нельзя с питомцами',
+										'Без вечеринок и мероприятий',
+										'Время прибытия — после 13:00, а выезд до 12:00']}
+						)
 		div(class="form-elements__comp-wrapper")
 			+btn(
 						{text: 'click me',
@@ -210,13 +221,6 @@ div(class="form-elements")
 						length: 'very-short',
 						width: 'narrow',
 						color: 'light'}
-						)
-		div(class="form-elements__comp-wrapper")
-			+bullet-list(
-						{labelText: 'bullet list', 
-						categories: ['Нельзя с питомцами',
-										'Без вечеринок и мероприятий',
-										'Время прибытия — после 13:00, а выезд до 12:00']}
 						)
 div(class="form-elements")
 	div(class="form-elements__col form-elements__col_left form-elements__col_left-bottom")
