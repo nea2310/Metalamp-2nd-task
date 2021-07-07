@@ -86,12 +86,12 @@ button {
 	}
 	&_light {
 		background-color: $colorWhite;
-		box-shadow: inset 0px 2px 1px 0px $colorPurple, inset 0px 0px 0px 2px $colorBlue;
+		box-shadow: inset 0px 2px 0px 0px $colorPurple, inset 0px 0px 0px 2px $colorBlue;
 		color: $colorPurple;
 
 		&:hover,
 		&:focus {
-			box-shadow: inset 0px 2px 1px 0px $colorPurpleOpaque, inset 0px 0px 0px 2px $colorBlueOpaque;
+			box-shadow: inset 0px 2px 0px 0px $colorPurpleOpaque, inset 0px 0px 0px 2px $colorBlueOpaque;
 		}
 	}
 	&__img {
