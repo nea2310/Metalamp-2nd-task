@@ -64,7 +64,7 @@ fieldset {
 		}
 	}
 	&__cat-wrapper {
-		margin-bottom: 6px;
+		margin-bottom: 7px;
 	}
 
 	&__cat {
@@ -92,6 +92,7 @@ fieldset {
 	}
 
 	&__cat-checkmark {
+		//	margin-left: 1px;
 		cursor: pointer;
 		display: inline-block;
 		position: relative;
@@ -100,8 +101,8 @@ fieldset {
 		height: 18px;
 		border-radius: 5px;
 		display: inline-block;
-		width: 20px;
-		height: 20px;
+		width: 18px;
+		height: 18px;
 	}
 
 	&__cat-name {
