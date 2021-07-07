@@ -25,4 +25,22 @@ $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
 .bullet-list {
+	&__label {
+		@include font-h3;
+		margin-bottom: 14px;
+	}
+	&__list-wrapper {
+		padding-left: 17px;
+		max-width: 240px;
+		list-style-image: url(/assets/img/interface/ellipse.svg);
+	}
+	&__cat {
+		@include font-body;
+		padding-left: 4px;
+		margin-bottom: 10px;
+		line-height: 24px;
+		&:last-child {
+			margin-bottom: 0px;
+		}
+	}
 }

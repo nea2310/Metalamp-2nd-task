@@ -1,7 +1,11 @@
 mixin bullet-list(options={})
 	-
 		let elemName = 'bullet-list'
-	div(class = elemName)
+	fieldset(class = elemName)
+		p(class = elemName + '__label ')= options.labelText
+		ul(class = elemName + '__list-wrapper' type = 'disc')
+			each val in options.categories
+				li(class = elemName + '__cat')= val
 
 
 
