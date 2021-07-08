@@ -3,4 +3,10 @@
 	margin-top: 30px;
 }
 .cards {
+	width: 100%;
+	max-width: 1440px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	background-color: #f4f4f6;
 }
