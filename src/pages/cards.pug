@@ -12,3 +12,15 @@ div(class="cards")
 			+search-room()
 		div(class='cards__registration')
 			+registration()
+	div(class='cards__search-col cards__search-col-right')
+		div(class='cards__booking')
+			+booking({
+							roomNumber: '888',
+							isLux: 'люкс',
+							roomPrice: '9 990',
+							daysAmount: '4',
+							totalPrice: '39 960',
+							sale: '2 179',
+							saleTotal: '0',
+							extraTotal: '300',
+							totalAmount: '38 081'})

@@ -5,6 +5,19 @@
 	line-height: 24px;
 	color: $colorDarkShade75;
 }
+@mixin font-h1() {
+	font-family: "Montserrat-Bold";
+	font-size: 24px;
+	line-height: 29px;
+	color: $colorDarkShade100;
+}
+
+@mixin font-h2() {
+	font-family: "Montserrat-Bold";
+	font-size: 19px;
+	line-height: 23px;
+	color: $colorDarkShade100;
+}
 
 @mixin font-h3() {
 	font-family: "Montserrat", Arial, Helvetica, sans-serif;
@@ -29,4 +42,150 @@ $gradientPurple: linear-gradient($colorPurple 0%, $colorBlue 100%);
 $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 
 .booking {
+	background-color: $colorWhite;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	max-width: 380px;
+	padding-left: 28px;
+	padding-right: 28px;
+	padding-top: 39px;
+
+	&__dtls {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__dtls-room {
+		margin-top: 2px;
+	}
+
+	&__dtl-mark {
+		@include font-h3;
+		//	margin-top: 10px;
+		padding-left: 1px;
+	}
+
+	&__dtl-number {
+		@include font-h1;
+		//margin-top: 10px;
+		padding-left: 6px;
+	}
+
+	&__dtl-isLux {
+		@include font-h3;
+		color: $colorPurple;
+		//	padding-top: 10px;
+		padding-left: 9px;
+	}
+
+	&__dtls-price {
+		margin-top: 8px;
+	}
+
+	&__dtl-price {
+		@include font-body;
+		//	font-size: 12px;
+		font-weight: bold;
+		color: $colorDarkShade50;
+		//	padding-top: 10px;
+		//	padding-left: 10px;
+	}
+
+	&__dtl-price-curr {
+		@include font-body;
+		//	font-size: 12px;
+		font-weight: bold;
+		color: $colorDarkShade50;
+		//	padding-top: 10px;
+		//	padding-left: 10px;
+	}
+
+	&__dtl-label {
+		@include font-body;
+		font-size: 12px;
+		color: $colorDarkShade50;
+		//	padding-top: 10px;
+		padding-left: 3px;
+	}
+
+	&__date-dropdown {
+		//	padding-top: 10px;
+		margin-top: 19px;
+	}
+
+	&__guests {
+		//		padding-top: 10px;
+		margin-top: 21px;
+	}
+	&__price-breakdown {
+		@include font-body;
+		line-height: 21px;
+	}
+	&__price-dtls {
+		//	border: 1px solid red;
+		display: flex;
+		justify-content: space-between;
+		&:first-of-type {
+			margin-top: 18px;
+		}
+		// &:last-of-type {
+		// 	margin-top: 17px;
+		// }
+		margin-bottom: 13px;
+	}
+	&__price-dtl {
+		&:first-child {
+			max-width: 216px;
+			//padding-right: 20px;
+		}
+		flex-grow: 0;
+		flex-shrink: 0;
+		//border: 1px solid blue;
+	}
+
+	&__price-dtl-days-amnt {
+		padding-left: 5px;
+	}
+	&__price-dtl-day {
+		padding-left: 5px;
+	}
+
+	&__price-dtl-sale-val {
+		padding-left: 5px;
+	}
+
+	&__price-dtl-extra {
+		//	max-width: 200px;
+		//	line-height: 6px;
+	}
+
+	&__price-dtl-info {
+		//border: 1px solid red;
+		flex-grow: 1;
+		flex-shrink: 1;
+	}
+	&__price-dtl-info {
+		padding-left: 5px;
+		cursor: pointer;
+		//border: 1px solid red;
+	}
+
+	&__price-total {
+		margin-top: 28px;
+		display: flex;
+		justify-content: space-between;
+		@include font-h2;
+	}
+	&__price-total-filling {
+		flex-grow: 1;
+		flex-shrink: 1;
+		border-bottom: 1px dashed $colorDarkShade25;
+		align-self: center;
+		padding-top: 14px;
+	}
+	&__booking {
+		margin-top: 21px;
+		margin-bottom: 30px;
+	}
 }

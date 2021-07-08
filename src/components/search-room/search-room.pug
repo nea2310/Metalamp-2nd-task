@@ -6,14 +6,14 @@ mixin search-room(options={})
 		let elemName = 'search-room'
 	form(class = elemName)
 		h1(class = elemName + '__header') Найдем номера под ваши пожелания
-		fieldset(class = elemName + '__date-dropdown')
+		div(class = elemName + '__date-dropdown')
 			+date-dropdown(
 					{width:'wide',
 					type:'dateDropDown',
 					labelTextFrom: 'Прибытие',
 					labelTextTo: 'Выезд'}
 					)
-		fieldset(class = elemName + '__guests')
+		div(class = elemName + '__guests')
 			+dropdown(
 					{categories:
 						{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
@@ -24,7 +24,7 @@ mixin search-room(options={})
 					buttons: true,
 					labelText: 'гости'}
 					)
-		fieldset(class = elemName + '__search')
+		div(class = elemName + '__search')
 			+btn(
 					{text: 'подобрать номер',
 					type: 'submit',
