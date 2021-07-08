@@ -62,20 +62,17 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 
 	&__dtl-mark {
 		@include font-h3;
-		//	margin-top: 10px;
 		padding-left: 1px;
 	}
 
 	&__dtl-number {
 		@include font-h1;
-		//margin-top: 10px;
 		padding-left: 6px;
 	}
 
 	&__dtl-isLux {
 		@include font-h3;
 		color: $colorPurple;
-		//	padding-top: 10px;
 		padding-left: 9px;
 	}
 
@@ -85,37 +82,28 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 
 	&__dtl-price {
 		@include font-body;
-		//	font-size: 12px;
 		font-weight: bold;
 		color: $colorDarkShade50;
-		//	padding-top: 10px;
-		//	padding-left: 10px;
 	}
 
 	&__dtl-price-curr {
 		@include font-body;
-		//	font-size: 12px;
 		font-weight: bold;
 		color: $colorDarkShade50;
-		//	padding-top: 10px;
-		//	padding-left: 10px;
 	}
 
 	&__dtl-label {
 		@include font-body;
 		font-size: 12px;
 		color: $colorDarkShade50;
-		//	padding-top: 10px;
 		padding-left: 3px;
 	}
 
 	&__date-dropdown {
-		//	padding-top: 10px;
 		margin-top: 19px;
 	}
 
 	&__guests {
-		//		padding-top: 10px;
 		margin-top: 21px;
 	}
 	&__price-breakdown {
@@ -123,25 +111,19 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 		line-height: 21px;
 	}
 	&__price-dtls {
-		//	border: 1px solid red;
 		display: flex;
 		justify-content: space-between;
 		&:first-of-type {
 			margin-top: 18px;
 		}
-		// &:last-of-type {
-		// 	margin-top: 17px;
-		// }
 		margin-bottom: 13px;
 	}
 	&__price-dtl {
 		&:first-child {
 			max-width: 216px;
-			//padding-right: 20px;
 		}
 		flex-grow: 0;
 		flex-shrink: 0;
-		//border: 1px solid blue;
 	}
 
 	&__price-dtl-days-amnt {
@@ -155,20 +137,13 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 		padding-left: 5px;
 	}
 
-	&__price-dtl-extra {
-		//	max-width: 200px;
-		//	line-height: 6px;
-	}
-
 	&__price-dtl-info {
-		//border: 1px solid red;
 		flex-grow: 1;
 		flex-shrink: 1;
 	}
 	&__price-dtl-info {
 		padding-left: 5px;
 		cursor: pointer;
-		//border: 1px solid red;
 	}
 
 	&__price-total {

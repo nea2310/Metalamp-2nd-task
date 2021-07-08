@@ -1,5 +1,37 @@
+include ../input-field/input-field.pug
 include ../btn/btn.pug
 mixin login(options={})
 	-
 		let elemName = 'login'
 	div(class = elemName)
+		form(class = elemName + '__login-form')
+			h1(class = elemName + '__header') Войти
+			fieldset(class = elemName + '__credentials') 
+				div(class = elemName + '__email')
+						+input(
+									{width: 'wide',
+									placeholder: 'Email'} 
+									)
+				div(class = elemName + '__password')
+						+input(
+									{width: 'wide',
+									placeholder: 'Пароль'} 
+									)
+			div(class = elemName + '__login-btn')
+				+btn(
+						{text: 'войти',
+						type: 'submit',
+						length: 'very-long',
+						width: 'wide',
+						color: 'dark',
+						img: true}
+						)
+		div(class = elemName + '__go-to-reg')
+			p(class = elemName + '__go-to-reg-legend') Нет аккаунта на Toxin?
+			+btn(
+					{text: 'создать',
+					type: 'link',
+					length: 'short',
+					width: 'wide',
+					color: 'light'}
+					)
