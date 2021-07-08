@@ -1,5 +1,67 @@
+include ../input-field/input-field.pug
+include ../radiobuttons/radiobuttons.pug
+include ../toggle/toggle.pug
 include ../btn/btn.pug
 mixin registration(options={})
 	-
 		let elemName = 'registration'
 	div(class = elemName)
+		form(class = elemName + '__reg-form')
+			h1(class = elemName + '__header') Регистрация аккаунта
+			fieldset(class = elemName + '__name-surname')
+				div(class = elemName + '__name')
+					+input(
+								{width: 'wide',
+								placeholder: 'имя'} 
+								)
+				div(class = elemName + '__surname')
+					+input(
+								{width: 'wide',
+								placeholder: 'фамилия'} 
+								)
+			div(class = elemName + '__radiobuttons')
+				+radiobuttons({categories:
+								{cat1: {name:'Мужчина', checked: true}, 
+								cat2:{name:'Женщина'}},
+								radioGroupName: 'gender'})
+			div(class = elemName + '__birth-date')
+				+input(
+							{width: 'wide',
+							placeholder: 'ДД.ММ.ГГГГ',
+							extra:' js-masked',
+							labelText: 'дата рождения'} 
+							)
+			fieldset(class = elemName + '__credentials') 
+				legend(class = elemName + '__credentials-legend')  данные для входа в сервис
+				div(class = elemName + '__email')
+						+input(
+									{width: 'wide',
+									placeholder: 'Email'} 
+									)
+				div(class = elemName + '__password')
+						+input(
+									{width: 'wide',
+									placeholder: 'Пароль'} 
+									)
+			div(class = elemName + '__special-offer')
+				+toggle(
+							{name: 'Получать спецпредложения'}
+							)
+			div(class = elemName + '__search')
+				+btn(
+						{text: 'перейти к оплате',
+						type: 'submit',
+						length: 'very-long',
+						width: 'wide',
+						color: 'dark',
+						img: true}
+						)
+		div(class = elemName + '__go-to-login')
+			p(class = elemName + '__go-to-login-legend') Уже есть аккаунт на Toxin
+			+btn(
+					{text: 'войти',
+					type: 'link',
+					length: 'short',
+					width: 'wide',
+					color: 'light'}
+					)

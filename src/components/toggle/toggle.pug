@@ -6,6 +6,6 @@ mixin toggle(options={})
 			if options.labelText
 				p(class = elemName+'__label-text')=options.labelText
 			label(class = elemName + '__wrapper')
-				input(class = elemName + '__checkbox', type = "checkbox", name = options.name, value = options.name, checked)
+				input(class = elemName + '__checkbox', type = "checkbox" name = options.name value = options.name)
 				span(class = elemName + '__checkmark')
 				p(class = elemName + '__name')=options.name
