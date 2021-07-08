@@ -15,6 +15,13 @@
 	text-transform: uppercase;
 }
 
+@mixin font-h1() {
+	font-family: "Montserrat-Bold";
+	font-size: 24px;
+	line-height: 29px;
+	color: $colorDarkShade100;
+}
+
 $colorDarkShade100: #1f2041;
 $colorDarkShade75: rgba(31, 32, 65, 0.75);
 $colorDarkShade50: rgba(31, 32, 65, 0.5);
@@ -29,4 +36,26 @@ $gradientPurple: linear-gradient($colorPurple 0%, $colorBlue 100%);
 $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 
 .search-room {
+	background-color: $colorWhite;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	max-width: 380px;
+	padding-left: 28px;
+	padding-right: 28px;
+	padding-top: 39px;
+	&__header {
+		max-width: 300px;
+		@include font-h1;
+	}
+	&__date-dropdown {
+		margin-top: 22px;
+	}
+	&__guests {
+		margin-top: 21px;
+	}
+	&__search {
+		margin-top: 32px;
+		margin-bottom: 29px;
+	}
 }

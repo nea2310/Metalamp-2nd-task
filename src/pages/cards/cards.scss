@@ -9,4 +9,18 @@
 	display: flex;
 	justify-content: space-between;
 	background-color: #f4f4f6;
+	// padding-top: 30px;
+	// padding-left: 30px;
+	&__search-col {
+		&-left {
+		}
+	}
+	&__logo-wrapper {
+		margin-top: 30px;
+		margin-left: 7px;
+	}
+	&__search-room {
+		margin-top: 151px;
+		margin-left: 117px;
+	}
 }
