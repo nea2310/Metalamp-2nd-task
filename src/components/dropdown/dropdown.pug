@@ -22,9 +22,9 @@ mixin dropdown(options={type: '', labelText: '', categories: {}, buttons: false}
 					li(class = elemName + '__cat-wrapper')
 						p(class = elemName + '__cat', data-type = val.type, data-typeforms = val.typeforms)=val.displayName
 						div(class = elemName + '__count-wrapper')
-							button(class = elemName + '__count-decrem', data-min = val.minCnt)=minus
+							button(class = elemName + '__count-decrem', data-min = val.minCnt type = 'button')=minus
 							span(class = elemName + '__count-val')=val.defaultCnt
-							button(class = elemName + '__count-increm', data-max = val.maxCnt)=plus
+							button(class = elemName + '__count-increm', data-max = val.maxCnt type = 'button')=plus
 			if (options.buttons)
 				div(class = elemName+'__buttons')
 					div(class = elemName + '__button-clear')
