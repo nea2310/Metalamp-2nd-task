@@ -2,19 +2,18 @@ class Registration {
 	constructor(elemName, elem) {
 		this.elemName = elemName;
 		this.wrapper = elem;
-		// this.render();
-		// this.focusInput();
-		// this.formSubmit();
+		this.render();
+		this.focusInput();
+		this.formSubmit();
 	}
 
 
 	render() {
-
-		this.dates = this.wrapper.querySelectorAll('.date-dropdown__input');
-		this.guests = this.wrapper.querySelector('.dropdown__input');
+		this.form = this.wrapper.
+			querySelector(`.${this.elemName}__reg-form`);
+		this.date = this.wrapper.querySelector('.js-masked');
 		this.inputs = this.wrapper.
-			querySelectorAll('.dropdown__input, .date-dropdown__input');
-
+			querySelectorAll('.input-field__input');
 	}
 	// При фокусе убрать красную рамку с инпута
 	focusInput() {
@@ -26,23 +25,24 @@ class Registration {
 	}
 	// Валидация инпутов на сабмите формы
 	formSubmit() {
-		this.wrapper.addEventListener('submit', (e) => {
+		this.form.addEventListener('submit', (e) => {
 			let isErr = false;
-			this.dates.forEach(function (date) {
-				if (/^\d{2}\.\d{2}\.\d{4}$/.test(date.value)) {
-					date.classList.remove('js-err');
+			this.inputs.forEach(function (input) {
+				if (input.value.trim() === '') {
+					input.classList.add('js-err');
 				}
 				else {
-					date.classList.add('js-err');
+					input.classList.remove('js-err');
 				}
 			});
-			if (this.guests.value.trim() === '') {
-				this.guests.classList.add('js-err');
+			//проверку на формат даты обязательно делать ПОСЛЕ проверки на заполненность поля
+			if (/^\d{2}\.\d{2}\.\d{4}$/.test(this.date.value)) {
+				this.date.classList.remove('js-err');
 			} else {
-				this.guests.classList.remove('js-err');
+				this.date.classList.add('js-err');
 			}
+
 			for (let i = 0; i < this.inputs.length; i++) {
-				console.log(this.inputs[i]);
 				if (this.inputs[i].classList.contains('js-err')) {
 					isErr = true;
 					break;
@@ -54,8 +54,6 @@ class Registration {
 			}
 		});
 	}
-
-
 }
 
 function renderRegistrations() {
