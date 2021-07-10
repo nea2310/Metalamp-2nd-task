@@ -4,14 +4,13 @@ class RoomCard {
 		this.wrapper = elem;
 		this.render();
 		this.createDots();
-		//this.clickDot();
-
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
 		return wrapper.querySelector(
 			'.' + this.elemName + '__' + selector);
 	}
+
 	getElemAdv(className, attrName, attrVal, wrap = this.wrapper) {
 		return wrap.querySelector(
 			'.' + this.elemName + '__' + className +
@@ -38,7 +37,6 @@ class RoomCard {
 			this.clickPrevNext(e.target));
 	}
 
-
 	clickPrevNext(elem) {
 		//определяем текущее фото
 		let currentPhoto = this.getElem('photo_showed');
@@ -50,7 +48,6 @@ class RoomCard {
 		//Кликнули [Назад]
 		if (elem.className.match('prev')) {
 			if (i != 1) {
-
 				newPhoto = this.getElemAdv('photo', 'data-sec',
 					i - 1);
 				newDot = this.getElemAdv('dot', 'data-sec',
@@ -60,7 +57,6 @@ class RoomCard {
 					this.images.length);
 				newDot = this.getElemAdv('dot', 'data-sec',
 					this.images.length);
-
 			}
 			//Кликнули [Вперед]
 		} else {
@@ -70,21 +66,12 @@ class RoomCard {
 				newDot = this.getElemAdv('dot', 'data-sec',
 					i + 1);
 			} else {
-
 				newPhoto = this.getElemAdv('photo', 'data-sec', '1');
 				newDot = this.getElemAdv('dot', 'data-sec', '1');
 			}
 		}
-		//скрываем текущее фото	
-		currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
-		// отображаем новое фото
-		newPhoto.classList.add(`${this.elemName}__photo_showed`);
-		//обесцвечиваем текущую точку
-		currentDot.classList.remove(`${this.elemName}__dot_active`);
-		// закрашиваем новую
-		newDot.classList.add(`${this.elemName}__dot_active`);
+		this.toggle(currentPhoto, currentDot, newPhoto, newDot);
 	}
-
 
 	createDots() {
 		this.dotsWrapper = document.createElement('div');
@@ -104,7 +91,6 @@ class RoomCard {
 		});
 	}
 
-
 	clickDot(elem) {
 		let sec = elem.getAttribute('data-sec');
 		//определяем текущее фото
@@ -113,6 +99,11 @@ class RoomCard {
 		let currentDot = this.getElem('dot_active');
 		//определяем новое фото (атрибут data-sec равен атрибуту data-sec нажатой точки [т.е. новой активной])
 		let newPhoto = this.getElemAdv('photo', 'data-sec', sec);
+		this.toggle(currentPhoto, currentDot, newPhoto, elem);
+	}
+
+	//Меняем фото и точку
+	toggle(currentPhoto, currentDot, newPhoto, newDot) {
 		//скрываем текущее фото	
 		currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
 		//обесцвечиваем текущую точку
@@ -120,9 +111,8 @@ class RoomCard {
 		// отображаем новое фото
 		newPhoto.classList.add(`${this.elemName}__photo_showed`);
 		//закрашиваем новую точку
-		elem.classList.add(`${this.elemName}__dot_active`);
+		newDot.classList.add(`${this.elemName}__dot_active`);
 	}
-
 }
 
 function renderRoomCards() {
