@@ -12,7 +12,7 @@ div(class="cards")
 			+search-room()
 		div(class='cards__registration')
 			+registration()
-	div(class='cards__search-col cards__search-col-right')
+	div(class='cards__search-col cards__search-col-center')
 		div(class='cards__booking')
 			+booking({
 							roomNumber: '888',
@@ -26,4 +26,7 @@ div(class="cards")
 							totalAmount: '38 081'})
 		div(class='cards__login')
 			+login()
+	div(class='cards__search-col cards__search-col-right')
+		div(class='room-card')
+			+room-card()
 

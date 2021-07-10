@@ -2,7 +2,9 @@ class RoomCard {
 	constructor(elemName, elem) {
 		this.elemName = elemName;
 		this.wrapper = elem;
-		//	this.render();
+		this.render();
+		this.btnPrev.addEventListener('click', () => this.prev());
+		this.btnNext.addEventListener('click', () => this.next());
 
 	}
 
@@ -21,6 +23,32 @@ class RoomCard {
 	}
 
 	render() {
+		this.btnPrev = this.getElem('prev');
+		this.btnNext = this.getElem('next');
+		this.images = this.getElems(['photo']);
+		this.dots = this.getElems(['dot']);
+		this.i = 0;
+	}
+
+
+	prev() {
+		this.images[this.i].classList.remove('js-photo-showed');
+		this.i--;
+		if (this.i < 0) {
+			this.i = this.images.length - 1;
+		}
+		this.images[this.i].classList.add('js-photo-showed');
+	}
+
+	next() {
+		this.images[this.i].classList.remove('js-photo-showed');
+		this.i++;
+
+		if (this.i >= this.images.length) {
+			this.i = 0;
+		}
+
+		this.images[this.i].classList.add('js-photo-showed');
 	}
 
 
@@ -32,4 +60,4 @@ function renderRoomCards() {
 		new RoomCard('room-card', roomCard);
 	}
 }
-//renderRoomCards();
+renderRoomCards();
