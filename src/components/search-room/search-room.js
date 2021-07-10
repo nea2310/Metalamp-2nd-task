@@ -39,7 +39,6 @@ class SearchRoom {
 				this.guests.classList.remove('js-err');
 			}
 			for (let i = 0; i < this.inputs.length; i++) {
-				console.log(this.inputs[i]);
 				if (this.inputs[i].classList.contains('js-err')) {
 					isErr = true;
 					break;
