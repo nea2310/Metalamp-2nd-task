@@ -268,7 +268,6 @@ class DropDown {
 
 	// Открывание/ закрывание дропдауна
 	toggle(flag) {
-		console.log('toggle');
 		let wrap = this.elemName + '__';
 		if (flag) {
 			this.listWrapper.classList.
