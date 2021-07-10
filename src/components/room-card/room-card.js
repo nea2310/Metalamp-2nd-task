@@ -30,13 +30,14 @@ class RoomCard {
 		this.imagesArr = Array.from(this.images);
 		// this.dots = this.getElems(['dot']);
 		// this.dotsArr = Array.from(this.dots);
-		this.btnPrev.addEventListener('click', () => this.prev());
-		this.btnNext.addEventListener('click', () => this.next());
+		this.btnPrev.addEventListener('click', (e) => this.prevNext(e.target));
+		this.btnNext.addEventListener('click', (e) => this.prevNext(e.target));
 		this.i = 0;
 	}
 
 
-	prev() {
+	prevNext(elem) {
+		console.log(elem.className);
 		//определяем текущее фото
 		let currentPhoto = this.imagesArr.find(item =>
 			item.classList.contains(`${this.elemName}__photo_showed`));
@@ -46,20 +47,40 @@ class RoomCard {
 		let i = parseInt(currentPhoto.getAttribute('data-sec'));
 		let newPhoto;
 		let newDot;
-		if (i != 1) {
-			newPhoto = this.imagesArr.find(item =>
-				item.getAttribute('data-sec') ==
-				i - 1);
-			newDot = this.dotsArr.find(item =>
-				item.getAttribute('data-sec') ==
-				i - 1);
+		//Кликнули [Назад]
+		if (elem.className.match('prev')) {
+			if (i != 1) {
+				newPhoto = this.imagesArr.find(item =>
+					item.getAttribute('data-sec') ==
+					i - 1);
+				newDot = this.dotsArr.find(item =>
+					item.getAttribute('data-sec') ==
+					i - 1);
+			} else {
+				newPhoto = this.imagesArr.find(item =>
+					item.getAttribute('data-sec') ==
+					this.images.length);
+				newDot = this.dotsArr.find(item =>
+					item.getAttribute('data-sec') ==
+					this.images.length);
+			}
+			//Кликнули [Вперед]
 		} else {
-			newPhoto = this.imagesArr.find(item =>
-				item.getAttribute('data-sec') ==
-				this.images.length);
-			newDot = this.dotsArr.find(item =>
-				item.getAttribute('data-sec') ==
-				this.images.length);
+			if (i != this.images.length) {
+				newPhoto = this.imagesArr.find(item =>
+					item.getAttribute('data-sec') ==
+					i + 1);
+				newDot = this.dotsArr.find(item =>
+					item.getAttribute('data-sec') ==
+					i + 1);
+			} else {
+				newPhoto = this.imagesArr.find(item =>
+					item.getAttribute('data-sec') ==
+					'1');
+				newDot = this.dotsArr.find(item =>
+					item.getAttribute('data-sec') ==
+					'1');
+			}
 		}
 		//скрываем текущее фото	
 		currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
@@ -71,43 +92,6 @@ class RoomCard {
 		newDot.classList.add(`${this.elemName}__dot_active`);
 	}
 
-	next() {
-		//определяем текущее фото
-		let currentPhoto = this.imagesArr.find(item =>
-			item.classList.contains(`${this.elemName}__photo_showed`));
-		//определяем текущую точку
-		let currentDot = this.dotsArr.find(item =>
-			item.classList.contains(`${this.elemName}__dot_active`));
-
-		let i = parseInt(currentPhoto.getAttribute('data-sec'));
-		let newPhoto;
-		let newDot;
-		if (i != this.images.length) {
-			newPhoto = this.imagesArr.find(item =>
-				item.getAttribute('data-sec') ==
-				i + 1);
-			newDot = this.dotsArr.find(item =>
-				item.getAttribute('data-sec') ==
-				i + 1);
-		} else {
-			newPhoto = this.imagesArr.find(item =>
-				item.getAttribute('data-sec') ==
-				'1');
-			newDot = this.dotsArr.find(item =>
-				item.getAttribute('data-sec') ==
-				'1');
-		}
-		//скрываем текущее фото	
-		currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
-		// отображаем новое фото
-		newPhoto.classList.add(`${this.elemName}__photo_showed`);
-		//обесцвечиваем текущую точку
-		currentDot.classList.remove(`${this.elemName}__dot_active`);
-		// закрашиваем новую
-		newDot.classList.add(`${this.elemName}__dot_active`);
-
-
-	}
 
 	createDots() {
 		this.dotsWrapper = document.createElement('div');
@@ -129,7 +113,6 @@ class RoomCard {
 		this.dots.forEach((dot) => {
 			//dot - точка, по которой кликнули (должна стать активной)
 			dot.addEventListener('click', () => {
-				console.log('CLICK');
 				let sec = dot.getAttribute('data-sec');
 				//определяем текущее фото
 				let currentPhoto = this.imagesArr.find(item =>
