@@ -82,12 +82,8 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 		border: 1px solid $colorWhite;
 		border-radius: 50%;
 		cursor: pointer;
-
-		//border: 1px solid red;
-		//	width: 5px;
+		&_active {
+			background-color: $colorWhite;
+		}
 	}
-}
-
-.js-dot-active {
-	background-color: $colorWhite;
 }

@@ -40,14 +40,24 @@ class RoomCard {
 		//определяем текущее фото
 		let currentPhoto = this.imagesArr.find(item =>
 			item.classList.contains(`${this.elemName}__photo_showed`));
+		//определяем текущую точку
+		let currentDot = this.dotsArr.find(item =>
+			item.classList.contains(`${this.elemName}__dot_active`));
 		let i = parseInt(currentPhoto.getAttribute('data-sec'));
 		let newPhoto;
+		let newDot;
 		if (i != 1) {
 			newPhoto = this.imagesArr.find(item =>
 				item.getAttribute('data-sec') ==
 				i - 1);
+			newDot = this.dotsArr.find(item =>
+				item.getAttribute('data-sec') ==
+				i - 1);
 		} else {
 			newPhoto = this.imagesArr.find(item =>
+				item.getAttribute('data-sec') ==
+				this.images.length);
+			newDot = this.dotsArr.find(item =>
 				item.getAttribute('data-sec') ==
 				this.images.length);
 		}
@@ -55,24 +65,35 @@ class RoomCard {
 		currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
 		// отображаем новое фото
 		newPhoto.classList.add(`${this.elemName}__photo_showed`);
-
-
-
-
+		//обесцвечиваем текущую точку
+		currentDot.classList.remove(`${this.elemName}__dot_active`);
+		// закрашиваем новую
+		newDot.classList.add(`${this.elemName}__dot_active`);
 	}
 
 	next() {
 		//определяем текущее фото
 		let currentPhoto = this.imagesArr.find(item =>
 			item.classList.contains(`${this.elemName}__photo_showed`));
+		//определяем текущую точку
+		let currentDot = this.dotsArr.find(item =>
+			item.classList.contains(`${this.elemName}__dot_active`));
+
 		let i = parseInt(currentPhoto.getAttribute('data-sec'));
 		let newPhoto;
+		let newDot;
 		if (i != this.images.length) {
 			newPhoto = this.imagesArr.find(item =>
 				item.getAttribute('data-sec') ==
 				i + 1);
+			newDot = this.dotsArr.find(item =>
+				item.getAttribute('data-sec') ==
+				i + 1);
 		} else {
 			newPhoto = this.imagesArr.find(item =>
+				item.getAttribute('data-sec') ==
+				'1');
+			newDot = this.dotsArr.find(item =>
 				item.getAttribute('data-sec') ==
 				'1');
 		}
@@ -80,6 +101,12 @@ class RoomCard {
 		currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
 		// отображаем новое фото
 		newPhoto.classList.add(`${this.elemName}__photo_showed`);
+		//обесцвечиваем текущую точку
+		currentDot.classList.remove(`${this.elemName}__dot_active`);
+		// закрашиваем новую
+		newDot.classList.add(`${this.elemName}__dot_active`);
+
+
 	}
 
 	createDots() {
@@ -94,7 +121,7 @@ class RoomCard {
 			this.dotsWrapper.append(dot);
 		}
 		this.dots = this.getElems(['dot']);
-		this.dots[0].classList.add('js-dot-active');
+		this.dots[0].classList.add(`${this.elemName}__dot_active`);
 		this.dotsArr = Array.from(this.dots);
 	}
 
@@ -109,7 +136,7 @@ class RoomCard {
 					item.classList.contains(`${this.elemName}__photo_showed`));
 				//определяем активную точку
 				let currentDot = this.dotsArr.find(item =>
-					item.classList.contains('js-dot-active'));
+					item.classList.contains(`${this.elemName}__dot_active`));
 				//определяем новое фото (атрибут data-sec равен атрибуту data-sec нажатой точки [т.е. новой активной])
 				let newPhoto = this.imagesArr.find(item =>
 					item.getAttribute('data-sec') ==
@@ -117,11 +144,11 @@ class RoomCard {
 				//скрываем текущее фото	
 				currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
 				//обесцвечиваем текущую точку
-				currentDot.classList.remove('js-dot-active');
+				currentDot.classList.remove(`${this.elemName}__dot_active`);
 				// отображаем новое фото
 				newPhoto.classList.add(`${this.elemName}__photo_showed`);
 				//закрашиваем новую точку
-				dot.classList.add('js-dot-active');
+				dot.classList.add(`${this.elemName}__dot_active`);
 			});
 		});
 	}
