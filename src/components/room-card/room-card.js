@@ -3,6 +3,7 @@ class RoomCard {
 		this.elemName = elemName;
 		this.wrapper = elem;
 		this.render();
+		this.createDots();
 		this.clickDot();
 
 	}
@@ -22,12 +23,13 @@ class RoomCard {
 	}
 
 	render() {
+		this.slider = this.getElem('slider');
 		this.btnPrev = this.getElem('prev');
 		this.btnNext = this.getElem('next');
 		this.images = this.getElems(['photo']);
 		this.imagesArr = Array.from(this.images);
-		this.dots = this.getElems(['dot']);
-		this.dotsArr = Array.from(this.dots);
+		// this.dots = this.getElems(['dot']);
+		// this.dotsArr = Array.from(this.dots);
 		this.btnPrev.addEventListener('click', () => this.prev());
 		this.btnNext.addEventListener('click', () => this.next());
 		this.i = 0;
@@ -35,31 +37,76 @@ class RoomCard {
 
 
 	prev() {
-		this.images[this.i].classList.remove('js-photo-showed');
-		this.i--;
-		if (this.i < 0) {
-			this.i = this.images.length - 1;
+		//определяем текущее фото
+		let currentPhoto = this.imagesArr.find(item =>
+			item.classList.contains(`${this.elemName}__photo_showed`));
+		let i = parseInt(currentPhoto.getAttribute('data-sec'));
+		let newPhoto;
+		if (i != 1) {
+			newPhoto = this.imagesArr.find(item =>
+				item.getAttribute('data-sec') ==
+				i - 1);
+		} else {
+			newPhoto = this.imagesArr.find(item =>
+				item.getAttribute('data-sec') ==
+				this.images.length);
 		}
-		this.images[this.i].classList.add('js-photo-showed');
+		//скрываем текущее фото	
+		currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
+		// отображаем новое фото
+		newPhoto.classList.add(`${this.elemName}__photo_showed`);
+
+
+
+
 	}
 
 	next() {
-		this.images[this.i].classList.remove('js-photo-showed');
-		this.i++;
-		if (this.i >= this.images.length) {
-			this.i = 0;
+		//определяем текущее фото
+		let currentPhoto = this.imagesArr.find(item =>
+			item.classList.contains(`${this.elemName}__photo_showed`));
+		let i = parseInt(currentPhoto.getAttribute('data-sec'));
+		let newPhoto;
+		if (i != this.images.length) {
+			newPhoto = this.imagesArr.find(item =>
+				item.getAttribute('data-sec') ==
+				i + 1);
+		} else {
+			newPhoto = this.imagesArr.find(item =>
+				item.getAttribute('data-sec') ==
+				'1');
 		}
-		this.images[this.i].classList.add('js-photo-showed');
+		//скрываем текущее фото	
+		currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
+		// отображаем новое фото
+		newPhoto.classList.add(`${this.elemName}__photo_showed`);
+	}
+
+	createDots() {
+		this.dotsWrapper = document.createElement('div');
+		this.dotsWrapper.classList.add(this.elemName + '__dots');
+		this.slider.append(this.dotsWrapper);
+		for (let i = 1; i <= this.imagesArr.length; i++) {
+			let dot = document.createElement('div');
+			dot.classList.add(this.elemName + '__dot');
+			dot.classList.add(this.elemName + '__dot');
+			dot.setAttribute('data-sec', i);
+			this.dotsWrapper.append(dot);
+		}
+		this.dots = this.getElems(['dot']);
+		this.dots[0].classList.add('js-dot-active');
+		this.dotsArr = Array.from(this.dots);
 	}
 
 	clickDot() {
 		this.dots.forEach((dot) => {
 			//dot - точка, по которой кликнули (должна стать активной)
-			dot.addEventListener('click', (e) => {
+			dot.addEventListener('click', () => {
+				console.log('CLICK');
 				let sec = dot.getAttribute('data-sec');
 				//определяем текущее фото
 				let currentPhoto = this.imagesArr.find(item =>
-					item.classList.contains('js-photo-showed'));
+					item.classList.contains(`${this.elemName}__photo_showed`));
 				//определяем активную точку
 				let currentDot = this.dotsArr.find(item =>
 					item.classList.contains('js-dot-active'));
@@ -68,11 +115,11 @@ class RoomCard {
 					item.getAttribute('data-sec') ==
 					sec);
 				//скрываем текущее фото	
-				currentPhoto.classList.remove('js-photo-showed');
+				currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
 				//обесцвечиваем текущую точку
 				currentDot.classList.remove('js-dot-active');
 				// отображаем новое фото
-				newPhoto.classList.add('js-photo-showed');
+				newPhoto.classList.add(`${this.elemName}__photo_showed`);
 				//закрашиваем новую точку
 				dot.classList.add('js-dot-active');
 			});

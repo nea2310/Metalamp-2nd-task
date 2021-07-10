@@ -42,6 +42,10 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 		opacity: 0;
 		transition: opacity 1s;
 		z-index: 1;
+
+		&_showed {
+			opacity: 1;
+		}
 	}
 	&__prev,
 	&__next {
@@ -82,10 +86,6 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 		//border: 1px solid red;
 		//	width: 5px;
 	}
-}
-
-.js-photo-showed {
-	opacity: 1;
 }
 
 .js-dot-active {
