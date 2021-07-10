@@ -28,6 +28,7 @@ class RoomCard {
 
 	render() {
 		this.slider = this.getElem('slider');
+		this.dotsWrapper = this.getElem('dots');
 		this.btnPrev = this.getElem('prev');
 		this.btnNext = this.getElem('next');
 		this.images = this.getElems(['photo']);
@@ -74,9 +75,6 @@ class RoomCard {
 	}
 
 	createDots() {
-		this.dotsWrapper = document.createElement('div');
-		this.dotsWrapper.classList.add(this.elemName + '__dots');
-		this.slider.append(this.dotsWrapper);
 		for (let i = 1; i <= this.images.length; i++) {
 			let dot = document.createElement('div');
 			dot.classList.add(this.elemName + '__dot');
@@ -115,11 +113,11 @@ class RoomCard {
 	}
 }
 
-function renderRoomCards() {
-	let roomCards = document.querySelectorAll('.room-card');
+function renderRoomCards(elem) {
+	let roomCards = document.querySelectorAll('.' + elem);
 	console.log(roomCards);
 	for (let roomCard of roomCards) {
-		new RoomCard('room-card', roomCard);
+		new RoomCard(elem, roomCard);
 	}
 }
-renderRoomCards();
+renderRoomCards('room-card');
