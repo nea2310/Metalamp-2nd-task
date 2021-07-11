@@ -15,21 +15,25 @@ mixin header(options={})
 					li(class = elemName + '__nav-item') Новости
 					li(class = elemName + '__nav-item') Соглашения
 						img(class = elemName + '__nav-item-img' src = 'assets/img/interface/expand-more.svg')
-			div(class = elemName + '__buttons') 
-				div(class = elemName + '__button-login') 
-					+btn(
-									{text: 'войти',
-									type: 'link',
-									length: 'very-short',
-									width: 'narrow',
-									color: 'light'}
-									)
-				div(class = elemName + '__button-reg') 
-					+btn(
-									{text: 'зарегистрироваться',
-									type: 'link',
-									length: 'long',
-									width: 'narrow',
-									color: 'dark'}
-									)
+			div(class = elemName + '__auth') 
+				if (options.authorized==false)
+					div(class = elemName + '__button-login') 
+						+btn(
+										{text: 'войти',
+										type: 'link',
+										length: 'very-short',
+										width: 'narrow',
+										color: 'light'}
+										)
+					div(class = elemName + '__button-reg') 
+						+btn(
+										{text: 'зарегистрироваться',
+										type: 'link',
+										length: 'long',
+										width: 'narrow',
+										color: 'dark'}
+										)
+				if (options.authorized==true)
+					div(class = elemName + '__profile') 
+						p(class = elemName + '__profile-name')  Юлий Цезарь
 			
