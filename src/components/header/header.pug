@@ -3,17 +3,24 @@ mixin header(options={})
 	-
 		let elemName = 'header'
 	div(class = elemName)
+		div(class = elemName + '__burger')
+			span
 		div(class = elemName + '__wrapper')
 			a(class = elemName + '__logo' href = 'https://test/test')
 				img(class = elemName + '__logo-img' src = 'assets/img/interface/logo-purple.svg')
 			nav(class = elemName + '__nav') 
 				ul(class = elemName + '__nav-items')
-					li(class = elemName + '__nav-item') О нас
-					li(class = elemName + '__nav-item') Услуги
+					li(class = elemName + '__nav-item') 
+						a(class = elemName + '__nav-item-link' href = 'https://test/test') О нас
+					li(class = elemName + '__nav-item')
+						a(class = elemName + '__nav-item-link' href = 'https://test/test') Услуги
 						img(class = elemName + '__nav-item-img' src = 'assets/img/interface/expand-more.svg')
-					li(class = elemName + '__nav-item') Вакансии
-					li(class = elemName + '__nav-item') Новости
-					li(class = elemName + '__nav-item') Соглашения
+					li(class = elemName + '__nav-item')
+						a(class = elemName + '__nav-item-link' href = 'https://test/test') Вакансии
+					li(class = elemName + '__nav-item')
+						a(class = elemName + '__nav-item-link' href = 'https://test/test') Новости
+					li(class = elemName + '__nav-item')
+						a(class = elemName + '__nav-item-link' href = 'https://test/test') Соглашения
 						img(class = elemName + '__nav-item-img' src = 'assets/img/interface/expand-more.svg')
 			div(class = elemName + '__auth') 
 				if (options.authorized==false)

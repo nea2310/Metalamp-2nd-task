@@ -4,12 +4,18 @@ class Header {
 		this.wrapper = elem;
 		this.render();
 	}
-
+	getElem(selector, wrapper = this.wrapper) {
+		return wrapper.
+			querySelector('.' + this.elemName + '__' + selector);
+	}
 	render() {
-		this.form = this.wrapper.
-			querySelector(`.${this.elemName}__login-form`);
-		this.inputs = this.wrapper.
-			querySelectorAll('.input-field__input');
+		this.burger = this.getElem('burger');
+		this.nav = this.getElem('nav');
+		this.burger.addEventListener('click', (e) => {
+			this.burger.classList.toggle('active');
+			this.nav.classList.toggle('active-nav');
+		});
+
 	}
 
 
@@ -22,4 +28,4 @@ function renderHeaders(selector) {
 		new Header(selector, header);
 	}
 }
-//renderHeaders('.header');
+renderHeaders('.header');
