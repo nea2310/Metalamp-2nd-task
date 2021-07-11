@@ -1,7 +1,7 @@
 
 class CheckList {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 		this.clickInput();
@@ -113,11 +113,11 @@ class CheckList {
 	}
 }
 
-function renderCheckLists() {
-	let checkLists = document.querySelectorAll('.checklist');
+function renderCheckLists(selector) {
+	let checkLists = document.querySelectorAll(selector);
 	for (let checkList of checkLists) {
-		new CheckList('checklist', checkList);
+		new CheckList(selector, checkList);
 	}
 }
-renderCheckLists();
+renderCheckLists('.checklist');
 

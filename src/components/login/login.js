@@ -1,6 +1,6 @@
 class Login {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 		this.focusInput();
@@ -50,10 +50,10 @@ class Login {
 
 }
 
-function renderLogins() {
-	let logins = document.querySelectorAll('.login');
+function renderLogins(selector) {
+	let logins = document.querySelectorAll(selector);
 	for (let login of logins) {
-		new Login('login', login);
+		new Login(selector, login);
 	}
 }
-renderLogins();
+renderLogins('.login');

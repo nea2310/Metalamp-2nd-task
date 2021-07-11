@@ -1,6 +1,6 @@
 class Booking {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 		this.focusInput();
@@ -8,7 +8,6 @@ class Booking {
 	}
 
 	render() {
-
 		this.dates = this.wrapper.querySelectorAll('.date-dropdown__input');
 		this.guests = this.wrapper.querySelector('.dropdown__input');
 		this.inputs = this.wrapper.
@@ -57,10 +56,10 @@ class Booking {
 
 }
 
-function renderBookings() {
-	let bookings = document.querySelectorAll('.booking');
+function renderBookings(selector) {
+	let bookings = document.querySelectorAll(selector);
 	for (let booking of bookings) {
-		new Booking('booking', booking);
+		new Booking(selector, booking);
 	}
 }
-renderBookings();
+renderBookings('.booking');

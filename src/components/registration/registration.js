@@ -1,6 +1,6 @@
 class Registration {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 		this.focusInput();
@@ -56,10 +56,10 @@ class Registration {
 	}
 }
 
-function renderRegistrations() {
-	let registrations = document.querySelectorAll('.registration');
+function renderRegistrations(selector) {
+	let registrations = document.querySelectorAll(selector);
 	for (let registration of registrations) {
-		new Registration('registration', registration);
+		new Registration(selector, registration);
 	}
 }
-renderRegistrations();
+renderRegistrations('.registration');

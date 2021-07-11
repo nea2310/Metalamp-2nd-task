@@ -1,6 +1,6 @@
 class RoomCard {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 		this.createDots();
@@ -113,11 +113,10 @@ class RoomCard {
 	}
 }
 
-function renderRoomCards(elem) {
-	let roomCards = document.querySelectorAll('.' + elem);
-	console.log(roomCards);
+function renderRoomCards(selector) {
+	let roomCards = document.querySelectorAll(selector);
 	for (let roomCard of roomCards) {
-		new RoomCard(elem, roomCard);
+		new RoomCard(selector, roomCard);
 	}
 }
-renderRoomCards('room-card');
+renderRoomCards('.room-card');

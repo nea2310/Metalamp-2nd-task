@@ -1,6 +1,6 @@
 class SearchRoom {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 		this.focusInput();
@@ -52,10 +52,10 @@ class SearchRoom {
 	}
 }
 
-function renderSearchRooms() {
-	let searchRooms = document.querySelectorAll('.search-room');
+function renderSearchRooms(selector) {
+	let searchRooms = document.querySelectorAll(selector);
 	for (let searchRoom of searchRooms) {
-		new SearchRoom('search-room', searchRoom);
+		new SearchRoom(selector, searchRoom);
 	}
 }
-renderSearchRooms();
+renderSearchRooms('.search-room');

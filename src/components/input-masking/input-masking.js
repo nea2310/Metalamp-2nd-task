@@ -1,6 +1,6 @@
 class InputMask {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.input = elem;
 		this.init();
 		this.mask();
@@ -113,13 +113,13 @@ class InputMask {
 	}
 }
 
-function inputsMask() {
-	let inputsMask = document.querySelectorAll('.js-masked');
+function inputsMask(selector) {
+	let inputsMask = document.querySelectorAll(selector);
 	for (let inputMask of inputsMask) {
-		new InputMask('js-masked', inputMask);
+		new InputMask(selector, inputMask);
 	}
 }
-inputsMask();
+inputsMask('.js-masked');
 
 
 

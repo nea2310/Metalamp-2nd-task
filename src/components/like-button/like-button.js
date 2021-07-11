@@ -1,7 +1,7 @@
 
 class LikeButton {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 		this.click();
@@ -60,11 +60,11 @@ class LikeButton {
 
 }
 
-function renderLikeButtons() {
-	let likeButtons = document.querySelectorAll('.like-button');
+function renderLikeButtons(selector) {
+	let likeButtons = document.querySelectorAll(selector);
 	for (let likeButton of likeButtons) {
-		new LikeButton('like-button', likeButton);
+		new LikeButton(selector, likeButton);
 	}
 }
-renderLikeButtons();
+renderLikeButtons('.like-button');
 

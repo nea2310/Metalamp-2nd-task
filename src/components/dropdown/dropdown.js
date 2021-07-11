@@ -1,7 +1,7 @@
 
 class DropDown {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 		this.clickInput();
@@ -377,11 +377,11 @@ class DropDown {
 	}
 }
 
-function renderDropDowns() {
-	let dropDowns = document.querySelectorAll('.dropdown');
+function renderDropDowns(selector) {
+	let dropDowns = document.querySelectorAll(selector);
 	for (let dropDown of dropDowns) {
-		new DropDown('dropdown', dropDown);
+		new DropDown(selector, dropDown);
 	}
 }
-renderDropDowns();
+renderDropDowns('.dropdown');
 

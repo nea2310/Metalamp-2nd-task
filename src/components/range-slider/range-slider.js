@@ -1,6 +1,6 @@
 class RangeSlider {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 
@@ -45,10 +45,10 @@ class RangeSlider {
 	}
 }
 
-function renderRangeSliders() {
-	let rangeSliders = document.querySelectorAll('.range-slider');
+function renderRangeSliders(selector) {
+	let rangeSliders = document.querySelectorAll(selector);
 	for (let rangeSlider of rangeSliders) {
-		new RangeSlider('range-slider', rangeSlider);
+		new RangeSlider(selector, rangeSlider);
 	}
 }
-renderRangeSliders();
+renderRangeSliders('.range-slider');

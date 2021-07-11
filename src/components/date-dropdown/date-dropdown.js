@@ -1,6 +1,6 @@
 class DatePicker {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 		this.init();
@@ -240,10 +240,10 @@ class DatePicker {
 	}
 }
 
-function renderDateDropDowns() {
-	let dropDowns = document.querySelectorAll('.date-dropdown');
+function renderDateDropDowns(selector) {
+	let dropDowns = document.querySelectorAll(selector);
 	for (let dateDropDown of dropDowns) {
-		new DatePicker('date-dropdown', dateDropDown);
+		new DatePicker(selector, dateDropDown);
 	}
 }
-renderDateDropDowns();
+renderDateDropDowns('.date-dropdown');

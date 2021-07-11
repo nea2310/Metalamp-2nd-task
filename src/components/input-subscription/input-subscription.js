@@ -1,6 +1,6 @@
 class InputSubscribe {
 	constructor(elemName, elem) {
-		this.elemName = elemName;
+		this.elemName = elemName.replace(/^./, '');
 		this.input = elem;
 		this.inputWrapper = this.input.parentNode;
 		this.link = this.inputWrapper.querySelector('button');
@@ -23,13 +23,13 @@ class InputSubscribe {
 	}
 }
 
-function inputsSubscribe() {
-	let inputsSubscribe = document.querySelectorAll('.js-check-email');
+function inputsSubscribe(selector) {
+	let inputsSubscribe = document.querySelectorAll(selector);
 	for (let inputSubscribe of inputsSubscribe) {
-		new InputSubscribe('js-check-email', inputSubscribe);
+		new InputSubscribe(selector, inputSubscribe);
 	}
 }
-inputsSubscribe();
+inputsSubscribe('.js-check-email');
 
 
 
