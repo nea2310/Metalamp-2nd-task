@@ -1,21 +1,66 @@
+$colorDarkShade100: #1f2041;
+$colorDarkShade75: rgba(31, 32, 65, 0.75);
+$colorDarkShade50: rgba(31, 32, 65, 0.5);
+$colorDarkShade25: rgba(31, 32, 65, 0.25);
+$colorDarkShade5: rgba(31, 32, 65, 0.05);
+$colorPurple: #bc9cff;
+$colorGreen: #6fcf97;
+$colorWhite: #ffffff;
+
+@mixin font-body() {
+	font-family: "Montserrat-Regular";
+	font-size: 14px;
+	line-height: 24px;
+	color: $colorDarkShade75;
+}
+
 .header {
 	width: 100%;
-	background-color: #fff;
+	height: 70px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
+	background-color: $colorWhite;
 	&__wrapper {
-		min-height: 100px;
-		max-width: $max-wrapeer;
+		max-width: 1161px;
+		width: 100%;
 		margin: 0 auto;
 		display: flex;
-		flex-direction: column;
 		justify-content: space-between;
-
-		background-color: #302e29;
 	}
-
-	&__top {
+	&__logo {
 	}
+	&__nav {
+		display: flex;
+		align-items: center;
+		flex-grow: 1;
 
-	&__bottom {
+		&-items {
+			margin-left: auto;
+			display: flex;
+			align-items: center;
+		}
+		&-item {
+			white-space: nowrap;
+			padding-right: 24px;
+			&-img {
+				padding-left: 3px;
+			}
+		}
+		@include font-body;
+		&-item:hover,
+		&-item:focus {
+			cursor: pointer;
+			font-weight: bold;
+		}
+	}
+	&__buttons {
+		margin-top: 3px;
+		display: flex;
+	}
+	&__button-reg {
+		padding-left: 20px;
 	}
 }

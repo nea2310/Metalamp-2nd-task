@@ -4,7 +4,7 @@ mixin room-card(options={})
 		let elemName = 'room-card'
 	div(class = elemName)
 		div(class = elemName + '__slider')
-			a(class = elemName + '__photos' href = 'https/test/test')
+			a(class = elemName + '__photos' href = 'https://test/test')
 				img(class = elemName + '__photo ' + elemName + '__photo_showed' alt = '' src = 'assets/img/interface/room-1.jpg' data-sec = '1')
 				img(class = elemName + '__photo' alt = '' src = 'assets/img/interface/room-2.jpg' data-sec = '2')
 				img(class = elemName + '__photo' alt = '' src = 'assets/img/interface/room-3.jpg' data-sec = '3')
@@ -16,7 +16,7 @@ mixin room-card(options={})
 				button(class = elemName + '__next' type = 'button')
 					img(class = elemName + '__next-img' alt = '' src = 'assets/img/interface/expand-more-white.svg')
 		div(class = elemName + '__dtls')
-			a(class = elemName + '__dtls-room' href = 'https/test/test')
+			a(class = elemName + '__dtls-room' href = 'https://test/test')
 				span(class = elemName + '__dtl-mark') №
 				span(class = elemName + '__dtl-number')= options.roomNumber
 				span(class = elemName + '__dtl-isLux')= options.isLux

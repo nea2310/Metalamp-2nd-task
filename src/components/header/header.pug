@@ -1,5 +1,35 @@
-
-header(class="header")
-	div(class="header__wrapper")
-		div(class="header__top")
-		div(class="header__bottom")
+include ../btn/btn.pug
+mixin header(options={})
+	-
+		let elemName = 'header'
+	div(class = elemName)
+		div(class = elemName + '__wrapper')
+			a(class = elemName + '__logo' href = 'https://test/test')
+				img(class = elemName + '__logo-img' src = 'assets/img/interface/logo-purple.svg')
+			nav(class = elemName + '__nav') 
+				ul(class = elemName + '__nav-items')
+					li(class = elemName + '__nav-item') О нас
+					li(class = elemName + '__nav-item') Услуги
+						img(class = elemName + '__nav-item-img' src = 'assets/img/interface/expand-more.svg')
+					li(class = elemName + '__nav-item') Вакансии
+					li(class = elemName + '__nav-item') Новости
+					li(class = elemName + '__nav-item') Соглашения
+						img(class = elemName + '__nav-item-img' src = 'assets/img/interface/expand-more.svg')
+			div(class = elemName + '__buttons') 
+				div(class = elemName + '__button-login') 
+					+btn(
+									{text: 'войти',
+									type: 'link',
+									length: 'very-short',
+									width: 'narrow',
+									color: 'light'}
+									)
+				div(class = elemName + '__button-reg') 
+					+btn(
+									{text: 'зарегистрироваться',
+									type: 'link',
+									length: 'long',
+									width: 'narrow',
+									color: 'dark'}
+									)
+			
