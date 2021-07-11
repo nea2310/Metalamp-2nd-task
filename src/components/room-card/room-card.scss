@@ -5,6 +5,12 @@
 	line-height: 24px;
 	color: $colorDarkShade75;
 }
+@mixin font-h2() {
+	font-family: "Montserrat-Bold";
+	font-size: 19px;
+	line-height: 23px;
+	color: $colorDarkShade100;
+}
 
 @mixin font-h3() {
 	font-family: "Montserrat", Arial, Helvetica, sans-serif;
@@ -29,6 +35,10 @@ $gradientPurple: linear-gradient($colorPurple 0%, $colorBlue 100%);
 $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 
 .room-card {
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	background-color: $colorWhite;
 	width: 270px;
 	&__slider {
 		position: relative;
@@ -104,6 +114,85 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 		cursor: pointer;
 		&_active {
 			background-color: $colorWhite;
+		}
+	}
+
+	&__dtls {
+		padding-left: 18px;
+		padding-right: 18px;
+		margin-top: 17px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__dtls-room {
+		flex-grow: 1;
+		border-bottom: 1px solid rgba(31, 32, 65, 0.1);
+		padding-bottom: 10px;
+		margin-top: 2px;
+	}
+
+	&__dtl-mark {
+		@include font-h3;
+		font-size: 14px;
+		padding-left: 1px;
+	}
+
+	&__dtl-number {
+		@include font-h2;
+		padding-left: 4px;
+	}
+
+	&__dtl-isLux {
+		@include font-h3;
+		color: $colorPurple;
+		padding-left: 4px;
+	}
+
+	&__dtls-price {
+		border-bottom: 1px solid rgba(31, 32, 65, 0.1);
+		//padding-bottom: 10px;
+		margin-top: 3px;
+	}
+
+	&__dtl-price {
+		@include font-body;
+		font-weight: bold;
+		color: $colorDarkShade50;
+	}
+
+	&__dtl-price-curr {
+		@include font-body;
+		font-weight: bold;
+		color: $colorDarkShade50;
+	}
+
+	&__dtl-label {
+		@include font-body;
+		font-size: 12px;
+		color: $colorDarkShade50;
+		padding-left: 3px;
+	}
+
+	&__rating {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 11px;
+		padding-left: 22px;
+		padding-right: 20px;
+	}
+
+	&__rate {
+	}
+	&__feedback {
+		@include font-body;
+		margin-bottom: 18px;
+		&-amount {
+			font-weight: bold;
+			color: $colorDarkShade50;
+		}
+		&-mark {
+			padding-left: 4px;
 		}
 	}
 }

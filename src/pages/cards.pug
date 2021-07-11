@@ -28,5 +28,15 @@ div(class="cards")
 			+login()
 	div(class='cards__search-col cards__search-col-right')
 		div(class='cards__room-card')
-			+room-card()
-
+			+room-card({
+							roomNumber: '888',
+							isLux: 'люкс',
+							roomPrice: '9 990',
+							feedbackAmnt: '145',
+							ratingName: 'rating1'})
+		div(class='cards__room-card')
+			+room-card({
+							roomNumber: '840',
+							roomPrice: '9 900',
+							feedbackAmnt: '65',
+							ratingName: 'rating2'})

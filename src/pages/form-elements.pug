@@ -114,25 +114,25 @@ div(class="form-elements")
 						labelText: 'checkbox buttons',
 						checkListName: 'checkbox buttons'}
 						)
+		span(class='form-elements__label') radio buttons
 		div(class="form-elements__comp-wrapper")
 			+radiobuttons({categories:
 							{cat1: {name:'Мужчина', checked: true}, 
 							cat2:{name:'Женщина'}},
-							labelText: 'radio buttons',
 							radioGroupName: 'gender'})
+		span(class='form-elements__label') toggle
 		div(class="form-elements__comp-wrapper")
 			+toggle(
-						{labelText: 'toggle',
-						name: 'Получать спецпредложения'}
+						{name: 'Получать спецпредложения'}
 						)
+		span(class='form-elements__label') like-button
 		div(class="form-elements__comp-wrapper")
 			+like-button(
-						{labelText: 'like button',
-						})
+						{})
+		span(class='form-elements__label') rate button
 		div(class="form-elements__comp-wrapper")
 			+rate-button(
-						{labelText: 'rate button',
-						})
+						{})
 		div(class="form-elements__comp-wrapper")
 			+dropdown(
 						{categories:

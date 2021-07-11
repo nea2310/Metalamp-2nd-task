@@ -1,4 +1,4 @@
-include ../btn/btn.pug
+include ../rate-button/rate-button.pug
 mixin room-card(options={})
 	-
 		let elemName = 'room-card'
@@ -15,3 +15,19 @@ mixin room-card(options={})
 					img(class = elemName + '__prev-img' alt = '' src = 'assets/img/interface/expand-more-white.svg')
 				button(class = elemName + '__next' type = 'button')
 					img(class = elemName + '__next-img' alt = '' src = 'assets/img/interface/expand-more-white.svg')
+		div(class = elemName + '__dtls')
+			div(class = elemName + '__dtls-room')
+				span(class = elemName + '__dtl-mark') №
+				span(class = elemName + '__dtl-number')= options.roomNumber
+				span(class = elemName + '__dtl-isLux')= options.isLux
+			div(class = elemName + '__dtls-price')
+				span(class = elemName + '__dtl-price')= options.roomPrice
+				span(class = elemName + '__dtl-price-curr') ₽
+				span(class = elemName + '__dtl-label') в сутки
+		div(class = elemName + '__rating')
+			div(class = elemName + '__rate')
+				+rate-button({name: options.ratingName})
+			div(class = elemName + '__feedback')
+				span(class = elemName + '__feedback-amount')= options.feedbackAmnt
+				span(class = elemName + '__feedback-mark') Отзывов
+			

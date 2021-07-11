@@ -23,8 +23,20 @@
 	}
 	&__booking {
 		margin-top: 151px;
+		padding-left: 2px;
 	}
 	&__login {
-		margin-top: 151px;
+		margin-top: 40px;
+		padding-left: 2px;
+	}
+
+	&__room-card {
+		margin-right: 213px;
+		&:first-child {
+			margin-top: 558px;
+		}
+		&:last-child {
+			margin-top: 37px;
+		}
 	}
 }
