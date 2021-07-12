@@ -85,7 +85,7 @@ class Header {
 	// показать/ скрыть мобильное меню
 	toggleMobileMenu() {
 		this.burger.classList.toggle('active');
-		this.nav.classList.toggle('active-nav');
+		this.navLevel1.classList.toggle('active-nav');
 	}
 }
 
