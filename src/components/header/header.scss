@@ -40,12 +40,16 @@ $colorWhite: #ffffff;
 		display: flex;
 		justify-content: space-between;
 		@include media-breakpoint-down($md) {
-			width: auto;
+			width: 100%;
+			margin: 0 20px;
 			z-index: 5;
 			display: flex;
-			flex-direction: column;
+			justify-content: space-around;
 			align-items: center;
 			background-color: $colorWhite;
+		}
+		@include media-breakpoint-down($xs) {
+			flex-direction: column;
 		}
 	}
 
@@ -63,6 +67,7 @@ $colorWhite: #ffffff;
 			&_active {
 				@include media-breakpoint-down($md) {
 					display: block;
+					z-index: 10;
 				}
 			}
 
@@ -85,7 +90,7 @@ $colorWhite: #ffffff;
 					cursor: pointer;
 					padding-left: 3px;
 					@include media-breakpoint-down($md) {
-						transform: rotate(-90deg);
+						display: none;
 					}
 				}
 				&-link {
@@ -113,6 +118,9 @@ $colorWhite: #ffffff;
 				}
 				&_expanded {
 					display: block;
+					@include media-breakpoint-down($lg) {
+						display: none;
+					}
 				}
 			}
 		}
