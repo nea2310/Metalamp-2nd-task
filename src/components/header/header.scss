@@ -33,27 +33,50 @@ $colorWhite: #ffffff;
 	&__logo {
 	}
 	&__nav {
-		display: flex;
-		align-items: center;
-		flex-grow: 1;
-
-		&-items {
-			margin-left: auto;
+		&-level1 {
+			border: 1px solid red;
 			display: flex;
-			align-items: center;
-		}
-		&-item {
-			white-space: nowrap;
-			padding-right: 24px;
-			&-img {
-				padding-left: 3px;
+			//	align-items: flex-start;
+			flex-grow: 1;
+
+			&-items {
+				margin-left: auto;
+				display: flex;
+				align-items: center;
 			}
-			&-link {
-				@include font-body;
-				&:hover,
-				&:focus {
+			&-item {
+				position: relative;
+				//	padding-top: 0;
+				border: 1px solid blue;
+				white-space: nowrap;
+				padding-right: 24px;
+				&-img {
 					cursor: pointer;
-					font-weight: bold;
+					padding-left: 3px;
+					border: 1px solid green;
+				}
+				&-link {
+					border: 1px solid orange;
+					@include font-body;
+					&:hover,
+					&:focus {
+						cursor: pointer;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+		&-level2 {
+			position: absolute;
+			display: none;
+			&-item {
+				&-link {
+					@include font-body;
+					&:hover,
+					&:focus {
+						cursor: pointer;
+						font-weight: bold;
+					}
 				}
 			}
 		}
@@ -86,6 +109,13 @@ $colorWhite: #ffffff;
 	}
 }
 
+.expanded {
+	display: block;
+}
+// .collapsed {
+// 	display: none;
+// }
+
 @media screen and (max-width: 991px) {
 	.header {
 		position: relative;
@@ -98,7 +128,7 @@ $colorWhite: #ffffff;
 			background-color: $colorWhite;
 		}
 
-		&__nav {
+		&__nav-level1 {
 			display: none;
 
 			&-items {
