@@ -22,6 +22,7 @@ $colorWhite: #ffffff;
 	align-items: center;
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 	background-color: $colorWhite;
+
 	&__wrapper {
 		max-width: 1161px;
 		width: 100%;
@@ -84,11 +85,9 @@ $colorWhite: #ffffff;
 	&__button-login {
 		margin-top: 3px;
 	}
-
 	&__button-reg {
 		padding-left: 20px;
 	}
-
 	&__profile {
 		align-self: center;
 
@@ -130,7 +129,6 @@ $colorWhite: #ffffff;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
-
 			background-color: $colorWhite;
 		}
 
