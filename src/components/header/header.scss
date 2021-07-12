@@ -72,10 +72,11 @@ $colorWhite: #ffffff;
 
 	&__profile {
 		align-self: center;
-		@include font-body;
+
 		line-height: 30px;
 		border-left: 1px solid rgba(31, 32, 65, 0.1);
 		&-name {
+			@include font-body;
 			padding-left: 20px;
 		}
 	}

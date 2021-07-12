@@ -3,7 +3,7 @@ mixin header(options={})
 	-
 		let elemName = 'header'
 	div(class = elemName)
-		div(class = elemName + '__burger')
+		div(class = elemName + '__burger' tabindex = 1)
 			span
 		div(class = elemName + '__wrapper')
 			a(class = elemName + '__logo' href = 'https://test/test')
@@ -30,7 +30,8 @@ mixin header(options={})
 										type: 'link',
 										length: 'very-short',
 										width: 'narrow',
-										color: 'light'}
+										color: 'light',
+										href: 'https://test/test'}
 										)
 					div(class = elemName + '__button-reg') 
 						+btn(
@@ -38,9 +39,10 @@ mixin header(options={})
 										type: 'link',
 										length: 'long',
 										width: 'narrow',
-										color: 'dark'}
+										color: 'dark',
+										href: 'https://test/test'}
 										)
 				if (options.authorized==true)
 					div(class = elemName + '__profile') 
-						p(class = elemName + '__profile-name')  Юлий Цезарь
+						a(class = elemName + '__profile-name' href = 'https://test/test')  Юлий Цезарь
 			

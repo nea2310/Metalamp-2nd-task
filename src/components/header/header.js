@@ -12,10 +12,20 @@ class Header {
 		this.burger = this.getElem('burger');
 		this.nav = this.getElem('nav');
 		this.burger.addEventListener('click', (e) => {
-			this.burger.classList.toggle('active');
-			this.nav.classList.toggle('active-nav');
+			this.toggleMobileMenu();
 		});
 
+		this.burger.addEventListener('keypress', (e) => {
+			if (e.keyCode == 13) {
+				this.toggleMobileMenu();
+			}
+		});
+
+	}
+
+	toggleMobileMenu() {
+		this.burger.classList.toggle('active');
+		this.nav.classList.toggle('active-nav');
 	}
 
 
