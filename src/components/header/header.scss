@@ -8,7 +8,8 @@ $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
 @mixin font-body() {
-	font-family: "Montserrat-Regular";
+	font-family: "Montserrat";
+	font-weight: normal;
 	font-size: 14px;
 	line-height: 24px;
 	color: $colorDarkShade75;
