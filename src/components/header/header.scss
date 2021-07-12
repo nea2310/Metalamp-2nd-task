@@ -23,31 +23,70 @@ $colorWhite: #ffffff;
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 	background-color: $colorWhite;
 
+	@include media-breakpoint-down($lg) {
+		margin: 0;
+		padding-left: 20px;
+	}
+
+	@include media-breakpoint-down($md) {
+		position: relative;
+		height: 80px;
+	}
+
 	&__wrapper {
 		max-width: 1161px;
 		width: 100%;
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
+		@include media-breakpoint-down($md) {
+			width: auto;
+			z-index: 5;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			background-color: $colorWhite;
+		}
 	}
 
 	&__nav {
 		&-level1 {
 			display: flex;
 			flex-grow: 1;
+			@include media-breakpoint-down($md) {
+				display: none;
+				position: absolute;
+				background-color: $colorWhite;
+				left: 0;
+				top: 70px;
+			}
+			&_active {
+				@include media-breakpoint-down($md) {
+					display: block;
+				}
+			}
 
 			&-items {
 				margin-left: auto;
 				display: flex;
 				align-items: center;
+				@include media-breakpoint-down($md) {
+					display: block;
+				}
 			}
 			&-item {
 				position: relative;
 				white-space: nowrap;
 				padding-right: 24px;
+				@include media-breakpoint-down($md) {
+					margin-top: 20px;
+				}
 				&-img {
 					cursor: pointer;
 					padding-left: 3px;
+					@include media-breakpoint-down($md) {
+						transform: rotate(-90deg);
+					}
 				}
 				&-link {
 					@include font-body;
@@ -78,8 +117,22 @@ $colorWhite: #ffffff;
 			}
 		}
 	}
+	&__logo {
+		@include media-breakpoint-down($md) {
+			top: -55px;
+			left: 50%;
+		}
+	}
 	&__auth {
 		display: flex;
+		@include media-breakpoint-down($lg) {
+			margin-right: 20px;
+		}
+		@include media-breakpoint-down($md) {
+			top: 0;
+			left: 50%;
+			margin-left: 20px;
+		}
 	}
 	&__button-reg,
 	&__button-login {
@@ -90,8 +143,10 @@ $colorWhite: #ffffff;
 	}
 	&__profile {
 		align-self: center;
-
 		line-height: 30px;
+		@include media-breakpoint-down($md) {
+			border: none;
+		}
 		&-name {
 			@include font-body;
 			padding-left: 20px;
@@ -100,76 +155,15 @@ $colorWhite: #ffffff;
 			&:focus {
 				font-weight: bold;
 			}
+			@include media-breakpoint-down($md) {
+				padding: 0;
+			}
 		}
 	}
 	&__burger-btn {
 		display: none;
 		cursor: pointer;
-	}
-}
-
-@media screen and (max-width: 1199px) {
-	.header {
-		margin: 0;
-		padding-left: 20px;
-
-		&__auth {
-			margin-right: 20px;
-		}
-	}
-}
-
-@media screen and (max-width: 991px) {
-	.header {
-		position: relative;
-		height: 80px;
-		&__wrapper {
-			width: auto;
-			z-index: 5;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			background-color: $colorWhite;
-		}
-
-		&__nav-level1 {
-			display: none;
-			position: absolute;
-			background-color: $colorWhite;
-			left: 0;
-			top: 70px;
-
-			&-items {
-				display: block;
-			}
-			&-item {
-				margin-top: 20px;
-				&-img {
-					transform: rotate(-90deg);
-				}
-			}
-			&.header__nav-level1_active {
-				display: block;
-			}
-		}
-		&__logo {
-			top: -55px;
-			left: 50%;
-		}
-
-		&__auth {
-			top: 0;
-			left: 50%;
-			margin-left: 20px;
-		}
-		&__profile {
-			border: none;
-			&-name {
-				padding: 0;
-			}
-		}
-
-		&__burger-btn {
+		@include media-breakpoint-down($md) {
 			display: block;
 			position: absolute;
 			width: 20px;
@@ -177,7 +171,10 @@ $colorWhite: #ffffff;
 			z-index: 3;
 			left: 10px;
 		}
-		&__burger-btn &__burger {
+	}
+
+	&__burger-btn &__burger {
+		@include media-breakpoint-down($md) {
 			position: absolute;
 			background-color: $colorPurple;
 			left: 0;
@@ -186,8 +183,10 @@ $colorWhite: #ffffff;
 			top: 9px;
 			transition: all 0.9s ease 0s;
 		}
-		&__burger-btn:before,
-		&__burger-btn:after {
+	}
+	&__burger-btn:before,
+	&__burger-btn:after {
+		@include media-breakpoint-down($md) {
 			content: "";
 			background-color: $colorPurple;
 			position: absolute;
@@ -196,23 +195,33 @@ $colorWhite: #ffffff;
 			left: 0;
 			transition: all 0.5s ease 0s;
 		}
-		&__burger-btn:before {
+	}
+	&__burger-btn:before {
+		@include media-breakpoint-down($md) {
 			top: 0;
 			background-color: $colorPurple;
 		}
-		&__burger-btn:after {
+	}
+	&__burger-btn:after {
+		@include media-breakpoint-down($md) {
 			bottom: 0;
 			background-color: $colorPurple;
 		}
-		&__burger-btn.header__burger-btn_active:before {
+	}
+	&__burger-btn.header__burger-btn_active:before {
+		@include media-breakpoint-down($md) {
 			transform: rotate(45deg);
 			top: 9px;
 		}
-		&__burger-btn.header__burger-btn_active:after {
+	}
+	&__burger-btn.header__burger-btn_active:after {
+		@include media-breakpoint-down($md) {
 			transform: rotate(-45deg);
 			bottom: 9px;
 		}
-		&__burger-btn.header__burger-btn_active &__burger {
+	}
+	&__burger-btn.header__burger-btn_active &__burger {
+		@include media-breakpoint-down($md) {
 			transform: scale(0);
 		}
 	}
