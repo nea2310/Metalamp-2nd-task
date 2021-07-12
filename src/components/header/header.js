@@ -45,6 +45,14 @@ class Header {
 			}
 		});
 
+		document.addEventListener('click', (e) => {
+			if (!e.target.closest(`.${this.elemName}__nav-level2`)) {
+				for (let item of this.navLevel2) {
+					item.classList.remove('expanded');
+				}
+			}
+		});
+
 	}
 
 	// показать/ скрыть меню второго уровня
