@@ -15,7 +15,6 @@ $colorWhite: #ffffff;
 }
 
 .header {
-	width: 100%;
 	height: 70px;
 	margin: 0 auto;
 	display: flex;
@@ -30,13 +29,10 @@ $colorWhite: #ffffff;
 		display: flex;
 		justify-content: space-between;
 	}
-	&__logo {
-	}
+
 	&__nav {
 		&-level1 {
-			//	border: 1px solid red;
 			display: flex;
-			//	align-items: flex-start;
 			flex-grow: 1;
 
 			&-items {
@@ -46,17 +42,13 @@ $colorWhite: #ffffff;
 			}
 			&-item {
 				position: relative;
-				//	padding-top: 0;
-				//	border: 1px solid blue;
 				white-space: nowrap;
 				padding-right: 24px;
 				&-img {
 					cursor: pointer;
 					padding-left: 3px;
-					//	border: 1px solid green;
 				}
 				&-link {
-					//	border: 1px solid orange;
 					@include font-body;
 					&:hover,
 					&:focus {
@@ -67,13 +59,11 @@ $colorWhite: #ffffff;
 			}
 		}
 		&-level2 {
-			//	border: 1px solid purple;
 			position: absolute;
+			background-color: $colorWhite;
 			display: none;
 			&-item {
-				//	border: 1px solid orangered;
 				&-link {
-					//	border: 1px solid brown;
 					@include font-body;
 					&:hover,
 					&:focus {
@@ -100,13 +90,17 @@ $colorWhite: #ffffff;
 		align-self: center;
 
 		line-height: 30px;
-		border-left: 1px solid rgba(31, 32, 65, 0.1);
 		&-name {
 			@include font-body;
 			padding-left: 20px;
+			white-space: nowrap;
+			&:hover,
+			&:focus {
+				font-weight: bold;
+			}
 		}
 	}
-	&__burger {
+	&__burger-btn {
 		display: none;
 		cursor: pointer;
 	}
@@ -115,24 +109,38 @@ $colorWhite: #ffffff;
 .expanded {
 	display: block;
 }
-// .collapsed {
-// 	display: none;
-// }
+
+@media screen and (max-width: 1199px) {
+	.header {
+		margin: 0;
+		padding-left: 20px;
+
+		&__auth {
+			margin-right: 20px;
+		}
+	}
+}
 
 @media screen and (max-width: 991px) {
 	.header {
 		position: relative;
+		height: 80px;
 		&__wrapper {
-			position: absolute;
+			width: auto;
 			z-index: 5;
-			top: 70px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 
-			display: block;
 			background-color: $colorWhite;
 		}
 
 		&__nav-level1 {
 			display: none;
+			position: absolute;
+			background-color: $colorWhite;
+			left: 0;
+			top: 70px;
 
 			&-items {
 				display: block;
@@ -148,60 +156,67 @@ $colorWhite: #ffffff;
 			}
 		}
 		&__logo {
-			display: none;
+			top: -55px;
+			left: 50%;
 		}
 
 		&__auth {
-			position: absolute;
-			top: -55px;
-			left: 35px;
+			top: 0;
+			left: 50%;
+			margin-left: 20px;
 		}
-	}
+		&__profile {
+			border: none;
+			&-name {
+				padding: 0;
+			}
+		}
 
-	.header__burger {
-		display: block;
-		position: absolute;
-		width: 20px;
-		height: 20px;
-		z-index: 3;
-		left: 10px;
-	}
-	.header__burger span {
-		position: absolute;
-		background-color: $colorPurple;
-		left: 0;
-		width: 100%;
-		height: 2px;
-		top: 9px;
-		transition: all 0.9s ease 0s;
-	}
-	.header__burger:before,
-	.header__burger:after {
-		content: "";
-		background-color: $colorPurple;
-		position: absolute;
-		width: 100%;
-		height: 2px;
-		left: 0;
-		transition: all 0.5s ease 0s;
-	}
-	.header__burger:before {
-		top: 0;
-		background-color: $colorPurple;
-	}
-	.header__burger:after {
-		bottom: 0;
-		background-color: $colorPurple;
-	}
-	.header__burger.active:before {
-		transform: rotate(45deg);
-		top: 9px;
-	}
-	.header__burger.active:after {
-		transform: rotate(-45deg);
-		bottom: 9px;
-	}
-	.header__burger.active span {
-		transform: scale(0);
+		&__burger-btn {
+			display: block;
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			z-index: 3;
+			left: 10px;
+		}
+		&__burger-btn &__burger {
+			position: absolute;
+			background-color: $colorPurple;
+			left: 0;
+			width: 100%;
+			height: 2px;
+			top: 9px;
+			transition: all 0.9s ease 0s;
+		}
+		&__burger-btn:before,
+		&__burger-btn:after {
+			content: "";
+			background-color: $colorPurple;
+			position: absolute;
+			width: 100%;
+			height: 2px;
+			left: 0;
+			transition: all 0.5s ease 0s;
+		}
+		&__burger-btn:before {
+			top: 0;
+			background-color: $colorPurple;
+		}
+		&__burger-btn:after {
+			bottom: 0;
+			background-color: $colorPurple;
+		}
+		&__burger-btn.active:before {
+			transform: rotate(45deg);
+			top: 9px;
+		}
+		&__burger-btn.active:after {
+			transform: rotate(-45deg);
+			bottom: 9px;
+		}
+		&__burger-btn.active &__burger {
+			transform: scale(0);
+		}
 	}
 }

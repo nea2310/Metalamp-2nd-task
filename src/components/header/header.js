@@ -19,7 +19,7 @@ class Header {
 			querySelectorAll(sel);
 	}
 	render() {
-		this.burger = this.getElem('burger');
+		this.burger = this.getElem('burger-btn');
 		this.navLevel1 = this.getElem('nav-level1');
 		this.navLevel2 = this.getElems(['nav-level2']);
 		this.tips = this.getElems(['nav-level1-item-img']);
@@ -41,12 +41,6 @@ class Header {
 
 		this.burger.addEventListener('click', (e) => {
 			this.toggleMobileMenu();
-		});
-
-		this.burger.addEventListener('keypress', (e) => {
-			if (e.keyCode == 13) {
-				this.toggleMobileMenu();
-			}
 		});
 
 		document.addEventListener('click', (e) => {

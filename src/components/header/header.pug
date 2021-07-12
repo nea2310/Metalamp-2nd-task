@@ -3,8 +3,8 @@ mixin header(options={})
 	-
 		let elemName = 'header'
 	div(class = elemName)
-		div(class = elemName + '__burger' tabindex = '0')
-			span
+		button(class = elemName + '__burger-btn')
+			span(class = elemName + '__burger')
 		div(class = elemName + '__wrapper')
 			a(class = elemName + '__logo' href = 'https://test/test')
 				img(class = elemName + '__logo-img' src = 'assets/img/interface/logo-purple.svg')
