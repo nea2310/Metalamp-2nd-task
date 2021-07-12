@@ -32,9 +32,6 @@ class Header {
 			this.toggleLevel2Menu(e.target);
 		});
 
-		this.navLevel1.addEventListener('focusout', (e) => {
-			//	this.closeLevel2Menu();
-		});
 
 		this.tips.forEach(element => {
 			element.addEventListener('click', () => {
@@ -57,11 +54,18 @@ class Header {
 				this.closeLevel2Menu();
 			}
 		});
+
+
+		document.addEventListener('focusin', (e) => {
+			if (!e.target.className.match('item-link')) {
+				this.closeLevel2Menu();
+			}
+		});
 	}
 
 	// показать/ скрыть меню второго уровня
 	toggleLevel2Menu(elem) {
-		//для ссылки
+		//для ссылки - открыть меню 2 уровня
 		if (elem.
 			matches(`.${this.elemName}__nav-level1-item-link`) &&
 			elem.firstElementChild != null &&
@@ -72,7 +76,15 @@ class Header {
 			elem.parentElement.
 				lastElementChild.classList.add('expanded');
 		}
-		// для стрелки
+		//для ссылки - закрыть меню 2 уровня
+		else if (elem.
+			matches(`.${this.elemName}__nav-level1-item-link`) &&
+			elem.firstElementChild == null
+		) {
+			this.closeLevel2Menu();
+		}
+
+		// для стрелки - открыть меню 2 уровня
 		else if (elem.
 			matches(`.${this.elemName}__nav-level1-item-img`)) {
 			this.closeLevel2Menu();
