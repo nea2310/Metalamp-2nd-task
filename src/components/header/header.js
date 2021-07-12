@@ -28,6 +28,13 @@ class Header {
 			this.toggleLevel2Menu(e.relatedTarget);
 			this.toggleLevel2Menu(e.target);
 		});
+		this.navLevel1.addEventListener('focusin', (e) => {
+			this.toggleLevel2Menu(e.target);
+		});
+
+		this.navLevel1.addEventListener('focusout', (e) => {
+			//	this.closeLevel2Menu();
+		});
 
 		this.tips.forEach(element => {
 			element.addEventListener('click', () => {
@@ -47,9 +54,7 @@ class Header {
 
 		document.addEventListener('click', (e) => {
 			if (!e.target.closest(`.${this.elemName}__nav-level2`)) {
-				for (let item of this.navLevel2) {
-					item.classList.remove('expanded');
-				}
+				this.closeLevel2Menu();
 			}
 		});
 	}

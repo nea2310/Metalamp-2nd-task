@@ -67,10 +67,13 @@ $colorWhite: #ffffff;
 			}
 		}
 		&-level2 {
+			border: 1px solid purple;
 			position: absolute;
 			display: none;
 			&-item {
+				border: 1px solid orangered;
 				&-link {
+					border: 1px solid brown;
 					@include font-body;
 					&:hover,
 					&:focus {
