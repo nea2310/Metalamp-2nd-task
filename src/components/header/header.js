@@ -31,7 +31,7 @@ class Header {
 
 		this.tips.forEach(element => {
 			element.addEventListener('click', () => {
-				this.openCloseLevel2Menu(element);
+				this.toggleLevel2Menu(element);
 			});
 		});
 
@@ -52,34 +52,34 @@ class Header {
 				}
 			}
 		});
-
 	}
 
 	// показать/ скрыть меню второго уровня
 	toggleLevel2Menu(elem) {
+		//для ссылки
 		if (elem.
 			matches(`.${this.elemName}__nav-level1-item-link`) &&
-			elem.nextElementSibling != null &&
-			elem.nextElementSibling.
+			elem.firstElementChild != null &&
+			elem.firstElementChild.
 				matches(`.${this.elemName}__nav-level1-item-img`)
 		) {
-			for (let item of this.navLevel2) {
-				item.classList.remove('expanded');
-			}
+			this.closeLevel2Menu();
 			elem.parentElement.
 				lastElementChild.classList.add('expanded');
 		}
+		// для стрелки
+		else if (elem.
+			matches(`.${this.elemName}__nav-level1-item-img`)) {
+			this.closeLevel2Menu();
+			elem.parentElement.parentElement.
+				lastElementChild.classList.add('expanded');
+		}
 	}
-	// показать/ скрыть меню второго уровня
-	openCloseLevel2Menu(elem) {
-		if (elem.nextElementSibling.matches('.expanded')) {
 
-			elem.nextElementSibling.classList.remove('expanded');
-		} else {
-			for (let item of this.navLevel2) {
-				item.classList.remove('expanded');
-			}
-			elem.nextElementSibling.classList.add('expanded');
+	//скрыть меню второго уровня
+	closeLevel2Menu() {
+		for (let item of this.navLevel2) {
+			item.classList.remove('expanded');
 		}
 	}
 	// показать/ скрыть мобильное меню
