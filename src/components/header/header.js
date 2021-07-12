@@ -96,7 +96,7 @@ class Header {
 	// показать/ скрыть мобильное меню
 	toggleMobileMenu() {
 		this.burger.classList.toggle('active');
-		this.navLevel1.classList.toggle('active-nav');
+		this.navLevel1.classList.toggle(`${this.elemName}__nav-level1-active`);
 	}
 }
 
