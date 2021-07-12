@@ -68,7 +68,8 @@ class Header {
 		) {
 			this.closeLevel2Menu();
 			elem.parentElement.
-				lastElementChild.classList.add('expanded');
+				lastElementChild.classList.
+				add(`${this.elemName}__nav-level2-item_expanded`);
 		}
 		//для ссылки - закрыть меню 2 уровня
 		else if (elem.
@@ -83,20 +84,21 @@ class Header {
 			matches(`.${this.elemName}__nav-level1-item-img`)) {
 			this.closeLevel2Menu();
 			elem.parentElement.parentElement.
-				lastElementChild.classList.add('expanded');
+				lastElementChild.classList.
+				add(`${this.elemName}__nav-level2-item_expanded`);
 		}
 	}
 
 	//скрыть меню второго уровня
 	closeLevel2Menu() {
 		for (let item of this.navLevel2) {
-			item.classList.remove('expanded');
+			item.classList.remove(`${this.elemName}__nav-level2-item_expanded`);
 		}
 	}
 	// показать/ скрыть мобильное меню
 	toggleMobileMenu() {
-		this.burger.classList.toggle('active');
-		this.navLevel1.classList.toggle(`${this.elemName}__nav-level1-active`);
+		this.burger.classList.toggle(`${this.elemName}__burger-btn_active`);
+		this.navLevel1.classList.toggle(`${this.elemName}__nav-level1_active`);
 	}
 }
 
