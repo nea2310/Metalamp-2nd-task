@@ -3,7 +3,7 @@ mixin header(options={})
 	-
 		let elemName = 'header'
 	div(class = elemName)
-		button(class = elemName + '__burger-btn')
+		button(class = elemName + '__burger-btn' aria-label = 'навигация')
 			span(class = elemName + '__burger')
 		div(class = elemName + '__wrapper')
 			a(class = elemName + '__logo' href = 'https://test/test')
@@ -37,7 +37,7 @@ mixin header(options={})
 							li(class = elemName + '__nav-level2-item') 
 								a(class = elemName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
 			div(class = elemName + '__auth') 
-				if (options.authorized==false)
+				if (options.authorized == false)
 					div(class = elemName + '__button-login') 
 						+btn(
 										{text: 'войти',
@@ -56,7 +56,7 @@ mixin header(options={})
 										color: 'dark',
 										href: 'https://test/test'}
 										)
-				if (options.authorized==true)
+				if (options.authorized == true)
 					div(class = elemName + '__profile') 
 						a(class = elemName + '__profile-name' href = 'https://test/test')  Юлий Цезарь
 			

@@ -25,6 +25,7 @@ class Header {
 		this.tips = this.getElems(['nav-level1-item-img']);
 
 		this.navLevel1.addEventListener('mouseover', (e) => {
+
 			this.toggleLevel2Menu(e.relatedTarget);
 			this.toggleLevel2Menu(e.target);
 		});

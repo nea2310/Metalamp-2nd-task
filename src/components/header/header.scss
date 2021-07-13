@@ -108,7 +108,7 @@ $colorWhite: #ffffff;
 				}
 				&_expanded {
 					display: block;
-					@include media-breakpoint-down($lg) {
+					@include media-breakpoint-down($md) {
 						display: none;
 					}
 				}
