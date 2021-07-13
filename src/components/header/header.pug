@@ -2,7 +2,7 @@ include ../btn/btn.pug
 mixin header(options={})
 	-
 		let elemName = 'header'
-	div(class = elemName)
+	header(class = elemName)
 		button(class = elemName + '__burger-btn' aria-label = 'навигация')
 			span(class = elemName + '__burger')
 		div(class = elemName + '__wrapper')
