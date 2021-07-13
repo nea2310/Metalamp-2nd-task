@@ -29,7 +29,6 @@ $colorWhite: #ffffff;
 	@include font-h3;
 
 	&__wrapper {
-		//margin-top: 16px;
 		display: flex;
 	}
 
@@ -49,6 +48,10 @@ $colorWhite: #ffffff;
 			border: 1px solid $colorPurple;
 			background-image: url(/assets/img/interface/rectangle.svg);
 			background-position-x: 87%;
+		}
+
+		&:focus + .toggle__checkmark {
+			border: 1px solid $colorDarkShade75;
 		}
 	}
 

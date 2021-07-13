@@ -24,10 +24,6 @@ $colorPurple: #bc9cff;
 $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
-input {
-	outline: none;
-}
-
 .input-field {
 	user-select: none;
 	&-wide {
@@ -36,7 +32,6 @@ input {
 	&-medium {
 		width: 266px;
 	}
-	//border: 1px solid red;
 	display: flex;
 	flex-direction: column;
 
@@ -62,6 +57,7 @@ input {
 	}
 
 	&__input {
+		outline: none;
 		&::placeholder {
 			color: $colorDarkShade25;
 		}

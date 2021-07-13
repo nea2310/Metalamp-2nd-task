@@ -1,13 +1,13 @@
 mixin pagination()
 	-
 		let elemName='pagination'
-	div(class = elemName)
+	fieldset(class = elemName aria-label = 'pagination')
 		div(class = elemName + '__pages')
-			a(class = elemName + '__elem' + ' ' + elemName + '__elem_first-last-page') 1
-			a(class = elemName + '__elem' + ' ' + elemName + '__elem_page') 2
-			a(class = elemName + '__elem' + ' ' + elemName + '__elem_page') 3
-			span(class = elemName + '__elem' + ' ' + elemName + '__hidden-page') ...
-			a(class = elemName + '__elem' + ' ' + elemName + '__elem_page') 15
-			a(class = elemName + '__elem' + ' ' + elemName + '__elem_next-prev')
+			a(class = elemName + '__elem' + ' ' + elemName + '__elem_first-last-page' href = '1') 1
+			a(class = elemName + '__elem' + ' ' + elemName + '__elem_page' href = '2') 2
+			a(class = elemName + '__elem' + ' ' + elemName + '__elem_page' href = '3') 3
+			span(class = elemName + '__elem' + ' ' + elemName + '__hidden-page'  href = 'скрытые номера страниц') ...
+			a(class = elemName + '__elem' + ' ' + elemName + '__elem_page' href = '15') 15
+			a(class = elemName + '__elem' + ' ' + elemName + '__elem_next-prev' href = 'вперед')
 				img(src = 'assets/img/interface/arrow-forward-white.svg')
 		p(class = elemName + '__label') 1 - 12 из 100+ вариантов аренды

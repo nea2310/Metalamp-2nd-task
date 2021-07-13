@@ -1,8 +1,7 @@
 /* --------- Подключаем компоненты страниц --------- */
-@import "base/base.scss";
 @import "header/header.scss";
-@import "footer/footer.scss";
-@import "sidebar/sidebar.scss";
+//@import "footer/footer.scss";
+//@import "sidebar/sidebar.scss";
 @import "input-field/input-field.scss";
 @import "logo/logo.scss";
 @import "date-dropdown/date-dropdown.scss";
@@ -24,9 +23,3 @@
 @import "login/login.scss";
 @import "room-card/room-card.scss";
 @import "header/header.scss";
-
-/* --------- Медиа запросы компонентов --------- */
-@import "base/media_base.scss";
-@import "footer/media_footer.scss";
-@import "header/media_header.scss";
-@import "sidebar/media_sidebar.scss";

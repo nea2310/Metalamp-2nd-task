@@ -112,6 +112,7 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 		padding-left: 20px;
 	}
 	&__input {
+		outline: none;
 		&_fromto {
 			cursor: pointer;
 		}

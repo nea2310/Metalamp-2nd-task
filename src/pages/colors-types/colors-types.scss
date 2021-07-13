@@ -8,28 +8,31 @@ $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
 @mixin font-h1() {
-	font-family: "Montserrat-Bold";
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	font-size: 24px;
 	line-height: 29px;
 	color: $colorDarkShade100;
 }
 
 @mixin font-h2() {
-	font-family: "Montserrat-Bold";
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	font-size: 19px;
 	line-height: 23px;
 	color: $colorDarkShade100;
 }
 
 @mixin font-h3() {
-	font-family: "Montserrat-Bold";
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	font-size: 12px;
 	line-height: 15px;
 	color: $colorDarkShade100;
 	text-transform: uppercase;
 }
 @mixin font-body() {
-	font-family: "Montserrat-Regular";
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
 	font-size: 14px;
 	line-height: 24px;
 	color: $colorDarkShade75;

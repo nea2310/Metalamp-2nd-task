@@ -65,6 +65,7 @@ $colorWhite: #ffffff;
 	}
 
 	&__input {
+		outline: none;
 		cursor: pointer;
 		text-overflow: ellipsis;
 		padding-right: 100px;

@@ -30,7 +30,6 @@ $colorWhite: #ffffff;
 	user-select: none;
 	&__label-text {
 		max-width: 100px;
-		//	margin-bottom: 15px;
 		@include font-h3;
 		&-text {
 			margin-bottom: 16px;

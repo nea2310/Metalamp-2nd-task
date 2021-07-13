@@ -8,7 +8,7 @@ $colorGreen: #6fcf97;
 $colorWhite: #ffffff;
 
 @mixin font-body() {
-	font-family: "Montserrat";
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
 	font-weight: normal;
 	font-size: 14px;
 	line-height: 24px;
@@ -140,6 +140,7 @@ $colorWhite: #ffffff;
 		padding-left: 20px;
 	}
 	&__profile {
+		border-left: 1px solid rgba(31, 32, 65, 0.1);
 		align-self: center;
 		line-height: 30px;
 		@include media-breakpoint-down($md) {

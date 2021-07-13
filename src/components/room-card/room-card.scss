@@ -6,7 +6,8 @@
 	color: $colorDarkShade75;
 }
 @mixin font-h2() {
-	font-family: "Montserrat-Bold";
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: bold;
 	font-size: 19px;
 	line-height: 23px;
 	color: $colorDarkShade100;
