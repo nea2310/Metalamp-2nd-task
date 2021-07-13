@@ -5,8 +5,7 @@ mixin footer(options={})
 	footer(class = elemName)
 		div(class = elemName + '__wrapper-top')
 			ul(class = elemName + '__items')
-				li(class = elemName + '__item') 
-					a(class = elemName + '__logo' href = 'https://test/test')
+				a(class = elemName + '__logo' href = 'https://test/test')
 						img(class = elemName + '__logo-img' src = 'assets/img/interface/logo-purple.svg' alt = 'на главную')
 				li(class = elemName + '__item')
 					p(class = elemName + '__long-text') Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
@@ -29,7 +28,7 @@ mixin footer(options={})
 					p(class = elemName + '__long-text') Получайте специальные предложения и новости сервиса
 				li(class = elemName + '__item')
 					+input(
-						{width: 'medium',
+						{width: 'medium-narrow',
 						placeholder: 'Email',
 						extra:' js-check-email',
 						img: true}
