@@ -17,29 +17,16 @@ $colorWhite: #ffffff;
 }
 
 .footer {
-	//position: relative;
-	//border: 1px solid green;
 	height: 443px;
 	margin: 0 auto;
-	width: 100%;
-
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-	//box-shadow: 0px 20px 10px -10px rgba(31, 32, 65, 0.05), 0px -20px 10px -10px rgba(31, 32, 65, 0.05);
 	background-color: $colorWhite;
-
-	@include media-breakpoint-down($lg) {
-		margin: 0;
-		padding-left: 20px;
-	}
 
 	&__wrapper {
 		&-top {
-			//border-bottom: 1px solid $colorDarkShade75;
 			padding-top: 100px;
 			height: 272px;
-			//	border: 1px solid red;
 			max-width: 1161px;
-			width: 100%;
 			margin: 0 auto;
 			display: flex;
 			justify-content: space-between;
@@ -53,19 +40,20 @@ $colorWhite: #ffffff;
 			align-items: center;
 			height: 70px;
 			max-width: 1161px;
-			width: 100%;
 			margin: 0 auto;
 			display: flex;
 			justify-content: space-between;
+			@include media-breakpoint-down($lg) {
+				padding-left: 20px;
+				padding-right: 20px;
+			}
 		}
 		&-middle {
 			height: 1px;
 			background-color: $colorDarkShade15;
 		}
 	}
-	&__logo {
-		//	padding-top: 5px;
-	}
+
 	&__items {
 		flex-grow: 1;
 		cursor: pointer;
@@ -81,22 +69,38 @@ $colorWhite: #ffffff;
 		}
 		&:nth-child(1) {
 			max-width: 270px;
-			//	padding-right: 29px;
+
 			padding-right: 2.5%;
+			@include media-breakpoint-down($lg) {
+				padding-left: 5px;
+				padding-right: 5px;
+			}
 		}
 		&:nth-child(2) {
-			//		padding-right: 59px;
 			padding-right: 5%;
+			@include media-breakpoint-down($lg) {
+				padding-left: 5px;
+				padding-right: 5px;
+			}
 		}
 		&:nth-child(3) {
-			//	padding-right: 92px;
 			padding-right: 8%;
+			@include media-breakpoint-down($lg) {
+				padding-left: 5px;
+				padding-right: 5px;
+			}
 		}
 		&:nth-child(4) {
-			//padding-right: 53px;
 			padding-right: 4.5%;
+			@include media-breakpoint-down($lg) {
+				padding-left: 5px;
+				padding-right: 5px;
+			}
 		}
-		&:nth-child(5) {
+		&:last-child {
+			@include media-breakpoint-down($lg) {
+				max-width: 270px;
+			}
 		}
 	}
 
@@ -105,8 +109,6 @@ $colorWhite: #ffffff;
 		@include font-body;
 		text-transform: initial;
 		padding-top: 21px;
-		&:first-child {
-		}
 	}
 	&__long-text {
 		cursor: initial;
@@ -118,7 +120,6 @@ $colorWhite: #ffffff;
 	&__social-links {
 		display: flex;
 		justify-content: space-between;
-		//	border: 1px solid red;
 		width: 114px;
 	}
 }
