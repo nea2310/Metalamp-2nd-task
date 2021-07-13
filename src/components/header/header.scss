@@ -96,11 +96,6 @@ $colorWhite: #ffffff;
 				}
 				&-link {
 					@include font-body;
-					&:hover,
-					&:focus {
-						cursor: pointer;
-						font-weight: bold;
-					}
 				}
 			}
 		}
@@ -111,11 +106,6 @@ $colorWhite: #ffffff;
 			&-item {
 				&-link {
 					@include font-body;
-					&:hover,
-					&:focus {
-						cursor: pointer;
-						font-weight: bold;
-					}
 				}
 				&_expanded {
 					display: block;
@@ -160,10 +150,6 @@ $colorWhite: #ffffff;
 			@include font-body;
 			padding-left: 20px;
 			white-space: nowrap;
-			&:hover,
-			&:focus {
-				font-weight: bold;
-			}
 			@include media-breakpoint-down($md) {
 				padding: 0;
 			}

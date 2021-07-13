@@ -7,14 +7,14 @@ mixin header(options={})
 			span(class = elemName + '__burger')
 		div(class = elemName + '__wrapper')
 			a(class = elemName + '__logo' href = 'https://test/test')
-				img(class = elemName + '__logo-img' src = 'assets/img/interface/logo-purple.svg')
+				img(class = elemName + '__logo-img' src = 'assets/img/interface/logo-purple.svg' alt = 'на главную')
 			nav(class = elemName + '__nav-level1') 
 				ul(class = elemName + '__nav-level1-items')
 					li(class = elemName + '__nav-level1-item') 
 						a(class = elemName + '__nav-level1-item-link' href = 'https://test/test') О нас
 					li(class = elemName + '__nav-level1-item')
 						a(class = elemName + '__nav-level1-item-link' href = 'https://test/test') Услуги
-							img(class = elemName + '__nav-level1-item-img' src = 'assets/img/interface/expand-more.svg')
+							img(class = elemName + '__nav-level1-item-img' src = 'assets/img/interface/expand-more.svg' alt = 'раскрывающийся список')
 						ul(class = elemName + '__nav-level2')
 							li(class = elemName + '__nav-level2-item') 
 								a(class = elemName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
@@ -28,7 +28,7 @@ mixin header(options={})
 						a(class = elemName + '__nav-level1-item-link' href = 'https://test/test') Новости
 					li(class = elemName + '__nav-level1-item')
 						a(class = elemName + '__nav-level1-item-link' href = 'https://test/test') Соглашения
-							img(class = elemName + '__nav-level1-item-img' src = 'assets/img/interface/expand-more.svg')
+							img(class = elemName + '__nav-level1-item-img' src = 'assets/img/interface/expand-more.svg' alt = 'раскрывающийся список')
 						ul(class = elemName + '__nav-level2')
 							li(class = elemName + '__nav-level2-item') 
 								a(class = elemName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
