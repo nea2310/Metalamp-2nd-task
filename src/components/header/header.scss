@@ -43,7 +43,6 @@ $colorWhite: #ffffff;
 		@include media-breakpoint-down($md) {
 			width: 100%;
 			margin: 0 20px;
-			z-index: 5;
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
@@ -163,7 +162,6 @@ $colorWhite: #ffffff;
 			position: absolute;
 			width: 20px;
 			height: 20px;
-			z-index: 3;
 			left: 10px;
 		}
 	}
