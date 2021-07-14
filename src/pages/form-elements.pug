@@ -13,7 +13,7 @@ include ../components/feature/feature.pug
 include ../components/feedback/feedback.pug
 include ../components/bullet-list/bullet-list.pug
 include ../components/pagination/pagination.pug
-div(class='logo-wrapper')
+div(class='form-elements__logo-wrapper')
 	+logo-grey()
 div(class="form-elements")
 	div(class="form-elements__col form-elements__col_left form-elements__col_left-top")
@@ -241,22 +241,6 @@ div(class="form-elements")
 						name: 'Мурад Сарафанов',
 						date: '5 дней назад',
 						descr: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'}
-						)
-		div(class="form-elements__comp-wrapper")
-			+btn(
-						{text: 'click me',
-						type: 'link',
-						length: 'long',
-						width: 'narrow',
-						color: 'dark'}
-						)
-		div(class="form-elements__comp-wrapper")
-			+btn(
-						{text: 'click me',
-						type: 'link',
-						length: 'very-short',
-						width: 'narrow',
-						color: 'light'}
 						)
 		div(class="form-elements__comp-wrapper")
 			+feature(

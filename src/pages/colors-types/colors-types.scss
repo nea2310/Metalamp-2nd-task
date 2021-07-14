@@ -38,21 +38,31 @@ $colorWhite: #ffffff;
 	color: $colorDarkShade75;
 }
 
-.colors-types__wrapper {
-	position: relative;
-	width: 100%;
-	max-width: 1440px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-	padding-top: 145px;
-}
+.colors-types {
+	&__wrapper {
+		//	position: relative;
+		width: 100%;
+		max-width: 1440px;
+		margin: 0 auto;
+		// display: flex;
+		// justify-content: space-between;
+		padding-top: 77px;
+	}
+	&__cards {
+		padding-top: 68px;
+		display: flex;
+		justify-content: space-between;
+	}
+	&__logo-wrapper {
+		padding-left: 30px;
+	}
 
-.colors__wrapper {
-	padding-left: 150px;
-}
-.types__wrapper {
-	padding-right: 99px;
+	&__colors-wrapper {
+		padding-left: 150px;
+	}
+	&__types-wrapper {
+		padding-right: 100px;
+	}
 }
 
 .color-card {
@@ -97,11 +107,12 @@ $colorWhite: #ffffff;
 		width: 171px;
 		padding-top: 8px;
 		grid-area: post-2;
-		font-family: "Montserrat-Bold";
+		font-family: "Montserrat", Arial, Helvetica, sans-serif;
+		font-weight: bold;
 	}
 	&__code {
 		grid-area: post-3;
-		font-family: "Montserrat-Regular";
+		font-family: "Montserrat", Arial, Helvetica, sans-serif;
 	}
 }
 
@@ -129,17 +140,17 @@ $colorWhite: #ffffff;
 		&_h1 {
 			@include font-h1;
 			color: $colorDarkShade25;
-			font-family: "Montserrat-Regular";
+			//	font-family: "Montserrat-Regular";
 		}
 		&_h2 {
 			@include font-h2;
 			color: $colorDarkShade25;
-			font-family: "Montserrat-Regular";
+			//	font-family: "Montserrat-Regular";
 		}
 		&_h3 {
 			@include font-h3;
 			color: $colorDarkShade25;
-			font-family: "Montserrat-Regular";
+			//font-family: "Montserrat-Regular";
 		}
 		&_body {
 			@include font-body;

@@ -6,15 +6,10 @@
 /* --------- Подключаем страницы --------- */
 
 @import "../../pages/index/index.scss";
-@import "../../pages/index/media_index.scss";
 @import "../../pages/form-elements/form-elements.scss";
-@import "../../pages/form-elements/media_form-elements.scss";
 @import "../../pages/colors-types/colors-types.scss";
-@import "../../pages/colors-types/media_colors-types.scss";
 @import "../../pages/headers-footers/headers-footers.scss";
-@import "../../pages/headers-footers/media_headers-footers.scss";
 @import "../../pages/cards/cards.scss";
-@import "../../pages/cards/media_cards.scss";
 
 /* --------- Подключаем компоненты --------- */
 @import "../../components/com-import.scss";

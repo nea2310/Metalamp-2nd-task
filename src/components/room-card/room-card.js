@@ -76,7 +76,7 @@ class RoomCard {
 
 	createDots() {
 		for (let i = 1; i <= this.images.length; i++) {
-			let dot = document.createElement('div');
+			let dot = document.createElement('button');
 			dot.classList.add(this.elemName + '__dot');
 			dot.setAttribute('data-sec', i);
 			this.dotsWrapper.append(dot);
