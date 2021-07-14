@@ -69,16 +69,17 @@ $colorWhite: #ffffff;
 	}
 
 	&__items {
-		//	border: 1px solid red;
 		flex-grow: 1;
-		cursor: pointer;
-		@include font-body;
-		font-weight: bold;
-		color: $colorDarkShade100;
-		font-size: 12px;
-		line-height: 14.63px;
-		text-transform: uppercase;
-		white-space: nowrap;
+
+		&-link {
+			@include font-body;
+			font-weight: bold;
+			color: $colorDarkShade100;
+			font-size: 12px;
+			line-height: 14.63px;
+			text-transform: uppercase;
+			white-space: nowrap;
+		}
 		&:not(:first-child) {
 			padding-top: 4px;
 			@include media-breakpoint-down($md) {
@@ -128,10 +129,12 @@ $colorWhite: #ffffff;
 	}
 
 	&__item {
-		cursor: pointer;
-		@include font-body;
 		text-transform: initial;
 		padding-top: 21px;
+		white-space: nowrap;
+		&-link {
+			@include font-body;
+		}
 		@include media-breakpoint-down($md) {
 			display: none;
 		}

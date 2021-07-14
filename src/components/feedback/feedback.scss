@@ -27,7 +27,7 @@ $colorWhite: #ffffff;
 .feedback {
 	display: grid;
 	grid-template-rows: 24px 34px auto;
-	grid-template-columns: 55px auto;
+	grid-template-columns: 56px auto;
 	grid-template-areas:
 		"post-1 post-2"
 		"post-1 post-3"
@@ -55,7 +55,8 @@ $colorWhite: #ffffff;
 		grid-area: post-4;
 		@include font-body;
 		font-size: 14px;
-		padding-left: 1px;
+		padding-left: 3px;
+		padding-top: 2px;
 	}
 	&__descr {
 		grid-area: post-5;
