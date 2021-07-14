@@ -1,51 +1,8 @@
-$colorDarkShade100: #1f2041;
-$colorDarkShade75: rgba(31, 32, 65, 0.75);
-$colorDarkShade50: rgba(31, 32, 65, 0.5);
-$colorDarkShade25: rgba(31, 32, 65, 0.25);
-$colorDarkShade5: rgba(31, 32, 65, 0.05);
-$colorPurple: #bc9cff;
-$colorGreen: #6fcf97;
-$colorWhite: #ffffff;
-
-@mixin font-h1() {
-	font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 24px;
-	line-height: 29px;
-	color: $colorDarkShade100;
-}
-
-@mixin font-h2() {
-	font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 19px;
-	line-height: 23px;
-	color: $colorDarkShade100;
-}
-
-@mixin font-h3() {
-	font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	line-height: 15px;
-	color: $colorDarkShade100;
-	text-transform: uppercase;
-}
-@mixin font-body() {
-	font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	font-size: 14px;
-	line-height: 24px;
-	color: $colorDarkShade75;
-}
-
 .colors-types {
 	&__wrapper {
-		//	position: relative;
 		width: 100%;
 		max-width: 1440px;
 		margin: 0 auto;
-		// display: flex;
-		// justify-content: space-between;
 		padding-top: 77px;
 	}
 	&__cards {

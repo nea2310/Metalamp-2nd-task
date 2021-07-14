@@ -1,29 +1,3 @@
-@mixin font-body() {
-	font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 19px;
-	color: $colorDarkShade75;
-}
-
-@mixin font-h3() {
-	font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	line-height: 15px;
-	color: $colorDarkShade100;
-	text-transform: uppercase;
-}
-
-$colorDarkShade100: #1f2041;
-$colorDarkShade75: rgba(31, 32, 65, 0.75);
-$colorDarkShade50: rgba(31, 32, 65, 0.5);
-$colorDarkShade25: rgba(31, 32, 65, 0.25);
-$colorDarkShade5: rgba(31, 32, 65, 0.05);
-$colorPurple: #bc9cff;
-$colorGreen: #6fcf97;
-$colorWhite: #ffffff;
-
 .checklist {
 	user-select: none;
 	width: 266px;
@@ -102,6 +76,7 @@ $colorWhite: #ffffff;
 	&__cat-name {
 		cursor: pointer;
 		@include font-body;
+		line-height: 19px;
 		padding-top: 2px;
 		max-width: 215px;
 		&_rich {

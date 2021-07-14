@@ -1,29 +1,3 @@
-@mixin font-body() {
-	font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: $colorDarkShade75;
-}
-
-@mixin font-h3() {
-	font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	line-height: 15px;
-	color: $colorDarkShade100;
-	text-transform: uppercase;
-}
-
-$colorDarkShade100: #1f2041;
-$colorDarkShade75: rgba(31, 32, 65, 0.75);
-$colorDarkShade50: rgba(31, 32, 65, 0.5);
-$colorDarkShade25: rgba(31, 32, 65, 0.25);
-$colorDarkShade5: rgba(31, 32, 65, 0.05);
-$colorPurple: #bc9cff;
-$colorGreen: #6fcf97;
-$colorWhite: #ffffff;
-$colorBlue: #66d2ea;
-
 .range-slider {
 	&__wrapper {
 		width: 266px;
@@ -48,6 +22,8 @@ $colorBlue: #66d2ea;
 		font-size: 12px;
 		text-transform: uppercase;
 		@include font-body;
+		font-size: 12px;
+		line-height: initial;
 	}
 
 	span.irs.irs--flat {
@@ -65,7 +41,7 @@ $colorBlue: #66d2ea;
 			width: 14px;
 			height: 14px;
 			margin-top: -1px;
-			background: linear-gradient(180deg, $colorGreen 0%, $colorBlue 100%);
+			background: linear-gradient(180deg, $colorGreen 0%, $colorLightBlue 100%);
 			border: 2px solid $colorWhite;
 			border-radius: 50%;
 			box-sizing: border-box;
@@ -79,7 +55,7 @@ $colorBlue: #66d2ea;
 
 		.irs-bar {
 			height: 6px;
-			background: linear-gradient(180deg, $colorGreen 0%, $colorBlue 100%);
+			background: linear-gradient(180deg, $colorGreen 0%, $colorLightBlue 100%);
 			border-radius: 3px;
 		}
 	}

@@ -6,7 +6,57 @@ $md: 991px;
 $lg: 1199px;
 $xl: 1440px;
 
+$colorDarkShade100: #1f2041;
+$colorDarkShade75: rgba(31, 32, 65, 0.75);
+$colorDarkShade50: rgba(31, 32, 65, 0.5);
+$colorDarkShade25: rgba(31, 32, 65, 0.25);
+$colorDarkShade15: rgba(31, 32, 65, 0.15);
+$colorDarkShade5: rgba(31, 32, 65, 0.05);
+$colorPurple: #bc9cff;
+$colorPurpleOpaque: rgba(188, 156, 255, 0.5);
+$colorBlue: #8ba4f9;
+$colorBlueOpaque: rgba(139, 164, 249, 0.5);
+$colorGreen: #6fcf97;
+$colorWhite: #ffffff;
+$colorLightBlue: #66d2ea;
+$gradientPurple: linear-gradient($colorPurple 0%, $colorBlue 100%);
+$gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
+
 /***** Mixins *****/
+
+@mixin font-h1() {
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+	line-height: 29px;
+	color: $colorDarkShade100;
+}
+
+@mixin font-h2() {
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 19px;
+	line-height: 23px;
+	color: $colorDarkShade100;
+}
+
+@mixin font-h3() {
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 15px;
+	color: $colorDarkShade100;
+	text-transform: uppercase;
+}
+
+@mixin font-body() {
+	font-family: "Montserrat", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 24px;
+	color: $colorDarkShade75;
+}
+
 @mixin media-breakpoint-up($width) {
 	@media (min-width: $width + 1) {
 		@content;
@@ -41,8 +91,8 @@ body {
 	min-width: 319px;
 }
 fieldset {
-	padding: 0 !important;
-	margin: 0 !important;
+	padding: 0;
+	margin: 0;
 	border: none;
 }
 
@@ -69,10 +119,7 @@ a {
 
 h1,
 h2,
-h3 {
-	margin: 0 !important;
-}
-
+h3,
 p {
 	margin: 0;
 }

@@ -1,23 +1,4 @@
-$colorDarkShade100: #1f2041;
-$colorDarkShade75: rgba(31, 32, 65, 0.75);
-$colorDarkShade50: rgba(31, 32, 65, 0.5);
-$colorDarkShade25: rgba(31, 32, 65, 0.25);
-$colorDarkShade15: rgba(31, 32, 65, 0.15);
-$colorDarkShade5: rgba(31, 32, 65, 0.05);
-$colorPurple: #bc9cff;
-$colorGreen: #6fcf97;
-$colorWhite: #ffffff;
-
-@mixin font-body() {
-	font-family: "Montserrat", Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 17.07px;
-	color: $colorDarkShade50;
-}
-
 .footer {
-	//	height: 443px;
 	margin: 0 auto;
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 	background-color: $colorWhite;
@@ -73,6 +54,7 @@ $colorWhite: #ffffff;
 
 		&-link {
 			@include font-body;
+			line-height: 17.07px;
 			font-weight: bold;
 			color: $colorDarkShade100;
 			font-size: 12px;
@@ -134,6 +116,8 @@ $colorWhite: #ffffff;
 		white-space: nowrap;
 		&-link {
 			@include font-body;
+			line-height: 17.07px;
+			color: $colorDarkShade50;
 		}
 		@include media-breakpoint-down($md) {
 			display: none;
@@ -143,7 +127,7 @@ $colorWhite: #ffffff;
 		cursor: initial;
 		white-space: initial;
 		@include font-body;
-		color: $colorDarkShade75;
+		line-height: 17.07px;
 		line-height: 22px;
 	}
 	&__social-links {
