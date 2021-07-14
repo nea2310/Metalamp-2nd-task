@@ -2,12 +2,15 @@ include ../components/logo/logo.pug
 include ../components/head/head.pug
 include ../components/header/header.pug
 include ../components/footer/footer.pug
-div(class="headers-footers")
-	div(class='headers-footers__logo-wrapper')
-		+logo-grey()
-	div(class='headers-footers__header')
-		+header({authorized: false})
-	div(class='headers-footers__header')
-		+header({authorized: true})
-	div(class='headers-footers__header')
-		+footer()
+html
+	head
+	body
+		div(class="headers-footers")
+			div(class='headers-footers__logo-wrapper')
+				+logo-grey()
+			div(class='headers-footers__header')
+				+header({authorized: false})
+			div(class='headers-footers__header')
+				+header({authorized: true})
+			div(class='headers-footers__header')
+				+footer()
