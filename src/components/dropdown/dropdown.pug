@@ -14,7 +14,7 @@ mixin dropdown(options={type: '', labelText: '', categories: {}, buttons: false}
 			label(class = elemName + '__label')
 				if options.labelText
 					p(class = elemName + '__label-text')=options.labelText
-				img(class = elemName + '__img ' + elemName + '__img_collapsed', src = "assets/img/interface/expand-more.svg")
+				img(class = elemName + '__img ' + elemName + '__img_collapsed', src = "assets/img/interface/expand-more.svg"  alt = 'раскрывающийся список')
 				input(class = elemName + '__input ' + elemName + '__input_collapsed ' + elemName + '__input' + inputStyle, readonly = true, value = '', placeholder = options.placeholder)
 		div(class = elemName + '__list-wrapper ' + elemName + '__list-wrapper_hidden')
 			ul(class = elemName + '__list')
@@ -22,9 +22,9 @@ mixin dropdown(options={type: '', labelText: '', categories: {}, buttons: false}
 					li(class = elemName + '__cat-wrapper')
 						p(class = elemName + '__cat', data-type = val.type, data-typeforms = val.typeforms)=val.displayName
 						div(class = elemName + '__count-wrapper')
-							button(class = elemName + '__count-decrem', data-min = val.minCnt type = 'button')=minus
+							button(class = elemName + '__count-decrem', data-min = val.minCnt type = 'button', aria-label = 'уменьшить количество')=minus
 							span(class = elemName + '__count-val')=val.defaultCnt
-							button(class = elemName + '__count-increm', data-max = val.maxCnt type = 'button')=plus
+							button(class = elemName + '__count-increm', data-max = val.maxCnt type = 'button', aria-label = 'увеличить количество')=plus
 			if (options.buttons)
 				div(class = elemName+'__buttons')
 					div(class = elemName + '__button-clear')
