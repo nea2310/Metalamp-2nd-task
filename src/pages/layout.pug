@@ -4,7 +4,8 @@ html
 	head
 		block title
 			title Default Title
-	body
+	body 
+		block background
 		block header
 			div(class = 'header-wrapper')
 				+header({authorized: false})
@@ -12,3 +13,4 @@ html
 		block footer
 			div(class = 'footer-wrapper')
 				+footer()
+
