@@ -1,20 +1,15 @@
+include ../components/head/head.pug
 include ../components/header/header.pug
 include ../components/footer/footer.pug
-include ../components/head/head.pug
 html
 	head
 		block title
-			title Default Title
-	body 
-		block wrapper
-			div(class = 'landing__page-wrapper')
-				div(class = 'landing__header-wrapper')
-					+header({authorized: false})
-				div(class = 'landing__background-wrapper')
-					block background
-					block main
-				div(class = 'landing__footer-wrapper')
-					+footer()
-			
-			
-
+			title Layout
+	body
+		div(class="headers-footers")
+			div(class='headers-footers__header')
+				+header({authorized: false})
+			block content
+			div(class='headers-footers__header')
+				+footer()
+		block test
