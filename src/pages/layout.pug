@@ -6,7 +6,14 @@ html
 		block title
 			title Default Title
 	body 
-		block background
+		block wrapper
+			div(class = 'landing__background-wrapper')
+				div(class = 'landing__header-wrapper')
+					+header({authorized: false})
+				div(class = 'landing__img-wrapper')
+					img(class = 'landing__background' alt = '' src = 'assets/img/interface/landing-page.jpg')
+				div(class = 'landing__footer-wrapper')
+					+footer()
 			
 			
 
