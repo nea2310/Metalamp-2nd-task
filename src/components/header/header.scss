@@ -14,7 +14,7 @@
 
 	@include media-breakpoint-down($md) {
 		position: relative;
-		height: 80px;
+		height: 140px;
 	}
 
 	@include media-breakpoint-down($xxs) {
@@ -49,7 +49,7 @@
 				position: absolute;
 				background-color: $colorWhite;
 				left: 0;
-				top: 110px;
+				top: 130px;
 			}
 			&_active {
 				@include media-breakpoint-down($md) {
@@ -109,6 +109,9 @@
 		@include media-breakpoint-down($md) {
 			top: -55px;
 			left: 50%;
+		}
+		@include media-breakpoint-down($xs) {
+			margin-bottom: 20px;
 		}
 	}
 	&__auth {
