@@ -1,39 +1,45 @@
 .landing {
+	//	border: 1px solid blue;
 	display: flex;
 	flex-direction: column;
 	flex: 1 0 auto;
 	padding-top: 5%;
 	padding-left: 9.3%;
-	padding-bottom: 26%;
-
-	@include media-breakpoint-down($xl) {
-		padding-top: 20px;
-		padding-left: 20px;
-		padding-bottom: 20px;
-	}
+	height: 100%;
 
 	&__background {
-		height: auto;
+		box-sizing: border-box;
+		grid-area: post-1;
+		border: 1px solid orangered;
 		width: 100%;
-		position: absolute;
-		top: 4px;
-		z-index: -1;
-		&-wrapper {
-			box-sizing: border-box;
-			@include media-breakpoint-down($md) {
-				position: absolute;
-				top: 80px;
-				height: 610px;
-				width: 100%;
-				overflow: hidden;
-				z-index: -1;
-			}
-		}
 		@include media-breakpoint-down($md) {
 			height: 100%;
 			width: auto;
 		}
-		@include media-breakpoint-down($xs) {
+	}
+
+	&__background-wrapper {
+		box-sizing: border-box;
+		border: 1px solid green;
+		top: 8px;
+		position: absolute;
+		z-index: -1;
+
+		width: 100%;
+		display: grid;
+		grid-template-rows: 1000px, auto;
+		grid-template-columns: 100%;
+		grid-template-areas:
+			"post-1"
+			"post-2";
+
+		@include media-breakpoint-down($md) {
+			overflow: hidden;
 		}
 	}
+}
+
+.footer-wrapper {
+	border: 1px solid blue;
+	grid-area: post-2;
 }
