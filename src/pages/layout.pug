@@ -6,10 +6,10 @@ html
 		block title
 			title Layout
 	body
-		div(class="headers-footers")
-			div(class='headers-footers__header')
+		div(class = 'page-wrapper')
+			div(class = 'header-wrapper')
 				+header({authorized: false})
 			block content
-			div(class='headers-footers__header')
+			div(class = 'footer-wrapper')
 				+footer()
-		block test
+

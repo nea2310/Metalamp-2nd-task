@@ -1,11 +1,11 @@
-// .page__header {
-// 	box-sizing: border-box;
-// 	border: 1px solid green;
-// 	position: absolute;
-// 	width: 100%;
-// 	@include media-breakpoint-down($sm) {
-// 		position: relative;
-// 		width: 100%;
-// 		margin: 0 auto;
-// 	}
-// }
+.page-wrapper {
+	//	border: 1px solid blue;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.header-wrapper {
+	position: absolute;
+	width: 100%;
+}

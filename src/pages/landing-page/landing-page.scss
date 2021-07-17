@@ -1,22 +1,7 @@
-// .landing {
-// 	&__background {
-// 		position: relative;
-// 		margin-top: 7px;
-// 		width: 100%;
-// 		z-index: -1;
-
-// 		@include media-breakpoint-down($xs) {
-// 			visibility: hidden;
-// 		}
-// 	}
-// 	&__search-room {
-// 		position: absolute;
-// 		top: 21.3%;
-// 		left: 9.3%;
-
-// 		@include media-breakpoint-down($xs) {
-// 			top: 30%;
-// 			left: 0;
-// 		}
-// 	}
-// }
+.landing {
+	flex-grow: 1;
+	&__background {
+		margin-top: 9px;
+		width: 100%;
+	}
+}
