@@ -3,5 +3,12 @@
 	&__background {
 		margin-top: 9px;
 		width: 100%;
+
+		@include media-breakpoint-down($xs) {
+			margin-top: 180px;
+		}
+		@include media-breakpoint-down($xxs) {
+			display: none;
+		}
 	}
 }

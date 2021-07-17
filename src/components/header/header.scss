@@ -42,6 +42,8 @@
 		}
 		@include media-breakpoint-down($xs) {
 			flex-direction: column;
+			padding-top: 50px;
+			padding-bottom: 20px;
 		}
 	}
 
@@ -132,10 +134,12 @@
 			margin-left: 20px;
 		}
 		@include media-breakpoint-down($xs) {
-			margin-top: 20px;
+			//	margin-top: 20px;
 			flex-direction: column;
-			justify-content: center;
+			height: 90px;
+			justify-content: space-between;
 			align-items: center;
+			//	margin-bottom: 20px;
 		}
 	}
 	&__button-reg,

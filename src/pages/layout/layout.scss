@@ -8,4 +8,9 @@
 .header-wrapper {
 	position: absolute;
 	width: 100%;
+
+	@include media-breakpoint-down($xxs) {
+		position: static;
+		width: auto;
+	}
 }
