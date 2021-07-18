@@ -1,13 +1,14 @@
-.landing {
+.landing-page {
 	position: relative;
 	flex-grow: 1;
+
+	@include media-breakpoint-down($sm) {
+		margin-bottom: 320px;
+	}
+
 	&__background {
-		// margin-top: 9px;
 		width: 100%;
 
-		@include media-breakpoint-down($xs) {
-			//margin-top: 180px;
-		}
 		@include media-breakpoint-down($sm) {
 			display: none;
 		}
@@ -16,28 +17,18 @@
 		position: absolute;
 		top: 71px;
 		left: 133px;
-		@include media-breakpoint-down($md) {
-			top: 20px;
-			left: 20px;
-		}
 
 		@include media-breakpoint-down($sm) {
+			top: 20px;
+			left: 0;
 			box-sizing: border-box;
 			width: 100%;
-			position: static;
-			margin-left: auto;
-			margin-right: auto;
-			margin-top: 90px;
 			display: flex;
-			flex-direction: row;
 			justify-content: center;
 		}
 
 		@include media-breakpoint-down($xs) {
-			margin-top: 200px;
-		}
-		@include media-breakpoint-down($xxs) {
-			margin-top: 55px;
+			margin-top: 20px;
 		}
 	}
 	&__text {

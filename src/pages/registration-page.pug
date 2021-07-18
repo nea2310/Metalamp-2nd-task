@@ -1,0 +1,9 @@
+extends ./layout.pug
+include ../components/registration/registration.pug
+block title
+	title registration-page page
+block content 
+	main(class = 'registration-page')
+		img(class = 'registration-page__background' src = 'assets/img/interface/registration-page.jpg')
+		section(class = 'registration-page__registration-wrapper')
+			+registration()

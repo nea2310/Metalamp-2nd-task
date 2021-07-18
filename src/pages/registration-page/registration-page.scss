@@ -1,0 +1,34 @@
+.registration-page {
+	position: relative;
+	flex-grow: 1;
+
+	@include media-breakpoint-down($lg) {
+		margin-bottom: 110px;
+	}
+
+	@include media-breakpoint-down($md) {
+		margin-bottom: 190px;
+	}
+
+	@include media-breakpoint-down($sm) {
+		margin-bottom: 600px;
+	}
+
+	@include media-breakpoint-down($xs) {
+		margin-top: 20px;
+	}
+	&__background {
+		width: 100%;
+
+		@include media-breakpoint-down($sm) {
+			display: none;
+		}
+	}
+	&__registration-wrapper {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		position: absolute;
+		top: 22px;
+	}
+}

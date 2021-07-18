@@ -1,10 +1,10 @@
 extends ./layout.pug
 include ../components/search-room/search-room.pug
 block title
-	title Landing page
+	title landing-page page
 block content 
-	main(class = 'landing')
-		img(class = 'landing__background' src = 'assets/img/interface/landing-page.jpg')
-		section(class = 'landing__search-room-wrapper')
+	main(class = 'landing-page')
+		img(class = 'landing-page__background' src = 'assets/img/interface/landing-page.jpg')
+		section(class = 'landing-page__search-room-wrapper')
 			+search-room()
-		p(class = 'landing__text') Лучшие номера для вашей работы, отдыха и просто вдохновения
+		p(class = 'landing-page__text') Лучшие номера для вашей работы, отдыха и просто вдохновения
