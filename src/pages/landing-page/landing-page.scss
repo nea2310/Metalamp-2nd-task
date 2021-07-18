@@ -2,11 +2,11 @@
 	position: relative;
 	flex-grow: 1;
 	&__background {
-		margin-top: 9px;
+		// margin-top: 9px;
 		width: 100%;
 
 		@include media-breakpoint-down($xs) {
-			margin-top: 180px;
+			//margin-top: 180px;
 		}
 		@include media-breakpoint-down($sm) {
 			display: none;
@@ -14,10 +14,10 @@
 	}
 	&__search-room-wrapper {
 		position: absolute;
-		top: 140px;
+		top: 71px;
 		left: 133px;
 		@include media-breakpoint-down($md) {
-			top: 90px;
+			top: 20px;
 			left: 20px;
 		}
 
@@ -42,14 +42,14 @@
 	}
 	&__text {
 		position: absolute;
-		bottom: 19px;
-		right: 135px;
+		bottom: 21px;
+		right: 127px;
 		max-width: 265px;
 		@include font-body;
 		text-align: end;
 		@include media-breakpoint-down($md) {
-			bottom: 19px;
-			right: 19px;
+			bottom: 21px;
+			right: 21px;
 		}
 
 		@include media-breakpoint-down($sm) {
