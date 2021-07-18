@@ -25,6 +25,10 @@
 		font-size: 12px;
 		line-height: initial;
 	}
+	&__text {
+		@include font-body;
+		font-size: 12px;
+	}
 
 	span.irs.irs--flat {
 		.irs-line {

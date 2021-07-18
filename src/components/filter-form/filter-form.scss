@@ -1,0 +1,29 @@
+.filter-form {
+	max-width: 266px;
+	box-sizing: border-box;
+	//	border: 1px solid red;
+	&__calendar-wrapper {
+		box-sizing: border-box;
+		margin-bottom: 20px;
+	}
+	&__guests-wrapper {
+		box-sizing: border-box;
+		margin-bottom: 31px;
+	}
+	&__price-filter-wrapper {
+		box-sizing: border-box;
+		margin-bottom: 23px;
+	}
+	&__house-rules-wrapper {
+		box-sizing: border-box;
+		margin-bottom: 145px;
+	}
+	&__accessability-wrapper {
+		box-sizing: border-box;
+		margin-bottom: 162px;
+	}
+	&__facilities-wrapper {
+		box-sizing: border-box;
+		margin-bottom: 30px;
+	}
+}

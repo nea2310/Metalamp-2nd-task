@@ -1,0 +1,50 @@
+.search-room-page {
+	box-sizing: border-box;
+	display: flex;
+	margin-left: 132px;
+	margin-right: 132px;
+	padding-top: 31px;
+
+	@include media-breakpoint-down($xs) {
+		flex-direction: column;
+		margin: 0 auto;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	&__title {
+		@include font-h1;
+		margin-bottom: 20px;
+	}
+	&__search-results-wrapper {
+		//	border: 1px solid orange;
+		box-sizing: border-box;
+		padding-left: 59px;
+		@include media-breakpoint-down($xs) {
+			padding: 0;
+		}
+	}
+	&__search-results {
+		box-sizing: border-box;
+		justify-content: space-between;
+
+		display: flex;
+		flex-wrap: wrap;
+		@include media-breakpoint-down($xs) {
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+	&__room-card {
+		margin-bottom: 19px;
+		//	margin-right: 10px;
+	}
+	&__pagination-wrapper {
+		margin-top: 20px;
+		margin-bottom: 74px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

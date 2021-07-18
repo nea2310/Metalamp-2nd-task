@@ -1,0 +1,24 @@
+extends ./layout.pug
+include ../components/filter-form/filter-form.pug
+include ../components/room-card/room-card.pug
+include ../components/pagination/pagination.pug
+block title
+	title Search room
+block content 
+	main(class = 'search-room-page')
+		section(class = 'search-room-page__filter-form-wrapper')
+			+filter-form()
+		section(class = 'search-room-page__search-results-wrapper')
+			h1(class = 'search-room-page__title') Номера, которые мы для вас подобрали
+			div(class = 'search-room-page__search-results')
+				-let n = 0
+					while n < 12
+						div(class = 'search-room-page__room-card')
+							+room-card({
+									roomNumber: '888',
+									isLux: 'люкс',
+									roomPrice: '9 990',
+									feedbackAmnt: '145',
+									ratingName: 'rating' + n++})
+			div(class = 'search-room-page__pagination-wrapper')
+				+pagination()
