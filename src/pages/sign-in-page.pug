@@ -1,0 +1,9 @@
+extends ./layout.pug
+include ../components/login/login.pug
+block title
+	title Sign-in
+block content 
+	main(class = 'sign-in-page')
+		img(class = 'sign-in-page__background' src = 'assets/img/interface/sign-in-page.jpg')
+		section(class = 'sign-in-page__login-wrapper')
+			+login()

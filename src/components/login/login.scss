@@ -7,6 +7,7 @@
 	padding-left: 28px;
 	padding-right: 28px;
 	padding-top: 39px;
+	height: 317px;
 	&__header {
 		max-width: 300px;
 		@include font-h1;
@@ -32,6 +33,10 @@
 		&-legend {
 			@include font-body;
 		}
+	}
+	@include media-breakpoint-down($xxs) {
+		padding-right: 10px;
+		padding-left: 25px;
 	}
 }
 .js-err {
