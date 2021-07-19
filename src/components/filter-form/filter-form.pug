@@ -6,8 +6,8 @@ mixin filter-form()
 	-
 		let elemName ='filter-form'
 	form(class = elemName)
-		button(class = elemName + '__show-filter') Показать фильтр
-		div(class = elemName + '__wrapper')
+		button(class = elemName + '__show-filter' type = 'button') Скрыть фильтр
+		div(class = elemName + '__wrapper ')
 			div(class = elemName + '__calendar-wrapper')
 				+date-dropdown(
 								{width:'narrow',

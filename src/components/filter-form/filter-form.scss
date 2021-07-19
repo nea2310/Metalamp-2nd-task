@@ -1,5 +1,6 @@
 .filter-form {
 	border: 1px solid purple;
+
 	@include media-breakpoint-down($sm) {
 		box-sizing: border-box;
 		position: absolute;
@@ -8,7 +9,7 @@
 		//width: auto;
 		left: 0;
 		right: 0;
-		padding-bottom: 20px;
+		padding-bottom: 50px;
 	}
 
 	@include media-breakpoint-down($xs) {
@@ -48,15 +49,25 @@
 			max-width: 266px;
 			margin: 0 auto;
 		}
+
+		&_hidden {
+			border: 1px solid red;
+			display: none;
+		}
 	}
 
 	&__show-filter {
 		display: none;
 		@include media-breakpoint-down($sm) {
 			display: block;
-			padding: 20px;
+			padding: 10px;
 			cursor: pointer;
-			margin: 0 auto;
+			margin: 0px auto 20px;
+			white-space: nowrap;
+			@include font-h3;
+			border: 2px solid $colorDarkShade50;
+			border-radius: 20px;
+			color: $colorDarkShade50;
 		}
 	}
 
@@ -154,5 +165,11 @@
 		@include media-breakpoint-down($sm) {
 			display: none;
 		}
+	}
+	&_hidden {
+		//	border: 1px solid red;
+		right: initial;
+		top: 150px;
+		left: 20px;
 	}
 }
