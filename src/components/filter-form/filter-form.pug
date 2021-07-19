@@ -2,11 +2,19 @@ include ../date-dropdown/date-dropdown.pug
 include ../dropdown/dropdown.pug
 include ../range-slider/range-slider.pug
 include ../checklist/checklist.pug
+include ../btn/btn.pug
 mixin filter-form()
 	-
 		let elemName ='filter-form'
 	form(class = elemName)
-		button(class = elemName + '__show-filter' type = 'button') Скрыть фильтр
+		div(class = elemName + '__show-filter')
+			+btn(
+										{text: 'cкрыть фильтр',
+										type: 'button',
+										length: 'long',
+										width: 'narrow',
+										color: 'light',}
+										)
 		div(class = elemName + '__wrapper ')
 			div(class = elemName + '__calendar-wrapper')
 				+date-dropdown(

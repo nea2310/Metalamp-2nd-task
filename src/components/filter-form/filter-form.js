@@ -13,7 +13,7 @@ class FilterForm {
 	}
 
 	render() {
-		this.btn = this.getElem('show-filter');
+		this.btn = this.wrapper.querySelector('.btn');
 		this.form = this.getElem('wrapper');
 	}
 

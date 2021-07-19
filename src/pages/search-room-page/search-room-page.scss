@@ -15,6 +15,7 @@
 
 	&__filter-form-wrapper {
 		@include media-breakpoint-down($sm) {
+			//border: 1px solid green;
 			//			display: none;
 		}
 	}
@@ -32,8 +33,12 @@
 		@include media-breakpoint-down($lg) {
 			padding: 0;
 		}
+
+		@include media-breakpoint-down($sm) {
+			padding: 120px 0 0 0;
+		}
 		@include media-breakpoint-down($xs) {
-			padding: 0;
+			padding: 120px 0 0 0;
 		}
 	}
 	&__search-results {

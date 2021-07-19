@@ -5,6 +5,9 @@
 	}
 	&_narrow {
 		width: 266px;
+		@include media-breakpoint-down($sm) {
+			width: 320px;
+		}
 	}
 	display: flex;
 	justify-content: flex-start;
@@ -27,21 +30,39 @@
 		&_narrow {
 			& .datepicker-inline .datepicker {
 				width: 266px;
+				@include media-breakpoint-down($sm) {
+					width: 320px;
+				}
 				&--cell {
 					height: 32px;
+					@include media-breakpoint-down($sm) {
+						height: 39px;
+					}
 				}
 				&--cell-day {
 					&.-range-from-::after {
 						height: 32px;
 						width: 32.2px;
+						@include media-breakpoint-down($sm) {
+							height: 39px;
+							width: 40px;
+						}
 					}
 					&.-range-to-::before {
 						height: 32px;
 						width: 32.2px;
+						@include media-breakpoint-down($sm) {
+							height: 39px;
+							width: 40px;
+						}
 					}
 					&.-in-range-.-focus-::before {
 						height: 32px;
 						width: 32.27px;
+						@include media-breakpoint-down($sm) {
+							height: 39px;
+							width: 40px;
+						}
 					}
 				}
 			}
@@ -104,6 +125,9 @@
 		}
 		&_narrow {
 			width: 150px;
+			@include media-breakpoint-down($sm) {
+				width: 266px;
+			}
 		}
 		&_wide {
 			width: 266px;

@@ -1,5 +1,5 @@
 .filter-form {
-	border: 1px solid purple;
+	//border: 1px solid purple;
 
 	@include media-breakpoint-down($sm) {
 		box-sizing: border-box;
@@ -14,10 +14,11 @@
 
 	@include media-breakpoint-down($xs) {
 		//width: 90%;
+		min-width: 319px;
 	}
 	&__wrapper {
-		border: 1px solid red;
-		max-width: 266px;
+		//	border: 1px solid red;
+		//	max-width: 266px;
 		box-sizing: border-box;
 
 		@include media-breakpoint-down($xl) {
@@ -46,12 +47,13 @@
 		@include media-breakpoint-down($sm) {
 			display: block;
 			height: auto;
-			max-width: 266px;
+			//	max-width: 266px;
 			margin: 0 auto;
+			padding-left: 20px;
 		}
 
 		&_hidden {
-			border: 1px solid red;
+			//	border: 1px solid red;
 			display: none;
 		}
 	}
@@ -61,13 +63,15 @@
 		@include media-breakpoint-down($sm) {
 			display: block;
 			padding: 10px;
-			cursor: pointer;
-			margin: 0px auto 20px;
-			white-space: nowrap;
-			@include font-h3;
-			border: 2px solid $colorDarkShade50;
-			border-radius: 20px;
-			color: $colorDarkShade50;
+			display: flex;
+			//	justify-content: center;
+			// cursor: pointer;
+			//margin: 0px auto 20px;
+			// white-space: nowrap;
+			// @include font-h3;
+			//	border: 2px solid $colorDarkShade50;
+			// border-radius: 20px;
+			// color: $colorDarkShade50;
 		}
 	}
 
@@ -168,8 +172,8 @@
 	}
 	&_hidden {
 		//	border: 1px solid red;
-		right: initial;
-		top: 150px;
-		left: 20px;
+		//right: initial;
+		//top: 150px;
+		//left: 20px;
 	}
 }
