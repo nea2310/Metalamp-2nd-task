@@ -1,29 +1,74 @@
 .filter-form {
+	border: 1px solid red;
 	max-width: 266px;
 	box-sizing: border-box;
 	//	border: 1px solid red;
 	&__calendar-wrapper {
 		box-sizing: border-box;
 		margin-bottom: 20px;
+		@include media-breakpoint-down($xl) {
+			margin: 0;
+			grid-area: post-1;
+		}
 	}
 	&__guests-wrapper {
 		box-sizing: border-box;
 		margin-bottom: 31px;
+		@include media-breakpoint-down($xl) {
+			margin: 0;
+			grid-area: post-2;
+		}
 	}
 	&__price-filter-wrapper {
 		box-sizing: border-box;
 		margin-bottom: 23px;
+		@include media-breakpoint-down($xl) {
+			margin: 0;
+			grid-area: post-7;
+		}
 	}
 	&__house-rules-wrapper {
 		box-sizing: border-box;
 		margin-bottom: 145px;
+		@include media-breakpoint-down($xl) {
+			margin: 0;
+			grid-area: post-4;
+		}
 	}
 	&__accessability-wrapper {
 		box-sizing: border-box;
 		margin-bottom: 162px;
+		@include media-breakpoint-down($xl) {
+			margin: 0;
+			grid-area: post-5;
+		}
 	}
 	&__facilities-wrapper {
 		box-sizing: border-box;
 		margin-bottom: 30px;
+		@include media-breakpoint-down($xl) {
+			margin: 0;
+			grid-area: post-3;
+		}
+	}
+
+	&__facilities-adv-wrapper {
+		@include media-breakpoint-down($xl) {
+			margin: 0;
+			grid-area: post-6;
+		}
+	}
+
+	@include media-breakpoint-down($xl) {
+		max-width: 100%;
+		height: 300px;
+		display: grid;
+		grid-gap: 9px;
+		grid-template-rows: auto auto auto;
+		grid-template-columns: auto auto;
+		grid-template-areas:
+			"post-1 post-2 post-3"
+			"post-7 post-7 post-7"
+			"post-4 post-5 post-6";
 	}
 }
