@@ -17,7 +17,10 @@
 		margin-top: 20px;
 	}
 	&__background {
+		box-sizing: border-box;
+		height: 682px;
 		width: 100%;
+		object-fit: cover;
 
 		@include media-breakpoint-down($sm) {
 			display: none;

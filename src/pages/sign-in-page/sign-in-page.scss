@@ -10,7 +10,10 @@
 	}
 
 	&__background {
+		box-sizing: border-box;
+		height: 703px;
 		width: 100%;
+		object-fit: cover;
 
 		@include media-breakpoint-down($sm) {
 			display: none;
