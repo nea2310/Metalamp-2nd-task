@@ -6,79 +6,101 @@ mixin filter-form()
 	-
 		let elemName ='filter-form'
 	form(class = elemName)
-		div(class = elemName + '__calendar-wrapper')
-			+date-dropdown(
-							{width:'narrow',
-							type: 'filterDateDropDown',
-							labelTextFromTo: 'даты пребывания в отеле'}
+		button(class = elemName + '__show-filter') Показать фильтр
+		div(class = elemName + '__wrapper')
+			div(class = elemName + '__calendar-wrapper')
+				+date-dropdown(
+								{width:'narrow',
+								type: 'filterDateDropDown',
+								labelTextFromTo: 'даты пребывания в отеле'}
+								)
+			div(class = elemName + '__guests-wrapper')
+				+dropdown(
+							{categories:
+								{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+								cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+								cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+							type: 'dropDownGuests',
+							placeholder: 'Сколько гостей',
+							buttons: true,
+							labelText: 'гости',
+							width: 'narrow'}
 							)
-		div(class = elemName + '__guests-wrapper')
-			+dropdown(
-						{categories:
-							{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-							cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-							cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
-						type: 'dropDownGuests',
-						placeholder: 'Сколько гостей',
-						buttons: true,
-						labelText: 'гости',
-						width: 'narrow'}
-						)
-		div(class = elemName + '__price-filter-wrapper')
-			+range-slider(
-						{labelText: 'диапазон цены',
-						type: 'double', 
-						min:1000, 
-						max:15000, 
-						step:1, 
-						from:5000, 
-						to:10000, 
-						isMinMaxHidden:'true', 
-						isFromToHidden:'true',
-						text: 'Стоимость за сутки пребывания в номере'}
-						)
-		div(class = elemName + '__house-rules-wrapper')
-			+checklist(
-						{categories:
-							{cat1: {name:'Можно курить'}, 
-							cat2:{name:'Можно с питомцами'}, 
-							cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
-							type: 'nonExpandable', 
-						labelText: 'правила дома',
-						checkListName: 'правила дома'}
-						)
-		div(class = elemName + '__accessability-wrapper')
-			+checklist(
-						{categories:
-							{cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
-							cat2:{name:'Помощник для инвалидов', descr: 'На 1 этаже вас встретит специалист и проводит до номера'}},
-							type: 'rich', 
-						labelText: 'доступность',
-						checkListName: 'доступность'}
-						)
-		div(class = elemName + '__facilities-wrapper')
-			+dropdown(
-						{categories:
-							{cat1: {displayName: 'спальни', type: 'спальня', typeforms: 'спальня,спальни,спален', defaultCnt: 0, minCnt: 0, maxCnt: 5}, 
-							cat2: {displayName: 'кровати', type: 'кровать', typeforms: 'кровать,кровати,кроватей', defaultCnt: 0, minCnt: 0, maxCnt: 10}, 
-							cat3: {displayName: 'ванные комнаты', type: 'ванная комната', typeforms: 'ванная комната,ванные комнаты,ванных комнат', defaultCnt: 0, minCnt: 0, maxCnt: 3}}, 
-						type: 'dropDownRooms',
-						placeholder: 'Сколько комнат',
-						labelText: 'удобства номера',
-						width: 'narrow'}
-						)
-		div(class = elemName + '__facilities-adv-wrapper')
-			+checklist(
-						{categories:
-							{cat1: {name:'Завтрак'}, 
-							cat2:{name:'Письменный стол'}, 
-							cat3:{name:'Стул для кормления'}, 
-							cat4:{name:'Кроватка'}, 
-							cat5:{name:'Телевизор'}, 
-							cat6:{name:'Шампунь'},},
-						type: 'expandable', 
-						labelText: 'дополнительные удобства',}
-						)
+			div(class = elemName + '__price-filter-wrapper')
+				+range-slider(
+							{labelText: 'диапазон цены',
+							type: 'double', 
+							min:1000, 
+							max:15000, 
+							step:1, 
+							from:5000, 
+							to:10000, 
+							isMinMaxHidden:'true', 
+							isFromToHidden:'true',
+							text: 'Стоимость за сутки пребывания в номере'}
+							)
+			div(class = elemName + '__house-rules-wrapper')
+				+checklist(
+							{categories:
+								{cat1: {name:'Можно курить'}, 
+								cat2:{name:'Можно с питомцами'}, 
+								cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
+								expand: false, 
+							labelText: 'правила дома',
+							checkListName: 'правила дома'}
+							)
+			div(class = elemName + '__accessability-wrapper')
+				+checklist(
+							{categories:
+								{cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
+								cat2:{name:'Помощник для инвалидов', descr: 'На 1 этаже вас встретит специалист и проводит до номера'}},
+								rich: true, 
+							labelText: 'доступность',
+							checkListName: 'доступность'}
+							)
+			div(class = elemName + '__facilities-wrapper')
+				+dropdown(
+							{categories:
+								{cat1: {displayName: 'спальни', type: 'спальня', typeforms: 'спальня,спальни,спален', defaultCnt: 0, minCnt: 0, maxCnt: 5}, 
+								cat2: {displayName: 'кровати', type: 'кровать', typeforms: 'кровать,кровати,кроватей', defaultCnt: 0, minCnt: 0, maxCnt: 10}, 
+								cat3: {displayName: 'ванные комнаты', type: 'ванная комната', typeforms: 'ванная комната,ванные комнаты,ванных комнат', defaultCnt: 0, minCnt: 0, maxCnt: 3}}, 
+							type: 'dropDownRooms',
+							placeholder: 'Сколько комнат',
+							labelText: 'удобства номера',
+							width: 'narrow'}
+							)
+			div(class = elemName + '__facilities-adv-wrapper')
+				+checklist(
+							{categories:
+								{cat1: {name:'Завтрак'}, 
+								cat2:{name:'Письменный стол'}, 
+								cat3:{name:'Стул для кормления'}, 
+								cat4:{name:'Кроватка'}, 
+								cat5:{name:'Телевизор'}, 
+								cat6:{name:'Шампунь'},},
+							expand: true, 
+							labelText: 'дополнительные удобства',}
+							)
+			div(class = elemName + '__house-rules-exp-wrapper')
+				+checklist(
+							{categories:
+								{cat1: {name:'Можно курить'}, 
+								cat2:{name:'Можно с питомцами'}, 
+								cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
+								expand: true, 
+							labelText: 'правила дома',
+							checkListName: 'правила дома'}
+							)
+			div(class = elemName + '__accessability-exp-wrapper')
+				+checklist(
+							{categories:
+								{cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
+								cat2:{name:'Помощник для инвалидов', descr: 'На 1 этаже вас встретит специалист и проводит до номера'}},
+								expand: true,
+								rich: true, 
+							labelText: 'доступность',
+							checkListName: 'доступность'}
+							)
 
 
 

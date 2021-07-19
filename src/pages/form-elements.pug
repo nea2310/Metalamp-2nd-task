@@ -89,7 +89,8 @@ div(class="form-elements")
 							cat4:{name:'Кроватка'}, 
 							cat5:{name:'Телевизор'}, 
 							cat6:{name:'Шампунь'},},
-						type: 'expandable', 
+							expand: true,
+							rich: false, 
 						labelText: 'expandable checkbox list',}
 						)
 		div(class="form-elements__comp-wrapper")
@@ -101,7 +102,8 @@ div(class="form-elements")
 							cat4:{name:'Кроватка'}, 
 							cat5:{name:'Телевизор'}, 
 							cat6:{name:'Шампунь'},},
-						type: 'expandable', 
+							expand: true,
+							rich: false, 
 						labelText: 'expandable checkbox list',
 						checkListName: 'expandable checkbox list'}
 						)
@@ -112,7 +114,8 @@ div(class="form-elements")
 							{cat1: {name:'Можно курить'}, 
 							cat2:{name:'Можно с питомцами'}, 
 							cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
-							type: 'nonExpandable', 
+							expand: false,
+							rich: false, 
 						labelText: 'checkbox buttons',
 						checkListName: 'checkbox buttons'}
 						)
@@ -152,7 +155,8 @@ div(class="form-elements")
 						{categories:
 							{cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
 							cat2:{name:'Помощник для инвалидов', descr: 'На 1 этаже вас встретит специалист и проводит до номера'}},
-							type: 'rich', 
+							expand: false,
+							rich: true, 
 						labelText: 'rich checkbox buttons',
 						checkListName: 'rich checkbox buttons'}
 						)

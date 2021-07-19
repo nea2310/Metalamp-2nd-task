@@ -1,14 +1,74 @@
 .filter-form {
-	border: 1px solid red;
-	max-width: 266px;
-	box-sizing: border-box;
-	//	border: 1px solid red;
+	border: 1px solid purple;
+	@include media-breakpoint-down($sm) {
+		box-sizing: border-box;
+		position: absolute;
+		z-index: 4;
+		background: $colorWhite;
+		//width: auto;
+		left: 0;
+		right: 0;
+		padding-bottom: 20px;
+	}
+
+	@include media-breakpoint-down($xs) {
+		//width: 90%;
+	}
+	&__wrapper {
+		border: 1px solid red;
+		max-width: 266px;
+		box-sizing: border-box;
+
+		@include media-breakpoint-down($xl) {
+			max-width: 100%;
+			height: 195px;
+			display: grid;
+			column-gap: 9px;
+			grid-template-rows: 70px 40px 40px 40px;
+			grid-template-columns: auto auto auto;
+			grid-template-areas:
+				"post-1 post-2 post-3"
+				"post-4 post-7 post-7"
+				"post-5 post-7 post-7"
+				"post-6 post-7 post-7";
+		}
+		@include media-breakpoint-down($lg) {
+			grid-template-rows: 70px 40px 40px;
+			grid-template-columns: auto auto;
+			grid-template-areas:
+				"post-1 post-2"
+				"post-4 post-3"
+				"post-5 post-7"
+				"post-6 post-7";
+		}
+
+		@include media-breakpoint-down($sm) {
+			display: block;
+			height: auto;
+			max-width: 266px;
+			margin: 0 auto;
+		}
+	}
+
+	&__show-filter {
+		display: none;
+		@include media-breakpoint-down($sm) {
+			display: block;
+			padding: 20px;
+			cursor: pointer;
+			margin: 0 auto;
+		}
+	}
+
 	&__calendar-wrapper {
 		box-sizing: border-box;
 		margin-bottom: 20px;
 		@include media-breakpoint-down($xl) {
 			margin: 0;
 			grid-area: post-1;
+		}
+		@include media-breakpoint-down($sm) {
+			margin-bottom: 20px;
 		}
 	}
 	&__guests-wrapper {
@@ -18,29 +78,41 @@
 			margin: 0;
 			grid-area: post-2;
 		}
+		@include media-breakpoint-down($sm) {
+			margin-bottom: 31px;
+		}
 	}
 	&__price-filter-wrapper {
 		box-sizing: border-box;
 		margin-bottom: 23px;
 		@include media-breakpoint-down($xl) {
-			margin: 0;
+			margin: auto;
 			grid-area: post-7;
+		}
+		@include media-breakpoint-down($sm) {
+			margin-bottom: 23px;
 		}
 	}
 	&__house-rules-wrapper {
 		box-sizing: border-box;
 		margin-bottom: 145px;
 		@include media-breakpoint-down($xl) {
-			margin: 0;
-			grid-area: post-4;
+			display: none;
+		}
+		@include media-breakpoint-down($sm) {
+			margin-bottom: 145px;
+			display: block;
 		}
 	}
 	&__accessability-wrapper {
 		box-sizing: border-box;
 		margin-bottom: 162px;
 		@include media-breakpoint-down($xl) {
-			margin: 0;
-			grid-area: post-5;
+			display: none;
+		}
+		@include media-breakpoint-down($sm) {
+			margin-bottom: 162px;
+			display: block;
 		}
 	}
 	&__facilities-wrapper {
@@ -50,25 +122,37 @@
 			margin: 0;
 			grid-area: post-3;
 		}
+		@include media-breakpoint-down($sm) {
+			margin-bottom: 30px;
+		}
 	}
 
 	&__facilities-adv-wrapper {
 		@include media-breakpoint-down($xl) {
 			margin: 0;
-			grid-area: post-6;
+			grid-area: post-5;
 		}
 	}
 
-	@include media-breakpoint-down($xl) {
-		max-width: 100%;
-		height: 300px;
-		display: grid;
-		grid-gap: 9px;
-		grid-template-rows: auto auto auto;
-		grid-template-columns: auto auto;
-		grid-template-areas:
-			"post-1 post-2 post-3"
-			"post-7 post-7 post-7"
-			"post-4 post-5 post-6";
+	&__house-rules-exp-wrapper {
+		display: none;
+		@include media-breakpoint-down($xl) {
+			display: block;
+			grid-area: post-4;
+		}
+		@include media-breakpoint-down($sm) {
+			display: none;
+		}
+	}
+
+	&__accessability-exp-wrapper {
+		display: none;
+		@include media-breakpoint-down($xl) {
+			display: block;
+			grid-area: post-6;
+		}
+		@include media-breakpoint-down($sm) {
+			display: none;
+		}
 	}
 }
