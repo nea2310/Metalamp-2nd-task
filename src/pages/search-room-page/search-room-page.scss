@@ -6,16 +6,16 @@
 	padding-top: 31px;
 	padding-left: 40px;
 	padding-right: 40px;
-	@include media-breakpoint-down($lg) {
-		flex-direction: column;
-		margin: 0 auto;
-		padding-left: 20px;
-		padding-right: 20px;
-	}
 
-	@include media-breakpoint-down($sm) {
+	@include media-breakpoint-between($lg, $xl) {
 		padding-left: 0;
 		padding-right: 0;
+	}
+
+	@include media-breakpoint-down($lg) {
+		flex-direction: column;
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 
 	&__filter-form-wrapper {
@@ -28,29 +28,17 @@
 		@include font-h1;
 		margin-bottom: 20px;
 		text-align: center;
-		@include media-breakpoint-down($sm) {
-			font-size: 20px;
-		}
-		@include media-breakpoint-down($xs) {
-			font-size: 16px;
-		}
 	}
 	&__search-results-wrapper {
 		//	border: 1px solid orange;
 		max-width: 100%;
 		box-sizing: border-box;
 		padding-left: 59px;
-		@include media-breakpoint-down($xl) {
-			padding-left: 5px;
-		}
 
 		@include media-breakpoint-down($lg) {
 			padding: 0;
 		}
 
-		@include media-breakpoint-down($sm) {
-			//padding: 40px 0 0 0;
-		}
 		@include media-breakpoint-down($xs) {
 			padding: 32px 0 0 0;
 		}
@@ -90,5 +78,8 @@
 		right: 20px;
 		bottom: 50px;
 		z-index: 10;
+		@include media-breakpoint-up($xs) {
+			display: none;
+		}
 	}
 }
