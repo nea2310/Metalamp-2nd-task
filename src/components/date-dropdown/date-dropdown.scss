@@ -5,9 +5,6 @@
 	}
 	&_narrow {
 		width: 266px;
-		@include media-breakpoint-down($sm) {
-			width: 320px;
-		}
 	}
 	display: flex;
 	justify-content: flex-start;
@@ -23,11 +20,15 @@
 		position: absolute;
 		z-index: 3;
 		top: 68px;
+
 		&_hidden {
 			display: none;
 		}
 
 		&_narrow {
+			@include media-breakpoint-down($sm) {
+				left: -27px;
+			}
 			& .datepicker-inline .datepicker {
 				width: 266px;
 				@include media-breakpoint-down($sm) {
@@ -125,9 +126,6 @@
 		}
 		&_narrow {
 			width: 150px;
-			@include media-breakpoint-down($sm) {
-				width: 266px;
-			}
 		}
 		&_wide {
 			width: 266px;

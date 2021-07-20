@@ -43,13 +43,14 @@
 				position: absolute;
 				background-color: $colorWhite;
 				left: 0;
-				top: 70px;
+				top: 90px;
+				z-index: 1;
 			}
 
 			&_active {
 				@include media-breakpoint-down($md) {
 					display: block;
-					z-index: 1;
+					z-index: 99;
 				}
 			}
 

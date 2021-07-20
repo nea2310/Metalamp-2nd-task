@@ -8,13 +8,7 @@ mixin filter-form()
 		let elemName ='filter-form'
 	form(class = elemName)
 		div(class = elemName + '__show-filter')
-			+btn(
-										{text: 'cкрыть фильтр',
-										type: 'button',
-										length: 'long',
-										width: 'narrow',
-										color: 'light',}
-										)
+			img(class = elemName + '__show-filter-img' src = "assets/img/interface/filter.svg" alt = 'фильтр поиска')
 		div(class = elemName + '__wrapper ')
 			div(class = elemName + '__calendar-wrapper')
 				+date-dropdown(

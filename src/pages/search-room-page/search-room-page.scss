@@ -1,44 +1,58 @@
 .search-room-page {
-	//	border: 1px solid blue;
+	//border: 1px solid blue;
 	box-sizing: border-box;
 	display: flex;
 	margin: 0 auto;
 	padding-top: 31px;
 	padding-left: 40px;
 	padding-right: 40px;
-	@include media-breakpoint-down($xl) {
+	@include media-breakpoint-down($lg) {
 		flex-direction: column;
 		margin: 0 auto;
 		padding-left: 20px;
 		padding-right: 20px;
 	}
 
+	@include media-breakpoint-down($xs) {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 	&__filter-form-wrapper {
+		//border: 1px solid green;
 		@include media-breakpoint-down($sm) {
-			//border: 1px solid green;
-			//			display: none;
 		}
 	}
 
 	&__title {
 		@include font-h1;
 		margin-bottom: 20px;
+		text-align: center;
+		@include media-breakpoint-down($sm) {
+			font-size: 20px;
+		}
+		@include media-breakpoint-down($xs) {
+			font-size: 16px;
+		}
 	}
 	&__search-results-wrapper {
 		//	border: 1px solid orange;
 		max-width: 100%;
 		box-sizing: border-box;
 		padding-left: 59px;
+		@include media-breakpoint-down($xl) {
+			padding-left: 5px;
+		}
 
 		@include media-breakpoint-down($lg) {
 			padding: 0;
 		}
 
 		@include media-breakpoint-down($sm) {
-			padding: 120px 0 0 0;
+			//padding: 40px 0 0 0;
 		}
 		@include media-breakpoint-down($xs) {
-			padding: 120px 0 0 0;
+			padding: 32px 0 0 0;
 		}
 	}
 	&__search-results {
@@ -49,12 +63,11 @@
 		grid-gap: 9px;
 		grid-auto-rows: 268px;
 
-		@include media-breakpoint-down($lg) {
+		@include media-breakpoint-down($md) {
 			grid-template-columns: repeat(2, 1fr);
-			//	max-width: 600px;
 		}
 
-		@include media-breakpoint-down($sm) {
+		@include media-breakpoint-down($xs) {
 			display: flex;
 			flex-direction: column;
 			justify-content: center;

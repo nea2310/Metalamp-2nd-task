@@ -5,6 +5,7 @@ class FilterForm {
 		this.wrapper = elem;
 		this.render();
 		this.toggleForm();
+		this.hideForm();
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
@@ -13,20 +14,39 @@ class FilterForm {
 	}
 
 	render() {
-		this.btn = this.wrapper.querySelector('.btn');
+		this.btn = this.getElem('show-filter');
 		this.form = this.getElem('wrapper');
 	}
 
-	// клик по инпуту
+
 	toggleForm() {
 		this.btn.addEventListener("click", () => {
+			console.log('CLICK');
 			this.form.classList.toggle(`${this.elemName}__wrapper_hidden`);
 			this.wrapper.classList.toggle(`${this.elemName}_hidden`);
-			console.log(this.btn.innerText);
-			let text = this.btn.innerText;
-			text == 'Показать фильтр'.toUpperCase() ?
-				this.btn.innerText = 'Скрыть фильтр'.toUpperCase()
-				: this.btn.innerText = 'Показать фильтр'.toUpperCase();
+		});
+	}
+
+	hideForm() {
+		window.addEventListener('resize', (e) => {
+			console.log(window.innerWidth);
+			if (window.innerWidth <= 575) {
+				this.form.classList.add(`${this.elemName}__wrapper_hidden`);
+				this.wrapper.classList.add(`${this.elemName}_hidden`);
+			} else {
+				this.form.classList.remove(`${this.elemName}__wrapper_hidden`);
+				this.wrapper.classList.remove(`${this.elemName}_hidden`);
+			}
+		});
+
+
+
+		window.addEventListener('load', (e) => {
+			console.log(window.innerWidth);
+			if (window.innerWidth <= 575) {
+				this.form.classList.add(`${this.elemName}__wrapper_hidden`);
+				this.wrapper.classList.add(`${this.elemName}_hidden`);
+			}
 		});
 	}
 }
