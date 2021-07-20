@@ -80,6 +80,7 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
 html {
 	height: 100%; /* растягиваем страницу на весь экран */
 	width: 100%; /* растягиваем страницу на весь экран */
+	font-size: 16px;
 }
 body {
 	display: flex;
