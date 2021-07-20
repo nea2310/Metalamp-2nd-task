@@ -28,6 +28,13 @@
 		@include font-h1;
 		margin-bottom: 20px;
 		text-align: center;
+		@include media-breakpoint-down($md) {
+			font-size: 1.25rem;
+		}
+
+		@include media-breakpoint-down($sm) {
+			font-size: 1rem;
+		}
 	}
 	&__search-results-wrapper {
 		//	border: 1px solid orange;
