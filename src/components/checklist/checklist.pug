@@ -1,16 +1,19 @@
 mixin checklist(options={type: '', labelText: '',})
 	-
 		let elemName='checklist'
+		let style = ''
 		let listStyle = ''
 		let labelStyle = ''
 		let nameStyle = ''
+		let tipStyle = ''
+		options.expand == true ? style = elemName + '_collapsing' : style = ''
 		options.expand == true ? listStyle = elemName + '__list-wrapper_hidden' : listStyle = ''
 		options.expand == true ? labelStyle = elemName + '__label_collapsing' : labelStyle = ''
+		options.expand == false ? tipStyle = elemName + '__img_non-collapsing' : tipStyle = ''
 		options.rich == true ? nameStyle = elemName + '__cat-name_rich' : nameStyle = ''
-	fieldset(class = elemName)
+	fieldset(class = elemName + ' ' + style)
 		p(class = elemName + '__label ' + labelStyle tabindex="0")=options.labelText
-			if (options.expand == true)
-				img(class = elemName + '__img ' + elemName + '__img_collapsed', src = "assets/img/interface/expand-more.svg")
+			img(class = elemName + '__img ' + elemName + '__img_collapsed ' + tipStyle, src = "assets/img/interface/expand-more.svg")
 		ul(class = elemName + '__list-wrapper ' + listStyle)
 			each val, index in options.categories
 				li(class = elemName + '__cat-wrapper')

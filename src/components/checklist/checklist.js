@@ -10,6 +10,7 @@ class CheckList {
 		this.collapseByClick();
 		this.insideListFocus();
 		this.collapseByFocus();
+		this.hideShowList();
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
@@ -26,6 +27,46 @@ class CheckList {
 		this.tip = this.getElem('img');
 		this.clickOnList = false;
 	}
+
+
+
+	hideShowList() {
+		let hideList = () => {
+			this.listWrapper.classList.
+				add(`${this.elemName}__list-wrapper_hidden`);
+			this.label.classList.add(`${this.elemName}__label_collapsing`);
+			this.tip.classList.
+				remove(`${this.elemName}__img_non-collapsing`);
+		};
+		let showList = () => {
+			this.listWrapper.classList.
+				remove(`${this.elemName}__list-wrapper_hidden`);
+			this.label.classList.
+				remove(`${this.elemName}__label_collapsing`);
+			this.tip.classList.
+				add(`${this.elemName}__img_non-collapsing`);
+		};
+
+
+		window.addEventListener('resize', () => {
+			if (window.innerWidth <= 1199) {
+				hideList();
+			} else {
+				if (this.wrapper.classList.
+					contains(`${this.elemName}_collapsing`) == false) {
+					showList();
+				}
+			}
+		});
+
+		window.addEventListener('load', () => {
+			if (window.innerWidth <= 1199 && this.wrapper.classList.
+				contains(`${this.elemName}_collapsing`) == false) {
+				hideList();
+			}
+		});
+	}
+
 
 	// Открывание/ закрывание дропдауна
 	toggle(flag) {

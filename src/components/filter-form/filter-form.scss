@@ -122,22 +122,21 @@
 		box-sizing: border-box;
 		margin-bottom: 145px;
 		@include media-breakpoint-down($lg) {
-			display: none;
+			grid-area: post-4;
 		}
 		@include media-breakpoint-down($xs) {
-			margin-bottom: 145px;
+			margin-bottom: 20px;
 			display: block;
 		}
 	}
 	&__accessability-wrapper {
 		box-sizing: border-box;
-		margin-bottom: 162px;
+		margin-bottom: 70px;
 		@include media-breakpoint-down($lg) {
-			display: none;
+			grid-area: post-6;
 		}
 		@include media-breakpoint-down($xs) {
-			margin-bottom: 162px;
-			display: block;
+			margin-bottom: 20px;
 		}
 	}
 	&__facilities-wrapper {
@@ -157,28 +156,6 @@
 		@include media-breakpoint-down($lg) {
 			margin: 0;
 			grid-area: post-5;
-		}
-	}
-
-	&__house-rules-exp-wrapper {
-		display: none;
-		@include media-breakpoint-down($lg) {
-			display: block;
-			grid-area: post-4;
-		}
-		@include media-breakpoint-down($xs) {
-			display: none;
-		}
-	}
-
-	&__accessability-exp-wrapper {
-		display: none;
-		@include media-breakpoint-down($lg) {
-			display: block;
-			grid-area: post-6;
-		}
-		@include media-breakpoint-down($xs) {
-			display: none;
 		}
 	}
 }

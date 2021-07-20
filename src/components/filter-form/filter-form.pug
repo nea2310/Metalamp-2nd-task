@@ -83,26 +83,7 @@ mixin filter-form()
 							expand: true, 
 							labelText: 'дополнительные удобства',}
 							)
-			div(class = elemName + '__house-rules-exp-wrapper')
-				+checklist(
-							{categories:
-								{cat1: {name:'Можно курить'}, 
-								cat2:{name:'Можно с питомцами'}, 
-								cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
-								expand: true, 
-							labelText: 'правила дома',
-							checkListName: 'правила дома'}
-							)
-			div(class = elemName + '__accessability-exp-wrapper')
-				+checklist(
-							{categories:
-								{cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
-								cat2:{name:'Помощник для инвалидов', descr: 'На 1 этаже вас встретит специалист и проводит до номера'}},
-								expand: true,
-								rich: true, 
-							labelText: 'доступность',
-							checkListName: 'доступность'}
-							)
+
 
 
 

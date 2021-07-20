@@ -21,9 +21,13 @@
 			transform: rotate(0deg);
 			transition: all 0.3s ease 0s;
 		}
+		&_non-collapsing {
+			display: none;
+		}
 	}
 
 	&__list-wrapper {
+		width: 266px;
 		background-color: $colorWhite;
 		position: absolute;
 		z-index: 2;
