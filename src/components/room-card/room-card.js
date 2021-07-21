@@ -4,6 +4,7 @@ class RoomCard {
 		this.wrapper = elem;
 		this.render();
 		this.createDots();
+		this.swipe();
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
@@ -38,7 +39,36 @@ class RoomCard {
 			this.clickPrevNext(e.target));
 	}
 
+
+	swipe() {
+		let xStart = null;
+		let handleTouchStart = (e) => {
+			xStart = e.touches[0].clientX;
+		};
+		let handleTouchMove = (e) => {
+			if (!xStart) {
+				return;
+			}
+			let xEnd = e.touches[0].clientX;
+			let xDiff = xStart - xEnd;
+			if (xDiff > 0) {
+				/* свайп влево */
+				this.clickPrevNext(this.btnPrev);
+			} else {
+				/* свайп вправо*/
+				this.clickPrevNext(this.btnNext);
+			}
+			/* сброс значения */
+			xStart = null;
+		};
+		this.slider.
+			addEventListener('touchstart', handleTouchStart);
+		this.slider.
+			addEventListener('touchmove', handleTouchMove);
+	}
+
 	clickPrevNext(elem) {
+		console.log('clickPrevNext');
 		//определяем текущее фото
 		let currentPhoto = this.getElem('photo_showed');
 		//определяем текущую точку
@@ -47,7 +77,7 @@ class RoomCard {
 		let newPhoto;
 		let newDot;
 		//Кликнули [Назад]
-		if (elem.className.match('prev')) {
+		if (elem.className.match('prev') || elem == 'leftSwipe') {
 			if (i != 1) {
 				newPhoto = this.getElemAdv('photo', 'data-sec',
 					i - 1);
@@ -60,7 +90,7 @@ class RoomCard {
 					this.images.length);
 			}
 			//Кликнули [Вперед]
-		} else {
+		} else if (elem.className.match('next') || elem == 'rightSwipe') {
 			if (i != this.images.length) {
 				newPhoto = this.getElemAdv('photo', 'data-sec',
 					i + 1);
