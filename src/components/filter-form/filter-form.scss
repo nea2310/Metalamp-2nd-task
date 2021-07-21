@@ -53,6 +53,7 @@
 			display: block;
 			height: auto;
 			max-width: 320px;
+			box-shadow: none;
 		}
 
 		@include media-breakpoint-down($xxs) {
