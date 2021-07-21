@@ -1,27 +1,22 @@
-$shift-hor: 25px;
-$shift-vert: 14px;
-
 .room-card {
 	border: 1px solid rgba(0, 0, 0, 0.12);
 	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
 	border-radius: 4px;
 	background-color: $colorWhite;
-	width: 270px;
-	@include media-breakpoint-between($xxs, $xs) {
-		width: calc(100vw - #{$shift-hor});
-		min-width: 100%;
-	}
-
+	width: 100vw;
+	//height: 95.18vw;
+	min-width: 100%;
+	border: 1px solid blue;
 	&__slider {
 		position: relative;
-		width: 270px;
-		height: 152px;
-		@include media-breakpoint-between($xxs, $xs) {
-			height: calc(56.3vw - #{$shift-vert});
-			width: auto;
-		}
+		//width: 270px;
+		//	height: 152px;
+		height: 56.3vw;
+		border: 1 px solid red;
 	}
 	&__photo {
+		border: 1 px solid purple;
+		height: 56.3vw;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
 		width: 100%;
@@ -33,9 +28,6 @@ $shift-vert: 14px;
 
 		&_showed {
 			opacity: 1;
-		}
-		@include media-breakpoint-between($xxs, $xs) {
-			height: 56.3vw;
 		}
 	}
 	&__prev,
