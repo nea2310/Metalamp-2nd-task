@@ -26,17 +26,24 @@ class Header {
 
 		this.navLevel1.addEventListener('mouseover', (e) => {
 
-			this.toggleLevel2Menu(e.relatedTarget);
-			this.toggleLevel2Menu(e.target);
+			this.toggleLevel2Menu(e.relatedTarget, e);
+			this.toggleLevel2Menu(e.target, e);
 		});
 		this.navLevel1.addEventListener('focusin', (e) => {
-			this.toggleLevel2Menu(e.target);
+			this.toggleLevel2Menu(e.target, e);
+		});
+		//открытьт меню 2-го уровня по нажатию клавиши Пробел
+		this.navLevel1.addEventListener('keydown', (e) => {
+			if (e.keyCode == 32) {
+				e.preventDefault();
+				this.toggleLevel2Menu(e.target, e);
+			}
 		});
 
 
 		this.tips.forEach(element => {
-			element.addEventListener('click', () => {
-				this.toggleLevel2Menu(element);
+			element.addEventListener('click', (e) => {
+				this.toggleLevel2Menu(element, e);
 			});
 		});
 
@@ -53,19 +60,22 @@ class Header {
 
 		document.addEventListener('focusin', (e) => {
 			if (!e.target.className.match('item-link')) {
+				//	console.log(e.target.className);
 				this.closeLevel2Menu();
 			}
 		});
 	}
 
 	// показать/ скрыть меню второго уровня
-	toggleLevel2Menu(elem) {
+	toggleLevel2Menu(elem, event) {
+		//	console.log(event);
 		//для ссылки - открыть меню 2 уровня
 		if (elem.
 			matches(`.${this.elemName}__nav-level1-item-link`) &&
 			elem.firstElementChild != null &&
 			elem.firstElementChild.
-				matches(`.${this.elemName}__nav-level1-item-img`)
+				matches(`.${this.elemName}__nav-level1-item-img`) &&
+			event.type !== 'focusin'
 		) {
 			this.closeLevel2Menu();
 			elem.parentElement.
@@ -78,6 +88,7 @@ class Header {
 			elem.firstElementChild == null
 		) {
 			this.closeLevel2Menu();
+			//console.log('ЗАКРЫТЬ!!!');
 		}
 
 		// для стрелки - открыть меню 2 уровня
