@@ -31,6 +31,7 @@ class CheckList {
 
 
 	hideShowList() {
+		let breakPoint = 1199;
 		let hideList = () => {
 			this.listWrapper.classList.
 				add(`${this.elemName}__list-wrapper_hidden`);
@@ -49,7 +50,7 @@ class CheckList {
 
 
 		window.addEventListener('resize', () => {
-			if (window.innerWidth <= 1199) {
+			if (window.innerWidth <= breakPoint) {
 				hideList();
 			} else {
 				if (this.wrapper.classList.
@@ -60,7 +61,7 @@ class CheckList {
 		});
 
 		window.addEventListener('load', () => {
-			if (window.innerWidth <= 1199 && this.wrapper.classList.
+			if (window.innerWidth <= breakPoint && this.wrapper.classList.
 				contains(`${this.elemName}_collapsing`) == false) {
 				hideList();
 			}

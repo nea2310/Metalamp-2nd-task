@@ -28,9 +28,9 @@ class FilterForm {
 	}
 
 	hideForm() {
-		window.addEventListener('resize', (e) => {
-			console.log(window.innerWidth);
-			if (window.innerWidth <= 575) {
+		let breakPoint = 575;
+		window.addEventListener('resize', () => {
+			if (window.innerWidth <= breakPoint) {
 				this.form.classList.add(`${this.elemName}__wrapper_hidden`);
 				this.wrapper.classList.add(`${this.elemName}_hidden`);
 			} else {
@@ -41,9 +41,8 @@ class FilterForm {
 
 
 
-		window.addEventListener('load', (e) => {
-			console.log(window.innerWidth);
-			if (window.innerWidth <= 575) {
+		window.addEventListener('load', () => {
+			if (window.innerWidth <= breakPoint) {
 				this.form.classList.add(`${this.elemName}__wrapper_hidden`);
 				this.wrapper.classList.add(`${this.elemName}_hidden`);
 			}
