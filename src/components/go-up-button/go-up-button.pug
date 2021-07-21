@@ -1,5 +1,5 @@
 mixin go-up-button(options={})
 	-
 		let elemName='go-up-button'
-	button(class = elemName)
+	button(class = elemName + ' ' + elemName + '_hidden')
 		img(class = elemName + '__img' src = 'assets/img/interface/arrow-forward.svg') 
