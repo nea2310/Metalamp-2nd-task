@@ -79,6 +79,7 @@ class RoomCard {
 			let dot = document.createElement('button');
 			dot.classList.add(this.elemName + '__dot');
 			dot.setAttribute('data-sec', i);
+			dot.setAttribute('tabindex', '-1');
 			this.dotsWrapper.append(dot);
 		}
 		this.dots = this.getElems(['dot']);

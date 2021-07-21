@@ -18,6 +18,7 @@ $shift-vert: 14px;
 		height: 152px;
 		@include media-breakpoint-between($xxs, $xs) {
 			height: calc(56.3vw - #{$shift-vert});
+			height: 56.3vw;
 			width: auto;
 		}
 	}
@@ -40,6 +41,7 @@ $shift-vert: 14px;
 	}
 	&__prev,
 	&__next {
+		//border: 1px solid red;
 		cursor: pointer;
 		margin: 0;
 		padding: 0;
@@ -50,10 +52,9 @@ $shift-vert: 14px;
 		position: absolute;
 		z-index: 2;
 		&-img {
-			position: absolute;
-			top: 76px;
 			display: none;
 		}
+
 		&:hover,
 		&:focus {
 			background: linear-gradient(
