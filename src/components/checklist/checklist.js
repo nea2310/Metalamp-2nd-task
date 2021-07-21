@@ -38,6 +38,7 @@ class CheckList {
 			this.label.classList.add(`${this.elemName}__label_collapsing`);
 			this.tip.classList.
 				remove(`${this.elemName}__img_non-collapsing`);
+			this.label.setAttribute('tabindex', '0');
 		};
 		let showList = () => {
 			this.listWrapper.classList.
@@ -46,6 +47,7 @@ class CheckList {
 				remove(`${this.elemName}__label_collapsing`);
 			this.tip.classList.
 				add(`${this.elemName}__img_non-collapsing`);
+			this.label.setAttribute('tabindex', '-1');
 		};
 
 
