@@ -15,3 +15,5 @@ import './room-card/room-card.js';
 import './header/header.js';
 import './filter-form/filter-form.js';
 import './go-up-button/go-up-button.js';
+import './chart/chart.js';
+
