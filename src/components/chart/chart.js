@@ -17,7 +17,7 @@ class Chart {
 
 
 		//	this.render();
-		this.getColors();
+		//this.getColors();
 		this.draw();
 
 	}
@@ -42,72 +42,7 @@ class Chart {
 	// }
 
 
-	getColors() {
 
-		let center = { 'x': this.canvas.width, 'y': this.canvas.height };
-		let radiusQ = 180;
-
-		let quadrants = [
-			{
-				'x1': center.x,
-				'y1': center.y - radiusQ,
-				'x2': center.x + radiusQ,
-				'y2': center.y,
-				'colorStops': [
-					{ 'stop': 0, 'color': '#6FCF97' },
-					{ 'stop': 1, 'color': '#66D2EA' }
-				]
-			},
-			{
-				'x1': center.x + radiusQ,
-				'y1': center.y,
-				'x2': center.x,
-				'y2': center.y + radiusQ,
-				'colorStops': [
-					{ 'stop': 0, 'color': '#FFE39C' },
-					{ 'stop': 1, 'color': '#FFBA9C' }
-				]
-			},
-			{
-				'x1': center.x,
-				'y1': center.y - radiusQ,
-				'x2': center.x + radiusQ,
-				'y2': center.y,
-				'colorStops': [
-					{ 'stop': 0, 'color': '#BC9CFF' },
-					{ 'stop': 1, 'color': '#8BA4F9' }
-				]
-			},
-			{
-				'x1': center.x - radiusQ,
-				'y1': center.y,
-				'x2': center.x,
-				'y2': center.y - radiusQ,
-				'colorStops': [
-					{ 'stop': 0, 'color': '#909090' },
-					{ 'stop': 1, 'color': '#3D4975' }
-				]
-			}
-		];
-
-		this.color = [];
-
-		for (let item of quadrants) {
-			let grad = this.ctx.createLinearGradient(
-				item.x1,
-				item.y1,
-				item.x2,
-				item.y2);
-
-			for (let cs of item.colorStops) {
-				grad.addColorStop(cs.stop, cs.color);
-			}
-			this.color.push(grad);
-		}
-
-		//	return color;
-		console.log(this.color);
-	}
 
 
 	draw() {
@@ -126,15 +61,37 @@ class Chart {
 
 
 		let totalValue = 0;
-		let colorIndex = 0;
+
 		for (let categ in this.options.data) {
-			let val = this.options.data[categ];
+			let val = this.options.data[categ].rate;
+			console.log(val);
 			totalValue += val;
 		}
 		let startAngle = 0;
 		for (let categ in this.options.data) {
-			let val = this.options.data[categ];
+			let val = this.options.data[categ].rate;
 			let sliceAngle = 2 * Math.PI * val / totalValue;
+			let color = {
+				'x1': this.canvas.width - 180,
+				'y1': this.canvas.height,
+				'x2': this.canvas.width,
+				'y2': this.canvas.height - 180,
+				'colorStops': [
+					{ 'stop': 0, 'color': this.options.data[categ].color1 },
+					{ 'stop': 1, 'color': this.options.data[categ].color2 }
+				]
+			};
+
+			let grad = this.ctx.createLinearGradient(
+				color.x1,
+				color.y1,
+				color.x2,
+				color.y2);
+
+			for (let cs of color.colorStops) {
+				grad.addColorStop(cs.stop, cs.color);
+			}
+			console.log(grad);
 			//Сектора
 			drawPieSlice(
 				this.ctx,
@@ -143,7 +100,7 @@ class Chart {
 				Math.min(this.canvas.width / 2, this.canvas.height / 2),
 				startAngle,
 				startAngle + sliceAngle,
-				this.color[colorIndex % this.color.length],
+				grad,
 				true
 			);
 
@@ -159,7 +116,6 @@ class Chart {
 				false
 			);
 			startAngle += sliceAngle;
-			colorIndex++;
 		}
 
 		//Центр диаграммы
@@ -189,14 +145,18 @@ function renderCharts(selector) {
 	for (let chart of charts) {
 		new Chart(selector, chart, {
 			data: {
-				'Хорошо': 65,
-				'Великолепно': 130,
-				'Удовлетворительно': 65,
-				'Разочарован': 0
+				'Хорошо':
+					{ rate: 65, color1: '#6FCF97', color2: '#66D2EA' },
+				'Великолепно':
+					{ rate: 130, color1: '#FFE39C', color2: '#FFBA9C' },
+				'Удовлетворительно':
+					{ rate: 65, color1: '#BC9CFF', color2: '#8BA4F9' },
+				'Разочарован':
+					{ rate: 0, color1: '#909090', color2: '#3D4975' },
 			},
-			colors: ['#fde23e', '#f16e23', '#57d9ff', '#937e88'],
+
 			borderColor: '#fff',
-			doughnutHoleSize: 0.5
+			doughnutHoleSize: 0.9
 		});
 	}
 }
