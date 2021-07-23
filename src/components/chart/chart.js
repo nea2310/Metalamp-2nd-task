@@ -1,24 +1,10 @@
 
 class Chart {
-	constructor(elemName, elem, options) {
+	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');
-		this.options = options;
-		this.canvas = elem;
-		this.colors = options.colors;
-		this.borderColor = options.borderColor;
-		if (this.canvas.getContext) {
-			this.ctx = this.canvas.getContext('2d');
-			// drawing code here
-		} else {
-			// canvas-unsupported code here
-		}
+		this.wrapper = elem;
+		this.render();
 
-
-
-
-		//	this.render();
-		//this.getColors();
-		this.draw();
 
 	}
 
@@ -27,23 +13,54 @@ class Chart {
 			querySelector('.' + this.elemName + '__' + selector);
 	}
 
-	// render() {
-	// 	this.wrapper.width = 300;
-	// 	this.wrapper.height = 300;
-	// 	this.ctx = this.wrapper.getContext('2d');
-	// 	this.colors = ['#fde23e', '#f16e23', '#57d9ff', '#937e88'];
+	getElems(selectors) {
+		let sel = '';
+		for (let selector of selectors) {
+			sel += '.' + this.elemName + '__' + selector + ',';
+		}
+		sel = sel.substring(0, sel.length - 1);
+		return this.wrapper.
+			querySelectorAll(sel);
+	}
 
-	// 	this.myVinyls = {
-	// 		'Classical music': 10,
-	// 		'Alternative rock': 14,
-	// 		'Pop': 2,
-	// 		'Jazz': 12
-	// 	};
-	// }
+	render() {
+		this.canvas = this.getElem('img');
 
+		if (this.canvas.getContext) {
+			this.ctx = this.canvas.getContext('2d');
+			this.legendItems = this.getElems(['legend-item']);
+			this.data = {};
 
+			let colors = {
+				'good':
+					{ color1: '#6FCF97', color2: '#66D2EA' },
+				'exc':
+					{ color1: '#FFE39C', color2: '#FFBA9C' },
+				'sat':
+					{ color1: '#BC9CFF', color2: '#8BA4F9' },
+				'bad':
+					{ color1: '#909090', color2: '#3D4975' },
+			};
+			let getColor = (rateType, colorsObj) => colorsObj[rateType];
+			console.log(Array.from(this.legendItems).reverse());
+			this.legendItems = Array.from(this.legendItems).reverse();
+			//создаем объект конфишурации
+			for (let item of this.legendItems) {
+				this.data[item.innerText] = {
+					rate:
+						item.getAttribute('data-rate'),
+					color1:
+						getColor(item.getAttribute('data-mark'), colors).color1,
+					color2:
+						getColor(item.getAttribute('data-mark'), colors).color2,
+				};
+			}
+			this.draw();
+		} else {
+			// canvas-unsupported code here
+		}
 
-
+	}
 
 	draw() {
 		let drawPieSlice =
@@ -61,15 +78,15 @@ class Chart {
 
 
 		let totalValue = 0;
+		let shift = (Math.PI / 180) * 270;
 
-		for (let categ in this.options.data) {
-			let val = this.options.data[categ].rate;
-			console.log(val);
+		for (let categ in this.data) {
+			let val = parseInt(this.data[categ].rate);
 			totalValue += val;
 		}
 		let startAngle = 0;
-		for (let categ in this.options.data) {
-			let val = this.options.data[categ].rate;
+		for (let categ in this.data) {
+			let val = parseInt(this.data[categ].rate);
 			let sliceAngle = 2 * Math.PI * val / totalValue;
 			let color = {
 				'x1': this.canvas.width - 180,
@@ -77,8 +94,8 @@ class Chart {
 				'x2': this.canvas.width,
 				'y2': this.canvas.height - 180,
 				'colorStops': [
-					{ 'stop': 0, 'color': this.options.data[categ].color1 },
-					{ 'stop': 1, 'color': this.options.data[categ].color2 }
+					{ 'stop': 0, 'color': this.data[categ].color1 },
+					{ 'stop': 1, 'color': this.data[categ].color2 }
 				]
 			};
 
@@ -91,15 +108,15 @@ class Chart {
 			for (let cs of color.colorStops) {
 				grad.addColorStop(cs.stop, cs.color);
 			}
-			console.log(grad);
+
 			//Сектора
 			drawPieSlice(
 				this.ctx,
 				this.canvas.width / 2,
 				this.canvas.height / 2,
 				Math.min(this.canvas.width / 2, this.canvas.height / 2),
-				startAngle,
-				startAngle + sliceAngle,
+				startAngle + shift,
+				startAngle + sliceAngle + shift,
 				grad,
 				true
 			);
@@ -110,54 +127,34 @@ class Chart {
 				this.canvas.width / 2,
 				this.canvas.height / 2,
 				Math.min(this.canvas.width / 2, this.canvas.height / 2),
-				startAngle,
-				startAngle + sliceAngle,
-				this.borderColor,
+				startAngle + shift,
+				startAngle + sliceAngle + shift,
+				'#fff',
 				false
 			);
 			startAngle += sliceAngle;
 		}
 
 		//Центр диаграммы
-		if (this.options.doughnutHoleSize) {
-			drawPieSlice(
-				this.ctx,
-				this.canvas.width / 2,
-				this.canvas.height / 2,
-				this.options.doughnutHoleSize *
-				Math.min(this.canvas.width / 2, this.canvas.height / 2),
-				0,
-				2 * Math.PI,
-				this.borderColor,
-				true
-			);
-		}
+
+		drawPieSlice(
+			this.ctx,
+			this.canvas.width / 2,
+			this.canvas.height / 2,
+			0.9 *
+			Math.min(this.canvas.width / 2, this.canvas.height / 2),
+			0,
+			2 * Math.PI,
+			this.borderColor,
+			true
+		);
 	}
-
-
-
-
-
 }
 
 function renderCharts(selector) {
 	let charts = document.querySelectorAll(selector);
 	for (let chart of charts) {
-		new Chart(selector, chart, {
-			data: {
-				'Хорошо':
-					{ rate: 65, color1: '#6FCF97', color2: '#66D2EA' },
-				'Великолепно':
-					{ rate: 130, color1: '#FFE39C', color2: '#FFBA9C' },
-				'Удовлетворительно':
-					{ rate: 65, color1: '#BC9CFF', color2: '#8BA4F9' },
-				'Разочарован':
-					{ rate: 0, color1: '#909090', color2: '#3D4975' },
-			},
-
-			borderColor: '#fff',
-			doughnutHoleSize: 0.9
-		});
+		new Chart(selector, chart);
 	}
 }
 renderCharts('.chart');

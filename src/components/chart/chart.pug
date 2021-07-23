@@ -1,5 +1,10 @@
 mixin chart(options={})
 	-
 		let elemName = 'chart'
-
-	canvas(class = elemName height = '120' width = '120')
+	div(class = elemName)
+		canvas(class = elemName + '__img' height = '120' width = '120')
+		ul(class = elemName + '__legend')
+			li(class = elemName + '__legend-item' data-rate = '130' data-mark = 'exc') Великолепно
+			li(class = elemName + '__legend-item' data-rate = '65' data-mark = 'good') Хорошо
+			li(class = elemName + '__legend-item' data-rate = '65' data-mark = 'sat') Удовлетворительно
+			li(class = elemName + '__legend-item' data-rate = '0' data-mark = 'bad') Разочарован

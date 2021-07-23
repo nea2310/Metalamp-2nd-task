@@ -1,3 +1,7 @@
 .chart {
 	border: 1px solid red;
+	display: flex;
+	&__legend {
+		@include font-body;
+	}
 }
