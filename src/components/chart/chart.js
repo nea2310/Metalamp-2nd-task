@@ -4,8 +4,8 @@ class Chart {
 		this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
-
-
+		this.drawCircles();
+		this.writeText();
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
@@ -25,41 +25,76 @@ class Chart {
 
 	render() {
 		this.canvas = this.getElem('img');
-
 		if (this.canvas.getContext) {
 			this.ctx = this.canvas.getContext('2d');
 			this.legendItems = this.getElems(['legend-item']);
 			this.data = {};
-
-			let colors = {
+			this.colors = {
 				'good':
-					{ color1: '#6FCF97', color2: '#66D2EA' },
+					{ color1: '#66D2EA', color2: '#6FCF97' },
 				'exc':
-					{ color1: '#FFE39C', color2: '#FFBA9C' },
+					{ color1: '#FFBA9C', color2: '#FFE39C' },
 				'sat':
-					{ color1: '#BC9CFF', color2: '#8BA4F9' },
+					{ color1: '#8BA4F9', color2: '#BC9CFF' },
 				'bad':
-					{ color1: '#909090', color2: '#3D4975' },
+					{ color1: '#3D4975', color2: '#909090' },
 			};
-			let getColor = (rateType, colorsObj) => colorsObj[rateType];
+			let getColor = (rateType) => this.colors[rateType];
 			console.log(Array.from(this.legendItems).reverse());
 			this.legendItems = Array.from(this.legendItems).reverse();
-			//создаем объект конфишурации
+			//создаем объект конфигурации
+			this.votes = 0;
 			for (let item of this.legendItems) {
+				let rate = item.getAttribute('data-rate');
+				let mark = item.getAttribute('data-mark');
 				this.data[item.innerText] = {
-					rate:
-						item.getAttribute('data-rate'),
+					rate: rate,
 					color1:
-						getColor(item.getAttribute('data-mark'), colors).color1,
+						getColor(mark).color1,
 					color2:
-						getColor(item.getAttribute('data-mark'), colors).color2,
+						getColor(mark).color2,
 				};
+				this.votes += parseInt(rate);
 			}
 			this.draw();
 		} else {
 			// canvas-unsupported code here
 		}
+	}
+	drawCircles() {
+		//Градиентная заливка маркеров списка
+		let getColor = (rateType) => this.colors[rateType];
+		for (let item of this.legendItems) {
+			let circle = document.createElement('span');
+			circle.className = `${this.elemName}__legend-item-mark`;
+			circle.style.backgroundImage =
+				`-webkit-gradient(linear, left bottom, left top, color-stop(0, 
+				${getColor(item.getAttribute('data-mark')).color1}), 
+				color-stop(1,
+					 ${getColor(item.getAttribute('data-mark')).color2})`;
+			item.prepend(circle);
 
+			// добавление скрытых DOM-элементов с кол-вом голосов (для экр. читалок)
+			let label = document.createElement('span');
+			label.className = `${this.elemName}__legend-item-label`;
+			label.innerText = item.getAttribute('data-rate');
+			item.prepend(label);
+		}
+	}
+
+	writeText() {
+		document.fonts.ready.then(() => {
+			this.ctx.font = "700 24px Montserrat";
+			this.ctx.fillStyle = '#BC9CFF';
+			this.ctx.textAlign = "center";
+			this.ctx.fillText(this.votes,
+				this.canvas.width / 2, this.canvas.height / 2);
+			this.ctx.font = "normal 15px Montserrat";
+			this.ctx.fillStyle = '#BC9CFF';
+			this.ctx.textAlign = "center";
+			this.ctx.fillText("голосов",
+				this.canvas.width / 2, this.canvas.height / 2 + 20);
+		});
 	}
 
 	draw() {
@@ -141,7 +176,7 @@ class Chart {
 			this.ctx,
 			this.canvas.width / 2,
 			this.canvas.height / 2,
-			0.9 *
+			0.92 *
 			Math.min(this.canvas.width / 2, this.canvas.height / 2),
 			0,
 			2 * Math.PI,
