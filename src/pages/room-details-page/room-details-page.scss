@@ -1,0 +1,51 @@
+.room-details-page {
+	&__test {
+		max-height: 485px;
+		//	border: 1px solid blue;
+		//overflow: hidden;
+	}
+	&__banner-wrapper {
+		//overflow: hidden;
+		border: 1px solid red;
+		max-width: $xxl;
+		width: 100%;
+		max-height: 485px;
+		box-sizing: border-box;
+		margin: 0 auto;
+		display: grid;
+
+		grid-template-rows: 2fr 2fr;
+		grid-template-columns: 2.73fr 1.27fr;
+		grid-template-areas:
+			"img-1 img-2"
+			"img-1 img-3";
+	}
+
+	&__img-1 {
+		box-sizing: border-box;
+		//	border: 1px solid blue;
+		grid-area: img-1;
+		//height: 100%;
+		width: 100%;
+		object-fit: contain;
+		max-height: 485px;
+	}
+	&__img-2 {
+		box-sizing: border-box;
+		//border-bottom: 1px solid purple;
+		grid-area: img-3;
+		//height: 100%;
+		width: 100%;
+		object-fit: contain;
+		max-height: 143px;
+	}
+	&__img-3 {
+		box-sizing: border-box;
+		//border-bottom: 1px solid purple;
+		grid-area: img-2;
+		//	height: 100%;
+		width: 100%;
+		object-fit: contain;
+		max-height: 243px;
+	}
+}
