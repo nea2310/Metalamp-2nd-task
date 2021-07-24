@@ -5,6 +5,7 @@ $delta: 25px;
 	}
 
 	&__banner-wrapper {
+		max-height: 485px;
 		max-width: $xxl;
 		width: 100%;
 		box-sizing: border-box;
@@ -12,10 +13,14 @@ $delta: 25px;
 		display: grid;
 
 		grid-template-rows: 2fr 2fr;
-		grid-template-columns: 2.73fr 1.27fr;
+		grid-template-columns: 2.74fr 1.26fr;
 		grid-template-areas:
 			"img-1 img-2"
 			"img-1 img-3";
+
+		@include media-breakpoint-down($xl) {
+			//	height: auto;
+		}
 	}
 
 	&__img-1 {
@@ -52,33 +57,58 @@ $delta: 25px;
 		width: 100%;
 		box-sizing: border-box;
 		margin: 70px auto 0px;
-		padding: 0 132px;
+		padding: 0 131px;
 		display: grid;
 
 		grid-template-rows: 304px 335px 230px;
-		grid-template-columns: 31% 36% 380px;
+		grid-template-columns: 31% 36% auto;
 		grid-template-areas:
 			"info impress booking"
 			"feedback feedback booking"
 			"rules cancel booking";
+
+		@include media-breakpoint-down($lg) {
+			grid-template-rows: 304px 220px 335px 230px;
+			grid-template-columns: auto auto;
+			grid-template-areas:
+				"info booking"
+				"impress booking"
+				"feedback feedback"
+				"rules cancel";
+		}
+
+		@include media-breakpoint-down($md) {
+			padding: 0 20px;
+		}
+
+		@include media-breakpoint-down($sm) {
+			margin: 30px auto 0px;
+			grid-template-rows: auto auto auto auto;
+			grid-template-columns: auto auto;
+			grid-template-areas:
+				"booking booking"
+				"info impress"
+				"feedback feedback"
+				"rules cancel";
+		}
 	}
 
 	&__room-info {
 		padding-left: 2px;
 		margin-top: 3px;
 		&-item {
-			margin-top: 26px;
+			margin-top: 25px;
 		}
 		&-wrapper {
-			padding-left: 9px;
+			//	padding-left: 9px;
 			grid-area: info;
 			box-sizing: border-box;
 		}
 	}
 	&__room-impress {
-		padding-top: 20px;
+		padding-top: 22px;
 		&-wrapper {
-			padding-left: 5px;
+			//	padding-left: 5px;
 
 			min-height: 0px;
 			grid-area: impress;

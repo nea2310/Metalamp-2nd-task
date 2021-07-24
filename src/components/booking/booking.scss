@@ -1,4 +1,5 @@
 .booking {
+	box-sizing: border-box;
 	background-color: $colorWhite;
 	border: 1px solid rgba(0, 0, 0, 0.12);
 	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
@@ -7,6 +8,7 @@
 	padding-left: 28px;
 	padding-right: 28px;
 	padding-top: 39px;
+	//border: 1px solid red;
 
 	&__dtls {
 		display: flex;
