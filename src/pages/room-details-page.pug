@@ -1,5 +1,12 @@
 extends ./layout.pug
+include ../components/feature/feature.pug
 include ../components/chart/chart.pug
+include ../components/booking/booking.pug
+include ../components/feedback/feedback.pug
+include ../components/bullet-list/bullet-list.pug
+include ../components/date-dropdown/date-dropdown.pug
+include ../components/dropdown/dropdown.pug
+include ../components/btn/btn.pug
 block title
 	title Room details
 block content 
@@ -8,4 +15,72 @@ block content
 			img(class = 'room-details-page__img-1' src = 'assets/img/interface/room-details-1.jpg')
 			img(class = 'room-details-page__img-2' src = 'assets/img/interface/room-details-2.jpg')
 			img(class = 'room-details-page__img-3' src = 'assets/img/interface/room-details-3.jpg')
-		+chart()
+		section(class = 'room-details-page__main-info-wrapper')
+			div(class = 'room-details-page__room-info-wrapper')
+				h2 Сведения о номере
+				div(class = 'room-details-page__room-info')
+					div(class = 'room-details-page__room-info-item')
+						+feature(
+								{img: 'assets/img/interface/smile.svg',
+								name: 'Комфорт',
+								descr: 'Шумопоглощающие стены'}
+								)
+					div(class = 'room-details-page__room-info-item')
+						+feature(
+								{img: 'assets/img/interface/city.svg',
+								name: 'Удобство',
+								descr: 'Окно в каждой из спален'}
+								)
+					div(class = 'room-details-page__room-info-item')
+						+feature(
+								{img: 'assets/img/interface/fireplace.svg',
+								name: 'Уют',
+								descr: 'Номер оснащен камином'}
+								)
+			div(class = 'room-details-page__room-impress-wrapper')
+				h2 Впечатления от номера
+				div(class = 'room-details-page__room-impress')
+					+chart()
+			div(class = 'room-details-page__booking-wrapper')
+				+booking({
+							roomNumber: '888',
+							isLux: 'люкс',
+							roomPrice: '9 990',
+							daysAmount: '4',
+							totalPrice: '39 960',
+							sale: '2 179',
+							saleTotal: '0',
+							extraTotal: '300',
+							totalAmount: '38 081'})
+			div(class = 'room-details-page__feedback-wrapper')
+				div(class = 'room-details-page__feedback-header')
+					h2 Отзывы посетителей номера
+					p(class = 'room-details-page__feedback-header-quant') 2 отзыва
+				div(class = 'room-details-page__feedback')
+					div(class = 'room-details-page__feedback-item')
+						+feedback(
+									{img: 'assets/img/interface/murad.jpg',
+									name: 'Мурад Сарафанов',
+									date: '5 дней назад',
+									descr: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'}
+									)
+					div(class = 'room-details-page__feedback-item')
+						+feedback(
+									{img: 'assets/img/interface/patricia.jpg',
+									name: 'Патрисия Стёклышкова',
+									date: 'Неделю назад',
+									descr: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, Каждый день новое блюдо и десерт как комплимент'}
+									)
+			div(class = 'room-details-page__rules-wrapper')
+				h2(class = 'room-details-page__rules-header') Правила
+				div(class = 'room-details-page__rules')
+					+bullet-list(
+							{
+							categories: ['Нельзя с питомцами',
+											'Без вечеринок и мероприятий',
+											'Время прибытия — после 13:00, а выезд до 12:00']}
+							)
+			div(class = 'room-details-page__cancel-wrapper')
+				h2(class = 'room-details-page__cancel-header')  Отмена
+				p(class = 'room-details-page__cancel') Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги. 
+

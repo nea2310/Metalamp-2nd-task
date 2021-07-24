@@ -1,8 +1,12 @@
+$delta: 25px;
 .room-details-page {
+	& h2 {
+		@include font-h2;
+	}
+
 	&__banner-wrapper {
 		max-width: $xxl;
 		width: 100%;
-		max-height: 485px;
 		box-sizing: border-box;
 		margin: 0 auto;
 		display: grid;
@@ -15,6 +19,7 @@
 	}
 
 	&__img-1 {
+		max-height: 485px;
 		box-sizing: border-box;
 		grid-area: img-1;
 		height: 100%;
@@ -23,6 +28,7 @@
 		object-fit: cover;
 	}
 	&__img-2 {
+		max-height: 242.5px;
 		box-sizing: border-box;
 		grid-area: img-2;
 		height: 100%;
@@ -31,11 +37,116 @@
 		object-fit: cover;
 	}
 	&__img-3 {
+		max-height: 242.5px;
 		box-sizing: border-box;
 		grid-area: img-3;
 		height: 100%;
 		width: 100%;
 		min-width: 100%;
 		object-fit: cover;
+	}
+
+	&__main-info-wrapper {
+		max-width: $xl;
+		//	border: 1px solid palevioletred;
+		width: 100%;
+		box-sizing: border-box;
+		margin: 70px auto 0px;
+		padding: 0 132px;
+		display: grid;
+
+		grid-template-rows: 304px 335px 230px;
+		grid-template-columns: 31% 36% 380px;
+		grid-template-areas:
+			"info impress booking"
+			"feedback feedback booking"
+			"rules cancel booking";
+	}
+
+	&__room-info {
+		padding-left: 2px;
+		margin-top: 3px;
+		&-item {
+			margin-top: 26px;
+		}
+		&-wrapper {
+			padding-left: 9px;
+			grid-area: info;
+			box-sizing: border-box;
+		}
+	}
+	&__room-impress {
+		padding-top: 20px;
+		&-wrapper {
+			padding-left: 5px;
+
+			min-height: 0px;
+			grid-area: impress;
+
+			//	border: 1px solid red;
+		}
+	}
+	&__booking {
+		&-wrapper {
+			padding-top: 0px;
+			//padding-left: 1px;
+			min-height: 0px;
+			grid-area: booking;
+			box-sizing: border-box;
+			//border: 1px solid orange;
+		}
+	}
+	&__feedback {
+		padding-left: 2px;
+		margin-top: 3px;
+
+		&-header {
+			display: flex;
+			justify-content: space-between;
+			&-quant {
+				white-space: nowrap;
+				@include font-body;
+			}
+		}
+		&-item {
+			margin-top: 21px;
+		}
+		//	border: 1px solid blue;
+		&-wrapper {
+			padding-right: 70px;
+			padding-top: 0px;
+			padding-left: 7px;
+			min-height: 0px;
+			grid-area: feedback;
+			box-sizing: border-box;
+			//	border: 1px solid green;
+		}
+	}
+	&__rules {
+		&-wrapper {
+			padding-top: 0px;
+			padding-left: 8px;
+			min-height: 0px;
+			grid-area: rules;
+			box-sizing: border-box;
+			//	border: 1px solid purple;
+		}
+		&-header {
+			padding-left: 21px;
+			margin-bottom: 19px;
+		}
+	}
+	&__cancel {
+		@include font-body;
+		margin-top: 19px;
+		&-wrapper {
+			padding-right: 73px;
+			padding-top: 0px;
+			padding-left: 5px;
+			min-height: 0px;
+			grid-area: cancel;
+			box-sizing: border-box;
+			//	border: 1px solid brown;
+		}
 	}
 }
