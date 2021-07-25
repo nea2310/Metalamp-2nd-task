@@ -23,6 +23,9 @@
 				clip: rect(0 0 0 0);
 			}
 		}
+		@include media-breakpoint-down($xs) {
+			margin-left: 0;
+		}
 	}
 	@include media-breakpoint-down($xs) {
 		display: block;

@@ -1,8 +1,12 @@
 $delta: 25px;
-$xs-padding-left: 20px;
-$xs-padding-bottom: 20px;
-$xs-padding-top: 0;
+$sm-padding-left: 20px;
+$sm-padding-bottom: 30px;
+$sm-padding-top: 0;
+$sm-padding-right: 20px;
+
+$lg-padding-bottom: 30px;
 .room-details-page {
+	//border: 1px solid red;
 	& h2 {
 		@include font-h2;
 	}
@@ -87,10 +91,6 @@ $xs-padding-top: 0;
 		}
 
 		@include media-breakpoint-down($md) {
-			//	padding: 0 20px;
-		}
-
-		@include media-breakpoint-down($md) {
 			margin: 30px auto 0px;
 			// grid-template-rows: auto auto auto auto;
 			//grid-template-columns: auto auto;
@@ -124,13 +124,15 @@ $xs-padding-top: 0;
 			grid-area: info;
 			box-sizing: border-box;
 			//border: 1px solid blue;
-			@include media-breakpoint-between($xs, $lg) {
-				margin: 0 auto;
+			@include media-breakpoint-between($sm, $lg) {
+				margin: 0 20px;
+				padding-bottom: $lg-padding-bottom;
 			}
-			@include media-breakpoint-down($xs) {
-				padding-top: $xs-padding-top;
-				padding-left: $xs-padding-left;
-				padding-bottom: $xs-padding-bottom;
+			@include media-breakpoint-down($sm) {
+				padding-top: $sm-padding-top;
+				padding-left: $sm-padding-left;
+				padding-bottom: $sm-padding-bottom;
+				margin: 0;
 			}
 		}
 	}
@@ -140,13 +142,15 @@ $xs-padding-top: 0;
 			grid-area: impress;
 
 			//	border: 1px solid red;
-			@include media-breakpoint-between($xs, $lg) {
-				margin: 0 auto;
+			@include media-breakpoint-between($sm, $lg) {
+				margin: 0 20px;
+				padding-bottom: $lg-padding-bottom;
 			}
-			@include media-breakpoint-down($xs) {
-				padding-top: $xs-padding-top;
-				padding-left: $xs-padding-left;
-				padding-bottom: $xs-padding-bottom;
+			@include media-breakpoint-down($sm) {
+				padding-top: $sm-padding-top;
+				padding-left: $sm-padding-left;
+				padding-bottom: $sm-padding-bottom;
+				margin: 0;
 			}
 		}
 	}
@@ -157,6 +161,7 @@ $xs-padding-top: 0;
 			//	border: 1px solid orange;
 			@include media-breakpoint-down($lg) {
 				margin: 0 auto;
+				padding-bottom: $lg-padding-bottom;
 			}
 		}
 	}
@@ -165,6 +170,9 @@ $xs-padding-top: 0;
 		&-header {
 			display: flex;
 			justify-content: space-between;
+			@include media-breakpoint-down($xs) {
+				display: block;
+			}
 			&-quant {
 				white-space: nowrap;
 				@include font-body;
@@ -180,13 +188,18 @@ $xs-padding-top: 0;
 			grid-area: feedback;
 			box-sizing: border-box;
 			//	border: 1px solid green;
-			@include media-breakpoint-between($xs, $lg) {
-				margin: 0 30px;
+			@include media-breakpoint-between($sm, $lg) {
+				padding-bottom: $lg-padding-bottom;
+				margin: 0 20px;
+				padding-right: 0;
+				padding-top: 0;
 			}
-			@include media-breakpoint-down($xs) {
-				padding-top: $xs-padding-top;
-				padding-left: $xs-padding-left;
-				padding-bottom: $xs-padding-bottom;
+			@include media-breakpoint-down($sm) {
+				padding-top: $sm-padding-top;
+				padding-left: $sm-padding-left;
+				padding-bottom: $sm-padding-bottom;
+				padding-right: $sm-padding-right;
+				margin: 0;
 			}
 		}
 	}
@@ -196,13 +209,16 @@ $xs-padding-top: 0;
 			grid-area: rules;
 			box-sizing: border-box;
 			//	border: 1px solid purple;
-			@include media-breakpoint-between($xs, $lg) {
-				margin: 0 auto;
+			@include media-breakpoint-between($sm, $lg) {
+				padding-bottom: $lg-padding-bottom;
+				padding-top: 0;
+				margin: 0 20px;
 			}
-			@include media-breakpoint-down($xs) {
-				padding-top: $xs-padding-top;
-				padding-left: $xs-padding-left;
-				padding-bottom: $xs-padding-bottom;
+			@include media-breakpoint-down($sm) {
+				padding-top: $sm-padding-top;
+				padding-left: $sm-padding-left;
+				padding-bottom: $sm-padding-bottom;
+				margin: 0;
 			}
 		}
 		&-header {
@@ -223,14 +239,19 @@ $xs-padding-top: 0;
 			grid-area: cancel;
 			box-sizing: border-box;
 			//	border: 1px solid brown;
-			@include media-breakpoint-down($xs) {
-				padding-top: $xs-padding-top;
-				padding-left: $xs-padding-left;
-				padding-bottom: $xs-padding-bottom;
+			@include media-breakpoint-down($sm) {
+				padding-top: $sm-padding-top;
+				padding-left: $sm-padding-left;
+				padding-bottom: $sm-padding-bottom;
+				padding-right: $sm-padding-right;
+				margin: 0;
 			}
-		}
-		@include media-breakpoint-between($xs, $lg) {
-			margin: 0 auto;
+			@include media-breakpoint-between($sm, $lg) {
+				padding-bottom: $lg-padding-bottom;
+				padding-top: 0;
+				padding-right: 0;
+				margin: 0 20px;
+			}
 		}
 	}
 }

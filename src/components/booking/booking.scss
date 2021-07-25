@@ -4,15 +4,15 @@
 	border: 1px solid rgba(0, 0, 0, 0.12);
 	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
 	border-radius: 4px;
-	width: 380px;
+	max-width: 380px;
 	padding-left: 28px;
 	padding-right: 28px;
 	padding-top: 39px;
 	//border: 1px solid red;
-	@include media-breakpoint-down($xs) {
-		width: auto;
-		max-width: 380px;
-	}
+	// @include media-breakpoint-down($xs) {
+	// 	padding-left: 8px;
+	// 	padding-right: 8px;
+	// }
 
 	&__dtls {
 		display: flex;
