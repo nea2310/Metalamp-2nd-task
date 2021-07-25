@@ -3,10 +3,23 @@ $sm-padding-left: 20px;
 $sm-padding-bottom: 30px;
 $sm-padding-top: 0;
 $sm-padding-right: 20px;
+@mixin padding-sm() {
+	padding-top: $sm-padding-top;
+	padding-left: $sm-padding-left;
+	padding-bottom: $sm-padding-bottom;
+	margin: 0;
+}
 
 $lg-padding-bottom: 30px;
 .room-details-page {
 	//border: 1px solid red;
+	& h1 {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+	}
 	& h2 {
 		@include font-h2;
 	}
@@ -16,9 +29,6 @@ $lg-padding-bottom: 30px;
 		padding-top: 40px;
 		margin: 0 auto;
 	}
-	// @include media-breakpoint-down($xxs) {
-	// 	margin: 0 auto;
-	// }
 
 	&__banner-wrapper {
 		max-height: 485px;
@@ -79,8 +89,6 @@ $lg-padding-bottom: 30px;
 			"rules cancel booking";
 
 		@include media-breakpoint-down($lg) {
-			// padding-right: 50px;
-			// padding-left: 50px;
 			grid-template-rows: auto auto auto auto;
 			grid-template-columns: 50% 50%;
 			grid-template-areas:
@@ -92,8 +100,6 @@ $lg-padding-bottom: 30px;
 
 		@include media-breakpoint-down($md) {
 			margin: 30px auto 0px;
-			// grid-template-rows: auto auto auto auto;
-			//grid-template-columns: auto auto;
 			grid-template-areas:
 				"booking booking"
 				"info impress"
@@ -102,7 +108,6 @@ $lg-padding-bottom: 30px;
 		}
 
 		@include media-breakpoint-down($sm) {
-			//	margin: 30px auto 0px;
 			grid-template-rows: auto auto auto auto auto;
 			grid-template-columns: auto;
 			grid-template-areas:
@@ -129,10 +134,7 @@ $lg-padding-bottom: 30px;
 				padding-bottom: $lg-padding-bottom;
 			}
 			@include media-breakpoint-down($sm) {
-				padding-top: $sm-padding-top;
-				padding-left: $sm-padding-left;
-				padding-bottom: $sm-padding-bottom;
-				margin: 0;
+				@include padding-sm;
 			}
 		}
 	}
@@ -147,10 +149,7 @@ $lg-padding-bottom: 30px;
 				padding-bottom: $lg-padding-bottom;
 			}
 			@include media-breakpoint-down($sm) {
-				padding-top: $sm-padding-top;
-				padding-left: $sm-padding-left;
-				padding-bottom: $sm-padding-bottom;
-				margin: 0;
+				@include padding-sm;
 			}
 		}
 	}
@@ -195,11 +194,7 @@ $lg-padding-bottom: 30px;
 				padding-top: 0;
 			}
 			@include media-breakpoint-down($sm) {
-				padding-top: $sm-padding-top;
-				padding-left: $sm-padding-left;
-				padding-bottom: $sm-padding-bottom;
-				padding-right: $sm-padding-right;
-				margin: 0;
+				@include padding-sm;
 			}
 		}
 	}
@@ -215,10 +210,7 @@ $lg-padding-bottom: 30px;
 				margin: 0 20px;
 			}
 			@include media-breakpoint-down($sm) {
-				padding-top: $sm-padding-top;
-				padding-left: $sm-padding-left;
-				padding-bottom: $sm-padding-bottom;
-				margin: 0;
+				@include padding-sm;
 			}
 		}
 		&-header {
@@ -240,11 +232,7 @@ $lg-padding-bottom: 30px;
 			box-sizing: border-box;
 			//	border: 1px solid brown;
 			@include media-breakpoint-down($sm) {
-				padding-top: $sm-padding-top;
-				padding-left: $sm-padding-left;
-				padding-bottom: $sm-padding-bottom;
-				padding-right: $sm-padding-right;
-				margin: 0;
+				@include padding-sm;
 			}
 			@include media-breakpoint-between($sm, $lg) {
 				padding-bottom: $lg-padding-bottom;
