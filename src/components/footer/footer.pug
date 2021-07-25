@@ -2,7 +2,7 @@ include ../input-field/input-field.pug
 mixin footer(options={})
 	-
 		let elemName = 'footer'
-	footer(class = elemName)
+	footer(class = elemName role = 'contentinfo')
 		div(class = elemName + '__wrapper-top')
 			ul(class = elemName + '__items')
 				a(class = elemName + '__logo' href = 'https://test/test')
