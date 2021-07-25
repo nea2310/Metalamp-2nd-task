@@ -133,7 +133,7 @@
 	}
 	&__accessability-wrapper {
 		box-sizing: border-box;
-		margin-bottom: 70px;
+		margin-bottom: 150px;
 		@include media-breakpoint-down($lg) {
 			grid-area: accessability;
 		}

@@ -27,7 +27,7 @@ mixin date-dropdown(options={type: '', labelTextFrom: '', labelTextTo: '', label
 					if options.labelTextFromTo
 						p(class = elemName + '__label-text')=options.labelTextFromTo
 					img(class=elemName + '__img ' + elemName + '__img_collapsed', src = src alt = 'открыть календарь')
-					input(class=elemName + '__input ' + elemName + '__input_fromto ' + elemName+'__input_wide ', value = "2021-08-19,2021-08-23", type = text, readonly = true)
+					input(class=elemName + '__input ' + elemName + '__input_fromto ' + elemName+'__input_wide ', value = "2021-08-19,2021-08-23", type = text)
 		div(class = elemName + '__calendar-wrapper ' + elemName+'__calendar-wrapper_hidden ' + modificator)
 			div(class = elemName + '__buttons')
 				div(class = elemName + '__button-clear')

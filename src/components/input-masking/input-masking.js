@@ -2,6 +2,7 @@ class InputMask {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');
 		this.input = elem;
+		console.log(this.input.className);
 		this.init();
 		this.mask();
 	}

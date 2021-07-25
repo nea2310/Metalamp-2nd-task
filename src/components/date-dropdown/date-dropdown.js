@@ -7,7 +7,7 @@ class DatePicker {
 		this.setDefaultDate();
 		this.datePrint();
 		this.dateClear();
-		this.showHide();
+		this.show();
 		this.apply();
 		this.clear();
 	}
@@ -88,11 +88,51 @@ class DatePicker {
 			let dateTo = this.defaultDates[1];
 			this.myDatepicker.selectDate(new Date(dateFrom));
 			this.myDatepicker.selectDate(new Date(dateTo));
+			//console.log(dateFrom);
 		}
 	}
 
 	/*Ввод даты в инпут с клавиатуры */
 	datePrint() {
+		if (this.isFilter) {
+			//При фокусе на инпут преобразовать дату в формат ДД.ММ.ГГГГ - ДД.ММ.ГГГГ
+			this.inputDate.addEventListener('focus', (e) => {
+				this.initDate = this.inputDate.value;
+				let startDate = this.myDatepicker.selectedDates[0];
+				let endDate = this.myDatepicker.selectedDates[1];
+				let tempStDate = String(startDate.getDate());
+				let startDay
+					= tempStDate.length == 1 ? '0' + tempStDate : tempStDate;
+				let tempStMonth = String(startDate.getMonth() + 1);
+				let startMonth
+					= tempStMonth.length == 1 ? '0' + tempStMonth : tempStMonth;
+				startMonth = startMonth == '12' ? '01' : startMonth;
+				let tempEndDate = String(endDate.getDate());
+				let endDay
+					= tempEndDate.length == 1 ? '0' + tempEndDate : tempEndDate;
+				let tempEndMonth = String(endDate.getMonth() + 1);
+				let endMonth
+					= tempEndMonth.length == 1 ? '0' + tempEndMonth :
+						tempEndMonth;
+				endMonth = endMonth == '12' ? '01' : endMonth;
+				e.target.value =
+					startDay + '.'
+					+ startMonth + '.'
+					+ startDate.getFullYear() + ' - '
+					+ endDay + '.'
+					+ endMonth + '.'
+					+ endDate.getFullYear();
+				this.initDateParsed = this.inputDate.value;
+			});
+
+			this.inputDate.addEventListener('blur', (e) => {
+				if (this.inputDate.value == this.initDateParsed) {
+					this.inputDate.value = this.initDate;
+				}
+
+			});
+		}
+
 		//обработчик события окончания ввода в инпут по маске ДД.ММ.ГГГГ
 		this.wrapper.addEventListener('input', (e) => {
 			if ((e.target == this.inputDateFrom ||
@@ -118,13 +158,27 @@ class DatePicker {
 					this.myDatepicker.selectDate(
 						new Date(a[2] + '-' + a[1] + '-' + a[0]));
 				}
+			} else if ((e.target == this.inputDate)
+				&& e.target.value.length == 23) {
+				console.log(this.myDatepicker.selectedDates);
+				console.log(e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0]);
+				console.log(e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0]);
+
+				let a = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
+				let b = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
+				this.myDatepicker.clear();
+				this.myDatepicker.selectDate(
+					new Date(b[2] + '-' + b[1] + '-' + b[0]));
+				this.myDatepicker.selectDate(
+					new Date(a[2] + '-' + a[1] + '-' + a[0]));
+
 			}
 		});
 	}
 
 	//проверка, клик был снаружи или внутри календаря
 	insideCalendarClick() {
-		this.calendar.addEventListener('click', (e) => {
+		this.calendar.addEventListener('click', () => {
 			this.clickOnCalendar = true;
 		});
 	}
@@ -147,8 +201,8 @@ class DatePicker {
 		});
 	}
 
-	//Показ / скрытие календаря при клике по инпуту (скрытие - только для filter dropdown)
-	showHide() {
+	//Показ  календаря при клике по инпуту
+	show() {
 		if (!this.isFilter) {
 			this.inputDateFrom.addEventListener('click', () => {
 				if (this.clWrapper.classList.
@@ -160,13 +214,14 @@ class DatePicker {
 					contains(`${this.elemName}__calendar-wrapper_hidden`))
 					this.toggle(true);
 			});
-		} else {
+		}
+		else {
 			this.inputDate.addEventListener('click', () => {
 				if (this.clWrapper.classList.
 					contains(`${this.elemName}__calendar-wrapper_hidden`)) {
 					this.toggle(true);
 				} else {
-					this.toggle(false);
+					//this.toggle(false);
 				}
 			});
 		}

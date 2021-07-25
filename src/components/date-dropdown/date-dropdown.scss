@@ -105,9 +105,6 @@
 	}
 	&__input {
 		outline: none;
-		&_fromto {
-			cursor: pointer;
-		}
 		&::placeholder {
 			color: $colorDarkShade75;
 		}
