@@ -1,8 +1,20 @@
 $delta: 25px;
+$xs-padding-left: 20px;
+$xs-padding-bottom: 20px;
+$xs-padding-top: 0;
 .room-details-page {
 	& h2 {
 		@include font-h2;
 	}
+
+	@include media-breakpoint-down($xs) {
+		box-sizing: border-box;
+		padding-top: 40px;
+		margin: 0 auto;
+	}
+	// @include media-breakpoint-down($xxs) {
+	// 	margin: 0 auto;
+	// }
 
 	&__banner-wrapper {
 		max-height: 485px;
@@ -13,14 +25,10 @@ $delta: 25px;
 		display: grid;
 
 		grid-template-rows: 2fr 2fr;
-		grid-template-columns: 2.74fr 1.26fr;
+		grid-template-columns: 2.75fr 1.25fr;
 		grid-template-areas:
 			"img-1 img-2"
 			"img-1 img-3";
-
-		@include media-breakpoint-down($xl) {
-			//	height: auto;
-		}
 	}
 
 	&__img-1 {
@@ -52,15 +60,14 @@ $delta: 25px;
 	}
 
 	&__main-info-wrapper {
-		max-width: $xl;
+		max-width: 1162px;
 		//	border: 1px solid palevioletred;
 		width: 100%;
 		box-sizing: border-box;
-		margin: 70px auto 0px;
-		padding: 0 131px;
+		margin: 70px auto;
 		display: grid;
 
-		grid-template-rows: 304px 335px 230px;
+		grid-template-rows: auto auto auto;
 		grid-template-columns: 31% 36% auto;
 		grid-template-areas:
 			"info impress booking"
@@ -68,8 +75,10 @@ $delta: 25px;
 			"rules cancel booking";
 
 		@include media-breakpoint-down($lg) {
-			grid-template-rows: 304px 220px 335px 230px;
-			grid-template-columns: auto auto;
+			// padding-right: 50px;
+			// padding-left: 50px;
+			grid-template-rows: auto auto auto auto;
+			grid-template-columns: 50% 50%;
 			grid-template-areas:
 				"info booking"
 				"impress booking"
@@ -78,58 +87,81 @@ $delta: 25px;
 		}
 
 		@include media-breakpoint-down($md) {
-			padding: 0 20px;
+			//	padding: 0 20px;
 		}
 
-		@include media-breakpoint-down($sm) {
+		@include media-breakpoint-down($md) {
 			margin: 30px auto 0px;
-			grid-template-rows: auto auto auto auto;
-			grid-template-columns: auto auto;
+			// grid-template-rows: auto auto auto auto;
+			//grid-template-columns: auto auto;
 			grid-template-areas:
 				"booking booking"
 				"info impress"
 				"feedback feedback"
 				"rules cancel";
 		}
+
+		@include media-breakpoint-down($sm) {
+			//	margin: 30px auto 0px;
+			grid-template-rows: auto auto auto auto auto;
+			grid-template-columns: auto;
+			grid-template-areas:
+				"booking"
+				"info"
+				"impress"
+				"feedback"
+				"rules"
+				"cancel";
+		}
 	}
 
 	&__room-info {
-		padding-left: 2px;
-		margin-top: 3px;
+		padding-left: 3px;
 		&-item {
 			margin-top: 25px;
 		}
 		&-wrapper {
-			//	padding-left: 9px;
 			grid-area: info;
 			box-sizing: border-box;
+			//border: 1px solid blue;
+			@include media-breakpoint-between($xs, $lg) {
+				margin: 0 auto;
+			}
+			@include media-breakpoint-down($xs) {
+				padding-top: $xs-padding-top;
+				padding-left: $xs-padding-left;
+				padding-bottom: $xs-padding-bottom;
+			}
 		}
 	}
 	&__room-impress {
 		padding-top: 22px;
 		&-wrapper {
-			//	padding-left: 5px;
-
-			min-height: 0px;
 			grid-area: impress;
 
 			//	border: 1px solid red;
+			@include media-breakpoint-between($xs, $lg) {
+				margin: 0 auto;
+			}
+			@include media-breakpoint-down($xs) {
+				padding-top: $xs-padding-top;
+				padding-left: $xs-padding-left;
+				padding-bottom: $xs-padding-bottom;
+			}
 		}
 	}
 	&__booking {
 		&-wrapper {
-			padding-top: 0px;
-			//padding-left: 1px;
-			min-height: 0px;
 			grid-area: booking;
 			box-sizing: border-box;
-			//border: 1px solid orange;
+			//	border: 1px solid orange;
+			@include media-breakpoint-down($lg) {
+				margin: 0 auto;
+			}
 		}
 	}
 	&__feedback {
 		padding-left: 2px;
-		margin-top: 3px;
-
 		&-header {
 			display: flex;
 			justify-content: space-between;
@@ -139,31 +171,46 @@ $delta: 25px;
 			}
 		}
 		&-item {
-			margin-top: 21px;
+			margin-top: 22px;
 		}
 		//	border: 1px solid blue;
 		&-wrapper {
 			padding-right: 70px;
-			padding-top: 0px;
-			padding-left: 7px;
-			min-height: 0px;
+			padding-top: 14px;
 			grid-area: feedback;
 			box-sizing: border-box;
 			//	border: 1px solid green;
+			@include media-breakpoint-between($xs, $lg) {
+				margin: 0 30px;
+			}
+			@include media-breakpoint-down($xs) {
+				padding-top: $xs-padding-top;
+				padding-left: $xs-padding-left;
+				padding-bottom: $xs-padding-bottom;
+			}
 		}
 	}
 	&__rules {
 		&-wrapper {
-			padding-top: 0px;
-			padding-left: 8px;
-			min-height: 0px;
+			padding-top: 33px;
 			grid-area: rules;
 			box-sizing: border-box;
 			//	border: 1px solid purple;
+			@include media-breakpoint-between($xs, $lg) {
+				margin: 0 auto;
+			}
+			@include media-breakpoint-down($xs) {
+				padding-top: $xs-padding-top;
+				padding-left: $xs-padding-left;
+				padding-bottom: $xs-padding-bottom;
+			}
 		}
 		&-header {
 			padding-left: 21px;
 			margin-bottom: 19px;
+			@include media-breakpoint-down($xs) {
+				padding-left: 0;
+			}
 		}
 	}
 	&__cancel {
@@ -171,12 +218,19 @@ $delta: 25px;
 		margin-top: 19px;
 		&-wrapper {
 			padding-right: 73px;
-			padding-top: 0px;
-			padding-left: 5px;
-			min-height: 0px;
+			padding-top: 32px;
+			padding-left: 1px;
 			grid-area: cancel;
 			box-sizing: border-box;
 			//	border: 1px solid brown;
+			@include media-breakpoint-down($xs) {
+				padding-top: $xs-padding-top;
+				padding-left: $xs-padding-left;
+				padding-bottom: $xs-padding-bottom;
+			}
+		}
+		@include media-breakpoint-between($xs, $lg) {
+			margin: 0 auto;
 		}
 	}
 }

@@ -24,4 +24,7 @@
 			}
 		}
 	}
+	@include media-breakpoint-down($xs) {
+		display: block;
+	}
 }
