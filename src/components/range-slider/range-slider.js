@@ -31,7 +31,7 @@ class RangeSlider {
 		const { price } = this;
 		let displayPrice = (data) => {
 			const { from, to } = data;
-			price.value = from.toLocaleString() + '₽ - '
+			price.innerText = from.toLocaleString() + '₽ - '
 				+ to.toLocaleString() + '₽';
 		};
 		$(this.slider).ionRangeSlider({

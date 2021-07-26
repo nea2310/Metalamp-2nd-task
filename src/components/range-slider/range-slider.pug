@@ -6,7 +6,7 @@ mixin range-slider(options = {})
 			div(class = elemName + '__title-wrapper')
 				if options.labelText
 					p(class = elemName + '__title')= options.labelText
-				input(class = elemName + '__price' type = 'text' readonly)
+				span(class = elemName + '__price')
 			input(class = elemName + '__slider' type = 'text' data-type = options.type data-min = options.min data-max = options.max data-step = options.step data-from = options.from data-to = options.to data-hide-min-max = options.isMinMaxHidden data-hide-from-to = options.isFromToHidden)
 			P(class = elemName + '__text')= options.text
 
