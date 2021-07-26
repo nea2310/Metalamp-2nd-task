@@ -30,6 +30,11 @@
 		font-size: 12px;
 	}
 
+	.from:focus,
+	.to:focus {
+		outline: auto !important;
+	}
+
 	span.irs.irs--flat {
 		.irs-line {
 			max-width: 266px;
@@ -51,6 +56,10 @@
 			box-sizing: border-box;
 			outline: none;
 			cursor: pointer;
+
+			&:focus {
+				outline: auto;
+			}
 
 			i {
 				display: none;

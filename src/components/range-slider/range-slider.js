@@ -24,6 +24,7 @@ class RangeSlider {
 	render() {
 		this.slider = this.getElem('slider');
 		this.price = this.getElem('price');
+
 		this.init();
 	}
 
@@ -37,11 +38,16 @@ class RangeSlider {
 		$(this.slider).ionRangeSlider({
 			onStart(data) {
 				displayPrice(data);
+				console.log(data.slider);
 			},
 			onChange(data) {
 				displayPrice(data);
 			}
 		});
+		this.from = this.wrapper.querySelector('.from');
+		this.to = this.wrapper.querySelector('.to');
+		this.from.setAttribute('tabindex', '0');
+		this.to.setAttribute('tabindex', '0');
 	}
 }
 
