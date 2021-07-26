@@ -11,31 +11,48 @@ class InputMask {
 				true : false;
 		this.date =
 			this.input.classList.contains('js-date') ? true : false;
-		console.log(this.calendarSingle);
-		console.log(this.calendarDouble);
-		console.log(this.date);
-
 		this.init();
 		this.mask();
 	}
 
 	init() {
-		//dateFrom =  текущая дате
-		this.dateFrom = new Date();
-		//dateTo = плюс один год к текущей дате
-		this.dateTo = new Date(+this.dateFrom +
+		//dateCurrent =  текущая дате
+		this.dateCurrent = new Date();
+		this.dateTomorrow = new Date(+this.dateCurrent +
+			(new Date("2020-12-31") - new Date("2020-12-30")));
+		//dateMinusHundred  - теущая дата минус 100 лет
+		this.dateMinusHundred = new Date(+this.dateCurrent -
+			(new Date("2120-12-31") - new Date("2020-01-01")));
+		//dateMinusEighteen  - теущая дата минус 18 лет
+		this.dateMinusEighteen = new Date(+this.dateCurrent -
+			(new Date("2037-12-31") - new Date("2020-01-01")));
+		//datePlusYear = плюс один год к текущей дате
+		this.datePlusYear = new Date(+this.dateCurrent +
 			(new Date("2020-12-31") - new Date("2020-01-01")));
 		this.regexpDate = /^\d{2}\.\d{2}\.\d{4}$/; // формат даты
 		this.regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/; // формат даты
 		this.regexInput = /[^0-9.]/g; // формат ввода в инпут - все, кроме цифр и точек(будет заменяться на пустую строку)
 		this.regexInputDouble = /[^0-9. -]/g; // формат ввода в инпут - все, кроме цифр, точек, пробелов и дефисов(будет заменяться на пустую строку)
 
-		this.dateFromTxt = '' + this.dateFrom.getDate() +
-			'.' + (this.dateFrom.getMonth() + 1) +
-			'.' + this.dateFrom.getFullYear();
-		this.dateToTxt = '' + this.dateTo.getDate() +
-			'.' + (this.dateTo.getMonth() + 1) +
-			'.' + this.dateTo.getFullYear();
+		this.dateCurrentTxt = '' + this.dateCurrent.getDate() +
+			'.' + (this.dateCurrent.getMonth() + 1) +
+			'.' + this.dateCurrent.getFullYear();
+
+		this.dateTomorrowTxt = '' + this.dateTomorrow.getDate() +
+			'.' + (this.dateTomorrow.getMonth() + 1) +
+			'.' + this.dateTomorrow.getFullYear();
+
+		this.dateMinusHundredTxt = '' + this.dateMinusHundred.getDate() +
+			'.' + (this.dateMinusHundred.getMonth() + 1) +
+			'.' + this.dateMinusHundred.getFullYear();
+
+		this.dateMinusEighteenTxt = '' + this.dateMinusEighteen.getDate() +
+			'.' + (this.dateMinusEighteen.getMonth() + 1) +
+			'.' + this.dateMinusEighteen.getFullYear();
+
+		this.datePlusYearTxt = '' + this.datePlusYear.getDate() +
+			'.' + (this.datePlusYear.getMonth() + 1) +
+			'.' + this.datePlusYear.getFullYear();
 
 		//вставляет нули, если число или месяц - однозначное
 		let formatDate = (date) => {
@@ -51,11 +68,12 @@ class InputMask {
 			}
 			return date;
 		};
-		this.dateFromTxt = formatDate(this.dateFromTxt);
-		this.dateToTxt = formatDate(this.dateToTxt);
+		this.dateCurrentTxt = formatDate(this.dateCurrentTxt);
+		this.dateTomorrowTxt = formatDate(this.dateTomorrowTxt);
+		this.dateMinusHundredTxt = formatDate(this.dateMinusHundredTxt);
+		this.dateMinusEighteenTxt = formatDate(this.dateMinusEighteenTxt);
+		this.datePlusYearTxt = formatDate(this.datePlusYearTxt);
 	}
-
-
 
 	mask() {
 
@@ -99,82 +117,104 @@ class InputMask {
 				if (this.calendarSingle || this.date) {
 					e.target.value =
 						e.target.value.replace(this.regexInput, ''); //все символы, попадающие под паттерн, заменяются на пустую строку
-					/*если ввод дня начинается с числа, больше 4 - то добавить перед ним ноль*/
-					if (parseInt(e.target.value[0]) >= 4 &&
-						e.target.value.length == 1) {
-						addZero();
-					}
-					/*если ввод месяца начинается с числа, больше 2 - то добавить перед ним ноль*/
-					if (parseInt(e.target.value[3]) >= 2 &&
-						e.target.value.length == 4) {
-						addZero();
-					}
-					/*ставим точку после второго и пятого символа (после дня и месяца)*/
-					if (e.target.value.length == 2 ||
-						e.target.value.length == 5) {
-						e.target.value = e.target.value + '.';
-					}
-					/*удаляем все символы после 10-го символа*/
-					if (e.target.value.length > 10) {
-						e.target.value = e.target.value.slice(0,
-							e.target.value.length - 1);
-					}
-
 				}
+
 				if (this.calendarDouble) {
 					e.target.value =
-						e.target.value.replace(this.regexInputDouble, ''); //все символы, попадающие под паттерн, заменяются на пустую строку
-					/*если ввод дня начинается с числа, больше 4 - то добавить перед ним ноль*/
-					if (parseInt(e.target.value[0]) >= 4 &&
-						e.target.value.length == 1) {
-						addZero();
-					}
+						e.target.value.replace(this.regexInputDouble, '');//все символы, попадающие под паттерн, заменяются на пустую строку
+				}
+				/*если ввод дня начинается с числа, больше 3 - то добавить перед ним ноль*/
+				/*если ввод месяца начинается с числа, больше 1 - то добавить перед ним ноль*/
+				if (parseInt(e.target.value[0]) >= 4 &&
+					e.target.value.length == 1 ||
+					parseInt(e.target.value[3]) >= 2 &&
+					e.target.value.length == 4 ||
+					parseInt(e.target.value[13]) >= 4 &&
+					e.target.value.length == 14 ||
+					parseInt(e.target.value[16]) >= 2 &&
+					e.target.value.length == 17
+				) {
+					addZero();
+				}
+				/*ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца)*/
+				if (e.target.value.length == 2 ||
+					e.target.value.length == 5 ||
+					e.target.value.length == 15 ||
+					e.target.value.length == 18) {
+					e.target.value = e.target.value + '.';
+				}
 
-					if (parseInt(e.target.value[13]) >= 4 &&
-						e.target.value.length == 14) {
-						addZero();
-					}
-					/*если ввод месяца начинается с числа, больше 2 - то добавить перед ним ноль*/
-					if (parseInt(e.target.value[3]) >= 2 &&
-						e.target.value.length == 4) {
-						addZero();
-					}
-
-					if (parseInt(e.target.value[16]) >= 2 &&
-						e.target.value.length == 17) {
-						addZero();
-					}
-					/*ставим точку после второго и пятого, 15-го, 18-го символа (после дня и месяца)*/
-					if (e.target.value.length == 2 ||
-						e.target.value.length == 5 ||
-						e.target.value.length == 15 ||
-						e.target.value.length == 18) {
-						e.target.value = e.target.value + '.';
-					}
-
-					/*ставим знаки пробела и минус между датами*/
+				/*ставим знаки пробела и минус между датами (требуется только для calendarDouble)*/
+				if (this.calendarDouble) {
 					if (e.target.value.length == 10) {
 						e.target.value = e.target.value + ' - ';
 					}
-					/*удаляем все символы после 23-го символа*/
-					if (e.target.value.length > 24) {
-						e.target.value = e.target.value.slice(0,
-							e.target.value.length - 1);
+				}
+				/*удаляем все символы после 10-го символа*/
+				if ((this.calendarSingle || this.date)
+					&& e.target.value.length > 10) {
+					e.target.value = e.target.value.slice(0,
+						e.target.value.length - 1);
+				}
+				/*удаляем все символы после 24-го символа*/
+				if (this.calendarDouble && e.target.value.length > 24) {
+					e.target.value = e.target.value.slice(0,
+						e.target.value.length - 1);
+				}
+			}
+
+			// ввод даты закончен
+			if (this.calendarSingle) {
+				if (e.target.value.length == 10) {
+					/*Проверка, что введенная дата попадает в диапазон dateCurrent и datePlusYear*/
+					let a = e.target.value.split('.');
+					let dateSelected = new Date(a[2] + '-' + a[1] + '-' + a[0]);
+					if (dateSelected < this.dateCurrent ||
+						dateSelected > this.datePlusYear ||
+						dateSelected == 'Invalid Date') {
+						alert('Введите дату от ' +
+							this.dateCurrentTxt + ' до ' +
+							this.datePlusYearTxt);
+						e.target.value = this.dateCurrentTxt;//в случае некорректного ввода - устанавливаем текущую дату
 					}
 				}
 			}
-			// ввод даты закончен
-			if (this.calendarSingle || this.date) {
+
+			if (this.date) {
 				if (e.target.value.length == 10) {
-					/*Проверка, что введенная дата попадает в диапазон dateFrom и dateTo*/
+					/*Проверка, что введенная дата попадает в диапазон dateMinusHundred и dateMinusEighteen*/
 					let a = e.target.value.split('.');
 					let dateSelected = new Date(a[2] + '-' + a[1] + '-' + a[0]);
-					if (dateSelected < this.dateFrom ||
-						dateSelected > this.dateTo ||
+					if (dateSelected < this.dateMinusHundred ||
+						dateSelected > this.dateMinusEighteen ||
 						dateSelected == 'Invalid Date') {
-						alert('Введите дату от ' +
-							this.dateFromTxt + ' до ' + this.dateToTxt);
-						e.target.value = this.dateFromTxt;//в случае некорректного ввода - устанавливаем текущую дату
+						alert('Введите дату от ' + this.dateMinusHundredTxt +
+							' до ' + this.dateMinusEighteenTxt);
+						e.target.value = '';//в случае некорректного ввода - очищаем инпут
+					}
+				}
+			}
+
+			if (this.calendarDouble) {
+				if (e.target.value.length == 23) {
+					/*Проверка, что введенная дата попадает в диапазон dateCurrent и datePlusYear*/
+					let a = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
+					let b = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
+					let dateCurrentSelected =
+						new Date(a[2] + '-' + a[1] + '-' + a[0]);
+					let datePlusYearSelected =
+						new Date(b[2] + '-' + b[1] + '-' + b[0]);
+					if (dateCurrentSelected < this.dateCurrent ||
+						dateCurrentSelected > this.datePlusYear ||
+						dateCurrentSelected == 'Invalid Date' ||
+						datePlusYearSelected < this.dateCurrent ||
+						datePlusYearSelected > this.datePlusYear ||
+						datePlusYearSelected == 'Invalid Date') {
+						alert('Введите даты в диапазоне от ' +
+							this.dateCurrentTxt + ' до ' +
+							this.datePlusYearTxt);
+						e.target.value =
+							this.dateCurrentTxt + ' - ' + this.dateTomorrowTxt;//в случае некорректного ввода - устанавливаем диапазон [текущая дата - завтрашняя дата]
 					}
 				}
 			}

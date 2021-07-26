@@ -125,11 +125,10 @@ class DatePicker {
 				this.initDateParsed = this.inputDate.value;
 			});
 
-			this.inputDate.addEventListener('blur', (e) => {
+			this.inputDate.addEventListener('blur', () => {
 				if (this.inputDate.value == this.initDateParsed) {
 					this.inputDate.value = this.initDate;
 				}
-
 			});
 		}
 
@@ -171,7 +170,6 @@ class DatePicker {
 					new Date(b[2] + '-' + b[1] + '-' + b[0]));
 				this.myDatepicker.selectDate(
 					new Date(a[2] + '-' + a[1] + '-' + a[0]));
-
 			}
 		});
 	}
