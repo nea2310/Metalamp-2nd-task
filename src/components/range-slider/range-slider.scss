@@ -14,11 +14,24 @@
 		width: 50%;
 	}
 	&__price {
-		width: 50%;
-		width: 100%;
+		display: flex;
+	}
+	&__price-delim {
+		width: 10px;
+		text-align: center;
+	}
+
+	&__price-from {
 		text-align: end;
+	}
+	&__price-to {
+		text-align: start;
+	}
+
+	&__price-from,
+	&__price-to,
+	&__price-delim {
 		border: none;
-		pointer-events: none;
 		font-size: 12px;
 		text-transform: uppercase;
 		@include font-body;

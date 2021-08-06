@@ -23,31 +23,80 @@ class RangeSlider {
 
 	render() {
 		this.slider = this.getElem('slider');
-		this.price = this.getElem('price');
+		//this.price = this.getElem('price');
+		this.priceFrom = this.getElem('price-from');
+
+		this.priceTo = this.getElem('price-to');
+
+
+
+
 
 		this.init();
 	}
 
 	init() {
-		const { price } = this;
+		const { priceFrom } = this;
+		const { priceTo } = this;
 		let displayPrice = (data) => {
 			const { from, to } = data;
-			price.innerText = from.toLocaleString() + '₽ - '
-				+ to.toLocaleString() + '₽';
+			priceFrom.value = from.toLocaleString() + '₽';
+			priceTo.value = to.toLocaleString() + '₽';
+
+
+			priceFrom.style.width =
+				((priceFrom.value.length) * 7.7) + 'px';
+
+			priceTo.style.width =
+				((priceTo.value.length) * 7.7) + 'px';
+
+
 		};
+
 		$(this.slider).ionRangeSlider({
+
 			onStart(data) {
 				displayPrice(data);
-				console.log(data.slider);
+
 			},
 			onChange(data) {
 				displayPrice(data);
 			}
 		});
-		this.from = this.wrapper.querySelector('.from');
-		this.to = this.wrapper.querySelector('.to');
-		this.from.setAttribute('tabindex', '0');
-		this.to.setAttribute('tabindex', '0');
+
+
+		let instance = $(this.slider).data("ionRangeSlider");
+
+
+		let updatePrice = (e, inputType, valueType) => {
+			let val = inputType.value.replace(/\D/g, '');
+			instance.update({
+				[valueType]: val
+			});
+
+			inputType.style.width = ((inputType.value.length) * 7.7) + 'px';
+			if (e.type == 'change') {
+				inputType.value = parseInt(val).toLocaleString() + '₽';
+				inputType.style.width =
+					((inputType.value.length) * 7.7) + 'px';
+			}
+
+
+		};
+
+		this.priceFrom.addEventListener('keyup', (e) => {
+			updatePrice(e, this.priceFrom, 'from');
+		});
+		this.priceFrom.addEventListener('change', (e) => {
+			updatePrice(e, this.priceFrom, 'from');
+		});
+
+		this.priceTo.addEventListener('keyup', (e) => {
+			updatePrice(e, this.priceTo, 'to');
+		});
+		this.priceTo.addEventListener('change', (e) => {
+			updatePrice(e, this.priceTo, 'to');
+		});
 	}
 }
 
@@ -58,3 +107,4 @@ function renderRangeSliders(selector) {
 	}
 }
 renderRangeSliders('.range-slider');
+
