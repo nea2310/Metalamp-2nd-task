@@ -1,4 +1,8 @@
 .radiobuttons {
+	* {
+		box-sizing: border-box;
+	}
+
 	padding-left: 0;
 	margin-left: 0;
 	user-select: none;
@@ -32,7 +36,7 @@
 		}
 
 		&:focus + .radiobuttons__cat-radiomark {
-			border: 1px solid $colorDarkShade75;
+			border: 2px solid $colorDarkShade75;
 		}
 	}
 

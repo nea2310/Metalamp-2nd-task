@@ -1,4 +1,8 @@
 .checklist {
+	* {
+		box-sizing: border-box;
+	}
+
 	user-select: none;
 	width: 266px;
 	&__label {
@@ -60,7 +64,7 @@
 			background-repeat: no-repeat;
 		}
 		&:focus + .checklist__cat-checkmark {
-			border: 1px solid $colorPurple;
+			border: 2px solid $colorDarkShade75;
 		}
 	}
 
