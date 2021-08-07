@@ -1,3 +1,4 @@
+import './search-room.scss';
 class SearchRoom {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');

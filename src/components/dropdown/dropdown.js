@@ -1,4 +1,4 @@
-
+import './dropdown.scss';
 class DropDown {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');

@@ -1,4 +1,4 @@
-
+import './checklist.scss';
 class CheckList {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');

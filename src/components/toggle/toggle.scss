@@ -16,7 +16,7 @@
 
 		& + .toggle__checkmark {
 			border: 1px solid $colorDarkShade25;
-			background-image: url(/assets/img/interface/rectangle-border.svg);
+			background-image: url("~comp/toggle/img/interface/rectangle-border.svg");
 			background-position-y: 50%;
 			background-position-x: 13%;
 			background-repeat: no-repeat;
@@ -24,7 +24,7 @@
 
 		&:checked + .toggle__checkmark {
 			border: 1px solid $colorPurple;
-			background-image: url(/assets/img/interface/rectangle.svg);
+			background-image: url("~comp/toggle/img/interface/rectangle.svg");
 			background-position-x: 87%;
 		}
 

@@ -1,4 +1,4 @@
-
+import './like-button.scss';
 class LikeButton {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');
@@ -19,8 +19,13 @@ class LikeButton {
 		this.img = this.getElem('img');
 		this.counter = this.getElem('counter');
 
-		this.iconLike = 'assets/img/interface/favorite.svg';
-		this.iconUnlike = 'assets/img/interface/favorite-border.svg';
+		this.iconLike = require(
+			'@com/date-dropdown/img/favorite.svg'
+		).default;
+
+		this.iconUnlike = require(
+			'@com/date-dropdown/img/favorite-border.svg'
+		).default;
 	}
 
 

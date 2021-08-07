@@ -1,3 +1,4 @@
+import './range-slider.scss';
 class RangeSlider {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');

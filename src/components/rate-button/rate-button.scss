@@ -12,7 +12,7 @@
 		position: relative;
 		width: 116px;
 		height: 19px;
-		background-image: url(/assets/img/interface/star-border.svg);
+		background-image: url("~comp/rate-button/img/interface/star-border.svg");
 		background-size: 20px auto;
 		background-repeat: space;
 	}
@@ -35,7 +35,7 @@
 
 		&:checked,
 		&:hover {
-			background-image: url(/assets/img/interface/star.svg);
+			background-image: url("~comp/rate-button/img/interface/star.svg");
 			cursor: pointer;
 		}
 		&:hover ~ .rate-button__star {

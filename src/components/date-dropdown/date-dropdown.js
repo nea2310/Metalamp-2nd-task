@@ -1,3 +1,4 @@
+import './date-dropdown.scss';
 class DatePicker {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');
@@ -44,6 +45,12 @@ class DatePicker {
 
 	/*Выбор даты в календаре*/
 	init() {
+		const imgPrev = require(
+			'@com/date-dropdown/img/arrow_back.svg'
+		).default;
+		const imgNext = require(
+			'@com/date-dropdown/img/arrow_forward.svg'
+		).default;
 		let separator;
 		this.isFilter ? separator = ' - ' : separator = ',';
 		this.myDatepicker = $(this.clWrapper).datepicker({
@@ -56,8 +63,8 @@ class DatePicker {
 			minDate: new Date(),
 			range: true,
 			multipleDates: true,
-			prevHtml: `<img src="assets/img/interface/arrow-back.svg">`,
-			nextHtml: `<img src="assets/img/interface/arrow-forward.svg">`,
+			prevHtml: '<img src="' + imgPrev + '">',
+			nextHtml: '<img src="' + imgNext + '">',
 			onSelect: (selectedDate) => {
 				if (!this.isFilter) {
 					let dateArr = selectedDate.split(',');

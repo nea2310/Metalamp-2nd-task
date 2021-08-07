@@ -1,4 +1,4 @@
-
+import './chart.scss';
 class Chart {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');

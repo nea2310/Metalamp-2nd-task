@@ -15,7 +15,7 @@ mixin dropdown(options={width: '', type: '', labelText: '', categories: {}, butt
 			label(class = elemName + '__label')
 				if options.labelText
 					p(class = elemName + '__label-text')=options.labelText
-				img(class = elemName + '__img ' + elemName + '__img_collapsed', src = "assets/img/interface/expand-more.svg"  alt = 'раскрывающийся список')
+				img(class = elemName + '__img ' + elemName + '__img_collapsed', src = require('@com/dropdown/img/interface/expand-more.svg').default  alt = 'раскрывающийся список')
 				input(class = elemName + '__input ' + elemName + '__input_collapsed ' + elemName + '__input' + inputStyle, readonly = true, value = '', placeholder = options.placeholder)
 		div(class = elemName + '__list-wrapper ' + elemName + '__list-wrapper_hidden')
 			ul(class = elemName + '__list')

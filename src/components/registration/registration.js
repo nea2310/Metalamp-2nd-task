@@ -1,3 +1,4 @@
+import './registration.scss';
 class Registration {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');

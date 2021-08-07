@@ -1,4 +1,4 @@
-
+import './go-up-button.scss';
 class GoUpButton {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');

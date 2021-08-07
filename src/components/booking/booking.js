@@ -1,3 +1,5 @@
+
+import './booking.scss';
 class Booking {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');

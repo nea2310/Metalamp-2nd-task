@@ -1,4 +1,4 @@
-
+import './filter-form.scss';
 class FilterForm {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');

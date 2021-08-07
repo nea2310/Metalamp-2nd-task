@@ -1,3 +1,4 @@
+import './room-card.scss';
 class RoomCard {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');

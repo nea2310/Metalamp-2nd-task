@@ -7,7 +7,7 @@ mixin input(options={labelText: '', img: false, extra: '', type: 'text'})
 				p(class = elemName+'__label-text')=options.labelText
 			if options.img
 				button(class = elemName+'__link')
-					img(class = elemName+'__img', src = "assets/img/interface/arrow-forward.svg")
+					img(class = elemName+'__img', src = require('@com/input-field/img/interface/arrow-forward.svg').default)
 			input(class = elemName + '__input ' + options.extra placeholder = options.placeholder type = options.type value = '')
 
 

@@ -9,5 +9,5 @@ mixin pagination()
 			span(class = elemName + '__elem' + ' ' + elemName + '__hidden-page'  href = 'скрытые номера страниц') ...
 			a(class = elemName + '__elem' + ' ' + elemName + '__elem_page' href = '15') 15
 			a(class = elemName + '__elem' + ' ' + elemName + '__elem_next-prev' href = 'вперед')
-				img(src = 'assets/img/interface/arrow-forward-white.svg')
+				img(src = require('@com/pagination/img/interface/arrow-forward-white.svg').default)
 		p(class = elemName + '__label') 1 - 12 из 100+ вариантов аренды
