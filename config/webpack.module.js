@@ -38,22 +38,22 @@ module.exports = {
 			},
 
 			{ // работа с js файлами
-				test: /\.(js|jsx)$/,
+				test: /\.(js)$/,
 				exclude: /node_modules/,  // игнорируем эту папку. что бы не обрабатывать файлы от туда. 
 				use: JL.jsLoaders('js')
 			},
 			{ // работа с ts файлами
 				test: /\.(ts|tsx)$/,
 				exclude: /node_modules/,  // игнорируем эту папку. что бы не обрабатывать файлы от туда. 
-				use: JL.jsLoaders()
+				use: JL.jsLoaders(),
 			},
 
 			{ // работа с графическими файлами
-				test: /\.(png|jpg|svg|gif|webp)$/,
+				test: /\.(png|jpg|svg|gif|webp|avif)$/,
 				loader: 'file-loader',
 				options: {
-					outputPath: `${PATHS.assets}img\\decor`,
-					publicPath: '/assets/img/decor/',
+					outputPath: `${PATHS.assets}images/`,
+					publicPath: '/assets/images/',
 				},
 			},
 

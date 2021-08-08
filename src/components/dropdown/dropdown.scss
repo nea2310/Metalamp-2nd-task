@@ -1,4 +1,5 @@
-.dropDown__input_rounded.dropDown__input-expanded {
+@import "@styles/glob.scss";
+s .dropDown__input_rounded.dropDown__input-expanded {
 	border-color: $colorDarkShade50;
 	border-bottom: none;
 	border-bottom-left-radius: 0;

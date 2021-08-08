@@ -1,17 +1,14 @@
 {
-	//"parser": "@babel/eslint-parser",
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaVersion": 12, // версия ECMAScript
 		"ecmaFeatures": { // объект, указывающий, какие дополнительные языковые функции вы хотите использовать
-			//"jsx": true,
 			"ts": true
 		},
 		"sourceType": "module" // установите значение «script» (по умолчанию) или «module», если ваш код находится в модулях ECMAScript. 
 	},
 	"plugins": [
 		"@typescript-eslint"
-		//"react-hooks"
 	],
 	"rules": {
 		"no-unused-vars": "warn", // ругаться на неиспользуемые переменные.
@@ -36,7 +33,6 @@
 		]
 	},
 	"extends": [
-		// "plugin:react/recommended",
 		// "plugin:@typescript-eslint/recommended",
 		"eslint:recommended"
 		//"airbnb"

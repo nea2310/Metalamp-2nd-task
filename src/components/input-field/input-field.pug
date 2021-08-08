@@ -6,8 +6,8 @@ mixin input(options={labelText: '', img: false, extra: '', type: 'text'})
 			if options.labelText
 				p(class = elemName+'__label-text')=options.labelText
 			if options.img
-				button(class = elemName+'__link')
-					img(class = elemName+'__img', src = require('@com/input-field/img/interface/arrow-forward.svg').default)
+				button(class = elemName+'__link' aria-label = options.name)
+					img(class = elemName+'__img', src = require('@com/input-field/img/arrow-forward.svg').default)
 			input(class = elemName + '__input ' + options.extra placeholder = options.placeholder type = options.type value = '')
 
 

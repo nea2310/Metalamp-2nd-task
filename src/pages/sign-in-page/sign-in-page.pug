@@ -1,9 +1,9 @@
-extends ./layout.pug
-include ../components/login/login.pug
+extends ../layout/layout.pug
+include ../../components/login/login.pug
 block title
 	title Sign-in
 block content 
 	main(class = 'sign-in-page')
-		img(class = 'sign-in-page__background' src = require('@pag/sign-in-page/img/interface/bedroom.jpg').default)
+		img(class = 'sign-in-page__background' src = require('@pag/sign-in-page/img/bedroom.jpg').default)
 		section(class = 'sign-in-page__login-wrapper')
 			+login()

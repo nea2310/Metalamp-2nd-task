@@ -45,11 +45,12 @@ class DatePicker {
 
 	/*Выбор даты в календаре*/
 	init() {
-		const imgPrev = require(
-			'@com/date-dropdown/img/arrow_back.svg'
-		).default;
+		const imgPrev =
+			require(
+				'./img/arrow-back.svg'
+			).default;
 		const imgNext = require(
-			'@com/date-dropdown/img/arrow_forward.svg'
+			'./img/arrow-forward.svg'
 		).default;
 		let separator;
 		this.isFilter ? separator = ' - ' : separator = ',';

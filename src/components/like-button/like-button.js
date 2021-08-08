@@ -20,11 +20,11 @@ class LikeButton {
 		this.counter = this.getElem('counter');
 
 		this.iconLike = require(
-			'@com/date-dropdown/img/favorite.svg'
+			'./img/favorite.svg'
 		).default;
 
 		this.iconUnlike = require(
-			'@com/date-dropdown/img/favorite-border.svg'
+			'./img/favorite-border.svg'
 		).default;
 	}
 

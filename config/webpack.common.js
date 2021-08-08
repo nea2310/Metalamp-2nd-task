@@ -14,12 +14,13 @@ const devServ = require('./webpack.devServer.js');
 module.exports = merge(devServ, {
 
 	target: DP.isDev ? 'web' : 'browserslist',
-	devtool: DP.isDev ? 'eval-cheap-module-source-map' : 'source-map', // показывает ошибки допущенные в файлах. (карта для браузеров) 
-
+	//devtool: DP.isDev ? 'eval-cheap-module-source-map' : 'source-map', //  (карта для браузеров) 
+	//devtool: false,
+	devtool: DP.isDev ? 'eval-cheap-module-source-map' : false,
 
 	entry: [
 		"webpack/hot/dev-server",
-		'./index.jsx', // входной файл (их может быть несколько)
+		'./index.ts', // входной файл (их может быть несколько)
 	],
 
 	context: PATHS.src, // корень исходников
@@ -27,17 +28,21 @@ module.exports = merge(devServ, {
 	output: {
 		filename: FL.filename('js'),
 		path: PATHS.dist, // каталог в который будет выгружаться сборка.
-		//publicPath: '',
+		//publicPath: '/',
 	},
 
 
 	resolve: {
-		extensions: ['.ts', '.jsx', '.tsx', '.css', '.js', '.scss'],  // когда мы прописываем тут расширения то при импуте в index.js их можно не прописывать 
+		extensions: ['.ts', '.tsx', '.js', '.css', '.scss'],  // когда мы прописываем тут расширения то при импуте в index.js их можно не прописывать 
 		alias: {
 			'@plugins': `${PATHS.src}\\plugins`,
 			'@styles': `${PATHS.src}${PATHS.assets}styles`,
 			'@typescript': `${PATHS.src}${PATHS.assets}ts`,
+			'@img': `${PATHS.src}${PATHS.assets}images`,
+			'@pag': `${PATHS.src}\\pages`,
+			'@com': `${PATHS.src}\\components`,
 			'@': PATHS.src,
+			comp: PATHS.components,
 		}
 	},
 

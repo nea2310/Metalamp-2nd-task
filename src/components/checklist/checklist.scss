@@ -1,3 +1,4 @@
+@import "@styles/glob.scss";
 .checklist {
 	* {
 		box-sizing: border-box;
@@ -58,7 +59,7 @@
 		&:checked + .checklist__cat-checkmark,
 		&:checked:focus + .checklist__cat-checkmark {
 			border: 1px solid $colorPurple;
-			background-image: url("~comp/checklist/img/interface/tip.svg");
+			background-image: url("~comp/checklist/img/tip.svg");
 			background-position-y: 42%;
 			background-position-x: 40%;
 			background-repeat: no-repeat;

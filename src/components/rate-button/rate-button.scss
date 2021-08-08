@@ -1,3 +1,4 @@
+@import "@styles/glob.scss";
 .rate-button {
 	margin: 0px 0px 0px 0px;
 	padding: 0;
@@ -12,7 +13,7 @@
 		position: relative;
 		width: 116px;
 		height: 19px;
-		background-image: url("~comp/rate-button/img/interface/star-border.svg");
+		background-image: url("~comp/rate-button/img/star-border.svg");
 		background-size: 20px auto;
 		background-repeat: space;
 	}
@@ -35,7 +36,7 @@
 
 		&:checked,
 		&:hover {
-			background-image: url("~comp/rate-button/img/interface/star.svg");
+			background-image: url("~comp/rate-button/img/star.svg");
 			cursor: pointer;
 		}
 		&:hover ~ .rate-button__star {

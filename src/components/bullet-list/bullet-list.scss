@@ -1,3 +1,4 @@
+@import "@styles/glob.scss";
 .bullet-list {
 	&__label {
 		@include font-h3;
@@ -6,7 +7,7 @@
 	&__list-wrapper {
 		padding-left: 17px;
 		max-width: 240px;
-		list-style-image: url("~comp/bullet-list/img/interface/ellipse.svg");
+		list-style-image: url("~comp/bullet-list/img/ellipse.svg");
 	}
 	&__cat {
 		@include font-body;
