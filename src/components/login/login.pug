@@ -27,7 +27,7 @@ mixin login(options={})
 						color: 'dark',
 						img: true}
 						)
-		div(class = elemName + '__go-to-reg')
+		div(class = elemName + '__go-to-reg' role='region' aria-label = 'Нет аккаунта на Toxin')
 			p(class = elemName + '__go-to-reg-legend') Нет аккаунта на Toxin?
 			+btn(
 					{text: 'создать',

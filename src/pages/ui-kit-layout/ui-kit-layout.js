@@ -1,1 +1,1 @@
-import './layout.scss';
+import './ui-kit-layout.scss';
