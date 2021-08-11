@@ -1,19 +1,11 @@
 @import "@styles/glob.scss";
 .cards {
-	&__logo-wrapper {
-		margin-left: 30px;
-		margin-top: 30px;
-	}
 	width: 100%;
 	max-width: 1440px;
 	margin: 0 auto;
 	display: flex;
 	justify-content: space-between;
 	background-color: #f4f4f6;
-	&__logo-wrapper {
-		margin-top: 30px;
-		margin-left: 7px;
-	}
 	&__search-room {
 		margin-top: 151px;
 		margin-left: 117px;

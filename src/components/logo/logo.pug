@@ -1,7 +1,8 @@
-mixin logo-grey(classList='')
+mixin logo-grey()
 	-
 		var classList = "logo logo-grey" + classList
-	img(class=classList src = require('@com/logo/img/logo-grey.svg').default alt = 'logo')
+	a(href='index.html' alt = 'на главную')
+		img(src = require('@com/logo/img/logo-grey.svg').default alt = 'logo')
 
 
 
