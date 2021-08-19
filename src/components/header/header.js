@@ -42,6 +42,17 @@ class Header {
 		});
 
 
+		this.navLevel2.forEach(element =>
+			element.addEventListener('mouseout', (e) => {
+				//	console.log(e.relatedTarget);
+				if (e.relatedTarget.className.indexOf('nav-level2') === -1)
+					//	console.log(e.relatedTarget.className);
+					this.closeLevel2Menu();
+			})
+		);
+
+
+
 		this.tips.forEach(element => {
 			element.addEventListener('click', (e) => {
 				this.toggleLevel2Menu(element, e);
@@ -83,14 +94,7 @@ class Header {
 				lastElementChild.classList.
 				add(`${this.elemName}__nav-level2-item_expanded`);
 		}
-		//для ссылки - закрыть меню 2 уровня
-		else if (elem.
-			matches(`.${this.elemName}__nav-level1-item-link`) &&
-			elem.firstElementChild == null
-		) {
-			this.closeLevel2Menu();
-			//console.log('ЗАКРЫТЬ!!!');
-		}
+
 
 		// для стрелки - открыть меню 2 уровня
 		else if (elem.
@@ -100,6 +104,25 @@ class Header {
 				lastElementChild.classList.
 				add(`${this.elemName}__nav-level2-item_expanded`);
 		}
+
+		//	для ссылки - закрыть меню 2 уровня
+		else if (elem.
+			matches(`.${this.elemName}__nav-level1-item-link`) &&
+			elem.firstElementChild == null
+		) {
+			this.closeLevel2Menu();
+			//console.log('ЗАКРЫТЬ!!!');
+		}
+
+
+
+		//для ссылки - закрыть меню 2 уровня
+		// else {
+		// 	this.closeLevel2Menu();
+		// 	//console.log('ЗАКРЫТЬ!!!');
+		// }
+
+
 	}
 
 	//скрыть меню второго уровня
