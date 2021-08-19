@@ -24,15 +24,8 @@ class RangeSlider {
 
 	render() {
 		this.slider = this.getElem('slider');
-		//this.price = this.getElem('price');
 		this.priceFrom = this.getElem('price-from');
-
 		this.priceTo = this.getElem('price-to');
-
-
-
-
-
 		this.init();
 	}
 

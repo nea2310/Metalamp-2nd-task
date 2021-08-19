@@ -11,6 +11,7 @@
 		}
 	}
 	&__button {
+		outline-offset: 5px;
 		background: none;
 		border: 1px solid $colorDarkShade25;
 		width: 40px;

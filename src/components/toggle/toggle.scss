@@ -9,11 +9,16 @@
 
 	&__wrapper {
 		display: flex;
+		position: relative;
 	}
 
 	&__checkbox {
 		position: absolute;
-		appearance: none;
+		left: 7px;
+		top: 9px;
+		width: 25px;
+		height: 1px;
+		outline-offset: 12px;
 
 		& + .toggle__checkmark {
 			border: 1px solid $colorDarkShade25;
@@ -27,10 +32,6 @@
 			border: 1px solid $colorPurple;
 			background-image: url("~comp/toggle/img/rectangle.svg");
 			background-position-x: 87%;
-		}
-
-		&:focus + .toggle__checkmark {
-			border: 2px solid $colorDarkShade75;
 		}
 	}
 

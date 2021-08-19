@@ -21,6 +21,7 @@
 
 	&__cat {
 		display: inline-flex;
+		position: relative;
 	}
 	&__cat-text {
 		margin-left: 9px;
@@ -28,16 +29,16 @@
 
 	&__cat-checkbox {
 		position: absolute;
-		appearance: none;
+		left: 7px;
+		top: 9px;
+		width: 5px;
+		height: 1px;
+		outline-offset: 12px;
 
 		&:checked + .radiobuttons__cat-radiomark {
 			border: 1px solid $colorPurple;
 			box-shadow: inset 0px 0px 0px 3.5px $colorWhite;
 			background: linear-gradient(180deg, $colorPurple 0%, #8ba4f9 100%);
-		}
-
-		&:focus + .radiobuttons__cat-radiomark {
-			border: 2px solid $colorDarkShade75;
 		}
 	}
 

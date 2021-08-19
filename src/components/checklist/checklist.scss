@@ -47,6 +47,7 @@
 
 	&__cat {
 		display: inline-flex;
+		position: relative;
 	}
 	&__cat-text {
 		margin-left: 9px;
@@ -54,7 +55,12 @@
 
 	&__cat-checkbox {
 		position: absolute;
-		appearance: none;
+		left: 7px;
+		top: 9px;
+		width: 5px;
+		height: 1px;
+		outline-offset: 12px;
+		z-index: -1;
 
 		&:checked + .checklist__cat-checkmark,
 		&:checked:focus + .checklist__cat-checkmark {
@@ -63,9 +69,6 @@
 			background-position-y: 42%;
 			background-position-x: 40%;
 			background-repeat: no-repeat;
-		}
-		&:focus + .checklist__cat-checkmark {
-			border: 2px solid $colorDarkShade75;
 		}
 	}
 
@@ -80,6 +83,7 @@
 		display: inline-block;
 		width: 18px;
 		height: 18px;
+		background-color: $colorWhite;
 	}
 
 	&__cat-name {
