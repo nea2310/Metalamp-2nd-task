@@ -6,10 +6,8 @@ html(lang = 'ru')
 		block title
 			title Layout
 	body
-		div(class = 'page-wrapper')
-			div(class = 'header-wrapper')
-				+header({authorized: false})
-			block content
-			div(class = 'footer-wrapper')
-				+footer()
+		+header({authorized: false})
+		block content
+		div(class = 'delim')
+		+footer()
 
