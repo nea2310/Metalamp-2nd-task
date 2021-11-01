@@ -1,6 +1,6 @@
 @import "@styles/glob.scss";
 .header {
-	//	border: 1px solid blue;
+	border: 1px solid blue;
 	width: 100%;
 	box-sizing: border-box;
 	height: 70px;
@@ -10,9 +10,11 @@
 	align-items: center;
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
 	background-color: $colorWhite;
+	position: relative;
 
 	@include media-breakpoint-down($xs) {
-		height: 140px;
+		height: auto;
+		align-items: flex-start;
 	}
 
 	&__wrapper {
@@ -181,6 +183,9 @@
 			width: 20px;
 			height: 20px;
 			left: 10px;
+		}
+		@include media-breakpoint-down($xs) {
+			top: 20px;
 		}
 	}
 

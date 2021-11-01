@@ -63,6 +63,17 @@ class Header {
 			this.toggleMobileMenu();
 		});
 
+		//закрыть меню-бургер при ресайзе страницы
+		window.addEventListener('resize', () => {
+
+			if (this.burger.classList.
+				contains(`${this.elemName}__burger-btn_active`)) {
+				this.toggleMobileMenu();
+			}
+
+
+		});
+
 		document.addEventListener('click', (e) => {
 			if (!e.target.closest(`.${this.elemName}__nav-level2`)) {
 				this.closeLevel2Menu();
