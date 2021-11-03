@@ -6,12 +6,15 @@ html(lang = 'ru')
 	body
 		main(class='index__main')
 			section(class='index__links')
-				a(class='index__link' href='colors-types.html') Colors & Type
-				a(class='index__link' href='form-elements.html') Form Elements
-				a(class='index__link' href='cards.html') Cards
-				a(class='index__link' href='headers-footers.html') Headers & Footers
-				a(class='index__link' href='landing-page.html') Landing page
-				a(class='index__link' href='search-room-page.html') Search room
-				a(class='index__link' href='room-details-page.html') Room details
-				a(class='index__link' href='registration-page.html') Registration
-				a(class='index__link' href='sign-in-page.html') Sign in
+				ul
+					li(class='index__page')
+						a(class='index__link' href='colors-types.html') Colors & Type
+							img(class = 'index__image' alt = 'Colors & Type' src = require('@pag/index/img/ColorsType.jpg').default)
+					a(class='index__link' href='form-elements.html') Form Elements
+					a(class='index__link' href='cards.html') Cards
+					a(class='index__link' href='headers-footers.html') Headers & Footers
+					a(class='index__link' href='landing-page.html') Landing page
+					a(class='index__link' href='search-room-page.html') Search room
+					a(class='index__link' href='room-details-page.html') Room details
+					a(class='index__link' href='registration-page.html') Registration
+					a(class='index__link' href='sign-in-page.html') Sign in

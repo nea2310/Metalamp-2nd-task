@@ -55,6 +55,7 @@ class DatePicker {
 		let separator;
 		this.isFilter ? separator = ' - ' : separator = ',';
 		this.myDatepicker = $(this.clWrapper).datepicker({
+			disableNavWhenOutOfRange: false,
 			altField: $(this.inputDate),
 			altFieldDateFormat: 'dd M',
 			multipleDatesSeparator: separator,

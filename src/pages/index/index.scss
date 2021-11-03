@@ -25,4 +25,14 @@
 			color: $colorDarkShade50;
 		}
 	}
+	&__image {
+		width: 200px;
+		height: 250px;
+	}
+	&__page {
+		max-width: 250px;
+		border: 1px solid red;
+		display: flex;
+		flex-direction: column;
+	}
 }
