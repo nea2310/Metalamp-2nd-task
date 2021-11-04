@@ -1,6 +1,9 @@
 @import "@styles/glob.scss";
 
 .index {
+	&__main {
+		background-color: $colorDarkShade5;
+	}
 	&__header {
 		padding-bottom: 20px;
 		padding-bottom: 20px;
@@ -31,6 +34,7 @@
 		}
 	}
 	&__image {
+		margin-bottom: 10px;
 		width: 200px;
 		height: 250px;
 		&:hover {
