@@ -7,14 +7,19 @@
 		font-family: "Montserrat", Arial, Helvetica, sans-serif;
 		color: $colorDarkShade75;
 	}
-	&__links {
-		max-width: $sm;
-		margin: 50px auto 0;
+	&__pages {
+		max-width: $lg;
+		margin: 0 auto;
 		display: flex;
-		flex-direction: column;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		//	flex-direction: column;
 	}
 	&__link {
-		padding-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		//	padding-bottom: 20px;
 		font-family: "Montserrat", Arial, Helvetica, sans-serif;
 		font-weight: bold;
 		font-size: 1rem;
@@ -28,11 +33,15 @@
 	&__image {
 		width: 200px;
 		height: 250px;
+		&:hover {
+			opacity: 0.7;
+		}
 	}
 	&__page {
-		max-width: 250px;
-		border: 1px solid red;
+		max-width: 200px;
+		//	border: 1px solid red;
 		display: flex;
 		flex-direction: column;
+		margin: 20px;
 	}
 }

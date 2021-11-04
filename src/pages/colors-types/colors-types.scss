@@ -9,17 +9,24 @@
 	&__cards {
 		padding-top: 68px;
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: space-between;
 	}
-	&__logo-wrapper {
-		padding-left: 30px;
-	}
+	// &__logo-wrapper {
+	// 	padding-left: 30px;
+	// }
 
 	&__colors-wrapper {
 		padding-left: 150px;
+		@include media-breakpoint-down($sm) {
+			padding-left: 20px;
+		}
 	}
 	&__types-wrapper {
 		padding-right: 100px;
+		@include media-breakpoint-down($sm) {
+			padding-right: 20px;
+		}
 	}
 }
 
@@ -133,5 +140,8 @@
 			@include font-body;
 			max-width: 305px;
 		}
+	}
+	@include media-breakpoint-down($sm) {
+		display: flex;
 	}
 }
