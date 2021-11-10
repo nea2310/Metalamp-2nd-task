@@ -12,7 +12,7 @@ const { merge } = require('webpack-merge');
 const devServ = require('./webpack.devServer.js');
 
 let pubPath;
-if (DP.isMulti) pubPath = `${PATHS.public}`;
+if (DP.isAbsPath) pubPath = `${PATHS.public}`;
 
 module.exports = merge(devServ, {
 

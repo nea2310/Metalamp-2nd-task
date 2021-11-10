@@ -34,7 +34,7 @@ module.exports = {
 				options: {
 					outputPath: `${PATHS.assets}fonts\\`,
 					// eslint-disable-next-line max-len
-					publicPath: DP.isMulti ? `${PATHS.public}/assets/fonts/` : '/assets/fonts/',
+					publicPath: DP.isAbsPath ? `${PATHS.public}/assets/fonts/` : '/assets/fonts/',
 				},
 			},
 
@@ -55,7 +55,7 @@ module.exports = {
 				options: {
 					outputPath: `${PATHS.assets}images/`,
 					// eslint-disable-next-line max-len
-					publicPath: DP.isMulti ? `${PATHS.public}/assets/images/` : '/assets/images/',
+					publicPath: DP.isAbsPath ? `${PATHS.public}/assets/images/` : '/assets/images/',
 				},
 			},
 

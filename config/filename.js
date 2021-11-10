@@ -19,7 +19,7 @@ module.exports = {
 
 		dir = dir.replace(/\//g, '\\');
 
-		if (DP.isMulti)
+		if (DP.isAbsPath)
 			dir = dir.replace(/^\\/, '');
 
 		if (DP.isDev) {
