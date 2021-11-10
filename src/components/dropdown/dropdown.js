@@ -297,7 +297,7 @@ class DropDown {
 
 	// фокус на инпут
 	focusInput() {
-		this.input.addEventListener("focus", (e) => {
+		this.input.addEventListener("focus", () => {
 			if (this.listWrapper.classList.
 				contains(this.elemName + '__list-wrapper_hidden') &&
 				this.mouseDown == false) {
@@ -308,14 +308,14 @@ class DropDown {
 
 	//проверка, клик был снаружи или внутри виджета
 	insideListClick() {
-		this.wrapper.addEventListener('click', (e) => {
+		this.wrapper.addEventListener('click', () => {
 			this.clickOnList = true;
 		});
 	}
 
 	//отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
 	collapseByClick() {
-		document.addEventListener("click", (e) => {
+		document.addEventListener("click", () => {
 			if (this.clickOnList == false) {
 				this.toggle(false);
 			} else {
@@ -326,14 +326,14 @@ class DropDown {
 
 	//проверка, фокус был снаружи или внутри виджета
 	insideListFocus() {
-		this.wrapper.addEventListener('focusin', (e) => {
+		this.wrapper.addEventListener('focusin', () => {
 			this.focusOnList = true;
 		});
 	}
 
 	//отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
 	collapseByFocus() {
-		document.addEventListener("focusin", (e) => {
+		document.addEventListener("focusin", () => {
 			if (this.focusOnList == false) {
 				this.toggle(false);
 			} else {

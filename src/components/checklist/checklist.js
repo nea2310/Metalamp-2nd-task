@@ -103,7 +103,7 @@ class CheckList {
 
 	// фокус на лейбл
 	focusInput() {
-		this.label.addEventListener("focus", (e) => {
+		this.label.addEventListener("focus", () => {
 			if (this.listWrapper.classList.
 				contains(this.elemName + '__list-wrapper_hidden') &&
 				this.mouseDown == false) {
@@ -114,7 +114,7 @@ class CheckList {
 
 	//проверка, клик был снаружи или внутри списка
 	insideListClick() {
-		this.wrapper.addEventListener('click', (e) => {
+		this.wrapper.addEventListener('click', () => {
 			this.clickOnList = true;
 		});
 	}
@@ -134,7 +134,7 @@ class CheckList {
 
 	//проверка, фокус был снаружи или внутри списка
 	insideListFocus() {
-		this.wrapper.addEventListener('focusin', (e) => {
+		this.wrapper.addEventListener('focusin', () => {
 			this.focusOnList = true;
 		});
 	}

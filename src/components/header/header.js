@@ -57,7 +57,7 @@ class Header {
 			});
 		});
 
-		this.burger.addEventListener('click', (e) => {
+		this.burger.addEventListener('click', () => {
 			this.toggleMobileMenu();
 		});
 
