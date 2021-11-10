@@ -53,6 +53,7 @@ module.exports = {
 				loader: 'file-loader',
 				options: {
 					outputPath: `${PATHS.assets}images/`,
+					// eslint-disable-next-line max-len
 					publicPath: DP.isMulti ? 'assets/images/' : '/assets/images/',
 				},
 			},
