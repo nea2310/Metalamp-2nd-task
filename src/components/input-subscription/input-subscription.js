@@ -17,9 +17,11 @@ class InputSubscribe {
 		this.input.addEventListener('change', () => {
 			testEmail(this.input.value);
 		});
-		this.link.addEventListener('click', () => {
-			testEmail(this.input.value);
-		});
+		if (this.link) {
+			this.link.addEventListener('click', () => {
+				testEmail(this.input.value);
+			});
+		}
 	}
 }
 

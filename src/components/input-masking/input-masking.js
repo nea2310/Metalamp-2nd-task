@@ -2,7 +2,7 @@ class InputMask {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^./, '');
 		this.input = elem;
-		console.log(this.input.className);
+		//	console.log(this.input.className);
 		this.calendarSingle =
 			this.input.classList.contains('js-calendar') ?
 				true : false;

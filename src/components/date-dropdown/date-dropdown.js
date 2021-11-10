@@ -168,9 +168,9 @@ class DatePicker {
 				}
 			} else if ((e.target == this.inputDate)
 				&& e.target.value.length == 23) {
-				console.log(this.myDatepicker.selectedDates);
-				console.log(e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0]);
-				console.log(e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0]);
+				// console.log(this.myDatepicker.selectedDates);
+				// console.log(e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0]);
+				// console.log(e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0]);
 
 				let a = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
 				let b = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
