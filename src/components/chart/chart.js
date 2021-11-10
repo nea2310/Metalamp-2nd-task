@@ -40,7 +40,6 @@ class Chart {
 					{ color1: '#3D4975', color2: '#909090' },
 			};
 			let getColor = (rateType) => this.colors[rateType];
-			console.log(Array.from(this.legendItems).reverse());
 			this.legendItems = Array.from(this.legendItems).reverse();
 			//создаем объект конфигурации
 			this.votes = 0;

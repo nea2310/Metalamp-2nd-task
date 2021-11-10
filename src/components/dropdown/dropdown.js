@@ -182,12 +182,10 @@ class DropDown {
 			//Если обновленное значение - минимальное разрешенное значение, то сделать кнопку "минус" неактивной
 			if (counters[i].isMin) {
 				cntToChange.previousElementSibling.disabled = true;
-				//	console.log('ДЕАКТИВИРОВАТЬ МИНУС');
 			}
 			//Если обновленное значение - максимальное разрешенное значение, то сделать кнопку "плюс" неактивной
 			if (counters[i].isMax) {
 				cntToChange.nextElementSibling.disabled = true;
-				//	console.log('ДЕАКТИВИРОВАТЬ ПЛЮС');
 			}
 		}
 		if (this.clearApplyBtns) {
@@ -219,7 +217,6 @@ class DropDown {
 			// Если категории такого типа еще нет
 			if (i == 0 || i > 0 &&
 				changedCounters[i].type != changedCounters[i - 1].type) {
-				//console.log('НЕРАВНЫ');
 				let type = changedCounters[i].type;
 				let typeforms = changedCounters[i].typeforms;
 				let cnt = changedCounters[i].cnt;
@@ -233,7 +230,6 @@ class DropDown {
 			// Если  категория такого типа уже есть
 			if (i > 0 && changedCounters[i].type ==
 				changedCounters[i - 1].type) {
-				//console.log('РАВНЫ');
 				let elem = this.countersToDisplay.find(item => item.type ==
 					changedCounters[i].type);
 				// То в массив не добавлять, а прибавить значение к значению счетчика этой категории				
@@ -313,7 +309,6 @@ class DropDown {
 	//проверка, клик был снаружи или внутри виджета
 	insideListClick() {
 		this.wrapper.addEventListener('click', (e) => {
-			console.log('CLICK INSIDE');
 			this.clickOnList = true;
 		});
 	}
@@ -322,10 +317,8 @@ class DropDown {
 	collapseByClick() {
 		document.addEventListener("click", (e) => {
 			if (this.clickOnList == false) {
-				//	console.log('КЛИК СНАРУЖИ');
 				this.toggle(false);
 			} else {
-				console.log('КЛИК ВНУТРИ');
 				this.clickOnList = false;
 			}
 		});
@@ -334,7 +327,6 @@ class DropDown {
 	//проверка, фокус был снаружи или внутри виджета
 	insideListFocus() {
 		this.wrapper.addEventListener('focusin', (e) => {
-			//	console.log('FOCUS INSIDE');
 			this.focusOnList = true;
 		});
 	}
@@ -343,10 +335,8 @@ class DropDown {
 	collapseByFocus() {
 		document.addEventListener("focusin", (e) => {
 			if (this.focusOnList == false) {
-				//	console.log('ФОКУС СНАРУЖИ');
 				this.toggle(false);
 			} else {
-				//	console.log('ФОКУС ВНУТРИ');
 				this.focusOnList = false;
 			}
 		});

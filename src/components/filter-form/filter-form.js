@@ -21,7 +21,6 @@ class FilterForm {
 
 	toggleForm() {
 		this.btn.addEventListener("click", () => {
-			console.log('CLICK');
 			this.form.classList.toggle(`${this.elemName}__wrapper_hidden`);
 			this.wrapper.classList.toggle(`${this.elemName}_hidden`);
 		});

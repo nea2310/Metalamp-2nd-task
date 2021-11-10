@@ -124,11 +124,9 @@ class CheckList {
 		document.addEventListener("click", (e) => {
 			if (e.target.closest(`.${this.elemName}` == null) ||
 				this.clickOnList == false) {
-				//	console.log('КЛИК СНАРУЖИ');
 				this.toggle(false);
 			}
 			else {
-				//	console.log('КЛИК ВНУТРИ');
 				this.clickOnList = false;
 			}
 		});
@@ -137,7 +135,6 @@ class CheckList {
 	//проверка, фокус был снаружи или внутри списка
 	insideListFocus() {
 		this.wrapper.addEventListener('focusin', (e) => {
-			//	console.log('FOCUS INSIDE');
 			this.focusOnList = true;
 		});
 	}
@@ -147,10 +144,8 @@ class CheckList {
 		document.addEventListener("focusin", (e) => {
 			if (e.target.closest(`.${this.elemName}` == null) ||
 				this.focusOnList == false) {
-				//	console.log('ФОКУС СНАРУЖИ');
 				this.toggle(false);
 			} else {
-				//	console.log('ФОКУС ВНУТРИ');
 				this.focusOnList = false;
 			}
 		});

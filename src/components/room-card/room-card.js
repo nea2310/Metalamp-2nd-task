@@ -69,7 +69,6 @@ class RoomCard {
 	}
 
 	clickPrevNext(elem) {
-		console.log('clickPrevNext');
 		//определяем текущее фото
 		let currentPhoto = this.getElem('photo_showed');
 		//определяем текущую точку

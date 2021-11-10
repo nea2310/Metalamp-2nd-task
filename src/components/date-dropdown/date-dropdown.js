@@ -97,7 +97,6 @@ class DatePicker {
 			let dateTo = this.defaultDates[1];
 			this.myDatepicker.selectDate(new Date(dateFrom));
 			this.myDatepicker.selectDate(new Date(dateTo));
-			//console.log(dateFrom);
 		}
 	}
 
@@ -168,10 +167,6 @@ class DatePicker {
 				}
 			} else if ((e.target == this.inputDate)
 				&& e.target.value.length == 23) {
-				// console.log(this.myDatepicker.selectedDates);
-				// console.log(e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0]);
-				// console.log(e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0]);
-
 				let a = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
 				let b = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
 				this.myDatepicker.clear();
@@ -227,8 +222,6 @@ class DatePicker {
 				if (this.clWrapper.classList.
 					contains(`${this.elemName}__calendar-wrapper_hidden`)) {
 					this.toggle(true);
-				} else {
-					//this.toggle(false);
 				}
 			});
 		}

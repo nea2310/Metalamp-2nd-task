@@ -49,11 +49,9 @@ class LikeButton {
 	updLikeStatus() {
 		window.addEventListener('load', () => {
 			if (localStorage.getItem('isLiked') == 'liked') {
-				//console.log('LIKED');
 				this.button.classList.add(this.elemName + '_liked');
 				this.img.src = this.iconLike;
 			} else {
-				//console.log('NOT LIKED');
 				this.button.classList.remove(this.elemName + '_liked');
 				this.img.src = this.iconUnlike;
 			}

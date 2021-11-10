@@ -44,9 +44,7 @@ class Header {
 
 		this.navLevel2.forEach(element =>
 			element.addEventListener('mouseout', (e) => {
-				//	console.log(e.relatedTarget);
 				if (e.relatedTarget.className.indexOf('nav-level2') === -1)
-					//	console.log(e.relatedTarget.className);
 					this.closeLevel2Menu();
 			})
 		);
@@ -83,7 +81,6 @@ class Header {
 
 		document.addEventListener('focusin', (e) => {
 			if (!e.target.className.match('item-link')) {
-				//	console.log(e.target.className);
 				this.closeLevel2Menu();
 			}
 		});
@@ -91,7 +88,6 @@ class Header {
 
 	// показать/ скрыть меню второго уровня
 	toggleLevel2Menu(elem, event) {
-		//	console.log(event);
 		//для ссылки - открыть меню 2 уровня
 		if (elem.
 			matches(`.${this.elemName}__nav-level1-item-link`) &&
@@ -122,18 +118,7 @@ class Header {
 			elem.firstElementChild == null
 		) {
 			this.closeLevel2Menu();
-			//console.log('ЗАКРЫТЬ!!!');
 		}
-
-
-
-		//для ссылки - закрыть меню 2 уровня
-		// else {
-		// 	this.closeLevel2Menu();
-		// 	//console.log('ЗАКРЫТЬ!!!');
-		// }
-
-
 	}
 
 	//скрыть меню второго уровня
