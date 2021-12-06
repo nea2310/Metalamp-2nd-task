@@ -3,11 +3,11 @@ mixin pagination()
 		let elemName='pagination'
 	fieldset(class = elemName aria-label = 'pagination')
 		div(class = elemName + '__pages')
-			a(class = elemName + '__elem' + ' ' + elemName + '__elem_first-last-page' href = '1') 1
-			a(class = elemName + '__elem' + ' ' + elemName + '__elem_page' href = '2') 2
-			a(class = elemName + '__elem' + ' ' + elemName + '__elem_page' href = '3') 3
+			a(class = elemName + '__elem' + ' ' + elemName + '__elem-first-last-page' href = '1') 1
+			a(class = elemName + '__elem' + ' ' + elemName + '__elem-page' href = '2') 2
+			a(class = elemName + '__elem' + ' ' + elemName + '__elem-page' href = '3') 3
 			span(class = elemName + '__elem' + ' ' + elemName + '__hidden-page'  href = 'скрытые номера страниц') ...
-			a(class = elemName + '__elem' + ' ' + elemName + '__elem_page' href = '15') 15
-			a(class = elemName + '__elem' + ' ' + elemName + '__elem_next-prev' href = 'https://test/test')
+			a(class = elemName + '__elem' + ' ' + elemName + '__elem-page' href = '15') 15
+			a(class = elemName + '__elem' + ' ' + elemName + '__elem-next-prev' href = 'https://test/test')
 				img(src = require('@com/pagination/img/arrow-forward-white.svg').default alt = 'вперед')
 		p(class = elemName + '__label') 1 - 12 из 100+ вариантов аренды

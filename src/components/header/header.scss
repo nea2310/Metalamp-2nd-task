@@ -1,6 +1,5 @@
 @import "@styles/glob.scss";
 .header {
-	//border: 1px solid blue;
 	width: 100%;
 	box-sizing: border-box;
 	height: 70px;
@@ -18,7 +17,6 @@
 	}
 
 	&__wrapper {
-		//	border: 1px solid green;
 		box-sizing: border-box;
 		max-width: 1161px;
 		width: 100%;
@@ -115,7 +113,6 @@
 		}
 	}
 	&__logo {
-		//	border: 1px solid red;
 		@include media-breakpoint-down($lg) {
 			padding-left: 20px;
 		}

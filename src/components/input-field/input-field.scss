@@ -1,13 +1,13 @@
 @import "@styles/glob.scss";
 .input-field {
 	user-select: none;
-	&-wide {
+	&_width_wide {
 		width: 320px;
 	}
-	&-medium {
+	&_width_medium {
 		width: 266px;
 	}
-	&-medium-narrow {
+	&_width_medium-narrow {
 		width: 260px;
 	}
 	display: flex;

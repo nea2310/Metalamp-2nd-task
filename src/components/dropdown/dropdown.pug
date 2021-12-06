@@ -8,7 +8,7 @@ mixin dropdown(options={width: '', type: '', labelText: '', categories: {}, butt
 		let inputStyle = ''
 		let flType = options.type=='dropDownRooms'
 		let flWidth = options.width=='narrow'
-		width = flWidth ? '_narrow' : '_wide'
+		width = flWidth ? '_width_narrow' : '_width_wide'
 		inputStyle = flType ? '_notrounded' : '_rounded'
 	div(class = elemName + ' ' + elemName + width)
 		div(class = elemName + '__input-wrapper ')

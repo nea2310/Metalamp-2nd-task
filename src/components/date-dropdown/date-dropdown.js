@@ -234,14 +234,14 @@ class DatePicker {
 			this.clWrapper.classList.
 				remove(wrap + 'calendar-wrapper_hidden');
 			for (let tip of this.tips) {
-				tip.classList.add(wrap + 'img-expanded');
+				tip.classList.add(wrap + 'img_expanded');
 				tip.classList.remove(wrap + 'img_collapsed');
 			}
 		} else {
 			this.clWrapper.classList.
 				add(wrap + 'calendar-wrapper_hidden');
 			for (let tip of this.tips) {
-				tip.classList.remove(wrap + 'img-expanded');
+				tip.classList.remove(wrap + 'img_expanded');
 				tip.classList.add(wrap + 'img_collapsed');
 			}
 		}

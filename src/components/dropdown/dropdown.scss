@@ -1,20 +1,20 @@
 @import "@styles/glob.scss";
-.dropDown__input_rounded.dropDown__input-expanded {
+.dropDown__input_rounded.dropDown__input_expanded {
 	border-color: $colorDarkShade50;
 	border-bottom: none;
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
 }
-.dropDown__input_notrounded.dropDown__input-expanded {
+.dropDown__input_notrounded.dropDown__input_expanded {
 	border-color: $colorDarkShade50;
 	border-bottom: none;
 }
 .dropDown {
 	user-select: none;
-	&_wide {
+	&_width_wide {
 		width: 320px;
 	}
-	&_narrow {
+	&_width_narrow {
 		width: 266px;
 	}
 	position: relative;
@@ -28,7 +28,7 @@
 		bottom: 17px;
 		right: 16px;
 
-		&-expanded {
+		&_expanded {
 			transform: rotate(180deg);
 			transition: all 0.3s ease 0s;
 		}

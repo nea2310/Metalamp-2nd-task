@@ -268,16 +268,16 @@ class DropDown {
 		if (flag) {
 			this.listWrapper.classList.
 				toggle(wrap + 'list-wrapper_hidden');
-			this.tip.classList.toggle(wrap + 'img-expanded');
+			this.tip.classList.toggle(wrap + 'img_expanded');
 			this.tip.classList.toggle(wrap + 'img_collapsed');
-			this.input.classList.toggle(wrap + 'input-expanded');
+			this.input.classList.toggle(wrap + 'input_expanded');
 			this.input.classList.toggle(wrap + 'input_collapsed');
 		} else {
 			this.listWrapper.classList.
 				add(wrap + 'list-wrapper_hidden');
-			this.tip.classList.remove(wrap + 'img-expanded');
+			this.tip.classList.remove(wrap + 'img_expanded');
 			this.tip.classList.add(wrap + 'img_collapsed');
-			this.input.classList.remove(wrap + 'input-expanded');
+			this.input.classList.remove(wrap + 'input_expanded');
 			this.input.classList.add(wrap + 'input_collapsed');
 		}
 	}

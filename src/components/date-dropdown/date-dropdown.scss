@@ -1,10 +1,10 @@
 @import "@styles/glob.scss";
 .date-dropdown {
 	user-select: none;
-	&_wide {
+	&_width_wide {
 		width: 320px;
 	}
-	&_narrow {
+	&_width_narrow {
 		width: 266px;
 	}
 	display: flex;
@@ -26,7 +26,7 @@
 			display: none;
 		}
 
-		&_narrow {
+		&_width_narrow {
 			@include media-breakpoint-down($sm) {
 				left: -27px;
 			}
@@ -91,7 +91,7 @@
 		bottom: 18px;
 		right: 16px;
 
-		&-expanded {
+		&_expanded {
 			transform: rotate(180deg);
 			transition: all 0.3s ease 0s;
 		}
@@ -122,10 +122,10 @@
 		&:focus {
 			border-color: $colorDarkShade50;
 		}
-		&_narrow {
+		&_width_narrow {
 			width: 150px;
 		}
-		&_wide {
+		&_width_wide {
 			width: 266px;
 		}
 	}

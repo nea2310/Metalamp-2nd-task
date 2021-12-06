@@ -1,7 +1,7 @@
 mixin input(options={labelText: '', img: false, extra: '', type: 'text'})
 	-
 		let elemName='input-field'
-	div(class = elemName +' ' + elemName + '-' + options.width)
+	div(class = elemName +' ' + elemName + '_width_' + options.width)
 		label(class = elemName+'__label')
 			if options.labelText
 				p(class = elemName+'__label-text')=options.labelText
