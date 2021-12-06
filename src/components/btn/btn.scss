@@ -14,31 +14,31 @@ $borderWidth: 2px;
 	user-select: none;
 	border-radius: 22px;
 
-	&_very-long {
+	&_length_very-long {
 		width: 100%;
 		max-width: 320px;
 	}
 
-	&_long {
+	&_length_long {
 		width: 196px;
 	}
 
-	&_short {
+	&_length_short {
 		width: 99px;
 	}
-	&_very-short {
+	&_length_very-short {
 		width: 87px;
 	}
 
-	&_wide {
+	&_width_wide {
 		height: 44px;
 	}
 
-	&_narrow {
+	&_width_narrow {
 		height: 34px;
 	}
 
-	&_plain-text {
+	&_type_plain-text {
 		color: $colorPurple;
 		border: none;
 		background: none;
@@ -47,7 +47,7 @@ $borderWidth: 2px;
 			color: $colorDarkShade50;
 		}
 	}
-	&_dark {
+	&_color_dark {
 		background: $gradientPurple;
 		color: $colorWhite;
 		&:hover,
@@ -55,7 +55,7 @@ $borderWidth: 2px;
 			opacity: 0.5;
 		}
 	}
-	&_light {
+	&_color_light {
 		background-color: $colorWhite;
 		box-shadow: inset 0px 2px 0px 0px $colorPurple, inset 0px 0px 0px 2px $colorBlue;
 		color: $colorPurple;
