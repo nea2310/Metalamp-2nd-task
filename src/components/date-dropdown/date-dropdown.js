@@ -14,17 +14,18 @@ class DatePicker {
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
-		return wrapper.querySelector(
-			'.' + this.elemName + '__' + selector);
+		return wrapper.
+			querySelector('.js-' + this.elemName + '__' + selector);
 	}
 
 	getElems(selectors) {
 		let sel = '';
 		for (let selector of selectors) {
-			sel += '.' + this.elemName + '__' + selector + ',';
+			sel += '.js-' + this.elemName + '__' + selector + ',';
 		}
 		sel = sel.substring(0, sel.length - 1);
-		return this.wrapper.querySelectorAll(sel);
+		return this.wrapper.
+			querySelectorAll(sel);
 	}
 
 	render() {
@@ -36,6 +37,8 @@ class DatePicker {
 		} else {
 			this.inputDate = this.getElem('input_fromto');
 			this.defaultDates = this.inputDate.value.split(',');
+
+
 		}
 		this.tips = this.getElems(['img']);
 		this.clWrapper = this.getElem('calendar-wrapper');
@@ -219,6 +222,8 @@ class DatePicker {
 		}
 		else {
 			this.inputDate.addEventListener('click', () => {
+
+
 				if (this.clWrapper.classList.
 					contains(`${this.elemName}__calendar-wrapper_hidden`)) {
 					this.toggle(true);

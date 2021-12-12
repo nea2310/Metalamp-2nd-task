@@ -15,7 +15,7 @@ class CheckList {
 
 	getElem(selector, wrapper = this.wrapper) {
 		return wrapper.
-			querySelector('.' + this.elemName + '__' + selector);
+			querySelector('.js-' + this.elemName + '__' + selector);
 	}
 
 	render() {

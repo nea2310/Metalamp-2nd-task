@@ -2,9 +2,9 @@ mixin chart(options={})
 	-
 		let elemName = 'chart'
 	div(class = elemName)
-		canvas(class = elemName + '__img' height = '120' width = '120')
+		canvas(class = elemName + '__img' +' js-' + elemName + '__img' height = '120' width = '120')
 		ul(class = elemName + '__legend')
-			li(class = elemName + '__legend-item' data-rate = '130' data-mark = 'exc') Великолепно
-			li(class = elemName + '__legend-item' data-rate = '65' data-mark = 'good') Хорошо
-			li(class = elemName + '__legend-item' data-rate = '65' data-mark = 'sat') Удовлетворительно
-			li(class = elemName + '__legend-item' data-rate = '0' data-mark = 'bad') Разочарован
+			li(class = elemName + '__legend-item' + ' js-' + elemName + '__legend-item' data-rate = '130' data-mark = 'exc') Великолепно
+			li(class = elemName + '__legend-item' + ' js-' + elemName + '__legend-item' data-rate = '65' data-mark = 'good') Хорошо
+			li(class = elemName + '__legend-item' + ' js-' + elemName + '__legend-item' data-rate = '65' data-mark = 'sat') Удовлетворительно
+			li(class = elemName + '__legend-item' + ' js-' + elemName + '__legend-item' data-rate = '0' data-mark = 'bad') Разочарован
