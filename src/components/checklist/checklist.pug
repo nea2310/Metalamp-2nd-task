@@ -1,18 +1,12 @@
 mixin checklist(options={type: '', labelText: '',})
 	-
 		let elemName='checklist'
-		let style = ''
-		let listStyle = ''
-		let labelStyle = ''
-		let nameStyle = ''
-		let tipStyle = ''
-		let tabindex = ''
-		options.expand == true ? style = elemName + '_collapsing' : style = ''
-		options.expand == true ? listStyle = elemName + '__list-wrapper_hidden' : listStyle = ''
-		options.expand == true ? labelStyle = elemName + '__label_collapsing' : labelStyle = ''
-		options.expand == true ? tabindex = '0' : tabindex = '-1'
-		options.expand == false ? tipStyle = elemName + '__img_non-collapsing' : tipStyle = ''
-		options.rich == true ? nameStyle = elemName + '__cat-name_rich' : nameStyle = ''
+		let style = options.expand == true ? elemName + '_collapsing' : ''
+		let listStyle = options.expand == true ? elemName + '__list-wrapper_hidden' : ''
+		let labelStyle = options.expand == true ? elemName + '__label_collapsing' : ''
+		let tabindex = options.expand == true ? '0' : '-1'
+		let tipStyle = options.expand == false ? elemName + '__img_non-collapsing' : ''
+		let nameStyle = options.rich == true ? elemName + '__cat-name_rich' : ''
 	fieldset(class = elemName + ' ' + style)
 		p(class = elemName + '__label ' + labelStyle tabindex = tabindex)=options.labelText
 			img(class = elemName + '__img ' + elemName + '__img_collapsed ' + tipStyle, src = require('@com/checklist/img/expand-more.svg').default alt = 'развернуть')
