@@ -43,10 +43,6 @@ class DatePicker {
 		} else {
 			this.inputDate = this.getElem('input_fromto');
 			this.defaultDates = this.inputDate.value.split(',');
-			//console.log(this.defaultDates);
-
-
-
 		}
 		this.tips = this.getElems(['img']);
 		this.clWrapper = this.getElem('calendar-wrapper');
@@ -71,7 +67,7 @@ class DatePicker {
 		let separator;
 		this.isFilter ? separator = ' - ' : separator = ',';
 		this.myDatepicker =
-			new AirDatepicker('.js-date-dropdown__calendar-wrapper', {
+			new AirDatepicker(this.wrapper, {
 				disableNavWhenOutOfRange: false,
 				//altField: $(this.inputDate),//ВАЖНОЕ ИЗМЕНЕНИЕ!!!!
 				altField: this.inputDate,
@@ -115,8 +111,11 @@ class DatePicker {
 		//.data('datepicker');  ВАЖНОЕ ИЗМЕНЕНИЕ!!!!
 		this.calendar = this.wrapper.
 			querySelector('.air-datepicker.-inline-');
+		//	console.log(this.calendar);
+		console.log(this.myDatepicker);
 		this.collapseByClick();
-		this.insideCalendarClick();
+		//this.insideCalendarClick();
+
 
 	}
 
@@ -332,6 +331,8 @@ class DatePicker {
 
 function renderDateDropDowns(selector) {
 	let dropDowns = document.querySelectorAll(selector);
+	console.log(dropDowns);
+
 	for (let dateDropDown of dropDowns) {
 		new DatePicker(selector, dateDropDown);
 	}
