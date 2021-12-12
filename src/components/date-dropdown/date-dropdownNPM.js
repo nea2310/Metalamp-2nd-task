@@ -36,12 +36,15 @@ class DatePicker {
 	render() {
 		let a = this.getElems(['input-wrapper']);
 		a.length == 1 ? this.isFilter = true : this.isFilter = false;
+
 		if (!this.isFilter) {
 			this.inputDateFrom = this.getElem('input_from');
 			this.inputDateTo = this.getElem('input_to');
 		} else {
 			this.inputDate = this.getElem('input_fromto');
 			this.defaultDates = this.inputDate.value.split(',');
+			//console.log(this.defaultDates);
+
 
 
 		}
@@ -70,8 +73,10 @@ class DatePicker {
 		this.myDatepicker =
 			new AirDatepicker('.js-date-dropdown__calendar-wrapper', {
 				disableNavWhenOutOfRange: false,
-				altField: $(this.inputDate),
-				altFieldDateFormat: 'dd M',
+				//altField: $(this.inputDate),//ВАЖНОЕ ИЗМЕНЕНИЕ!!!!
+				altField: this.inputDate,
+				//altFieldDateFormat: 'dd M', //ВАЖНОЕ ИЗМЕНЕНИЕ!!!!
+				altFieldDateFormat: 'dd MMM',
 				multipleDatesSeparator: separator,
 				// navTitles: {
 				// 	days: 'MM <i>yyyy</i>',
@@ -120,6 +125,8 @@ class DatePicker {
 		if (this.isFilter) {
 			let dateFrom = this.defaultDates[0];
 			let dateTo = this.defaultDates[1];
+			console.log(dateTo);
+
 			this.myDatepicker.selectDate(new Date(dateFrom));
 			this.myDatepicker.selectDate(new Date(dateTo));
 		}
