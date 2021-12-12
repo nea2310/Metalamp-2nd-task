@@ -130,14 +130,14 @@
 		}
 	}
 
-	.datepicker {
+	.air-datepicker {
 		box-sizing: border-box;
 		width: 320px;
-		&--nav {
+		&-nav {
 			border: none;
-			padding: 4px 16px 4px 16px;
-			min-height: 55px;
-			&-title {
+			padding: 4px 24px 4px 24px;
+			min-height: 51px;
+			&--title {
 				font-family: "Montserrat", Arial, Helvetica, sans-serif;
 				font-weight: bold;
 				font-size: 19px;
@@ -147,52 +147,66 @@
 					color: $colorDarkShade100;
 				}
 			}
-			&-action {
-				& path {
-					fill: $colorPurple;
-					stroke: none;
-				}
-				& svg {
-					width: 17px;
-					height: 18px;
-				}
-			}
-		}
-		&--day {
-			&-name {
-				color: $colorPurple;
-				font-family: "Montserrat", Arial, Helvetica, sans-serif;
-				font-weight: bold;
-				font-weight: 700;
-				font-size: 12px;
-				line-height: 14.63px;
-				text-transform: capitalize;
+			&--action {
+				// & path {
+				// 	fill: $colorPurple;
+				// 	stroke: none;
+				// }
+				// & svg {
+				// 	width: 17px;
+				// 	height: 18px;
+				// }
 			}
 		}
 
-		&--cells {
-			padding-top: 13px;
+		&-body {
+			&--day {
+				&-name {
+					color: $colorPurple;
+					font-family: "Montserrat", Arial, Helvetica, sans-serif;
+					font-weight: bold;
+					font-weight: 700;
+					font-size: 12px;
+					line-height: 14.63px;
+					text-transform: capitalize;
+					//color: red;
+				}
+			}
+			&--cells {
+				padding-top: 10px;
+				&.-days- {
+					grid-template-columns: repeat(7, 40px);
+					grid-auto-rows: 40px;
+				}
+			}
 		}
 
-		&--cell {
+		&-cell {
 			height: 39px;
-			&-day {
+			//	border: 1px solid red;
+			&.-day- {
 				color: $colorDarkShade50;
 				font-family: "Montserrat", Arial, Helvetica, sans-serif;
 				font-weight: normal;
 				font-weight: 400;
 				font-size: 12px;
 				line-height: 14.63px;
+				//	color: red;
+
+				// &.-disabled- {
+				// 	color: $colorDarkShade25;
+				// //	color: red;
+				// }
 			}
 		}
 		&--content {
-			padding: 15px 18px 50px 20px;
+			padding: 17px 18px 54px 20px;
 		}
-		&--buttons {
-			border: none;
-		}
+		// &--buttons {
+		// 	border: none;
+		// }
 
-		&--cell-day {
+		&-cell.-day- {
 			&.-disabled- {
 				color: $colorDarkShade25;
 			}

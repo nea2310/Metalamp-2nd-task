@@ -71,6 +71,8 @@ class DatePicker {
 			prevHtml: '<img src="' + imgPrev + '">',
 			nextHtml: '<img src="' + imgNext + '">',
 			onSelect: (selectedDate) => {
+				console.log(selectedDate);
+
 				if (!this.isFilter) {
 					let dateArr = selectedDate.split(',');
 					let val;
@@ -89,6 +91,7 @@ class DatePicker {
 		}).data('datepicker');
 		this.calendar = this.wrapper.
 			querySelector('.datepicker-inline');
+		console.log(this.calendar);
 		this.collapseByClick();
 		this.insideCalendarClick();
 	}
@@ -306,4 +309,4 @@ function renderDateDropDowns(selector) {
 		new DatePicker(selector, dateDropDown);
 	}
 }
-renderDateDropDowns('.date-dropdown');
+//renderDateDropDowns('.date-dropdown');
