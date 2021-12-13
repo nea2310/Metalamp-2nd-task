@@ -124,7 +124,7 @@ class DatePicker {
 		if (this.isFilter) {
 			let dateFrom = this.defaultDates[0];
 			let dateTo = this.defaultDates[1];
-			console.log(dateTo);
+			//console.log(dateTo);
 
 			this.myDatepicker.selectDate(new Date(dateFrom));
 			this.myDatepicker.selectDate(new Date(dateTo));
@@ -308,7 +308,7 @@ class DatePicker {
 						this.myDatepicker.clear();// очистить календарь (снять выделение с обеих дат)
 					} else {// очищен правый инпут
 						let a = this.myDatepicker.selectedDates[1];
-						this.myDatepicker.removeDate(a); // снять выделение с второй даты (левый инпут и первая дата остаются)
+						this.myDatepicker.unselectDate(a); // снять выделение с второй даты (левый инпут и первая дата остаются)
 					}
 				}
 			}
