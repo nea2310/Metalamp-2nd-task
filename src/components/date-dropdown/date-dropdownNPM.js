@@ -67,7 +67,7 @@ class DatePicker {
 		let separator;
 		this.isFilter ? separator = ' - ' : separator = ',';
 		this.myDatepicker =
-			new AirDatepicker(this.wrapper, {
+			new AirDatepicker(this.clWrapper, {
 				disableNavWhenOutOfRange: false,
 				//altField: $(this.inputDate),//ВАЖНОЕ ИЗМЕНЕНИЕ!!!!
 				altField: this.inputDate,
@@ -114,7 +114,7 @@ class DatePicker {
 		//	console.log(this.calendar);
 		console.log(this.myDatepicker);
 		this.collapseByClick();
-		//this.insideCalendarClick();
+		this.insideCalendarClick();
 
 
 	}
