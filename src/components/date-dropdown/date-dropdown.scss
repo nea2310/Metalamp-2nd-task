@@ -25,50 +25,6 @@
 		&_hidden {
 			display: none;
 		}
-
-		&_width_narrow {
-			@include media-breakpoint-down($sm) {
-				left: -27px;
-			}
-			& .datepicker-inline .datepicker {
-				width: 266px;
-				@include media-breakpoint-down($sm) {
-					width: 320px;
-				}
-				&--cell {
-					height: 32px;
-					@include media-breakpoint-down($sm) {
-						height: 39px;
-					}
-				}
-				&--cell-day {
-					&.-range-from-::after {
-						height: 32px;
-						width: 32.2px;
-						@include media-breakpoint-down($sm) {
-							height: 39px;
-							width: 40px;
-						}
-					}
-					&.-range-to-::before {
-						height: 32px;
-						width: 32.2px;
-						@include media-breakpoint-down($sm) {
-							height: 39px;
-							width: 40px;
-						}
-					}
-					&.-in-range-.-focus-::before {
-						height: 32px;
-						width: 32.27px;
-						@include media-breakpoint-down($sm) {
-							height: 39px;
-							width: 40px;
-						}
-					}
-				}
-			}
-		}
 	}
 
 	&__button-clear {
@@ -176,7 +132,7 @@
 				padding-top: 10px;
 				&.-days- {
 					grid-template-columns: repeat(7, 40px);
-					grid-auto-rows: 40px;
+					grid-auto-rows: 39px;
 				}
 			}
 		}
@@ -282,6 +238,61 @@
 					width: 40px;
 					background: $gradientPurple;
 					opacity: 0.5;
+				}
+			}
+		}
+	}
+
+	&_width_narrow {
+		// @include media-breakpoint-down($sm) {
+		// 	left: -27px;
+		// }
+		.air-datepicker {
+			border: 1px solid red;
+			width: 266px;
+			// @include media-breakpoint-down($sm) {
+			// 	width: 320px;
+			// }
+
+			&-body {
+				&--cells {
+					&.-days- {
+						grid-template-columns: repeat(7, 32px);
+						grid-auto-rows: 32px;
+					}
+				}
+			}
+
+			&-cell {
+				height: 32px;
+				// @include media-breakpoint-down($sm) {
+				// 	height: 39px;
+				// }
+			}
+			&-cell.-day- {
+				&.-range-from-::after {
+					height: 32px;
+					width: 32.2px;
+					// @include media-breakpoint-down($sm) {
+					// 	height: 39px;
+					// 	width: 40px;
+					// }
+				}
+				&.-range-to-::before {
+					height: 32px;
+					width: 32.2px;
+					// @include media-breakpoint-down($sm) {
+					// 	height: 39px;
+					// 	width: 40px;
+					// }
+				}
+				&.-in-range-.-focus-::before {
+					height: 32px;
+					width: 32.27px;
+					// @include media-breakpoint-down($sm) {
+					// 	height: 39px;
+					// 	width: 40px;
+					// }
 				}
 			}
 		}

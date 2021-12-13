@@ -139,29 +139,34 @@ class DatePicker {
 				this.initDate = this.inputDate.value;
 				let startDate = this.myDatepicker.selectedDates[0];
 				let endDate = this.myDatepicker.selectedDates[1];
-				let tempStDate = String(startDate.getDate());
-				let startDay
-					= tempStDate.length == 1 ? '0' + tempStDate : tempStDate;
-				let tempStMonth = String(startDate.getMonth() + 1);
-				let startMonth
-					= tempStMonth.length == 1 ? '0' + tempStMonth : tempStMonth;
-				startMonth = startMonth == '12' ? '01' : startMonth;
-				let tempEndDate = String(endDate.getDate());
-				let endDay
-					= tempEndDate.length == 1 ? '0' + tempEndDate : tempEndDate;
-				let tempEndMonth = String(endDate.getMonth() + 1);
-				let endMonth
-					= tempEndMonth.length == 1 ? '0' + tempEndMonth :
-						tempEndMonth;
-				endMonth = endMonth == '12' ? '01' : endMonth;
-				e.target.value =
-					startDay + '.'
-					+ startMonth + '.'
-					+ startDate.getFullYear() + ' - '
-					+ endDay + '.'
-					+ endMonth + '.'
-					+ endDate.getFullYear();
-				this.initDateParsed = this.inputDate.value;
+				if (startDate || endDate) {
+					let tempStDate = String(startDate.getDate());
+					let startDay = tempStDate.length == 1 ? '0' + tempStDate :
+						tempStDate;
+					let tempStMonth = String(startDate.getMonth() + 1);
+					let startMonth = tempStMonth.length == 1 ?
+						'0' + tempStMonth : tempStMonth;
+					startMonth = startMonth == '12' ? '01' : startMonth;
+					let tempEndDate = String(endDate.getDate());
+					let endDay = tempEndDate.length == 1 ? '0' + tempEndDate :
+						tempEndDate;
+					let tempEndMonth = String(endDate.getMonth() + 1);
+					let endMonth
+						= tempEndMonth.length == 1 ? '0' + tempEndMonth :
+							tempEndMonth;
+					endMonth = endMonth == '12' ? '01' : endMonth;
+					e.target.value =
+						startDay + '.'
+						+ startMonth + '.'
+						+ startDate.getFullYear() + ' - '
+						+ endDay + '.'
+						+ endMonth + '.'
+						+ endDate.getFullYear();
+					this.initDateParsed = this.inputDate.value;
+				}
+
+
+
 			});
 
 			this.inputDate.addEventListener('blur', () => {
