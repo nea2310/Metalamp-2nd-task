@@ -1,9 +1,14 @@
 import './date-dropdown.scss';
+
+import AirDatepicker from 'air-datepicker';
+import 'air-datepicker/air-datepicker.css';
+
 class DatePicker {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName.replace(/^.js-/, '');
 		this.wrapper = elem;
 		this.render();
+
 		this.init();
 		this.setDefaultDate();
 		this.datePrint();
@@ -31,20 +36,24 @@ class DatePicker {
 	render() {
 		let a = this.getElems(['input-wrapper']);
 		a.length == 1 ? this.isFilter = true : this.isFilter = false;
+
 		if (!this.isFilter) {
 			this.inputDateFrom = this.getElem('input_from');
 			this.inputDateTo = this.getElem('input_to');
 		} else {
 			this.inputDate = this.getElem('input_fromto');
 			this.defaultDates = this.inputDate.value.split(',');
-
-
 		}
 		this.tips = this.getElems(['img']);
 		this.clWrapper = this.getElem('calendar-wrapper');
 		this.btnClear = this.getElem('button-clear');
 		this.btnApply = this.getElem('button-apply');
 	}
+
+
+
+
+
 
 	/*Выбор даты в календаре*/
 	init() {
@@ -57,41 +66,43 @@ class DatePicker {
 		).default;
 		let separator;
 		this.isFilter ? separator = ' - ' : separator = ',';
-		this.myDatepicker = $(this.clWrapper).datepicker({
-			disableNavWhenOutOfRange: false,
-			altField: $(this.inputDate),
-			altFieldDateFormat: 'dd M',
-			multipleDatesSeparator: separator,
-			navTitles: {
-				days: 'MM <i>yyyy</i>',
-			},
-			minDate: new Date(),
-			range: true,
-			multipleDates: true,
-			prevHtml: '<img src="' + imgPrev + '">',
-			nextHtml: '<img src="' + imgNext + '">',
-			onSelect: (selectedDate) => {
-				console.log(selectedDate);
-
-				if (!this.isFilter) {
-					let dateArr = selectedDate.split(',');
-					let val;
-					if (dateArr.length == 1) {//если выбрана одиночная дата
-						val = '';
-					} else {//если выбран диапазон дат
-						val = dateArr[1];
+		this.myDatepicker =
+			new AirDatepicker(this.clWrapper, {
+				disableNavWhenOutOfRange: false,
+				altField: this.inputDate,
+				altFieldDateFormat: 'dd MMM',
+				multipleDatesSeparator: separator,
+				navTitles: {
+					days: 'MMMM <i>yyyy</i>',
+				},
+				minDate: new Date(),
+				range: true,
+				multipleDates: true,
+				prevHtml: '<img src="' + imgPrev + '">',
+				nextHtml: '<img src="' + imgNext + '">',
+				onSelect: (selectedDate) => {
+					let date = selectedDate.formattedDate;
+					if (date.length != 0) {
+						if (!this.isFilter) {
+							let dateArr = date;
+							let val;
+							if (dateArr.length == 1) {//если выбрана одиночная дата
+								val = '';
+							} else {//если выбран диапазон дат
+								val = dateArr[1];
+							}
+							this.inputDateFrom.value = dateArr[0];
+							this.inputDateTo.value = val;
+						} else {
+							this.inputDate.value =
+								this.inputDate.value.toLowerCase();
+						}
 					}
-					this.inputDateFrom.value = dateArr[0];
-					this.inputDateTo.value = val;
-				} else {
-					this.inputDate.value =
-						this.inputDate.value.toLowerCase();
 				}
-			}
-		}).data('datepicker');
+			});
+
 		this.calendar = this.wrapper.
-			querySelector('.datepicker-inline');
-		console.log(this.calendar);
+			querySelector('.air-datepicker.-inline-');
 		this.collapseByClick();
 		this.insideCalendarClick();
 	}
@@ -114,29 +125,31 @@ class DatePicker {
 				this.initDate = this.inputDate.value;
 				let startDate = this.myDatepicker.selectedDates[0];
 				let endDate = this.myDatepicker.selectedDates[1];
-				let tempStDate = String(startDate.getDate());
-				let startDay
-					= tempStDate.length == 1 ? '0' + tempStDate : tempStDate;
-				let tempStMonth = String(startDate.getMonth() + 1);
-				let startMonth
-					= tempStMonth.length == 1 ? '0' + tempStMonth : tempStMonth;
-				startMonth = startMonth == '12' ? '01' : startMonth;
-				let tempEndDate = String(endDate.getDate());
-				let endDay
-					= tempEndDate.length == 1 ? '0' + tempEndDate : tempEndDate;
-				let tempEndMonth = String(endDate.getMonth() + 1);
-				let endMonth
-					= tempEndMonth.length == 1 ? '0' + tempEndMonth :
-						tempEndMonth;
-				endMonth = endMonth == '12' ? '01' : endMonth;
-				e.target.value =
-					startDay + '.'
-					+ startMonth + '.'
-					+ startDate.getFullYear() + ' - '
-					+ endDay + '.'
-					+ endMonth + '.'
-					+ endDate.getFullYear();
-				this.initDateParsed = this.inputDate.value;
+				if (startDate || endDate) {
+					let tempStDate = String(startDate.getDate());
+					let startDay = tempStDate.length == 1 ? '0' + tempStDate :
+						tempStDate;
+					let tempStMonth = String(startDate.getMonth() + 1);
+					let startMonth = tempStMonth.length == 1 ?
+						'0' + tempStMonth : tempStMonth;
+					startMonth = startMonth == '12' ? '01' : startMonth;
+					let tempEndDate = String(endDate.getDate());
+					let endDay = tempEndDate.length == 1 ? '0' + tempEndDate :
+						tempEndDate;
+					let tempEndMonth = String(endDate.getMonth() + 1);
+					let endMonth
+						= tempEndMonth.length == 1 ? '0' + tempEndMonth :
+							tempEndMonth;
+					endMonth = endMonth == '12' ? '01' : endMonth;
+					e.target.value =
+						startDay + '.'
+						+ startMonth + '.'
+						+ startDate.getFullYear() + ' - '
+						+ endDay + '.'
+						+ endMonth + '.'
+						+ endDate.getFullYear();
+					this.initDateParsed = this.inputDate.value;
+				}
 			});
 
 			this.inputDate.addEventListener('blur', () => {
@@ -283,7 +296,7 @@ class DatePicker {
 						this.myDatepicker.clear();// очистить календарь (снять выделение с обеих дат)
 					} else {// очищен правый инпут
 						let a = this.myDatepicker.selectedDates[1];
-						this.myDatepicker.removeDate(a); // снять выделение с второй даты (левый инпут и первая дата остаются)
+						this.myDatepicker.unselectDate(a); // снять выделение с второй даты (левый инпут и первая дата остаются)
 					}
 				}
 			}
@@ -309,4 +322,4 @@ function renderDateDropDowns(selector) {
 		new DatePicker(selector, dateDropDown);
 	}
 }
-//renderDateDropDowns('.date-dropdown');
+renderDateDropDowns('.js-date-dropdown');

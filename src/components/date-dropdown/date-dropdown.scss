@@ -103,16 +103,6 @@
 					color: $colorDarkShade100;
 				}
 			}
-			&--action {
-				// & path {
-				// 	fill: $colorPurple;
-				// 	stroke: none;
-				// }
-				// & svg {
-				// 	width: 17px;
-				// 	height: 18px;
-				// }
-			}
 		}
 
 		&-body {
@@ -125,7 +115,6 @@
 					font-size: 12px;
 					line-height: 14.63px;
 					text-transform: capitalize;
-					//color: red;
 				}
 			}
 			&--cells {
@@ -139,7 +128,6 @@
 
 		&-cell {
 			height: 39px;
-			//	border: 1px solid red;
 			&.-day- {
 				color: $colorDarkShade50;
 				font-family: "Montserrat", Arial, Helvetica, sans-serif;
@@ -147,21 +135,11 @@
 				font-weight: 400;
 				font-size: 12px;
 				line-height: 14.63px;
-				//	color: red;
-
-				// &.-disabled- {
-				// 	color: $colorDarkShade25;
-				// //	color: red;
-				// }
 			}
 		}
 		&--content {
 			padding: 17px 18px 54px 20px;
 		}
-		// &--buttons {
-		// 	border: none;
-		// }
-
 		&-cell.-day- {
 			&.-disabled- {
 				color: $colorDarkShade25;
@@ -244,16 +222,8 @@
 	}
 
 	&_width_narrow {
-		// @include media-breakpoint-down($sm) {
-		// 	left: -27px;
-		// }
 		.air-datepicker {
-			border: 1px solid red;
 			width: 266px;
-			// @include media-breakpoint-down($sm) {
-			// 	width: 320px;
-			// }
-
 			&-body {
 				&--cells {
 					&.-days- {
@@ -265,34 +235,19 @@
 
 			&-cell {
 				height: 32px;
-				// @include media-breakpoint-down($sm) {
-				// 	height: 39px;
-				// }
 			}
 			&-cell.-day- {
 				&.-range-from-::after {
 					height: 32px;
 					width: 32.2px;
-					// @include media-breakpoint-down($sm) {
-					// 	height: 39px;
-					// 	width: 40px;
-					// }
 				}
 				&.-range-to-::before {
 					height: 32px;
 					width: 32.2px;
-					// @include media-breakpoint-down($sm) {
-					// 	height: 39px;
-					// 	width: 40px;
-					// }
 				}
 				&.-in-range-.-focus-::before {
 					height: 32px;
 					width: 32.27px;
-					// @include media-breakpoint-down($sm) {
-					// 	height: 39px;
-					// 	width: 40px;
-					// }
 				}
 			}
 		}
