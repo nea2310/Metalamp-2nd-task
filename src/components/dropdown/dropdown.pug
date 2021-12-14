@@ -10,30 +10,30 @@ mixin dropdown(options={width: '', type: '', labelText: '', categories: {}, butt
 		let flWidth = options.width=='narrow'
 		width = flWidth ? '_width_narrow' : '_width_wide'
 		inputStyle = flType ? '_notrounded' : '_rounded'
-	div(class = elemName + ' ' + elemName + width)
+	div(class = elemName + ' js-' + elemName + ' ' + elemName + width)
 		div(class = elemName + '__input-wrapper ')
 			label(class = elemName + '__label')
 				if options.labelText
 					p(class = elemName + '__label-text')=options.labelText
-				img(class = elemName + '__img ' + elemName + '__img_collapsed', src = require('@com/dropdown/img/expand-more.svg').default  alt = 'раскрывающийся список')
-				input(class = elemName + '__input ' + elemName + '__input_collapsed ' + elemName + '__input' + inputStyle readonly = true, value = '' placeholder = options.placeholder)
-		div(class = elemName + '__list-wrapper ' + elemName + '__list-wrapper_hidden')
+				img(class = elemName + '__img ' + 'js-' + elemName + '__img ' + elemName + '__img_collapsed', src = require('@com/dropdown/img/expand-more.svg').default  alt = 'раскрывающийся список')
+				input(class = elemName + '__input ' + 'js-' + elemName + '__input ' + elemName + '__input_collapsed ' + elemName + '__input' + inputStyle readonly = true, value = '' placeholder = options.placeholder)
+		div(class = elemName + '__list-wrapper ' + 'js-' + elemName + '__list-wrapper ' + elemName + '__list-wrapper_hidden')
 			ul(class = elemName + '__list')
 				each val, index in options.categories
-					li(class = elemName + '__cat-wrapper')
-						p(class = elemName + '__cat' data-type = val.type data-typeforms = val.typeforms)=val.displayName
+					li(class = elemName + '__cat-wrapper ' + 'js-' +  elemName + '__cat-wrapper')
+						p(class = elemName + '__cat ' + 'js-' + elemName + '__cat' data-type = val.type data-typeforms = val.typeforms)=val.displayName
 						div(class = elemName + '__count-wrapper')
-							button(class = elemName + '__count-decrem' data-min = val.minCnt type = 'button' aria-label = 'уменьшить количество')=minus
-							span(class = elemName + '__count-val')=val.defaultCnt
-							button(class = elemName + '__count-increm' data-max = val.maxCnt type = 'button' aria-label = 'увеличить количество')=plus
+							button(class = elemName + '__count-decrem ' + 'js-' + elemName + '__count-decrem' data-min = val.minCnt type = 'button' aria-label = 'уменьшить количество')=minus
+							span(class = elemName + '__count-val ' + 'js-' + elemName + '__count-val')=val.defaultCnt
+							button(class = elemName + '__count-increm ' + 'js-' + elemName + '__count-increm' data-max = val.maxCnt type = 'button' aria-label = 'увеличить количество')=plus
 			if (options.buttons)
 				div(class = elemName+'__buttons')
-					div(class = elemName + '__button-clear')
+					div(class = elemName + '__button-clear ' + 'js-' + elemName + '__button-clear')
 						+btn(
 							{text: 'очистить',
 							type: 'plain-text'}
 							)
-					div(class = elemName + '__button-apply')
+					div(class = elemName + '__button-apply ' + 'js-' + elemName + '__button-apply')
 						+btn(
 							{text: 'применить',
 							type: 'plain-text'}

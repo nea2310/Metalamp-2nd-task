@@ -1,7 +1,7 @@
 import './dropdown.scss';
 class DropDown {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName.replace(/^.js-/, '');
 		this.wrapper = elem;
 		this.render();
 		this.clickInput();
@@ -17,13 +17,13 @@ class DropDown {
 
 	getElem(selector, wrapper = this.wrapper) {
 		return wrapper.
-			querySelector('.' + this.elemName + '__' + selector);
+			querySelector('.js-' + this.elemName + '__' + selector);
 	}
 
 	getElems(selectors) {
 		let sel = '';
 		for (let selector of selectors) {
-			sel += '.' + this.elemName + '__' + selector + ',';
+			sel += '.js-' + this.elemName + '__' + selector + ',';
 		}
 		sel = sel.substring(0, sel.length - 1);
 		return this.wrapper.
@@ -373,5 +373,5 @@ function renderDropDowns(selector) {
 		new DropDown(selector, dropDown);
 	}
 }
-renderDropDowns('.dropdown');
+renderDropDowns('.js-dropdown');
 
