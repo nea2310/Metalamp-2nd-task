@@ -100,5 +100,5 @@ function renderRangeSliders(selector) {
 		new RangeSlider(selector, rangeSlider);
 	}
 }
-renderRangeSliders('.js-range-slider');
+//renderRangeSliders('.js-range-slider');
 

@@ -1,7 +1,7 @@
 mixin range-slider(options = {})
 	-
 		let elemName = 'range-slider'
-	div(class = elemName)
+	div(class = elemName + ' js-' + elemName)
 		div(class = elemName + '__wrapper')
 			div(class = elemName + '__title-wrapper')
 				if options.labelText
