@@ -2,7 +2,7 @@ include ../btn/btn.pug
 mixin booking(options={})
 	-
 		let elemName = 'booking'
-	form(class = elemName)
+	form(class = elemName + ' js-' + elemName)
 		div(class = elemName + '__dtls')
 			div(class = elemName + '__dtls-room')
 				span(class = elemName + '__dtl-mark') №

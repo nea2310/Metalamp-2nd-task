@@ -1,7 +1,8 @@
 import './login.scss';
 class Login {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		//this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName;
 		this.wrapper = elem;
 		this.render();
 		this.focusInput();
@@ -11,9 +12,9 @@ class Login {
 
 	render() {
 		this.form = this.wrapper.
-			querySelector(`.${this.elemName}__login-form`);
+			querySelector(`${this.elemName}__login-form`);
 		this.inputs = this.wrapper.
-			querySelectorAll('.input-field__input');
+			querySelectorAll('input');
 	}
 
 	// При фокусе убрать красную рамку с инпута
@@ -57,4 +58,4 @@ function renderLogins(selector) {
 		new Login(selector, login);
 	}
 }
-renderLogins('.login');
+renderLogins('.js-login');

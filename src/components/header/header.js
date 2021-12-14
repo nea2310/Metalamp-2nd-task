@@ -1,7 +1,7 @@
 import './header.scss';
 class Header {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName.replace(/^.js-/, '');
 		this.wrapper = elem;
 		this.render();
 	}
@@ -140,4 +140,4 @@ function renderHeaders(selector) {
 		new Header(selector, header);
 	}
 }
-renderHeaders('.header');
+renderHeaders('.js-header');

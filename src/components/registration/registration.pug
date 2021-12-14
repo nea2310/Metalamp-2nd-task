@@ -5,8 +5,8 @@ include ../btn/btn.pug
 mixin registration(options={})
 	-
 		let elemName = 'registration'
-	div(class = elemName)
-		form(class = elemName + '__reg-form')
+	div(class = elemName + ' js-' + elemName)
+		form(class = elemName + '__reg-form' + ' js-' + elemName + '__reg-form')
 			h1(class = elemName + '__header') Регистрация аккаунта
 			fieldset(class = elemName + '__name-surname')
 				div(class = elemName + '__name')

@@ -1,7 +1,7 @@
 import './registration.scss';
 class Registration {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName;
 		this.wrapper = elem;
 		this.render();
 		this.focusInput();
@@ -11,10 +11,10 @@ class Registration {
 
 	render() {
 		this.form = this.wrapper.
-			querySelector(`.${this.elemName}__reg-form`);
+			querySelector(`${this.elemName}__reg-form`);
 		this.date = this.wrapper.querySelector('.js-masked');
 		this.inputs = this.wrapper.
-			querySelectorAll('.input-field__input');
+			querySelectorAll('input');
 	}
 	// При фокусе убрать красную рамку с инпута
 	focusInput() {
@@ -63,4 +63,4 @@ function renderRegistrations(selector) {
 		new Registration(selector, registration);
 	}
 }
-renderRegistrations('.registration');
+renderRegistrations('.js-registration');

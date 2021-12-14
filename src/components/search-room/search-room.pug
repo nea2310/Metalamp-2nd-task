@@ -4,7 +4,7 @@ include ../btn/btn.pug
 mixin search-room(options={})
 	-
 		let elemName = 'search-room'
-	form(class = elemName)
+	form(class = elemName + ' js-' + elemName)
 		h1(class = elemName + '__header') Найдем номера под ваши пожелания
 		div(class = elemName + '__date-dropdown')
 			+date-dropdown(

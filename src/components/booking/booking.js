@@ -64,4 +64,4 @@ function renderBookings(selector) {
 		new Booking(selector, booking);
 	}
 }
-renderBookings('.booking');
+renderBookings('.js-booking');

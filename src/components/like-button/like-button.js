@@ -1,7 +1,7 @@
 import './like-button.scss';
 class LikeButton {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName.replace(/^.js-/, '');
 		this.wrapper = elem;
 		this.render();
 		this.click();
@@ -69,5 +69,5 @@ function renderLikeButtons(selector) {
 		new LikeButton(selector, likeButton);
 	}
 }
-renderLikeButtons('.like-button');
+renderLikeButtons('.js-like-button');
 

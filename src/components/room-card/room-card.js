@@ -1,7 +1,7 @@
 import './room-card.scss';
 class RoomCard {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName.replace(/^.js-/, '');
 		this.wrapper = elem;
 		this.render();
 		this.createDots();
@@ -72,7 +72,7 @@ class RoomCard {
 		//определяем текущее фото
 		let currentPhoto = this.getElem('photo_showed');
 		//определяем текущую точку
-		let currentDot = this.getElem('dot_active');
+		let currentDot = this.getElem('dot_active'); // ??
 		let i = parseInt(currentPhoto.getAttribute('data-sec'));
 		let newPhoto;
 		let newDot;
@@ -81,12 +81,12 @@ class RoomCard {
 			if (i != 1) {
 				newPhoto = this.getElemAdv('photo', 'data-sec',
 					i - 1);
-				newDot = this.getElemAdv('dot', 'data-sec',
+				newDot = this.getElemAdv('dot', 'data-sec', //??
 					i - 1);
 			} else {
 				newPhoto = this.getElemAdv('photo', 'data-sec',
 					this.images.length);
-				newDot = this.getElemAdv('dot', 'data-sec',
+				newDot = this.getElemAdv('dot', 'data-sec', //??
 					this.images.length);
 			}
 			//Кликнули [Вперед]
@@ -94,11 +94,11 @@ class RoomCard {
 			if (i != this.images.length) {
 				newPhoto = this.getElemAdv('photo', 'data-sec',
 					i + 1);
-				newDot = this.getElemAdv('dot', 'data-sec',
+				newDot = this.getElemAdv('dot', 'data-sec',//??
 					i + 1);
 			} else {
 				newPhoto = this.getElemAdv('photo', 'data-sec', '1');
-				newDot = this.getElemAdv('dot', 'data-sec', '1');
+				newDot = this.getElemAdv('dot', 'data-sec', '1');//??
 			}
 		}
 		this.toggle(currentPhoto, currentDot, newPhoto, newDot);
@@ -108,6 +108,7 @@ class RoomCard {
 		for (let i = 1; i <= this.images.length; i++) {
 			let dot = document.createElement('button');
 			dot.classList.add(this.elemName + '__dot');
+			dot.classList.add('js-' + this.elemName + '__dot');
 			dot.setAttribute('data-sec', i);
 			dot.setAttribute('aria-label', 'фото номера');
 			dot.setAttribute('tabindex', '-1');
@@ -151,4 +152,4 @@ function renderRoomCards(selector) {
 		new RoomCard(selector, roomCard);
 	}
 }
-renderRoomCards('.room-card');
+renderRoomCards('.js-room-card');

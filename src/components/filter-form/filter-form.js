@@ -1,7 +1,7 @@
 import './filter-form.scss';
 class FilterForm {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName.replace(/^.js-/, '');
 		this.wrapper = elem;
 		this.render();
 		this.toggleForm();
@@ -55,5 +55,5 @@ function renderFilterForms(selector) {
 		new FilterForm(selector, filterForm);
 	}
 }
-renderFilterForms('.filter-form');
+renderFilterForms('.js-filter-form');
 

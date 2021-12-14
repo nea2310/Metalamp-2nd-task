@@ -1,7 +1,7 @@
 import './chart.scss';
 class Chart {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName.replace(/^.js-/, '');
 		this.wrapper = elem;
 		this.render();
 		this.drawCircles();
@@ -191,7 +191,7 @@ function renderCharts(selector) {
 		new Chart(selector, chart);
 	}
 }
-renderCharts('.chart');
+renderCharts('.js-chart');
 
 
 

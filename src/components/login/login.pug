@@ -3,8 +3,8 @@ include ../btn/btn.pug
 mixin login(options={})
 	-
 		let elemName = 'login'
-	div(class = elemName)
-		form(class = elemName + '__login-form')
+	div(class = elemName + ' js-' + elemName)
+		form(class = elemName + '__login-form' + ' js-' + elemName + '__login-form')
 			h1(class = elemName + '__header') Войти
 			fieldset(class = elemName + '__credentials') 
 				div(class = elemName + '__email')

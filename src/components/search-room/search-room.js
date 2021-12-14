@@ -1,7 +1,7 @@
 import './search-room.scss';
 class SearchRoom {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		//	this.elemName = elemName.replace(/^./, '');
 		this.wrapper = elem;
 		this.render();
 		this.focusInput();
@@ -9,10 +9,10 @@ class SearchRoom {
 	}
 
 	render() {
-		this.dates = this.wrapper.querySelectorAll('.date-dropdown__input');
-		this.guests = this.wrapper.querySelector('.dropdown__input');
+		this.dates = this.wrapper.querySelectorAll('.js-date-dropdown__input');
+		this.guests = this.wrapper.querySelector('.js-dropdown__input');
 		this.inputs = this.wrapper.
-			querySelectorAll('.dropdown__input, .date-dropdown__input');
+			querySelectorAll('.js-dropdown__input, .js-date-dropdown__input');
 	}
 	// При фокусе убрать красную рамку с инпута
 	focusInput() {
@@ -59,4 +59,4 @@ function renderSearchRooms(selector) {
 		new SearchRoom(selector, searchRoom);
 	}
 }
-renderSearchRooms('.search-room');
+renderSearchRooms('.js-search-room');

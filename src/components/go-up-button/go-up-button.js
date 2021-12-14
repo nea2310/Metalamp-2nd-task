@@ -1,7 +1,7 @@
 import './go-up-button.scss';
 class GoUpButton {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName.replace(/^.js-/, '');
 		this.wrapper = elem;
 		this.click();
 		this.checkScroll();
@@ -31,5 +31,5 @@ function renderGoUpButtons(selector) {
 		new GoUpButton(selector, goUpButton);
 	}
 }
-renderGoUpButtons('.go-up-button');
+renderGoUpButtons('.js-go-up-button');
 

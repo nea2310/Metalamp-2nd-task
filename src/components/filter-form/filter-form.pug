@@ -6,10 +6,10 @@ include ../btn/btn.pug
 mixin filter-form()
 	-
 		let elemName ='filter-form'
-	form(class = elemName)
-		div(class = elemName + '__show-filter')
+	form(class = elemName + ' js-' + elemName)
+		div(class = elemName + '__show-filter ' + 'js-' + elemName + '__show-filter')
 			img(class = elemName + '__show-filter-img' src = require('@com/filter-form/img/filter.svg').default alt = 'фильтр поиска')
-		div(class = elemName + '__wrapper ')
+		div(class = elemName + '__wrapper ' + 'js-' + elemName + '__wrapper')
 			div(class = elemName + '__calendar-wrapper')
 				+date-dropdown(
 								{width:'narrow',

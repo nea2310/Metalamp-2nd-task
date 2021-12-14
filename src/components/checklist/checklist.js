@@ -1,7 +1,7 @@
 import './checklist.scss';
 class CheckList {
 	constructor(elemName, elem) {
-		this.elemName = elemName.replace(/^./, '');
+		this.elemName = elemName.replace(/^.js-/, '');
 		this.wrapper = elem;
 		this.render();
 		this.clickInput();
@@ -158,5 +158,5 @@ function renderCheckLists(selector) {
 		new CheckList(selector, checkList);
 	}
 }
-renderCheckLists('.checklist');
+renderCheckLists('.js-checklist');
 
