@@ -1,5 +1,5 @@
 import '@styles/styles';
-import '@plugins/java-import';
+//import '@plugins/java-import';
 
 
 function requireAll(requireContext: any) {

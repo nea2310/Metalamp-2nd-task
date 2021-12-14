@@ -1,11 +1,14 @@
 import './range-slider.scss';
+import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+import 'ion-rangeslider/js/ion.rangeSlider.min.js';
+//import $ from 'jquery';
+
+
 class RangeSlider {
 	constructor(elemName, elem) {
 		this.elemName = elemName.replace(/^.js-/, '');
 		this.wrapper = elem;
 		this.render();
-
-
 	}
 
 	getElem(selector, wrapper = this.wrapper) {
