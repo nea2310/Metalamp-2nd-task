@@ -99,8 +99,12 @@
 	&__price-dtl-info {
 		flex-grow: 1;
 		flex-shrink: 1;
+		&-img {
+			height: auto;
+		}
 	}
 	&__price-dtl-info {
+		text-decoration: none;
 		padding-left: 5px;
 		cursor: pointer;
 	}

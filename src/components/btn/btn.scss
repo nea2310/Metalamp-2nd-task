@@ -2,6 +2,9 @@
 $borderWidth: 2px;
 
 .btn {
+	text-decoration: none;
+	background: none;
+	border: none;
 	cursor: pointer;
 	margin: 0;
 	padding: 0;
@@ -66,6 +69,7 @@ $borderWidth: 2px;
 		}
 	}
 	&__img {
+		height: auto;
 		position: absolute;
 		top: 14px;
 		right: 14px;

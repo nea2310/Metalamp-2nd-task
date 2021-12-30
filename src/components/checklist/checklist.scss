@@ -1,5 +1,8 @@
 @import "@styles/glob.scss";
 .checklist {
+	padding: 0;
+	margin: 0;
+	border: none;
 	* {
 		box-sizing: border-box;
 	}
@@ -14,6 +17,7 @@
 		}
 	}
 	&__img {
+		height: auto;
 		position: absolute;
 		right: 15px;
 		top: 3px;
@@ -32,6 +36,9 @@
 	}
 
 	&__list-wrapper {
+		list-style: none;
+		padding: 0;
+		margin: 0;
 		width: 266px;
 		background-color: $colorWhite;
 		position: absolute;

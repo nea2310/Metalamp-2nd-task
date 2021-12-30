@@ -60,7 +60,10 @@
 			}
 
 			&-items {
-				margin-left: auto;
+				list-style: none;
+				padding: 0;
+				margin: 0 0 0 auto;
+				//margin-left: auto;
 				display: flex;
 				align-items: center;
 				@include media-breakpoint-down($md) {
@@ -79,6 +82,7 @@
 					font-weight: bold;
 				}
 				&-img {
+					height: auto;
 					cursor: pointer;
 					padding-left: 3px;
 					@include media-breakpoint-down($md) {
@@ -86,11 +90,15 @@
 					}
 				}
 				&-link {
+					text-decoration: none;
 					@include font-body;
 				}
 			}
 		}
 		&-level2 {
+			list-style: none;
+			padding: 0;
+			margin: 0;
 			position: absolute;
 			z-index: 1;
 			background-color: $colorWhite;
@@ -98,6 +106,7 @@
 			&-item {
 				margin-top: 10px;
 				&-link {
+					text-decoration: none;
 					@include font-body;
 				}
 				&_expanded {
@@ -113,6 +122,10 @@
 		}
 	}
 	&__logo {
+		text-decoration: none;
+		&-img {
+			height: auto;
+		}
 		@include media-breakpoint-down($lg) {
 			padding-left: 20px;
 		}
@@ -144,7 +157,10 @@
 	}
 	&__button-reg,
 	&__button-login {
-		margin-top: 3px;
+		background: none;
+		border: none;
+		margin: 3px 0 0 0;
+		padding: 0;
 	}
 	&__button-reg {
 		padding-left: 20px;
@@ -175,6 +191,11 @@
 		border-radius: 1px;
 	}
 	&__burger-btn {
+		background: none;
+		border: none;
+		margin: 0;
+		padding: 0;
+
 		display: none;
 		cursor: pointer;
 		@include media-breakpoint-down($md) {
