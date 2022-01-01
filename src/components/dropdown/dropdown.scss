@@ -24,7 +24,6 @@
 	}
 
 	&__img {
-		height: auto;
 		position: absolute;
 		bottom: 17px;
 		right: 16px;
@@ -80,11 +79,6 @@
 			display: none;
 		}
 	}
-	&__list {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
 	&__cat-wrapper {
 		display: flex;
 		justify-content: space-between;
@@ -105,8 +99,6 @@
 	}
 	&__count-increm,
 	&__count-decrem {
-		margin: 0;
-		padding: 0;
 		width: 30px;
 		height: 30px;
 		border-radius: 50%;

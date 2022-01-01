@@ -1,19 +1,5 @@
 @import "@styles/glob.scss";
 .footer {
-	&__social-link {
-		text-decoration: none;
-		&-twitter-img,
-		&-facebook-img,
-		&-instagram-img {
-			height: auto;
-		}
-	}
-	&__logo {
-		text-decoration: none;
-	}
-	&__logo-img {
-		height: auto;
-	}
 	width: 100%;
 	margin: 0 auto;
 	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
@@ -66,9 +52,6 @@
 	}
 
 	&__items {
-		list-style: none;
-		padding: 0;
-		margin: 0;
 		flex-grow: 1;
 		&-link,
 		&-header {
@@ -134,7 +117,6 @@
 		padding-top: 21px;
 		white-space: nowrap;
 		&-link {
-			text-decoration: none;
 			@include font-body;
 			line-height: 17.07px;
 			color: $colorDarkShade50;

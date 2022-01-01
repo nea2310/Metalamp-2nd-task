@@ -11,8 +11,6 @@
 		color: $colorDarkShade75;
 	}
 	&__pages {
-		list-style: none;
-		padding: 0;
 		max-width: $lg;
 		margin: 0 auto;
 		display: flex;
@@ -21,7 +19,6 @@
 		//	flex-direction: column;
 	}
 	&__link {
-		text-decoration: none;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -37,7 +34,6 @@
 		}
 	}
 	&__image {
-		height: auto;
 		margin-bottom: 10px;
 		width: 200px;
 		height: 250px;

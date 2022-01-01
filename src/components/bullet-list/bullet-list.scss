@@ -1,17 +1,11 @@
 @import "@styles/glob.scss";
 .bullet-list {
-	padding: 0;
-	margin: 0;
-	border: none;
 	&__label {
 		@include font-h3;
 		margin-bottom: 14px;
 	}
 	&__list-wrapper {
-		//	list-style: none;
-		padding: 0 0 0 17px;
-		margin: 0;
-		//	padding-left: 17px;
+		padding-left: 17px;
 		max-width: 240px;
 		list-style-image: url("~comp/bullet-list/img/ellipse.svg");
 	}
