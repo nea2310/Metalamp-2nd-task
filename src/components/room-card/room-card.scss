@@ -3,201 +3,196 @@ $shift-hor: 25px;
 $shift-vert: 14px;
 
 .room-card {
-	border: 1px solid rgba(0, 0, 0, 0.12);
-	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
-	border-radius: 4px;
-	background-color: $colorWhite;
-	width: 270px;
-	@include media-breakpoint-between($xxs, $xs) {
-		width: calc(100vw - #{$shift-hor});
-		min-width: 100%;
-	}
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: $colorWhite;
+  width: 270px;
+  @include media-breakpoint-between($xxs, $xs) {
+    width: calc(100vw - #{$shift-hor});
+    min-width: 100%;
+  }
 
-	&__slider {
-		position: relative;
-		width: 270px;
-		height: 152px;
-		@include media-breakpoint-between($xxs, $xs) {
-			height: calc(56.3vw - #{$shift-vert});
-			height: 56.3vw;
-			width: auto;
-		}
-	}
+  &__slider {
+    position: relative;
+    width: 270px;
+    height: 152px;
+    @include media-breakpoint-between($xxs, $xs) {
+      height: calc(56.3vw - #{$shift-vert});
+      height: 56.3vw;
+      width: auto;
+    }
+  }
 
-	&__photos::before {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		content: "";
-		z-index: 2;
-	}
+  &__photos::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: "";
+    z-index: 2;
+  }
 
-	&__photo {
-		border-top-left-radius: 4px;
-		border-top-right-radius: 4px;
-		width: 100%;
-		position: absolute;
-		left: 0;
-		opacity: 0;
-		transition: opacity 1s;
-		z-index: 1;
+  &__photo {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: 1;
 
-		&_showed {
-			opacity: 1;
-		}
-		@include media-breakpoint-between($xxs, $xs) {
-			height: 56.3vw;
-		}
-	}
+    &_showed {
+      opacity: 1;
+    }
+    @include media-breakpoint-between($xxs, $xs) {
+      height: 56.3vw;
+    }
+  }
 
-	&__prev,
-	&__next {
-		border-top-left-radius: 4px;
-		cursor: pointer;
-		margin: 0;
-		padding: 0;
-		top: 0px;
-		bottom: 0px;
-		width: 16%;
-		background: none;
-		position: absolute;
-		z-index: 2;
-		&-img {
-			display: none;
-		}
+  &__prev,
+  &__next {
+    border-top-left-radius: 4px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    top: 0px;
+    bottom: 0px;
+    width: 16%;
+    background: none;
+    position: absolute;
+    z-index: 2;
+    &-img {
+      display: none;
+    }
 
-		&:hover,
-		&:focus {
-			border-top-left-radius: 4px;
-			background: linear-gradient(
-				90deg,
-				rgba(0, 0, 0, 0.5) 0%,
-				rgba(0, 0, 0, 0) 99.99%,
-				rgba(255, 255, 255, 0) 100%
-			);
-		}
-		&:hover &-img,
-		&:focus &-img {
-			display: inline;
-		}
-	}
+    &:hover,
+    &:focus {
+      border-top-left-radius: 4px;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
+    }
+    &:hover &-img,
+    &:focus &-img {
+      display: inline;
+    }
+  }
 
-	&__prev {
-		bottom: 0px;
-		&-img {
-			left: 20px;
-		}
-	}
+  &__prev {
+    bottom: 0px;
+    &-img {
+      left: 20px;
+    }
+  }
 
-	&__next {
-		right: 0px;
-		&:hover,
-		&:focus {
-			transform: matrix(-1, 0, 0, 1, 0, 0);
-		}
-		&-img {
-			right: 20px;
-		}
-	}
-	&__dots {
-		display: flex;
-		justify-content: space-between;
-		position: absolute;
-		z-index: 3;
-		bottom: 16px;
-		right: 15px;
-	}
-	&__dot {
-		margin-left: 3px;
-		width: 8px;
-		height: 8px;
-		border: 1px solid $colorWhite;
-		border-radius: 50%;
-		cursor: pointer;
-		&:hover,
-		&:focus {
-			background-color: $colorWhite;
-		}
-		&_active {
-			background-color: $colorWhite;
-		}
-	}
+  &__next {
+    right: 0px;
+    &:hover,
+    &:focus {
+      transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+    &-img {
+      right: 20px;
+    }
+  }
+  &__dots {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    z-index: 3;
+    bottom: 16px;
+    right: 15px;
+  }
+  &__dot {
+    margin-left: 3px;
+    width: 8px;
+    height: 8px;
+    border: 1px solid $colorWhite;
+    border-radius: 50%;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      background-color: $colorWhite;
+    }
+    &_active {
+      background-color: $colorWhite;
+    }
+  }
 
-	&__dtls {
-		padding-left: 18px;
-		padding-right: 18px;
-		margin-top: 17px;
-		display: flex;
-		justify-content: space-between;
-	}
+  &__dtls {
+    padding-left: 18px;
+    padding-right: 18px;
+    margin-top: 17px;
+    display: flex;
+    justify-content: space-between;
+  }
 
-	&__dtls-room {
-		flex-grow: 1;
-		border-bottom: 1px solid rgba(31, 32, 65, 0.1);
-		padding-bottom: 10px;
-		margin-top: 2px;
-	}
+  &__dtls-room {
+    flex-grow: 1;
+    border-bottom: 1px solid rgba(31, 32, 65, 0.1);
+    padding-bottom: 10px;
+    margin-top: 2px;
+  }
 
-	&__dtl-mark {
-		@include font-h3;
-		font-size: 14px;
-		padding-left: 2px;
-	}
+  &__dtl-mark {
+    @include font-h3;
+    font-size: 14px;
+    padding-left: 2px;
+  }
 
-	&__dtl-number {
-		@include font-h2;
-		padding-left: 4px;
-	}
+  &__dtl-number {
+    @include font-h2;
+    padding-left: 4px;
+  }
 
-	&__dtl-isLux {
-		@include font-h3;
-		color: $colorPurple;
-		padding-left: 4px;
-	}
+  &__dtl-isLux {
+    @include font-h3;
+    color: $colorPurple;
+    padding-left: 4px;
+  }
 
-	&__dtls-price {
-		border-bottom: 1px solid rgba(31, 32, 65, 0.1);
-		margin-top: 3px;
-	}
+  &__dtls-price {
+    border-bottom: 1px solid rgba(31, 32, 65, 0.1);
+    margin-top: 3px;
+  }
 
-	&__dtl-price {
-		@include font-body;
-		font-weight: bold;
-		color: $colorDarkShade50;
-	}
+  &__dtl-price {
+    @include font-body;
+    font-weight: bold;
+    color: $colorDarkShade50;
+  }
 
-	&__dtl-price-curr {
-		@include font-body;
-		font-weight: bold;
-		color: $colorDarkShade50;
-	}
+  &__dtl-price-curr {
+    @include font-body;
+    font-weight: bold;
+    color: $colorDarkShade50;
+  }
 
-	&__dtl-label {
-		@include font-body;
-		font-size: 12px;
-		color: $colorDarkShade50;
-		padding-left: 3px;
-	}
+  &__dtl-label {
+    @include font-body;
+    font-size: 12px;
+    color: $colorDarkShade50;
+    padding-left: 3px;
+  }
 
-	&__rating {
-		display: flex;
-		justify-content: space-between;
-		margin-top: 11px;
-		padding-left: 22px;
-		padding-right: 20px;
-	}
+  &__rating {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 11px;
+    padding-left: 22px;
+    padding-right: 20px;
+  }
 
-	&__feedback {
-		@include font-body;
-		margin-bottom: 18px;
-		&-amount {
-			font-weight: bold;
-			color: $colorDarkShade50;
-		}
-		&-mark {
-			padding-left: 4px;
-		}
-	}
+  &__feedback {
+    @include font-body;
+    margin-bottom: 18px;
+    &-amount {
+      font-weight: bold;
+      color: $colorDarkShade50;
+    }
+    &-mark {
+      padding-left: 4px;
+    }
+  }
 }

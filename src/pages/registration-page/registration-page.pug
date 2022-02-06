@@ -1,9 +1,9 @@
 extends ../layout/layout.pug
 include ../../components/registration/registration.pug
 block title
-	title Registration page
+  title Registration page
 block content 
-	main(class = 'registration-page')
-		img(class = 'registration-page__background' alt = 'фоновое изображение - спальня' src = require('@pag/registration-page/img/bedroom.jpg').default)
-		section(class = 'registration-page__registration-wrapper')
-			+registration()
+  main(class = 'registration-page')
+    img(class = 'registration-page__background' alt = 'фоновое изображение - спальня' src = require('@pag/registration-page/img/bedroom.jpg').default)
+    section(class = 'registration-page__registration-wrapper')
+      +registration()

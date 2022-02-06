@@ -1,134 +1,134 @@
 @import "@styles/glob.scss";
 .booking {
-	box-sizing: border-box;
-	background-color: $colorWhite;
-	border: 1px solid rgba(0, 0, 0, 0.12);
-	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
-	border-radius: 4px;
-	max-width: 380px;
-	padding-left: 28px;
-	padding-right: 28px;
-	padding-top: 39px;
+  box-sizing: border-box;
+  background-color: $colorWhite;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  max-width: 380px;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-top: 39px;
 
-	&__dtls {
-		display: flex;
-		justify-content: space-between;
-	}
+  &__dtls {
+    display: flex;
+    justify-content: space-between;
+  }
 
-	&__dtls-room {
-		margin-top: 2px;
-	}
+  &__dtls-room {
+    margin-top: 2px;
+  }
 
-	&__dtl-mark {
-		@include font-h3;
-		padding-left: 1px;
-	}
+  &__dtl-mark {
+    @include font-h3;
+    padding-left: 1px;
+  }
 
-	&__dtl-number {
-		@include font-h1;
-		padding-left: 6px;
-	}
+  &__dtl-number {
+    @include font-h1;
+    padding-left: 6px;
+  }
 
-	&__dtl-isLux {
-		@include font-h3;
-		color: $colorPurple;
-		padding-left: 9px;
-	}
+  &__dtl-isLux {
+    @include font-h3;
+    color: $colorPurple;
+    padding-left: 9px;
+  }
 
-	&__dtls-price {
-		margin-top: 8px;
-	}
+  &__dtls-price {
+    margin-top: 8px;
+  }
 
-	&__dtl-price {
-		@include font-body;
-		font-weight: bold;
-		color: $colorDarkShade50;
-	}
+  &__dtl-price {
+    @include font-body;
+    font-weight: bold;
+    color: $colorDarkShade50;
+  }
 
-	&__dtl-price-curr {
-		@include font-body;
-		font-weight: bold;
-		color: $colorDarkShade50;
-	}
+  &__dtl-price-curr {
+    @include font-body;
+    font-weight: bold;
+    color: $colorDarkShade50;
+  }
 
-	&__dtl-label {
-		@include font-body;
-		font-size: 12px;
-		color: $colorDarkShade50;
-		padding-left: 3px;
-	}
+  &__dtl-label {
+    @include font-body;
+    font-size: 12px;
+    color: $colorDarkShade50;
+    padding-left: 3px;
+  }
 
-	&__date-dropdown {
-		margin-top: 19px;
-	}
+  &__date-dropdown {
+    margin-top: 19px;
+  }
 
-	&__guests {
-		margin-top: 21px;
-	}
-	&__price-breakdown {
-		@include font-body;
-		line-height: 21px;
-	}
-	&__price-dtls {
-		display: flex;
-		justify-content: space-between;
-		&:first-of-type {
-			margin-top: 20px;
-		}
-		margin-bottom: 13px;
-	}
-	&__price-dtl {
-		&:first-child {
-			max-width: 216px;
-		}
-		flex-grow: 0;
-		flex-shrink: 0;
-	}
+  &__guests {
+    margin-top: 21px;
+  }
+  &__price-breakdown {
+    @include font-body;
+    line-height: 21px;
+  }
+  &__price-dtls {
+    display: flex;
+    justify-content: space-between;
+    &:first-of-type {
+      margin-top: 20px;
+    }
+    margin-bottom: 13px;
+  }
+  &__price-dtl {
+    &:first-child {
+      max-width: 216px;
+    }
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
 
-	&__price-dtl-days-amnt {
-		padding-left: 5px;
-	}
-	&__price-dtl-day {
-		padding-left: 5px;
-	}
+  &__price-dtl-days-amnt {
+    padding-left: 5px;
+  }
+  &__price-dtl-day {
+    padding-left: 5px;
+  }
 
-	&__price-dtl-sale-val {
-		padding-left: 5px;
-	}
+  &__price-dtl-sale-val {
+    padding-left: 5px;
+  }
 
-	&__price-dtl-info {
-		flex-grow: 1;
-		flex-shrink: 1;
-	}
-	&__price-dtl-info {
-		padding-left: 5px;
-		cursor: pointer;
-	}
+  &__price-dtl-info {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+  &__price-dtl-info {
+    padding-left: 5px;
+    cursor: pointer;
+  }
 
-	&__price-total {
-		margin-top: 28px;
-		display: flex;
-		justify-content: space-between;
-		@include font-h2;
-	}
-	&__price-total-filling {
-		flex-grow: 1;
-		flex-shrink: 1;
-		border-bottom: 1px dashed $colorDarkShade25;
-		align-self: center;
-		padding-top: 14px;
-	}
-	&__booking {
-		margin-top: 21px;
-		margin-bottom: 30px;
-	}
+  &__price-total {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    @include font-h2;
+  }
+  &__price-total-filling {
+    flex-grow: 1;
+    flex-shrink: 1;
+    border-bottom: 1px dashed $colorDarkShade25;
+    align-self: center;
+    padding-top: 14px;
+  }
+  &__booking {
+    margin-top: 21px;
+    margin-bottom: 30px;
+  }
 
-	@include media-breakpoint-down($xxs) {
-		padding-right: 10px;
-		padding-left: 25px;
-	}
+  @include media-breakpoint-down($xxs) {
+    padding-right: 10px;
+    padding-left: 25px;
+  }
 }
 
 .js-err {
-	border: 1px solid red;
+  border: 1px solid red;
 }

@@ -1,12 +1,17 @@
-include ../../components/head/head.pug
 include ../../components/logo/logo.pug
 include ../../components/logo/logo.pug
+doctype html
 html(lang = 'ru')
-	head
-		block title
-			title UI-kit Layout
-	body
-		header(class = 'header-ui')
-			+logo-grey()
-		block content
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="initial-scale=1.0, width=device-width")
+    block meta-content
+      meta(name="keywords" content="toxin, отель")
+      meta(name="description" content="Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»")
+    block title
+      title UI-kit Layout
+  body
+    header(class = 'header-ui')
+      +logo-grey()
+    block content
 

@@ -1,9 +1,9 @@
 extends ../layout/layout.pug
 include ../../components/login/login.pug
 block title
-	title Sign-in
+  title Sign-in
 block content 
-	main(class = 'sign-in-page')
-		img(class = 'sign-in-page__background' alt = 'фоновое изображение - спальня' src = require('@pag/sign-in-page/img/bedroom.jpg').default)
-		section(class = 'sign-in-page__login-wrapper')
-			+login()
+  main(class = 'sign-in-page')
+    img(class = 'sign-in-page__background' alt = 'фоновое изображение - спальня' src = require('@pag/sign-in-page/img/bedroom.jpg').default)
+    section(class = 'sign-in-page__login-wrapper')
+      +login()

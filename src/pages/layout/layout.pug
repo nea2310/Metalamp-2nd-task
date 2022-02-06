@@ -1,13 +1,27 @@
-include ../../components/head/head.pug
 include ../../components/header/header.pug
 include ../../components/footer/footer.pug
+
+doctype html
 html(lang = 'ru')
 	head
+		meta(charset="utf-8")
+		meta(name="viewport" content="initial-scale=1.0, width=device-width")
+		block meta-content
+			meta(name="keywords" content="toxin, отель")
+			meta(name="description" content="Бронирование номеров в лучшем отеле 2019 года по версии ассоциации Отельные взгляды")
+			meta(property="og:title" content="TOXIN отель")
+			meta(property="og:description" content="Бронирование номеров в лучшем отеле 2019 года по версии ассоциации Отельные взгляды")
+			meta(property="og:image" content="https://nea2310.github.io/Metalamp-2nd-task/social/social-img.jpg")
+			meta(property="og:url" content="https://nea2310.github.io/Metalamp-2nd-task/landing-page.html")
 		block title
 			title Layout
 	body
 		+header({authorized: false})
 		block content
+			main
 		div(class = 'delim')
 		+footer()
+
+
+
 

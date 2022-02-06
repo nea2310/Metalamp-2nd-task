@@ -1,56 +1,56 @@
 @import "@styles/glob.scss";
 .input-field {
-	user-select: none;
-	&_width_wide {
-		width: 320px;
-	}
-	&_width_medium {
-		width: 266px;
-	}
-	&_width_medium-narrow {
-		width: 260px;
-	}
-	display: flex;
-	flex-direction: column;
+  user-select: none;
+  &_width_wide {
+    width: 320px;
+  }
+  &_width_medium {
+    width: 266px;
+  }
+  &_width_medium-narrow {
+    width: 260px;
+  }
+  display: flex;
+  flex-direction: column;
 
-	&__label {
-		position: relative;
-	}
-	&__label-text {
-		@include font-h3;
-	}
-	&__link {
-		position: absolute;
-		bottom: 13px;
-		right: 6px;
-		width: 16px;
-		height: 19px;
-		cursor: pointer;
-		background-color: $colorWhite;
-		border: none;
-		width: 30px;
-		&:focus {
-			outline: solid 1px $colorDarkShade25;
-		}
-	}
+  &__label {
+    position: relative;
+  }
+  &__label-text {
+    @include font-h3;
+  }
+  &__link {
+    position: absolute;
+    bottom: 13px;
+    right: 6px;
+    width: 16px;
+    height: 19px;
+    cursor: pointer;
+    background-color: $colorWhite;
+    border: none;
+    width: 30px;
+    &:focus {
+      outline: solid 1px $colorDarkShade25;
+    }
+  }
 
-	&__input {
-		outline: none;
-		&::placeholder {
-			color: $colorDarkShade25;
-		}
-		@include font-body;
-		height: 44px;
-		text-indent: 12px;
-		border-radius: 5px;
-		border: 1px solid $colorDarkShade25;
-		margin-top: 4px;
-		width: 100%;
-		&:hover {
-			border-color: $colorDarkShade50;
-		}
-		&:focus {
-			border-color: $colorDarkShade50;
-		}
-	}
+  &__input {
+    outline: none;
+    &::placeholder {
+      color: $colorDarkShade25;
+    }
+    @include font-body;
+    height: 44px;
+    text-indent: 12px;
+    border-radius: 5px;
+    border: 1px solid $colorDarkShade25;
+    margin-top: 4px;
+    width: 100%;
+    &:hover {
+      border-color: $colorDarkShade50;
+    }
+    &:focus {
+      border-color: $colorDarkShade50;
+    }
+  }
 }

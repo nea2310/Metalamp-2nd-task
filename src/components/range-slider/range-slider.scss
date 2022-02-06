@@ -1,89 +1,89 @@
 @import "@styles/glob.scss";
 .range-slider {
-	&__wrapper {
-		width: 266px;
-	}
-	&__title-wrapper {
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: -3px;
-	}
+  &__wrapper {
+    width: 266px;
+  }
+  &__title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -3px;
+  }
 
-	&__title {
-		white-space: nowrap;
-		@include font-h3;
-		width: 50%;
-	}
-	&__price {
-		display: flex;
-	}
-	&__price-delim {
-		width: 10px;
-		text-align: center;
-	}
+  &__title {
+    white-space: nowrap;
+    @include font-h3;
+    width: 50%;
+  }
+  &__price {
+    display: flex;
+  }
+  &__price-delim {
+    width: 10px;
+    text-align: center;
+  }
 
-	&__price-from {
-		text-align: end;
-	}
-	&__price-to {
-		text-align: start;
-	}
+  &__price-from {
+    text-align: end;
+  }
+  &__price-to {
+    text-align: start;
+  }
 
-	&__price-from,
-	&__price-to,
-	&__price-delim {
-		border: none;
-		font-size: 12px;
-		text-transform: uppercase;
-		@include font-body;
-		font-size: 12px;
-		line-height: initial;
-	}
-	&__text {
-		@include font-body;
-		font-size: 12px;
-	}
+  &__price-from,
+  &__price-to,
+  &__price-delim {
+    border: none;
+    font-size: 12px;
+    text-transform: uppercase;
+    @include font-body;
+    font-size: 12px;
+    line-height: initial;
+  }
+  &__text {
+    @include font-body;
+    font-size: 12px;
+  }
 
-	.from:focus,
-	.to:focus {
-		outline: auto !important;
-	}
+  .from:focus,
+  .to:focus {
+    outline: auto !important;
+  }
 
-	span.irs.irs--flat {
-		.irs-line {
-			max-width: 266px;
-			width: 100%;
-			height: 6px;
-			background: $colorWhite;
-			border: 1px solid $colorDarkShade25;
-			box-sizing: border-box;
-			border-radius: 3px;
-		}
+  span.irs.irs--flat {
+    .irs-line {
+      max-width: 266px;
+      width: 100%;
+      height: 6px;
+      background: $colorWhite;
+      border: 1px solid $colorDarkShade25;
+      box-sizing: border-box;
+      border-radius: 3px;
+    }
 
-		.irs-handle {
-			width: 14px;
-			height: 14px;
-			margin-top: -1px;
-			background: linear-gradient(180deg, $colorGreen 0%, $colorLightBlue 100%);
-			border: 2px solid $colorWhite;
-			border-radius: 50%;
-			box-sizing: border-box;
-			outline: none;
-			cursor: pointer;
+    .irs-handle {
+      width: 14px;
+      height: 14px;
+      margin-top: -1px;
+      background: linear-gradient(180deg, $colorGreen 0%, $colorLightBlue 100%);
+      border: 2px solid $colorWhite;
+      border-radius: 50%;
+      box-sizing: border-box;
+      outline: none;
+      cursor: pointer;
 
-			&:focus {
-				outline: auto;
-			}
+      &:focus {
+        outline: auto;
+      }
 
-			i {
-				display: none;
-			}
-		}
+      i {
+        display: none;
+      }
+    }
 
-		.irs-bar {
-			height: 6px;
-			background: linear-gradient(180deg, $colorGreen 0%, $colorLightBlue 100%);
-			border-radius: 3px;
-		}
-	}
+    .irs-bar {
+      height: 6px;
+      background: linear-gradient(180deg, $colorGreen 0%, $colorLightBlue 100%);
+      border-radius: 3px;
+    }
+  }
 }

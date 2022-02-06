@@ -1,245 +1,245 @@
 @import "@styles/glob.scss";
 .header {
-	width: 100%;
-	box-sizing: border-box;
-	height: 70px;
-	margin: 0 auto;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-	background-color: $colorWhite;
-	position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  height: 70px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  background-color: $colorWhite;
+  position: relative;
 
-	@include media-breakpoint-down($xs) {
-		height: auto;
-		align-items: flex-start;
-	}
+  @include media-breakpoint-down($xs) {
+    height: auto;
+    align-items: flex-start;
+  }
 
-	&__wrapper {
-		box-sizing: border-box;
-		max-width: 1161px;
-		width: 100%;
-		margin: 0 auto;
-		display: flex;
-		justify-content: space-between;
+  &__wrapper {
+    box-sizing: border-box;
+    max-width: 1161px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
 
-		@include media-breakpoint-down($md) {
-			width: 100%;
-			margin: 0 20px;
-			display: flex;
-			justify-content: space-around;
-			align-items: center;
-			background-color: $colorWhite;
-		}
-		@include media-breakpoint-down($xs) {
-			flex-direction: column;
-			padding-top: 50px;
-			padding-bottom: 20px;
-		}
-	}
+    @include media-breakpoint-down($md) {
+      width: 100%;
+      margin: 0 20px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: $colorWhite;
+    }
+    @include media-breakpoint-down($xs) {
+      flex-direction: column;
+      padding-top: 50px;
+      padding-bottom: 20px;
+    }
+  }
 
-	&__nav {
-		&-level1 {
-			display: flex;
-			flex-grow: 1;
-			@include media-breakpoint-down($md) {
-				display: none;
-				position: absolute;
-				background-color: $colorWhite;
-				left: 0;
-				top: 45px;
-				z-index: 1;
-			}
+  &__nav {
+    &-level1 {
+      display: flex;
+      flex-grow: 1;
+      @include media-breakpoint-down($md) {
+        display: none;
+        position: absolute;
+        background-color: $colorWhite;
+        left: 0;
+        top: 45px;
+        z-index: 1;
+      }
 
-			&_active {
-				@include media-breakpoint-down($md) {
-					display: block;
-					z-index: 99;
-				}
-			}
+      &_active {
+        @include media-breakpoint-down($md) {
+          display: block;
+          z-index: 99;
+        }
+      }
 
-			&-items {
-				margin-left: auto;
-				display: flex;
-				align-items: center;
-				@include media-breakpoint-down($md) {
-					display: block;
-					padding-left: 20px;
-				}
-			}
-			&-item {
-				position: relative;
-				white-space: nowrap;
-				padding-right: 24px;
-				@include media-breakpoint-down($md) {
-					margin-top: 20px;
-				}
-				&_active {
-					font-weight: bold;
-				}
-				&-img {
-					cursor: pointer;
-					padding-left: 3px;
-					@include media-breakpoint-down($md) {
-						display: none;
-					}
-				}
-				&-link {
-					@include font-body;
-				}
-			}
-		}
-		&-level2 {
-			position: absolute;
-			z-index: 1;
-			background-color: $colorWhite;
-			display: none;
-			&-item {
-				margin-top: 10px;
-				&-link {
-					@include font-body;
-				}
-				&_expanded {
-					padding-left: 20px;
-					padding-right: 20px;
+      &-items {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        @include media-breakpoint-down($md) {
+          display: block;
+          padding-left: 20px;
+        }
+      }
+      &-item {
+        position: relative;
+        white-space: nowrap;
+        padding-right: 24px;
+        @include media-breakpoint-down($md) {
+          margin-top: 20px;
+        }
+        &_active {
+          font-weight: bold;
+        }
+        &-img {
+          cursor: pointer;
+          padding-left: 3px;
+          @include media-breakpoint-down($md) {
+            display: none;
+          }
+        }
+        &-link {
+          @include font-body;
+        }
+      }
+    }
+    &-level2 {
+      position: absolute;
+      z-index: 1;
+      background-color: $colorWhite;
+      display: none;
+      &-item {
+        margin-top: 10px;
+        &-link {
+          @include font-body;
+        }
+        &_expanded {
+          padding-left: 20px;
+          padding-right: 20px;
 
-					display: block;
-					@include media-breakpoint-down($md) {
-						display: none;
-					}
-				}
-			}
-		}
-	}
-	&__logo {
-		@include media-breakpoint-down($lg) {
-			padding-left: 20px;
-		}
-		@include media-breakpoint-down($md) {
-			top: -55px;
-			left: 50%;
-		}
-		@include media-breakpoint-down($xs) {
-			margin-bottom: 20px;
-		}
-	}
-	&__auth {
-		display: flex;
+          display: block;
+          @include media-breakpoint-down($md) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  &__logo {
+    @include media-breakpoint-down($lg) {
+      padding-left: 20px;
+    }
+    @include media-breakpoint-down($md) {
+      top: -55px;
+      left: 50%;
+    }
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 20px;
+    }
+  }
+  &__auth {
+    display: flex;
 
-		@include media-breakpoint-down($lg) {
-			margin-right: 20px;
-		}
-		@include media-breakpoint-down($md) {
-			top: 0;
-			left: 50%;
-			margin-left: 20px;
-		}
-		@include media-breakpoint-down($xs) {
-			flex-direction: column;
-			height: 90px;
-			justify-content: space-between;
-			align-items: center;
-		}
-	}
-	&__button-reg,
-	&__button-login {
-		margin-top: 3px;
-	}
-	&__button-reg {
-		padding-left: 20px;
-		@include media-breakpoint-down($xxs) {
-			padding: 0;
-		}
-		@include media-breakpoint-down($xxs) {
-			padding-top: 20px;
-		}
-	}
-	&__profile {
-		border-left: 1px solid rgba(31, 32, 65, 0.1);
-		align-self: center;
-		line-height: 30px;
-		@include media-breakpoint-down($md) {
-			border: none;
-		}
-		&-name {
-			@include font-body;
-			padding-left: 20px;
-			white-space: nowrap;
-			@include media-breakpoint-down($md) {
-				padding: 0;
-			}
-		}
-	}
-	&__burger {
-		border-radius: 1px;
-	}
-	&__burger-btn {
-		display: none;
-		cursor: pointer;
-		@include media-breakpoint-down($md) {
-			display: block;
-			position: absolute;
-			width: 20px;
-			height: 20px;
-			left: 10px;
-		}
-		@include media-breakpoint-down($xs) {
-			top: 20px;
-		}
-	}
+    @include media-breakpoint-down($lg) {
+      margin-right: 20px;
+    }
+    @include media-breakpoint-down($md) {
+      top: 0;
+      left: 50%;
+      margin-left: 20px;
+    }
+    @include media-breakpoint-down($xs) {
+      flex-direction: column;
+      height: 90px;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  &__button-reg,
+  &__button-login {
+    margin-top: 3px;
+  }
+  &__button-reg {
+    padding-left: 20px;
+    @include media-breakpoint-down($xxs) {
+      padding: 0;
+    }
+    @include media-breakpoint-down($xxs) {
+      padding-top: 20px;
+    }
+  }
+  &__profile {
+    border-left: 1px solid rgba(31, 32, 65, 0.1);
+    align-self: center;
+    line-height: 30px;
+    @include media-breakpoint-down($md) {
+      border: none;
+    }
+    &-name {
+      @include font-body;
+      padding-left: 20px;
+      white-space: nowrap;
+      @include media-breakpoint-down($md) {
+        padding: 0;
+      }
+    }
+  }
+  &__burger {
+    border-radius: 1px;
+  }
+  &__burger-btn {
+    display: none;
+    cursor: pointer;
+    @include media-breakpoint-down($md) {
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 10px;
+    }
+    @include media-breakpoint-down($xs) {
+      top: 20px;
+    }
+  }
 
-	&__burger-btn &__burger {
-		@include media-breakpoint-down($md) {
-			position: absolute;
-			background-color: $colorPurple;
-			left: 0;
-			width: 100%;
-			height: 2px;
-			top: 9px;
-			transition: all 0.9s ease 0s;
-		}
-	}
-	&__burger-btn:before,
-	&__burger-btn:after {
-		@include media-breakpoint-down($md) {
-			border-radius: 1px;
-			content: "";
-			background-color: $colorPurple;
-			position: absolute;
-			width: 100%;
-			height: 2px;
-			left: 0;
-			transition: all 0.5s ease 0s;
-		}
-	}
-	&__burger-btn:before {
-		@include media-breakpoint-down($md) {
-			top: 0;
-			background-color: $colorPurple;
-		}
-	}
-	&__burger-btn:after {
-		@include media-breakpoint-down($md) {
-			bottom: 0;
-			background-color: $colorPurple;
-		}
-	}
-	&__burger-btn.header__burger-btn_active:before {
-		@include media-breakpoint-down($md) {
-			transform: rotate(45deg);
-			top: 9px;
-		}
-	}
-	&__burger-btn.header__burger-btn_active:after {
-		@include media-breakpoint-down($md) {
-			transform: rotate(-45deg);
-			bottom: 9px;
-		}
-	}
-	&__burger-btn.header__burger-btn_active &__burger {
-		@include media-breakpoint-down($md) {
-			transform: scale(0);
-		}
-	}
+  &__burger-btn &__burger {
+    @include media-breakpoint-down($md) {
+      position: absolute;
+      background-color: $colorPurple;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      top: 9px;
+      transition: all 0.9s ease 0s;
+    }
+  }
+  &__burger-btn:before,
+  &__burger-btn:after {
+    @include media-breakpoint-down($md) {
+      border-radius: 1px;
+      content: "";
+      background-color: $colorPurple;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      left: 0;
+      transition: all 0.5s ease 0s;
+    }
+  }
+  &__burger-btn:before {
+    @include media-breakpoint-down($md) {
+      top: 0;
+      background-color: $colorPurple;
+    }
+  }
+  &__burger-btn:after {
+    @include media-breakpoint-down($md) {
+      bottom: 0;
+      background-color: $colorPurple;
+    }
+  }
+  &__burger-btn.header__burger-btn_active:before {
+    @include media-breakpoint-down($md) {
+      transform: rotate(45deg);
+      top: 9px;
+    }
+  }
+  &__burger-btn.header__burger-btn_active:after {
+    @include media-breakpoint-down($md) {
+      transform: rotate(-45deg);
+      bottom: 9px;
+    }
+  }
+  &__burger-btn.header__burger-btn_active &__burger {
+    @include media-breakpoint-down($md) {
+      transform: scale(0);
+    }
+  }
 }

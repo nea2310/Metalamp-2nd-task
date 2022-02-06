@@ -15,249 +15,249 @@ include ../../components/feedback/feedback.pug
 include ../../components/bullet-list/bullet-list.pug
 include ../../components/pagination/pagination.pug
 block title
-	title Form Elements
+  title Form Elements
 block content 
-	main(class="form-elements")
-		div(class="form-elements__col form-elements__col_left form-elements__col_left-top")
-			div(class="form-elements__comp-wrapper")
-				+input(
-							{width: 'wide',
-							placeholder: 'Email',
-							js:'js-check-email',
-							labelText: 'text field'} 
-							)
-			div(class="form-elements__comp-wrapper")
-				+input(
-							{width: 'wide',
-							placeholder: 'Email',
-							js:'js-check-email',
-							labelText: 'text field'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+dropdown(
-							{categories:
-								{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-								cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-								cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
-							type: 'dropDownGuests',
-							placeholder: 'Сколько гостей',
-							buttons: true,
-							labelText: 'dropdown',
-							width: 'wide'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+input(
-							{width: 'wide',
-							placeholder: 'ДД.ММ.ГГГГ',
-							js:' js-masked js-date',
-							labelText: 'masked text field'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+date-dropdown(
-							{width:'wide',
-							type:'dateDropDown',
-							labelTextFrom: 'date dropdown',
-							labelTextTo: 'date dropdown'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+date-dropdown(
-							{width:'narrow',
-							type: 'filterDateDropDown',
-							labelTextFromTo: 'filter date dropdown'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+input(
-							{width: 'medium',
-							placeholder: 'Email',
-							js:' js-check-email',
-							labelText: 'subscription text field',
-							img: true,
-							name: 'оформить подписку'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+dropdown(
-							{categories:
-								{cat1: {displayName: 'спальни', type: 'спальня', typeforms: 'спальня,спальни,спален', defaultCnt: 0, minCnt: 0, maxCnt: 5}, 
-								cat2: {displayName: 'кровати', type: 'кровать', typeforms: 'кровать,кровати,кроватей', defaultCnt: 0, minCnt: 0, maxCnt: 10}, 
-								cat3: {displayName: 'ванные комнаты', type: 'ванная комната', typeforms: 'ванная комната,ванные комнаты,ванных комнат', defaultCnt: 0, minCnt: 0, maxCnt: 3}}, 
-							type: 'dropDownRooms',
-							placeholder: 'Сколько комнат',
-							labelText: 'dropdown',
-							width: 'narrow'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+checklist(
-							{categories:
-								{cat1: {name:'Завтрак'}, 
-								cat2:{name:'Письменный стол'}, 
-								cat3:{name:'Стул для кормления'}, 
-								cat4:{name:'Кроватка'}, 
-								cat5:{name:'Телевизор'}, 
-								cat6:{name:'Шампунь'},},
-								expand: true,
-								rich: false, 
-							labelText: 'expandable checkbox list',}
-							)
-			div(class="form-elements__comp-wrapper")
-				+checklist(
-							{categories:
-								{cat1: {name:'Завтрак'}, 
-								cat2:{name:'Письменный стол'}, 
-								cat3:{name:'Стул для кормления'}, 
-								cat4:{name:'Кроватка'}, 
-								cat5:{name:'Телевизор'}, 
-								cat6:{name:'Шампунь'},},
-								expand: true,
-								rich: false, 
-							labelText: 'expandable checkbox list',
-							checkListName: 'expandable checkbox list'}
-							)
-		div(class="form-elements__col form-elements__col_center form-elements__col_center-top")
-			div(class="form-elements__comp-wrapper")
-				+checklist(
-							{categories:
-								{cat1: {name:'Можно курить'}, 
-								cat2:{name:'Можно с питомцами'}, 
-								cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
-								expand: false,
-								rich: false, 
-							labelText: 'checkbox buttons',
-							checkListName: 'checkbox buttons'}
-							)
-			span(class='form-elements__label') radio buttons
-			div(class="form-elements__comp-wrapper")
-				+radiobuttons({categories:
-								{cat1: {name:'Мужчина', checked: true}, 
-								cat2:{name:'Женщина'}},
-								radioGroupName: 'gender'})
-			span(class='form-elements__label') toggle
-			div(class="form-elements__comp-wrapper")
-				+toggle(
-							{name: 'Получать спецпредложения'}
-							)
-			span(class='form-elements__label') like-button
-			div(class="form-elements__comp-wrapper")
-				+like-button(
-							{})
-			span(class='form-elements__label') rate button
-			div(class="form-elements__comp-wrapper")
-				+rate-button(
-							{name: 'name'})
-			div(class="form-elements__comp-wrapper")
-				+dropdown(
-							{categories:
-								{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-								cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-								cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
-							type: 'dropDownGuests',
-							placeholder: 'Сколько гостей',
-							buttons: true,
-							labelText: 'dropdown',
-							width: 'wide'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+checklist(
-							{categories:
-								{cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
-								cat2:{name:'Помощник для инвалидов', descr: 'На 1 этаже вас встретит специалист и проводит до номера'}},
-								expand: false,
-								rich: true, 
-							labelText: 'rich checkbox buttons',
-							checkListName: 'rich checkbox buttons'}
-							)
-		div(class="form-elements__col form-elements__col_right form-elements__col_right-top")
-			div(class="form-elements__comp-wrapper")
-				+range-slider(
-							{labelText: 'range slider',
-							type: 'double', 
-							min:1000, 
-							max:15000, 
-							step:1, 
-							from:5000, 
-							to:10000, 
-							isMinMaxHidden:'true', 
-							isFromToHidden:'true'}
-							)
-			span(class='form-elements__label') buttons
-			div(class="form-elements__comp-wrapper")
-				+btn(
-							{text: 'click me',
-							type: 'link',
-							length: 'short',
-							width: 'wide',
-							color: 'dark',
-							href: 'https://test/test'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+btn(
-							{text: 'click me',
-							type: 'link',
-							length: 'short',
-							width: 'wide',
-							color: 'light',
-							href: 'https://test/test'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+btn(
-							{text: 'click me',
-							type: 'plain-text'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+btn(
-							{text: 'перейти к оплате',
-							type: 'submit',
-							length: 'very-long',
-							width: 'wide',
-							color: 'dark',
-							img: true}
-							)
-			span(class='form-elements__label') pagination
-			div(class="form-elements__comp-wrapper")
-				+pagination()
-			div(class="form-elements__comp-wrapper")
-				+dropdown(
-							{categories:
-								{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-								cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-								cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
-							type: 'dropDownGuests',
-							placeholder: 'Сколько гостей',
-							buttons: true,
-							labelText: 'dropdown',
-							width: 'wide'}
-							)
-			span(class='form-elements__label') bullet list
-			div(class="form-elements__comp-wrapper")
-				+bullet-list(
-							{labelText: 'bullet list', 
-							categories: ['Нельзя с питомцами',
-											'Без вечеринок и мероприятий',
-											'Время прибытия — после 13:00, а выезд до 12:00']}
-							)
-	div(class="form-elements")
-		div(class="form-elements__col form-elements__col_left form-elements__col_left-bottom")
-			div(class="form-elements__comp-wrapper")
-				+feature(
-							{img: require('@pag/form-elements/img/smile.svg').default,
-							name: 'Комфорт',
-							descr: 'Шумопоглощающие стены',
-							alt: 'smile'}
-							)
-			div(class="form-elements__comp-wrapper")
-				+feature(
-							{img: require('@pag/form-elements/img/city.svg').default,
-							name: 'Удобство',
-							descr: 'Окно в каждой из спален',
-							alt: 'city'
-							}
-							)
-		div(class="form-elements__col form-elements__col_right form-elements__col_right-bottom")
-			div(class="form-elements__comp-wrapper")
-				+feedback(
-							{img: require('@pag/form-elements/img/murad.jpg').default,
-							name: 'Мурад Сарафанов',
-							date: '5 дней назад',
-							descr: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
-							alt: 'Мурад Сарафанов'
-							}
-							)
+  main(class="form-elements")
+    div(class="form-elements__col form-elements__col_left form-elements__col_left-top")
+      div(class="form-elements__comp-wrapper")
+        +input(
+          {width: 'wide',
+          placeholder: 'Email',
+          js:'js-check-email',
+          labelText: 'text field'} 
+          )
+      div(class="form-elements__comp-wrapper")
+        +input(
+          {width: 'wide',
+          placeholder: 'Email',
+          js:'js-check-email',
+          labelText: 'text field'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +dropdown(
+          {categories:
+            {cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+            cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+            cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+          type: 'dropDownGuests',
+          placeholder: 'Сколько гостей',
+          buttons: true,
+          labelText: 'dropdown',
+          width: 'wide'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +input(
+          {width: 'wide',
+          placeholder: 'ДД.ММ.ГГГГ',
+          js:' js-masked js-date',
+          labelText: 'masked text field'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +date-dropdown(
+          {width:'wide',
+          type:'dateDropDown',
+          labelTextFrom: 'date dropdown',
+          labelTextTo: 'date dropdown'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +date-dropdown(
+          {width:'narrow',
+          type: 'filterDateDropDown',
+          labelTextFromTo: 'filter date dropdown'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +input(
+          {width: 'medium',
+          placeholder: 'Email',
+          js:' js-check-email',
+          labelText: 'subscription text field',
+          img: true,
+          name: 'оформить подписку'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +dropdown(
+          {categories:
+            {cat1: {displayName: 'спальни', type: 'спальня', typeforms: 'спальня,спальни,спален', defaultCnt: 0, minCnt: 0, maxCnt: 5}, 
+            cat2: {displayName: 'кровати', type: 'кровать', typeforms: 'кровать,кровати,кроватей', defaultCnt: 0, minCnt: 0, maxCnt: 10}, 
+            cat3: {displayName: 'ванные комнаты', type: 'ванная комната', typeforms: 'ванная комната,ванные комнаты,ванных комнат', defaultCnt: 0, minCnt: 0, maxCnt: 3}}, 
+          type: 'dropDownRooms',
+          placeholder: 'Сколько комнат',
+          labelText: 'dropdown',
+          width: 'narrow'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +checklist(
+          {categories:
+            {cat1: {name:'Завтрак'}, 
+            cat2:{name:'Письменный стол'}, 
+            cat3:{name:'Стул для кормления'}, 
+            cat4:{name:'Кроватка'}, 
+            cat5:{name:'Телевизор'}, 
+            cat6:{name:'Шампунь'},},
+            expand: true,
+            rich: false, 
+          labelText: 'expandable checkbox list',}
+          )
+      div(class="form-elements__comp-wrapper")
+        +checklist(
+          {categories:
+            {cat1: {name:'Завтрак'}, 
+            cat2:{name:'Письменный стол'}, 
+            cat3:{name:'Стул для кормления'}, 
+            cat4:{name:'Кроватка'}, 
+            cat5:{name:'Телевизор'}, 
+            cat6:{name:'Шампунь'},},
+            expand: true,
+            rich: false, 
+          labelText: 'expandable checkbox list',
+          checkListName: 'expandable checkbox list'}
+          )
+    div(class="form-elements__col form-elements__col_center form-elements__col_center-top")
+      div(class="form-elements__comp-wrapper")
+        +checklist(
+          {categories:
+            {cat1: {name:'Можно курить'}, 
+            cat2:{name:'Можно с питомцами'}, 
+            cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
+            expand: false,
+            rich: false, 
+          labelText: 'checkbox buttons',
+          checkListName: 'checkbox buttons'}
+          )
+      span(class='form-elements__label') radio buttons
+      div(class="form-elements__comp-wrapper")
+        +radiobuttons({categories:
+          {cat1: {name:'Мужчина', checked: true}, 
+          cat2:{name:'Женщина'}},
+          radioGroupName: 'gender'})
+      span(class='form-elements__label') toggle
+      div(class="form-elements__comp-wrapper")
+        +toggle(
+          {name: 'Получать спецпредложения'}
+          )
+      span(class='form-elements__label') like-button
+      div(class="form-elements__comp-wrapper")
+        +like-button(
+          {})
+      span(class='form-elements__label') rate button
+      div(class="form-elements__comp-wrapper")
+        +rate-button(
+          {name: 'name'})
+      div(class="form-elements__comp-wrapper")
+        +dropdown(
+          {categories:
+            {cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+            cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+            cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+          type: 'dropDownGuests',
+          placeholder: 'Сколько гостей',
+          buttons: true,
+          labelText: 'dropdown',
+          width: 'wide'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +checklist(
+          {categories:
+            {cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
+            cat2:{name:'Помощник для инвалидов', descr: 'На 1 этаже вас встретит специалист и проводит до номера'}},
+            expand: false,
+            rich: true, 
+          labelText: 'rich checkbox buttons',
+          checkListName: 'rich checkbox buttons'}
+          )
+    div(class="form-elements__col form-elements__col_right form-elements__col_right-top")
+      div(class="form-elements__comp-wrapper")
+        +range-slider(
+          {labelText: 'range slider',
+          type: 'double', 
+          min:1000, 
+          max:15000, 
+          step:1, 
+          from:5000, 
+          to:10000, 
+          isMinMaxHidden:'true', 
+          isFromToHidden:'true'}
+          )
+      span(class='form-elements__label') buttons
+      div(class="form-elements__comp-wrapper")
+        +btn(
+          {text: 'click me',
+          type: 'link',
+          length: 'short',
+          width: 'wide',
+          color: 'dark',
+          href: 'https://test/test'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +btn(
+          {text: 'click me',
+          type: 'link',
+          length: 'short',
+          width: 'wide',
+          color: 'light',
+          href: 'https://test/test'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +btn(
+          {text: 'click me',
+          type: 'plain-text'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +btn(
+          {text: 'перейти к оплате',
+          type: 'submit',
+          length: 'very-long',
+          width: 'wide',
+          color: 'dark',
+          img: true}
+          )
+      span(class='form-elements__label') pagination
+      div(class="form-elements__comp-wrapper")
+        +pagination()
+      div(class="form-elements__comp-wrapper")
+        +dropdown(
+          {categories:
+            {cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+            cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+            cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+          type: 'dropDownGuests',
+          placeholder: 'Сколько гостей',
+          buttons: true,
+          labelText: 'dropdown',
+          width: 'wide'}
+          )
+      span(class='form-elements__label') bullet list
+      div(class="form-elements__comp-wrapper")
+        +bullet-list(
+          {labelText: 'bullet list', 
+          categories: ['Нельзя с питомцами',
+            'Без вечеринок и мероприятий',
+            'Время прибытия — после 13:00, а выезд до 12:00']}
+          )
+  div(class="form-elements")
+    div(class="form-elements__col form-elements__col_left form-elements__col_left-bottom")
+      div(class="form-elements__comp-wrapper")
+        +feature(
+          {img: require('@pag/form-elements/img/smile.svg').default,
+          name: 'Комфорт',
+          descr: 'Шумопоглощающие стены',
+          alt: 'smile'}
+          )
+      div(class="form-elements__comp-wrapper")
+        +feature(
+          {img: require('@pag/form-elements/img/city.svg').default,
+          name: 'Удобство',
+          descr: 'Окно в каждой из спален',
+          alt: 'city'
+          }
+          )
+    div(class="form-elements__col form-elements__col_right form-elements__col_right-bottom")
+      div(class="form-elements__comp-wrapper")
+        +feedback(
+          {img: require('@pag/form-elements/img/murad.jpg').default,
+          name: 'Мурад Сарафанов',
+          date: '5 дней назад',
+          descr: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+          alt: 'Мурад Сарафанов'
+          }
+          )

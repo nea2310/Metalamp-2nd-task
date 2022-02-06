@@ -1,255 +1,255 @@
 @import "@styles/glob.scss";
 .date-dropdown {
-	user-select: none;
-	&_width_wide {
-		width: 320px;
-	}
-	&_width_narrow {
-		width: 266px;
-	}
-	display: flex;
-	justify-content: flex-start;
-	position: relative;
-	&__label {
-		width: 100%;
-		position: relative;
-	}
-	&__label-text {
-		@include font-h3;
-	}
-	&__calendar-wrapper {
-		position: absolute;
-		z-index: 3;
-		top: 68px;
+  user-select: none;
+  &_width_wide {
+    width: 320px;
+  }
+  &_width_narrow {
+    width: 266px;
+  }
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  &__label {
+    width: 100%;
+    position: relative;
+  }
+  &__label-text {
+    @include font-h3;
+  }
+  &__calendar-wrapper {
+    position: absolute;
+    z-index: 3;
+    top: 68px;
 
-		&_hidden {
-			display: none;
-		}
-	}
+    &_hidden {
+      display: none;
+    }
+  }
 
-	&__button-clear {
-		position: absolute;
-		bottom: 20px;
-		left: 20px;
-	}
-	&__button-apply {
-		position: absolute;
-		bottom: 20px;
-		right: 20px;
-	}
+  &__button-clear {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+  &__button-apply {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
 
-	&__input-wrapper {
-		display: flex;
-		flex-direction: column;
-	}
-	&__img {
-		position: absolute;
-		bottom: 18px;
-		right: 16px;
+  &__input-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  &__img {
+    position: absolute;
+    bottom: 18px;
+    right: 16px;
 
-		&_expanded {
-			transform: rotate(180deg);
-			transition: all 0.3s ease 0s;
-		}
+    &_expanded {
+      transform: rotate(180deg);
+      transition: all 0.3s ease 0s;
+    }
 
-		&_collapsed {
-			transform: rotate(0deg);
-			transition: all 0.3s ease 0s;
-		}
-	}
-	&__input-wrapper:nth-child(2) {
-		padding-left: 20px;
-	}
-	&__input {
-		outline: none;
-		&::placeholder {
-			color: $colorDarkShade75;
-		}
-		@include font-body;
-		height: 44px;
-		text-indent: 12px;
-		border-radius: 5px;
-		border: 1px solid $colorDarkShade25;
-		margin-top: 5px;
+    &_collapsed {
+      transform: rotate(0deg);
+      transition: all 0.3s ease 0s;
+    }
+  }
+  &__input-wrapper:nth-child(2) {
+    padding-left: 20px;
+  }
+  &__input {
+    outline: none;
+    &::placeholder {
+      color: $colorDarkShade75;
+    }
+    @include font-body;
+    height: 44px;
+    text-indent: 12px;
+    border-radius: 5px;
+    border: 1px solid $colorDarkShade25;
+    margin-top: 5px;
 
-		&:hover {
-			border-color: $colorDarkShade50;
-		}
-		&:focus {
-			border-color: $colorDarkShade50;
-		}
-		&_width_narrow {
-			width: 150px;
-		}
-		&_width_wide {
-			width: 266px;
-		}
-	}
+    &:hover {
+      border-color: $colorDarkShade50;
+    }
+    &:focus {
+      border-color: $colorDarkShade50;
+    }
+    &_width_narrow {
+      width: 150px;
+    }
+    &_width_wide {
+      width: 266px;
+    }
+  }
 
-	.air-datepicker {
-		box-sizing: border-box;
-		width: 320px;
-		&-nav {
-			border: none;
-			padding: 4px 24px 4px 24px;
-			min-height: 51px;
-			&--title {
-				font-family: "Montserrat", Arial, Helvetica, sans-serif;
-				font-weight: bold;
-				font-size: 19px;
-				line-height: 23px;
-				color: $colorDarkShade100;
-				i {
-					color: $colorDarkShade100;
-				}
-			}
-		}
+  .air-datepicker {
+    box-sizing: border-box;
+    width: 320px;
+    &-nav {
+      border: none;
+      padding: 4px 24px 4px 24px;
+      min-height: 51px;
+      &--title {
+        font-family: "Montserrat", Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 19px;
+        line-height: 23px;
+        color: $colorDarkShade100;
+        i {
+          color: $colorDarkShade100;
+        }
+      }
+    }
 
-		&-body {
-			&--day {
-				&-name {
-					color: $colorPurple;
-					font-family: "Montserrat", Arial, Helvetica, sans-serif;
-					font-weight: bold;
-					font-weight: 700;
-					font-size: 12px;
-					line-height: 14.63px;
-					text-transform: capitalize;
-				}
-			}
-			&--cells {
-				padding-top: 10px;
-				&.-days- {
-					grid-template-columns: repeat(7, 40px);
-					grid-auto-rows: 39px;
-				}
-			}
-		}
+    &-body {
+      &--day {
+        &-name {
+          color: $colorPurple;
+          font-family: "Montserrat", Arial, Helvetica, sans-serif;
+          font-weight: bold;
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 14.63px;
+          text-transform: capitalize;
+        }
+      }
+      &--cells {
+        padding-top: 10px;
+        &.-days- {
+          grid-template-columns: repeat(7, 40px);
+          grid-auto-rows: 39px;
+        }
+      }
+    }
 
-		&-cell {
-			height: 39px;
-			&.-day- {
-				color: $colorDarkShade50;
-				font-family: "Montserrat", Arial, Helvetica, sans-serif;
-				font-weight: normal;
-				font-weight: 400;
-				font-size: 12px;
-				line-height: 14.63px;
-			}
-		}
-		&--content {
-			padding: 17px 18px 54px 20px;
-		}
-		&-cell.-day- {
-			&.-disabled- {
-				color: $colorDarkShade25;
-			}
+    &-cell {
+      height: 39px;
+      &.-day- {
+        color: $colorDarkShade50;
+        font-family: "Montserrat", Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14.63px;
+      }
+    }
+    &--content {
+      padding: 17px 18px 54px 20px;
+    }
+    &-cell.-day- {
+      &.-disabled- {
+        color: $colorDarkShade25;
+      }
 
-			&.-current- {
-				border-radius: 50%;
-				background: $gradientGreen;
-			}
+      &.-current- {
+        border-radius: 50%;
+        background: $gradientGreen;
+      }
 
-			&.-range-from- {
-				border: none;
-				&::after {
-					position: absolute;
-					z-index: -1;
-					content: "";
-					height: 39px;
-					width: 40px;
-					background: $gradientPurple;
-					opacity: 0.5;
-					border-bottom-left-radius: 50%;
-					border-top-left-radius: 50%;
-				}
-			}
+      &.-range-from- {
+        border: none;
+        &::after {
+          position: absolute;
+          z-index: -1;
+          content: "";
+          height: 39px;
+          width: 40px;
+          background: $gradientPurple;
+          opacity: 0.5;
+          border-bottom-left-radius: 50%;
+          border-top-left-radius: 50%;
+        }
+      }
 
-			&.-range-to- {
-				border: none;
-				&::before {
-					position: absolute;
-					z-index: -1;
-					content: "";
-					height: 39px;
-					width: 40px;
-					background: $gradientPurple;
-					opacity: 0.5;
-					border-bottom-right-radius: 50%;
-					border-top-right-radius: 50%;
-				}
-			}
+      &.-range-to- {
+        border: none;
+        &::before {
+          position: absolute;
+          z-index: -1;
+          content: "";
+          height: 39px;
+          width: 40px;
+          background: $gradientPurple;
+          opacity: 0.5;
+          border-bottom-right-radius: 50%;
+          border-top-right-radius: 50%;
+        }
+      }
 
-			&.-focus- {
-				font-weight: 700;
-				position: relative;
-				border-radius: 50%;
-				background: $gradientPurple;
-			}
+      &.-focus- {
+        font-weight: 700;
+        position: relative;
+        border-radius: 50%;
+        background: $gradientPurple;
+      }
 
-			&.-selected- {
-				font-weight: 700;
-				position: relative;
-				border-radius: 50%;
-				background: $gradientPurple;
-			}
+      &.-selected- {
+        font-weight: 700;
+        position: relative;
+        border-radius: 50%;
+        background: $gradientPurple;
+      }
 
-			&.-focus-.-selected- {
-				background: $gradientPurple;
-				font-weight: 700;
-			}
+      &.-focus-.-selected- {
+        background: $gradientPurple;
+        font-weight: 700;
+      }
 
-			&.-in-range- {
-				background: $gradientPurple;
-				opacity: 0.5;
-			}
+      &.-in-range- {
+        background: $gradientPurple;
+        opacity: 0.5;
+      }
 
-			&.-in-range-.-focus- {
-				position: relative;
-				border-radius: 50%;
-				background: $gradientPurple;
-				opacity: 1;
-				&::before {
-					position: absolute;
-					content: "";
-					height: 39px;
-					width: 40px;
-					background: $gradientPurple;
-					opacity: 0.5;
-				}
-			}
-		}
-	}
+      &.-in-range-.-focus- {
+        position: relative;
+        border-radius: 50%;
+        background: $gradientPurple;
+        opacity: 1;
+        &::before {
+          position: absolute;
+          content: "";
+          height: 39px;
+          width: 40px;
+          background: $gradientPurple;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
 
-	&_width_narrow {
-		.air-datepicker {
-			width: 266px;
-			&-body {
-				&--cells {
-					&.-days- {
-						grid-template-columns: repeat(7, 32px);
-						grid-auto-rows: 32px;
-					}
-				}
-			}
+  &_width_narrow {
+    .air-datepicker {
+      width: 266px;
+      &-body {
+        &--cells {
+          &.-days- {
+            grid-template-columns: repeat(7, 32px);
+            grid-auto-rows: 32px;
+          }
+        }
+      }
 
-			&-cell {
-				height: 32px;
-			}
-			&-cell.-day- {
-				&.-range-from-::after {
-					height: 32px;
-					width: 32.2px;
-				}
-				&.-range-to-::before {
-					height: 32px;
-					width: 32.2px;
-				}
-				&.-in-range-.-focus-::before {
-					height: 32px;
-					width: 32.27px;
-				}
-			}
-		}
-	}
+      &-cell {
+        height: 32px;
+      }
+      &-cell.-day- {
+        &.-range-from-::after {
+          height: 32px;
+          width: 32.2px;
+        }
+        &.-range-to-::before {
+          height: 32px;
+          width: 32.2px;
+        }
+        &.-in-range-.-focus-::before {
+          height: 32px;
+          width: 32.27px;
+        }
+      }
+    }
+  }
 }

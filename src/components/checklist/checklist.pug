@@ -1,22 +1,22 @@
 mixin checklist(options={type: '', labelText: '',})
-	-
-		let elemName='checklist'
-		let style = options.expand == true ? elemName + '_collapsing' : ''
-		let listStyle = options.expand == true ? elemName + '__list-wrapper_hidden' : ''
-		let labelStyle = options.expand == true ? elemName + '__label_collapsing' : ''
-		let tabindex = options.expand == true ? '0' : '-1'
-		let tipStyle = options.expand == false ? elemName + '__img_non-collapsing' : ''
-		let nameStyle = options.rich == true ? elemName + '__cat-name_rich' : ''
-	fieldset(class = elemName + ' js-' + elemName + ' ' + style)
-		p(class = elemName + '__label' + ' js-' + elemName + '__label ' + labelStyle tabindex = tabindex)=options.labelText
-			img(class = elemName + '__img' + ' js-' + elemName + '__img ' + elemName + '__img_collapsed ' + tipStyle, src = require('@com/checklist/img/expand-more.svg').default alt = 'развернуть')
-		ul(class = elemName + '__list-wrapper' + ' js-' + elemName + '__list-wrapper ' + listStyle)
-			each val, index in options.categories
-				li(class = elemName + '__cat-wrapper')
-					label(class = elemName + '__cat')
-						input(class = elemName + '__cat-checkbox', type="checkbox", name = options.checkListName, value = val.name,)
-						span(class = elemName + '__cat-checkmark')
-						div(class = elemName + '__cat-text')
-							p(class = elemName + '__cat-name ' + nameStyle)=val.name
-							if options.rich == true
-								p(class = elemName + '__cat-descr')=val.descr
+  -
+    let elemName='checklist'
+    let style = options.expand == true ? elemName + '_collapsing' : ''
+    let listStyle = options.expand == true ? elemName + '__list-wrapper_hidden' : ''
+    let labelStyle = options.expand == true ? elemName + '__label_collapsing' : ''
+    let tabindex = options.expand == true ? '0' : '-1'
+    let tipStyle = options.expand == false ? elemName + '__img_non-collapsing' : ''
+    let nameStyle = options.rich == true ? elemName + '__cat-name_rich' : ''
+  fieldset(class = elemName + ' js-' + elemName + ' ' + style)
+    p(class = elemName + '__label' + ' js-' + elemName + '__label ' + labelStyle tabindex = tabindex)=options.labelText
+      img(class = elemName + '__img' + ' js-' + elemName + '__img ' + elemName + '__img_collapsed ' + tipStyle, src = require('@com/checklist/img/expand-more.svg').default alt = 'развернуть')
+    ul(class = elemName + '__list-wrapper' + ' js-' + elemName + '__list-wrapper ' + listStyle)
+      each val, index in options.categories
+        li(class = elemName + '__cat-wrapper')
+          label(class = elemName + '__cat')
+            input(class = elemName + '__cat-checkbox' type="checkbox", name = options.checkListName, value = val.name,)
+            span(class = elemName + '__cat-checkmark')
+            div(class = elemName + '__cat-text')
+              p(class = elemName + '__cat-name ' + nameStyle)=val.name
+              if options.rich == true
+                p(class = elemName + '__cat-descr')=val.descr

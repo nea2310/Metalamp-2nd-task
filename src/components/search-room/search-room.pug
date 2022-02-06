@@ -2,35 +2,35 @@ include ../date-dropdown/date-dropdown.pug
 include ../dropdown/dropdown.pug
 include ../btn/btn.pug
 mixin search-room(options={})
-	-
-		let elemName = 'search-room'
-	form(class = elemName + ' js-' + elemName)
-		h1(class = elemName + '__header') Найдем номера под ваши пожелания
-		div(class = elemName + '__date-dropdown')
-			+date-dropdown(
-					{width:'wide',
-					type:'dateDropDown',
-					labelTextFrom: 'Прибытие',
-					labelTextTo: 'Выезд'}
-					)
-		div(class = elemName + '__guests')
-			+dropdown(
-					{categories:
-						{cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-						cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-						cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
-					type: 'dropDownGuests',
-					placeholder: 'Сколько гостей',
-					buttons: true,
-					labelText: 'гости',
-					width: 'wide'}
-					)
-		div(class = elemName + '__search')
-			+btn(
-					{text: 'подобрать номер',
-					type: 'submit',
-					length: 'very-long',
-					width: 'wide',
-					color: 'dark',
-					img: true}
-					)
+  -
+    let elemName = 'search-room'
+  form(class = elemName + ' js-' + elemName)
+    h1(class = elemName + '__header') Найдем номера под ваши пожелания
+    div(class = elemName + '__date-dropdown')
+      +date-dropdown(
+        {width:'wide',
+        type:'dateDropDown',
+        labelTextFrom: 'Прибытие',
+        labelTextTo: 'Выезд'}
+        )
+    div(class = elemName + '__guests')
+      +dropdown(
+        {categories:
+          {cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+          cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
+          cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+        type: 'dropDownGuests',
+        placeholder: 'Сколько гостей',
+        buttons: true,
+        labelText: 'гости',
+        width: 'wide'}
+        )
+    div(class = elemName + '__search')
+      +btn(
+        {text: 'подобрать номер',
+        type: 'submit',
+        length: 'very-long',
+        width: 'wide',
+        color: 'dark',
+        img: true}
+        )

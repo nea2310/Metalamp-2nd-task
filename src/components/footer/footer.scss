@@ -1,144 +1,144 @@
 @import "@styles/glob.scss";
 .footer {
-	width: 100%;
-	margin: 0 auto;
-	box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-	background-color: $colorWhite;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  background-color: $colorWhite;
 
-	&__wrapper {
-		&-top {
-			padding-top: 100px;
-			height: 272px;
-			max-width: 1161px;
-			margin: 0 auto;
-			display: flex;
-			justify-content: space-between;
-			@include media-breakpoint-down($lg) {
-				padding-left: 20px;
-				padding-right: 20px;
-			}
-			@include media-breakpoint-down($md) {
-				padding: 0;
-				justify-content: center;
-				height: 162px;
-			}
-		}
+  &__wrapper {
+    &-top {
+      padding-top: 100px;
+      height: 272px;
+      max-width: 1161px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      @include media-breakpoint-down($lg) {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      @include media-breakpoint-down($md) {
+        padding: 0;
+        justify-content: center;
+        height: 162px;
+      }
+    }
 
-		&-bottom {
-			align-items: center;
-			height: 70px;
-			max-width: 1161px;
-			margin: 0 auto;
-			display: flex;
-			justify-content: space-between;
-			@include media-breakpoint-down($lg) {
-				padding-left: 20px;
-				padding-right: 20px;
-			}
-			@include media-breakpoint-down($md) {
-				padding-top: 18px;
-				flex-direction: column;
-				justify-content: start;
-				padding-bottom: 118px;
-			}
-		}
-		&-middle {
-			height: 1px;
-			background-color: $colorDarkShade15;
-			@include media-breakpoint-down($md) {
-				display: none;
-			}
-		}
-	}
+    &-bottom {
+      align-items: center;
+      height: 70px;
+      max-width: 1161px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      @include media-breakpoint-down($lg) {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      @include media-breakpoint-down($md) {
+        padding-top: 18px;
+        flex-direction: column;
+        justify-content: start;
+        padding-bottom: 118px;
+      }
+    }
+    &-middle {
+      height: 1px;
+      background-color: $colorDarkShade15;
+      @include media-breakpoint-down($md) {
+        display: none;
+      }
+    }
+  }
 
-	&__items {
-		flex-grow: 1;
-		&-link,
-		&-header {
-			@include font-body;
-			line-height: 17.07px;
-			font-weight: bold;
-			color: $colorDarkShade100;
-			font-size: 12px;
-			line-height: 14.63px;
-			text-transform: uppercase;
-			white-space: nowrap;
-		}
-		&:not(:first-child) {
-			padding-top: 4px;
-			@include media-breakpoint-down($md) {
-				display: none;
-			}
-		}
-		&:nth-child(1) {
-			max-width: 270px;
+  &__items {
+    flex-grow: 1;
+    &-link,
+    &-header {
+      @include font-body;
+      line-height: 17.07px;
+      font-weight: bold;
+      color: $colorDarkShade100;
+      font-size: 12px;
+      line-height: 14.63px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    &:not(:first-child) {
+      padding-top: 4px;
+      @include media-breakpoint-down($md) {
+        display: none;
+      }
+    }
+    &:nth-child(1) {
+      max-width: 270px;
 
-			padding-right: 2.5%;
-			@include media-breakpoint-down($lg) {
-				padding-left: 5px;
-				padding-right: 5px;
-			}
-		}
-		&:nth-child(2) {
-			padding-right: 5%;
-			@include media-breakpoint-down($lg) {
-				padding-left: 5px;
-				padding-right: 5px;
-			}
-		}
-		&:nth-child(3) {
-			padding-right: 8%;
-			@include media-breakpoint-down($lg) {
-				padding-left: 5px;
-				padding-right: 5px;
-			}
-		}
-		&:nth-child(4) {
-			padding-right: 4.5%;
-			@include media-breakpoint-down($lg) {
-				padding-left: 5px;
-				padding-right: 5px;
-			}
-		}
-		&:last-child {
-			@include media-breakpoint-down($lg) {
-				max-width: 270px;
-			}
-		}
-		@include media-breakpoint-down($md) {
-			display: flex;
-			justify-content: center;
-			align-items: flex-end;
-		}
-	}
+      padding-right: 2.5%;
+      @include media-breakpoint-down($lg) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+    &:nth-child(2) {
+      padding-right: 5%;
+      @include media-breakpoint-down($lg) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+    &:nth-child(3) {
+      padding-right: 8%;
+      @include media-breakpoint-down($lg) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+    &:nth-child(4) {
+      padding-right: 4.5%;
+      @include media-breakpoint-down($lg) {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+    }
+    &:last-child {
+      @include media-breakpoint-down($lg) {
+        max-width: 270px;
+      }
+    }
+    @include media-breakpoint-down($md) {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+  }
 
-	&__item {
-		text-transform: initial;
-		padding-top: 21px;
-		white-space: nowrap;
-		&-link {
-			@include font-body;
-			line-height: 17.07px;
-			color: $colorDarkShade50;
-		}
-		@include media-breakpoint-down($md) {
-			display: none;
-		}
-	}
-	&__long-text {
-		cursor: initial;
-		white-space: initial;
-		@include font-body;
-		line-height: 17.07px;
-		line-height: 22px;
-	}
-	&__social-links {
-		display: flex;
-		justify-content: space-between;
-		width: 114px;
+  &__item {
+    text-transform: initial;
+    padding-top: 21px;
+    white-space: nowrap;
+    &-link {
+      @include font-body;
+      line-height: 17.07px;
+      color: $colorDarkShade50;
+    }
+    @include media-breakpoint-down($md) {
+      display: none;
+    }
+  }
+  &__long-text {
+    cursor: initial;
+    white-space: initial;
+    @include font-body;
+    line-height: 17.07px;
+    line-height: 22px;
+  }
+  &__social-links {
+    display: flex;
+    justify-content: space-between;
+    width: 114px;
 
-		@include media-breakpoint-down($md) {
-			padding-top: 25px;
-		}
-	}
+    @include media-breakpoint-down($md) {
+      padding-top: 25px;
+    }
+  }
 }

@@ -1,10 +1,10 @@
 mixin bullet-list(options={})
-	-
-		let elemName = 'bullet-list'
-	fieldset(class = elemName)
-		ul(class = elemName + '__list-wrapper' type = 'disc')
-			each val in options.categories
-				li(class = elemName + '__cat')= val
+  -
+    let elemName = 'bullet-list'
+  fieldset(class = elemName)
+    ul(class = elemName + '__list-wrapper' type = 'disc')
+      each val in options.categories
+        li(class = elemName + '__cat')= val
 
 
 

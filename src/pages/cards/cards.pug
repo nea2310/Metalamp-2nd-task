@@ -6,39 +6,39 @@ include ../../components/booking/booking.pug
 include ../../components/login/login.pug
 include ../../components/room-card/room-card.pug
 block title
-	title Cards
+  title Cards
 block content 
-	main(class="cards")
-		div(class='cards__search-col cards__search-col-left')
-			div(class='cards__search-room')
-				+search-room()
-			div(class='cards__registration')
-				+registration()
-		div(class='cards__search-col cards__search-col-center')
-			div(class='cards__booking')
-				+booking({
-								roomNumber: '888',
-								isLux: 'люкс',
-								roomPrice: '9 990',
-								daysAmount: '4',
-								totalPrice: '39 960',
-								sale: '2 179',
-								saleTotal: '0',
-								extraTotal: '300',
-								totalAmount: '38 081'})
-			div(class='cards__login')
-				+login()
-		div(class='cards__search-col cards__search-col-right')
-			div(class='cards__room-card')
-				+room-card({
-								roomNumber: '888',
-								isLux: 'люкс',
-								roomPrice: '9 990',
-								feedbackAmnt: '145',
-								ratingName: 'rating1'})
-			div(class='cards__room-card')
-				+room-card({
-								roomNumber: '840',
-								roomPrice: '9 900',
-								feedbackAmnt: '65',
-								ratingName: 'rating2'})
+  main(class="cards")
+    div(class='cards__search-col cards__search-col-left')
+      div(class='cards__search-room')
+        +search-room()
+      div(class='cards__registration')
+        +registration()
+    div(class='cards__search-col cards__search-col-center')
+      div(class='cards__booking')
+        +booking({
+          roomNumber: '888',
+          isLux: 'люкс',
+          roomPrice: '9 990',
+          daysAmount: '4',
+          totalPrice: '39 960',
+          sale: '2 179',
+          saleTotal: '0',
+          extraTotal: '300',
+          totalAmount: '38 081'})
+      div(class='cards__login')
+        +login()
+    div(class='cards__search-col cards__search-col-right')
+      div(class='cards__room-card')
+        +room-card({
+          roomNumber: '888',
+          isLux: 'люкс',
+          roomPrice: '9 990',
+          feedbackAmnt: '145',
+          ratingName: 'rating1'})
+      div(class='cards__room-card')
+        +room-card({
+          roomNumber: '840',
+          roomPrice: '9 900',
+          feedbackAmnt: '65',
+          ratingName: 'rating2'})

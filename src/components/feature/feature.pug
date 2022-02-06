@@ -1,10 +1,10 @@
 mixin feature(options={})
-	-
-		let elemName = 'feature'
-	div(class = elemName)
-		img(class=elemName+'__img' src = options.img alt = options.alt)
-		p(class = elemName + '__name')= options.name
-		p(class = elemName + '__descr')= options.descr
+  -
+    let elemName = 'feature'
+  div(class = elemName)
+    img(class=elemName+'__img' src = options.img alt = options.alt)
+    p(class = elemName + '__name')= options.name
+    p(class = elemName + '__descr')= options.descr
 
 
 

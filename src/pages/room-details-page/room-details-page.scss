@@ -5,242 +5,233 @@ $sm-padding-bottom: 30px;
 $sm-padding-top: 0;
 $sm-padding-right: 20px;
 @mixin padding-sm() {
-	padding-top: $sm-padding-top;
-	padding-left: $sm-padding-left;
-	padding-bottom: $sm-padding-bottom;
-	margin: 0;
+  padding-top: $sm-padding-top;
+  padding-left: $sm-padding-left;
+  padding-bottom: $sm-padding-bottom;
+  margin: 0;
 }
 
 $lg-padding-bottom: 30px;
 .room-details-page {
-	//border: 1px solid red;
-	& h1 {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		overflow: hidden;
-		clip: rect(0 0 0 0);
-	}
-	& h2 {
-		@include font-h2;
-	}
+  & h1 {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  & h2 {
+    @include font-h2;
+  }
 
-	@include media-breakpoint-down($xs) {
-		box-sizing: border-box;
-		padding-top: 40px;
-		margin: 0 auto;
-	}
+  @include media-breakpoint-down($xs) {
+    box-sizing: border-box;
+    padding-top: 40px;
+    margin: 0 auto;
+  }
 
-	&__banner-wrapper {
-		max-height: 485px;
-		max-width: $xxl;
-		width: 100%;
-		box-sizing: border-box;
-		margin: 0 auto;
-		display: grid;
+  &__banner-wrapper {
+    max-height: 485px;
+    max-width: $xxl;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: grid;
 
-		grid-template-rows: 2fr 2fr;
-		grid-template-columns: 2.75fr 1.25fr;
-		grid-template-areas:
-			"img-1 img-2"
-			"img-1 img-3";
-	}
+    grid-template-rows: 2fr 2fr;
+    grid-template-columns: 2.75fr 1.25fr;
+    grid-template-areas:
+      "img-1 img-2"
+      "img-1 img-3";
+  }
 
-	&__img-1 {
-		max-height: 485px;
-		box-sizing: border-box;
-		grid-area: img-1;
-		height: 100%;
-		width: 100%;
-		min-width: 100%;
-		object-fit: cover;
-	}
-	&__img-2 {
-		max-height: 242.5px;
-		box-sizing: border-box;
-		grid-area: img-2;
-		height: 100%;
-		width: 100%;
-		min-width: 100%;
-		object-fit: cover;
-	}
-	&__img-3 {
-		max-height: 242.5px;
-		box-sizing: border-box;
-		grid-area: img-3;
-		height: 100%;
-		width: 100%;
-		min-width: 100%;
-		object-fit: cover;
-	}
+  &__img-1 {
+    max-height: 485px;
+    box-sizing: border-box;
+    grid-area: img-1;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+    object-fit: cover;
+  }
+  &__img-2 {
+    max-height: 242.5px;
+    box-sizing: border-box;
+    grid-area: img-2;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+    object-fit: cover;
+  }
+  &__img-3 {
+    max-height: 242.5px;
+    box-sizing: border-box;
+    grid-area: img-3;
+    height: 100%;
+    width: 100%;
+    min-width: 100%;
+    object-fit: cover;
+  }
 
-	&__main-info-wrapper {
-		max-width: 1162px;
-		//	border: 1px solid palevioletred;
-		width: 100%;
-		box-sizing: border-box;
-		margin: 70px auto;
-		display: grid;
+  &__main-info-wrapper {
+    max-width: 1162px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 70px auto;
+    display: grid;
 
-		grid-template-rows: auto auto auto;
-		grid-template-columns: 31% 36% auto;
-		grid-template-areas:
-			"info impress booking"
-			"feedback feedback booking"
-			"rules cancel booking";
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 31% 36% auto;
+    grid-template-areas:
+      "info impress booking"
+      "feedback feedback booking"
+      "rules cancel booking";
 
-		@include media-breakpoint-down($lg) {
-			grid-template-rows: auto auto auto auto;
-			grid-template-columns: 50% 50%;
-			grid-template-areas:
-				"info booking"
-				"impress booking"
-				"feedback feedback"
-				"rules cancel";
-		}
+    @include media-breakpoint-down($lg) {
+      grid-template-rows: auto auto auto auto;
+      grid-template-columns: 50% 50%;
+      grid-template-areas:
+        "info booking"
+        "impress booking"
+        "feedback feedback"
+        "rules cancel";
+    }
 
-		@include media-breakpoint-down($md) {
-			margin: 30px auto 0px;
-			grid-template-areas:
-				"booking booking"
-				"info impress"
-				"feedback feedback"
-				"rules cancel";
-		}
+    @include media-breakpoint-down($md) {
+      margin: 30px auto 0px;
+      grid-template-areas:
+        "booking booking"
+        "info impress"
+        "feedback feedback"
+        "rules cancel";
+    }
 
-		@include media-breakpoint-down($sm) {
-			grid-template-rows: auto auto auto auto auto;
-			grid-template-columns: auto;
-			grid-template-areas:
-				"booking"
-				"info"
-				"impress"
-				"feedback"
-				"rules"
-				"cancel";
-		}
-	}
+    @include media-breakpoint-down($sm) {
+      grid-template-rows: auto auto auto auto auto;
+      grid-template-columns: auto;
+      grid-template-areas:
+        "booking"
+        "info"
+        "impress"
+        "feedback"
+        "rules"
+        "cancel";
+    }
+  }
 
-	&__room-info {
-		padding-left: 3px;
-		&-item {
-			margin-top: 25px;
-		}
-		&-wrapper {
-			grid-area: info;
-			box-sizing: border-box;
-			//border: 1px solid blue;
-			@include media-breakpoint-between($sm, $lg) {
-				margin: 0 20px;
-				padding-bottom: $lg-padding-bottom;
-			}
-			@include media-breakpoint-down($sm) {
-				@include padding-sm;
-			}
-		}
-	}
-	&__room-impress {
-		padding-top: 22px;
-		&-wrapper {
-			grid-area: impress;
+  &__room-info {
+    padding-left: 3px;
+    &-item {
+      margin-top: 25px;
+    }
+    &-wrapper {
+      grid-area: info;
+      box-sizing: border-box;
+      @include media-breakpoint-between($sm, $lg) {
+        margin: 0 20px;
+        padding-bottom: $lg-padding-bottom;
+      }
+      @include media-breakpoint-down($sm) {
+        @include padding-sm;
+      }
+    }
+  }
+  &__room-impress {
+    padding-top: 22px;
+    &-wrapper {
+      grid-area: impress;
 
-			//	border: 1px solid red;
-			@include media-breakpoint-between($sm, $lg) {
-				margin: 0 20px;
-				padding-bottom: $lg-padding-bottom;
-			}
-			@include media-breakpoint-down($sm) {
-				@include padding-sm;
-			}
-		}
-	}
-	&__booking {
-		&-wrapper {
-			grid-area: booking;
-			box-sizing: border-box;
-			//	border: 1px solid orange;
-			@include media-breakpoint-down($lg) {
-				margin: 0 auto;
-				padding-bottom: $lg-padding-bottom;
-			}
-		}
-	}
-	&__feedback {
-		padding-left: 2px;
-		&-header {
-			display: flex;
-			justify-content: space-between;
-			@include media-breakpoint-down($xs) {
-				display: block;
-			}
-			&-quant {
-				white-space: nowrap;
-				@include font-body;
-			}
-		}
-		&-item {
-			margin-top: 22px;
-		}
-		//	border: 1px solid blue;
-		&-wrapper {
-			padding-right: 70px;
-			padding-top: 14px;
-			grid-area: feedback;
-			box-sizing: border-box;
-			//	border: 1px solid green;
-			@include media-breakpoint-between($sm, $lg) {
-				padding-bottom: $lg-padding-bottom;
-				margin: 0 20px;
-				padding-right: 0;
-				padding-top: 0;
-			}
-			@include media-breakpoint-down($sm) {
-				@include padding-sm;
-			}
-		}
-	}
-	&__rules {
-		&-wrapper {
-			padding-top: 33px;
-			grid-area: rules;
-			box-sizing: border-box;
-			//	border: 1px solid purple;
-			@include media-breakpoint-between($sm, $lg) {
-				padding-bottom: $lg-padding-bottom;
-				padding-top: 0;
-				margin: 0 20px;
-			}
-			@include media-breakpoint-down($sm) {
-				@include padding-sm;
-			}
-		}
-		&-header {
-			padding-left: 21px;
-			margin-bottom: 19px;
-			@include media-breakpoint-down($xs) {
-				padding-left: 0;
-			}
-		}
-	}
-	&__cancel {
-		@include font-body;
-		margin-top: 19px;
-		&-wrapper {
-			padding-right: 73px;
-			padding-top: 32px;
-			padding-left: 1px;
-			grid-area: cancel;
-			box-sizing: border-box;
-			//	border: 1px solid brown;
-			@include media-breakpoint-down($sm) {
-				@include padding-sm;
-			}
-			@include media-breakpoint-between($sm, $lg) {
-				padding-bottom: $lg-padding-bottom;
-				padding-top: 0;
-				padding-right: 0;
-				margin: 0 20px;
-			}
-		}
-	}
+      @include media-breakpoint-between($sm, $lg) {
+        margin: 0 20px;
+        padding-bottom: $lg-padding-bottom;
+      }
+      @include media-breakpoint-down($sm) {
+        @include padding-sm;
+      }
+    }
+  }
+  &__booking {
+    &-wrapper {
+      grid-area: booking;
+      box-sizing: border-box;
+      @include media-breakpoint-down($lg) {
+        margin: 0 auto;
+        padding-bottom: $lg-padding-bottom;
+      }
+    }
+  }
+  &__feedback {
+    padding-left: 2px;
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      @include media-breakpoint-down($xs) {
+        display: block;
+      }
+      &-quant {
+        white-space: nowrap;
+        @include font-body;
+      }
+    }
+    &-item {
+      margin-top: 22px;
+    }
+    &-wrapper {
+      padding-right: 70px;
+      padding-top: 14px;
+      grid-area: feedback;
+      box-sizing: border-box;
+      @include media-breakpoint-between($sm, $lg) {
+        padding-bottom: $lg-padding-bottom;
+        margin: 0 20px;
+        padding-right: 0;
+        padding-top: 0;
+      }
+      @include media-breakpoint-down($sm) {
+        @include padding-sm;
+      }
+    }
+  }
+  &__rules {
+    &-wrapper {
+      padding-top: 33px;
+      grid-area: rules;
+      box-sizing: border-box;
+      @include media-breakpoint-between($sm, $lg) {
+        padding-bottom: $lg-padding-bottom;
+        padding-top: 0;
+        margin: 0 20px;
+      }
+      @include media-breakpoint-down($sm) {
+        @include padding-sm;
+      }
+    }
+    &-header {
+      padding-left: 21px;
+      margin-bottom: 19px;
+      @include media-breakpoint-down($xs) {
+        padding-left: 0;
+      }
+    }
+  }
+  &__cancel {
+    @include font-body;
+    margin-top: 19px;
+    &-wrapper {
+      padding-right: 73px;
+      padding-top: 32px;
+      padding-left: 1px;
+      grid-area: cancel;
+      box-sizing: border-box;
+      @include media-breakpoint-down($sm) {
+        @include padding-sm;
+      }
+      @include media-breakpoint-between($sm, $lg) {
+        padding-bottom: $lg-padding-bottom;
+        padding-top: 0;
+        padding-right: 0;
+        margin: 0 20px;
+      }
+    }
+  }
 }

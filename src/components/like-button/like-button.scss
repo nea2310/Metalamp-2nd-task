@@ -1,38 +1,38 @@
 @import "@styles/glob.scss";
 .like-button {
-	padding-left: 0;
-	margin-left: 0;
-	user-select: none;
-	&__label-text {
-		max-width: 100px;
-		@include font-h3;
-		&-text {
-			margin-bottom: 16px;
-		}
-	}
-	&__button {
-		outline-offset: 5px;
-		background: none;
-		border: 1px solid $colorDarkShade25;
-		width: 40px;
-		height: 20px;
-		border-radius: 22px;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-	}
+  padding-left: 0;
+  margin-left: 0;
+  user-select: none;
+  &__label-text {
+    max-width: 100px;
+    @include font-h3;
+    &-text {
+      margin-bottom: 16px;
+    }
+  }
+  &__button {
+    outline-offset: 5px;
+    background: none;
+    border: 1px solid $colorDarkShade25;
+    width: 40px;
+    height: 20px;
+    border-radius: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
 
-	&__counter {
-		@include font-body;
-		font-size: 10px;
-		line-height: 12.19px;
-	}
+  &__counter {
+    @include font-body;
+    font-size: 10px;
+    line-height: 12.19px;
+  }
 
-	&_liked {
-		border: 1px solid $colorPurple;
-		& > .like-button__counter {
-			color: $colorPurple;
-		}
-	}
+  &_liked {
+    border: 1px solid $colorPurple;
+    & > .like-button__counter {
+      color: $colorPurple;
+    }
+  }
 }
