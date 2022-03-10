@@ -3,7 +3,7 @@ second test task from MetaLamp.
 
 
 ## Demo production version
-`https://nea2310.github.io/2-nd-task.html`
+`https://nea2310.github.io/Metalamp-2nd-task/index.html`
 
 ### File structure
 ```
