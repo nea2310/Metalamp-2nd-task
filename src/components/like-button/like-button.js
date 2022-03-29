@@ -21,11 +21,11 @@ class LikeButton {
 
     this.iconLike = require(
       './img/favorite.svg'
-    ).default;
+    );
 
     this.iconUnlike = require(
       './img/favorite-border.svg'
-    ).default;
+    );
   }
 
 

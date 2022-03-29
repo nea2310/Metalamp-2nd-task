@@ -9,7 +9,7 @@ mixin checklist(options={type: '', labelText: '',})
     let nameStyle = options.rich == true ? elemName + '__cat-name_rich' : ''
   fieldset(class = elemName + ' js-' + elemName + ' ' + style)
     p(class = elemName + '__label' + ' js-' + elemName + '__label ' + labelStyle tabindex = tabindex)=options.labelText
-      img(class = elemName + '__img' + ' js-' + elemName + '__img ' + elemName + '__img_collapsed ' + tipStyle, src = require('@com/checklist/img/expand-more.svg').default alt = 'развернуть')
+      img(class = elemName + '__img' + ' js-' + elemName + '__img ' + elemName + '__img_collapsed ' + tipStyle, src = require('@com/checklist/img/expand-more.svg') alt = 'развернуть')
     ul(class = elemName + '__list-wrapper' + ' js-' + elemName + '__list-wrapper ' + listStyle)
       each val, index in options.categories
         li(class = elemName + '__cat-wrapper')

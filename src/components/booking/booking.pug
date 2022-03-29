@@ -47,7 +47,7 @@ mixin booking(options={})
           span(class = elemName + '__price-dtl-sale-val')= options.sale
           span(class = elemName + '__price-dtl-sale-curr'  ) ₽
         a(class = elemName + '__price-dtl-info' href = 'https://test/test') 
-          img(class = elemName + '__price-dtl-info-img' src = require('@com/booking/img/info.svg').default alt = 'Узнать больше')
+          img(class = elemName + '__price-dtl-info-img' src = require('@com/booking/img/info.svg') alt = 'Узнать больше')
         div(class = elemName + '__price-dtl')
           span(class = elemName + '__price-dtl-sale-total')= options.saleTotal
           span(class = elemName + '__price-dtl-sale-price-curr') ₽
@@ -55,7 +55,7 @@ mixin booking(options={})
         div(class = elemName + '__price-dtl')
           p(class = elemName + '__price-dtl-extra') Сбор за дополнительные услуги
         a(class = elemName + '__price-dtl-info' href = 'https://test/test') 
-          img(class = elemName + '__price-dtl-info-img' src = require('@com/booking/img/info.svg').default alt = 'Узнать больше')
+          img(class = elemName + '__price-dtl-info-img' src = require('@com/booking/img/info.svg') alt = 'Узнать больше')
         div(class = elemName + '__price-dtl')
           span(class = elemName + '__price-dtl-extra-total')= options.extraTotal
           span(class = elemName + '__price-dtl-extra-total-curr') ₽

@@ -15,5 +15,5 @@ mixin input(options={})
         p(class = elemName+'__label-text')=labelText
       if img
         button(class = elemName+'__link' aria-label = name)
-          img(class = elemName+'__img', src = require('@com/input-field/img/arrow-forward.svg').default)
+          img(class = elemName+'__img', src = require('@com/input-field/img/arrow-forward.svg'))
       input(class = elemName + '__input ' + js placeholder = placeholder type = opType value = '')

@@ -60,10 +60,10 @@ class DatePicker {
     const imgPrev =
       require(
         './img/arrow-back.svg'
-      ).default;
+      );
     const imgNext = require(
       './img/arrow-forward.svg'
-    ).default;
+    );
     let separator;
     this.isFilter ? separator = ' - ' : separator = ',';
     this.myDatepicker =

@@ -14,7 +14,7 @@ mixin btn(options={})
       button(class = elemName + ' ' + elemName + '_length_' + length + ' ' + 
       elemName + '_width_' + width + ' ' + elemName + '_color_' + color type = 'submit')= text
         if options.img
-          img(class = elemName+'__img', src = require('@com/btn/img/arrow-forward-white.svg').default)
+          img(class = elemName+'__img', src = require('@com/btn/img/arrow-forward-white.svg'))
     when 'link'
       a(class = elemName + ' ' + elemName + '_length_' + length + ' ' + 
       elemName + '_width_' + width + ' ' + elemName + '_color_' + color href = options.href)= text

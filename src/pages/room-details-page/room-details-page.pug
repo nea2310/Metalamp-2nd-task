@@ -13,30 +13,30 @@ block content
   main(class = 'room-details-page')
     h1 подробная информация о номере
     section(class = 'room-details-page__banner-wrapper')
-      img(class = 'room-details-page__img-1' alt = 'фоновое изображение - спальня' src = require('@pag/room-details-page/img/room-details-1.jpg').default)
-      img(class = 'room-details-page__img-2' alt = 'фоновое изображение - спальня' src = require('@pag/room-details-page/img/room-details-2.jpg').default)
-      img(class = 'room-details-page__img-3' alt = 'фоновое изображение - спальня' src = require('@pag/room-details-page/img/room-details-3.jpg').default)
+      img(class = 'room-details-page__img-1' alt = 'фоновое изображение - спальня' src = require('@pag/room-details-page/img/room-details-1.jpg'))
+      img(class = 'room-details-page__img-2' alt = 'фоновое изображение - спальня' src = require('@pag/room-details-page/img/room-details-2.jpg'))
+      img(class = 'room-details-page__img-3' alt = 'фоновое изображение - спальня' src = require('@pag/room-details-page/img/room-details-3.jpg'))
     section(class = 'room-details-page__main-info-wrapper')
       div(class = 'room-details-page__room-info-wrapper')
         h2 Сведения о номере
         div(class = 'room-details-page__room-info')
           div(class = 'room-details-page__room-info-item')
             +feature(
-              {img: require('@pag/room-details-page/img/smile.svg').default,
+              {img: require('@pag/room-details-page/img/smile.svg'),
               name: 'Комфорт',
               descr: 'Шумопоглощающие стены',
               alt: 'smile'}
               )
           div(class = 'room-details-page__room-info-item')
             +feature(
-              {img: require('@pag/room-details-page/img/city.svg').default,
+              {img: require('@pag/room-details-page/img/city.svg'),
               name: 'Удобство',
               descr: 'Окно в каждой из спален',
               alt: 'city'}
               )
           div(class = 'room-details-page__room-info-item')
             +feature(
-              {img: require('@pag/room-details-page/img/fireplace.svg').default,
+              {img: require('@pag/room-details-page/img/fireplace.svg'),
               name: 'Уют',
               descr: 'Номер оснащен камином',
               alt: 'fireplace'}
@@ -63,7 +63,7 @@ block content
         div(class = 'room-details-page__feedback')
           div(class = 'room-details-page__feedback-item')
             +feedback(
-              {img: require('@pag/room-details-page/img/murad.jpg').default,
+              {img: require('@pag/room-details-page/img/murad.jpg'),
               name: 'Мурад Сарафанов',
               date: '5 дней назад',
               descr: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
@@ -71,7 +71,7 @@ block content
               )
           div(class = 'room-details-page__feedback-item')
             +feedback(
-              {img: require('@pag/room-details-page/img/patricia.jpg').default,
+              {img: require('@pag/room-details-page/img/patricia.jpg'),
               name: 'Патрисия Стёклышкова',
               date: 'Неделю назад',
               descr: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, Каждый день новое блюдо и десерт как комплимент',
