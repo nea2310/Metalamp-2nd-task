@@ -1,9 +1,13 @@
 const webpack = require('webpack');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+//const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 const src = path.join(__dirname, '../src');
+const dist = path.join(__dirname, '../dist');
 const PAGES_DIR = `${src}\\pages\\`;
 const PAGES = [];
 fs.readdirSync(PAGES_DIR).forEach((file) => {
@@ -20,6 +24,7 @@ module.exports = {
 
   resolve: {
     alias: {
+      '@fav': `${src}/assets/favicons`,
       '@com': `${src}/components`,
       '@pag': `${src}/pages`,
       '@styles': `${src}/assets/styles`,
@@ -65,6 +70,34 @@ module.exports = {
       'window.jQuery': 'jquery'
     }),
 
+    new CopyPlugin({
+      patterns: [
+        { from: `${src}/assets/favicons/favicon.ico`, to: `${dist}` },
+      ],
+    }),
+
+    // new FaviconsWebpackPlugin(
+    //   {
+    //     favicon: `${src}/assets/favicons/logo.png`
+    //   }
+    // ),
+
+    /*подход 2022г. по созданию фавиконов:
+    * https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
+    
+    * рекомендации HTML-академии:
+    * https://habr.com/ru/company/htmlacademy/blog/578224/
+    
+    */
+    new WebpackPwaManifest({
+      name: 'TOXIN',
+      icons: [
+        { src: path.resolve(`${src}/assets/favicons/icon-192.png`), sizes: '192x192' },
+        { src: path.resolve(`${src}/assets/favicons/icon-512.png`), sizes: '512x512' }
+      ]
+    }),
+
+
   ],
   module: {
     //module.rules - все лоадеры
@@ -92,7 +125,7 @@ module.exports = {
       Файлы, которые будут подпадать под правило с type: 'asset/resource',
        будут складываться в директорию с бандлом*/
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'assets/images/[name].[hash][ext]',
