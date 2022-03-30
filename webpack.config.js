@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
 
 /*
  * css-loader - импортировать CSS-файлы
- * style-loader - поместить CSS-файлы в тег <style> (мы его не используем)
+ * style-loader - поместить CSS-код в тег <style> (мы его не используем)
  * MiniCssExtractPlugin - извлечь CSS в отдельный файл
  * не исключаем node-modules, т.к. оттуда берутся файлы стилей плагинов
  * postcss-loader - инструмент пост-обработки CSS
@@ -68,7 +68,7 @@ module.exports = {
   devtool: 'source-map',
   /*настройки директории выходного файла (бандла)*/
   output: {
-    filename: '[name].[contenthash].js',
+    filename: 'assets/js/[name].[contenthash].js',
     assetModuleFilename: "assets/[hash][ext][query]",
     /*очищать dist перед очередным запуском npm run build или npm run dev*/
     clean: true,
@@ -77,7 +77,7 @@ module.exports = {
   Эти задачи могут касаться как самого бандла, так и другого кода*/
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css'
+      filename: 'assets/css/[name].[contenthash].css'
     }),
     /*HtmlWebpackPlugin создает index.html в директории с бандлом и автоматически добавляет в него ссылку на бандл.
     HtmlWebpackPlugin создаст новый файл index.html в директории dist и добавит в него ссылку на бандл —
