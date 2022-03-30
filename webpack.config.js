@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 const src = path.join(__dirname, './src');
@@ -29,16 +29,16 @@ if (process.env.NODE_ENV === 'production') {
 
 const processCSS = [
   MiniCssExtractPlugin.loader,
-  "css-loader",
+  'css-loader',
   {
-    loader: "postcss-loader",
+    loader: 'postcss-loader',
     options: {
       postcssOptions: {
         plugins: [
           [
-            "autoprefixer", {},
-            "cssnano", {},
-            "postcss-preset-env", {},
+            'autoprefixer', {},
+            'cssnano', {},
+            'postcss-preset-env', {},
           ],
         ],
       },
@@ -61,7 +61,7 @@ module.exports = {
   devServer: {
     /* отслеживать изменения в .pug файлах, т.к. по умолчанию это не происходит - 
     см. https://qna.habr.com/q/1039918*/
-    watchFiles: ['src/**/**/*.pug'],
+    watchFiles: [`${src}/**/**/*.pug`],
   },
 
   mode: mode,
@@ -69,7 +69,7 @@ module.exports = {
   /*настройки директории выходного файла (бандла)*/
   output: {
     filename: 'assets/js/[name].[contenthash].js',
-    assetModuleFilename: "assets/[hash][ext][query]",
+    assetModuleFilename: 'assets/[hash][ext][query]',
     /*очищать dist перед очередным запуском npm run build или npm run dev*/
     clean: true,
   },
@@ -87,7 +87,7 @@ module.exports = {
      */
 
     ...PAGES.map((page) => new HtmlWebpackPlugin({
-      template: `./src/pages/${page}/${page}.pug`,
+      template: `${src}/pages/${page}/${page}.pug`,
       filename: `./${page}.html`,
       inject: true,
     })),
@@ -120,7 +120,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             //https://runebook.dev/ru/docs/babel/babel-preset-env/index
-            presets: [["@babel/preset-env", { "targets": "> 0.25%, not dead" }]],
+            presets: [['@babel/preset-env', { 'targets': '> 0.25%, not dead' }]],
             /*Использование кэша для избежания рекомпиляции при каждом запуске*/
             cacheDirectory: true,
           }
@@ -129,7 +129,7 @@ module.exports = {
 
       {
         test: /\.scss$/,
-        use: [...processCSS, "sass-loader",],
+        use: [...processCSS, 'sass-loader',],
       },
 
       /*asset/resource это аналог file-loader.
