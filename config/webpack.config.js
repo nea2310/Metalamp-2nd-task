@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const CopyPlugin = require("copy-webpack-plugin");
 const path = require('path');
 
 const src = path.join(__dirname, '../src');
@@ -12,10 +11,9 @@ fs.readdirSync(PAGES_DIR).forEach((file) => {
   PAGES.push(file.split('/', 2).join());
 });
 
-
-let mode = 'development'
+let mode = 'development';
 if (process.env.NODE_ENV === 'production') {
-  mode = 'production'
+  mode = 'production';
 }
 
 module.exports = {
@@ -26,81 +24,81 @@ module.exports = {
       '@com': `${src}/components`,
       '@pag': `${src}/pages`,
       '@styles': `${src}/assets/styles`,
-    }
+    },
   },
 
-
   devServer: {
-    /* отслеживать изменения в .pug файлах, т.к. по умолчанию это не происходит - 
-    см. https://qna.habr.com/q/1039918*/
+    /* отслеживать изменения в .pug файлах, т.к. по умолчанию это не происходит -
+    см. https://qna.habr.com/q/1039918 */
     watchFiles: [`${src}/**/**/*.pug`],
   },
 
-  mode: mode,
+  mode,
   devtool: 'source-map',
-  /*настройки точки входа*/
+  /* настройки точки входа */
   entry: `${src}/index.js`,
-  /*настройки директории выходного файла (бандла)*/
+  /* настройки директории выходного файла (бандла) */
   output: {
-    /*очищать dist перед очередным запуском npm run build или npm run dev*/
+    /* очищать dist перед очередным запуском npm run build или npm run dev */
     clean: true,
   },
-  /*В отличие от лоадеров, плагины позволяют выполнять задачи после сборки бандла. 
-  Эти задачи могут касаться как самого бандла, так и другого кода*/
+  /* В отличие от лоадеров, плагины позволяют выполнять задачи после сборки бандла.
+  Эти задачи могут касаться как самого бандла, так и другого кода */
   plugins: [
-    /*HtmlWebpackPlugin создает index.html в директории с бандлом и автоматически добавляет в него ссылку на бандл.
-    HtmlWebpackPlugin создаст новый файл index.html в директории dist и добавит в него ссылку на бандл —
-     <script src='main.js'></script> (или  <script src='main.[hash].js'></script>, если это build режим).
-     Мы создаем html файл из каждого pug файла, поэтому обходим циклом массив с названиями всех pug-страниц и 
-     для каждой создаем объект HtmlWebpackPlugin 
+    /* HtmlWebpackPlugin создает index.html в директории с бандлом и автоматически
+    добавляет в него ссылку на бандл.
+    HtmlWebpackPlugin создаст новый файл index.html в директории dist и добавит в
+    него ссылку на бандл — <script src='main.js'></script>
+    (или  <script src='main.[hash].js'></script>, если это build режим).
+    Мы создаем html файл из каждого pug файла, поэтому обходим циклом массив
+    с названиями всех pug-страниц и для каждой создаем объект HtmlWebpackPlugin
      */
     ...PAGES.map((page) => new HtmlWebpackPlugin({
       template: `${src}/pages/${page}/${page}.pug`,
       filename: `./${page}.html`,
       inject: true,
     })),
-    //Подключение jquery
+    // Подключение jquery
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      'window.jQuery': 'jquery'
+      'window.jQuery': 'jquery',
     }),
+    // new ESLintPlugin({}),
   ],
   module: {
-    //module.rules - все лоадеры
+    // module.rules - все лоадеры
     rules: [
-      //обработчик для pug файлов
+      // обработчик для pug файлов
       {
         test: /\.pug$/,
         loader: 'pug-loader',
         exclude: /node_modules/,
       },
-      /*преобразование JavaScript следующего поколения в современный JavaScript с помощью Babel.*/
+      /* преобразование JavaScript следующего поколения в современный JavaScript с помощью Babel. */
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            //https://runebook.dev/ru/docs/babel/babel-preset-env/index
-            presets: [['@babel/preset-env', { 'targets': '> 0.25%, not dead' }]],
-            /*Использование кэша для избежания рекомпиляции при каждом запуске*/
+            // https://runebook.dev/ru/docs/babel/babel-preset-env/index
+            presets: [['@babel/preset-env', { targets: '> 0.25%, not dead' }]],
+            /* Использование кэша для избежания рекомпиляции при каждом запуске */
             cacheDirectory: true,
-          }
-        }
+          },
+        },
       },
-      /*asset/resource это аналог file-loader.
+      /* asset/resource это аналог file-loader.
       Файлы, которые будут подпадать под правило с type: 'asset/resource',
-       будут складываться в директорию с бандлом*/
+       будут складываться в директорию с бандлом */
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'assets/images/[name].[hash][ext]',
-        }
+        },
       },
-    ]
+    ],
   },
-}
-
-
+};
