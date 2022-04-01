@@ -1,6 +1,10 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.config');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
+const path = require('path');
+const src = path.join(__dirname, '../src');
+const dist = path.join(__dirname, '../dist');
 
 /*
  * css-loader - импортировать CSS-файлы
@@ -30,8 +34,6 @@ const processCSS = [
   },
 ];
 
-
-
 module.exports = merge(common, {
   // Set the mode to production
   mode: 'production',
@@ -41,6 +43,19 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'assets/css/[name].[contenthash].css'
+    }),
+
+    /*копируем файлы фавиконов и манифеста в dist
+    подход 2022г. по созданию фавиконов:
+    * https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
+    * рекомендации HTML-академии:
+    * https://habr.com/ru/company/htmlacademy/blog/578224/
+*/
+    new CopyPlugin({
+      patterns: [
+        { from: `${src}/assets/favicons/favicon.ico`, to: `${dist}` },
+        { from: `${src}/assets/favicons/`, to: `${dist}/assets/favicons/` },
+      ],
     }),
   ],
   module: {
@@ -55,33 +70,13 @@ module.exports = merge(common, {
         use: [...processCSS, 'sass-loader',],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/images/[name].[hash][ext]',
-        }
-      },
-      {
         test: /\.(ttf|woff|woff2|eot)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'assets/fonts/[name].[hash][ext]',
         }
       },
-      /*преобразование JavaScript следующего поколения в современный JavaScript с помощью Babel.*/
-      // {
-      //   test: /\.js$/,
-      //   exclude: /node_modules/,
-      //   use: {
-      //     loader: 'babel-loader',
-      //     options: {
-      //       //https://runebook.dev/ru/docs/babel/babel-preset-env/index
-      //       presets: [['@babel/preset-env', { 'targets': '> 0.25%, not dead' }]],
-      //       /*Использование кэша для избежания рекомпиляции при каждом запуске*/
-      //       cacheDirectory: true,
-      //     }
-      //   }
-      // },
+
     ]
   },
 })
