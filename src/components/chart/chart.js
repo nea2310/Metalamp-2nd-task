@@ -16,11 +16,7 @@ class Chart {
 
   getElems(selectors) {
     let sel = '';
-    // разрешить for..of
-    // eslint-disable-next-line no-restricted-syntax
-    for (const selector of selectors) {
-      sel += `.js-${this.elemName}__${selector},`;
-    }
+    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
     sel = sel.substring(0, sel.length - 1);
     return this.wrapper
       .querySelectorAll(sel);
@@ -46,9 +42,7 @@ class Chart {
       this.legendItems = Array.from(this.legendItems).reverse();
       // создаем объект конфигурации
       this.votes = 0;
-      // разрешить for..of
-      // eslint-disable-next-line no-restricted-syntax
-      for (const item of this.legendItems) {
+      this.legendItems.forEach((item) => {
         const rate = item.getAttribute('data-rate');
         const mark = item.getAttribute('data-mark');
         this.data[item.innerText] = {
@@ -58,8 +52,9 @@ class Chart {
           color2:
             getColor(mark).color2,
         };
-        this.votes += parseInt(rate);
-      }
+        this.votes += parseInt(rate, 10);
+      });
+
       this.draw();
     } else {
       // canvas-unsupported code here
@@ -69,15 +64,13 @@ class Chart {
   drawCircles() {
     // Градиентная заливка маркеров списка
     const getColor = (rateType) => this.colors[rateType];
-    // разрешить for..of
-    // eslint-disable-next-line no-restricted-syntax
-    for (const item of this.legendItems) {
+    this.legendItems.forEach((item) => {
       const circle = document.createElement('span');
       circle.className = `${this.elemName}__legend-item-mark`;
       circle.style.backgroundImage = `-webkit-gradient(linear, left bottom, left top, color-stop(0, 
-				${getColor(item.getAttribute('data-mark')).color1}), 
-				color-stop(1,
-					 ${getColor(item.getAttribute('data-mark')).color2})`;
+      ${getColor(item.getAttribute('data-mark')).color1}), 
+      color-stop(1,
+      ${getColor(item.getAttribute('data-mark')).color2})`;
       item.prepend(circle);
 
       // добавление скрытых DOM-элементов с кол-вом голосов (для экр. читалок)
@@ -85,7 +78,7 @@ class Chart {
       label.className = `${this.elemName}__legend-item-label`;
       label.innerText = item.getAttribute('data-rate');
       item.prepend(label);
-    }
+    });
   }
 
   writeText() {
@@ -105,7 +98,6 @@ class Chart {
       this.ctx.fillText(
         'голосов',
         this.canvas.width / 2,
-
         this.canvas.height / 2 + 20,
       );
     });
@@ -129,27 +121,32 @@ class Chart {
       ctx.moveTo(centerX, centerY);
       ctx.arc(centerX, centerY, radius, startAngle, endAngle);
       ctx.closePath();
-      isFilled ? ctx.fill() : ctx.stroke();
+      if (isFilled) ctx.fill();
+      else ctx.stroke();
     };
+
+    const keys = Object.keys(this.data);
+    const values = Object.values(this.data);
 
     let totalValue = 0;
     const shift = (Math.PI / 180) * 270;
-    for (const categ in this.data) {
-      const val = parseInt(this.data[categ].rate);
+    for (let i = 0; i < keys.length; i += 1) {
+      const val = parseInt(values[i].rate, 10);
       totalValue += val;
     }
+
     let startAngle = 0;
-    for (const categ in this.data) {
-      const val = parseInt(this.data[categ].rate);
-      const sliceAngle = 2 * Math.PI * val / totalValue;
+    for (let i = 0; i < keys.length; i += 1) {
+      const val = parseInt(values[i].rate, 10);
+      const sliceAngle = (2 * Math.PI * val) / totalValue;
       const color = {
         x1: this.canvas.width - 180,
         y1: this.canvas.height,
         x2: this.canvas.width,
         y2: this.canvas.height - 180,
         colorStops: [
-          { stop: 0, color: this.data[categ].color1 },
-          { stop: 1, color: this.data[categ].color2 },
+          { stop: 0, color: values[i].color1 },
+          { stop: 1, color: values[i].color2 },
         ],
       };
 
@@ -160,9 +157,7 @@ class Chart {
         color.y2,
       );
 
-      for (const cs of color.colorStops) {
-        grad.addColorStop(cs.stop, cs.color);
-      }
+      color.colorStops.forEach((cs) => grad.addColorStop(cs.stop, cs.color));
 
       // Сектора
       drawPieSlice(
@@ -191,7 +186,6 @@ class Chart {
     }
 
     // Центр диаграммы
-
     drawPieSlice(
       this.ctx,
       this.canvas.width / 2,
@@ -208,8 +202,6 @@ class Chart {
 
 function renderCharts(selector) {
   const charts = document.querySelectorAll(selector);
-  for (const chart of charts) {
-    new Chart(selector, chart);
-  }
+  charts.forEach((booking) => new Chart(selector, booking));
 }
 renderCharts('.js-chart');
