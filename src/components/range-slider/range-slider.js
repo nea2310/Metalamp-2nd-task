@@ -1,5 +1,6 @@
 import './range-slider.scss';
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+// eslint-disable-next-line import/extensions
 import 'ion-rangeslider/js/ion.rangeSlider.min.js';
 
 class RangeSlider {
@@ -17,11 +18,10 @@ class RangeSlider {
 
   getElems(selectors) {
     let sel = '';
-    for (const selector of selectors) {
-      sel += `.${this.elemName}__${selector},`;
-    }
+    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
     sel = sel.substring(0, sel.length - 1);
-    return this.wrapper.querySelectorAll(sel);
+    return this.wrapper
+      .querySelectorAll(sel);
   }
 
   render() {
@@ -38,14 +38,11 @@ class RangeSlider {
       const { from, to } = data;
       priceFrom.value = `${from.toLocaleString()}₽`;
       priceTo.value = `${to.toLocaleString()}₽`;
-
       priceFrom.style.width = `${(priceFrom.value.length) * 7.7}px`;
-
       priceTo.style.width = `${(priceTo.value.length) * 7.7}px`;
     };
 
     $(this.slider).ionRangeSlider({
-
       onStart(data) {
         displayPrice(data);
       },
@@ -55,40 +52,35 @@ class RangeSlider {
     });
 
     const instance = $(this.slider).data('ionRangeSlider');
-
     const updatePrice = (e, inputType, valueType) => {
       const val = inputType.value.replace(/\D/g, '');
       instance.update({
         [valueType]: val,
       });
-
-      inputType.style.width = `${(inputType.value.length) * 7.7}px`;
+      const input = inputType;
+      input.style.width = `${(inputType.value.length) * 7.7}px`;
       if (e.type === 'change') {
-        inputType.value = `${parseInt(val).toLocaleString()}₽`;
-        inputType.style.width = `${(inputType.value.length) * 7.7}px`;
+        input.value = `${parseInt(val, 10).toLocaleString()}₽`;
+        input.style.width = `${(inputType.value.length) * 7.7}px`;
       }
     };
 
-    this.priceFrom.addEventListener('keyup', (e) => {
+    const handleChangePriceFrom = (e) => {
       updatePrice(e, this.priceFrom, 'from');
-    });
-    this.priceFrom.addEventListener('change', (e) => {
-      updatePrice(e, this.priceFrom, 'from');
-    });
+    };
+    const handleChangePriceTo = (e) => {
+      updatePrice(e, this.priceTo, 'to');
+    };
 
-    this.priceTo.addEventListener('keyup', (e) => {
-      updatePrice(e, this.priceTo, 'to');
-    });
-    this.priceTo.addEventListener('change', (e) => {
-      updatePrice(e, this.priceTo, 'to');
-    });
+    this.priceFrom.addEventListener('keyup', handleChangePriceFrom);
+    this.priceFrom.addEventListener('change', handleChangePriceFrom);
+    this.priceTo.addEventListener('keyup', handleChangePriceTo);
+    this.priceTo.addEventListener('change', handleChangePriceTo);
   }
 }
 
 function renderRangeSliders(selector) {
   const rangeSliders = document.querySelectorAll(selector);
-  for (const rangeSlider of rangeSliders) {
-    new RangeSlider(selector, rangeSlider);
-  }
+  rangeSliders.forEach((rangeSlider) => new RangeSlider(selector, rangeSlider));
 }
 renderRangeSliders('.js-range-slider');
