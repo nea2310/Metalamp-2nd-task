@@ -1,5 +1,4 @@
 import './go-up-button.scss';
-
 class GoUpButton {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
@@ -7,6 +6,7 @@ class GoUpButton {
     this.click();
     this.checkScroll();
   }
+
 
   checkScroll() {
     window.addEventListener('scroll', () => {
@@ -17,7 +17,6 @@ class GoUpButton {
       }
     });
   }
-
   // клик по кнопке
   click() {
     this.wrapper.addEventListener('click', () => {
@@ -27,9 +26,10 @@ class GoUpButton {
 }
 
 function renderGoUpButtons(selector) {
-  const goUpButtons = document.querySelectorAll(selector);
-  for (const goUpButton of goUpButtons) {
+  let goUpButtons = document.querySelectorAll(selector);
+  for (let goUpButton of goUpButtons) {
     new GoUpButton(selector, goUpButton);
   }
 }
 renderGoUpButtons('.js-go-up-button');
+

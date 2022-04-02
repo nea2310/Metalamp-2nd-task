@@ -1,5 +1,4 @@
 import './login.scss';
-
 class Login {
   constructor(elemName, elem) {
     this.elemName = elemName;
@@ -7,32 +6,33 @@ class Login {
     this.render();
     this.focusInput();
     this.formSubmit();
+
   }
 
   render() {
-    this.form = this.wrapper
-      .querySelector(`${this.elemName}__login-form`);
-    this.inputs = this.wrapper
-      .querySelectorAll('input');
+    this.form = this.wrapper.
+      querySelector(`${this.elemName}__login-form`);
+    this.inputs = this.wrapper.
+      querySelectorAll('input');
   }
 
   // При фокусе убрать красную рамку с инпута
   focusInput() {
-    this.inputs.forEach((date) => {
+    this.inputs.forEach(function (date) {
       date.addEventListener('focus', () => {
         date.classList.remove('js-err');
       });
     });
   }
-
   // Валидация инпутов на сабмите формы
   formSubmit() {
     this.form.addEventListener('submit', (e) => {
       let isErr = false;
-      this.inputs.forEach((input) => {
+      this.inputs.forEach(function (input) {
         if (input.value.trim() === '') {
           input.classList.add('js-err');
-        } else {
+        }
+        else {
           input.classList.remove('js-err');
         }
       });
@@ -48,11 +48,12 @@ class Login {
       }
     });
   }
+
 }
 
 function renderLogins(selector) {
-  const logins = document.querySelectorAll(selector);
-  for (const login of logins) {
+  let logins = document.querySelectorAll(selector);
+  for (let login of logins) {
     new Login(selector, login);
   }
 }

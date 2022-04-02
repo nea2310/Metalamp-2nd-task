@@ -1,8 +1,7 @@
 import './search-room.scss';
-
 class SearchRoom {
   constructor(elemName, elem) {
-    // this.elemName = elemName.replace(/^./, '');
+    //	this.elemName = elemName.replace(/^./, '');
     this.wrapper = elem;
     this.render();
     this.focusInput();
@@ -12,27 +11,26 @@ class SearchRoom {
   render() {
     this.dates = this.wrapper.querySelectorAll('.js-date-dropdown__input');
     this.guests = this.wrapper.querySelector('.js-dropdown__input');
-    this.inputs = this.wrapper
-      .querySelectorAll('.js-dropdown__input, .js-date-dropdown__input');
+    this.inputs = this.wrapper.
+      querySelectorAll('.js-dropdown__input, .js-date-dropdown__input');
   }
-
   // При фокусе убрать красную рамку с инпута
   focusInput() {
-    this.inputs.forEach((date) => {
+    this.inputs.forEach(function (date) {
       date.addEventListener('focus', () => {
         date.classList.remove('js-err');
       });
     });
   }
-
   // Валидация инпутов на сабмите формы
   formSubmit() {
     this.wrapper.addEventListener('submit', (e) => {
       let isErr = false;
-      this.dates.forEach((date) => {
+      this.dates.forEach(function (date) {
         if (/^\d{2}\.\d{2}\.\d{4}$/.test(date.value)) {
           date.classList.remove('js-err');
-        } else {
+        }
+        else {
           date.classList.add('js-err');
         }
       });
@@ -56,8 +54,8 @@ class SearchRoom {
 }
 
 function renderSearchRooms(selector) {
-  const searchRooms = document.querySelectorAll(selector);
-  for (const searchRoom of searchRooms) {
+  let searchRooms = document.querySelectorAll(selector);
+  for (let searchRoom of searchRooms) {
     new SearchRoom(selector, searchRoom);
   }
 }

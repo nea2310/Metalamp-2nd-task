@@ -1,5 +1,4 @@
 import './filter-form.scss';
-
 class FilterForm {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
@@ -10,8 +9,8 @@ class FilterForm {
   }
 
   getElem(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.${this.elemName}__${selector}`);
+    return wrapper.
+      querySelector('.' + this.elemName + '__' + selector);
   }
 
   render() {
@@ -19,15 +18,16 @@ class FilterForm {
     this.form = this.getElem('wrapper');
   }
 
+
   toggleForm() {
-    this.btn.addEventListener('click', () => {
+    this.btn.addEventListener("click", () => {
       this.form.classList.toggle(`${this.elemName}__wrapper_hidden`);
       this.wrapper.classList.toggle(`${this.elemName}_hidden`);
     });
   }
 
   hideForm() {
-    const breakPoint = 575;
+    let breakPoint = 575;
     window.addEventListener('resize', () => {
       if (window.innerWidth <= breakPoint) {
         this.form.classList.add(`${this.elemName}__wrapper_hidden`);
@@ -37,6 +37,8 @@ class FilterForm {
         this.wrapper.classList.remove(`${this.elemName}_hidden`);
       }
     });
+
+
 
     window.addEventListener('load', () => {
       if (window.innerWidth <= breakPoint) {
@@ -48,9 +50,10 @@ class FilterForm {
 }
 
 function renderFilterForms(selector) {
-  const filterForms = document.querySelectorAll(selector);
-  for (const filterForm of filterForms) {
+  let filterForms = document.querySelectorAll(selector);
+  for (let filterForm of filterForms) {
     new FilterForm(selector, filterForm);
   }
 }
 renderFilterForms('.js-filter-form');
+

@@ -1,5 +1,4 @@
 import './checklist.scss';
-
 class CheckList {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
@@ -15,8 +14,8 @@ class CheckList {
   }
 
   getElem(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.js-${this.elemName}__${selector}`);
+    return wrapper.
+      querySelector('.js-' + this.elemName + '__' + selector);
   }
 
   render() {
@@ -29,68 +28,74 @@ class CheckList {
     this.clickOnList = false;
   }
 
+
+
   hideShowList() {
-    const breakPoint = 1199;
-    const hideList = () => {
-      this.listWrapper.classList
-        .add(`${this.elemName}__list-wrapper_hidden`);
+    let breakPoint = 1199;
+    let hideList = () => {
+      this.listWrapper.classList.
+        add(`${this.elemName}__list-wrapper_hidden`);
       this.label.classList.add(`${this.elemName}__label_collapsing`);
-      this.tip.classList
-        .remove(`${this.elemName}__img_non-collapsing`);
+      this.tip.classList.
+        remove(`${this.elemName}__img_non-collapsing`);
       this.label.setAttribute('tabindex', '0');
     };
-    const showList = () => {
-      this.listWrapper.classList
-        .remove(`${this.elemName}__list-wrapper_hidden`);
-      this.label.classList
-        .remove(`${this.elemName}__label_collapsing`);
-      this.tip.classList
-        .add(`${this.elemName}__img_non-collapsing`);
+    let showList = () => {
+      this.listWrapper.classList.
+        remove(`${this.elemName}__list-wrapper_hidden`);
+      this.label.classList.
+        remove(`${this.elemName}__label_collapsing`);
+      this.tip.classList.
+        add(`${this.elemName}__img_non-collapsing`);
       this.label.setAttribute('tabindex', '-1');
     };
+
 
     window.addEventListener('resize', () => {
       if (window.innerWidth <= breakPoint) {
         hideList();
-      } else if (this.wrapper.classList
-        .contains(`${this.elemName}_collapsing`) === false) {
-        showList();
+      } else {
+        if (this.wrapper.classList.
+          contains(`${this.elemName}_collapsing`) == false) {
+          showList();
+        }
       }
     });
 
     window.addEventListener('load', () => {
-      if (window.innerWidth <= breakPoint && this.wrapper.classList
-        .contains(`${this.elemName}_collapsing`) === false) {
+      if (window.innerWidth <= breakPoint && this.wrapper.classList.
+        contains(`${this.elemName}_collapsing`) == false) {
         hideList();
       }
     });
   }
 
+
   // Открывание/ закрывание дропдауна
   toggle(flag) {
-    const wrap = `${this.elemName}__`;
-    if (this.label.classList.contains(`${wrap}label_collapsing`)
-      || this.label.classList.contains(`${wrap}label_expanded`)) {
+    let wrap = this.elemName + '__';
+    if (this.label.classList.contains(wrap + 'label_collapsing') ||
+      this.label.classList.contains(wrap + 'label_expanded')) {
       if (flag) {
-        this.listWrapper.classList
-          .toggle(`${wrap}list-wrapper_hidden`);
-        this.tip.classList.toggle(`${wrap}img-expanded`);
-        this.tip.classList.toggle(`${wrap}img_collapsed`);
+        this.listWrapper.classList.
+          toggle(wrap + 'list-wrapper_hidden');
+        this.tip.classList.toggle(wrap + 'img-expanded');
+        this.tip.classList.toggle(wrap + 'img_collapsed');
       } else {
-        this.listWrapper.classList
-          .add(`${wrap}list-wrapper_hidden`);
-        this.tip.classList.remove(`${wrap}img-expanded`);
-        this.tip.classList.add(`${wrap}img_collapsed`);
+        this.listWrapper.classList.
+          add(wrap + 'list-wrapper_hidden');
+        this.tip.classList.remove(wrap + 'img-expanded');
+        this.tip.classList.add(wrap + 'img_collapsed');
       }
     }
   }
 
   // клик по лейблу
   clickInput() {
-    this.label.addEventListener('mousedown', () => {
+    this.label.addEventListener("mousedown", () => {
       this.mouseDown = true;
     });
-    this.label.addEventListener('mouseup', () => {
+    this.label.addEventListener("mouseup", () => {
       this.toggle(true);
       this.mouseDown = false;
     });
@@ -98,46 +103,47 @@ class CheckList {
 
   // фокус на лейбл
   focusInput() {
-    this.label.addEventListener('focus', () => {
-      if (this.listWrapper.classList
-        .contains(`${this.elemName}__list-wrapper_hidden`)
-        && this.mouseDown === false) {
+    this.label.addEventListener("focus", () => {
+      if (this.listWrapper.classList.
+        contains(this.elemName + '__list-wrapper_hidden') &&
+        this.mouseDown == false) {
         this.toggle(true);
       }
     });
   }
 
-  // проверка, клик был снаружи или внутри списка
+  //проверка, клик был снаружи или внутри списка
   insideListClick() {
     this.wrapper.addEventListener('click', () => {
       this.clickOnList = true;
     });
   }
 
-  // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
+  //отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
   collapseByClick() {
-    document.addEventListener('click', (e) => {
-      if (e.target.closest(`.${this.elemName}` == null)
-        || this.clickOnList === false) {
+    document.addEventListener("click", (e) => {
+      if (e.target.closest(`.${this.elemName}` == null) ||
+        this.clickOnList == false) {
         this.toggle(false);
-      } else {
+      }
+      else {
         this.clickOnList = false;
       }
     });
   }
 
-  // проверка, фокус был снаружи или внутри списка
+  //проверка, фокус был снаружи или внутри списка
   insideListFocus() {
     this.wrapper.addEventListener('focusin', () => {
       this.focusOnList = true;
     });
   }
 
-  // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
+  //отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
   collapseByFocus() {
-    document.addEventListener('focusin', (e) => {
-      if (e.target.closest(`.${this.elemName}` == null)
-        || this.focusOnList === false) {
+    document.addEventListener("focusin", (e) => {
+      if (e.target.closest(`.${this.elemName}` == null) ||
+        this.focusOnList == false) {
         this.toggle(false);
       } else {
         this.focusOnList = false;
@@ -147,9 +153,10 @@ class CheckList {
 }
 
 function renderCheckLists(selector) {
-  const checkLists = document.querySelectorAll(selector);
-  for (const checkList of checkLists) {
+  let checkLists = document.querySelectorAll(selector);
+  for (let checkList of checkLists) {
     new CheckList(selector, checkList);
   }
 }
 renderCheckLists('.js-checklist');
+

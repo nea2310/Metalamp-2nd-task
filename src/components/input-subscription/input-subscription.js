@@ -5,11 +5,11 @@ class InputSubscribe {
     this.inputWrapper = this.input.parentNode;
     this.link = this.inputWrapper.querySelector('button');
     this.init();
-  }
 
+  }
   init() {
     function testEmail(value) {
-      const test = /.+@.+\..+/i.test(value);
+      let test = /.+@.+\..+/i.test(value);
       if (value && !test) {
         alert(`Введенный e-mail ${value} имеет некорректный формат`);
       }
@@ -26,9 +26,12 @@ class InputSubscribe {
 }
 
 function inputsSubscribe(selector) {
-  const inputsSubscribe = document.querySelectorAll(selector);
-  for (const inputSubscribe of inputsSubscribe) {
+  let inputsSubscribe = document.querySelectorAll(selector);
+  for (let inputSubscribe of inputsSubscribe) {
     new InputSubscribe(selector, inputSubscribe);
   }
 }
 inputsSubscribe('.js-check-email');
+
+
+
