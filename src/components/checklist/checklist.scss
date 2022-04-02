@@ -60,6 +60,11 @@
     height: 1px;
     margin: -1px;
 
+ 
+    &:focus + .checklist__cat-checkmark {
+      border: 1px solid $colorPurple;
+      }
+
     &:checked + .checklist__cat-checkmark,
     &:checked:focus + .checklist__cat-checkmark {
       border: 1px solid $colorPurple;
