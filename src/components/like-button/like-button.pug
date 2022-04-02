@@ -1,7 +1,7 @@
 mixin like-button(options={})
   -
     let elemName='like-button'
-  div(class = `${elemName} js-${elemName}`)
+  div(class = elemName + ' js-' + elemName)
     if options.labelText
       p(class = elemName+'__label-text')=options.labelText
     button(class = elemName + '__button' + ' js-' + elemName + '__button')

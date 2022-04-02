@@ -5,7 +5,6 @@ class Booking {
     this.elemName = elemName.replace(/^./, '');
     this.wrapper = elem;
     this.render();
-    this.focusInput();
     this.formSubmit();
   }
 
@@ -16,9 +15,7 @@ class Booking {
       .querySelectorAll('.dropdown__input, .date-dropdown__input');
   }
 
-  handleFocusInput() { date.classList.remove('js-err'); }
-
-  handleFormSubmit() {
+  handleFormSubmit(e) {
     let isErr = false;
     this.dates.forEach((date) => {
       if (/^\d{2}\.\d{2}\.\d{4}$/.test(date.value)) {
@@ -32,7 +29,7 @@ class Booking {
     } else {
       this.guests.classList.remove('js-err');
     }
-    for (let i = 0; i < this.inputs.length; i++) {
+    for (let i = 0; i < this.inputs.length; i += 1) {
       if (this.inputs[i].classList.contains('js-err')) {
         isErr = true;
         break;
@@ -44,13 +41,6 @@ class Booking {
     }
   }
 
-  // При фокусе убрать красную рамку с инпута
-  focusInput() {
-    this.inputs.forEach((date) => {
-      date.addEventListener('focus', this.handleFocusInput);
-    });
-  }
-
   // Валидация инпутов на сабмите формы
   formSubmit() {
     this.wrapper.addEventListener('submit', this.handleFormSubmit);
@@ -59,8 +49,6 @@ class Booking {
 
 function renderBookings(selector) {
   const bookings = document.querySelectorAll(selector);
-  for (const booking of bookings) {
-    new Booking(selector, booking);
-  }
+  bookings.forEach((booking) => new Booking(selector, booking));
 }
 renderBookings('.js-booking');

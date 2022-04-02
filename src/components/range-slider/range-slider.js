@@ -11,13 +11,14 @@ class RangeSlider {
 
   getElem(selector, wrapper = this.wrapper) {
     return wrapper.querySelector(
-      '.' + this.elemName + '__' + selector);
+      `.${this.elemName}__${selector}`,
+    );
   }
 
   getElems(selectors) {
     let sel = '';
-    for (let selector of selectors) {
-      sel += '.' + this.elemName + '__' + selector + ',';
+    for (const selector of selectors) {
+      sel += `.${this.elemName}__${selector},`;
     }
     sel = sel.substring(0, sel.length - 1);
     return this.wrapper.querySelectorAll(sel);
@@ -33,50 +34,39 @@ class RangeSlider {
   init() {
     const { priceFrom } = this;
     const { priceTo } = this;
-    let displayPrice = (data) => {
+    const displayPrice = (data) => {
       const { from, to } = data;
-      priceFrom.value = from.toLocaleString() + '₽';
-      priceTo.value = to.toLocaleString() + '₽';
+      priceFrom.value = `${from.toLocaleString()}₽`;
+      priceTo.value = `${to.toLocaleString()}₽`;
 
+      priceFrom.style.width = `${(priceFrom.value.length) * 7.7}px`;
 
-      priceFrom.style.width =
-        ((priceFrom.value.length) * 7.7) + 'px';
-
-      priceTo.style.width =
-        ((priceTo.value.length) * 7.7) + 'px';
-
-
+      priceTo.style.width = `${(priceTo.value.length) * 7.7}px`;
     };
 
     $(this.slider).ionRangeSlider({
 
       onStart(data) {
         displayPrice(data);
-
       },
       onChange(data) {
         displayPrice(data);
-      }
+      },
     });
 
+    const instance = $(this.slider).data('ionRangeSlider');
 
-    let instance = $(this.slider).data("ionRangeSlider");
-
-
-    let updatePrice = (e, inputType, valueType) => {
-      let val = inputType.value.replace(/\D/g, '');
+    const updatePrice = (e, inputType, valueType) => {
+      const val = inputType.value.replace(/\D/g, '');
       instance.update({
-        [valueType]: val
+        [valueType]: val,
       });
 
-      inputType.style.width = ((inputType.value.length) * 7.7) + 'px';
-      if (e.type == 'change') {
-        inputType.value = parseInt(val).toLocaleString() + '₽';
-        inputType.style.width =
-          ((inputType.value.length) * 7.7) + 'px';
+      inputType.style.width = `${(inputType.value.length) * 7.7}px`;
+      if (e.type === 'change') {
+        inputType.value = `${parseInt(val).toLocaleString()}₽`;
+        inputType.style.width = `${(inputType.value.length) * 7.7}px`;
       }
-
-
     };
 
     this.priceFrom.addEventListener('keyup', (e) => {
@@ -96,10 +86,9 @@ class RangeSlider {
 }
 
 function renderRangeSliders(selector) {
-  let rangeSliders = document.querySelectorAll(selector);
-  for (let rangeSlider of rangeSliders) {
+  const rangeSliders = document.querySelectorAll(selector);
+  for (const rangeSlider of rangeSliders) {
     new RangeSlider(selector, rangeSlider);
   }
 }
 renderRangeSliders('.js-range-slider');
-
