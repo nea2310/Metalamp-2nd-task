@@ -79,7 +79,7 @@ class DropDown {
       elemObj.minCnt = catDecrem.getAttribute('data-min');
 
       elemObj.isMax = elemObj.cnt === elemObj.maxCnt;
-      elemObj.minCnt = elemObj.cnt === elemObj.minCnt;
+      elemObj.isMin = elemObj.cnt === elemObj.minCnt;
 
       this.counters.push(elemObj);
     }

@@ -124,6 +124,7 @@ class Header {
     this.burger.classList.toggle(`${this.elemName}__burger-btn_active`);
     this.navLevel1.classList.toggle(`${this.elemName}__nav-level1_active`);
   }
+
 }
 
 function renderHeaders(selector) {
