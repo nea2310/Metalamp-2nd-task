@@ -4,6 +4,7 @@ class CheckList {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
+    this.breakPoint = 1199;
     this.handleMouseDown = this.handleMouseDown.bind(this);
     this.handleMouseUp = this.handleMouseUp.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
@@ -11,6 +12,7 @@ class CheckList {
     this.handleCheckFocus = this.handleCheckFocus.bind(this);
     this.handleOuterClick = this.handleOuterClick.bind(this);
     this.handleOuterFocus = this.handleOuterFocus.bind(this);
+    this.checkCollapse = this.checkCollapse.bind(this);
     this.render();
     this.clickInput();
     this.focusInput();
@@ -36,19 +38,28 @@ class CheckList {
     this.clickOnList = false;
   }
 
+  checkCollapse() {
+    const wrap = `${this.elemName}__`;
+    return (
+      this.label.classList.contains(`${wrap}label_collapsing`)
+      || window.innerWidth <= this.breakPoint);
+  }
+
   hideShowList() {
-    const breakPoint = 1199;
     const handleWindowResize = () => {
-      if (window.innerWidth <= breakPoint) {
+      if (window.innerWidth <= this.breakPoint) {
         this.toggle(false);
       } else if (this.wrapper.classList
-        .contains(`${this.elemName}_collapsing`) === false) {
+        .contains(`${this.elemName}_collapsing`) === true) {
+        this.toggle(false);
+      } else if (this.wrapper.classList
+        .contains(`${this.elemName}_expanded`) === true) {
         this.toggle(true);
       }
     };
 
     const handleLoad = () => {
-      if (window.innerWidth <= breakPoint && this.wrapper.classList
+      if (window.innerWidth <= this.breakPoint && this.wrapper.classList
         .contains(`${this.elemName}_collapsing`) === false) {
         this.toggle(false);
       }
@@ -65,10 +76,16 @@ class CheckList {
       || this.label.classList.contains(`${wrap}label_expanded`)) {
       if (flag) {
         this.listWrapper.classList
-          .toggle(`${wrap}list-wrapper_hidden`);
-        this.tip.classList.toggle(`${wrap}img-expanded`);
-        this.tip.classList.toggle(`${wrap}img_collapsed`);
-      } else {
+          .remove(`${wrap}list-wrapper_hidden`);
+        this.tip.classList.add(`${wrap}img-expanded`);
+        this.tip.classList.remove(`${wrap}img_collapsed`);
+      }
+
+
+
+
+
+      else {
         this.listWrapper.classList
           .add(`${wrap}list-wrapper_hidden`);
         this.tip.classList.remove(`${wrap}img-expanded`);
@@ -82,8 +99,10 @@ class CheckList {
   }
 
   handleMouseUp() {
-    this.toggle(true);
-    this.mouseDown = false;
+    if (this.checkCollapse()) {
+      this.toggle(true);
+      this.mouseDown = false;
+    }
   }
 
   handleFocus() {
@@ -103,20 +122,24 @@ class CheckList {
   }
 
   handleOuterClick(e) {
-    if (e.target.closest(`.${this.elemName}` == null)
-      || this.clickOnList === false) {
-      this.toggle(false);
-    } else {
-      this.clickOnList = false;
+    if (this.checkCollapse()) {
+      if (e.target.closest(`.${this.elemName}` == null)
+        || this.clickOnList === false) {
+        this.toggle(false);
+      } else {
+        this.clickOnList = false;
+      }
     }
   }
 
   handleOuterFocus(e) {
-    if (e.target.closest(`.${this.elemName}` == null)
-      || this.focusOnList === false) {
-      this.toggle(false);
-    } else {
-      this.focusOnList = false;
+    if (this.checkCollapse()) {
+      if (e.target.closest(`.${this.elemName}` == null)
+        || this.focusOnList === false) {
+        this.toggle(false);
+      } else {
+        this.focusOnList = false;
+      }
     }
   }
 

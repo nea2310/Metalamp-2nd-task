@@ -26,7 +26,6 @@ class Header {
     let sel = '';
     selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
     sel = sel.substring(0, sel.length - 1);
-    console.log('sel>>>', sel);
     return this.wrapper
       .querySelectorAll(sel);
   }
