@@ -7,6 +7,7 @@ class FilterForm {
     this.wrapper = elem;
     this.handleToggle = this.handleToggle.bind(this);
     this.handleResize = this.handleResize.bind(this);
+    this.handleLoad = this.handleLoad.bind(this);
     this.render();
     this.toggleForm();
     this.hideForm();
