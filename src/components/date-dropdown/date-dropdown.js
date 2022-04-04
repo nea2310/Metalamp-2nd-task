@@ -138,8 +138,10 @@ class DatePicker {
   }
 
   handleInput(e) {
-    if ((e.target === this.inputDateFrom
-      || e.target === this.inputDateTo) && e.target.value.length === 10) {
+    const isDate = e.target === this.inputDateFrom
+      || e.target === this.inputDateTo;
+    const isDateLength = isDate && e.target.value.length === 10;
+    if (isDateLength) {
       this.currentInput = e.target;
       this.secondInput = this.currentInput.classList
         .contains(`.${this.elemName}__input_from`)
@@ -181,14 +183,20 @@ class DatePicker {
   }
 
   handleCollapseByClick(e) {
-    if (
-      (this.isFilter && e.target !== this.inputDate// условие #1
-        || !this.isFilter && (// условие #2
-          e.target !== this.inputDateFrom
-          && e.target !== this.inputDateTo)
-        || e.target.closest(`.${this.elemName}`) == null)// условие #3
-      && this.clickOnCalendar === false// общее условие для условий #1, #2, #3
-    ) {
+    const condA = (this.isFilter && e.target !== this.inputDate) || !this.isFilter;
+    const condB = e.target !== this.inputDateFrom && e.target !== this.inputDateTo;
+    const condC = e.target.closest(`.${this.elemName}`) == null;
+    const condFull = ((condA && condB) || condC) && this.clickOnCalendar === false;
+    // if (
+    //   (this.isFilter && e.target !== this.inputDate// условие #1
+    //     || !this.isFilter && (// условие #2
+    //       e.target !== this.inputDateFrom
+    //       && e.target !== this.inputDateTo)
+    //     || e.target.closest(`.${this.elemName}`) == null)// условие #3
+    //   && this.clickOnCalendar === false// общее условие для условий #1, #2, #3
+    // )
+
+    if (condFull) {
       this.toggle(false);
     } else {
       this.clickOnCalendar = false;

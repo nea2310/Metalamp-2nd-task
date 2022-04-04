@@ -269,8 +269,8 @@ class DropDown {
     this.countersToDisplay = [];
     for (let i = 0; i < changedCounters.length; i += 1) {
       // Если категории такого типа еще нет
-      if (i == 0 || i > 0
-        && changedCounters[i].type != changedCounters[i - 1].type) {
+      const check = i === 0 || (i > 0 && changedCounters[i].type !== changedCounters[i - 1].type);
+      if (check) {
         const { type } = changedCounters[i];
         const { typeforms } = changedCounters[i];
         const { cnt } = changedCounters[i];
