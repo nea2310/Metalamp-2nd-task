@@ -5,22 +5,23 @@ class CheckList {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
     this.breakPoint = 1199;
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.handleMouseUp = this.handleMouseUp.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleCheckClick = this.handleCheckClick.bind(this);
-    this.handleCheckFocus = this.handleCheckFocus.bind(this);
-    this.handleOuterClick = this.handleOuterClick.bind(this);
-    this.handleOuterFocus = this.handleOuterFocus.bind(this);
-    this.checkCollapse = this.checkCollapse.bind(this);
+    this.handleMouseDownLabel = this.handleMouseDownLabel.bind(this);
+    this.handleMouseUpLabel = this.handleMouseUpLabel.bind(this);
+    this.handleFocusLabel = this.handleFocusLabel.bind(this);
+    this.handleInnerClick = this.handleInnerClick.bind(this);
+    this.handleInnerFocus = this.handleInnerFocus.bind(this);
+    this.needCollapse = this.needCollapse.bind(this);
+    this.handleResizeLoad = this.handleResizeLoad.bind(this);
+    this.handleOuterClickFocus = this.handleOuterClickFocus.bind(this);
+
     this.render();
-    this.clickInput();
-    this.focusInput();
-    this.insideListClick();
-    this.collapseByClick();
-    this.insideListFocus();
-    this.collapseByFocus();
-    this.hideShowList();
+    this.clickLabel();
+    this.focusLabel();
+    this.innerClick();
+    this.outerClick();
+    this.innerFocus();
+    this.outerFocus();
+    this.resizeLoad();
   }
 
   getElem(selector, wrapper = this.wrapper) {
@@ -38,140 +39,116 @@ class CheckList {
     this.clickOnList = false;
   }
 
-  checkCollapse() {
-    const wrap = `${this.elemName}__`;
-    return (
-      this.label.classList.contains(`${wrap}label_collapsing`)
-      || window.innerWidth <= this.breakPoint);
+  isCollapsing() {
+    return this.label.classList.contains(`${this.elemName}__label_collapsing`);
   }
 
-  hideShowList() {
-    const handleWindowResize = () => {
-      if (window.innerWidth <= this.breakPoint) {
-        this.toggle(false);
-      } else if (this.wrapper.classList
-        .contains(`${this.elemName}_collapsing`) === true) {
-        this.toggle(false);
-      } else if (this.wrapper.classList
-        .contains(`${this.elemName}_expanded`) === true) {
-        this.toggle(true);
-      }
-    };
+  needCollapse() {
+    return (
+      window.innerWidth <= this.breakPoint || this.isCollapsing());
+  }
 
-    const handleLoad = () => {
-      if (window.innerWidth <= this.breakPoint && this.wrapper.classList
-        .contains(`${this.elemName}_collapsing`) === false) {
-        this.toggle(false);
-      }
-    };
-
-    window.addEventListener('resize', handleWindowResize);
-    window.addEventListener('load', handleLoad);
+  handleResizeLoad() {
+    if (window.innerWidth > this.breakPoint && !this.isCollapsing()) {
+      this.toggleList(true);
+    } else this.toggleList(false);
   }
 
   // Открывание/ закрывание дропдауна
-  toggle(flag) {
+  toggleList(flag) {
     const wrap = `${this.elemName}__`;
-    if (this.label.classList.contains(`${wrap}label_collapsing`)
-      || this.label.classList.contains(`${wrap}label_expanded`)) {
-      if (flag) {
-        this.listWrapper.classList
-          .remove(`${wrap}list-wrapper_hidden`);
-        this.tip.classList.add(`${wrap}img-expanded`);
-        this.tip.classList.remove(`${wrap}img_collapsed`);
-      }
-
-
-
-
-
-      else {
-        this.listWrapper.classList
-          .add(`${wrap}list-wrapper_hidden`);
-        this.tip.classList.remove(`${wrap}img-expanded`);
-        this.tip.classList.add(`${wrap}img_collapsed`);
-      }
+    if (flag) {
+      this.listWrapper.classList
+        .remove(`${wrap}list-wrapper_hidden`);
+      this.tip.classList.add(`${wrap}img-expanded`);
+      this.tip.classList.remove(`${wrap}img_collapsed`);
+    } else {
+      this.listWrapper.classList
+        .add(`${wrap}list-wrapper_hidden`);
+      this.tip.classList.remove(`${wrap}img-expanded`);
+      this.tip.classList.add(`${wrap}img_collapsed`);
     }
   }
 
-  handleMouseDown() {
+  handleMouseDownLabel() {
     this.mouseDown = true;
   }
 
-  handleMouseUp() {
-    if (this.checkCollapse()) {
-      this.toggle(true);
-      this.mouseDown = false;
+  handleMouseUpLabel() {
+    const isHidden = this.listWrapper.classList.contains(`${this.elemName}__list-wrapper_hidden`);
+    if (isHidden) {
+      this.toggleList(true);
+    } else if (!isHidden && this.needCollapse()) {
+      this.toggleList(false);
     }
+    this.mouseDown = false;
   }
 
-  handleFocus() {
-    if (this.listWrapper.classList
-      .contains(`${this.elemName}__list-wrapper_hidden`)
+  handleFocusLabel() {
+    if (this.listWrapper.classList.contains(`${this.elemName}__list-wrapper_hidden`)
       && this.mouseDown === false) {
-      this.toggle(true);
+      this.toggleList(true);
     }
   }
 
-  handleCheckClick() {
+  handleInnerClick() {
     this.clickOnList = true;
   }
 
-  handleCheckFocus() {
+  handleInnerFocus() {
     this.focusOnList = true;
   }
 
-  handleOuterClick(e) {
-    if (this.checkCollapse()) {
+  handleOuterClickFocus(e) {
+    const isClick = e.type === 'click';
+    const checkClickFocus = isClick ? this.clickOnList === false : this.focusOnList === false;
+    const setClickFocus = isClick ? this.clickOnList = false : this.focusOnList = false;
+    if (this.needCollapse()) {
       if (e.target.closest(`.${this.elemName}` == null)
-        || this.clickOnList === false) {
-        this.toggle(false);
+        || checkClickFocus) {
+        this.toggleList(false);
       } else {
-        this.clickOnList = false;
+        return setClickFocus;
       }
     }
+    return true;
   }
 
-  handleOuterFocus(e) {
-    if (this.checkCollapse()) {
-      if (e.target.closest(`.${this.elemName}` == null)
-        || this.focusOnList === false) {
-        this.toggle(false);
-      } else {
-        this.focusOnList = false;
-      }
-    }
+  // ресайз/лоад страницы
+  resizeLoad() {
+    window.addEventListener('resize', this.handleResizeLoad);
+    window.addEventListener('load', this.handleResizeLoad);
   }
 
   // клик по лейблу
-  clickInput() {
-    this.label.addEventListener('mousedown', this.handleMouseDown);
-    this.label.addEventListener('mouseup', this.handleMouseUp);
+  clickLabel() {
+    this.label.addEventListener('mousedown', this.handleMouseDownLabel);
+    this.label.addEventListener('mouseup', this.handleMouseUpLabel);
   }
 
   // фокус на лейбл
-  focusInput() {
-    this.label.addEventListener('focus', this.handleFocus);
+  focusLabel() {
+    this.label.addEventListener('focus', this.handleFocusLabel);
   }
 
   // проверка, клик был снаружи или внутри списка
-  insideListClick() {
-    this.wrapper.addEventListener('click', this.handleCheckClick);
-  }
-
-  // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
-  collapseByClick() {
-    document.addEventListener('click', this.handleOuterClick);
+  innerClick() {
+    this.wrapper.addEventListener('click', this.handleInnerClick);
   }
 
   // проверка, фокус был снаружи или внутри списка
-  insideListFocus() {
-    this.wrapper.addEventListener('focusin', this.handleCheckFocus);
+  innerFocus() {
+    this.wrapper.addEventListener('focusin', this.handleInnerFocus);
+  }
+
+  // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
+  outerClick() {
+    document.addEventListener('click', this.handleOuterClickFocus);
   }
 
   // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
-  collapseByFocus() {
-    document.addEventListener('focusin', this.handleOuterFocus);
+  outerFocus() {
+    document.addEventListener('focusin', this.handleOuterClickFocus);
   }
 }
 
