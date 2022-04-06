@@ -4,6 +4,8 @@ class RoomCard {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
+    this.clickDot = this.clickDot.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.render();
     this.createDots();
     this.swipe();
@@ -24,11 +26,14 @@ class RoomCard {
 
   getElems(selectors) {
     let sel = '';
-    for (const selector of selectors) {
-      sel += `.${this.elemName}__${selector},`;
-    }
+    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
     sel = sel.substring(0, sel.length - 1);
-    return this.wrapper.querySelectorAll(sel);
+    return this.wrapper
+      .querySelectorAll(sel);
+  }
+
+  handleClick(e) {
+    this.clickPrevNext(e.target);
   }
 
   render() {
@@ -37,8 +42,8 @@ class RoomCard {
     this.btnPrev = this.getElem('prev');
     this.btnNext = this.getElem('next');
     this.images = this.getElems(['photo']);
-    this.btnPrev.addEventListener('click', (e) => this.clickPrevNext(e.target));
-    this.btnNext.addEventListener('click', (e) => this.clickPrevNext(e.target));
+    this.btnPrev.addEventListener('click', this.handleClick);
+    this.btnNext.addEventListener('click', this.handleClick);
   }
 
   swipe() {
@@ -73,7 +78,7 @@ class RoomCard {
     const currentPhoto = this.getElem('photo_showed');
     // определяем текущую точку
     const currentDot = this.getElem('dot_active'); // ??
-    const i = parseInt(currentPhoto.getAttribute('data-sec'));
+    const i = parseInt(currentPhoto.getAttribute('data-sec'), 10);
     let newPhoto;
     let newDot;
     // Кликнули [Назад]
@@ -123,7 +128,7 @@ class RoomCard {
   }
 
   createDots() {
-    for (let i = 1; i <= this.images.length; i++) {
+    for (let i = 1; i <= this.images.length; i += 1) {
       const dot = document.createElement('button');
       dot.classList.add(`${this.elemName}__dot`);
       dot.classList.add(`js-${this.elemName}__dot`);
@@ -136,11 +141,12 @@ class RoomCard {
     this.dots[0].classList.add(`${this.elemName}__dot_active`);
     this.dots.forEach((dot) => {
       // dot - точка, по которой кликнули (должна стать активной)
-      dot.addEventListener('click', () => this.clickDot(dot));
+      dot.addEventListener('click', this.clickDot);
     });
   }
 
-  clickDot(elem) {
+  clickDot(e) {
+    const elem = e.currentTarget;
     const sec = elem.getAttribute('data-sec');
     // определяем текущее фото
     const currentPhoto = this.getElem('photo_showed');
@@ -167,8 +173,6 @@ class RoomCard {
 
 function renderRoomCards(selector) {
   const roomCards = document.querySelectorAll(selector);
-  for (const roomCard of roomCards) {
-    new RoomCard(selector, roomCard);
-  }
+  roomCards.forEach((roomCard) => new RoomCard(selector, roomCard));
 }
 renderRoomCards('.js-room-card');
