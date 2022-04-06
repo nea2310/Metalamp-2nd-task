@@ -1,11 +1,12 @@
+/* eslint-disable no-alert */
 import './login.scss';
 
 class Login {
   constructor(elemName, elem) {
     this.elemName = elemName;
     this.wrapper = elem;
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.render();
-    this.focusInput();
     this.formSubmit();
   }
 
@@ -16,44 +17,35 @@ class Login {
       .querySelectorAll('input');
   }
 
-  // При фокусе убрать красную рамку с инпута
-  focusInput() {
-    this.inputs.forEach((date) => {
-      date.addEventListener('focus', () => {
-        date.classList.remove('js-err');
-      });
+  handleSubmit(e) {
+    let isErr = false;
+    this.inputs.forEach((input) => {
+      if (input.value.trim() === '') {
+        input.classList.add('js-err');
+      } else {
+        input.classList.remove('js-err');
+      }
     });
+    for (let i = 0; i < this.inputs.length; i += 1) {
+      if (this.inputs[i].classList.contains('js-err')) {
+        isErr = true;
+        break;
+      }
+    }
+    if (isErr) {
+      e.preventDefault();
+      alert('Заполните все поля!');
+    }
   }
 
   // Валидация инпутов на сабмите формы
   formSubmit() {
-    this.form.addEventListener('submit', (e) => {
-      let isErr = false;
-      this.inputs.forEach((input) => {
-        if (input.value.trim() === '') {
-          input.classList.add('js-err');
-        } else {
-          input.classList.remove('js-err');
-        }
-      });
-      for (let i = 0; i < this.inputs.length; i++) {
-        if (this.inputs[i].classList.contains('js-err')) {
-          isErr = true;
-          break;
-        }
-      }
-      if (isErr) {
-        e.preventDefault();
-        alert('Заполните все поля!');
-      }
-    });
+    this.form.addEventListener('submit', this.handleSubmit);
   }
 }
 
 function renderLogins(selector) {
   const logins = document.querySelectorAll(selector);
-  for (const login of logins) {
-    new Login(selector, login);
-  }
+  logins.forEach((login) => new Login(selector, login));
 }
 renderLogins('.js-login');
