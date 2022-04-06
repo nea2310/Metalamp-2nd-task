@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable indent */
 class InputMask {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^./, '');
@@ -5,8 +7,39 @@ class InputMask {
     this.calendarSingle = !!this.input.classList.contains('js-calendar');
     this.calendarDouble = !!this.input.classList.contains('js-calendar-double');
     this.date = !!this.input.classList.contains('js-date');
+    this.handleInput = this.handleInput.bind(this);
+    this.checkFormat = this.checkFormat.bind(this);
+    this.addZero = this.addZero.bind(this);
+    this.truncAfter10 = this.truncAfter10.bind(this);
+    this.truncAfter24 = this.truncAfter24.bind(this);
+    this.checkRangeDouble = this.checkRangeDouble.bind(this);
+    this.checkRangeSingle = this.checkRangeSingle.bind(this);
+    this.checkBirthDate = this.checkBirthDate.bind(this);
     this.init();
     this.mask();
+  }
+
+  /* проверить корректность строки с датой */
+  static formatIncorrect(date) {
+    return Number.isNaN(+date);
+  }
+
+  /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
+  static addDot(e) {
+    const correctFormat3 = e.target.value.length === 2
+      || e.target.value.length === 5
+      || e.target.value.length === 15
+      || e.target.value.length === 18;
+    if (correctFormat3) {
+      e.target.value = `${e.target.value}.`;
+    }
+  }
+
+  /* ставим знаки пробела и минус между датами (требуется только для calendarDouble) */
+  static addDash(e) {
+    if (e.target.value.length === 10) {
+      e.target.value = `${e.target.value} - `;
+    }
   }
 
   init() {
@@ -49,11 +82,12 @@ class InputMask {
       }.${this.datePlusYear.getFullYear()}`;
 
     // вставляет нули, если число или месяц - однозначное
-    const formatDate = (date) => {
+    const formatDate = (dt) => {
+      let date = dt;
       if (this.regexpDate.test(date) === false) {
         const a = date.split('.');
 
-        for (let i = 0; i < a.length; i++) {
+        for (let i = 0; i < a.length; i += 1) {
           if (a[i].length === 1) {
             a[i] = `0${a[i]}`;
           }
@@ -69,155 +103,189 @@ class InputMask {
     this.datePlusYearTxt = formatDate(this.datePlusYearTxt);
   }
 
-  mask() {
-    /* запретить все типы ввода, кроме перечисленных */
-    this.input.addEventListener('input', (e) => {
-      let inpTypeAllowed = false;
-      const allowedInpTypes = ['insertText',
-        'insertFromDrop',
-        'insertFromPaste',
-        'deleteByCut',
-        'deleteContentBackward'];
-      for (let i = 0; i <= allowedInpTypes.length; i++) {
-        if (e.inputType === allowedInpTypes[i]) {
-          inpTypeAllowed = true;
-          break;
-        }
-      }
-      if (!inpTypeAllowed) {
+  /* при вводе перетаскиванием текста или из буфера обмена -
+ проверить на соответствие формату ДД.ММ.ГГГГ и если
+ не соответствует - очистить инпут */
+  checkFormat(e) {
+    const correctFormat1 = ((this.calendarSingle || this.date)
+      && this.regexpDate.test(e.target.value) === false)
+      || (this.calendarDouble
+        && this.regexpDateDouble.test(e.target.value) === false);
+    if (e.inputType === 'insertFromDrop'
+      || e.inputType === 'insertFromPaste') {
+      if (correctFormat1) {
         e.target.value = '';
       }
+    }
+  }
 
-      /* при вводе перетаскиванием текста или из буфера обмена -
-      проверить на соответствие формату ДД.ММ.ГГГГ и если
-      не соответствует - очистить инпут */
-      if (e.inputType === 'insertFromDrop'
-        || e.inputType === 'insertFromPaste') {
-        if ((this.calendarSingle || this.date)
-          && this.regexpDate.test(e.target.value) === false
-          || this.calendarDouble
-          && this.regexpDateDouble.test(e.target.value) === false) {
-          e.target.value = '';
-        }
+  /* действия при вводе с клавиатуры */
+  addZero(e) {
+    const plusZero = () => {
+      const a = e.target.value[e.target.value.length - 1];
+      e.target.value = `${e.target.value.slice(
+        0,
+        e.target.value.length - 1,
+      )}0${a}`;
+    };
+    if (this.calendarSingle || this.date) {
+      e.target.value = e.target.value.replace(this.regexInput, ''); // все символы, попадающие под паттерн, заменяются на пустую строку
+    }
+
+    if (this.calendarDouble) {
+      e.target.value = e.target.value.replace(this.regexInputDouble, '');// все символы, попадающие под паттерн, заменяются на пустую строку
+    }
+    /* если ввод дня начинается с числа, больше 3 - то добавить перед ним ноль */
+    /* если ввод месяца начинается с числа, больше 1 - то добавить перед ним ноль */
+    const correctFormat = (parseInt(e.target.value[0], 10) >= 4
+      && e.target.value.length === 1)
+      || (parseInt(e.target.value[3], 10) >= 2
+        && e.target.value.length === 4)
+      || (parseInt(e.target.value[13], 10) >= 4
+        && e.target.value.length === 14)
+      || (parseInt(e.target.value[16], 10) >= 2
+        && e.target.value.length === 17);
+    if (correctFormat) {
+      plusZero();
+    }
+  }
+
+  /* удаляем все символы после 10-го символа */
+  truncAfter10(e) {
+    const correctFormat4 = (this.calendarSingle || this.date)
+      && e.target.value.length > 10;
+    if (correctFormat4) {
+      e.target.value = e.target.value.slice(
+        0,
+        e.target.value.length - 1,
+      );
+    }
+  }
+
+  /* удаляем все символы после 24-го символа */
+  truncAfter24(e) {
+    if (this.calendarDouble && e.target.value.length > 24) {
+      e.target.value = e.target.value.slice(
+        0,
+        e.target.value.length - 1,
+      );
+    }
+  }
+
+  handleInput(e) {
+    let inpTypeAllowed = false;
+    const allowedInpTypes = ['insertText',
+      'insertFromDrop',
+      'insertFromPaste',
+      'deleteByCut',
+      'deleteContentBackward'];
+    for (let i = 0; i <= allowedInpTypes.length; i += 1) {
+      if (e.inputType === allowedInpTypes[i]) {
+        inpTypeAllowed = true;
+        break;
       }
-      /* действия при вводе с клавиатуры */
-      const addZero = () => {
-        const a = e.target.value[e.target.value.length - 1];
-        e.target.value = `${e.target.value.slice(
-          0,
-          e.target.value.length - 1,
-        )}0${a}`;
-      };
-      if (e.inputType === 'insertText') {
-        if (this.calendarSingle || this.date) {
-          e.target.value = e.target.value.replace(this.regexInput, ''); // все символы, попадающие под паттерн, заменяются на пустую строку
-        }
+    }
+    if (!inpTypeAllowed) {
+      e.target.value = '';
+    }
 
-        if (this.calendarDouble) {
-          e.target.value = e.target.value.replace(this.regexInputDouble, '');// все символы, попадающие под паттерн, заменяются на пустую строку
-        }
-        /* если ввод дня начинается с числа, больше 3 - то добавить перед ним ноль */
-        /* если ввод месяца начинается с числа, больше 1 - то добавить перед ним ноль */
-        if (parseInt(e.target.value[0]) >= 4
-          && e.target.value.length === 1
-          || parseInt(e.target.value[3]) >= 2
-          && e.target.value.length === 4
-          || parseInt(e.target.value[13]) >= 4
-          && e.target.value.length === 14
-          || parseInt(e.target.value[16]) >= 2
-          && e.target.value.length === 17
-        ) {
-          addZero();
-        }
-        /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
-        if (e.target.value.length === 2
-          || e.target.value.length === 5
-          || e.target.value.length === 15
-          || e.target.value.length === 18) {
-          e.target.value = `${e.target.value}.`;
-        }
+    /* при вводе перетаскиванием текста или из буфера обмена -
+    проверить на соответствие формату ДД.ММ.ГГГГ и если
+    не соответствует - очистить инпут */
+    this.checkFormat(e);
 
-        /* ставим знаки пробела и минус между датами (требуется только для calendarDouble) */
-        if (this.calendarDouble) {
-          if (e.target.value.length === 10) {
-            e.target.value = `${e.target.value} - `;
-          }
-        }
-        /* удаляем все символы после 10-го символа */
-        if ((this.calendarSingle || this.date)
-          && e.target.value.length > 10) {
-          e.target.value = e.target.value.slice(
-            0,
-            e.target.value.length - 1,
-          );
-        }
-        /* удаляем все символы после 24-го символа */
-        if (this.calendarDouble && e.target.value.length > 24) {
-          e.target.value = e.target.value.slice(
-            0,
-            e.target.value.length - 1,
-          );
-        }
-      }
+    /* действия при вводе с клавиатуры */
+    if (e.inputType === 'insertText') {
+      this.addZero(e);
 
-      // ввод даты закончен
-      if (this.calendarSingle) {
-        if (e.target.value.length === 10) {
-          /* Проверка, что введенная дата попадает в диапазон dateCurrent и datePlusYear */
-          const a = e.target.value.split('.');
-          const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
-          if (dateSelected < this.dateCurrent
-            || dateSelected > this.datePlusYear
-            || dateSelected === 'Invalid Date') {
-            alert(`Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
-            e.target.value = this.dateCurrentTxt;/* в случае некорректного ввода -
-            устанавливаем текущую дату */
-          }
-        }
-      }
+      /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
+      InputMask.addDot(e);
 
-      if (this.date) {
-        if (e.target.value.length === 10) {
-          /* Проверка, что введенная дата попадает в диапазон dateMinusHundred и
-          dateMinusEighteen */
-          const a = e.target.value.split('.');
-          const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
-          if (dateSelected < this.dateMinusHundred
-            || dateSelected > this.dateMinusEighteen
-            || dateSelected === 'Invalid Date') {
-            alert(`Введите дату от ${this.dateMinusHundredTxt
-              } до ${this.dateMinusEighteenTxt}`);
-            e.target.value = '';// в случае некорректного ввода - очищаем инпут
-          }
-        }
-      }
-
+      /* ставим знаки пробела и минус между датами (требуется только для calendarDouble) */
       if (this.calendarDouble) {
-        if (e.target.value.length === 23) {
-          /* Проверка, что введенная дата попадает в диапазон dateCurrent и datePlusYear */
-          const a = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
-          const b = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
-          const dateCurrentSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
-          const datePlusYearSelected = new Date(`${b[2]}-${b[1]}-${b[0]}`);
-          if (dateCurrentSelected < this.dateCurrent
-            || dateCurrentSelected > this.datePlusYear
-            || dateCurrentSelected === 'Invalid Date'
-            || datePlusYearSelected < this.dateCurrent
-            || datePlusYearSelected > this.datePlusYear
-            || datePlusYearSelected === 'Invalid Date') {
-            alert(`Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
-            e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;// в случае некорректного ввода - устанавливаем диапазон [текущая дата - завтрашняя дата]
-          }
-        }
+        InputMask.addDash(e);
       }
-    });
+      /* удаляем все символы после 10-го символа */
+      this.truncAfter10(e);
+
+      /* удаляем все символы после 24-го символа */
+      this.truncAfter24(e);
+    }
+
+    // ввод даты закончен
+    if (this.calendarSingle) {
+      this.checkRangeSingle(e);
+    }
+
+    if (this.calendarDouble) {
+      this.checkRangeDouble(e);
+    }
+    if (this.date) {
+      this.checkBirthDate(e);
+    }
+  }
+
+  checkBirthDate(e) {
+    if (e.target.value.length === 10) {
+      /* Проверка, что введенная дата попадает в диапазон dateMinusHundred и
+    dateMinusEighteen */
+      const a = e.target.value.split('.');
+      const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
+      const correctFormat = dateSelected < this.dateMinusHundred
+        || dateSelected > this.dateMinusEighteen
+        || InputMask.formatIncorrect(dateSelected);
+      if (correctFormat) {
+        alert(`Введите дату от ${this.dateMinusHundredTxt
+          } до ${this.dateMinusEighteenTxt}`);
+        e.target.value = '';// в случае некорректного ввода - очищаем инпут
+      }
+    }
+  }
+
+  checkRangeSingle(e) {
+    if (e.target.value.length === 10) {
+      /* Проверка, что введенная дата попадает в диапазон dateCurrent и datePlusYear */
+      const a = e.target.value.split('.');
+      const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
+      const correctFormat = dateSelected < this.dateCurrent
+        || dateSelected > this.datePlusYear
+        || InputMask.formatIncorrect(dateSelected);
+      if (correctFormat) {
+        alert(`Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
+        e.target.value = this.dateCurrentTxt;/* в случае некорректного ввода -
+          устанавливаем текущую дату */
+      }
+    }
+  }
+
+  checkRangeDouble(e) {
+    if (e.target.value.length === 23) {
+      /* Проверка, что введенная дата попадает в диапазон dateCurrent и datePlusYear */
+      const a = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
+      const b = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
+      const dateCurrentSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
+      const datePlusYearSelected = new Date(`${b[2]}-${b[1]}-${b[0]}`);
+      const correctFormat = dateCurrentSelected < this.dateCurrent
+        || dateCurrentSelected > this.datePlusYear
+        || InputMask.formatIncorrect(dateCurrentSelected)
+        || datePlusYearSelected < this.dateCurrent
+        || datePlusYearSelected > this.datePlusYear
+        || InputMask.formatIncorrect(datePlusYearSelected);
+      if (correctFormat) {
+        alert(`Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
+        e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;// в случае некорректного ввода - устанавливаем диапазон [текущая дата - завтрашняя дата]
+      }
+    }
+  }
+
+  mask() {
+    /* запретить все типы ввода, кроме перечисленных */
+    this.input.addEventListener('input', this.handleInput);
   }
 }
 
-function inputsMask(selector) {
+function renderInputsMask(selector) {
   const inputsMask = document.querySelectorAll(selector);
-  for (const inputMask of inputsMask) {
-    new InputMask(selector, inputMask);
-  }
+  inputsMask.forEach((inputMask) => new InputMask(selector, inputMask));
 }
-inputsMask('.js-masked');
+renderInputsMask('.js-masked');
