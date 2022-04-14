@@ -17,16 +17,13 @@ src
 | index.ts
 └─── components
 └─── pages
-└─── plugins
+
 ```
 `index.ts` is a main file that imports each `.js` file in the `src` folder and automatically adds it to the bundle.
 
 `components` - this folder includes all components available for all pages.
 
 `pages` - this folder includes all pages of the project.
-
-`plugins` - this folder includes all  plugins of the project.
-
 
 #### `components`
 `components` has the following structure:
@@ -73,35 +70,6 @@ pages
 ```
 
 * each page is independent extended from `pages/layout/layout.pug | pages/ui-kit-layout/ui-kit-layout.pug`
-
-
-#### `plugins`
-`plugins` has the following structure:
-
-```
-plugins
-└─── air-datepicker
-| |  
-| └─── css
-| | |  datepicker.min.css
-| |  
-| └─── js
-| | |  datepicker.min.js
-|
-└─── rangeSlider
-| |  
-| └─── css
-| | |  ion.rangeSlider.min.css
-| |  
-| └─── js
-| | |  ion.rangeSlider.min.js
-| java-import.js
-```
-
-* All plugins dependencies are imported in file `java-import.js` in 'plugins' folder. File `java-import.js` in its turn is imported in `index.ts`
-
-* These plugins are used by components of the project
-
 
 ## How to work
 #### Install dependencies
