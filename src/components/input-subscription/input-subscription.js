@@ -4,10 +4,10 @@ class InputSubscribe {
     this.elemName = elemName.replace(/^./, '');
     this.input = elem;
     this.inputWrapper = this.input.parentNode;
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.render();
-    this.init();
+    this._handleInputSubscriptionChange = this._handleInputSubscriptionChange.bind(this);
+    this._handleInputSubscriptionClick = this._handleInputSubscriptionClick.bind(this);
+    this._render();
+    this._bindEventListeners();
   }
 
   static testEmail(value) {
@@ -17,23 +17,23 @@ class InputSubscribe {
     }
   }
 
-  render() {
+  _render() {
     this.link = this.inputWrapper.querySelector('button');
   }
 
-  handleChange() {
-    InputSubscribe.testEmail(this.input.value);
-  }
-
-  handleClick() {
-    InputSubscribe.testEmail(this.input.value);
-  }
-
-  init() {
-    this.input.addEventListener('change', this.handleChange);
+  _bindEventListeners() {
+    this.input.addEventListener('change', this._handleInputSubscriptionChange);
     if (this.link) {
-      this.link.addEventListener('click', this.handleClick);
+      this.link.addEventListener('click', this._handleInputSubscriptionClick);
     }
+  }
+
+  _handleInputSubscriptionChange() {
+    InputSubscribe.testEmail(this.input.value);
+  }
+
+  _handleInputSubscriptionClick() {
+    InputSubscribe.testEmail(this.input.value);
   }
 }
 

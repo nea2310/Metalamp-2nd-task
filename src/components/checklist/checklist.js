@@ -5,57 +5,120 @@ class CheckList {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
     this.breakPoint = 1199;
-    this.handleMouseDownLabel = this.handleMouseDownLabel.bind(this);
-    this.handleMouseUpLabel = this.handleMouseUpLabel.bind(this);
-    this.handleFocusLabel = this.handleFocusLabel.bind(this);
-    this.handleInnerClick = this.handleInnerClick.bind(this);
-    this.handleInnerFocus = this.handleInnerFocus.bind(this);
-    this.needCollapse = this.needCollapse.bind(this);
-    this.handleResizeLoad = this.handleResizeLoad.bind(this);
-    this.handleOuterClickFocus = this.handleOuterClickFocus.bind(this);
+    this._handleCheckListMouseDownLabel = this._handleCheckListMouseDownLabel.bind(this);
+    this._handleCheckListMouseUpLabel = this._handleCheckListMouseUpLabel.bind(this);
+    this._handleCheckListFocusLabel = this._handleCheckListFocusLabel.bind(this);
+    this._handleCheckListClickWrapper = this._handleCheckListClickWrapper.bind(this);
+    this._handleCheckListFocusWrapper = this._handleCheckListFocusWrapper.bind(this);
+    this._handleCheckListResizeLoadWindow = this._handleCheckListResizeLoadWindow.bind(this);
+    this._handleCheckListClickFocusDoc = this._handleCheckListClickFocusDoc.bind(this);
+    this._needCollapse = this._needCollapse.bind(this);
 
-    this.render();
-    this.clickLabel();
-    this.focusLabel();
-    this.innerClick();
-    this.outerClick();
-    this.innerFocus();
-    this.outerFocus();
-    this.resizeLoad();
+    this._render();
+    this._bindEventListeners();
   }
 
-  getElem(selector, wrapper = this.wrapper) {
+  _render() {
+    this.clickOnList = false;
+    this.focusOnList = false;
+    this.mouseDown = false;
+    this.label = this._getElem('label');
+    this.listWrapper = this._getElem('list-wrapper');
+    this.tip = this._getElem('img');
+    this.clickOnList = false;
+  }
+
+  _bindEventListeners() {
+    // клик по лейблу
+    this.label.addEventListener('mousedown', this._handleCheckListMouseDownLabel);
+    this.label.addEventListener('mouseup', this._handleCheckListMouseUpLabel);
+
+    // фокус на лейбл
+    this.label.addEventListener('focus', this._handleCheckListFocusLabel);
+
+    // проверка, клик был снаружи или внутри списка
+    this.wrapper.addEventListener('click', this._handleCheckListClickWrapper);
+
+    // проверка, фокус был снаружи или внутри списка
+    this.wrapper.addEventListener('focusin', this._handleCheckListFocusWrapper);
+
+    // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
+    document.addEventListener('click', this._handleCheckListClickFocusDoc);
+
+    // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
+    document.addEventListener('focusin', this._handleCheckListClickFocusDoc);
+
+    // ресайз/лоад страницы
+    window.addEventListener('resize', this._handleCheckListResizeLoadWindow);
+    window.addEventListener('load', this._handleCheckListResizeLoadWindow);
+  }
+
+  _handleCheckListMouseDownLabel() {
+    this.mouseDown = true;
+  }
+
+  _handleCheckListMouseUpLabel() {
+    const isHidden = this.listWrapper.classList.contains(`${this.elemName}__list-wrapper_hidden`);
+    if (isHidden) {
+      this._toggleList(true);
+    } else if (!isHidden && this._needCollapse()) {
+      this._toggleList(false);
+    }
+    this.mouseDown = false;
+  }
+
+  _handleCheckListFocusLabel() {
+    if (this.listWrapper.classList.contains(`${this.elemName}__list-wrapper_hidden`)
+      && this.mouseDown === false) {
+      this._toggleList(true);
+    }
+  }
+
+  _handleCheckListClickWrapper() {
+    this.clickOnList = true;
+  }
+
+  _handleCheckListFocusWrapper() {
+    this.focusOnList = true;
+  }
+
+  _handleCheckListClickFocusDoc(e) {
+    const isClick = e.type === 'click';
+    const checkClickFocus = isClick ? this.clickOnList === false : this.focusOnList === false;
+    const setClickFocus = isClick ? this.clickOnList = false : this.focusOnList = false;
+    if (this._needCollapse()) {
+      if (e.target.closest(`.${this.elemName}` == null)
+        || checkClickFocus) {
+        this._toggleList(false);
+      } else {
+        return setClickFocus;
+      }
+    }
+    return true;
+  }
+
+  _handleCheckListResizeLoadWindow() {
+    if (window.innerWidth > this.breakPoint && !this._isCollapsing()) {
+      this._toggleList(true);
+    } else this._toggleList(false);
+  }
+
+  _getElem(selector, wrapper = this.wrapper) {
     return wrapper
       .querySelector(`.js-${this.elemName}__${selector}`);
   }
 
-  render() {
-    this.clickOnList = false;
-    this.focusOnList = false;
-    this.mouseDown = false;
-    this.label = this.getElem('label');
-    this.listWrapper = this.getElem('list-wrapper');
-    this.tip = this.getElem('img');
-    this.clickOnList = false;
-  }
-
-  isCollapsing() {
+  _isCollapsing() {
     return this.label.classList.contains(`${this.elemName}__label_collapsing`);
   }
 
-  needCollapse() {
+  _needCollapse() {
     return (
-      window.innerWidth <= this.breakPoint || this.isCollapsing());
+      window.innerWidth <= this.breakPoint || this._isCollapsing());
   }
 
-  handleResizeLoad() {
-    if (window.innerWidth > this.breakPoint && !this.isCollapsing()) {
-      this.toggleList(true);
-    } else this.toggleList(false);
-  }
-
-  // Открывание/ закрывание дропдауна
-  toggleList(flag) {
+  // Открывание/ закрывание списка
+  _toggleList(flag) {
     const wrap = `${this.elemName}__`;
     if (flag) {
       this.listWrapper.classList
@@ -68,87 +131,6 @@ class CheckList {
       this.tip.classList.remove(`${wrap}img-expanded`);
       this.tip.classList.add(`${wrap}img_collapsed`);
     }
-  }
-
-  handleMouseDownLabel() {
-    this.mouseDown = true;
-  }
-
-  handleMouseUpLabel() {
-    const isHidden = this.listWrapper.classList.contains(`${this.elemName}__list-wrapper_hidden`);
-    if (isHidden) {
-      this.toggleList(true);
-    } else if (!isHidden && this.needCollapse()) {
-      this.toggleList(false);
-    }
-    this.mouseDown = false;
-  }
-
-  handleFocusLabel() {
-    if (this.listWrapper.classList.contains(`${this.elemName}__list-wrapper_hidden`)
-      && this.mouseDown === false) {
-      this.toggleList(true);
-    }
-  }
-
-  handleInnerClick() {
-    this.clickOnList = true;
-  }
-
-  handleInnerFocus() {
-    this.focusOnList = true;
-  }
-
-  handleOuterClickFocus(e) {
-    const isClick = e.type === 'click';
-    const checkClickFocus = isClick ? this.clickOnList === false : this.focusOnList === false;
-    const setClickFocus = isClick ? this.clickOnList = false : this.focusOnList = false;
-    if (this.needCollapse()) {
-      if (e.target.closest(`.${this.elemName}` == null)
-        || checkClickFocus) {
-        this.toggleList(false);
-      } else {
-        return setClickFocus;
-      }
-    }
-    return true;
-  }
-
-  // ресайз/лоад страницы
-  resizeLoad() {
-    window.addEventListener('resize', this.handleResizeLoad);
-    window.addEventListener('load', this.handleResizeLoad);
-  }
-
-  // клик по лейблу
-  clickLabel() {
-    this.label.addEventListener('mousedown', this.handleMouseDownLabel);
-    this.label.addEventListener('mouseup', this.handleMouseUpLabel);
-  }
-
-  // фокус на лейбл
-  focusLabel() {
-    this.label.addEventListener('focus', this.handleFocusLabel);
-  }
-
-  // проверка, клик был снаружи или внутри списка
-  innerClick() {
-    this.wrapper.addEventListener('click', this.handleInnerClick);
-  }
-
-  // проверка, фокус был снаружи или внутри списка
-  innerFocus() {
-    this.wrapper.addEventListener('focusin', this.handleInnerFocus);
-  }
-
-  // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
-  outerClick() {
-    document.addEventListener('click', this.handleOuterClickFocus);
-  }
-
-  // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
-  outerFocus() {
-    document.addEventListener('focusin', this.handleOuterClickFocus);
   }
 }
 

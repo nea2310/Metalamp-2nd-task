@@ -1,37 +1,23 @@
-import './range-slider.scss';
-import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 // eslint-disable-next-line import/extensions
 import 'ion-rangeslider/js/ion.rangeSlider.min.js';
+import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+import './range-slider.scss';
 
 class RangeSlider {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
-    this.render();
+    this._render();
   }
 
-  getElem(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(
-      `.${this.elemName}__${selector}`,
-    );
+  _render() {
+    this.slider = this._getElem('slider');
+    this.priceFrom = this._getElem('price-from');
+    this.priceTo = this._getElem('price-to');
+    this._init();
   }
 
-  getElems(selectors) {
-    let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
-    sel = sel.substring(0, sel.length - 1);
-    return this.wrapper
-      .querySelectorAll(sel);
-  }
-
-  render() {
-    this.slider = this.getElem('slider');
-    this.priceFrom = this.getElem('price-from');
-    this.priceTo = this.getElem('price-to');
-    this.init();
-  }
-
-  init() {
+  _init() {
     const { priceFrom } = this;
     const { priceTo } = this;
     const displayPrice = (data) => {
@@ -76,6 +62,20 @@ class RangeSlider {
     this.priceFrom.addEventListener('change', handleChangePriceFrom);
     this.priceTo.addEventListener('keyup', handleChangePriceTo);
     this.priceTo.addEventListener('change', handleChangePriceTo);
+  }
+
+  _getElem(selector, wrapper = this.wrapper) {
+    return wrapper.querySelector(
+      `.${this.elemName}__${selector}`,
+    );
+  }
+
+  _getElems(selectors) {
+    let sel = '';
+    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
+    sel = sel.substring(0, sel.length - 1);
+    return this.wrapper
+      .querySelectorAll(sel);
   }
 }
 

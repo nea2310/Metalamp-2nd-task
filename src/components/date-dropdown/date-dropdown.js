@@ -1,6 +1,7 @@
-import './date-dropdown.scss';
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
+
+import './date-dropdown.scss';
 
 const imgPrev = require(
   './img/arrow-back.svg',
@@ -15,65 +16,45 @@ class DatePicker {
     this.wrapper = elem;
     this.focusOnList = false;
 
-    this.handleClear = this.handleClear.bind(this);
-    this.handleDateClear = this.handleDateClear.bind(this);
-    this.handleApply = this.handleApply.bind(this);
-    this.handleShowFilter = this.handleShowFilter.bind(this);
-    this.handleShowNoFilter = this.handleShowNoFilter.bind(this);
-    this.handleCollapseByClick = this.handleCollapseByClick.bind(this);
-    this.handleCheckClick = this.handleCheckClick.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.handleDateBlur = this.handleDateBlur.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleResizeLoad = this.handleResizeLoad.bind(this);
-    this.handleListFocus = this.handleListFocus.bind(this);
-    this.handleCollapseByFocus = this.handleCollapseByFocus.bind(this);
+    this._handleDateDropDownClickClear = this._handleDateDropDownClickClear.bind(this);
+    this._handleDateDropDownClickWrapper = this._handleDateDropDownClickWrapper.bind(this);
+    this._handleDateDropDownClickApply = this._handleDateDropDownClickApply.bind(this);
+    this._handleDateDropDownClickDateFromTo = this._handleDateDropDownClickDateFromTo.bind(this);
+    this._handleDateDropDownClickDate = this._handleDateDropDownClickDate.bind(this);
+    this._handleDateDropDownClickDoc = this._handleDateDropDownClickDoc.bind(this);
+    this._handleDateDropDownClickCalendar = this._handleDateDropDownClickCalendar.bind(this);
+    this._handleDateDropDownInputWrapper = this._handleDateDropDownInputWrapper.bind(this);
+    this._handleDateDropDownBlurDate = this._handleDateDropDownBlurDate.bind(this);
+    this._handleDateDropDownFocusDate = this._handleDateDropDownFocusDate.bind(this);
+    this._handleDateDropDownResizeLoadWindow = this._handleDateDropDownResizeLoadWindow.bind(this);
+    this._handleDateDropDownFocusinWrapper = this._handleDateDropDownFocusinWrapper.bind(this);
+    this._handleDateDropDownFocusinDoc = this._handleDateDropDownFocusinDoc.bind(this);
 
-    this.render();
-    this.init();
-    this.setDefaultDate();
-    this.datePrint();
-    this.dateClear();
-    this.show();
-    this.apply();
-    this.clear();
-    this.resizeLoad();
-    this.collapseByFocus();
-    this.insideListFocus();
+    this._render();
+    this._init();
+    this._setDefaultDate();
+    this._bindEventListeners();
   }
 
-  getElem(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.js-${this.elemName}__${selector}`);
-  }
-
-  getElems(selectors) {
-    let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
-    sel = sel.substring(0, sel.length - 1);
-    return this.wrapper
-      .querySelectorAll(sel);
-  }
-
-  render() {
-    const a = this.getElems(['input-wrapper']);
+  _render() {
+    const a = this._getElems(['input-wrapper']);
     this.isFilter = a.length === 1;
 
     if (!this.isFilter) {
-      this.inputDateFrom = this.getElem('input_from');
-      this.inputDateTo = this.getElem('input_to');
+      this.inputDateFrom = this._getElem('input_from');
+      this.inputDateTo = this._getElem('input_to');
     } else {
-      this.inputDate = this.getElem('input_fromto');
+      this.inputDate = this._getElem('input_fromto');
       this.defaultDates = this.inputDate.value.split(',');
     }
-    this.tips = this.getElems(['img']);
-    this.clWrapper = this.getElem('calendar-wrapper');
-    this.btnClear = this.getElem('button-clear');
-    this.btnApply = this.getElem('button-apply');
+    this.tips = this._getElems(['img']);
+    this.clWrapper = this._getElem('calendar-wrapper');
+    this.btnClear = this._getElem('button-clear');
+    this.btnApply = this._getElem('button-apply');
   }
 
   /* Выбор даты в календаре */
-  init() {
+  _init() {
     const separator = this.isFilter ? ' - ' : ',';
     this.myDatepicker = new AirDatepicker(this.clWrapper, {
       disableNavWhenOutOfRange: false,
@@ -110,12 +91,64 @@ class DatePicker {
 
     this.calendar = this.wrapper
       .querySelector('.air-datepicker.-inline-');
-    this.collapseByClick();
-    this.insideCalendarClick();
-    // this.clickOnCalendar = true;
   }
 
-  handleFocus(e) {
+  /* Установка даты из поля value в верстке */
+  _setDefaultDate() {
+    if (this.isFilter) {
+      const dateFrom = this.defaultDates[0];
+      const dateTo = this.defaultDates[1];
+      this.myDatepicker.selectDate(new Date(dateFrom));
+      this.myDatepicker.selectDate(new Date(dateTo));
+    }
+  }
+
+  _bindEventListeners() {
+    /* Ввод даты в инпут с клавиатуры */
+    if (this.isFilter) {
+      // При фокусе на инпут преобразовать дату в формат ДД.ММ.ГГГГ - ДД.ММ.ГГГГ
+      this.inputDate.addEventListener('focus', this._handleDateDropDownFocusDate);
+      this.inputDate.addEventListener('blur', this._handleDateDropDownBlurDate);
+    }
+
+    // обработчик события окончания ввода в инпут по маске ДД.ММ.ГГГГ
+    this.wrapper.addEventListener('input', this._handleDateDropDownInputWrapper);
+
+    // Показ  календаря при клике по инпуту
+    if (!this.isFilter) {
+      this.inputDateFrom.addEventListener('click', this._handleDateDropDownClickDateFromTo);
+      this.inputDateTo.addEventListener('click', this._handleDateDropDownClickDateFromTo);
+    } else {
+      this.inputDate.addEventListener('click', this._handleDateDropDownClickDate);
+    }
+
+    // Удаление даты из инпута
+    this.wrapper.addEventListener('input', this._handleDateDropDownClickWrapper);
+
+    // клик по кнопке [Применить]
+    this.btnApply.addEventListener('click', this._handleDateDropDownClickApply);
+
+    // клик по кнопке [Очистить]
+    this.btnClear.addEventListener('click', this._handleDateDropDownClickClear);
+
+    // проверка, клик был снаружи или внутри календаря
+    this.calendar.addEventListener('click', this._handleDateDropDownClickCalendar);
+
+    // проверка, фокус был снаружи или внутри календаря
+    this.wrapper.addEventListener('focusin', this._handleDateDropDownFocusinWrapper);
+
+    // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
+    document.addEventListener('click', this._handleDateDropDownClickDoc);
+
+    // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
+    document.addEventListener('focusin', this._handleDateDropDownFocusinDoc);
+
+    // ресайз/лоад страницы
+    window.addEventListener('resize', this._handleDateDropDownResizeLoadWindow);
+    window.addEventListener('load', this._handleDateDropDownResizeLoadWindow);
+  }
+
+  _handleDateDropDownFocusDate(e) {
     this.initDate = this.inputDate.value;
     const startDate = this.myDatepicker.selectedDates[0];
     const endDate = this.myDatepicker.selectedDates[1];
@@ -139,13 +172,13 @@ class DatePicker {
     }
   }
 
-  handleDateBlur() {
+  _handleDateDropDownBlurDate() {
     if (this.inputDate.value === this.initDateParsed) {
       this.inputDate.value = this.initDate;
     }
   }
 
-  handleInput(e) {
+  _handleDateDropDownInputWrapper(e) {
     const isDate = e.target === this.inputDateFrom
       || e.target === this.inputDateTo;
     const isDateLength = isDate && e.target.value.length === 10;
@@ -186,33 +219,33 @@ class DatePicker {
     }
   }
 
-  handleShowNoFilter() {
+  _handleDateDropDownClickDate() {
     if (this.clWrapper.classList
       .contains(`${this.elemName}__calendar-wrapper_hidden`)) {
-      this.toggle(true);
+      this._toggle(true);
     }
   }
 
-  handleShowFilter() {
+  _handleDateDropDownClickDateFromTo() {
     if (this.clWrapper.classList
-      .contains(`${this.elemName}__calendar-wrapper_hidden`)) { this.toggle(true); }
+      .contains(`${this.elemName}__calendar-wrapper_hidden`)) { this._toggle(true); }
   }
 
-  handleApply() {
+  _handleDateDropDownClickApply() {
     if (this.myDatepicker.selectedDates.length === 1) {
       alert('Введите дату выезда');
     } else {
       this.clWrapper.classList
         .add(`${this.elemName}__calendar-wrapper_hidden`);
       if (!this.isFilter) {
-        this.toggle(false);
+        this._toggle(false);
       } else {
-        this.toggle(false);
+        this._toggle(false);
       }
     }
   }
 
-  handleDateClear(e) {
+  _handleDateDropDownClickWrapper(e) {
     if (e.target === this.inputDateFrom
       || e.target === this.inputDateTo) {
       if (e.target.value === '') { // Если инпут очищен
@@ -228,7 +261,7 @@ class DatePicker {
     }
   }
 
-  handleClear() {
+  _handleDateDropDownClickClear() {
     this.clickOnCalendar = true;
     this.myDatepicker.clear();
     if (!this.isFilter) {
@@ -237,109 +270,43 @@ class DatePicker {
     }
   }
 
-  handleResizeLoad() {
-    this.toggle(false);
+  _handleDateDropDownResizeLoadWindow() {
+    this._toggle(false);
   }
 
-  // ресайз/лоад страницы
-  resizeLoad() {
-    window.addEventListener('resize', this.handleResizeLoad);
-    window.addEventListener('load', this.handleResizeLoad);
-  }
-
-  /* Установка даты из поля value в верстке */
-  setDefaultDate() {
-    if (this.isFilter) {
-      const dateFrom = this.defaultDates[0];
-      const dateTo = this.defaultDates[1];
-      this.myDatepicker.selectDate(new Date(dateFrom));
-      this.myDatepicker.selectDate(new Date(dateTo));
-    }
-  }
-
-  /* Ввод даты в инпут с клавиатуры */
-  datePrint() {
-    if (this.isFilter) {
-      // При фокусе на инпут преобразовать дату в формат ДД.ММ.ГГГГ - ДД.ММ.ГГГГ
-      this.inputDate.addEventListener('focus', this.handleFocus);
-      this.inputDate.addEventListener('blur', this.handleDateBlur);
-    }
-
-    // обработчик события окончания ввода в инпут по маске ДД.ММ.ГГГГ
-    this.wrapper.addEventListener('input', this.handleInput);
-  }
-
-  handleCheckClick() {
+  _handleDateDropDownClickCalendar() {
     this.clickOnCalendar = true;
   }
 
-  // проверка, клик был снаружи или внутри календаря
-  insideCalendarClick() {
-    this.calendar.addEventListener('click', this.handleCheckClick);
-  }
-
-  // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
-  collapseByClick() {
-    document.addEventListener('click', this.handleCollapseByClick);
-  }
-
-  handleCollapseByClick(e) {
+  _handleDateDropDownClickDoc(e) {
     const condA = (this.isFilter && e.target !== this.inputDate) || !this.isFilter;
     const condB = e.target !== this.inputDateFrom && e.target !== this.inputDateTo;
     const condC = e.target.closest(`.${this.elemName}`) == null;
     const condFull = ((condA && condB) || condC) && this.clickOnCalendar === false;
-    // if (
-    //   (this.isFilter && e.target !== this.inputDate// условие #1
-    //     || !this.isFilter && (// условие #2
-    //       e.target !== this.inputDateFrom
-    //       && e.target !== this.inputDateTo)
-    //     || e.target.closest(`.${this.elemName}`) == null)// условие #3
-    //   && this.clickOnCalendar === false// общее условие для условий #1, #2, #3
-    // )
 
     if (condFull) {
-      this.toggle(false);
+      this._toggle(false);
     } else {
       this.clickOnCalendar = false;
     }
   }
 
-  handleListFocus() {
+  _handleDateDropDownFocusinWrapper() {
     this.focusOnList = true;
   }
 
-  // проверка, фокус был снаружи или внутри календаря
-  insideListFocus() {
-    this.wrapper.addEventListener('focusin', this.handleListFocus);
-  }
-
-  // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
-  collapseByFocus() {
-    document.addEventListener('focusin', this.handleCollapseByFocus);
-  }
-
-  handleCollapseByFocus() {
-    console.log('handleCollapseByFocus');
+  _handleDateDropDownFocusinDoc() {
+    console.log('_handleDateDropDownFocusinDoc');
 
     if (this.focusOnList === false) {
-      this.toggle(false);
+      this._toggle(false);
     } else {
       this.focusOnList = false;
     }
   }
 
-  // Показ  календаря при клике по инпуту
-  show() {
-    if (!this.isFilter) {
-      this.inputDateFrom.addEventListener('click', this.handleShowFilter);
-      this.inputDateTo.addEventListener('click', this.handleShowFilter);
-    } else {
-      this.inputDate.addEventListener('click', this.handleShowNoFilter);
-    }
-  }
-
   // Открывание/ закрывание календаря
-  toggle(flag) {
+  _toggle(flag) {
     const wrap = `${this.elemName}__`;
     if (flag) {
       this.clWrapper.classList
@@ -358,19 +325,17 @@ class DatePicker {
     }
   }
 
-  // клик по кнопке [Применить]
-  apply() {
-    this.btnApply.addEventListener('click', this.handleApply);
+  _getElem(selector, wrapper = this.wrapper) {
+    return wrapper
+      .querySelector(`.js-${this.elemName}__${selector}`);
   }
 
-  // Удаление даты из инпута
-  dateClear() {
-    this.wrapper.addEventListener('input', this.handleDateClear);
-  }
-
-  // клик по кнопке [Очистить]
-  clear() {
-    this.btnClear.addEventListener('click', this.handleClear);
+  _getElems(selectors) {
+    let sel = '';
+    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
+    sel = sel.substring(0, sel.length - 1);
+    return this.wrapper
+      .querySelectorAll(sel);
   }
 }
 

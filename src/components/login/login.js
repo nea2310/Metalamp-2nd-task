@@ -5,19 +5,24 @@ class Login {
   constructor(elemName, elem) {
     this.elemName = elemName;
     this.wrapper = elem;
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.render();
-    this.formSubmit();
+    this._handleLoginSubmit = this._handleLoginSubmit.bind(this);
+    this._render();
+    this._bindEventListeners();
   }
 
-  render() {
+  _render() {
     this.form = this.wrapper
       .querySelector(`${this.elemName}__login-form`);
     this.inputs = this.wrapper
       .querySelectorAll('input');
   }
 
-  handleSubmit(e) {
+  // Валидация инпутов на сабмите формы
+  _bindEventListeners() {
+    this.form.addEventListener('submit', this._handleLoginSubmit);
+  }
+
+  _handleLoginSubmit(e) {
     let isErr = false;
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
@@ -36,11 +41,6 @@ class Login {
       e.preventDefault();
       alert('Заполните все поля!');
     }
-  }
-
-  // Валидация инпутов на сабмите формы
-  formSubmit() {
-    this.form.addEventListener('submit', this.handleSubmit);
   }
 }
 

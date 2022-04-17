@@ -4,74 +4,51 @@ class DropDown {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
-    this.handleChangeCounter = this.handleChangeCounter.bind(this);
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.handleMouseUp = this.handleMouseUp.bind(this);
-    this.handleFocus = this.handleFocus.bind(this);
-    this.handleInsideClick = this.handleInsideClick.bind(this);
-    this.handleCollapseByClick = this.handleCollapseByClick.bind(this);
-    this.handleListFocus = this.handleListFocus.bind(this);
-    this.handleCollapseByFocus = this.handleCollapseByFocus.bind(this);
-    this.handleApply = this.handleApply.bind(this);
-    this.handleClear = this.handleClear.bind(this);
-    this.handleResizeLoad = this.handleResizeLoad.bind(this);
+    this._handleDropDownClickCounter = this._handleDropDownClickCounter.bind(this);
+    this._handleDropDownMousedownInput = this._handleDropDownMousedownInput.bind(this);
+    this._handleDropDownMouseupInput = this._handleDropDownMouseupInput.bind(this);
+    this._handleDropDownFocusInput = this._handleDropDownFocusInput.bind(this);
+    this._handleDropDownClickWrapper = this._handleDropDownClickWrapper.bind(this);
+    this._handleDropDownClickDoc = this._handleDropDownClickDoc.bind(this);
+    this._handleDropDownFocusinWrapper = this._handleDropDownFocusinWrapper.bind(this);
+    this._handleDropDownFocusinDoc = this._handleDropDownFocusinDoc.bind(this);
+    this._handleDropDownClickApply = this._handleDropDownClickApply.bind(this);
+    this._handleDropDownClickClear = this._handleDropDownClickClear.bind(this);
+    this._handleDropDownResizeLoadWindow = this._handleDropDownResizeLoadWindow.bind(this);
 
-    this.render();
-    this.clickInput();
-    this.focusInput();
-    this.changeCounter();
-    this.clear();
-    this.apply();
-    this.collapseByClick();
-    this.insideListClick();
-    this.collapseByFocus();
-    this.insideListFocus();
-    this.resizeLoad();
+    this._render();
+    this._bindEventListeners();
   }
 
-  getElem(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.js-${this.elemName}__${selector}`);
-  }
-
-  getElems(selectors) {
-    let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
-    sel = sel.substring(0, sel.length - 1);
-    return this.wrapper
-      .querySelectorAll(sel);
-  }
-
-  render() {
+  _render() {
     this.clickOnList = false;
     this.focusOnList = false;
     this.mouseDown = false;
 
-    this.input = this.getElem('input');
-    this.listWrapper = this.getElem('list-wrapper');
-    this.counts = this.getElems(['count-decrem', 'count-increm']);
-    this.countVals = this.getElems(['count-val']);
-    this.listElems = this.getElems(['cat-wrapper']);
-    this.btnClear = this.getElem('button-clear');
-    this.btnApply = this.getElem('button-apply');
-    this.btnsMinus = this.getElems(['count-decrem']);
-    this.tip = this.getElem('img');
+    this.input = this._getElem('input');
+    this.listWrapper = this._getElem('list-wrapper');
+    this.counts = this._getElems(['count-decrem', 'count-increm']);
+    this.countVals = this._getElems(['count-val']);
+    this.listElems = this._getElems(['cat-wrapper']);
+    this.btnClear = this._getElem('button-clear');
+    this.btnApply = this._getElem('button-apply');
+    this.btnsMinus = this._getElems(['count-decrem']);
+    this.tip = this._getElem('img');
 
-    // this.clearApplyBtns = !!(this.btnClear != null && this.btnApply != null);
     this.clearApplyBtns = this.btnClear != null && this.btnApply != null;
-    this.getInitialCounterList(this.listElems);
+    this._getInitialCounterList(this.listElems);
   }
 
   /* Получение начального состояния счетчиков (текущее значение;
     является ли оно минимальным или максимальным; название и тип категории) */
-  getInitialCounterList(counterList) {
+  _getInitialCounterList(counterList) {
     this.counters = [];
     for (let i = 0; i < counterList.length; i += 1) {
       const elemObj = {};
-      const catName = this.getElem('cat', counterList[i]);
-      const catCnt = this.getElem('count-val', counterList[i]);
-      const catIncrem = this.getElem('count-increm', counterList[i]);
-      const catDecrem = this.getElem('count-decrem', counterList[i]);
+      const catName = this._getElem('cat', counterList[i]);
+      const catCnt = this._getElem('count-val', counterList[i]);
+      const catIncrem = this._getElem('count-increm', counterList[i]);
+      const catDecrem = this._getElem('count-decrem', counterList[i]);
 
       elemObj.text = catName.innerText.toLowerCase();
       elemObj.type = catName.getAttribute('data-type');
@@ -79,36 +56,73 @@ class DropDown {
       elemObj.cnt = catCnt.innerText;
       elemObj.maxCnt = catIncrem.getAttribute('data-max');
       elemObj.minCnt = catDecrem.getAttribute('data-min');
-
       elemObj.isMax = elemObj.cnt === elemObj.maxCnt;
       elemObj.isMin = elemObj.cnt === elemObj.minCnt;
 
       this.counters.push(elemObj);
     }
 
-    this.initializeButtons(this.counters);
+    this._initializeButtons(this.counters);
     if (this.clearApplyBtns) {
-      this.hideBtnClear(this.btnsMinus);
+      this._hideBtnClear(this.btnsMinus);
     }
   }
 
   /* определяем неактивные кнопки (если начальное значение счетчика -
     минимальное или максимальное) */
-  initializeButtons(counterList) {
+  _initializeButtons(counterList) {
     for (let i = 0; i < counterList.length; i += 1) {
       const elem = this.listElems[i];
       if (counterList[i].isMin) {
-        const minus = this.getElem('count-decrem', elem);
+        const minus = this._getElem('count-decrem', elem);
         minus.disabled = true;
       }
       if (counterList[i].isMax) {
-        const plus = this.getElem('count-increm', elem);
+        const plus = this._getElem('count-increm', elem);
         plus.disabled = true;
       }
     }
   }
 
-  handleChangeCounter(e) {
+  _bindEventListeners() {
+    // клик по инпуту
+    this.input.addEventListener('mousedown', this._handleDropDownMousedownInput);
+    this.input.addEventListener('mouseup', this._handleDropDownMouseupInput);
+
+    // фокус на инпут
+    this.input.addEventListener('focus', this._handleDropDownFocusInput);
+
+    // обработка клика по кнопкам Плюс / Минус
+    this.counts.forEach((elem) => elem.addEventListener('click', this._handleDropDownClickCounter));
+
+    // клик по кнопке [Применить]
+    if (this.clearApplyBtns) {
+      this.btnApply.addEventListener('click', this._handleDropDownClickApply);
+    }
+
+    // клик по кнопке [очистить]
+    if (this.clearApplyBtns) {
+      this.btnClear.addEventListener('click', this._handleDropDownClickClear);
+    }
+
+    // проверка, клик был снаружи или внутри виджета
+    this.wrapper.addEventListener('click', this._handleDropDownClickWrapper);
+
+    // проверка, фокус был снаружи или внутри виджета
+    this.wrapper.addEventListener('focusin', this._handleDropDownFocusinWrapper);
+
+    // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
+    document.addEventListener('click', this._handleDropDownClickDoc);
+
+    // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
+    document.addEventListener('focusin', this._handleDropDownFocusinDoc);
+
+    // ресайз/лоад страницы
+    window.addEventListener('resize', this._handleDropDownResizeLoadWindow);
+    window.addEventListener('load', this._handleDropDownResizeLoadWindow);
+  }
+
+  _handleDropDownClickCounter(e) {
     const elem = e.currentTarget;
     const text = e.target.parentElement.parentElement
       .firstElementChild.innerText.toLowerCase();
@@ -133,58 +147,58 @@ class DropDown {
       editedCounter = String(currentCounter + 1);
       e.target.previousElementSibling.innerText = editedCounter;
     }
-    this.updateCounterList(text, editedCounter);
+    this._updateCounterList(text, editedCounter);
   }
 
-  handleMouseDown() {
+  _handleDropDownMousedownInput() {
     this.mouseDown = true;
   }
 
-  handleMouseUp() {
-    this.toggle(true);
+  _handleDropDownMouseupInput() {
+    this._toggle(true);
     this.mouseDown = false;
   }
 
-  handleFocus() {
+  _handleDropDownFocusInput() {
     if (this.listWrapper.classList
       .contains(`${this.elemName}__list-wrapper_hidden`)
       && this.mouseDown === false) {
-      this.toggle(true);
+      this._toggle(true);
     }
   }
 
-  handleInsideClick() {
+  _handleDropDownClickWrapper() {
     this.clickOnList = true;
   }
 
-  handleCollapseByClick() {
+  _handleDropDownClickDoc() {
     if (this.clickOnList === false) {
-      this.toggle(false);
+      this._toggle(false);
     } else {
       this.clickOnList = false;
     }
   }
 
-  handleListFocus() {
+  _handleDropDownFocusinWrapper() {
     this.focusOnList = true;
   }
 
-  handleCollapseByFocus() {
+  _handleDropDownFocusinDoc() {
     if (this.focusOnList === false) {
-      this.toggle(false);
+      this._toggle(false);
     } else {
       this.focusOnList = false;
     }
   }
 
-  handleApply() {
-    this.toggle(true);
+  _handleDropDownClickApply() {
+    this._toggle(true);
   }
 
-  handleClear() {
+  _handleDropDownClickClear() {
     for (let i = 0; i < this.countVals.length; i += 1) {
       this.countVals[i].innerText = this.counters[i].minCnt;
-      this.updateCounterList(
+      this._updateCounterList(
         this.counters[i].text,
         this.countVals[i].innerText,
       );
@@ -192,23 +206,12 @@ class DropDown {
     this.input.value = '';
   }
 
-  handleResizeLoad() {
-    this.toggle(false);
-  }
-
-  // ресайз/лоад страницы
-  resizeLoad() {
-    window.addEventListener('resize', this.handleResizeLoad);
-    window.addEventListener('load', this.handleResizeLoad);
-  }
-
-  // обработка клика по кнопкам Плюс / Минус
-  changeCounter() {
-    this.counts.forEach((elem) => elem.addEventListener('click', this.handleChangeCounter));
+  _handleDropDownResizeLoadWindow() {
+    this._toggle(false);
   }
 
   /* обновление состояния счетчиков */
-  updateCounterList(text, editedCounter) {
+  _updateCounterList(text, editedCounter) {
     this.counters = this.counters.map((counter) => {
       if (counter.text === text) {
         const obj = {
@@ -233,13 +236,13 @@ class DropDown {
         return obj;
       } return counter;
     });
-    this.updateButtons(this.counters);
-    this.updateCategoriesList(this.counters);
+    this._updateButtons(this.counters);
+    this._updateCategoriesList(this.counters);
   }
 
   /* обновление кнопок Плюс/ Минус (делаем неактивными,
     если достигнуто минимальное/ максимальное значение) */
-  updateButtons(counters) {
+  _updateButtons(counters) {
     for (let i = 0; i < counters.length; i += 1) {
       const { cnt } = counters[i];
       const cntToChange = this.listElems[i]
@@ -257,12 +260,12 @@ class DropDown {
       }
     }
     if (this.clearApplyBtns) {
-      this.hideBtnClear(this.btnsMinus);
+      this._hideBtnClear(this.btnsMinus);
     }
   }
 
   // Скрыть кнопку [очистить]
-  hideBtnClear(btnsMinus) {
+  _hideBtnClear(btnsMinus) {
     const arr = [];
     btnsMinus.forEach((btn) => arr.push(btn.disabled));
     // есть ли среди кнопок "Минус" активные (disabled==false)
@@ -277,7 +280,7 @@ class DropDown {
   }
 
   /* Обновление списка категорий, которые выводятся в инпуте */
-  updateCategoriesList(changedCounters) {
+  _updateCategoriesList(changedCounters) {
     this.countersToDisplay = [];
     for (let i = 0; i < changedCounters.length; i += 1) {
       // Если категории такого типа еще нет
@@ -303,11 +306,11 @@ class DropDown {
           + parseInt(changedCounters[i].cnt, 10));
       }
     }
-    this.updateInput(this.countersToDisplay);
+    this._updateInput(this.countersToDisplay);
   }
 
   /* обновление значения в инпуте */
-  updateInput(countersToDisplay) {
+  _updateInput(countersToDisplay) {
     // Определение падежа категории в зависимости от значения счетчика
     function getWordForm(val, words) {
       let value = val;
@@ -332,7 +335,7 @@ class DropDown {
   }
 
   // Открывание/ закрывание дропдауна
-  toggle(flag) {
+  _toggle(flag) {
     const wrap = `${this.elemName}__`;
     if (flag) {
       this.listWrapper.classList
@@ -351,54 +354,22 @@ class DropDown {
     }
   }
 
-  // клик по инпуту
-  clickInput() {
-    this.input.addEventListener('mousedown', this.handleMouseDown);
-    this.input.addEventListener('mouseup', this.handleMouseUp);
+  _getElem(selector, wrapper = this.wrapper) {
+    return wrapper
+      .querySelector(`.js-${this.elemName}__${selector}`);
   }
 
-  // фокус на инпут
-  focusInput() {
-    this.input.addEventListener('focus', this.handleFocus);
-  }
-
-  // проверка, клик был снаружи или внутри виджета
-  insideListClick() {
-    this.wrapper.addEventListener('click', this.handleInsideClick);
-  }
-
-  // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
-  collapseByClick() {
-    document.addEventListener('click', this.handleCollapseByClick);
-  }
-
-  // проверка, фокус был снаружи или внутри виджета
-  insideListFocus() {
-    this.wrapper.addEventListener('focusin', this.handleListFocus);
-  }
-
-  // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
-  collapseByFocus() {
-    document.addEventListener('focusin', this.handleCollapseByFocus);
-  }
-
-  // клик по кнопке [Применить]
-  apply() {
-    if (this.clearApplyBtns) {
-      this.btnApply.addEventListener('click', this.handleApply);
-    }
-  }
-
-  // клик по кнопке [очистить]
-  clear() {
-    if (this.clearApplyBtns) {
-      this.btnClear.addEventListener('click', this.handleClear);
-    }
+  _getElems(selectors) {
+    let sel = '';
+    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
+    sel = sel.substring(0, sel.length - 1);
+    return this.wrapper
+      .querySelectorAll(sel);
   }
 }
 
-function renderDropDowns(selector) {
+function _renderDropDowns(selector) {
   const dropDowns = document.querySelectorAll(selector);
   dropDowns.forEach((dropDown) => new DropDown(selector, dropDown));
 }
-renderDropDowns('.js-dropdown');
+_renderDropDowns('.js-dropdown');

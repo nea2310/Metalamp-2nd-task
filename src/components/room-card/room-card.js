@@ -4,49 +4,41 @@ class RoomCard {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
-    this.clickDot = this.clickDot.bind(this);
-    this.handleClick = this.handleClick.bind(this);
-    this.render();
-    this.createDots();
-    this.swipe();
+    this._handleRoomCardClickDot = this._handleRoomCardClickDot.bind(this);
+    this._handleRoomCardClickBtn = this._handleRoomCardClickBtn.bind(this);
+    this._render();
+    this._createDots();
+    this._swipe();
+    this._bindEventListeners();
   }
 
-  getElem(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(
-      `.${this.elemName}__${selector}`,
-    );
+  _render() {
+    this.slider = this._getElem('slider');
+    this.dotsWrapper = this._getElem('dots');
+    this.btnPrev = this._getElem('prev');
+    this.btnNext = this._getElem('next');
+    this.images = this._getElems(['photo']);
   }
 
-  getElemAdv(className, attrName, attrVal, wrap = this.wrapper) {
-    return wrap.querySelector(
-      `.${this.elemName}__${className
-      }[${attrName}="${attrVal}"]`,
-    );
+  _createDots() {
+    for (let i = 1; i <= this.images.length; i += 1) {
+      const dot = document.createElement('button');
+      dot.classList.add(`${this.elemName}__dot`);
+      dot.classList.add(`js-${this.elemName}__dot`);
+      dot.setAttribute('data-sec', i);
+      dot.setAttribute('aria-label', 'фото номера');
+      dot.setAttribute('tabindex', '-1');
+      this.dotsWrapper.append(dot);
+    }
+    this.dots = this._getElems(['dot']);
+    this.dots[0].classList.add(`${this.elemName}__dot_active`);
+    this.dots.forEach((dot) => {
+      // dot - точка, по которой кликнули (должна стать активной)
+      dot.addEventListener('click', this._handleRoomCardClickDot);
+    });
   }
 
-  getElems(selectors) {
-    let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
-    sel = sel.substring(0, sel.length - 1);
-    return this.wrapper
-      .querySelectorAll(sel);
-  }
-
-  handleClick(e) {
-    this.clickPrevNext(e.target);
-  }
-
-  render() {
-    this.slider = this.getElem('slider');
-    this.dotsWrapper = this.getElem('dots');
-    this.btnPrev = this.getElem('prev');
-    this.btnNext = this.getElem('next');
-    this.images = this.getElems(['photo']);
-    this.btnPrev.addEventListener('click', this.handleClick);
-    this.btnNext.addEventListener('click', this.handleClick);
-  }
-
-  swipe() {
+  _swipe() {
     let xStart = null;
     const handleTouchStart = (e) => {
       xStart = e.touches[0].clientX;
@@ -59,10 +51,10 @@ class RoomCard {
       const xDiff = xStart - xEnd;
       if (xDiff > 0) {
         /* свайп влево */
-        this.clickPrevNext(this.btnPrev);
+        this._clickPrevNext(this.btnPrev);
       } else {
         /* свайп вправо */
-        this.clickPrevNext(this.btnNext);
+        this._clickPrevNext(this.btnNext);
       }
       /* сброс значения */
       xStart = null;
@@ -73,34 +65,43 @@ class RoomCard {
       .addEventListener('touchmove', handleTouchMove);
   }
 
-  clickPrevNext(elem) {
+  _bindEventListeners() {
+    this.btnPrev.addEventListener('click', this._handleRoomCardClickBtn);
+    this.btnNext.addEventListener('click', this._handleRoomCardClickBtn);
+  }
+
+  _handleRoomCardClickBtn(e) {
+    this._clickPrevNext(e.target);
+  }
+
+  _clickPrevNext(elem) {
     // определяем текущее фото
-    const currentPhoto = this.getElem('photo_showed');
+    const currentPhoto = this._getElem('photo_showed');
     // определяем текущую точку
-    const currentDot = this.getElem('dot_active'); // ??
+    const currentDot = this._getElem('dot_active'); // ??
     const i = parseInt(currentPhoto.getAttribute('data-sec'), 10);
     let newPhoto;
     let newDot;
     // Кликнули [Назад]
     if (elem.className.match('prev') || elem === 'leftSwipe') {
       if (i !== 1) {
-        newPhoto = this.getElemAdv(
+        newPhoto = this._getElemAdv(
           'photo',
           'data-sec',
           i - 1,
         );
-        newDot = this.getElemAdv(
+        newDot = this._getElemAdv(
           'dot',
           'data-sec', // ??
           i - 1,
         );
       } else {
-        newPhoto = this.getElemAdv(
+        newPhoto = this._getElemAdv(
           'photo',
           'data-sec',
           this.images.length,
         );
-        newDot = this.getElemAdv(
+        newDot = this._getElemAdv(
           'dot',
           'data-sec', // ??
           this.images.length,
@@ -109,57 +110,39 @@ class RoomCard {
       // Кликнули [Вперед]
     } else if (elem.className.match('next') || elem === 'rightSwipe') {
       if (i !== this.images.length) {
-        newPhoto = this.getElemAdv(
+        newPhoto = this._getElemAdv(
           'photo',
           'data-sec',
           i + 1,
         );
-        newDot = this.getElemAdv(
+        newDot = this._getElemAdv(
           'dot',
           'data-sec', // ??
           i + 1,
         );
       } else {
-        newPhoto = this.getElemAdv('photo', 'data-sec', '1');
-        newDot = this.getElemAdv('dot', 'data-sec', '1');// ??
+        newPhoto = this._getElemAdv('photo', 'data-sec', '1');
+        newDot = this._getElemAdv('dot', 'data-sec', '1');// ??
       }
     }
-    this.toggle(currentPhoto, currentDot, newPhoto, newDot);
+    this._toggle(currentPhoto, currentDot, newPhoto, newDot);
   }
 
-  createDots() {
-    for (let i = 1; i <= this.images.length; i += 1) {
-      const dot = document.createElement('button');
-      dot.classList.add(`${this.elemName}__dot`);
-      dot.classList.add(`js-${this.elemName}__dot`);
-      dot.setAttribute('data-sec', i);
-      dot.setAttribute('aria-label', 'фото номера');
-      dot.setAttribute('tabindex', '-1');
-      this.dotsWrapper.append(dot);
-    }
-    this.dots = this.getElems(['dot']);
-    this.dots[0].classList.add(`${this.elemName}__dot_active`);
-    this.dots.forEach((dot) => {
-      // dot - точка, по которой кликнули (должна стать активной)
-      dot.addEventListener('click', this.clickDot);
-    });
-  }
-
-  clickDot(e) {
+  _handleRoomCardClickDot(e) {
     const elem = e.currentTarget;
     const sec = elem.getAttribute('data-sec');
     // определяем текущее фото
-    const currentPhoto = this.getElem('photo_showed');
+    const currentPhoto = this._getElem('photo_showed');
     // определяем активную точку
-    const currentDot = this.getElem('dot_active');
+    const currentDot = this._getElem('dot_active');
     /* определяем новое фото (атрибут data-sec равен атрибуту data-sec
      нажатой точки [т.е. новой активной]) */
-    const newPhoto = this.getElemAdv('photo', 'data-sec', sec);
-    this.toggle(currentPhoto, currentDot, newPhoto, elem);
+    const newPhoto = this._getElemAdv('photo', 'data-sec', sec);
+    this._toggle(currentPhoto, currentDot, newPhoto, elem);
   }
 
   // Меняем фото и точку
-  toggle(currentPhoto, currentDot, newPhoto, newDot) {
+  _toggle(currentPhoto, currentDot, newPhoto, newDot) {
     // скрываем текущее фото
     currentPhoto.classList.remove(`${this.elemName}__photo_showed`);
     // обесцвечиваем текущую точку
@@ -168,6 +151,27 @@ class RoomCard {
     newPhoto.classList.add(`${this.elemName}__photo_showed`);
     // закрашиваем новую точку
     newDot.classList.add(`${this.elemName}__dot_active`);
+  }
+
+  _getElem(selector, wrapper = this.wrapper) {
+    return wrapper.querySelector(
+      `.${this.elemName}__${selector}`,
+    );
+  }
+
+  _getElemAdv(className, attrName, attrVal, wrap = this.wrapper) {
+    return wrap.querySelector(
+      `.${this.elemName}__${className
+      }[${attrName}="${attrVal}"]`,
+    );
+  }
+
+  _getElems(selectors) {
+    let sel = '';
+    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
+    sel = sel.substring(0, sel.length - 1);
+    return this.wrapper
+      .querySelectorAll(sel);
   }
 }
 

@@ -1,21 +1,27 @@
+/* eslint-disable no-alert */
 import './booking.scss';
 
 class Booking {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^./, '');
     this.wrapper = elem;
-    this.render();
-    this.formSubmit();
+    this._render();
+    this._bindEventListeners();
   }
 
-  render() {
+  _render() {
     this.dates = this.wrapper.querySelectorAll('.date-dropdown__input');
     this.guests = this.wrapper.querySelector('.dropdown__input');
     this.inputs = this.wrapper
       .querySelectorAll('.dropdown__input, .date-dropdown__input');
   }
 
-  handleFormSubmit(e) {
+  _bindEventListeners() {
+    // Валидация инпутов на сабмите формы
+    this.wrapper.addEventListener('submit', this._handleBookingSubmit);
+  }
+
+  _handleBookingSubmit(e) {
     let isErr = false;
     this.dates.forEach((date) => {
       if (/^\d{2}\.\d{2}\.\d{4}$/.test(date.value)) {
@@ -39,11 +45,6 @@ class Booking {
       e.preventDefault();
       alert('Заполните все поля!');
     }
-  }
-
-  // Валидация инпутов на сабмите формы
-  formSubmit() {
-    this.wrapper.addEventListener('submit', this.handleFormSubmit);
   }
 }
 

@@ -4,19 +4,24 @@ import './search-room.scss';
 class SearchRoom {
   constructor(elemName, elem) {
     this.wrapper = elem;
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.render();
-    this.formSubmit();
+    this._handleSearchRoomSubmit = this._handleSearchRoomSubmit.bind(this);
+    this._render();
+    this._bindEventListeners();
   }
 
-  render() {
+  _render() {
     this.dates = this.wrapper.querySelectorAll('.js-date-dropdown__input');
     this.guests = this.wrapper.querySelector('.js-dropdown__input');
     this.inputs = this.wrapper
       .querySelectorAll('.js-dropdown__input, .js-date-dropdown__input');
   }
 
-  handleSubmit(e) {
+  // Валидация инпутов на сабмите формы
+  _bindEventListeners() {
+    this.wrapper.addEventListener('submit', this._handleSearchRoomSubmit);
+  }
+
+  _handleSearchRoomSubmit(e) {
     let isErr = false;
     this.dates.forEach((date) => {
       if (/^\d{2}\.\d{2}\.\d{4}$/.test(date.value)) {
@@ -40,11 +45,6 @@ class SearchRoom {
       e.preventDefault();
       alert('Заполните все поля!');
     }
-  }
-
-  // Валидация инпутов на сабмите формы
-  formSubmit() {
-    this.wrapper.addEventListener('submit', this.this.handleSubmit);
   }
 }
 

@@ -4,111 +4,108 @@ class Header {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
-    this.handleMouseover = this.handleMouseover.bind(this);
-    this.handleFocusIn = this.handleFocusIn.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleMouseOut = this.handleMouseOut.bind(this);
-    this.handleToggleLev2 = this.handleToggleLev2.bind(this);
-    this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
-    this.handleResize = this.handleResize.bind(this);
-    this.handleCloseLev2 = this.handleCloseLev2.bind(this);
-    this.handleFocusInBurger = this.handleFocusInBurger.bind(this);
 
-    this.render();
+    this._handleHeaderMouseoverLev1 = this._handleHeaderMouseoverLev1.bind(this);
+    this._handleHeaderFocusinLev1 = this._handleHeaderFocusinLev1.bind(this);
+    this._handleHeaderKeydownLev1 = this._handleHeaderKeydownLev1.bind(this);
+    this._handleHeaderMouseoutLev2 = this._handleHeaderMouseoutLev2.bind(this);
+    this._handleHeaderClickLev2 = this._handleHeaderClickLev2.bind(this);
+    this._handleHeaderClickBurger = this._handleHeaderClickBurger.bind(this);
+    this._handleHeaderResizeWindow = this._handleHeaderResizeWindow.bind(this);
+    this._handleHeaderClickDoc = this._handleHeaderClickDoc.bind(this);
+    this._handleHeaderFocusinDoc = this._handleHeaderFocusinDoc.bind(this);
+
+    this._render();
+    this._bindEventListeners();
   }
 
-  getElem(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.${this.elemName}__${selector}`);
+  _render() {
+    this.burger = this._getElem('burger-btn');
+    this.navLevel1 = this._getElem('nav-level1');
+    this.navLevel2 = this._getElems(['nav-level2']);
+    this.tips = this._getElems(['nav-level1-item-img']);
   }
 
-  getElems(selectors) {
-    let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
-    sel = sel.substring(0, sel.length - 1);
-    return this.wrapper
-      .querySelectorAll(sel);
-  }
-
-  handleMouseover(e) {
-    this.toggleLevel2Menu(e.relatedTarget, e);
-    this.toggleLevel2Menu(e.target, e);
-  }
-
-  handleFocusIn(e) {
-    this.toggleLevel2Menu(e.target, e);
-  }
-
-  handleKeyDown(e) {
-    if (e.keyCode === 32) {
-      e.preventDefault();
-      this.toggleLevel2Menu(e.target, e);
-    }
-  }
-
-  handleMouseOut(e) {
-    if (e.relatedTarget.className.indexOf('nav-level2') === -1) { this.closeLevel2Menu(); }
-  }
-
-  handleToggleLev2(e) {
-    this.toggleLevel2Menu(e.currentTarget, e);
-  }
-
-  handleResize() {
-    if (this.burger.classList
-      .contains(`${this.elemName}__burger-btn_active`)) {
-      this.toggleMobileMenu();
-    }
-  }
-
-  handleCloseLev2(e) {
-    if (!e.target.closest(`.${this.elemName}__nav-level2`)) {
-      this.closeLevel2Menu();
-    }
-  }
-
-  handleFocusInBurger(e) {
-    if (!e.target.className.match('item-link')) {
-      this.closeLevel2Menu();
-    }
-  }
-
-  render() {
-    this.burger = this.getElem('burger-btn');
-    this.navLevel1 = this.getElem('nav-level1');
-    this.navLevel2 = this.getElems(['nav-level2']);
-    this.tips = this.getElems(['nav-level1-item-img']);
-
-    this.navLevel1.addEventListener('mouseover', this.handleMouseover);
-    this.navLevel1.addEventListener('focusin', this.handleFocusIn);
+  _bindEventListeners() {
+    this.navLevel1.addEventListener('mouseover', this._handleHeaderMouseoverLev1);
+    this.navLevel1.addEventListener('focusin', this._handleHeaderFocusinLev1);
 
     // открыть меню 2-го уровня по нажатию клавиши Пробел
-    this.navLevel1.addEventListener('keydown', this.handleKeyDown);
-    this.navLevel2.forEach((element) => element.addEventListener('mouseout', this.handleMouseOut));
+    this.navLevel1.addEventListener('keydown', this._handleHeaderKeydownLev1);
+    this.navLevel2.forEach((element) => element.addEventListener('mouseout', this._handleHeaderMouseoutLev2));
     this.tips.forEach((element) => {
-      element.addEventListener('click', this.handleToggleLev2);
+      element.addEventListener('click', this._handleHeaderClickLev2);
     });
-    this.burger.addEventListener('click', this.toggleMobileMenu);
+    this.burger.addEventListener('click', this._handleHeaderClickBurger);
 
     // закрыть меню-бургер при ресайзе страницы
-    window.addEventListener('resize', this.handleResize);
-    document.addEventListener('click', this.handleCloseLev2);
-    document.addEventListener('focusin', this.handleFocusInBurger);
+    document.addEventListener('click', this._handleHeaderClickDoc);
+    document.addEventListener('focusin', this._handleHeaderFocusinDoc);
+    window.addEventListener('resize', this._handleHeaderResizeWindow);
+  }
+
+  _handleHeaderMouseoverLev1(e) {
+    this._toggleLevel2Menu(e.relatedTarget, e);
+    this._toggleLevel2Menu(e.target, e);
+  }
+
+  _handleHeaderFocusinLev1(e) {
+    this._toggleLevel2Menu(e.target, e);
+  }
+
+  _handleHeaderKeydownLev1(e) {
+    if (e.keyCode === 32) {
+      e.preventDefault();
+      this._toggleLevel2Menu(e.target, e);
+    }
+  }
+
+  _handleHeaderMouseoutLev2(e) {
+    if (e.relatedTarget.className.indexOf('nav-level2') === -1) { this._closeLevel2Menu(); }
+  }
+
+  _handleHeaderClickLev2(e) {
+    this._toggleLevel2Menu(e.currentTarget, e);
+  }
+
+  _handleHeaderResizeWindow() {
+    if (this.burger.classList
+      .contains(`${this.elemName}__burger-btn_active`)) {
+      this._handleHeaderClickBurger();
+    }
+  }
+
+  _handleHeaderClickDoc(e) {
+    if (!e.target.closest(`.${this.elemName}__nav-level2`)) {
+      this._closeLevel2Menu();
+    }
+  }
+
+  _handleHeaderFocusinDoc(e) {
+    if (!e.target.className.match('item-link')) {
+      this._closeLevel2Menu();
+    }
+  }
+
+  // показать/ скрыть мобильное меню
+  _handleHeaderClickBurger() {
+    this.burger.classList.toggle(`${this.elemName}__burger-btn_active`);
+    this.navLevel1.classList.toggle(`${this.elemName}__nav-level1_active`);
   }
 
   // показать/ скрыть меню второго уровня
-  toggleLevel2Menu(elem, event) {
+  _toggleLevel2Menu(elem, event) {
     const condMatch = elem.matches(`.${this.elemName}__nav-level1-item-link`)
       && elem.firstElementChild.matches(`.${this.elemName}__nav-level1-item-img`);
     const condFull = condMatch && elem.firstElementChild != null && event.type !== 'focusin';
 
     // для ссылки - открыть меню 2 уровня
     if (condFull) {
-      this.closeLevel2Menu();
+      this._closeLevel2Menu();
       elem.parentElement.lastElementChild.classList.add(`${this.elemName}__nav-level2-item_expanded`);
     } else if (elem // для стрелки - открыть меню 2 уровня
       .matches(`.${this.elemName}__nav-level1-item-img`)) {
-      this.closeLevel2Menu();
+      this._closeLevel2Menu();
       elem.parentElement.parentElement
         .lastElementChild.classList
         .add(`${this.elemName}__nav-level2-item_expanded`);
@@ -116,126 +113,27 @@ class Header {
       .matches(`.${this.elemName}__nav-level1-item-link`)
       && elem.firstElementChild == null
     ) {
-      this.closeLevel2Menu();
+      this._closeLevel2Menu();
     }
   }
 
   // скрыть меню второго уровня
-  closeLevel2Menu() {
+  _closeLevel2Menu() {
     this.navLevel2.forEach((item) => item.classList.remove(`${this.elemName}__nav-level2-item_expanded`));
   }
 
-  // показать/ скрыть мобильное меню
-  toggleMobileMenu() {
-    this.burger.classList.toggle(`${this.elemName}__burger-btn_active`);
-    this.navLevel1.classList.toggle(`${this.elemName}__nav-level1_active`);
+  _getElem(selector, wrapper = this.wrapper) {
+    return wrapper
+      .querySelector(`.${this.elemName}__${selector}`);
   }
 
-  // render() {
-  //   this.burger = this.getElem('burger-btn');
-  //   this.navLevel1 = this.getElem('nav-level1');
-  //   this.navLevel2 = this.getElems(['nav-level2']);
-  //   this.tips = this.getElems(['nav-level1-item-img']);
-
-  //   this.navLevel1.addEventListener('mouseover', (e) => {
-  //     this.toggleLevel2Menu(e.relatedTarget, e);
-  //     this.toggleLevel2Menu(e.target, e);
-  //   });
-  //   this.navLevel1.addEventListener('focusin', (e) => {
-  //     this.toggleLevel2Menu(e.target, e);
-  //   });
-  //   // открытьт меню 2-го уровня по нажатию клавиши Пробел
-  //   this.navLevel1.addEventListener('keydown', (e) => {
-  //     if (e.keyCode == 32) {
-  //       e.preventDefault();
-  //       this.toggleLevel2Menu(e.target, e);
-  //     }
-  //   });
-
-  //   this.navLevel2.forEach((element) => element.addEventListener('mouseout', (e) => {
-  //     console.log('mouseout');
-  //     console.log(e.relatedTarget.className);
-
-  //     if (e.relatedTarget.className.indexOf('nav-level2') === -1) { this.closeLevel2Menu(); }
-  //   }));
-
-  //   this.tips.forEach((element) => {
-  //     element.addEventListener('click', (e) => {
-  //       this.toggleLevel2Menu(element, e);
-  //     });
-  //   });
-
-  //   this.burger.addEventListener('click', () => {
-  //     this.toggleMobileMenu();
-  //   });
-
-  //   // закрыть меню-бургер при ресайзе страницы
-  //   window.addEventListener('resize', () => {
-  //     if (this.burger.classList
-  //       .contains(`${this.elemName}__burger-btn_active`)) {
-  //       this.toggleMobileMenu();
-  //     }
-  //   });
-
-  //   document.addEventListener('click', (e) => {
-  //     if (!e.target.closest(`.${this.elemName}__nav-level2`)) {
-  //       this.closeLevel2Menu();
-  //     }
-  //   });
-
-  //   document.addEventListener('focusin', (e) => {
-  //     if (!e.target.className.match('item-link')) {
-  //       this.closeLevel2Menu();
-  //     }
-  //   });
-  // }
-
-  // // показать/ скрыть меню второго уровня
-  // toggleLevel2Menu(elem, event) {
-  //   // для ссылки - открыть меню 2 уровня
-  //   if (elem
-  //     .matches(`.${this.elemName}__nav-level1-item-link`)
-  //     && elem.firstElementChild != null
-  //     && elem.firstElementChild
-  //       .matches(`.${this.elemName}__nav-level1-item-img`)
-  //     && event.type !== 'focusin'
-  //   ) {
-  //     this.closeLevel2Menu();
-  //     elem.parentElement
-  //       .lastElementChild.classList
-  //       .add(`${this.elemName}__nav-level2-item_expanded`);
-  //   }
-
-  //   // для стрелки - открыть меню 2 уровня
-  //   else if (elem
-  //     .matches(`.${this.elemName}__nav-level1-item-img`)) {
-  //     this.closeLevel2Menu();
-  //     elem.parentElement.parentElement
-  //       .lastElementChild.classList
-  //       .add(`${this.elemName}__nav-level2-item_expanded`);
-  //   }
-
-  //   // для ссылки - закрыть меню 2 уровня
-  //   else if (elem
-  //     .matches(`.${this.elemName}__nav-level1-item-link`)
-  //     && elem.firstElementChild == null
-  //   ) {
-  //     this.closeLevel2Menu();
-  //   }
-  // }
-
-  // // скрыть меню второго уровня
-  // closeLevel2Menu() {
-  //   for (const item of this.navLevel2) {
-  //     item.classList.remove(`${this.elemName}__nav-level2-item_expanded`);
-  //   }
-  // }
-
-  // // показать/ скрыть мобильное меню
-  // toggleMobileMenu() {
-  //   this.burger.classList.toggle(`${this.elemName}__burger-btn_active`);
-  //   this.navLevel1.classList.toggle(`${this.elemName}__nav-level1_active`);
-  // }
+  _getElems(selectors) {
+    let sel = '';
+    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
+    sel = sel.substring(0, sel.length - 1);
+    return this.wrapper
+      .querySelectorAll(sel);
+  }
 }
 
 function renderHeaders(selector) {

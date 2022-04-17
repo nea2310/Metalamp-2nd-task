@@ -11,25 +11,26 @@ class LikeButton {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
-    this.handleClick = this.handleClick.bind(this);
-    this.handleLoad = this.handleLoad.bind(this);
-    this.render();
-    this.click();
-    this.updLikeStatus();
+    this._handleLikeButtonClick = this._handleLikeButtonClick.bind(this);
+    this._handleLikeButtonLoadWindow = this._handleLikeButtonLoadWindow.bind(this);
+    this._render();
+    this._bindEventListeners();
   }
 
-  getElem(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.${this.elemName}__${selector}`);
+  _render() {
+    this.button = this._getElem('button');
+    this.img = this._getElem('img');
+    this.counter = this._getElem('counter');
   }
 
-  render() {
-    this.button = this.getElem('button');
-    this.img = this.getElem('img');
-    this.counter = this.getElem('counter');
+  _bindEventListeners() {
+    // клик по кнопке
+    this.button.addEventListener('click', this._handleLikeButtonClick);
+
+    window.addEventListener('load', this._handleLikeButtonLoadWindow);
   }
 
-  handleClick() {
+  _handleLikeButtonClick() {
     const val = parseInt(this.counter.innerText, 10);
     this.button.classList.toggle(`${this.elemName}_liked`);
     if (this.button.classList.contains(`${this.elemName}_liked`)) {
@@ -43,7 +44,7 @@ class LikeButton {
     }
   }
 
-  handleLoad() {
+  _handleLikeButtonLoadWindow() {
     if (localStorage.getItem('isLiked') === 'liked') {
       this.button.classList.add(`${this.elemName}_liked`);
       this.img.src = iconLike;
@@ -53,13 +54,9 @@ class LikeButton {
     }
   }
 
-  // клик по кнопке
-  click() {
-    this.button.addEventListener('click', this.handleClick);
-  }
-
-  updLikeStatus() {
-    window.addEventListener('load', this.handleLoad);
+  _getElem(selector, wrapper = this.wrapper) {
+    return wrapper
+      .querySelector(`.${this.elemName}__${selector}`);
   }
 }
 

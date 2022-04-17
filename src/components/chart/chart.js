@@ -4,29 +4,16 @@ class Chart {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
-    this.render();
-    this.drawCircles();
-    this.writeText();
+    this._render();
+    this._drawCircles();
+    this._writeText();
   }
 
-  getElem(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.js-${this.elemName}__${selector}`);
-  }
-
-  getElems(selectors) {
-    let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
-    sel = sel.substring(0, sel.length - 1);
-    return this.wrapper
-      .querySelectorAll(sel);
-  }
-
-  render() {
-    this.canvas = this.getElem('img');
+  _render() {
+    this.canvas = this._getElem('img');
     if (this.canvas.getContext) {
       this.ctx = this.canvas.getContext('2d');
-      this.legendItems = this.getElems(['legend-item']);
+      this.legendItems = this._getElems(['legend-item']);
       this.data = {};
       this.colors = {
         good:
@@ -55,13 +42,13 @@ class Chart {
         this.votes += parseInt(rate, 10);
       });
 
-      this.draw();
+      this._draw();
     } else {
       // canvas-unsupported code here
     }
   }
 
-  drawCircles() {
+  _drawCircles() {
     // Градиентная заливка маркеров списка
     const getColor = (rateType) => this.colors[rateType];
     this.legendItems.forEach((item) => {
@@ -81,7 +68,7 @@ class Chart {
     });
   }
 
-  writeText() {
+  _writeText() {
     document.fonts.ready.then(() => {
       this.ctx.font = '700 24px Montserrat';
       this.ctx.fillStyle = '#BC9CFF';
@@ -103,7 +90,7 @@ class Chart {
     });
   }
 
-  draw() {
+  _draw() {
     const drawPieSlice = (
       ctx,
       centerX,
@@ -197,6 +184,19 @@ class Chart {
       this.borderColor,
       true,
     );
+  }
+
+  _getElem(selector, wrapper = this.wrapper) {
+    return wrapper
+      .querySelector(`.js-${this.elemName}__${selector}`);
+  }
+
+  _getElems(selectors) {
+    let sel = '';
+    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
+    sel = sel.substring(0, sel.length - 1);
+    return this.wrapper
+      .querySelectorAll(sel);
   }
 }
 

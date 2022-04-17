@@ -5,12 +5,12 @@ class Registration {
   constructor(elemName, elem) {
     this.elemName = elemName;
     this.wrapper = elem;
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.render();
-    this.formSubmit();
+    this._handleRegistrationSubmit = this._handleRegistrationSubmit.bind(this);
+    this._render();
+    this._bindEventListeners();
   }
 
-  render() {
+  _render() {
     this.form = this.wrapper
       .querySelector(`${this.elemName}__reg-form`);
     this.date = this.wrapper.querySelector('.js-masked');
@@ -18,7 +18,12 @@ class Registration {
       .querySelectorAll('input');
   }
 
-  handleSubmit(e) {
+  // Валидация инпутов на сабмите формы
+  _bindEventListeners() {
+    this.form.addEventListener('submit', this._handleRegistrationSubmit);
+  }
+
+  _handleRegistrationSubmit(e) {
     let isErr = false;
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
@@ -44,11 +49,6 @@ class Registration {
       e.preventDefault();
       alert('Заполните все поля!');
     }
-  }
-
-  // Валидация инпутов на сабмите формы
-  formSubmit() {
-    this.form.addEventListener('submit', this.handleSubmit);
   }
 }
 
