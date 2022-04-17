@@ -13,6 +13,7 @@ class DatePicker {
   constructor(elemName, elem) {
     this.elemName = elemName.replace(/^.js-/, '');
     this.wrapper = elem;
+    this.focusOnList = false;
 
     this.handleClear = this.handleClear.bind(this);
     this.handleDateClear = this.handleDateClear.bind(this);
@@ -24,6 +25,9 @@ class DatePicker {
     this.handleInput = this.handleInput.bind(this);
     this.handleDateBlur = this.handleDateBlur.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
+    this.handleResizeLoad = this.handleResizeLoad.bind(this);
+    this.handleListFocus = this.handleListFocus.bind(this);
+    this.handleCollapseByFocus = this.handleCollapseByFocus.bind(this);
 
     this.render();
     this.init();
@@ -33,6 +37,9 @@ class DatePicker {
     this.show();
     this.apply();
     this.clear();
+    this.resizeLoad();
+    this.collapseByFocus();
+    this.insideListFocus();
   }
 
   getElem(selector, wrapper = this.wrapper) {
@@ -105,6 +112,7 @@ class DatePicker {
       .querySelector('.air-datepicker.-inline-');
     this.collapseByClick();
     this.insideCalendarClick();
+    // this.clickOnCalendar = true;
   }
 
   handleFocus(e) {
@@ -178,31 +186,6 @@ class DatePicker {
     }
   }
 
-  handleCheckClick() {
-    this.clickOnCalendar = true;
-  }
-
-  handleCollapseByClick(e) {
-    const condA = (this.isFilter && e.target !== this.inputDate) || !this.isFilter;
-    const condB = e.target !== this.inputDateFrom && e.target !== this.inputDateTo;
-    const condC = e.target.closest(`.${this.elemName}`) == null;
-    const condFull = ((condA && condB) || condC) && this.clickOnCalendar === false;
-    // if (
-    //   (this.isFilter && e.target !== this.inputDate// условие #1
-    //     || !this.isFilter && (// условие #2
-    //       e.target !== this.inputDateFrom
-    //       && e.target !== this.inputDateTo)
-    //     || e.target.closest(`.${this.elemName}`) == null)// условие #3
-    //   && this.clickOnCalendar === false// общее условие для условий #1, #2, #3
-    // )
-
-    if (condFull) {
-      this.toggle(false);
-    } else {
-      this.clickOnCalendar = false;
-    }
-  }
-
   handleShowNoFilter() {
     if (this.clWrapper.classList
       .contains(`${this.elemName}__calendar-wrapper_hidden`)) {
@@ -254,6 +237,16 @@ class DatePicker {
     }
   }
 
+  handleResizeLoad() {
+    this.toggle(false);
+  }
+
+  // ресайз/лоад страницы
+  resizeLoad() {
+    window.addEventListener('resize', this.handleResizeLoad);
+    window.addEventListener('load', this.handleResizeLoad);
+  }
+
   /* Установка даты из поля value в верстке */
   setDefaultDate() {
     if (this.isFilter) {
@@ -276,6 +269,10 @@ class DatePicker {
     this.wrapper.addEventListener('input', this.handleInput);
   }
 
+  handleCheckClick() {
+    this.clickOnCalendar = true;
+  }
+
   // проверка, клик был снаружи или внутри календаря
   insideCalendarClick() {
     this.calendar.addEventListener('click', this.handleCheckClick);
@@ -284,6 +281,51 @@ class DatePicker {
   // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
   collapseByClick() {
     document.addEventListener('click', this.handleCollapseByClick);
+  }
+
+  handleCollapseByClick(e) {
+    const condA = (this.isFilter && e.target !== this.inputDate) || !this.isFilter;
+    const condB = e.target !== this.inputDateFrom && e.target !== this.inputDateTo;
+    const condC = e.target.closest(`.${this.elemName}`) == null;
+    const condFull = ((condA && condB) || condC) && this.clickOnCalendar === false;
+    // if (
+    //   (this.isFilter && e.target !== this.inputDate// условие #1
+    //     || !this.isFilter && (// условие #2
+    //       e.target !== this.inputDateFrom
+    //       && e.target !== this.inputDateTo)
+    //     || e.target.closest(`.${this.elemName}`) == null)// условие #3
+    //   && this.clickOnCalendar === false// общее условие для условий #1, #2, #3
+    // )
+
+    if (condFull) {
+      this.toggle(false);
+    } else {
+      this.clickOnCalendar = false;
+    }
+  }
+
+  handleListFocus() {
+    this.focusOnList = true;
+  }
+
+  // проверка, фокус был снаружи или внутри календаря
+  insideListFocus() {
+    this.wrapper.addEventListener('focusin', this.handleListFocus);
+  }
+
+  // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
+  collapseByFocus() {
+    document.addEventListener('focusin', this.handleCollapseByFocus);
+  }
+
+  handleCollapseByFocus() {
+    console.log('handleCollapseByFocus');
+
+    if (this.focusOnList === false) {
+      this.toggle(false);
+    } else {
+      this.focusOnList = false;
+    }
   }
 
   // Показ  календаря при клике по инпуту

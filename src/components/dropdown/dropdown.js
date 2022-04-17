@@ -14,6 +14,7 @@ class DropDown {
     this.handleCollapseByFocus = this.handleCollapseByFocus.bind(this);
     this.handleApply = this.handleApply.bind(this);
     this.handleClear = this.handleClear.bind(this);
+    this.handleResizeLoad = this.handleResizeLoad.bind(this);
 
     this.render();
     this.clickInput();
@@ -25,6 +26,7 @@ class DropDown {
     this.insideListClick();
     this.collapseByFocus();
     this.insideListFocus();
+    this.resizeLoad();
   }
 
   getElem(selector, wrapper = this.wrapper) {
@@ -188,6 +190,16 @@ class DropDown {
       );
     }
     this.input.value = '';
+  }
+
+  handleResizeLoad() {
+    this.toggle(false);
+  }
+
+  // ресайз/лоад страницы
+  resizeLoad() {
+    window.addEventListener('resize', this.handleResizeLoad);
+    window.addEventListener('load', this.handleResizeLoad);
   }
 
   // обработка клика по кнопкам Плюс / Минус
