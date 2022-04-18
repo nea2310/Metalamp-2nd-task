@@ -1,14 +1,8 @@
+/* eslint-disable no-alert */
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 
 import './date-dropdown.scss';
-
-const imgPrev = require(
-  './img/arrow-back.svg',
-);
-const imgNext = require(
-  './img/arrow-forward.svg',
-);
 
 class DatePicker {
   constructor(elemName, elem) {
@@ -67,8 +61,8 @@ class DatePicker {
       minDate: new Date(),
       range: true,
       multipleDates: true,
-      prevHtml: `<img src="${imgPrev}">`,
-      nextHtml: `<img src="${imgNext}">`,
+      prevHtml: '<img src="">',
+      nextHtml: '<img src="">',
       onSelect: (selectedDate) => {
         const date = selectedDate.formattedDate;
         if (date.length !== 0) {
@@ -296,8 +290,6 @@ class DatePicker {
   }
 
   _handleDateDropDownFocusinDoc() {
-    console.log('_handleDateDropDownFocusinDoc');
-
     if (this.focusOnList === false) {
       this._toggle(false);
     } else {

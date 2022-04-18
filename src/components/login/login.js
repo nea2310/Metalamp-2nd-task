@@ -2,8 +2,7 @@
 import './login.scss';
 
 class Login {
-  constructor(elemName, elem) {
-    this.elemName = elemName;
+  constructor(elem) {
     this.wrapper = elem;
     this._handleLoginSubmit = this._handleLoginSubmit.bind(this);
     this._render();
@@ -11,15 +10,15 @@ class Login {
   }
 
   _render() {
-    this.form = this.wrapper
-      .querySelector(`${this.elemName}__login-form`);
     this.inputs = this.wrapper
       .querySelectorAll('input');
   }
 
-  // Валидация инпутов на сабмите формы
   _bindEventListeners() {
-    this.form.addEventListener('submit', this._handleLoginSubmit);
+    // Валидация инпутов на сабмите формы
+    this.wrapper.addEventListener('submit', this._handleLoginSubmit);
+    // При фокусе убрать красную рамку с инпута
+    this.inputs.forEach((input) => input.addEventListener('focus', Login._handleLoginFocus));
   }
 
   _handleLoginSubmit(e) {
@@ -42,10 +41,14 @@ class Login {
       alert('Заполните все поля!');
     }
   }
+
+  static _handleLoginFocus(e) {
+    e.currentTarget.classList.remove('js-err');
+  }
 }
 
 function renderLogins(selector) {
   const logins = document.querySelectorAll(selector);
-  logins.forEach((login) => new Login(selector, login));
+  logins.forEach((login) => new Login(login));
 }
 renderLogins('.js-login');

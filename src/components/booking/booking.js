@@ -2,9 +2,9 @@
 import './booking.scss';
 
 class Booking {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^./, '');
+  constructor(elem) {
     this.wrapper = elem;
+    this._handleBookingSubmit = this._handleBookingSubmit.bind(this);
     this._render();
     this._bindEventListeners();
   }
@@ -19,6 +19,8 @@ class Booking {
   _bindEventListeners() {
     // Валидация инпутов на сабмите формы
     this.wrapper.addEventListener('submit', this._handleBookingSubmit);
+    // При фокусе убрать красную рамку с инпута
+    this.inputs.forEach((input) => input.addEventListener('focus', Booking._handleBookingFocus));
   }
 
   _handleBookingSubmit(e) {
@@ -46,10 +48,14 @@ class Booking {
       alert('Заполните все поля!');
     }
   }
+
+  static _handleBookingFocus(e) {
+    e.currentTarget.classList.remove('js-err');
+  }
 }
 
 function renderBookings(selector) {
   const bookings = document.querySelectorAll(selector);
-  bookings.forEach((booking) => new Booking(selector, booking));
+  bookings.forEach((booking) => new Booking(booking));
 }
 renderBookings('.js-booking');

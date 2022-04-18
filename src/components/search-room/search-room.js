@@ -2,7 +2,7 @@
 import './search-room.scss';
 
 class SearchRoom {
-  constructor(elemName, elem) {
+  constructor(elem) {
     this.wrapper = elem;
     this._handleSearchRoomSubmit = this._handleSearchRoomSubmit.bind(this);
     this._render();
@@ -16,9 +16,11 @@ class SearchRoom {
       .querySelectorAll('.js-dropdown__input, .js-date-dropdown__input');
   }
 
-  // Валидация инпутов на сабмите формы
   _bindEventListeners() {
+    // Валидация инпутов на сабмите формы
     this.wrapper.addEventListener('submit', this._handleSearchRoomSubmit);
+    // При фокусе убрать красную рамку с инпута
+    this.inputs.forEach((input) => input.addEventListener('focus', SearchRoom._handleSearchRoomFocus));
   }
 
   _handleSearchRoomSubmit(e) {
@@ -46,10 +48,14 @@ class SearchRoom {
       alert('Заполните все поля!');
     }
   }
+
+  static _handleSearchRoomFocus(e) {
+    e.currentTarget.classList.remove('js-err');
+  }
 }
 
 function renderSearchRooms(selector) {
   const searchRooms = document.querySelectorAll(selector);
-  searchRooms.forEach((searchRoom) => new SearchRoom(selector, searchRoom));
+  searchRooms.forEach((searchRoom) => new SearchRoom(searchRoom));
 }
 renderSearchRooms('.js-search-room');

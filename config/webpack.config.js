@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const path = require('path');
 
 const src = path.join(__dirname, '../src');
@@ -61,6 +62,7 @@ module.exports = {
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
     }),
+    new ESLintPlugin(),
   ],
   module: {
     // module.rules - все лоадеры

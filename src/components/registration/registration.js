@@ -2,8 +2,7 @@
 import './registration.scss';
 
 class Registration {
-  constructor(elemName, elem) {
-    this.elemName = elemName;
+  constructor(elem) {
     this.wrapper = elem;
     this._handleRegistrationSubmit = this._handleRegistrationSubmit.bind(this);
     this._render();
@@ -11,16 +10,16 @@ class Registration {
   }
 
   _render() {
-    this.form = this.wrapper
-      .querySelector(`${this.elemName}__reg-form`);
     this.date = this.wrapper.querySelector('.js-masked');
     this.inputs = this.wrapper
       .querySelectorAll('input');
   }
 
-  // Валидация инпутов на сабмите формы
   _bindEventListeners() {
-    this.form.addEventListener('submit', this._handleRegistrationSubmit);
+    // Валидация инпутов на сабмите формы
+    this.wrapper.addEventListener('submit', this._handleRegistrationSubmit);
+    // При фокусе убрать красную рамку с инпута
+    this.inputs.forEach((input) => input.addEventListener('focus', Registration._handleRegistrationFocus));
   }
 
   _handleRegistrationSubmit(e) {
@@ -50,10 +49,14 @@ class Registration {
       alert('Заполните все поля!');
     }
   }
+
+  static _handleRegistrationFocus(e) {
+    e.currentTarget.classList.remove('js-err');
+  }
 }
 
 function renderRegistrations(selector) {
   const registrations = document.querySelectorAll(selector);
-  registrations.forEach((registration) => new Registration(selector, registration));
+  registrations.forEach((registration) => new Registration(registration));
 }
 renderRegistrations('.js-registration');
