@@ -2,7 +2,7 @@ mixin feature(options={})
   -
     let elemName = 'feature'
   div(class = elemName)
-    image(class=elemName+'__img' src = options.image alt = options.alt)
+    image(class=elemName+'__image' src = options.image alt = options.alt)
     p(class = elemName + '__name')= options.name
     p(class = elemName + '__descr')= options.description
 

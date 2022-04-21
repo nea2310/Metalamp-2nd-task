@@ -5,5 +5,5 @@ mixin like-button(options={})
     if options.labelText
       p(class = elemName+'__label-text')=options.labelText
     button(class = elemName + '__button' + ' js-' + elemName + '__button')
-      image(class = elemName + '__img' + ' js-' + elemName + '__img' src = require('@com/like-button/image/favorite-border.svg') alt = 'мне нравится')
+      image(class = elemName + '__image' + ' js-' + elemName + '__image' src = require('@com/like-button/image/favorite-border.svg') alt = 'мне нравится')
       span(class = elemName + '__counter' + ' js-' + elemName + '__counter') 2

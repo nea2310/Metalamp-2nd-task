@@ -46,7 +46,7 @@ $lg-padding-bottom: 30px;
       "image-1 image-3";
   }
 
-  &__img-1 {
+  &__image-1 {
     max-height: 485px;
     box-sizing: border-box;
     grid-area: image-1;
@@ -55,7 +55,7 @@ $lg-padding-bottom: 30px;
     min-width: 100%;
     object-fit: cover;
   }
-  &__img-2 {
+  &__image-2 {
     max-height: 242.5px;
     box-sizing: border-box;
     grid-area: image-2;
@@ -64,7 +64,7 @@ $lg-padding-bottom: 30px;
     min-width: 100%;
     object-fit: cover;
   }
-  &__img-3 {
+  &__image-3 {
     max-height: 242.5px;
     box-sizing: border-box;
     grid-area: image-3;

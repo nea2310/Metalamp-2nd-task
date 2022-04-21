@@ -304,15 +304,15 @@ class DatePicker {
       this.clWrapper.classList
         .remove(`${wrap}calendar-wrapper_hidden`);
       this.tips.forEach((tip) => {
-        tip.classList.add(`${wrap}img_expanded`);
-        tip.classList.remove(`${wrap}img_collapsed`);
+        tip.classList.add(`${wrap}image_expanded`);
+        tip.classList.remove(`${wrap}image_collapsed`);
       });
     } else {
       this.clWrapper.classList
         .add(`${wrap}calendar-wrapper_hidden`);
       this.tips.forEach((tip) => {
-        tip.classList.remove(`${wrap}img_expanded`);
-        tip.classList.add(`${wrap}img_collapsed`);
+        tip.classList.remove(`${wrap}image_expanded`);
+        tip.classList.add(`${wrap}image_collapsed`);
       });
     }
   }

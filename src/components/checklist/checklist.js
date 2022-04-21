@@ -124,12 +124,12 @@ class CheckList {
       this.listWrapper.classList
         .remove(`${wrap}list-wrapper_hidden`);
       this.tip.classList.add(`${wrap}image-expanded`);
-      this.tip.classList.remove(`${wrap}img_collapsed`);
+      this.tip.classList.remove(`${wrap}image_collapsed`);
     } else {
       this.listWrapper.classList
         .add(`${wrap}list-wrapper_hidden`);
       this.tip.classList.remove(`${wrap}image-expanded`);
-      this.tip.classList.add(`${wrap}img_collapsed`);
+      this.tip.classList.add(`${wrap}image_collapsed`);
     }
   }
 }

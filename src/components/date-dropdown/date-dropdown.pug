@@ -2,10 +2,10 @@ include ../button/button.pug
 mixin date-dropdown(options={type: '', labelTextFrom: '', labelTextTo: '', labelTextFromTo: '',})
   -
     let elemName='date-dropdown'
-    let modificator = ''
+    let modifier = ''
     let width = ''
     let src = require('@com/date-dropdown/image/expand-more.svg')
-    options.type == 'filterDateDropDown' ? modificator = elemName + '__calendar-wrapper_width_narrow' : modificator = ''
+    options.type == 'filterDateDropDown' ? modifier = elemName + '__calendar-wrapper_width_narrow' : modifier = ''
     options.type == 'filterDateDropDown' ? width = '_width_narrow' : width = '_width_wide'
   div(class=elemName + ' js-' + elemName + ' ' + elemName + width)
     if options.type == 'dateDropDown'
@@ -13,22 +13,22 @@ mixin date-dropdown(options={type: '', labelTextFrom: '', labelTextTo: '', label
         label(class = elemName + '__label')
           if options.labelTextFrom
             p(class = elemName + '__label-text')=options.labelTextFrom
-          image(class = elemName + '__img' + ' js-' + elemName + '__img ' + elemName + '__img_collapsed', src=src alt = 'открыть календарь')
+          image(class = elemName + '__image' + ' js-' + elemName + '__image ' + elemName + '__image_collapsed', src=src alt = 'открыть календарь')
           input(class = elemName + '__input '+ 'js-' + elemName + '__input ' + elemName + '__input_from' + ' js-' + elemName + '__input_from ' + elemName + '__input_width_narrow js-masked js-calendar', placeholder = "ДД.ММ.ГГГГ", type = text)
       div(class = elemName + '__input-wrapper' + ' js-' + elemName + '__input-wrapper')
         label(class = elemName + '__label')
           if options.labelTextTo
             p(class = elemName + '__label-text')=options.labelTextTo
-          image(class = elemName + '__img' + ' js-' + elemName + '__img ' + elemName + '__img_collapsed', src = src alt = 'открыть календарь')
+          image(class = elemName + '__image' + ' js-' + elemName + '__image ' + elemName + '__image_collapsed', src = src alt = 'открыть календарь')
           input(class = elemName + '__input '+ 'js-' + elemName + '__input ' + elemName + '__input_to' + ' js-' + elemName + '__input_to ' + elemName + '__input_width_narrow js-masked js-calendar', placeholder = "ДД.ММ.ГГГГ", type = text)
     if options.type == 'filterDateDropDown'
       div(class = elemName + '__input-wrapper' + ' js-' + elemName + '__input-wrapper')
         label(class = elemName + '__label')
           if options.labelTextFromTo
             p(class = elemName + '__label-text')=options.labelTextFromTo
-          image(class=elemName + '__img' + ' js-' + elemName + '__img ' + elemName + '__img_collapsed', src = src alt = 'открыть календарь')
+          image(class=elemName + '__image' + ' js-' + elemName + '__image ' + elemName + '__image_collapsed', src = src alt = 'открыть календарь')
           input(class=elemName + '__input '+ 'js-' + elemName + '__input ' + elemName + '__input_fromto' + ' js-' + elemName + '__input_fromto ' + elemName + '__input_width_wide js-masked js-calendar-double', value = "2022-08-19,2022-08-23", type = text)
-    div(class = elemName + '__calendar-wrapper' + ' js-' + elemName + '__calendar-wrapper ' + elemName + '__calendar-wrapper_hidden ' + modificator)
+    div(class = elemName + '__calendar-wrapper' + ' js-' + elemName + '__calendar-wrapper ' + elemName + '__calendar-wrapper_hidden ' + modifier)
       div(class = elemName + '__buttons')
         div(class = elemName + '__button-clear' + ' js-' + elemName + '__button-clear')
           +btn(
