@@ -79,7 +79,7 @@
         &_active {
           font-weight: bold;
         }
-        &-img {
+        &-image {
           cursor: pointer;
           padding-left: 3px;
           @include media-breakpoint-down($md) {

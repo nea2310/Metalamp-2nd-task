@@ -42,14 +42,14 @@ $lg-padding-bottom: 30px;
     grid-template-rows: 2fr 2fr;
     grid-template-columns: 2.75fr 1.25fr;
     grid-template-areas:
-      "img-1 img-2"
-      "img-1 img-3";
+      "image-1 image-2"
+      "image-1 image-3";
   }
 
   &__img-1 {
     max-height: 485px;
     box-sizing: border-box;
-    grid-area: img-1;
+    grid-area: image-1;
     height: 100%;
     width: 100%;
     min-width: 100%;
@@ -58,7 +58,7 @@ $lg-padding-bottom: 30px;
   &__img-2 {
     max-height: 242.5px;
     box-sizing: border-box;
-    grid-area: img-2;
+    grid-area: image-2;
     height: 100%;
     width: 100%;
     min-width: 100%;
@@ -67,7 +67,7 @@ $lg-padding-bottom: 30px;
   &__img-3 {
     max-height: 242.5px;
     box-sizing: border-box;
-    grid-area: img-3;
+    grid-area: image-3;
     height: 100%;
     width: 100%;
     min-width: 100%;

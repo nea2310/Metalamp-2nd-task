@@ -13,7 +13,7 @@ mixin input(options={})
     label(class = elemName+'__label')
       if labelText
         p(class = elemName+'__label-text')=labelText
-      if img
+      if image
         button(class = elemName+'__link' aria-label = name)
-          img(class = elemName+'__img', src = require('@com/input-field/img/arrow-forward.svg'))
+          image(class = elemName+'__img', src = require('@com/input-field/image/arrow-forward.svg'))
       input(class = elemName + '__input ' + js placeholder = placeholder type = opType value = '')

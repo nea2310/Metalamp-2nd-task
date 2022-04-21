@@ -41,7 +41,7 @@ class DatePicker {
       this.inputDate = this._getElem('input_fromto');
       this.defaultDates = this.inputDate.value.split(',');
     }
-    this.tips = this._getElems(['img']);
+    this.tips = this._getElems(['image']);
     this.clWrapper = this._getElem('calendar-wrapper');
     this.btnClear = this._getElem('button-clear');
     this.btnApply = this._getElem('button-apply');
@@ -61,8 +61,8 @@ class DatePicker {
       minDate: new Date(),
       range: true,
       multipleDates: true,
-      prevHtml: '<img src="">',
-      nextHtml: '<img src="">',
+      prevHtml: '<image src="">',
+      nextHtml: '<image src="">',
       onSelect: (selectedDate) => {
         const date = selectedDate.formattedDate;
         if (date.length !== 0) {

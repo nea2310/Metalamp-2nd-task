@@ -106,10 +106,10 @@
       }
       &--action{
         &[data-action='prev']{
-          background: url('./img/arrow-back.svg') center no-repeat;
+          background: url('./image/arrow-back.svg') center no-repeat;
         }
         &[data-action='next']{
-          background: url('./img/arrow-forward.svg') center no-repeat;
+          background: url('./image/arrow-forward.svg') center no-repeat;
         }
       }
     }

@@ -23,7 +23,7 @@ class Header {
     this.burger = this._getElem('burger-btn');
     this.navLevel1 = this._getElem('nav-level1');
     this.navLevel2 = this._getElems(['nav-level2']);
-    this.tips = this._getElems(['nav-level1-item-img']);
+    this.tips = this._getElems(['nav-level1-item-image']);
   }
 
   _bindEventListeners() {
@@ -96,7 +96,7 @@ class Header {
   // показать/ скрыть меню второго уровня
   _toggleLevel2Menu(elem, event) {
     const condMatch = elem.matches(`.${this.elemName}__nav-level1-item-link`)
-      && elem.firstElementChild.matches(`.${this.elemName}__nav-level1-item-img`);
+      && elem.firstElementChild.matches(`.${this.elemName}__nav-level1-item-image`);
     const condFull = condMatch && elem.firstElementChild != null && event.type !== 'focusin';
 
     // для ссылки - открыть меню 2 уровня
@@ -104,7 +104,7 @@ class Header {
       this._closeLevel2Menu();
       elem.parentElement.lastElementChild.classList.add(`${this.elemName}__nav-level2-item_expanded`);
     } else if (elem // для стрелки - открыть меню 2 уровня
-      .matches(`.${this.elemName}__nav-level1-item-img`)) {
+      .matches(`.${this.elemName}__nav-level1-item-image`)) {
       this._closeLevel2Menu();
       elem.parentElement.parentElement
         .lastElementChild.classList

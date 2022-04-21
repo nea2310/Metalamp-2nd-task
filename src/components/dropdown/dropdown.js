@@ -33,7 +33,7 @@ class DropDown {
     this.btnClear = this._getElem('button-clear');
     this.btnApply = this._getElem('button-apply');
     this.btnsMinus = this._getElems(['count-decrem']);
-    this.tip = this._getElem('img');
+    this.tip = this._getElem('image');
 
     this.clearApplyBtns = this.btnClear != null && this.btnApply != null;
     this._getInitialCounterList(this.listElems);

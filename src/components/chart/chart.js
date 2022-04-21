@@ -10,7 +10,7 @@ class Chart {
   }
 
   _render() {
-    this.canvas = this._getElem('img');
+    this.canvas = this._getElem('image');
     if (this.canvas.getContext) {
       this.ctx = this.canvas.getContext('2d');
       this.legendItems = this._getElems(['legend-item']);

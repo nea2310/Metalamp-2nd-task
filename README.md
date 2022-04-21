@@ -33,14 +33,14 @@ components
 | |  booking.pug
 | |  booking.js
 | |  booking.scss
-| └─── img
+| └─── image
 | | |  info.svg
 |
 └─── btn
 | |  btn.pug
 | |  btn.js
 | |  btn.scss
-| └─── img
+| └─── image
 | | |  arrow-forward-white.svg
 ```
 * `components` contains one folder per component. 
@@ -58,14 +58,14 @@ pages
 | |  landing-page.pug
 | |  landing-page.js
 | |  landing-page.scss
-| └─── img
+| └─── image
 | | |  living-room.jpg
 |
 └─── registration-page
 | |  registration-page.pug
 | |  registration-page.js
 | |  registration-page.scss
-| └─── img
+| └─── image
 | | |  bedroom.jpg
 ```
 

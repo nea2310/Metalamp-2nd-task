@@ -24,7 +24,7 @@ class CheckList {
     this.mouseDown = false;
     this.label = this._getElem('label');
     this.listWrapper = this._getElem('list-wrapper');
-    this.tip = this._getElem('img');
+    this.tip = this._getElem('image');
     this.clickOnList = false;
   }
 
@@ -123,12 +123,12 @@ class CheckList {
     if (flag) {
       this.listWrapper.classList
         .remove(`${wrap}list-wrapper_hidden`);
-      this.tip.classList.add(`${wrap}img-expanded`);
+      this.tip.classList.add(`${wrap}image-expanded`);
       this.tip.classList.remove(`${wrap}img_collapsed`);
     } else {
       this.listWrapper.classList
         .add(`${wrap}list-wrapper_hidden`);
-      this.tip.classList.remove(`${wrap}img-expanded`);
+      this.tip.classList.remove(`${wrap}image-expanded`);
       this.tip.classList.add(`${wrap}img_collapsed`);
     }
   }

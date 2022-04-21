@@ -1,10 +1,10 @@
 import './like-button.scss';
 
 const iconLike = require(
-  './img/favorite.svg',
+  './image/favorite.svg',
 );
 const iconUnlike = require(
-  './img/favorite-border.svg',
+  './image/favorite-border.svg',
 );
 
 class LikeButton {
@@ -19,7 +19,7 @@ class LikeButton {
 
   _render() {
     this.button = this._getElem('button');
-    this.img = this._getElem('img');
+    this.image = this._getElem('image');
     this.counter = this._getElem('counter');
   }
 
@@ -34,11 +34,11 @@ class LikeButton {
     const val = parseInt(this.counter.innerText, 10);
     this.button.classList.toggle(`${this.elemName}_liked`);
     if (this.button.classList.contains(`${this.elemName}_liked`)) {
-      this.img.src = iconLike;
+      this.image.src = iconLike;
       this.counter.innerText = val + 1;
       localStorage.setItem('isLiked', 'liked');
     } else {
-      this.img.src = iconUnlike;
+      this.image.src = iconUnlike;
       this.counter.innerText = val - 1;
       localStorage.setItem('isLiked', 'unliked');
     }
@@ -47,10 +47,10 @@ class LikeButton {
   _handleLikeButtonLoadWindow() {
     if (localStorage.getItem('isLiked') === 'liked') {
       this.button.classList.add(`${this.elemName}_liked`);
-      this.img.src = iconLike;
+      this.image.src = iconLike;
     } else {
       this.button.classList.remove(`${this.elemName}_liked`);
-      this.img.src = iconUnlike;
+      this.image.src = iconUnlike;
     }
   }
 

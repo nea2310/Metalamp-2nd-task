@@ -6,7 +6,7 @@ mixin footer(options={})
     div(class = elemName + '__wrapper-top')
       ul(class = elemName + '__items')
         a(class = elemName + '__logo' href = 'https://test/test')
-          img(class = elemName + '__logo-img' src = require('@com/footer/img/logo-purple.svg') alt = 'на главную')
+          image(class = elemName + '__logo-image' src = require('@com/footer/image/logo-purple.svg') alt = 'на главную')
         li(class = elemName + '__item')
           p(class = elemName + '__long-text') Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
       ul(class = elemName + '__items') 
@@ -46,7 +46,7 @@ mixin footer(options={})
             {width: 'medium-narrow',
             placeholder: 'Email',
             js:'js-check-email',
-            img: true,
+            image: true,
             name: 'оформить подписку'}
             )
     div(class = elemName + '__wrapper-middle')
@@ -55,8 +55,8 @@ mixin footer(options={})
         p(class = elemName + '__long-text') Copyright © 2018 Toxin отель. Все права защищены.
       div(class = elemName + '__social-links')
         a(class = elemName + '__social-link-twitter' href = 'https://test/test')
-          img(class = elemName + '__social-link-twitter-img' src = require('@com/footer/img/twitter.svg') alt = 'twitter link')
+          image(class = elemName + '__social-link-twitter-image' src = require('@com/footer/image/twitter.svg') alt = 'twitter link')
         a(class = elemName + '__social-link-facebook' href = 'https://test/test')
-          img(class = elemName + '__social-link-facebook-img' src = require('@com/footer/img/facebook.svg') alt = 'facebook link')
+          image(class = elemName + '__social-link-facebook-image' src = require('@com/footer/image/facebook.svg') alt = 'facebook link')
         a(class = elemName + '__social-link-instagram' href = 'https://test/test')
-          img(class = elemName + '__social-link-instagram-img' src = require('@com/footer/img/instagram.svg') alt = 'instagram link')
+          image(class = elemName + '__social-link-instagram-image' src = require('@com/footer/image/instagram.svg') alt = 'instagram link')
