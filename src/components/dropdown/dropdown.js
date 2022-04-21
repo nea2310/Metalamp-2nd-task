@@ -52,12 +52,12 @@ class DropDown {
 
       elemObj.text = catName.innerText.toLowerCase();
       elemObj.type = catName.getAttribute('data-type');
-      elemObj.typeforms = catName.getAttribute('data-typeforms');
+      elemObj.declensions = catName.getAttribute('data-declensions');
       elemObj.cnt = catCnt.innerText;
-      elemObj.maxCnt = catIncrem.getAttribute('data-max');
-      elemObj.minCnt = catDecrem.getAttribute('data-min');
-      elemObj.isMax = elemObj.cnt === elemObj.maxCnt;
-      elemObj.isMin = elemObj.cnt === elemObj.minCnt;
+      elemObj.maxCount = catIncrem.getAttribute('data-max');
+      elemObj.minCount = catDecrem.getAttribute('data-min');
+      elemObj.isMax = elemObj.cnt === elemObj.maxCount;
+      elemObj.isMin = elemObj.cnt === elemObj.minCount;
 
       this.counters.push(elemObj);
     }
@@ -197,7 +197,7 @@ class DropDown {
 
   _handleDropDownClickClear() {
     for (let i = 0; i < this.countVals.length; i += 1) {
-      this.countVals[i].innerText = this.counters[i].minCnt;
+      this.countVals[i].innerText = this.counters[i].minCount;
       this._updateCounterList(
         this.counters[i].text,
         this.countVals[i].innerText,
@@ -217,16 +217,16 @@ class DropDown {
         const obj = {
           text: counter.text,
           type: counter.type,
-          typeforms: counter.typeforms,
+          declensions: counter.declensions,
           cnt: editedCounter,
-          minCnt: counter.minCnt,
-          maxCnt: counter.maxCnt,
+          minCount: counter.minCount,
+          maxCount: counter.maxCount,
         };
         switch (editedCounter) {
-          case counter.minCnt:
+          case counter.minCount:
             obj.isMin = true;
             break;
-          case counter.maxCnt:
+          case counter.maxCount:
             obj.isMax = true;
             break;
           default:
@@ -287,11 +287,11 @@ class DropDown {
       const check = i === 0 || (i > 0 && changedCounters[i].type !== changedCounters[i - 1].type);
       if (check) {
         const { type } = changedCounters[i];
-        const { typeforms } = changedCounters[i];
+        const { declensions } = changedCounters[i];
         const { cnt } = changedCounters[i];
         const elem = {};
         elem.type = type;
-        elem.typeforms = typeforms.split(',');
+        elem.declensions = declensions.split(',');
         elem.cnt = cnt;
         // То добавить в массив, который в конце будет присвоен changedCountersToDisplay
         this.countersToDisplay.push(elem);
@@ -327,7 +327,7 @@ class DropDown {
       if (parseInt(counter.cnt, 10) !== 0) {
         value += `${counter.cnt} ${getWordForm(
           parseInt(counter.cnt, 10),
-          counter.typeforms,
+          counter.declensions,
         )}, `;
       }
     });

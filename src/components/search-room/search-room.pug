@@ -16,9 +16,9 @@ mixin search-room(options={})
     div(class = elemName + '__guests')
       +dropdown(
         {categories:
-          {cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-          cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-          cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+          {cat1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
+          cat2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
+          cat3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
         type: 'dropDownGuests',
         placeholder: 'Сколько гостей',
         buttons: true,

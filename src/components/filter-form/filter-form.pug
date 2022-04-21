@@ -19,9 +19,9 @@ mixin filter-form()
       div(class = elemName + '__guests-wrapper')
         +dropdown(
           {categories:
-            {cat1: {displayName: 'взрослые', type: 'гость', typeforms: 'гость,гостя,гостей',  defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-            cat2: {displayName: 'дети', type: 'гость', typeforms: 'гость,гостя,гостей', defaultCnt: 0, minCnt: 0, maxCnt: 99}, 
-            cat3: {displayName: 'младенцы', type: 'младенец', typeforms: 'младенец,младенца,младенцев', defaultCnt: 0, minCnt: 0, maxCnt: 99}}, 
+            {cat1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
+            cat2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
+            cat3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
           type: 'dropDownGuests',
           placeholder: 'Сколько гостей',
           buttons: true,
@@ -64,9 +64,9 @@ mixin filter-form()
       div(class = elemName + '__facilities-wrapper')
         +dropdown(
           {categories:
-            {cat1: {displayName: 'спальни', type: 'спальня', typeforms: 'спальня,спальни,спален', defaultCnt: 0, minCnt: 0, maxCnt: 5}, 
-            cat2: {displayName: 'кровати', type: 'кровать', typeforms: 'кровать,кровати,кроватей', defaultCnt: 0, minCnt: 0, maxCnt: 10}, 
-            cat3: {displayName: 'ванные комнаты', type: 'ванная комната', typeforms: 'ванная комната,ванные комнаты,ванных комнат', defaultCnt: 0, minCnt: 0, maxCnt: 3}}, 
+            {cat1: {displayName: 'спальни', type: 'спальня', declensions: 'спальня,спальни,спален', defaultCount: 0, minCount: 0, maxCount: 5}, 
+            cat2: {displayName: 'кровати', type: 'кровать', declensions: 'кровать,кровати,кроватей', defaultCount: 0, minCount: 0, maxCount: 10}, 
+            cat3: {displayName: 'ванные комнаты', type: 'ванная комната', declensions: 'ванная комната,ванные комнаты,ванных комнат', defaultCount: 0, minCount: 0, maxCount: 3}}, 
           type: 'dropDownRooms',
           placeholder: 'Сколько комнат',
           labelText: 'удобства номера',
