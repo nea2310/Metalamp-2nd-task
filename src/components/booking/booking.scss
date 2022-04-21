@@ -11,48 +11,48 @@
   padding-right: 28px;
   padding-top: 39px;
 
-  &__dtls {
+  &__details {
     display: flex;
     justify-content: space-between;
   }
 
-  &__dtls-room {
+  &__details-room {
     margin-top: 2px;
   }
 
-  &__dtl-mark {
+  &__detail-mark {
     @include font-h3;
     padding-left: 1px;
   }
 
-  &__dtl-number {
+  &__detail-number {
     @include font-h1;
     padding-left: 6px;
   }
 
-  &__dtl-isLux {
+  &__detail-is-lux {
     @include font-h3;
     color: $colorPurple;
     padding-left: 9px;
   }
 
-  &__dtls-price {
+  &__details-price {
     margin-top: 8px;
   }
 
-  &__dtl-price {
+  &__detail-price {
     @include font-body;
     font-weight: bold;
     color: $colorDarkShade50;
   }
 
-  &__dtl-price-curr {
+  &__detail-price-currency {
     @include font-body;
     font-weight: bold;
     color: $colorDarkShade50;
   }
 
-  &__dtl-label {
+  &__detail-label {
     @include font-body;
     font-size: 12px;
     color: $colorDarkShade50;
@@ -70,7 +70,7 @@
     @include font-body;
     line-height: 21px;
   }
-  &__price-dtls {
+  &__price-details {
     display: flex;
     justify-content: space-between;
     &:first-of-type {
@@ -78,7 +78,7 @@
     }
     margin-bottom: 13px;
   }
-  &__price-dtl {
+  &__price-detail {
     &:first-child {
       max-width: 216px;
     }
@@ -86,22 +86,22 @@
     flex-shrink: 0;
   }
 
-  &__price-dtl-days-amnt {
+  &__price-detail-days-amount {
     padding-left: 5px;
   }
-  &__price-dtl-day {
-    padding-left: 5px;
-  }
-
-  &__price-dtl-sale-val {
+  &__price-detail-day {
     padding-left: 5px;
   }
 
-  &__price-dtl-info {
+  &__price-detail-sale-value {
+    padding-left: 5px;
+  }
+
+  &__price-detail-info {
     flex-grow: 1;
     flex-shrink: 1;
   }
-  &__price-dtl-info {
+  &__price-detail-info {
     padding-left: 5px;
     cursor: pointer;
   }

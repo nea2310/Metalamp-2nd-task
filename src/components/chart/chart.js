@@ -18,9 +18,9 @@ class Chart {
       this.colors = {
         good:
           { color1: '#66D2EA', color2: '#6FCF97' },
-        exc:
+        excellent:
           { color1: '#FFBA9C', color2: '#FFE39C' },
-        sat:
+        satisfied:
           { color1: '#8BA4F9', color2: '#BC9CFF' },
         bad:
           { color1: '#3D4975', color2: '#909090' },

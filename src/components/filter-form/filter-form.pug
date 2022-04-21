@@ -2,7 +2,7 @@ include ../date-dropdown/date-dropdown.pug
 include ../dropdown/dropdown.pug
 include ../range-slider/range-slider.pug
 include ../checklist/checklist.pug
-include ../btn/btn.pug
+include ../button/button.pug
 mixin filter-form()
   -
     let elemName ='filter-form'
@@ -54,8 +54,8 @@ mixin filter-form()
       div(class = elemName + '__accessability-wrapper')
         +checklist(
           {categories:
-            {cat1: {name:'Широкий коридор', descr: 'Ширина коридоров в номере не менее 91 см'}, 
-            cat2:{name:'Помощник для инвалидов', descr: 'На 1 этаже вас встретит специалист и проводит до номера'}},
+            {cat1: {name:'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см'}, 
+            cat2:{name:'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист и проводит до номера'}},
             expand: false,
             rich: true, 
           labelText: 'доступность',

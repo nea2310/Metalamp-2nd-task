@@ -4,18 +4,18 @@ mixin checklist(options={type: '', labelText: '',})
     let style = options.expand == true ? elemName + '_collapsing' : ''
     let listStyle = options.expand == true ? elemName + '__list-wrapper_hidden' : ''
     let labelStyle = options.expand == true ? elemName + '__label_collapsing' : elemName + '__label_expanded'
-    let tipStyle = options.expand == false ? elemName + '__img_non-collapsing' : ''
-    let nameStyle = options.rich == true ? elemName + '__cat-name_rich' : ''
+    let tipStyle = options.expand == false ? elemName + '__image_non-collapsing' : ''
+    let nameStyle = options.rich == true ? elemName + '__category-name_rich' : ''
   fieldset(class = elemName + ' js-' + elemName + ' ' + style)
     p(class = elemName + '__label' + ' js-' + elemName + '__label ' + labelStyle tabindex = 0)=options.labelText
-      img(class = elemName + '__img' + ' js-' + elemName + '__img ' + elemName + '__img_collapsed ' + tipStyle, src = require('@com/checklist/img/expand-more.svg') alt = 'развернуть')
+      image(class = elemName + '__image' + ' js-' + elemName + '__image ' + elemName + '__image_collapsed ' + tipStyle, src = require('@com/checklist/image/expand-more.svg') alt = 'развернуть')
     ul(class = elemName + '__list-wrapper' + ' js-' + elemName + '__list-wrapper ' + listStyle)
-      each val, index in options.categories
-        li(class = elemName + '__cat-wrapper')
-          label(class = elemName + '__cat')
-            input(class = elemName + '__cat-checkbox' type="checkbox", name = options.checkListName, value = val.name,)
-            span(class = elemName + '__cat-checkmark')
-            div(class = elemName + '__cat-text')
-              p(class = elemName + '__cat-name ' + nameStyle)=val.name
+      each value, index in options.categories
+        li(class = elemName + '__category-wrapper')
+          label(class = elemName + '__category')
+            input(class = elemName + '__category-checkbox' type="checkbox", name = options.checkListName, value = value.name,)
+            span(class = elemName + '__category-checkmark')
+            div(class = elemName + '__category-text')
+              p(class = elemName + '__category-name ' + nameStyle)=value.name
               if options.rich == true
-                p(class = elemName + '__cat-descr')=val.descr
+                p(class = elemName + '__category-description')=value.description

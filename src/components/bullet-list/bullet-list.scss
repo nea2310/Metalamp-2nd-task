@@ -8,9 +8,9 @@
   &__list-wrapper {
     padding-left: 17px;
     max-width: 240px;
-    list-style-image: url("@com/bullet-list/img/ellipse.svg");
+    list-style-image: url("@com/bullet-list/image/ellipse.svg");
   }
-  &__cat {
+  &__category {
     @include font-body;
     padding-left: 4px;
     margin-bottom: 10px;

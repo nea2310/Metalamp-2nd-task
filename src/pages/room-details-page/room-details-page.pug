@@ -6,7 +6,7 @@ include ../../components/feedback/feedback.pug
 include ../../components/bullet-list/bullet-list.pug
 include ../../components/date-dropdown/date-dropdown.pug
 include ../../components/dropdown/dropdown.pug
-include ../../components/btn/btn.pug
+include ../../components/button/button.pug
 block title
   title Room details
 block content 
@@ -24,21 +24,21 @@ block content
             +feature(
               {img: require('@pag/room-details-page/img/smile.svg'),
               name: 'Комфорт',
-              descr: 'Шумопоглощающие стены',
+              description: 'Шумопоглощающие стены',
               alt: 'smile'}
               )
           div(class = 'room-details-page__room-info-item')
             +feature(
               {img: require('@pag/room-details-page/img/city.svg'),
               name: 'Удобство',
-              descr: 'Окно в каждой из спален',
+              description: 'Окно в каждой из спален',
               alt: 'city'}
               )
           div(class = 'room-details-page__room-info-item')
             +feature(
               {img: require('@pag/room-details-page/img/fireplace.svg'),
               name: 'Уют',
-              descr: 'Номер оснащен камином',
+              description: 'Номер оснащен камином',
               alt: 'fireplace'}
               )
       div(class = 'room-details-page__room-impress-wrapper')
@@ -66,7 +66,7 @@ block content
               {img: require('@pag/room-details-page/img/murad.jpg'),
               name: 'Мурад Сарафанов',
               date: '5 дней назад',
-              descr: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+              description: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
               alt: 'Мурад Сарафанов'}
               )
           div(class = 'room-details-page__feedback-item')
@@ -74,7 +74,7 @@ block content
               {img: require('@pag/room-details-page/img/patricia.jpg'),
               name: 'Патрисия Стёклышкова',
               date: 'Неделю назад',
-              descr: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, Каждый день новое блюдо и десерт как комплимент',
+              description: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, Каждый день новое блюдо и десерт как комплимент',
               alt: 'Патрисия Стеклышкова'}
               )
       div(class = 'room-details-page__rules-wrapper')

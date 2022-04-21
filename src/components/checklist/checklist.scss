@@ -14,7 +14,7 @@
       cursor: pointer;
     }
   }
-  &__img {
+  &__image {
     position: absolute;
     right: 15px;
     top: 3px;
@@ -42,19 +42,19 @@
       display: none;
     }
   }
-  &__cat-wrapper {
+  &__category-wrapper {
     margin-bottom: 7px;
   }
 
-  &__cat {
+  &__category {
     display: inline-flex;
     position: relative;
   }
-  &__cat-text {
+  &__category-text {
     margin-left: 9px;
   }
 
-  &__cat-checkbox {
+  &__category-checkbox {
     position: absolute;
     clip: rect(0 0 0 0);
     width: 1px;
@@ -62,21 +62,21 @@
     margin: -1px;
 
  
-    &:focus + .checklist__cat-checkmark {
+    &:focus + .checklist__category-checkmark {
       border: 1px solid $colorPurple;
       }
 
-    &:checked + .checklist__cat-checkmark,
-    &:checked:focus + .checklist__cat-checkmark {
+    &:checked + .checklist__category-checkmark,
+    &:checked:focus + .checklist__category-checkmark {
       border: 1px solid $colorPurple;
-      background-image: url("@com/checklist/img/tip.svg");
+      background-image: url("@com/checklist/image/tip.svg");
       background-position-y: 42%;
       background-position-x: 40%;
       background-repeat: no-repeat;
     }
   }
 
-  &__cat-checkmark {
+  &__category-checkmark {
     cursor: pointer;
     display: inline-block;
     position: relative;
@@ -90,7 +90,7 @@
     background-color: $colorWhite;
   }
 
-  &__cat-name {
+  &__category-name {
     cursor: pointer;
     @include font-body;
     line-height: 19px;
@@ -102,7 +102,7 @@
       margin-bottom: 5px;
     }
   }
-  &__cat-descr {
+  &__category-description {
     max-width: 230px;
     cursor: pointer;
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
