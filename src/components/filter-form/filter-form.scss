@@ -1,5 +1,3 @@
-@import '@styles/glob.scss';
-
 .filter-form {
   @include media-breakpoint-down($xs) {
     box-sizing: border-box;

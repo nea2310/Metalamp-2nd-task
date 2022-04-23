@@ -1,7 +1,5 @@
-@import '@styles/glob.scss';
-
-$shift-hor: 25px;
-$shift-vert: 14px;
+$shift-horizontal: 25px;
+$shift-vertical: 14px;
 
 .room-card {
   border: 1px solid rgba(0, 0, 0, 0.12);
@@ -10,7 +8,7 @@ $shift-vert: 14px;
   background-color: $colorWhite;
   width: 270px;
   @include media-breakpoint-between($xxs, $xs) {
-    width: calc(100vw - #{$shift-hor});
+    width: calc(100vw - #{$shift-horizontal});
     min-width: 100%;
   }
 
@@ -19,7 +17,7 @@ $shift-vert: 14px;
     width: 270px;
     height: 152px;
     @include media-breakpoint-between($xxs, $xs) {
-      height: calc(56.3vw - #{$shift-vert});
+      height: calc(56.3vw - #{$shift-vertical});
       height: 56.3vw;
       width: auto;
     }

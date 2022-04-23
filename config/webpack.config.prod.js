@@ -70,7 +70,18 @@ module.exports = merge(common, {
       },
       {
         test: /\.scss$/,
-        use: [...processCSS, 'sass-loader'],
+        use: [
+          ...processCSS,
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                `${src}/assets/styles/glob.scss`,
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.(ttf|woff|woff2|eot)$/i,
