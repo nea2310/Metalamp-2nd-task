@@ -1,47 +1,47 @@
 include ../input-field/input-field.pug
 mixin footer(options={})
   -
-    let elemName = 'footer'
-  footer(class = elemName role = 'contentinfo')
-    div(class = elemName + '__wrapper-top')
-      ul(class = elemName + '__items')
-        a(class = elemName + '__logo' href = 'https://test/test')
-          image(class = elemName + '__logo-image' src = require('@com/footer/image/logo-purple.svg') alt = 'на главную')
-        li(class = elemName + '__item')
-          p(class = elemName + '__long-text') Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
-      ul(class = elemName + '__items') 
-        lh(class = elemName + '__items-header') навигация
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') О нас
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') Новости
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') Служба поддержки
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') Услуги
-      ul(class = elemName + '__items') 
-        lh(class = elemName + '__items-header') о нас
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') О сервисе
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') Наша команда
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') Вакансии
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') Инвесторы
-      ul(class = elemName + '__items')
-        lh(class = elemName + '__items-header') служба поддержки
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') Соглашения
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') Сообщества
-        li(class = elemName + '__item')
-          a(class = elemName + '__item-link' href = 'https://test/test') Связь с нами
-      ul(class = elemName + '__items')
-        lh(class = elemName + '__items-header') подписка
-        li(class = elemName + '__item')
-          p(class = elemName + '__long-text') Получайте специальные предложения и новости сервиса
-        li(class = elemName + '__item')
+    let elementName = 'footer'
+  footer(class = elementName role = 'contentinfo')
+    div(class = elementName + '__wrapper-top')
+      ul(class = elementName + '__items')
+        a(class = elementName + '__logo' href = 'https://test/test')
+          image(class = elementName + '__logo-image' src = require('@com/footer/image/logo-purple.svg') alt = 'на главную')
+        li(class = elementName + '__item')
+          p(class = elementName + '__long-text') Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+      ul(class = elementName + '__items') 
+        lh(class = elementName + '__items-header') навигация
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') О нас
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') Новости
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') Служба поддержки
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') Услуги
+      ul(class = elementName + '__items') 
+        lh(class = elementName + '__items-header') о нас
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') О сервисе
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') Наша команда
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') Вакансии
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') Инвесторы
+      ul(class = elementName + '__items')
+        lh(class = elementName + '__items-header') служба поддержки
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') Соглашения
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') Сообщества
+        li(class = elementName + '__item')
+          a(class = elementName + '__item-link' href = 'https://test/test') Связь с нами
+      ul(class = elementName + '__items')
+        lh(class = elementName + '__items-header') подписка
+        li(class = elementName + '__item')
+          p(class = elementName + '__long-text') Получайте специальные предложения и новости сервиса
+        li(class = elementName + '__item')
           +input(
             {width: 'medium-narrow',
             placeholder: 'Email',
@@ -49,14 +49,14 @@ mixin footer(options={})
             image: true,
             name: 'оформить подписку'}
             )
-    div(class = elemName + '__wrapper-middle')
-    div(class = elemName + '__wrapper-bottom')
-      div(class = elemName + '__copyright')
-        p(class = elemName + '__long-text') Copyright © 2018 Toxin отель. Все права защищены.
-      div(class = elemName + '__social-links')
-        a(class = elemName + '__social-link-twitter' href = 'https://test/test')
-          image(class = elemName + '__social-link-twitter-image' src = require('@com/footer/image/twitter.svg') alt = 'twitter link')
-        a(class = elemName + '__social-link-facebook' href = 'https://test/test')
-          image(class = elemName + '__social-link-facebook-image' src = require('@com/footer/image/facebook.svg') alt = 'facebook link')
-        a(class = elemName + '__social-link-instagram' href = 'https://test/test')
-          image(class = elemName + '__social-link-instagram-image' src = require('@com/footer/image/instagram.svg') alt = 'instagram link')
+    div(class = elementName + '__wrapper-middle')
+    div(class = elementName + '__wrapper-bottom')
+      div(class = elementName + '__copyright')
+        p(class = elementName + '__long-text') Copyright © 2018 Toxin отель. Все права защищены.
+      div(class = elementName + '__social-links')
+        a(class = elementName + '__social-link-twitter' href = 'https://test/test')
+          image(class = elementName + '__social-link-twitter-image' src = require('@com/footer/image/twitter.svg') alt = 'twitter link')
+        a(class = elementName + '__social-link-facebook' href = 'https://test/test')
+          image(class = elementName + '__social-link-facebook-image' src = require('@com/footer/image/facebook.svg') alt = 'facebook link')
+        a(class = elementName + '__social-link-instagram' href = 'https://test/test')
+          image(class = elementName + '__social-link-instagram-image' src = require('@com/footer/image/instagram.svg') alt = 'instagram link')

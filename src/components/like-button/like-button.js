@@ -8,9 +8,9 @@ const iconUnlike = require(
 );
 
 class LikeButton {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^.js-/, '');
-    this.wrapper = elem;
+  constructor(elementName, element) {
+    this.elementName = elementName.replace(/^.js-/, '');
+    this.wrapper = element;
     this._handleLikeButtonClick = this._handleLikeButtonClick.bind(this);
     this._handleLikeButtonLoadWindow = this._handleLikeButtonLoadWindow.bind(this);
     this._render();
@@ -18,9 +18,9 @@ class LikeButton {
   }
 
   _render() {
-    this.button = this._getElem('button');
-    this.image = this._getElem('image');
-    this.counter = this._getElem('counter');
+    this.button = this._getElement('button');
+    this.image = this._getElement('image');
+    this.counter = this._getElement('counter');
   }
 
   _bindEventListeners() {
@@ -31,32 +31,32 @@ class LikeButton {
   }
 
   _handleLikeButtonClick() {
-    const val = parseInt(this.counter.innerText, 10);
-    this.button.classList.toggle(`${this.elemName}_liked`);
-    if (this.button.classList.contains(`${this.elemName}_liked`)) {
+    const value = parseInt(this.counter.innerText, 10);
+    this.button.classList.toggle(`${this.elementName}_liked`);
+    if (this.button.classList.contains(`${this.elementName}_liked`)) {
       this.image.src = iconLike;
-      this.counter.innerText = val + 1;
+      this.counter.innerText = value + 1;
       localStorage.setItem('isLiked', 'liked');
     } else {
       this.image.src = iconUnlike;
-      this.counter.innerText = val - 1;
+      this.counter.innerText = value - 1;
       localStorage.setItem('isLiked', 'unliked');
     }
   }
 
   _handleLikeButtonLoadWindow() {
     if (localStorage.getItem('isLiked') === 'liked') {
-      this.button.classList.add(`${this.elemName}_liked`);
+      this.button.classList.add(`${this.elementName}_liked`);
       this.image.src = iconLike;
     } else {
-      this.button.classList.remove(`${this.elemName}_liked`);
+      this.button.classList.remove(`${this.elementName}_liked`);
       this.image.src = iconUnlike;
     }
   }
 
-  _getElem(selector, wrapper = this.wrapper) {
+  _getElement(selector, wrapper = this.wrapper) {
     return wrapper
-      .querySelector(`.${this.elemName}__${selector}`);
+      .querySelector(`.${this.elementName}__${selector}`);
   }
 }
 

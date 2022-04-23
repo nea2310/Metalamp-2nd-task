@@ -175,7 +175,7 @@
   &__burger {
     border-radius: 1px;
   }
-  &__burger-btn {
+  &__burger-button {
     display: none;
     cursor: pointer;
     @include media-breakpoint-down($md) {
@@ -190,7 +190,7 @@
     }
   }
 
-  &__burger-btn &__burger {
+  &__burger-button &__burger {
     @include media-breakpoint-down($md) {
       position: absolute;
       background-color: $colorPurple;
@@ -201,8 +201,8 @@
       transition: all 0.9s ease 0s;
     }
   }
-  &__burger-btn:before,
-  &__burger-btn:after {
+  &__burger-button:before,
+  &__burger-button:after {
     @include media-breakpoint-down($md) {
       border-radius: 1px;
       content: "";
@@ -214,31 +214,31 @@
       transition: all 0.5s ease 0s;
     }
   }
-  &__burger-btn:before {
+  &__burger-button:before {
     @include media-breakpoint-down($md) {
       top: 0;
       background-color: $colorPurple;
     }
   }
-  &__burger-btn:after {
+  &__burger-button:after {
     @include media-breakpoint-down($md) {
       bottom: 0;
       background-color: $colorPurple;
     }
   }
-  &__burger-btn.header__burger-btn_active:before {
+  &__burger-button.header__burger-button_active:before {
     @include media-breakpoint-down($md) {
       transform: rotate(45deg);
       top: 9px;
     }
   }
-  &__burger-btn.header__burger-btn_active:after {
+  &__burger-button.header__burger-button_active:after {
     @include media-breakpoint-down($md) {
       transform: rotate(-45deg);
       bottom: 9px;
     }
   }
-  &__burger-btn.header__burger-btn_active &__burger {
+  &__burger-button.header__burger-button_active &__burger {
     @include media-breakpoint-down($md) {
       transform: scale(0);
     }

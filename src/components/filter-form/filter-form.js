@@ -1,57 +1,56 @@
 import './filter-form.scss';
 
 class FilterForm {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^.js-/, '');
+  constructor(elementName, element) {
+    this.elementName = elementName.replace(/^.js-/, '');
     this.breakPoint = 575;
-    this.wrapper = elem;
-    this.handleToggle = this.handleToggle.bind(this);
-    this.handleResize = this.handleResize.bind(this);
-    this.handleLoad = this.handleLoad.bind(this);
-    this.render();
-    this.toggleForm();
-    this.hideForm();
+    this.wrapper = element;
+    this._handleFilterFormClickButton = this._handleFilterFormClickButton.bind(this);
+    this._handleFilterFormResizeWindow = this._handleFilterFormResizeWindow.bind(this);
+    this._handleFilterFormLoadWindow = this._handleFilterFormLoadWindow.bind(this);
+    this._render();
+    this._bindEventListeners();
   }
 
-  getElem(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.${this.elemName}__${selector}`);
+  _render() {
+    this.button = this._getElement('show-filter');
+    this.form = this._getElement('wrapper');
   }
 
-  render() {
-    this.btn = this.getElem('show-filter');
-    this.form = this.getElem('wrapper');
+  _bindEventListeners() {
+    this.button.addEventListener('click', this._handleFilterFormClickButton);
+    window.addEventListener('resize', this._handleFilterFormResizeWindow);
+    window.addEventListener('load', this._handleFilterFormLoadWindow);
   }
 
-  handleToggle() {
-    this.form.classList.toggle(`${this.elemName}__wrapper_hidden`);
-    this.wrapper.classList.toggle(`${this.elemName}_hidden`);
+  _handleFilterFormClickButton() {
+    this.form.classList.toggle(`${this.elementName}__wrapper_hidden`);
+    this.wrapper.classList.toggle(`${this.elementName}_hidden`);
   }
 
-  handleResize() {
+  _handleFilterFormResizeWindow() {
     if (window.innerWidth <= this.breakPoint) {
-      this.form.classList.add(`${this.elemName}__wrapper_hidden`);
-      this.wrapper.classList.add(`${this.elemName}_hidden`);
+      this._hideForm();
     } else {
-      this.form.classList.remove(`${this.elemName}__wrapper_hidden`);
-      this.wrapper.classList.remove(`${this.elemName}_hidden`);
+      this.form.classList.remove(`${this.elementName}__wrapper_hidden`);
+      this.wrapper.classList.remove(`${this.elementName}_hidden`);
     }
   }
 
-  handleLoad() {
+  _handleFilterFormLoadWindow() {
     if (window.innerWidth <= this.breakPoint) {
-      this.form.classList.add(`${this.elemName}__wrapper_hidden`);
-      this.wrapper.classList.add(`${this.elemName}_hidden`);
+      this._hideForm();
     }
   }
 
-  toggleForm() {
-    this.btn.addEventListener('click', this.handleToggle);
+  _hideForm() {
+    this.form.classList.add(`${this.elementName}__wrapper_hidden`);
+    this.wrapper.classList.add(`${this.elementName}_hidden`);
   }
 
-  hideForm() {
-    window.addEventListener('resize', this.handleResize);
-    window.addEventListener('load', this.handleLoad);
+  _getElement(selector, wrapper = this.wrapper) {
+    return wrapper
+      .querySelector(`.${this.elementName}__${selector}`);
   }
 }
 

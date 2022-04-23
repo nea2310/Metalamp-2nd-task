@@ -1,9 +1,9 @@
 import './checklist.scss';
 
 class CheckList {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^.js-/, '');
-    this.wrapper = elem;
+  constructor(elementName, element) {
+    this.elementName = elementName.replace(/^.js-/, '');
+    this.wrapper = element;
     this.breakPoint = 1199;
     this._handleCheckListMouseDownLabel = this._handleCheckListMouseDownLabel.bind(this);
     this._handleCheckListMouseUpLabel = this._handleCheckListMouseUpLabel.bind(this);
@@ -22,9 +22,9 @@ class CheckList {
     this.clickOnList = false;
     this.focusOnList = false;
     this.mouseDown = false;
-    this.label = this._getElem('label');
-    this.listWrapper = this._getElem('list-wrapper');
-    this.tip = this._getElem('image');
+    this.label = this._getElement('label');
+    this.listWrapper = this._getElement('list-wrapper');
+    this.tip = this._getElement('image');
     this.clickOnList = false;
   }
 
@@ -58,7 +58,7 @@ class CheckList {
   }
 
   _handleCheckListMouseUpLabel() {
-    const isHidden = this.listWrapper.classList.contains(`${this.elemName}__list-wrapper_hidden`);
+    const isHidden = this.listWrapper.classList.contains(`${this.elementName}__list-wrapper_hidden`);
     if (isHidden) {
       this._toggleList(true);
     } else if (!isHidden && this._needCollapse()) {
@@ -68,7 +68,7 @@ class CheckList {
   }
 
   _handleCheckListFocusLabel() {
-    if (this.listWrapper.classList.contains(`${this.elemName}__list-wrapper_hidden`)
+    if (this.listWrapper.classList.contains(`${this.elementName}__list-wrapper_hidden`)
       && this.mouseDown === false) {
       this._toggleList(true);
     }
@@ -87,7 +87,7 @@ class CheckList {
     const checkClickFocus = isClick ? this.clickOnList === false : this.focusOnList === false;
     const setClickFocus = isClick ? this.clickOnList = false : this.focusOnList = false;
     if (this._needCollapse()) {
-      if (e.target.closest(`.${this.elemName}` == null)
+      if (e.target.closest(`.${this.elementName}` == null)
         || checkClickFocus) {
         this._toggleList(false);
       } else {
@@ -103,13 +103,13 @@ class CheckList {
     } else this._toggleList(false);
   }
 
-  _getElem(selector, wrapper = this.wrapper) {
+  _getElement(selector, wrapper = this.wrapper) {
     return wrapper
-      .querySelector(`.js-${this.elemName}__${selector}`);
+      .querySelector(`.js-${this.elementName}__${selector}`);
   }
 
   _isCollapsing() {
-    return this.label.classList.contains(`${this.elemName}__label_collapsing`);
+    return this.label.classList.contains(`${this.elementName}__label_collapsing`);
   }
 
   _needCollapse() {
@@ -119,7 +119,7 @@ class CheckList {
 
   // Открывание/ закрывание списка
   _toggleList(flag) {
-    const wrap = `${this.elemName}__`;
+    const wrap = `${this.elementName}__`;
     if (flag) {
       this.listWrapper.classList
         .remove(`${wrap}list-wrapper_hidden`);

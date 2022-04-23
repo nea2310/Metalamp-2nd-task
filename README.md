@@ -36,10 +36,10 @@ components
 | └─── image
 | | |  info.svg
 |
-└─── btn
-| |  btn.pug
-| |  btn.js
-| |  btn.scss
+└─── button
+| |  button.pug
+| |  button.js
+| |  button.scss
 | └─── image
 | | |  arrow-forward-white.svg
 ```

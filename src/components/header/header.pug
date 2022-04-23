@@ -1,45 +1,45 @@
 include ../button/button.pug
 mixin header(options={})
   -
-    let elemName = 'header'
-  header(class = elemName + ' js-' + elemName)
-    button(class = elemName + '__burger-btn' + ' js-' + elemName + '__burger-btn' aria-label = 'навигация')
-      span(class = elemName + '__burger')
-    div(class = elemName + '__wrapper')
-      a(class = elemName + '__logo' href = 'index.html')
-        image(class = elemName + '__logo-image' src = require('@com/header/image/logo-purple.svg') alt = 'на главную')
-      nav(class = elemName + '__nav-level1' + ' js-' + elemName + '__nav-level1') 
-        ul(class = elemName + '__nav-level1-items')
-          li(class = elemName + '__nav-level1-item') 
-            a(class = elemName + '__nav-level1-item-link' href = 'https://test/test') О нас
-          li(class = elemName + '__nav-level1-item')
-            a(class = elemName + '__nav-level1-item-link' href = 'https://test/test') Услуги
-              image(class = elemName + '__nav-level1-item-image' + ' js-' + elemName + '__nav-level1-item-image' src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
-            ul(class = elemName + '__nav-level2' + ' js-' + elemName + '__nav-level2')
-              li(class = elemName + '__nav-level2-item') 
-                a(class = elemName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
-              li(class = elemName + '__nav-level2-item') 
-                a(class = elemName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
-              li(class = elemName + '__nav-level2-item') 
-                a(class = elemName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
-          li(class = elemName + '__nav-level1-item')
-            a(class = elemName + '__nav-level1-item-link' href = 'https://test/test') Вакансии
-          li(class = elemName + '__nav-level1-item')
-            a(class = elemName + '__nav-level1-item-link' href = 'https://test/test') Новости
-          li(class = elemName + '__nav-level1-item')
-            a(class = elemName + '__nav-level1-item-link' href = 'https://test/test') Соглашения
-              image(class = elemName + '__nav-level1-item-image' + ' js-' + elemName + '__nav-level1-item-image' src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
-            ul(class = elemName + '__nav-level2' + ' js-' + elemName + '__nav-level2')
-              li(class = elemName + '__nav-level2-item') 
-                a(class = elemName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
-              li(class = elemName + '__nav-level2-item') 
-                a(class = elemName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
-              li(class = elemName + '__nav-level2-item') 
-                a(class = elemName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
-      div(class = elemName + '__auth') 
+    let elementName = 'header'
+  header(class = elementName + ' js-' + elementName)
+    button(class = elementName + '__burger-button' + ' js-' + elementName + '__burger-button' aria-label = 'навигация')
+      span(class = elementName + '__burger')
+    div(class = elementName + '__wrapper')
+      a(class = elementName + '__logo' href = 'index.html')
+        image(class = elementName + '__logo-image' src = require('@com/header/image/logo-purple.svg') alt = 'на главную')
+      nav(class = elementName + '__nav-level1' + ' js-' + elementName + '__nav-level1') 
+        ul(class = elementName + '__nav-level1-items')
+          li(class = elementName + '__nav-level1-item') 
+            a(class = elementName + '__nav-level1-item-link' href = 'https://test/test') О нас
+          li(class = elementName + '__nav-level1-item')
+            a(class = elementName + '__nav-level1-item-link' href = 'https://test/test') Услуги
+              image(class = elementName + '__nav-level1-item-image' + ' js-' + elementName + '__nav-level1-item-image' src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
+            ul(class = elementName + '__nav-level2' + ' js-' + elementName + '__nav-level2')
+              li(class = elementName + '__nav-level2-item') 
+                a(class = elementName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
+              li(class = elementName + '__nav-level2-item') 
+                a(class = elementName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
+              li(class = elementName + '__nav-level2-item') 
+                a(class = elementName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
+          li(class = elementName + '__nav-level1-item')
+            a(class = elementName + '__nav-level1-item-link' href = 'https://test/test') Вакансии
+          li(class = elementName + '__nav-level1-item')
+            a(class = elementName + '__nav-level1-item-link' href = 'https://test/test') Новости
+          li(class = elementName + '__nav-level1-item')
+            a(class = elementName + '__nav-level1-item-link' href = 'https://test/test') Соглашения
+              image(class = elementName + '__nav-level1-item-image' + ' js-' + elementName + '__nav-level1-item-image' src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
+            ul(class = elementName + '__nav-level2' + ' js-' + elementName + '__nav-level2')
+              li(class = elementName + '__nav-level2-item') 
+                a(class = elementName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
+              li(class = elementName + '__nav-level2-item') 
+                a(class = elementName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
+              li(class = elementName + '__nav-level2-item') 
+                a(class = elementName + '__nav-level2-item-link' href = 'https://test/test') Ссылка
+      div(class = elementName + '__auth') 
         if (options.authorized == false)
-          div(class = elemName + '__button-login') 
-            +btn(
+          div(class = elementName + '__button-login') 
+            +button(
               {text: 'войти',
               type: 'link',
               length: 'very-short',
@@ -47,8 +47,8 @@ mixin header(options={})
               color: 'light',
               href: 'https://test/test'}
               )
-          div(class = elemName + '__button-reg') 
-            +btn(
+          div(class = elementName + '__button-reg') 
+            +button(
               {text: 'зарегистрироваться',
               type: 'link',
               length: 'long',
@@ -57,5 +57,5 @@ mixin header(options={})
               href: 'https://test/test'}
               )
         if (options.authorized == true)
-          div(class = elemName + '__profile') 
-            a(class = elemName + '__profile-name' href = 'https://test/test')  Юлий Цезарь
+          div(class = elementName + '__profile') 
+            a(class = elementName + '__profile-name' href = 'https://test/test')  Юлий Цезарь

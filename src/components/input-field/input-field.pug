@@ -1,19 +1,19 @@
 mixin input(options={})
   -
-    let elemName='input-field'
+    let elementName='input-field'
     let width = options.width ?? ''
     let labelText = options.labelText ?? ''
     let name = options.name ?? ''
     let js = options.js ?? ''
     let placeholder = options.placeholder ?? ''
-    let opType = options.type ?? ''
+    let inputType = options.type ?? ''
 
 
-  div(class = elemName +' ' + elemName + '-' + width)
-    label(class = elemName+'__label')
+  div(class = elementName +' ' + elementName + '-' + width)
+    label(class = elementName+'__label')
       if labelText
-        p(class = elemName+'__label-text')=labelText
+        p(class = elementName+'__label-text')=labelText
       if image
-        button(class = elemName+'__link' aria-label = name)
-          image(class = elemName+'__image', src = require('@com/input-field/image/arrow-forward.svg'))
-      input(class = elemName + '__input ' + js placeholder = placeholder type = opType value = '')
+        button(class = elementName+'__link' aria-label = name)
+          image(class = elementName+'__image', src = require('@com/input-field/image/arrow-forward.svg'))
+      input(class = elementName + '__input ' + js placeholder = placeholder type = inputType value = '')

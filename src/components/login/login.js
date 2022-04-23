@@ -2,8 +2,8 @@
 import './login.scss';
 
 class Login {
-  constructor(elem) {
-    this.wrapper = elem;
+  constructor(element) {
+    this.wrapper = element;
     this._handleLoginSubmit = this._handleLoginSubmit.bind(this);
     this._render();
     this._bindEventListeners();
@@ -22,28 +22,28 @@ class Login {
   }
 
   _handleLoginSubmit(e) {
-    let isErr = false;
+    let isError = false;
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
-        input.classList.add('js-err');
+        input.classList.add('js-error');
       } else {
-        input.classList.remove('js-err');
+        input.classList.remove('js-error');
       }
     });
     for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('js-err')) {
-        isErr = true;
+      if (this.inputs[i].classList.contains('js-error')) {
+        isError = true;
         break;
       }
     }
-    if (isErr) {
+    if (isError) {
       e.preventDefault();
       alert('Заполните все поля!');
     }
   }
 
   static _handleLoginFocus(e) {
-    e.currentTarget.classList.remove('js-err');
+    e.currentTarget.classList.remove('js-error');
   }
 }
 

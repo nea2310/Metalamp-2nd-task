@@ -2,8 +2,8 @@
 import './booking.scss';
 
 class Booking {
-  constructor(elem) {
-    this.wrapper = elem;
+  constructor(element) {
+    this.wrapper = element;
     this._handleBookingSubmit = this._handleBookingSubmit.bind(this);
     this._render();
     this._bindEventListeners();
@@ -24,33 +24,33 @@ class Booking {
   }
 
   _handleBookingSubmit(e) {
-    let isErr = false;
+    let isError = false;
     this.dates.forEach((date) => {
       if (/^\d{2}\.\d{2}\.\d{4}$/.test(date.value)) {
-        date.classList.remove('js-err');
+        date.classList.remove('js-error');
       } else {
-        date.classList.add('js-err');
+        date.classList.add('js-error');
       }
     });
     if (this.guests.value.trim() === '') {
-      this.guests.classList.add('js-err');
+      this.guests.classList.add('js-error');
     } else {
-      this.guests.classList.remove('js-err');
+      this.guests.classList.remove('js-error');
     }
     for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('js-err')) {
-        isErr = true;
+      if (this.inputs[i].classList.contains('js-error')) {
+        isError = true;
         break;
       }
     }
-    if (isErr) {
+    if (isError) {
       e.preventDefault();
       alert('Заполните все поля!');
     }
   }
 
   static _handleBookingFocus(e) {
-    e.currentTarget.classList.remove('js-err');
+    e.currentTarget.classList.remove('js-error');
   }
 }
 

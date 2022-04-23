@@ -4,16 +4,16 @@ import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 import './range-slider.scss';
 
 class RangeSlider {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^.js-/, '');
-    this.wrapper = elem;
+  constructor(elementName, element) {
+    this.elementName = elementName.replace(/^.js-/, '');
+    this.wrapper = element;
     this._render();
   }
 
   _render() {
-    this.slider = this._getElem('slider');
-    this.priceFrom = this._getElem('price-from');
-    this.priceTo = this._getElem('price-to');
+    this.slider = this._getElement('slider');
+    this.priceFrom = this._getElement('price-from');
+    this.priceTo = this._getElement('price-to');
     this._init();
   }
 
@@ -39,14 +39,14 @@ class RangeSlider {
 
     const instance = $(this.slider).data('ionRangeSlider');
     const updatePrice = (e, inputType, valueType) => {
-      const val = inputType.value.replace(/\D/g, '');
+      const value = inputType.value.replace(/\D/g, '');
       instance.update({
-        [valueType]: val,
+        [valueType]: value,
       });
       const input = inputType;
       input.style.width = `${(inputType.value.length) * 7.7}px`;
       if (e.type === 'change') {
-        input.value = `${parseInt(val, 10).toLocaleString()}₽`;
+        input.value = `${parseInt(value, 10).toLocaleString()}₽`;
         input.style.width = `${(inputType.value.length) * 7.7}px`;
       }
     };
@@ -64,15 +64,15 @@ class RangeSlider {
     this.priceTo.addEventListener('change', handleChangePriceTo);
   }
 
-  _getElem(selector, wrapper = this.wrapper) {
+  _getElement(selector, wrapper = this.wrapper) {
     return wrapper.querySelector(
-      `.${this.elemName}__${selector}`,
+      `.${this.elementName}__${selector}`,
     );
   }
 
-  _getElems(selectors) {
+  _getElements(selectors) {
     let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
+    selectors.forEach((selector) => { sel += `.js-${this.elementName}__${selector},`; });
     sel = sel.substring(0, sel.length - 1);
     return this.wrapper
       .querySelectorAll(sel);

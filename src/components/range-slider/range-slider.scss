@@ -18,7 +18,7 @@
   &__price {
     display: flex;
   }
-  &__price-delim {
+  &__price-delimiter {
     width: 10px;
     text-align: center;
   }
@@ -32,7 +32,7 @@
 
   &__price-from,
   &__price-to,
-  &__price-delim {
+  &__price-delimiter {
     border: none;
     font-size: 12px;
     text-transform: uppercase;
@@ -52,6 +52,7 @@
 
   span.irs.irs--flat {
     .irs-line {
+      cursor: pointer;
       max-width: 266px;
       width: 100%;
       height: 6px;
@@ -82,6 +83,7 @@
     }
 
     .irs-bar {
+      cursor: pointer;
       height: 6px;
       background: linear-gradient(180deg, $colorGreen 0%, $colorLightBlue 100%);
       border-radius: 3px;

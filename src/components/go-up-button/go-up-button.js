@@ -1,33 +1,30 @@
 import './go-up-button.scss';
 
 class GoUpButton {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^.js-/, '');
-    this.wrapper = elem;
-    this.handleScroll = this.handleScroll.bind(this);
-    this.click();
-    this.checkScroll();
+  constructor(elementName, element) {
+    this.elementName = elementName.replace(/^.js-/, '');
+    this.wrapper = element;
+    this._handleGoUpButtonScroll = this._handleGoUpButtonScroll.bind(this);
+    this._bindEventListeners();
   }
 
-  static handleClick() {
-    window.scrollTo(0, 0);
+  _bindEventListeners() {
+    // скролл страницы
+    window.addEventListener('scroll', this._handleGoUpButtonScroll);
+    // клик по кнопке
+    this.wrapper.addEventListener('click', GoUpButton._handleGoUpButtonClick);
   }
 
-  handleScroll() {
+  _handleGoUpButtonScroll() {
     if (window.pageYOffset >= 300) {
-      this.wrapper.classList.remove(`${this.elemName}_hidden`);
+      this.wrapper.classList.remove(`${this.elementName}_hidden`);
     } else {
-      this.wrapper.classList.add(`${this.elemName}_hidden`);
+      this.wrapper.classList.add(`${this.elementName}_hidden`);
     }
   }
 
-  checkScroll() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  // клик по кнопке
-  click() {
-    this.wrapper.addEventListener('click', GoUpButton.handleClick);
+  static _handleGoUpButtonClick() {
+    window.scrollTo(0, 0);
   }
 }
 

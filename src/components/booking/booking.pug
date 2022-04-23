@@ -2,72 +2,72 @@ include ../button/button.pug
 
 mixin booking(options={})
   -
-    let elemName = 'booking'
-  form(class = elemName + ' js-' + elemName)
-    div(class = elemName + '__details')
-      div(class = elemName + '__details-room')
-        span(class = elemName + '__detail-mark') №
-        span(class = elemName + '__detail-number')= options.roomNumber
-        span(class = elemName + '__detail-is-lux')= options.isLux
-      div(class = elemName + '__details-price')
-        span(class = elemName + '__detail-price')= options.roomPrice
-        span(class = elemName + '__detail-price-currency') ₽
-        span(class = elemName + '__detail-label') в сутки
-    div(class = elemName + '__date-dropdown')
+    let elementName = 'booking'
+  form(class = elementName + ' js-' + elementName)
+    div(class = elementName + '__details')
+      div(class = elementName + '__details-room')
+        span(class = elementName + '__detail-mark') №
+        span(class = elementName + '__detail-number')= options.roomNumber
+        span(class = elementName + '__detail-is-lux')= options.isLux
+      div(class = elementName + '__details-price')
+        span(class = elementName + '__detail-price')= options.roomPrice
+        span(class = elementName + '__detail-price-currency') ₽
+        span(class = elementName + '__detail-label') в сутки
+    div(class = elementName + '__date-dropdown')
       +date-dropdown(
         {width:'wide',
         type:'dateDropDown',
         labelTextFrom: 'Прибытие',
         labelTextTo: 'Выезд'}
         )
-    div(class = elemName + '__guests')
+    div(class = elementName + '__guests')
       +dropdown(
         {categories:
-          {cat1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
-          cat2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
-          cat3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
+          {category1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
+          category2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
+          category3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
         type: 'dropDownGuests',
         placeholder: 'Сколько гостей',
         buttons: true,
         labelText: 'гости',
         width: 'wide'}
         )
-    div(class = elemName + '__price-breakdown')
-      div(class = elemName + '__price-details')
-        div(class = elemName + '__price-detail')
-          span(class = elemName + '__price-detail-value')= options.roomPrice
-          span(class = elemName + '__price-detail-value-currency') ₽ x
-          span(class = elemName + '__price-detail-days-amount')= options.daysAmount
-          span(class = elemName + '__price-detail-day') суток
-        div(class = elemName + '__price-detail')
-          span(class = elemName + '__price-detail-price-total')= options.totalPrice
-          span(class = elemName + '__price-detail-price-total-currency'  ) ₽
-      div(class = elemName + '__price-details')
-        div(class = elemName + '__price-detail')
-          span(class = elemName + '__price-detail-sale') Сбор за услуги: скидка
-          span(class = elemName + '__price-detail-sale-val')= options.sale
-          span(class = elemName + '__price-detail-sale-currency'  ) ₽
-        a(class = elemName + '__price-detail-info' href = 'https://test/test') 
-          image(class = elemName + '__price-detail-info-image' src = require('@com/booking/image/info.svg') alt = 'Узнать больше')
-        div(class = elemName + '__price-detail')
-          span(class = elemName + '__price-detail-sale-total')= options.saleTotal
-          span(class = elemName + '__price-detail-sale-price-currency') ₽
-      div(class = elemName + '__price-details')
-        div(class = elemName + '__price-detail')
-          p(class = elemName + '__price-detail-extra') Сбор за дополнительные услуги
-        a(class = elemName + '__price-detail-info' href = 'https://test/test') 
-          image(class = elemName + '__price-detail-info-image' src = require('@com/booking/image/info.svg') alt = 'Узнать больше')
-        div(class = elemName + '__price-detail')
-          span(class = elemName + '__price-detail-extra-total')= options.extraTotal
-          span(class = elemName + '__price-detail-extra-total-currency') ₽
-    div(class = elemName + '__price-total')
-      span(class = elemName + '__price-total-label') Итого
-      span(class = elemName + '__price-total-filling') 
-      div(class = elemName + '__price-total-price')
-        span(class = elemName + '__price-total-amount')= options.totalAmount
-        span(class = elemName + '__price-total-amount-currency') ₽
-    div(class = elemName + '__booking')
-      +btn(
+    div(class = elementName + '__price-breakdown')
+      div(class = elementName + '__price-details')
+        div(class = elementName + '__price-detail')
+          span(class = elementName + '__price-detail-value')= options.roomPrice
+          span(class = elementName + '__price-detail-value-currency') ₽ x
+          span(class = elementName + '__price-detail-days-amount')= options.daysAmount
+          span(class = elementName + '__price-detail-day') суток
+        div(class = elementName + '__price-detail')
+          span(class = elementName + '__price-detail-price-total')= options.totalPrice
+          span(class = elementName + '__price-detail-price-total-currency'  ) ₽
+      div(class = elementName + '__price-details')
+        div(class = elementName + '__price-detail')
+          span(class = elementName + '__price-detail-sale') Сбор за услуги: скидка
+          span(class = elementName + '__price-detail-sale-value')= options.sale
+          span(class = elementName + '__price-detail-sale-currency'  ) ₽
+        a(class = elementName + '__price-detail-info' href = 'https://test/test') 
+          image(class = elementName + '__price-detail-info-image' src = require('@com/booking/image/info.svg') alt = 'Узнать больше')
+        div(class = elementName + '__price-detail')
+          span(class = elementName + '__price-detail-sale-total')= options.saleTotal
+          span(class = elementName + '__price-detail-sale-price-currency') ₽
+      div(class = elementName + '__price-details')
+        div(class = elementName + '__price-detail')
+          p(class = elementName + '__price-detail-extra') Сбор за дополнительные услуги
+        a(class = elementName + '__price-detail-info' href = 'https://test/test') 
+          image(class = elementName + '__price-detail-info-image' src = require('@com/booking/image/info.svg') alt = 'Узнать больше')
+        div(class = elementName + '__price-detail')
+          span(class = elementName + '__price-detail-extra-total')= options.extraTotal
+          span(class = elementName + '__price-detail-extra-total-currency') ₽
+    div(class = elementName + '__price-total')
+      span(class = elementName + '__price-total-label') Итого
+      span(class = elementName + '__price-total-filling') 
+      div(class = elementName + '__price-total-price')
+        span(class = elementName + '__price-total-amount')= options.totalAmount
+        span(class = elementName + '__price-total-amount-currency') ₽
+    div(class = elementName + '__booking')
+      +button(
         {text: 'забронировать',
         type: 'submit',
         length: 'very-long',

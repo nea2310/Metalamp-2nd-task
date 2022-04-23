@@ -5,28 +5,28 @@ mixin room-card(options={})
   div(class = elemName + ' js-' + elemName)
     div(class = elemName + '__slider' + ' js-' + elemName + '__slider')
       a(class = elemName + '__photos' href = 'https://test/test' aria-label= 'Перейти к деталям номера')
-      image(class = elemName + '__photo' + ' js-' + elemName + '__photo ' + elemName + '__photo_showed'+ ' js-' + elemName + '__photo_showed' alt = 'фото номера' src = require('@com/room-card/image/room-1.jpg') data-sec = '1')
-      image(class = elemName + '__photo' + ' js-' + elemName + '__photo' alt = 'фото номера' src = require('@com/room-card/image/room-2.jpg') data-sec = '2')
-      image(class = elemName + '__photo' + ' js-' + elemName + '__photo' alt = 'фото номера' src = require('@com/room-card/image/room-3.jpg') data-sec = '3')
-      image(class = elemName + '__photo' + ' js-' + elemName + '__photo' alt = 'фото номера' src = require('@com/room-card/image/room-4.jpg') data-sec = '4')
+      image(class = elemName + '__photo' + ' js-' + elemName + '__photo ' + elemName + '__photo_shown'+ ' js-' + elemName + '__photo_shown' alt = 'фото номера' src = require('@com/room-card/image/room-1.jpg') data-sequence = '1')
+      image(class = elemName + '__photo' + ' js-' + elemName + '__photo' alt = 'фото номера' src = require('@com/room-card/image/room-2.jpg') data-sequence = '2')
+      image(class = elemName + '__photo' + ' js-' + elemName + '__photo' alt = 'фото номера' src = require('@com/room-card/image/room-3.jpg') data-sequence = '3')
+      image(class = elemName + '__photo' + ' js-' + elemName + '__photo' alt = 'фото номера' src = require('@com/room-card/image/room-4.jpg') data-sequence = '4')
       div(class = elemName + '__dots' + ' js-' + elemName + '__dots')
       div(class = elemName + '__buttons')
-        button(class = elemName + '__prev' + ' js-' + elemName + '__prev' type = 'button' aria-label = 'предыдущее фото')
-          image(class = elemName + '__prev-image' alt = 'предыдущее фото' src = require('@com/room-card/image/expand-more-white.svg'))
+        button(class = elemName + '__previous' + ' js-' + elemName + '__previous' type = 'button' aria-label = 'предыдущее фото')
+          image(class = elemName + '__previous-image' alt = 'предыдущее фото' src = require('@com/room-card/image/expand-more-white.svg'))
         button(class = elemName + '__next' + ' js-' + elemName + '__next' type = 'button' aria-label = 'следующее фото')
           image(class = elemName + '__next-image' alt = 'следующее фото' src = require('@com/room-card/image/expand-more-white.svg'))
-    div(class = elemName + '__dtls')
-      a(class = elemName + '__dtls-room' href = 'https://test/test' aria-label='Перейти к деталям номера')
-        span(class = elemName + '__dtl-mark' role = 'region' aria-label = '№') №
-        span(class = elemName + '__dtl-number' role = 'region' aria-label = 'номер комнаты')= options.roomNumber
-        span(class = elemName + '__dtl-isLux' role = 'region' aria-label = 'люкс')= options.isLux
-      div(class = elemName + '__dtls-price')
-        span(class = elemName + '__dtl-price' role = 'region' aria-label = 'цена')= options.roomPrice
-        span(class = elemName + '__dtl-price-curr' role = 'region' aria-label = '₽') ₽
-        span(class = elemName + '__dtl-label' role = 'region' aria-label = 'в сутки') в сутки
+    div(class = elemName + '__details')
+      a(class = elemName + '__details-room' href = 'https://test/test' aria-label='Перейти к деталям номера')
+        span(class = elemName + '__detail-mark' role = 'region' aria-label = '№') №
+        span(class = elemName + '__detail-number' role = 'region' aria-label = 'номер комнаты')= options.roomNumber
+        span(class = elemName + '__detail-is-lux' role = 'region' aria-label = 'люкс')= options.isLux
+      div(class = elemName + '__details-price')
+        span(class = elemName + '__detail-price' role = 'region' aria-label = 'цена')= options.roomPrice
+        span(class = elemName + '__detail-price-currency' role = 'region' aria-label = '₽') ₽
+        span(class = elemName + '__detail-label' role = 'region' aria-label = 'в сутки') в сутки
     div(class = elemName + '__rating')
       div(class = elemName + '__rate')
         +rate-button({name: options.ratingName})
       div(class = elemName + '__feedback')
-        span(class = elemName + '__feedback-amount' role = 'region' aria-label = 'количество отзывов')= options.feedbackAmnt
+        span(class = elemName + '__feedback-amount' role = 'region' aria-label = 'количество отзывов')= options.feedbackAmount
         span(class = elemName + '__feedback-mark' role = 'region' aria-label = 'отзывы') Отзывов
