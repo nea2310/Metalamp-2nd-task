@@ -1,19 +1,19 @@
 import './chart.scss';
 
 class Chart {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^.js-/, '');
-    this.wrapper = elem;
+  constructor(elementName, element) {
+    this.elementName = elementName.replace(/^.js-/, '');
+    this.wrapper = element;
     this._render();
     this._drawCircles();
     this._writeText();
   }
 
   _render() {
-    this.canvas = this._getElem('image');
+    this.canvas = this._getElement('image');
     if (this.canvas.getContext) {
       this.ctx = this.canvas.getContext('2d');
-      this.legendItems = this._getElems(['legend-item']);
+      this.legendItems = this._getElements(['legend-item']);
       this.data = {};
       this.colors = {
         good:
@@ -53,7 +53,7 @@ class Chart {
     const getColor = (rateType) => this.colors[rateType];
     this.legendItems.forEach((item) => {
       const circle = document.createElement('span');
-      circle.className = `${this.elemName}__legend-item-mark`;
+      circle.className = `${this.elementName}__legend-item-mark`;
       circle.style.backgroundImage = `-webkit-gradient(linear, left bottom, left top, color-stop(0, 
       ${getColor(item.getAttribute('data-mark')).color1}), 
       color-stop(1,
@@ -62,7 +62,7 @@ class Chart {
 
       // добавление скрытых DOM-элементов с кол-вом голосов (для экр. читалок)
       const label = document.createElement('span');
-      label.className = `${this.elemName}__legend-item-label`;
+      label.className = `${this.elementName}__legend-item-label`;
       label.innerText = item.getAttribute('data-rate');
       item.prepend(label);
     });
@@ -118,14 +118,14 @@ class Chart {
     let totalValue = 0;
     const shift = (Math.PI / 180) * 270;
     for (let i = 0; i < keys.length; i += 1) {
-      const val = parseInt(values[i].rate, 10);
-      totalValue += val;
+      const value = parseInt(values[i].rate, 10);
+      totalValue += value;
     }
 
     let startAngle = 0;
     for (let i = 0; i < keys.length; i += 1) {
-      const val = parseInt(values[i].rate, 10);
-      const sliceAngle = (2 * Math.PI * val) / totalValue;
+      const value = parseInt(values[i].rate, 10);
+      const sliceAngle = (2 * Math.PI * value) / totalValue;
       const color = {
         x1: this.canvas.width - 180,
         y1: this.canvas.height,
@@ -186,14 +186,14 @@ class Chart {
     );
   }
 
-  _getElem(selector, wrapper = this.wrapper) {
+  _getElement(selector, wrapper = this.wrapper) {
     return wrapper
-      .querySelector(`.js-${this.elemName}__${selector}`);
+      .querySelector(`.js-${this.elementName}__${selector}`);
   }
 
-  _getElems(selectors) {
+  _getElements(selectors) {
     let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
+    selectors.forEach((selector) => { sel += `.js-${this.elementName}__${selector},`; });
     sel = sel.substring(0, sel.length - 1);
     return this.wrapper
       .querySelectorAll(sel);

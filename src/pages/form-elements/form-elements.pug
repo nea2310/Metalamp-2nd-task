@@ -18,7 +18,7 @@ block title
   title Form Elements
 block content 
   main(class="form-elements")
-    div(class="form-elements__col form-elements__col_left form-elements__col_left-top")
+    div(class="form-elements__column form-elements__column_left form-elements__column_left-top")
       div(class="form-elements__comp-wrapper")
         +input(
           {width: 'wide',
@@ -36,9 +36,9 @@ block content
       div(class="form-elements__comp-wrapper")
         +dropdown(
           {categories:
-            {cat1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
-            cat2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
-            cat3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
+            {category1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
+            category2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
+            category3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
           type: 'dropDownGuests',
           placeholder: 'Сколько гостей',
           buttons: true,
@@ -77,9 +77,9 @@ block content
       div(class="form-elements__comp-wrapper")
         +dropdown(
           {categories:
-            {cat1: {displayName: 'спальни', type: 'спальня', declensions: 'спальня,спальни,спален', defaultCount: 0, minCount: 0, maxCount: 5}, 
-            cat2: {displayName: 'кровати', type: 'кровать', declensions: 'кровать,кровати,кроватей', defaultCount: 0, minCount: 0, maxCount: 10}, 
-            cat3: {displayName: 'ванные комнаты', type: 'ванная комната', declensions: 'ванная комната,ванные комнаты,ванных комнат', defaultCount: 0, minCount: 0, maxCount: 3}}, 
+            {category1: {displayName: 'спальни', type: 'спальня', declensions: 'спальня,спальни,спален', defaultCount: 0, minCount: 0, maxCount: 5}, 
+            category2: {displayName: 'кровати', type: 'кровать', declensions: 'кровать,кровати,кроватей', defaultCount: 0, minCount: 0, maxCount: 10}, 
+            category3: {displayName: 'ванные комнаты', type: 'ванная комната', declensions: 'ванная комната,ванные комнаты,ванных комнат', defaultCount: 0, minCount: 0, maxCount: 3}}, 
           type: 'dropDownRooms',
           placeholder: 'Сколько комнат',
           labelText: 'dropdown',
@@ -88,12 +88,12 @@ block content
       div(class="form-elements__comp-wrapper")
         +checklist(
           {categories:
-            {cat1: {name:'Завтрак'}, 
-            cat2:{name:'Письменный стол'}, 
-            cat3:{name:'Стул для кормления'}, 
-            cat4:{name:'Кроватка'}, 
-            cat5:{name:'Телевизор'}, 
-            cat6:{name:'Шампунь'},},
+            {category1: {name:'Завтрак'}, 
+            category2:{name:'Письменный стол'}, 
+            category3:{name:'Стул для кормления'}, 
+            category4:{name:'Кроватка'}, 
+            category5:{name:'Телевизор'}, 
+            category6:{name:'Шампунь'},},
             expand: true,
             rich: false, 
           labelText: 'expandable checkbox list',}
@@ -101,24 +101,24 @@ block content
       div(class="form-elements__comp-wrapper")
         +checklist(
           {categories:
-            {cat1: {name:'Завтрак'}, 
-            cat2:{name:'Письменный стол'}, 
-            cat3:{name:'Стул для кормления'}, 
-            cat4:{name:'Кроватка'}, 
-            cat5:{name:'Телевизор'}, 
-            cat6:{name:'Шампунь'},},
+            {category1: {name:'Завтрак'}, 
+            category2:{name:'Письменный стол'}, 
+            category3:{name:'Стул для кормления'}, 
+            category4:{name:'Кроватка'}, 
+            category5:{name:'Телевизор'}, 
+            category6:{name:'Шампунь'},},
             expand: true,
             rich: false, 
           labelText: 'expandable checkbox list',
           checkListName: 'expandable checkbox list'}
           )
-    div(class="form-elements__col form-elements__col_center form-elements__col_center-top")
+    div(class="form-elements__column form-elements__column_center form-elements__column_center-top")
       div(class="form-elements__comp-wrapper")
         +checklist(
           {categories:
-            {cat1: {name:'Можно курить'}, 
-            cat2:{name:'Можно с питомцами'}, 
-            cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
+            {category1: {name:'Можно курить'}, 
+            category2:{name:'Можно с питомцами'}, 
+            category3:{name:'Можно пригласить гостей (до 10 человек)'}},
             expand: false,
             rich: false, 
           labelText: 'checkbox buttons',
@@ -127,8 +127,8 @@ block content
       span(class='form-elements__label') radio buttons
       div(class="form-elements__comp-wrapper")
         +radiobuttons({categories:
-          {cat1: {name:'Мужчина', checked: true}, 
-          cat2:{name:'Женщина'}},
+          {category1: {name:'Мужчина', checked: true}, 
+          category2:{name:'Женщина'}},
           radioGroupName: 'gender'})
       span(class='form-elements__label') toggle
       div(class="form-elements__comp-wrapper")
@@ -146,9 +146,9 @@ block content
       div(class="form-elements__comp-wrapper")
         +dropdown(
           {categories:
-            {cat1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
-            cat2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
-            cat3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
+            {category1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
+            category2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
+            category3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
           type: 'dropDownGuests',
           placeholder: 'Сколько гостей',
           buttons: true,
@@ -158,14 +158,14 @@ block content
       div(class="form-elements__comp-wrapper")
         +checklist(
           {categories:
-            {cat1: {name:'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см'}, 
-            cat2:{name:'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист и проводит до номера'}},
+            {category1: {name:'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см'}, 
+            category2:{name:'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист и проводит до номера'}},
             expand: false,
             rich: true, 
           labelText: 'rich checkbox buttons',
           checkListName: 'rich checkbox buttons'}
           )
-    div(class="form-elements__col form-elements__col_right form-elements__col_right-top")
+    div(class="form-elements__column form-elements__column_right form-elements__column_right-top")
       div(class="form-elements__comp-wrapper")
         +range-slider(
           {labelText: 'range slider',
@@ -180,7 +180,7 @@ block content
           )
       span(class='form-elements__label') buttons
       div(class="form-elements__comp-wrapper")
-        +btn(
+        +button(
           {text: 'click me',
           type: 'link',
           length: 'short',
@@ -189,7 +189,7 @@ block content
           href: 'https://test/test'}
           )
       div(class="form-elements__comp-wrapper")
-        +btn(
+        +button(
           {text: 'click me',
           type: 'link',
           length: 'short',
@@ -198,12 +198,12 @@ block content
           href: 'https://test/test'}
           )
       div(class="form-elements__comp-wrapper")
-        +btn(
+        +button(
           {text: 'click me',
           type: 'plain-text'}
           )
       div(class="form-elements__comp-wrapper")
-        +btn(
+        +button(
           {text: 'перейти к оплате',
           type: 'submit',
           length: 'very-long',
@@ -217,9 +217,9 @@ block content
       div(class="form-elements__comp-wrapper")
         +dropdown(
           {categories:
-            {cat1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
-            cat2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
-            cat3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
+            {category1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
+            category2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
+            category3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
           type: 'dropDownGuests',
           placeholder: 'Сколько гостей',
           buttons: true,
@@ -235,7 +235,7 @@ block content
             'Время прибытия — после 13:00, а выезд до 12:00']}
           )
   div(class="form-elements")
-    div(class="form-elements__col form-elements__col_left form-elements__col_left-bottom")
+    div(class="form-elements__column form-elements__column_left form-elements__column_left-bottom")
       div(class="form-elements__comp-wrapper")
         +feature(
           {image: require('@pag/form-elements/image/smile.svg'),
@@ -251,7 +251,7 @@ block content
           alt: 'city'
           }
           )
-    div(class="form-elements__col form-elements__col_right form-elements__col_right-bottom")
+    div(class="form-elements__column form-elements__column_right form-elements__column_right-bottom")
       div(class="form-elements__comp-wrapper")
         +feedback(
           {image: require('@pag/form-elements/image/murad.jpg'),

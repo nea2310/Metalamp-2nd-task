@@ -1,17 +1,17 @@
 extends ../ui-kit-layout/ui-kit-layout.pug
 mixin color-card(options={})
   -
-    var elemName = "color-card"
-  div(class=elemName)
-    div(class=elemName+'__color '+elemName+'__color_'+options.color)
-    div(class=elemName+'__name')=options.name
-    div(class=elemName+'__code')=options.code
+    var elementName = "color-card"
+  div(class=elementName)
+    div(class=elementName+'__color '+elementName+'__color_'+options.color)
+    div(class=elementName+'__name')=options.name
+    div(class=elementName+'__code')=options.code
 mixin type-card(options={})
   -
-    var elemName = "type-card"
-  span(class=elemName)
-    span(class=elemName+'__name '+elemName+'__name_'+options.style)=options.name
-    span(class=elemName+'__text '+elemName+'__text_'+options.style)=options.text
+    var elementName = "type-card"
+  span(class=elementName)
+    span(class=elementName+'__name '+elementName+'__name_'+options.style)=options.name
+    span(class=elementName+'__text '+elementName+'__text_'+options.style)=options.text
 block title
   title Colors & Type
 block content 

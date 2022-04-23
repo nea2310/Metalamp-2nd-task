@@ -5,9 +5,9 @@ import 'air-datepicker/air-datepicker.css';
 import './date-dropdown.scss';
 
 class DatePicker {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^.js-/, '');
-    this.wrapper = elem;
+  constructor(elementName, element) {
+    this.elementName = elementName.replace(/^.js-/, '');
+    this.wrapper = element;
     this.focusOnList = false;
 
     this._handleDateDropDownClickClear = this._handleDateDropDownClickClear.bind(this);
@@ -31,20 +31,20 @@ class DatePicker {
   }
 
   _render() {
-    const a = this._getElems(['input-wrapper']);
+    const a = this._getElements(['input-wrapper']);
     this.isFilter = a.length === 1;
 
     if (!this.isFilter) {
-      this.inputDateFrom = this._getElem('input_from');
-      this.inputDateTo = this._getElem('input_to');
+      this.inputDateFrom = this._getElement('input_from');
+      this.inputDateTo = this._getElement('input_to');
     } else {
-      this.inputDate = this._getElem('input_fromto');
+      this.inputDate = this._getElement('input_from-to');
       this.defaultDates = this.inputDate.value.split(',');
     }
-    this.tips = this._getElems(['image']);
-    this.clWrapper = this._getElem('calendar-wrapper');
-    this.btnClear = this._getElem('button-clear');
-    this.btnApply = this._getElem('button-apply');
+    this.tips = this._getElements(['image']);
+    this.clWrapper = this._getElement('calendar-wrapper');
+    this.buttonClear = this._getElement('button-clear');
+    this.buttonApply = this._getElement('button-apply');
   }
 
   /* Выбор даты в календаре */
@@ -68,14 +68,14 @@ class DatePicker {
         if (date.length !== 0) {
           if (!this.isFilter) {
             const dateArr = date;
-            let val;
+            let value;
             if (dateArr.length === 1) { // если выбрана одиночная дата
-              val = '';
+              value = '';
             } else { // если выбран диапазон дат
-              [, val] = dateArr;
+              [, value] = dateArr;
             }
             [this.inputDateFrom.value] = dateArr;
-            this.inputDateTo.value = val;
+            this.inputDateTo.value = value;
           } else {
             this.inputDate.value = this.inputDate.value.toLowerCase();
           }
@@ -120,10 +120,10 @@ class DatePicker {
     this.wrapper.addEventListener('input', this._handleDateDropDownClickWrapper);
 
     // клик по кнопке [Применить]
-    this.btnApply.addEventListener('click', this._handleDateDropDownClickApply);
+    this.buttonApply.addEventListener('click', this._handleDateDropDownClickApply);
 
     // клик по кнопке [Очистить]
-    this.btnClear.addEventListener('click', this._handleDateDropDownClickClear);
+    this.buttonClear.addEventListener('click', this._handleDateDropDownClickClear);
 
     // проверка, клик был снаружи или внутри календаря
     this.calendar.addEventListener('click', this._handleDateDropDownClickCalendar);
@@ -179,7 +179,7 @@ class DatePicker {
     if (isDateLength) {
       this.currentInput = e.target;
       this.secondInput = this.currentInput.classList
-        .contains(`.${this.elemName}__input_from`)
+        .contains(`.${this.elementName}__input_from`)
         ? this.inputDateTo : this.inputDateFrom;
       if (this.secondInput.value) { // заполнены оба инпута
         const a = this.currentInput.value.split('.');
@@ -215,14 +215,14 @@ class DatePicker {
 
   _handleDateDropDownClickDate() {
     if (this.clWrapper.classList
-      .contains(`${this.elemName}__calendar-wrapper_hidden`)) {
+      .contains(`${this.elementName}__calendar-wrapper_hidden`)) {
       this._toggle(true);
     }
   }
 
   _handleDateDropDownClickDateFromTo() {
     if (this.clWrapper.classList
-      .contains(`${this.elemName}__calendar-wrapper_hidden`)) { this._toggle(true); }
+      .contains(`${this.elementName}__calendar-wrapper_hidden`)) { this._toggle(true); }
   }
 
   _handleDateDropDownClickApply() {
@@ -230,7 +230,7 @@ class DatePicker {
       alert('Введите дату выезда');
     } else {
       this.clWrapper.classList
-        .add(`${this.elemName}__calendar-wrapper_hidden`);
+        .add(`${this.elementName}__calendar-wrapper_hidden`);
       if (!this.isFilter) {
         this._toggle(false);
       } else {
@@ -275,7 +275,7 @@ class DatePicker {
   _handleDateDropDownClickDoc(e) {
     const condA = (this.isFilter && e.target !== this.inputDate) || !this.isFilter;
     const condB = e.target !== this.inputDateFrom && e.target !== this.inputDateTo;
-    const condC = e.target.closest(`.${this.elemName}`) == null;
+    const condC = e.target.closest(`.${this.elementName}`) == null;
     const condFull = ((condA && condB) || condC) && this.clickOnCalendar === false;
 
     if (condFull) {
@@ -298,9 +298,9 @@ class DatePicker {
   }
 
   // Открывание/ закрывание календаря
-  _toggle(flag) {
-    const wrap = `${this.elemName}__`;
-    if (flag) {
+  _toggle(isExpanded) {
+    const wrap = `${this.elementName}__`;
+    if (isExpanded) {
       this.clWrapper.classList
         .remove(`${wrap}calendar-wrapper_hidden`);
       this.tips.forEach((tip) => {
@@ -317,17 +317,17 @@ class DatePicker {
     }
   }
 
-  _getElem(selector, wrapper = this.wrapper) {
+  _getElement(selector, wrapper = this.wrapper) {
     return wrapper
-      .querySelector(`.js-${this.elemName}__${selector}`);
+      .querySelector(`.js-${this.elementName}__${selector}`);
   }
 
-  _getElems(selectors) {
-    let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
-    sel = sel.substring(0, sel.length - 1);
+  _getElements(selectors) {
+    let selector = '';
+    selectors.forEach((item) => { selector += `.js-${this.elementName}__${item},`; });
+    selector = selector.substring(0, selector.length - 1);
     return this.wrapper
-      .querySelectorAll(sel);
+      .querySelectorAll(selector);
   }
 }
 

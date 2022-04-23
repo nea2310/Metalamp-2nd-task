@@ -6,7 +6,7 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-.dropdown__input_notrounded.dropdown__input_expanded {
+.dropdown__input_not-rounded.dropdown__input_expanded {
   border-color: $colorDarkShade50;
   border-bottom: none;
 }
@@ -90,13 +90,13 @@
       display: none;
     }
   }
-  &__cat-wrapper {
+  &__category-wrapper {
     display: flex;
     justify-content: space-between;
     height: 37px;
     align-items: center;
   }
-  &__cat {
+  &__category {
     @include font-h3;
     margin-left: 14px;
   }

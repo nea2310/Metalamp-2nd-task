@@ -5,30 +5,30 @@ include ../checklist/checklist.pug
 include ../button/button.pug
 mixin filter-form()
   -
-    let elemName ='filter-form'
-  form(class = elemName + ' js-' + elemName)
-    div(class = elemName + '__show-filter ' + 'js-' + elemName + '__show-filter')
-      image(class = elemName + '__show-filter-image' src = require('@com/filter-form/image/filter.svg') alt = 'фильтр поиска')
-    div(class = elemName + '__wrapper ' + 'js-' + elemName + '__wrapper')
-      div(class = elemName + '__calendar-wrapper')
+    let elementName ='filter-form'
+  form(class = elementName + ' js-' + elementName)
+    div(class = elementName + '__show-filter ' + 'js-' + elementName + '__show-filter')
+      image(class = elementName + '__show-filter-image' src = require('@com/filter-form/image/filter.svg') alt = 'фильтр поиска')
+    div(class = elementName + '__wrapper ' + 'js-' + elementName + '__wrapper')
+      div(class = elementName + '__calendar-wrapper')
         +date-dropdown(
           {width:'narrow',
           type: 'filterDateDropDown',
           labelTextFromTo: 'даты пребывания в отеле'}
           )
-      div(class = elemName + '__guests-wrapper')
+      div(class = elementName + '__guests-wrapper')
         +dropdown(
           {categories:
-            {cat1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
-            cat2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
-            cat3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
+            {category1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
+            category2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
+            category3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
           type: 'dropDownGuests',
           placeholder: 'Сколько гостей',
           buttons: true,
           labelText: 'гости',
           width: 'narrow'}
           )
-      div(class = elemName + '__price-filter-wrapper')
+      div(class = elementName + '__price-filter-wrapper')
         +range-slider(
           {labelText: 'диапазон цены',
           type: 'double', 
@@ -41,46 +41,46 @@ mixin filter-form()
           isFromToHidden:'true',
           text: 'Стоимость за сутки пребывания в номере'}
           )
-      div(class = elemName + '__house-rules-wrapper')
+      div(class = elementName + '__house-rules-wrapper')
         +checklist(
           {categories:
-            {cat1: {name:'Можно курить'}, 
-            cat2:{name:'Можно с питомцами'}, 
-            cat3:{name:'Можно пригласить гостей (до 10 человек)'}},
+            {category1: {name:'Можно курить'}, 
+            category2:{name:'Можно с питомцами'}, 
+            category3:{name:'Можно пригласить гостей (до 10 человек)'}},
             expand: false, 
           labelText: 'правила дома',
           checkListName: 'правила дома'}
           )
-      div(class = elemName + '__accessability-wrapper')
+      div(class = elementName + '__accessability-wrapper')
         +checklist(
           {categories:
-            {cat1: {name:'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см'}, 
-            cat2:{name:'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист и проводит до номера'}},
+            {category1: {name:'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см'}, 
+            category2:{name:'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист и проводит до номера'}},
             expand: false,
             rich: true, 
           labelText: 'доступность',
           checkListName: 'доступность'}
           )
-      div(class = elemName + '__facilities-wrapper')
+      div(class = elementName + '__facilities-wrapper')
         +dropdown(
           {categories:
-            {cat1: {displayName: 'спальни', type: 'спальня', declensions: 'спальня,спальни,спален', defaultCount: 0, minCount: 0, maxCount: 5}, 
-            cat2: {displayName: 'кровати', type: 'кровать', declensions: 'кровать,кровати,кроватей', defaultCount: 0, minCount: 0, maxCount: 10}, 
-            cat3: {displayName: 'ванные комнаты', type: 'ванная комната', declensions: 'ванная комната,ванные комнаты,ванных комнат', defaultCount: 0, minCount: 0, maxCount: 3}}, 
+            {category1: {displayName: 'спальни', type: 'спальня', declensions: 'спальня,спальни,спален', defaultCount: 0, minCount: 0, maxCount: 5}, 
+            category2: {displayName: 'кровати', type: 'кровать', declensions: 'кровать,кровати,кроватей', defaultCount: 0, minCount: 0, maxCount: 10}, 
+            category3: {displayName: 'ванные комнаты', type: 'ванная комната', declensions: 'ванная комната,ванные комнаты,ванных комнат', defaultCount: 0, minCount: 0, maxCount: 3}}, 
           type: 'dropDownRooms',
           placeholder: 'Сколько комнат',
           labelText: 'удобства номера',
           width: 'narrow'}
           )
-      div(class = elemName + '__facilities-adv-wrapper')
+      div(class = elementName + '__facilities-adv-wrapper')
         +checklist(
           {categories:
-            {cat1: {name:'Завтрак'}, 
-            cat2:{name:'Письменный стол'}, 
-            cat3:{name:'Стул для кормления'}, 
-            cat4:{name:'Кроватка'}, 
-            cat5:{name:'Телевизор'}, 
-            cat6:{name:'Шампунь'},},
+            {category1: {name:'Завтрак'}, 
+            category2:{name:'Письменный стол'}, 
+            category3:{name:'Стул для кормления'}, 
+            category4:{name:'Кроватка'}, 
+            category5:{name:'Телевизор'}, 
+            category6:{name:'Шампунь'},},
           expand: true, 
           labelText: 'дополнительные удобства',}
           )

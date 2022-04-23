@@ -2,25 +2,25 @@ include ../input-field/input-field.pug
 include ../button/button.pug
 mixin login(options={})
   -
-    let elemName = 'login'
-  div(class = elemName + ' js-' + elemName)
-    form(class = elemName + '__login-form' + ' js-' + elemName + '__login-form')
-      h1(class = elemName + '__header') Войти
-      fieldset(class = elemName + '__credentials') 
-        div(class = elemName + '__email')
+    let elementName = 'login'
+  div(class = elementName + ' js-' + elementName)
+    form(class = elementName + '__login-form' + ' js-' + elementName + '__login-form')
+      h1(class = elementName + '__header') Войти
+      fieldset(class = elementName + '__credentials') 
+        div(class = elementName + '__email')
           +input(
             {width: 'wide',
             placeholder: 'Email',
             js:'js-check-email'}
             )
-        div(class = elemName + '__password')
+        div(class = elementName + '__password')
           +input(
             {width: 'wide',
             placeholder: 'Пароль',
             type: 'password'} 
             )
-      div(class = elemName + '__login-btn')
-        +btn(
+      div(class = elementName + '__login-button')
+        +button(
           {text: 'войти',
           type: 'submit',
           length: 'very-long',
@@ -28,9 +28,9 @@ mixin login(options={})
           color: 'dark',
           image: true}
           )
-    div(class = elemName + '__go-to-reg' role='region' aria-label = 'Нет аккаунта на Toxin')
-      p(class = elemName + '__go-to-reg-legend') Нет аккаунта на Toxin?
-      +btn(
+    div(class = elementName + '__go-to-registration' role='region' aria-label = 'Нет аккаунта на Toxin')
+      p(class = elementName + '__go-to-registration-legend') Нет аккаунта на Toxin?
+      +button(
         {text: 'создать',
         type: 'link',
         length: 'short',

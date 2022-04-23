@@ -23,10 +23,10 @@
   &__password {
     margin-top: 6px;
   }
-  &__login-btn {
+  &__login-button {
     margin-top: 20px;
   }
-  &__go-to-reg {
+  &__go-to-registration {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,6 +41,6 @@
     padding-left: 25px;
   }
 }
-.js-err {
+.js-error {
   border: 1px solid red;
 }

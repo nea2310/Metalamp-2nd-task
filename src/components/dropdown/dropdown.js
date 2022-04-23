@@ -1,9 +1,9 @@
 import './dropdown.scss';
 
 class DropDown {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^.js-/, '');
-    this.wrapper = elem;
+  constructor(elementName, element) {
+    this.elementName = elementName.replace(/^.js-/, '');
+    this.wrapper = element;
     this._handleDropDownClickCounter = this._handleDropDownClickCounter.bind(this);
     this._handleDropDownMousedownInput = this._handleDropDownMousedownInput.bind(this);
     this._handleDropDownMouseupInput = this._handleDropDownMouseupInput.bind(this);
@@ -25,18 +25,18 @@ class DropDown {
     this.focusOnList = false;
     this.mouseDown = false;
 
-    this.input = this._getElem('input');
-    this.listWrapper = this._getElem('list-wrapper');
-    this.counts = this._getElems(['count-decrem', 'count-increm']);
-    this.countVals = this._getElems(['count-val']);
-    this.listElems = this._getElems(['cat-wrapper']);
-    this.btnClear = this._getElem('button-clear');
-    this.btnApply = this._getElem('button-apply');
-    this.btnsMinus = this._getElems(['count-decrem']);
-    this.tip = this._getElem('image');
+    this.input = this._getElement('input');
+    this.listWrapper = this._getElement('list-wrapper');
+    this.counts = this._getElements(['count-decrement', 'count-increment']);
+    this.countValues = this._getElements(['count-value']);
+    this.listElements = this._getElements(['category-wrapper']);
+    this.buttonClear = this._getElement('button-clear');
+    this.buttonApply = this._getElement('button-apply');
+    this.buttonsMinus = this._getElements(['count-decrement']);
+    this.tip = this._getElement('image');
 
-    this.clearApplyBtns = this.btnClear != null && this.btnApply != null;
-    this._getInitialCounterList(this.listElems);
+    this.clearApplyButtons = this.buttonClear != null && this.buttonApply != null;
+    this._getInitialCounterList(this.listElements);
   }
 
   /* Получение начального состояния счетчиков (текущее значение;
@@ -44,27 +44,27 @@ class DropDown {
   _getInitialCounterList(counterList) {
     this.counters = [];
     for (let i = 0; i < counterList.length; i += 1) {
-      const elemObj = {};
-      const catName = this._getElem('cat', counterList[i]);
-      const catCnt = this._getElem('count-val', counterList[i]);
-      const catIncrem = this._getElem('count-increm', counterList[i]);
-      const catDecrem = this._getElem('count-decrem', counterList[i]);
+      const dropDownObject = {};
+      const categoryName = this._getElement('category', counterList[i]);
+      const catCnt = this._getElement('count-value', counterList[i]);
+      const categoryIncrement = this._getElement('count-increment', counterList[i]);
+      const categoryDecrement = this._getElement('count-decrement', counterList[i]);
 
-      elemObj.text = catName.innerText.toLowerCase();
-      elemObj.type = catName.getAttribute('data-type');
-      elemObj.declensions = catName.getAttribute('data-declensions');
-      elemObj.cnt = catCnt.innerText;
-      elemObj.maxCount = catIncrem.getAttribute('data-max');
-      elemObj.minCount = catDecrem.getAttribute('data-min');
-      elemObj.isMax = elemObj.cnt === elemObj.maxCount;
-      elemObj.isMin = elemObj.cnt === elemObj.minCount;
+      dropDownObject.text = categoryName.innerText.toLowerCase();
+      dropDownObject.type = categoryName.getAttribute('data-type');
+      dropDownObject.declensions = categoryName.getAttribute('data-declensions');
+      dropDownObject.count = catCnt.innerText;
+      dropDownObject.maxCount = categoryIncrement.getAttribute('data-max');
+      dropDownObject.minCount = categoryDecrement.getAttribute('data-min');
+      dropDownObject.isMax = dropDownObject.count === dropDownObject.maxCount;
+      dropDownObject.isMin = dropDownObject.count === dropDownObject.minCount;
 
-      this.counters.push(elemObj);
+      this.counters.push(dropDownObject);
     }
 
     this._initializeButtons(this.counters);
-    if (this.clearApplyBtns) {
-      this._hideBtnClear(this.btnsMinus);
+    if (this.clearApplyButtons) {
+      this._hideButtonClear(this.buttonsMinus);
     }
   }
 
@@ -72,13 +72,13 @@ class DropDown {
     минимальное или максимальное) */
   _initializeButtons(counterList) {
     for (let i = 0; i < counterList.length; i += 1) {
-      const elem = this.listElems[i];
+      const element = this.listElements[i];
       if (counterList[i].isMin) {
-        const minus = this._getElem('count-decrem', elem);
+        const minus = this._getElement('count-decrement', element);
         minus.disabled = true;
       }
       if (counterList[i].isMax) {
-        const plus = this._getElem('count-increm', elem);
+        const plus = this._getElement('count-increment', element);
         plus.disabled = true;
       }
     }
@@ -93,16 +93,16 @@ class DropDown {
     this.input.addEventListener('focus', this._handleDropDownFocusInput);
 
     // обработка клика по кнопкам Плюс / Минус
-    this.counts.forEach((elem) => elem.addEventListener('click', this._handleDropDownClickCounter));
+    this.counts.forEach((element) => element.addEventListener('click', this._handleDropDownClickCounter));
 
     // клик по кнопке [Применить]
-    if (this.clearApplyBtns) {
-      this.btnApply.addEventListener('click', this._handleDropDownClickApply);
+    if (this.clearApplyButtons) {
+      this.buttonApply.addEventListener('click', this._handleDropDownClickApply);
     }
 
     // клик по кнопке [очистить]
-    if (this.clearApplyBtns) {
-      this.btnClear.addEventListener('click', this._handleDropDownClickClear);
+    if (this.clearApplyButtons) {
+      this.buttonClear.addEventListener('click', this._handleDropDownClickClear);
     }
 
     // проверка, клик был снаружи или внутри виджета
@@ -123,24 +123,24 @@ class DropDown {
   }
 
   _handleDropDownClickCounter(e) {
-    const elem = e.currentTarget;
+    const element = e.currentTarget;
     const text = e.target.parentElement.parentElement
       .firstElementChild.innerText.toLowerCase();
     let editedCounter;
     // Для кнопки "минус"
-    if (elem.classList
-      .contains(`${this.elemName}__count-decrem`)) {
+    if (element.classList
+      .contains(`${this.elementName}__count-decrement`)) {
       // Сделать активной кнопку "плюс" при клике на кнопку "минус"
-      elem.parentElement.lastElementChild.disabled = false;
+      element.parentElement.lastElementChild.disabled = false;
       // Уменьшить счетчик на единицу
       const currentCounter = parseInt(e.target.nextElementSibling.innerText, 10);
       editedCounter = String(currentCounter - 1);
       e.target.nextElementSibling.innerText = editedCounter;
     } else { // для кнопки "плюс": Сделать активной кнопку "минус" при клике на кнопку "плюс"
-      elem.parentElement.firstElementChild.disabled = false;
-      if (this.clearApplyBtns) { // Показать кнопку [Очистить]
-        this.btnClear
-          .classList.remove(`${this.elemName}__button_hidden`);
+      element.parentElement.firstElementChild.disabled = false;
+      if (this.clearApplyButtons) { // Показать кнопку [Очистить]
+        this.buttonClear
+          .classList.remove(`${this.elementName}__button_hidden`);
       }
       // Увеличить счетчик на единицу
       const currentCounter = parseInt(e.target.previousElementSibling.innerText, 10);
@@ -161,7 +161,7 @@ class DropDown {
 
   _handleDropDownFocusInput() {
     if (this.listWrapper.classList
-      .contains(`${this.elemName}__list-wrapper_hidden`)
+      .contains(`${this.elementName}__list-wrapper_hidden`)
       && this.mouseDown === false) {
       this._toggle(true);
     }
@@ -196,11 +196,11 @@ class DropDown {
   }
 
   _handleDropDownClickClear() {
-    for (let i = 0; i < this.countVals.length; i += 1) {
-      this.countVals[i].innerText = this.counters[i].minCount;
+    for (let i = 0; i < this.countValues.length; i += 1) {
+      this.countValues[i].innerText = this.counters[i].minCount;
       this._updateCounterList(
         this.counters[i].text,
-        this.countVals[i].innerText,
+        this.countValues[i].innerText,
       );
     }
     this.input.value = '';
@@ -218,7 +218,7 @@ class DropDown {
           text: counter.text,
           type: counter.type,
           declensions: counter.declensions,
-          cnt: editedCounter,
+          count: editedCounter,
           minCount: counter.minCount,
           maxCount: counter.maxCount,
         };
@@ -244,30 +244,30 @@ class DropDown {
     если достигнуто минимальное/ максимальное значение) */
   _updateButtons(counters) {
     for (let i = 0; i < counters.length; i += 1) {
-      const { cnt } = counters[i];
-      const cntToChange = this.listElems[i]
-        .querySelector(`.${this.elemName}__count-val`);
-      cntToChange.innerText = cnt;
+      const { count } = counters[i];
+      const countToChange = this.listElements[i]
+        .querySelector(`.${this.elementName}__count-value`);
+      countToChange.innerText = count;
       /* Если обновленное значение - минимальное разрешенное значение,
       то сделать кнопку "минус" неактивной */
       if (counters[i].isMin) {
-        cntToChange.previousElementSibling.disabled = true;
+        countToChange.previousElementSibling.disabled = true;
       }
       /* Если обновленное значение - максимальное разрешенное значение,
       то сделать кнопку "плюс" неактивной */
       if (counters[i].isMax) {
-        cntToChange.nextElementSibling.disabled = true;
+        countToChange.nextElementSibling.disabled = true;
       }
     }
-    if (this.clearApplyBtns) {
-      this._hideBtnClear(this.btnsMinus);
+    if (this.clearApplyButtons) {
+      this._hideButtonClear(this.buttonsMinus);
     }
   }
 
   // Скрыть кнопку [очистить]
-  _hideBtnClear(btnsMinus) {
+  _hideButtonClear(buttonsMinus) {
     const arr = [];
-    btnsMinus.forEach((btn) => arr.push(btn.disabled));
+    buttonsMinus.forEach((button) => arr.push(button.disabled));
     // есть ли среди кнопок "Минус" активные (disabled==false)
     let isCleared = arr.find((item) => item
       === false);
@@ -275,7 +275,7 @@ class DropDown {
     if (isCleared === undefined) {
       isCleared = true;
       // скрыть кнопку [Очистить]
-      this.btnClear.classList.add(`${this.elemName}__button_hidden`);
+      this.buttonClear.classList.add(`${this.elementName}__button_hidden`);
     }
   }
 
@@ -288,22 +288,22 @@ class DropDown {
       if (check) {
         const { type } = changedCounters[i];
         const { declensions } = changedCounters[i];
-        const { cnt } = changedCounters[i];
-        const elem = {};
-        elem.type = type;
-        elem.declensions = declensions.split(',');
-        elem.cnt = cnt;
+        const { count } = changedCounters[i];
+        const element = {};
+        element.type = type;
+        element.declensions = declensions.split(',');
+        element.count = count;
         // То добавить в массив, который в конце будет присвоен changedCountersToDisplay
-        this.countersToDisplay.push(elem);
+        this.countersToDisplay.push(element);
       }
       // Если  категория такого типа уже есть
       if (i > 0 && changedCounters[i].type
         === changedCounters[i - 1].type) {
-        const elem = this.countersToDisplay.find((item) => item.type
+        const element = this.countersToDisplay.find((item) => item.type
           === changedCounters[i].type);
         // То в массив не добавлять, а прибавить значение к значению счетчика этой категории
-        elem.cnt = String(parseInt(elem.cnt, 10)
-          + parseInt(changedCounters[i].cnt, 10));
+        element.count = String(parseInt(element.count, 10)
+          + parseInt(changedCounters[i].count, 10));
       }
     }
     this._updateInput(this.countersToDisplay);
@@ -312,21 +312,21 @@ class DropDown {
   /* обновление значения в инпуте */
   _updateInput(countersToDisplay) {
     // Определение падежа категории в зависимости от значения счетчика
-    function getWordForm(val, words) {
-      let value = val;
+    function getWordForm(count, words) {
+      let value = count;
       value = Math.abs(value) % 100;
-      const num = value % 10;
+      const number = value % 10;
       if (value > 10 && value < 20) return words[2];
-      if (num > 1 && num < 5) return words[1];
-      if (num === 1) return words[0];
+      if (number > 1 && number < 5) return words[1];
+      if (number === 1) return words[0];
       return words[2];
     }
     let value = '';
     countersToDisplay.forEach((counter) => {
       // исключаем категории, у которых счетчик = 0
-      if (parseInt(counter.cnt, 10) !== 0) {
-        value += `${counter.cnt} ${getWordForm(
-          parseInt(counter.cnt, 10),
+      if (parseInt(counter.count, 10) !== 0) {
+        value += `${counter.count} ${getWordForm(
+          parseInt(counter.count, 10),
           counter.declensions,
         )}, `;
       }
@@ -335,33 +335,33 @@ class DropDown {
   }
 
   // Открывание/ закрывание дропдауна
-  _toggle(flag) {
-    const wrap = `${this.elemName}__`;
-    if (flag) {
+  _toggle(isExpanded) {
+    const wrapper = `${this.elementName}__`;
+    if (isExpanded) {
       this.listWrapper.classList
-        .toggle(`${wrap}list-wrapper_hidden`);
-      this.tip.classList.toggle(`${wrap}image_expanded`);
-      this.tip.classList.toggle(`${wrap}image_collapsed`);
-      this.input.classList.toggle(`${wrap}input_expanded`);
-      this.input.classList.toggle(`${wrap}input_collapsed`);
+        .toggle(`${wrapper}list-wrapper_hidden`);
+      this.tip.classList.toggle(`${wrapper}image_expanded`);
+      this.tip.classList.toggle(`${wrapper}image_collapsed`);
+      this.input.classList.toggle(`${wrapper}input_expanded`);
+      this.input.classList.toggle(`${wrapper}input_collapsed`);
     } else {
       this.listWrapper.classList
-        .add(`${wrap}list-wrapper_hidden`);
-      this.tip.classList.remove(`${wrap}image_expanded`);
-      this.tip.classList.add(`${wrap}image_collapsed`);
-      this.input.classList.remove(`${wrap}input_expanded`);
-      this.input.classList.add(`${wrap}input_collapsed`);
+        .add(`${wrapper}list-wrapper_hidden`);
+      this.tip.classList.remove(`${wrapper}image_expanded`);
+      this.tip.classList.add(`${wrapper}image_collapsed`);
+      this.input.classList.remove(`${wrapper}input_expanded`);
+      this.input.classList.add(`${wrapper}input_collapsed`);
     }
   }
 
-  _getElem(selector, wrapper = this.wrapper) {
+  _getElement(selector, wrapper = this.wrapper) {
     return wrapper
-      .querySelector(`.js-${this.elemName}__${selector}`);
+      .querySelector(`.js-${this.elementName}__${selector}`);
   }
 
-  _getElems(selectors) {
+  _getElements(selectors) {
     let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elemName}__${selector},`; });
+    selectors.forEach((selector) => { sel += `.js-${this.elementName}__${selector},`; });
     sel = sel.substring(0, sel.length - 1);
     return this.wrapper
       .querySelectorAll(sel);

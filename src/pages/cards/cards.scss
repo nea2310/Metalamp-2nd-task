@@ -8,7 +8,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   background-color: #f4f4f6;
-  &__search-col {
+  &__search-column {
     @include media-breakpoint-down($md) {
       margin: 0 auto;
     }

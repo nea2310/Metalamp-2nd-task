@@ -3,30 +3,30 @@ include ../dropdown/dropdown.pug
 include ../button/button.pug
 mixin search-room(options={})
   -
-    let elemName = 'search-room'
-  form(class = elemName + ' js-' + elemName)
-    h1(class = elemName + '__header') Найдем номера под ваши пожелания
-    div(class = elemName + '__date-dropdown')
+    let elementName = 'search-room'
+  form(class = elementName + ' js-' + elementName)
+    h1(class = elementName + '__header') Найдем номера под ваши пожелания
+    div(class = elementName + '__date-dropdown')
       +date-dropdown(
         {width:'wide',
         type:'dateDropDown',
         labelTextFrom: 'Прибытие',
         labelTextTo: 'Выезд'}
         )
-    div(class = elemName + '__guests')
+    div(class = elementName + '__guests')
       +dropdown(
         {categories:
-          {cat1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
-          cat2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
-          cat3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
+          {category1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
+          category2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
+          category3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
         type: 'dropDownGuests',
         placeholder: 'Сколько гостей',
         buttons: true,
         labelText: 'гости',
         width: 'wide'}
         )
-    div(class = elemName + '__search')
-      +btn(
+    div(class = elementName + '__search')
+      +button(
         {text: 'подобрать номер',
         type: 'submit',
         length: 'very-long',

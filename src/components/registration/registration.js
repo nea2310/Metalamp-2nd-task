@@ -2,8 +2,8 @@
 import './registration.scss';
 
 class Registration {
-  constructor(elem) {
-    this.wrapper = elem;
+  constructor(element) {
+    this.wrapper = element;
     this._handleRegistrationSubmit = this._handleRegistrationSubmit.bind(this);
     this._render();
     this._bindEventListeners();
@@ -23,35 +23,35 @@ class Registration {
   }
 
   _handleRegistrationSubmit(e) {
-    let isErr = false;
+    let isError = false;
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
-        input.classList.add('js-err');
+        input.classList.add('js-error');
       } else {
-        input.classList.remove('js-err');
+        input.classList.remove('js-error');
       }
     });
     // проверку на формат даты обязательно делать ПОСЛЕ проверки на заполненность поля
     if (/^\d{2}\.\d{2}\.\d{4}$/.test(this.date.value)) {
-      this.date.classList.remove('js-err');
+      this.date.classList.remove('js-error');
     } else {
-      this.date.classList.add('js-err');
+      this.date.classList.add('js-error');
     }
 
     for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('js-err')) {
-        isErr = true;
+      if (this.inputs[i].classList.contains('js-error')) {
+        isError = true;
         break;
       }
     }
-    if (isErr) {
+    if (isError) {
       e.preventDefault();
       alert('Заполните все поля!');
     }
   }
 
   static _handleRegistrationFocus(e) {
-    e.currentTarget.classList.remove('js-err');
+    e.currentTarget.classList.remove('js-error');
   }
 }
 

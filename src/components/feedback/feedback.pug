@@ -1,14 +1,14 @@
 include ../like-button/like-button.pug
 mixin feedback(options={})
   -
-    let elemName ='feedback'
-  div(class = elemName)
-    image(class=elemName+'__image' src = options.image alt = options.alt)
-    p(class = elemName + '__name')= options.name
-    p(class = elemName + '__date')= options.date
-    div(class = elemName + '__like')
+    let elementName ='feedback'
+  div(class = elementName)
+    image(class=elementName+'__image' src = options.image alt = options.alt)
+    p(class = elementName + '__name')= options.name
+    p(class = elementName + '__date')= options.date
+    div(class = elementName + '__like')
       +like-button()
-    p(class = elemName + '__descr')= options.description
+    p(class = elementName + '__description')= options.description
 
 
 

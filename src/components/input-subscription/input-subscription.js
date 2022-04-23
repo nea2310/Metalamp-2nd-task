@@ -1,8 +1,8 @@
 /* eslint-disable no-alert */
 class InputSubscribe {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^./, '');
-    this.input = elem;
+  constructor(elementName, element) {
+    this.elementName = elementName.replace(/^./, '');
+    this.input = element;
     this.inputWrapper = this.input.parentNode;
     this._handleInputSubscriptionChange = this._handleInputSubscriptionChange.bind(this);
     this._handleInputSubscriptionClick = this._handleInputSubscriptionClick.bind(this);

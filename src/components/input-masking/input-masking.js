@@ -1,9 +1,9 @@
 /* eslint-disable no-alert */
 /* eslint-disable indent */
 class InputMask {
-  constructor(elemName, elem) {
-    this.elemName = elemName.replace(/^./, '');
-    this.input = elem;
+  constructor(elementName, element) {
+    this.elementName = elementName.replace(/^./, '');
+    this.input = element;
     this.calendarSingle = !!this.input.classList.contains('js-calendar');
     this.calendarDouble = !!this.input.classList.contains('js-calendar-double');
     this.date = !!this.input.classList.contains('js-date');
@@ -47,10 +47,10 @@ class InputMask {
     this.dateCurrent = new Date();
     this.dateTomorrow = new Date(+this.dateCurrent
       + (new Date('2020-12-31') - new Date('2020-12-30')));
-    // dateMinusHundred  - теущая дата минус 100 лет
+    // dateMinusHundred  - текущая дата минус 100 лет
     this.dateMinusHundred = new Date(+this.dateCurrent
       - (new Date('2120-12-31') - new Date('2020-01-01')));
-    // dateMinusEighteen  - теущая дата минус 18 лет
+    // dateMinusEighteen  - текущая дата минус 18 лет
     this.dateMinusEighteen = new Date(+this.dateCurrent
       - (new Date('2037-12-31') - new Date('2020-01-01')));
     // datePlusYear = плюс один год к текущей дате
