@@ -1,6 +1,4 @@
 /* eslint-disable no-alert */
-import './booking.scss';
-
 class Booking {
   constructor(element) {
     this.wrapper = element;

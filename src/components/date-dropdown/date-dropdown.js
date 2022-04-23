@@ -2,8 +2,6 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 
-import './date-dropdown.scss';
-
 class DatePicker {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');

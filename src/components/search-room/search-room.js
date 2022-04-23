@@ -1,6 +1,4 @@
 /* eslint-disable no-alert */
-import './search-room.scss';
-
 class SearchRoom {
   constructor(element) {
     this.wrapper = element;

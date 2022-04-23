@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/extensions
 import 'ion-rangeslider/js/ion.rangeSlider.min.js';
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
-import './range-slider.scss';
 
 class RangeSlider {
   constructor(elementName, element) {

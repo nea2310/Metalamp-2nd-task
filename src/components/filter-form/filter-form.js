@@ -1,5 +1,3 @@
-import './filter-form.scss';
-
 class FilterForm {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');

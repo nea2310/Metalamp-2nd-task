@@ -1,6 +1,4 @@
 /* eslint-disable no-alert */
-import './login.scss';
-
 class Login {
   constructor(element) {
     this.wrapper = element;

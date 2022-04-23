@@ -1,5 +1,3 @@
-import './header.scss';
-
 class Header {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');

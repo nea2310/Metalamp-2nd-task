@@ -1,5 +1,3 @@
-import './like-button.scss';
-
 const iconLike = require(
   './image/favorite.svg',
 );

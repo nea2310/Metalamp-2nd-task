@@ -1,6 +1,4 @@
 /* eslint-disable no-alert */
-import './registration.scss';
-
 class Registration {
   constructor(element) {
     this.wrapper = element;

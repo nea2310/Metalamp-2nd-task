@@ -1,6 +1,4 @@
 /* eslint-disable no-console */
-import './room-card.scss';
-
 class RoomCard {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
