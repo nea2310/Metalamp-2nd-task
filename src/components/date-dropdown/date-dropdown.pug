@@ -1,32 +1,31 @@
 include ../button/button.pug
-mixin date-dropdown(options={type: '', labelTextFrom: '', labelTextTo: '', labelTextFromTo: '',})
+
+mixin date-dropdown({ type = '', labelTextFrom = '', labelTextTo = '', labelTextFromTo = ''} = {})
   -
-    let elementName='date-dropdown'
-    let modifier = ''
-    let width = ''
-    let src = require('@com/date-dropdown/image/expand-more.svg')
-    options.type == 'filterDateDropDown' ? modifier = elementName + '__calendar-wrapper_width_narrow' : modifier = ''
-    options.type == 'filterDateDropDown' ? width = '_width_narrow' : width = '_width_wide'
+    const elementName='date-dropdown'
+    const link = require('@com/date-dropdown/image/expand-more.svg')
+    const modifier = type == 'filterDateDropDown' ? elementName + '__calendar-wrapper_width_narrow' : ''
+    const width =  type == 'filterDateDropDown' ? '_width_narrow' : '_width_wide'
   div(class=elementName + ' js-' + elementName + ' ' + elementName + width)
-    if options.type == 'dateDropDown'
+    if type == 'dateDropDown'
       div(class = elementName + '__input-wrapper' + ' js-' + elementName + '__input-wrapper')
         label(class = elementName + '__label')
-          if options.labelTextFrom
-            p(class = elementName + '__label-text')=options.labelTextFrom
-          image(class = elementName + '__image' + ' js-' + elementName + '__image ' + elementName + '__image_collapsed', src=src alt = 'открыть календарь')
+          if labelTextFrom
+            p(class = elementName + '__label-text')= labelTextFrom
+          image(class = elementName + '__image' + ' js-' + elementName + '__image ' + elementName + '__image_collapsed', src = link alt = 'открыть календарь')
           input(class = elementName + '__input '+ 'js-' + elementName + '__input ' + elementName + '__input_from' + ' js-' + elementName + '__input_from ' + elementName + '__input_width_narrow js-masked js-calendar', placeholder = "ДД.ММ.ГГГГ", type = text)
       div(class = elementName + '__input-wrapper' + ' js-' + elementName + '__input-wrapper')
         label(class = elementName + '__label')
-          if options.labelTextTo
-            p(class = elementName + '__label-text')=options.labelTextTo
-          image(class = elementName + '__image' + ' js-' + elementName + '__image ' + elementName + '__image_collapsed', src = src alt = 'открыть календарь')
+          if labelTextTo
+            p(class = elementName + '__label-text')= labelTextTo
+          image(class = elementName + '__image' + ' js-' + elementName + '__image ' + elementName + '__image_collapsed', src = link alt = 'открыть календарь')
           input(class = elementName + '__input '+ 'js-' + elementName + '__input ' + elementName + '__input_to' + ' js-' + elementName + '__input_to ' + elementName + '__input_width_narrow js-masked js-calendar', placeholder = "ДД.ММ.ГГГГ", type = text)
-    if options.type == 'filterDateDropDown'
+    if type == 'filterDateDropDown'
       div(class = elementName + '__input-wrapper' + ' js-' + elementName + '__input-wrapper')
         label(class = elementName + '__label')
-          if options.labelTextFromTo
-            p(class = elementName + '__label-text')=options.labelTextFromTo
-          image(class=elementName + '__image' + ' js-' + elementName + '__image ' + elementName + '__image_collapsed', src = src alt = 'открыть календарь')
+          if labelTextFromTo
+            p(class = elementName + '__label-text')= labelTextFromTo
+          image(class=elementName + '__image' + ' js-' + elementName + '__image ' + elementName + '__image_collapsed', src = link alt = 'открыть календарь')
           input(class=elementName + '__input '+ 'js-' + elementName + '__input ' + elementName + '__input_from-to' + ' js-' + elementName + '__input_from-to ' + elementName + '__input_width_wide js-masked js-calendar-double', value = "2022-08-19,2022-08-23", type = text)
     div(class = elementName + '__calendar-wrapper' + ' js-' + elementName + '__calendar-wrapper ' + elementName + '__calendar-wrapper_hidden ' + modifier)
       div(class = elementName + '__buttons')

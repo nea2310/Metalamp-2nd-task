@@ -1,10 +1,10 @@
-mixin feature(options={})
+mixin feature({image = '', name = '', description = '', alt = ''} = {})
   -
-    let elementName = 'feature'
+    const elementName = 'feature'
   div(class = elementName)
-    image(class=elementName+'__image' src = options.image alt = options.alt)
-    p(class = elementName + '__name')= options.name
-    p(class = elementName + '__description')= options.description
+    image(class=elementName+'__image' src = image alt = alt)
+    p(class = elementName + '__name')= name
+    p(class = elementName + '__description')= description
 
 
 

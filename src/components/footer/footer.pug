@@ -1,8 +1,8 @@
 include ../input-field/input-field.pug
-mixin footer(options={})
+
+mixin footer({menu = []} = {})
   -
     let elementName = 'footer'
-    const {menu} = options
     const social = ['twitter', 'facebook', 'instagram']
   footer(class = elementName role = 'contentinfo')
     div(class = elementName + '__wrapper-top')
@@ -11,13 +11,14 @@ mixin footer(options={})
           image(class = elementName + '__logo-image' src = require('@com/footer/image/logo-purple.svg') alt = 'на главную')
         li(class = elementName + '__item')
           p(class = elementName + '__long-text') Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
-      each value in menu
-        ul(class = elementName + '__items')
-          lh(class = elementName + '__items-header')=value.name
-            if value.items
-              each val in value.items
-                li(class = elementName + '__item')
-                  a(class = elementName + '__item-link' href = 'https://test/test')=val
+      if menu.length
+        each value in menu
+          ul(class = elementName + '__items')
+            lh(class = elementName + '__items-header')=value.name
+              if value.items.length
+                each val in value.items
+                  li(class = elementName + '__item')
+                    a(class = elementName + '__item-link' href = 'https://test/test')=val
       ul(class = elementName + '__items')
         lh(class = elementName + '__items-header') подписка
         li(class = elementName + '__item')
@@ -28,7 +29,8 @@ mixin footer(options={})
             placeholder: 'Email',
             js:'js-check-email',
             image: true,
-            name: 'оформить подписку'}
+            name: 'оформить подписку',
+            }
             )
     div(class = elementName + '__wrapper-middle')
     div(class = elementName + '__wrapper-bottom')

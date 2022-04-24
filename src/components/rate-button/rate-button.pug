@@ -1,11 +1,11 @@
-mixin rate-button(options={})
+mixin rate-button({labelText = '', name = ''} = {})
   -
     let elementName = 'rate-button'
   fieldset(class = elementName)
-    legend(class = elementName+'__caption')= options.labelText
+    legend(class = elementName+'__caption')= labelText
     div(class = elementName+'__group')
-      input(class = elementName+'__star' type = "radio" name = options.name value = '1' aria-label = "Очень плохо")
-      input(class = elementName+'__star' type = "radio" name = options.name value = '2' aria-label = "Плохо")
-      input(class = elementName+'__star' type = "radio" name = options.name value = '3' aria-label = "Удовлетворительно")
-      input(class = elementName+'__star' type = "radio" name = options.name value = '4' aria-label = "Хорошо" checked)
-      input(class = elementName+'__star' type = "radio" name = options.name value = '5' aria-label = "Отлично")
+      input(class = elementName+'__star' type = "radio" name = name value = '1' aria-label = "Очень плохо")
+      input(class = elementName+'__star' type = "radio" name = name value = '2' aria-label = "Плохо")
+      input(class = elementName+'__star' type = "radio" name = name value = '3' aria-label = "Удовлетворительно")
+      input(class = elementName+'__star' type = "radio" name = name value = '4' aria-label = "Хорошо" checked)
+      input(class = elementName+'__star' type = "radio" name = name value = '5' aria-label = "Отлично")

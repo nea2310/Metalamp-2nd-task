@@ -1,18 +1,10 @@
-mixin input(options={})
+mixin input({width = '', placeholder = '', labelText = '', image = false, name = '', js = ''} ={})
   -
-    let elementName='input-field'
-    let width = options.width ?? ''
-    let labelText = options.labelText ?? ''
-    let name = options.name ?? ''
-    let js = options.js ?? ''
-    let placeholder = options.placeholder ?? ''
-    let inputType = options.type ?? ''
-
-
+    const elementName = 'input-field'
   div(class = elementName +' ' + elementName + '-' + width)
     label(class = elementName+'__label')
       if labelText
-        p(class = elementName+'__label-text')=labelText
+        p(class = elementName+'__label-text')= labelText
       if image
         button(class = elementName+'__link' aria-label = name)
           image(class = elementName+'__image', src = require('@com/input-field/image/arrow-forward.svg'))

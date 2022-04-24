@@ -1,8 +1,9 @@
 include ../input-field/input-field.pug
 include ../button/button.pug
-mixin login(options={})
+
+mixin login()
   -
-    let elementName = 'login'
+    const elementName = 'login'
   div(class = elementName + ' js-' + elementName)
     form(class = elementName + '__login-form' + ' js-' + elementName + '__login-form')
       h1(class = elementName + '__header') Войти
@@ -11,13 +12,15 @@ mixin login(options={})
           +input(
             {width: 'wide',
             placeholder: 'Email',
-            js:'js-check-email'}
+            js:'js-check-email',
+            }
             )
         div(class = elementName + '__password')
           +input(
             {width: 'wide',
             placeholder: 'Пароль',
-            type: 'password'} 
+            type: 'password',
+            } 
             )
       div(class = elementName + '__login-button')
         +button(

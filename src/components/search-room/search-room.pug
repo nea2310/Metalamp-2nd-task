@@ -1,9 +1,10 @@
 include ../date-dropdown/date-dropdown.pug
 include ../dropdown/dropdown.pug
 include ../button/button.pug
-mixin search-room(options={})
+
+mixin search-room()
   -
-    let elementName = 'search-room'
+    const elementName = 'search-room'
   form(class = elementName + ' js-' + elementName)
     h1(class = elementName + '__header') Найдем номера под ваши пожелания
     div(class = elementName + '__date-dropdown')
@@ -16,9 +17,9 @@ mixin search-room(options={})
     div(class = elementName + '__guests')
       +dropdown(
         {categories:
-          {category1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
-          category2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
-          category3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
+          [ {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
+            {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
+            {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}], 
         type: 'dropDownGuests',
         placeholder: 'Сколько гостей',
         buttons: true,

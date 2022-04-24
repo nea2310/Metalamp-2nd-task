@@ -19,9 +19,9 @@ mixin filter-form()
       div(class = elementName + '__guests-wrapper')
         +dropdown(
           {categories:
-            {category1: {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
-            category2: {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
-            category3: {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}}, 
+            [ {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
+            {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
+            {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}], 
           type: 'dropDownGuests',
           placeholder: 'Сколько гостей',
           buttons: true,
@@ -31,7 +31,7 @@ mixin filter-form()
       div(class = elementName + '__price-filter-wrapper')
         +range-slider(
           {labelText: 'диапазон цены',
-          type: 'double', 
+          sliderType: 'double', 
           min:1000, 
           max:15000, 
           step:1, 
@@ -48,25 +48,23 @@ mixin filter-form()
             category2:{name:'Можно с питомцами'}, 
             category3:{name:'Можно пригласить гостей (до 10 человек)'}},
             expand: false, 
-          labelText: 'правила дома',
-          checkListName: 'правила дома'}
+          labelText: 'правила дома'}
           )
       div(class = elementName + '__accessability-wrapper')
         +checklist(
           {categories:
-            {category1: {name:'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см'}, 
-            category2:{name:'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист и проводит до номера'}},
+            [{name:'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см'}, 
+            {name:'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист и проводит до номера'}],
             expand: false,
             rich: true, 
-          labelText: 'доступность',
-          checkListName: 'доступность'}
+          labelText: 'доступность'}
           )
       div(class = elementName + '__facilities-wrapper')
         +dropdown(
           {categories:
-            {category1: {displayName: 'спальни', type: 'спальня', declensions: 'спальня,спальни,спален', defaultCount: 0, minCount: 0, maxCount: 5}, 
-            category2: {displayName: 'кровати', type: 'кровать', declensions: 'кровать,кровати,кроватей', defaultCount: 0, minCount: 0, maxCount: 10}, 
-            category3: {displayName: 'ванные комнаты', type: 'ванная комната', declensions: 'ванная комната,ванные комнаты,ванных комнат', defaultCount: 0, minCount: 0, maxCount: 3}}, 
+            [{displayName: 'спальни', type: 'спальня', declensions: 'спальня,спальни,спален', defaultCount: 0, minCount: 0, maxCount: 5}, 
+              {displayName: 'кровати', type: 'кровать', declensions: 'кровать,кровати,кроватей', defaultCount: 0, minCount: 0, maxCount: 10}, 
+              {displayName: 'ванные комнаты', type: 'ванная комната', declensions: 'ванная комната,ванные комнаты,ванных комнат', defaultCount: 0, minCount: 0, maxCount: 3}], 
           type: 'dropDownRooms',
           placeholder: 'Сколько комнат',
           labelText: 'удобства номера',
@@ -75,12 +73,12 @@ mixin filter-form()
       div(class = elementName + '__facilities-adv-wrapper')
         +checklist(
           {categories:
-            {category1: {name:'Завтрак'}, 
-            category2:{name:'Письменный стол'}, 
-            category3:{name:'Стул для кормления'}, 
-            category4:{name:'Кроватка'}, 
-            category5:{name:'Телевизор'}, 
-            category6:{name:'Шампунь'},},
+            [{name:'Завтрак'}, 
+            {name:'Письменный стол'}, 
+            {name:'Стул для кормления'}, 
+            {name:'Кроватка'}, 
+            {name:'Телевизор'}, 
+            {name:'Шампунь'}],
           expand: true, 
           labelText: 'дополнительные удобства',}
           )

@@ -1,7 +1,8 @@
 include ../rate-button/rate-button.pug
-mixin room-card(options={})
+
+mixin room-card({roomNumber, roomPrice, feedbackAmount, ratingName} = {})
   -
-    let elemName = 'room-card'
+    const elemName = 'room-card'
   div(class = elemName + ' js-' + elemName)
     div(class = elemName + '__slider' + ' js-' + elemName + '__slider')
       a(class = elemName + '__photos' href = 'https://test/test' aria-label= 'Перейти к деталям номера')
@@ -18,15 +19,15 @@ mixin room-card(options={})
     div(class = elemName + '__details')
       a(class = elemName + '__details-room' href = 'https://test/test' aria-label='Перейти к деталям номера')
         span(class = elemName + '__detail-mark' role = 'region' aria-label = '№') №
-        span(class = elemName + '__detail-number' role = 'region' aria-label = 'номер комнаты')= options.roomNumber
-        span(class = elemName + '__detail-is-lux' role = 'region' aria-label = 'люкс')= options.isLux
+        span(class = elemName + '__detail-number' role = 'region' aria-label = 'номер комнаты')= roomNumber
+        span(class = elemName + '__detail-is-lux' role = 'region' aria-label = 'люкс')= isLux
       div(class = elemName + '__details-price')
-        span(class = elemName + '__detail-price' role = 'region' aria-label = 'цена')= options.roomPrice
+        span(class = elemName + '__detail-price' role = 'region' aria-label = 'цена')= roomPrice
         span(class = elemName + '__detail-price-currency' role = 'region' aria-label = '₽') ₽
         span(class = elemName + '__detail-label' role = 'region' aria-label = 'в сутки') в сутки
     div(class = elemName + '__rating')
       div(class = elemName + '__rate')
-        +rate-button({name: options.ratingName})
+        +rate-button({name: ratingName})
       div(class = elemName + '__feedback')
-        span(class = elemName + '__feedback-amount' role = 'region' aria-label = 'количество отзывов')= options.feedbackAmount
+        span(class = elemName + '__feedback-amount' role = 'region' aria-label = 'количество отзывов')= feedbackAmount
         span(class = elemName + '__feedback-mark' role = 'region' aria-label = 'отзывы') Отзывов

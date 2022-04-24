@@ -1,8 +1,8 @@
 include ../button/button.pug
-mixin header(options={})
+
+mixin header({menu = [], authorized = false} = {})
   -
     const elementName = 'header'
-    const {menu} = options
   header(class = elementName + ' js-' + elementName)
     button(class = elementName + '__burger-button' + ' js-' + elementName + '__burger-button' aria-label = 'навигация')
       span(class = elementName + '__burger')
@@ -11,17 +11,19 @@ mixin header(options={})
         image(class = elementName + '__logo-image' src = require('@com/header/image/logo-purple.svg') alt = 'на главную')
       nav(class = elementName + '__nav-level1' + ' js-' + elementName + '__nav-level1') 
         ul(class = elementName + '__nav-level1-items')
-          each value in menu
-            li(class = elementName + '__nav-level1-item')
-              a(class = elementName + '__nav-level1-item-link' href = 'https://test/test')=value.name
-                if value.submenu
-                  image(class = elementName + '__nav-level1-item-image' + ' js-' + elementName + '__nav-level1-item-image' src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
-                  ul(class = elementName + '__nav-level2' + ' js-' + elementName + '__nav-level2')
-                    each subvalue in value.submenu
-                      li(class = elementName + '__nav-level2-item') 
-                        a(class = elementName + '__nav-level2-item-link' href = 'https://test/test')=subvalue.name
+          if menu.length
+            each value in menu
+              li(class = elementName + '__nav-level1-item')
+                a(class = elementName + '__nav-level1-item-link' href = 'https://test/test')=value.name
+                  if value.submenu
+                    image(class = elementName + '__nav-level1-item-image' + ' js-' + elementName + '__nav-level1-item-image' src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
+                    ul(class = elementName + '__nav-level2' + ' js-' + elementName + '__nav-level2')
+                      if value.submenu.length
+                        each subvalue in value.submenu
+                          li(class = elementName + '__nav-level2-item') 
+                            a(class = elementName + '__nav-level2-item-link' href = 'https://test/test')=subvalue.name
       div(class = elementName + '__auth') 
-        if (options.authorized == false)
+        if (!authorized)
           div(class = elementName + '__button-login') 
             +button(
               {text: 'войти',
@@ -40,6 +42,6 @@ mixin header(options={})
               color: 'dark',
               href: 'https://test/test'}
               )
-        if (options.authorized == true)
+        else
           div(class = elementName + '__profile') 
             a(class = elementName + '__profile-name' href = 'https://test/test')  Юлий Цезарь

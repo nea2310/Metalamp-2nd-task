@@ -2,9 +2,10 @@ include ../input-field/input-field.pug
 include ../radiobuttons/radiobuttons.pug
 include ../toggle/toggle.pug
 include ../button/button.pug
-mixin registration(options={})
+
+mixin registration()
   -
-    let elementName = 'registration'
+    const elementName = 'registration'
   div(class = elementName + ' js-' + elementName)
     form(class = elementName + '__registration-form' + ' js-' + elementName + '__registration-form')
       h1(class = elementName + '__header') Регистрация аккаунта
@@ -12,52 +13,56 @@ mixin registration(options={})
         div(class = elementName + '__name')
           +input(
             {width: 'wide',
-            placeholder: 'имя'} 
+            placeholder: 'имя'
+            } 
             )
         div(class = elementName + '__surname')
           +input(
             {width: 'wide',
-            placeholder: 'фамилия'} 
-            )
-      div(class = elementName + '__radiobuttons')
-        +radiobuttons({categories:
-          {category1: {name:'Мужчина', checked: true}, 
-          category2:{name:'Женщина'}},
-          radioGroupName: 'gender'})
-      div(class = elementName + '__birth-date')
+            placeholder: 'фамилия',
+} 
+  )
+    div(class = elementName + '__radiobuttons')
+      +radiobuttons({categories:
+        [{name:'Мужчина', checked: true}, 
+        {name:'Женщина'}],
+        radioGroupName: 'gender'})
+    div(class = elementName + '__birth-date')
+      +input(
+        {width: 'wide',
+        placeholder: 'ДД.ММ.ГГГГ',
+        js:' js-masked js-date',
+        labelText: 'дата рождения'} 
+        )
+    fieldset(class = elementName + '__credentials') 
+      legend(class = elementName + '__credentials-legend')  данные для входа в сервис
+      div(class = elementName + '__email')
         +input(
           {width: 'wide',
-          placeholder: 'ДД.ММ.ГГГГ',
-          js:' js-masked js-date',
-          labelText: 'дата рождения'} 
+          placeholder: 'Email',
+          js:'js-check-email',
+          } 
           )
-      fieldset(class = elementName + '__credentials') 
-        legend(class = elementName + '__credentials-legend')  данные для входа в сервис
-        div(class = elementName + '__email')
-          +input(
-            {width: 'wide',
-            placeholder: 'Email',
-            js:'js-check-email'} 
-            )
-        div(class = elementName + '__password')
-          +input(
-            {width: 'wide',
-            placeholder: 'Пароль',
-            type: 'password'} 
-            )
-      div(class = elementName + '__special-offer')
-        +toggle(
-          {name: 'Получать спецпредложения'}
+      div(class = elementName + '__password')
+        +input(
+          {width: 'wide',
+          placeholder: 'Пароль',
+          type: 'password',
+          } 
           )
-      div(class = elementName + '__search')
-        +button(
-          {text: 'перейти к оплате',
-          type: 'submit',
-          length: 'very-long',
-          width: 'wide',
-          color: 'dark',
-          image: true}
-          )
+    div(class = elementName + '__special-offer')
+      +toggle(
+        {name: 'Получать спецпредложения'}
+        )
+    div(class = elementName + '__search')
+      +button(
+        {text: 'перейти к оплате',
+        type: 'submit',
+        length: 'very-long',
+        width: 'wide',
+        color: 'dark',
+        image: true}
+        )
     div(class = elementName + '__go-to-login' role='region' aria-label = 'Уже есть аккаунт на Toxin')
       p(class = elementName + '__go-to-login-legend' ) Уже есть аккаунт на Toxin
       +button(

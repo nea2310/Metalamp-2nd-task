@@ -1,10 +1,11 @@
-mixin bullet-list(options={})
+mixin bullet-list({categories = []} = {})
   -
-    let elementName = 'bullet-list'
+    const elementName = 'bullet-list'
   fieldset(class = elementName)
     ul(class = elementName + '__list-wrapper' type = 'disc')
-      each value in options.categories
-        li(class = elementName + '__category')= value
+      if categories.length
+        each value in categories
+          li(class = elementName + '__category')= value
 
 
 

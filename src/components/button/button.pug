@@ -1,12 +1,7 @@
-mixin button(options={})
+mixin button(options = {text = '', type = '', length = '', width = '', color = '', href = ''} = {})
   -
-    let elementName='button'
-    let elementType = options.type ?? ''
-    let length = options.length ?? ''
-    let width = options.width ?? ''
-    let color = options.color ?? ''
-    let text = options.text ?? ''
-  case elementType
+    const elementName = 'button'
+  case type
     when 'button'
       button(class = elementName + ' ' + elementName + '_length_' + length + ' ' + 
       elementName + '_width_' + width + ' ' + elementName + '_color_' + color type = 'button')= text
