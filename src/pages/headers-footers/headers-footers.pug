@@ -4,10 +4,23 @@ include ../../components/footer/footer.pug
 block title
   title Headers & Footers
 block content
+  -
+    const headerLinks = [
+      {name: 'О нас'},
+      {name: 'Услуги', submenu: [{name: 'Ссылка 1'}, {name: 'Ссылка 2'}, {name: 'Ссылка 3'}]},
+      {name: 'Вакансии'},
+      {name: 'Новости'},
+      {name: 'Соглашения', submenu: [{name: 'Ссылка 4'}, {name: 'Ссылка 5'}, {name: 'Ссылка 6'}]},
+    ]
+    const footerLinks = [
+      {name: 'навигация', items: ['О нас', 'Новости', 'Служба поддержки', 'Услуги']},
+      {name: 'О нас', items: ['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы']},
+      {name: 'служба поддержки', items: ['Соглашения', 'Сообщества', 'Связь с нами']},
+    ]
   main(class="headers-footers")
     div(class='headers-footers__header')
-      +header({authorized: false})
+      +header({menu: headerLinks, authorized: false})
     div(class='headers-footers__header')
-      +header({authorized: true})
+      +header({menu: headerLinks, authorized: true})
     div(class='headers-footers__footer')
-      +footer()
+      +footer({menu: footerLinks})

@@ -1,18 +1,30 @@
 include ../../components/head/head.pug
 include ../../components/header/header.pug
 include ../../components/footer/footer.pug
-
 doctype html
 html(lang = 'ru')
   block head
     block title
       title Layout
+  -
+    const headerLinks = [
+      {name: 'О нас'},
+      {name: 'Услуги', submenu: [{name: 'Ссылка 1'}, {name: 'Ссылка 2'}, {name: 'Ссылка 3'}]},
+      {name: 'Вакансии'},
+      {name: 'Новости'},
+      {name: 'Соглашения', submenu: [{name: 'Ссылка 4'}, {name: 'Ссылка 5'}, {name: 'Ссылка 6'}]},
+    ]
+    const footerLinks = [
+      {name: 'навигация', items: ['О нас', 'Новости', 'Служба поддержки', 'Услуги']},
+      {name: 'О нас', items: ['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы']},
+      {name: 'служба поддержки', items: ['Соглашения', 'Сообщества', 'Связь с нами']},
+    ]
   body
-    +header({authorized: false})
+    +header({menu: headerLinks, authorized: false})
     block content
       main
     div(class = 'delimiter')
-    +footer()
+    +footer({menu: footerLinks})
 
 
 
