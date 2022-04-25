@@ -4,18 +4,17 @@
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  max-width: 380px;
-  padding-left: 28px;
-  padding-right: 28px;
-  padding-top: 39px;
+  width: 380px;
+  height: 512px;
+  padding: 30px;
 
   &__details {
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
   }
 
   &__details-room {
-    margin-top: 2px;
   }
 
   &__detail-mark {
@@ -35,7 +34,7 @@
   }
 
   &__details-price {
-    margin-top: 8px;
+    margin-top: 6px;
   }
 
   &__detail-price {
@@ -62,9 +61,10 @@
   }
 
   &__guests {
-    margin-top: 21px;
+    margin-top: 20px;
   }
   &__price-breakdown {
+    margin-top: 20px;
     @include font-body;
     line-height: 21px;
   }
@@ -72,13 +72,15 @@
     display: flex;
     justify-content: space-between;
     &:first-of-type {
-      margin-top: 20px;
     }
     margin-bottom: 13px;
   }
   &__price-detail {
     &:first-child {
-      max-width: 216px;
+    //  border: 1px solid red;
+      position: relative;
+      box-sizing: border-box;
+      width: 216px;
     }
     flex-grow: 0;
     flex-shrink: 0;
@@ -96,16 +98,17 @@
   }
 
   &__price-detail-info {
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
-  &__price-detail-info {
-    padding-left: 5px;
+    position: absolute;
+  //  border: 1px solid blue;
     cursor: pointer;
+    top: 0;
+    right: -25px;
+
   }
 
+
   &__price-total {
-    margin-top: 28px;
+    margin-top: 25px;
     display: flex;
     justify-content: space-between;
     @include font-h2;
@@ -114,17 +117,12 @@
     flex-grow: 1;
     flex-shrink: 1;
     border-bottom: 1px dashed $colorDarkShade25;
-    align-self: center;
-    padding-top: 14px;
+    margin-bottom: 5px;
+
+
   }
   &__booking {
-    margin-top: 21px;
-    margin-bottom: 30px;
-  }
-
-  @include media-breakpoint-down($xxs) {
-    padding-right: 10px;
-    padding-left: 25px;
+    margin-top: 20px;
   }
 }
 
