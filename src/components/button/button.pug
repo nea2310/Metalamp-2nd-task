@@ -1,4 +1,4 @@
-mixin button(options = {text = '', type = '', length = '', width = '', color = '', href = ''} = {})
+mixin button({text = '', type = '', length = '', width = '', color = '', href = ''} = {})
   -
     const elementName = 'button'
   case type
@@ -8,10 +8,10 @@ mixin button(options = {text = '', type = '', length = '', width = '', color = '
     when 'submit'
       button(class = elementName + ' ' + elementName + '_length_' + length + ' ' + 
       elementName + '_width_' + width + ' ' + elementName + '_color_' + color type = 'submit')= text
-        if options.image
+        if image
           image(class = elementName+'__image', src = require('@com/button/image/arrow-forward-white.svg'))
     when 'link'
       a(class = elementName + ' ' + elementName + '_length_' + length + ' ' + 
-      elementName + '_width_' + width + ' ' + elementName + '_color_' + color href = options.href)= text
+      elementName + '_width_' + width + ' ' + elementName + '_color_' + color href = href)= text
     when 'plain-text'
       button(class = elementName + ' ' + elementName + '_type_plain-text' type = 'button')= text
