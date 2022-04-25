@@ -1,11 +1,12 @@
 .cards {
   width: 100%;
   max-width: 1440px;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   background-color: #f4f4f6;
+  padding-bottom: 20px;
   &__search-column {
     @include media-breakpoint-down($md) {
       margin: 0 auto;
@@ -43,11 +44,18 @@
       padding: 0;
     }
   }
+  &__date-dropdown {
+    margin-top: 146px;
+    @include media-breakpoint-down($md) {
+      margin: 0;
+      padding: 0;
+    }
+  }
 
   &__room-card {
     margin-right: 213px;
-    &:first-child {
-      margin-top: 558px;
+    &:nth-child(2) {
+      margin-top: 364px;
       @include media-breakpoint-down($md) {
         margin: 0;
         padding: 0;

@@ -25,9 +25,8 @@
 
     @include media-breakpoint-down($md) {
       width: 100%;
-      margin: 0 20px;
+      margin: 0 20px 0 40px;
       display: flex;
-      justify-content: space-around;
       align-items: center;
       background-color: $colorWhite;
     }
@@ -120,6 +119,7 @@
       left: 50%;
     }
     @include media-breakpoint-down($xs) {
+      padding-left: 0;
       margin-bottom: 20px;
     }
   }
@@ -147,12 +147,12 @@
   }
   &__button-reg {
     padding-left: 20px;
-    @include media-breakpoint-down($xxs) {
-      padding: 0;
+    @include media-breakpoint-down($xs) {
+      padding-left: 0;
     }
-    @include media-breakpoint-down($xxs) {
-      padding-top: 20px;
-    }
+    // @include media-breakpoint-down($xxs) {
+    //   padding-top: 20px;
+    // }
   }
   &__profile {
     border-left: 1px solid rgba(31, 32, 65, 0.1);

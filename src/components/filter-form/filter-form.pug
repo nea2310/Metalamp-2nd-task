@@ -44,11 +44,12 @@ mixin filter-form()
       div(class = elementName + '__house-rules-wrapper')
         +checklist(
           {categories:
-            {category1: {name:'Можно курить'}, 
-            category2:{name:'Можно с питомцами'}, 
-            category3:{name:'Можно пригласить гостей (до 10 человек)'}},
-            expand: false, 
-          labelText: 'правила дома'}
+            [{name:'Можно курить'}, 
+            {name:'Можно с питомцами'}, 
+            {name:'Можно пригласить гостей (до 10 человек)'}],
+          expand: false,
+          rich: false, 
+          labelText: 'checkbox buttons'}
           )
       div(class = elementName + '__accessability-wrapper')
         +checklist(
@@ -69,18 +70,6 @@ mixin filter-form()
           placeholder: 'Сколько комнат',
           labelText: 'удобства номера',
           width: 'narrow'}
-          )
-      div(class = elementName + '__facilities-adv-wrapper')
-        +checklist(
-          {categories:
-            [{name:'Завтрак'}, 
-            {name:'Письменный стол'}, 
-            {name:'Стул для кормления'}, 
-            {name:'Кроватка'}, 
-            {name:'Телевизор'}, 
-            {name:'Шампунь'}],
-          expand: true, 
-          labelText: 'дополнительные удобства',}
           )
 
 

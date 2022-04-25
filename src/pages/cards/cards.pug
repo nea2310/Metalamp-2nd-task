@@ -6,6 +6,7 @@ include ../../components/registration/registration.pug
 include ../../components/booking/booking.pug
 include ../../components/login/login.pug
 include ../../components/room-card/room-card.pug
+include ../../components/date-dropdown/date-dropdown.pug
 
 block title
   title Cards
@@ -31,6 +32,10 @@ block content
       div(class='cards__login')
         +login()
     div(class='cards__search-column cards__search-column-right')
+      div(class='cards__date-dropdown')
+        +date-dropdown({
+          width:'wide',
+          type:'dateDropDown'})
       div(class='cards__room-card')
         +room-card({
           roomNumber: '888',
