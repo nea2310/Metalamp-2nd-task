@@ -28,10 +28,12 @@
   }
 
   &__title {
+    display: flex;
     @include font-h1;
     margin-bottom: 20px;
     text-align: center;
     @include media-breakpoint-down($md) {
+      display: block;
       font-size: 1.25rem;
     }
 

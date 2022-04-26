@@ -1,6 +1,6 @@
 include ../rate-button/rate-button.pug
 
-mixin room-card({roomNumber, roomPrice, feedbackAmount, ratingName} = {})
+mixin room-card({roomNumber = '', roomPrice = '', feedbackAmount = '', ratingName = ''} = {})
   -
     const elemName = 'room-card'
   div(class = elemName + ' js-' + elemName)

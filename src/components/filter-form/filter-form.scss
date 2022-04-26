@@ -31,8 +31,8 @@
       grid-template-areas:
         "calendar guests price-filter"
         "calendar guests price-filter"
-        "house-rules facilities facilities-adv"
-        "accessability facilities facilities-adv";
+        "calendar facilities price-filter"
+        "accessability facilities house-rules";
     }
     @include media-breakpoint-down($md) {
       height: 250px;
@@ -40,10 +40,10 @@
       grid-template-columns: auto auto;
       grid-template-areas:
         "calendar guests"
-        "price-filter house-rules"
-        "price-filter accessability"
+        "calendar facilities"
         "price-filter facilities"
-        "facilities-adv facilities-adv";
+        "price-filter accessability"
+        "price-filter house-rules";
     }
 
     @include media-breakpoint-down($xs) {
@@ -128,7 +128,7 @@
   }
   &__accessability-wrapper {
     box-sizing: border-box;
-    margin-bottom: 150px;
+    margin-bottom: 160px;
     @include media-breakpoint-down($lg) {
       grid-area: accessability;
     }
