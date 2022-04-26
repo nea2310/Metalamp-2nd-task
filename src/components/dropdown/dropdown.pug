@@ -7,31 +7,31 @@ mixin dropdown({categories = [], type = '', placeholder = '', buttons = false, l
     const plus = '+'
     const inputWidth = `_width_${width}`
     const inputStyle = type=='dropDownRooms' ? '_not-rounded' : '_rounded'
-  div(class = elementName + ' js-' + elementName + ' ' + elementName + inputWidth)
-    div(class = elementName + '__input-wrapper ')
-      label(class = elementName + '__label')
+  div(class = `${elementName} js-${elementName} ${elementName}${inputWidth}`)
+    div(class = `${elementName}__input-wrapper`)
+      label(class = `${elementName}__label`)
         if labelText
-          p(class = elementName + '__label-text')=labelText
-        image(class = elementName + '__image ' + 'js-' + elementName + '__image ' + elementName + '__image_collapsed', src = require('@com/dropdown/image/expand-more.svg')  alt = 'раскрывающийся список')
-        input(class = elementName + '__input ' + 'js-' + elementName + '__input ' + elementName + '__input_collapsed ' + elementName + '__input' + inputStyle readonly = true, value = '' placeholder = placeholder)
-    div(class = elementName + '__list-wrapper ' + 'js-' + elementName + '__list-wrapper ' + elementName + '__list-wrapper_hidden')
-      ul(class = elementName + '__list')
+          p(class = `${elementName}__label-text`)=labelText
+        image(class = `${elementName}__image js-${elementName}__image ${elementName}__image_collapsed` src = require('@com/dropdown/image/expand-more.svg')  alt = 'раскрывающийся список')
+        input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_collapsed ${elementName}__input${inputStyle}` readonly = true value = '' placeholder = placeholder)
+    div(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper ${elementName}__list-wrapper_hidden`)
+      ul(class = `${elementName}__list`)
         if categories.length
           each value in categories
-            li(class = elementName + '__category-wrapper ' + 'js-' +  elementName + '__category-wrapper')
-              p(class = elementName + '__category ' + 'js-' + elementName + '__category' data-type = value.type data-declensions = value.declensions)= value.displayName
-              div(class = elementName + '__count-wrapper')
-                button(class = elementName + '__count-decrement ' + 'js-' + elementName + '__count-decrement' data-min = value.minCount type = 'button' aria-label = 'уменьшить количество')= minus
-                span(class = elementName + '__count-value ' + 'js-' + elementName + '__count-value')=value.defaultCount
-                button(class = elementName + '__count-increment ' + 'js-' + elementName + '__count-increment' data-max = value.maxCount type = 'button' aria-label = 'увеличить количество')= plus
+            li(class = `${elementName}__category-wrapper js-${elementName}__category-wrapper`)
+              p(class = `${elementName}__category js-${elementName}__category` data-type = value.type data-declensions = value.declensions)= value.displayName
+              div(class = `${elementName}__count-wrapper`)
+                button(class = `${elementName}__count-decrement js-${elementName}__count-decrement` data-min = value.minCount type = 'button' aria-label = 'уменьшить количество')= minus
+                span(class = `${elementName}__count-value js-${elementName}__count-value`)=value.defaultCount
+                button(class = `${elementName}__count-increment js-${elementName}__count-increment` data-max = value.maxCount type = 'button' aria-label = 'увеличить количество')= plus
       if (buttons)
-        div(class = elementName+'__buttons')
-          div(class = elementName + '__button-clear ' + 'js-' + elementName + '__button-clear')
+        div(class = `${elementName}__buttons`)
+          div(class = `${elementName}__button-clear js-${elementName}__button-clear`)
             +button(
               {text: 'очистить',
               type: 'plain-text'}
               )
-          div(class = elementName + '__button-apply ' + 'js-' + elementName + '__button-apply')
+          div(class = `${elementName}__button-apply js-${elementName}__button-apply`)
             +button(
               {text: 'применить',
               type: 'plain-text'}

@@ -3,28 +3,28 @@ include ../button/button.pug
 mixin header({menu = [], authorized = false} = {})
   -
     const elementName = 'header'
-  header(class = elementName + ' js-' + elementName)
-    button(class = elementName + '__burger-button' + ' js-' + elementName + '__burger-button' aria-label = 'навигация')
-      span(class = elementName + '__burger')
-    div(class = elementName + '__wrapper')
-      a(class = elementName + '__logo' href = 'index.html')
-        image(class = elementName + '__logo-image' src = require('@com/header/image/logo-purple.svg') alt = 'на главную')
-      nav(class = elementName + '__nav-level1' + ' js-' + elementName + '__nav-level1') 
-        ul(class = elementName + '__nav-level1-items')
+  header(class = `${elementName} js-${elementName}`)
+    button(class = `${elementName}__burger-button js- + ${elementName}__burger-button` aria-label = 'навигация')
+      span(class = `${elementName}__burger`)
+    div(class = `${elementName}__wrapper`)
+      a(class = `${elementName}__logo` href = 'index.html')
+        image(class = `${elementName}__logo-image` src = require('@com/header/image/logo-purple.svg') alt = 'на главную')
+      nav(class = `${elementName}__nav-level1 js-${elementName}__nav-level1`) 
+        ul(class = `${elementName}__nav-level1-items`)
           if menu.length
             each value in menu
-              li(class = elementName + '__nav-level1-item')
-                a(class = elementName + '__nav-level1-item-link' href = 'https://test/test')=value.name
-                  if value.submenu
-                    image(class = elementName + '__nav-level1-item-image' + ' js-' + elementName + '__nav-level1-item-image' src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
-                    ul(class = elementName + '__nav-level2' + ' js-' + elementName + '__nav-level2')
-                      if value.submenu.length
-                        each subvalue in value.submenu
-                          li(class = elementName + '__nav-level2-item') 
-                            a(class = elementName + '__nav-level2-item-link' href = 'https://test/test')=subvalue.name
-      div(class = elementName + '__auth') 
+              li(class = `${elementName}__nav-level1-item`)
+                a(class = `${elementName}__nav-level1-item-link` href = 'https://test/test')=value.name
+                  if value.subMenu
+                    image(class = `${elementName}__nav-level1-item-image js-${elementName}__nav-level1-item-image` src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
+                    ul(class = `${elementName}__nav-level2 js-${elementName}__nav-level2`)
+                      if value.subMenu.length
+                        each subValue in value.subMenu
+                          li(class = `${elementName}__nav-level2-item`) 
+                            a(class = `${elementName}__nav-level2-item-link` href = 'https://test/test')=subValue.name
+      div(class = `${elementName}__auth`) 
         if (!authorized)
-          div(class = elementName + '__button-login') 
+          div(class = `${elementName}__button-login`) 
             +button(
               {text: 'войти',
               type: 'link',
@@ -33,7 +33,7 @@ mixin header({menu = [], authorized = false} = {})
               color: 'light',
               href: 'https://test/test'}
               )
-          div(class = elementName + '__button-reg') 
+          div(class = `${elementName}__button-reg`) 
             +button(
               {text: 'зарегистрироваться',
               type: 'link',
@@ -43,5 +43,5 @@ mixin header({menu = [], authorized = false} = {})
               href: 'https://test/test'}
               )
         else
-          div(class = elementName + '__profile') 
-            a(class = elementName + '__profile-name' href = 'https://test/test')  Юлий Цезарь
+          div(class = `${elementName}__profile`) 
+            a(class = `${elementName}__profile-name` href = 'https://test/test')  Юлий Цезарь

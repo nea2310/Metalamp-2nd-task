@@ -2,28 +2,29 @@ include ../input-field/input-field.pug
 
 mixin footer({menu = []} = {})
   -
-    let elementName = 'footer'
+    const elementName = 'footer'
     const social = ['twitter', 'facebook', 'instagram']
   footer(class = elementName role = 'contentinfo')
-    div(class = elementName + '__wrapper-top')
-      ul(class = elementName + '__items')
-        a(class = elementName + '__logo' href = 'https://test/test')
-          image(class = elementName + '__logo-image' src = require('@com/footer/image/logo-purple.svg') alt = 'на главную')
-        li(class = elementName + '__item')
-          p(class = elementName + '__long-text') Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+    div(class = `${elementName}__wrapper-top`)
+      ul(class = `${elementName}__items`)
+        a(class = `${elementName}__logo` href = 'https://test/test')
+          image(class = `${elementName}__logo-image`
+            src = require('@com/footer/image/logo-purple.svg') alt = 'на главную')
+        li(class = `${elementName}__item`)
+          p(class = `${elementName}__long-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
       if menu.length
         each value in menu
-          ul(class = elementName + '__items')
-            lh(class = elementName + '__items-header')=value.name
+          ul(class = `${elementName}__items`)
+            lh(class = `${elementName}__items-header`)= value.name
               if value.items.length
-                each val in value.items
-                  li(class = elementName + '__item')
-                    a(class = elementName + '__item-link' href = 'https://test/test')=val
-      ul(class = elementName + '__items')
-        lh(class = elementName + '__items-header') подписка
-        li(class = elementName + '__item')
-          p(class = elementName + '__long-text') Получайте специальные предложения и новости сервиса
-        li(class = elementName + '__item')
+                each subValue in value.items
+                  li(class = `${elementName}__item`)
+                    a(class = `${elementName}__item-link` href = 'https://test/test')= subValue
+      ul(class = `${elementName}__items`)
+        lh(class = `${elementName}__items-header`) подписка
+        li(class = `${elementName}__item`)
+          p(class = `${elementName}__long-text`) Получайте специальные предложения и новости сервиса
+        li(class = `${elementName}__item`)
           +input(
             {width: 'medium-narrow',
             placeholder: 'Email',
@@ -32,11 +33,11 @@ mixin footer({menu = []} = {})
             name: 'оформить подписку',
             }
             )
-    div(class = elementName + '__wrapper-middle')
-    div(class = elementName + '__wrapper-bottom')
-      div(class = elementName + '__copyright')
-        p(class = elementName + '__long-text') Copyright © 2018 Toxin отель. Все права защищены.
-      div(class = elementName + '__social-links')
+    div(class = `${elementName}__wrapper-middle`)
+    div(class = `${elementName}__wrapper-bottom`)
+      div(class = `${elementName}__copyright`)
+        p(class = `${elementName}__long-text`) Copyright © 2018 Toxin отель. Все права защищены.
+      div(class = `${elementName}__social-links`)
         each value in social
           a(class = `${elementName}__social-link-${value}` href = 'https://test/test')
             image(class = `${elementName}__social-link-${value}-image` src = require(`@com/footer/image/${value}.svg`) alt = `${value} link`)

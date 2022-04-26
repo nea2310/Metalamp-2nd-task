@@ -6,55 +6,55 @@ include ../button/button.pug
 mixin registration()
   -
     const elementName = 'registration'
-  div(class = elementName + ' js-' + elementName)
-    form(class = elementName + '__registration-form' + ' js-' + elementName + '__registration-form')
-      h1(class = elementName + '__header') Регистрация аккаунта
-      fieldset(class = elementName + '__name-surname')
-        div(class = elementName + '__name')
+  div(class = `${elementName} js-${elementName}`)
+    form(class = `${elementName}__registration-form js-${elementName}__registration-form`)
+      h1(class = `${elementName}__header`) Регистрация аккаунта
+      fieldset(class = `${elementName}__name-surname`)
+        div(class = `${elementName}__name`)
           +input(
             {width: 'wide',
             placeholder: 'имя'
             } 
             )
-        div(class = elementName + '__surname')
+        div(class = `${elementName}__surname`)
           +input(
             {width: 'wide',
             placeholder: 'фамилия',
 } 
   )
-    div(class = elementName + '__radiobuttons')
+    div(class = `${elementName}__radiobuttons`)
       +radiobuttons({categories:
         [{name:'Мужчина', checked: true}, 
         {name:'Женщина'}],
         radioGroupName: 'gender'})
-    div(class = elementName + '__birth-date')
+    div(class = `${elementName}__birth-date`)
       +input(
         {width: 'wide',
         placeholder: 'ДД.ММ.ГГГГ',
         js:' js-masked js-date',
         labelText: 'дата рождения'} 
         )
-    fieldset(class = elementName + '__credentials') 
-      legend(class = elementName + '__credentials-legend')  данные для входа в сервис
-      div(class = elementName + '__email')
+    fieldset(class = `${elementName}__credentials`) 
+      legend(class = `${elementName}__credentials-legend`)  данные для входа в сервис
+      div(class = `${elementName}__email`)
         +input(
           {width: 'wide',
           placeholder: 'Email',
           js:'js-check-email',
           } 
           )
-      div(class = elementName + '__password')
+      div(class = `${elementName}__password`)
         +input(
           {width: 'wide',
           placeholder: 'Пароль',
           type: 'password',
           } 
           )
-    div(class = elementName + '__special-offer')
+    div(class = `${elementName}__special-offer`)
       +toggle(
         {name: 'Получать спецпредложения'}
         )
-    div(class = elementName + '__search')
+    div(class = `${elementName}__search`)
       +button(
         {text: 'перейти к оплате',
         type: 'submit',
@@ -63,8 +63,8 @@ mixin registration()
         color: 'dark',
         image: true}
         )
-    div(class = elementName + '__go-to-login' role='region' aria-label = 'Уже есть аккаунт на Toxin')
-      p(class = elementName + '__go-to-login-legend' ) Уже есть аккаунт на Toxin
+    div(class = `${elementName}__go-to-login` role='region' aria-label = 'Уже есть аккаунт на Toxin')
+      p(class = `${elementName}__go-to-login-legend` ) Уже есть аккаунт на Toxin
       +button(
         {text: 'войти',
         type: 'link',

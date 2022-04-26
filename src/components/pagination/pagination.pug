@@ -1,13 +1,13 @@
 mixin pagination()
   -
-    let elementName='pagination'
+    const elementName='pagination'
   fieldset(class = elementName aria-label = 'pagination')
-    div(class = elementName + '__pages')
-      a(class = elementName + '__element' + ' ' + elementName + '__element-first-last-page' href = '1') 1
-      a(class = elementName + '__element' + ' ' + elementName + '__element-page' href = '2') 2
-      a(class = elementName + '__element' + ' ' + elementName + '__element-page' href = '3') 3
-      span(class = elementName + '__element' + ' ' + elementName + '__hidden-page'  href = 'скрытые номера страниц') ...
-      a(class = elementName + '__element' + ' ' + elementName + '__element-page' href = '15') 15
-      a(class = elementName + '__element' + ' ' + elementName + '__element-next-previous' href = 'https://test/test')
+    div(class = `${elementName}__pages`)
+      a(class = `${elementName}__element ${elementName}__element-first-last-page` href = '1') 1
+      a(class = `${elementName}__element ${elementName}__element-page` href = '2') 2
+      a(class = `${elementName}__element ${elementName}__element-page` href = '3') 3
+      span(class = `${elementName}__element ${elementName}__hidden-page`  href = 'скрытые номера страниц') ...
+      a(class = `${elementName}__element ${elementName}__element-page` href = '15') 15
+      a(class = `${elementName}__element ${elementName}__element-next-previous` href = 'https://test/test')
         image(src = require('@com/pagination/image/arrow-forward-white.svg') alt = 'вперед')
-    p(class = elementName + '__label') 1 - 12 из 100+ вариантов аренды
+    p(class = `${elementName}__label`) 1 - 12 из 100+ вариантов аренды

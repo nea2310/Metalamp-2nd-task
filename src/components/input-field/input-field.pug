@@ -1,11 +1,11 @@
 mixin input({width = '', placeholder = '', labelText = '', image = false, name = '', js = ''} ={})
   -
     const elementName = 'input-field'
-  div(class = elementName +' ' + elementName + '_width_' + width)
-    label(class = elementName+'__label')
+  div(class = `${elementName} ${elementName}_width_${width}`)
+    label(class = `${elementName}__label`)
       if labelText
-        p(class = elementName+'__label-text')= labelText
+        p(class = `${elementName}__label-text`)= labelText
       if image
-        button(class = elementName+'__link' aria-label = name)
-          image(class = elementName+'__image', src = require('@com/input-field/image/arrow-forward.svg'))
-      input(class = elementName + '__input ' + js placeholder = placeholder type = inputType value = '')
+        button(class = `${elementName}__link` aria-label = name)
+          image(class = `${elementName}__image`, src = require('@com/input-field/image/arrow-forward.svg'))
+      input(class = `${elementName}__input ${js}` placeholder = placeholder type = inputType value = '')

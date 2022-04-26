@@ -1,9 +1,10 @@
 mixin like-button({labelText = ''} = {})
   -
-    let elementName='like-button'
-  div(class = elementName + ' js-' + elementName)
+    const elementName = 'like-button'
+  div(class = `${elementName} js-${elementName}`)
     if labelText
-      p(class = elementName+'__label-text')= labelText
-    button(class = elementName + '__button' + ' js-' + elementName + '__button')
-      image(class = elementName + '__image' + ' js-' + elementName + '__image' src = require('@com/like-button/image/favorite-border.svg') alt = 'мне нравится')
-      span(class = elementName + '__counter' + ' js-' + elementName + '__counter') 2
+      p(class = `${elementName}__label-text`)= labelText
+    button(class = `${elementName}__button js-${elementName}__button`)
+      image(class = `${elementName}__image js-${elementName}__image`
+        src = require('@com/like-button/image/favorite-border.svg') alt = 'мне нравится')
+      span(class = `${elementName}__counter js-${elementName}__counter`) 2

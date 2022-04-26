@@ -5,28 +5,49 @@ include ../button/button.pug
 mixin search-room()
   -
     const elementName = 'search-room'
-  form(class = elementName + ' js-' + elementName)
-    h1(class = elementName + '__header') Найдем номера под ваши пожелания
-    div(class = elementName + '__date-dropdown')
+  form(class = `${elementName} js-${elementName}`)
+    h1(class = `${elementName}__header`) Найдем номера под ваши пожелания
+    div(class = `${elementName}__date-dropdown`)
       +date-dropdown(
         {width:'wide',
         type:'dateDropDown',
         labelTextFrom: 'Прибытие',
         labelTextTo: 'Выезд'}
         )
-    div(class = elementName + '__guests')
+    div(class = `${elementName}__guests`)
       +dropdown(
         {categories:
-          [ {displayName: 'взрослые', type: 'гость', declensions: 'гость,гостя,гостей',  defaultCount: 0, minCount: 0, maxCount: 99}, 
-            {displayName: 'дети', type: 'гость', declensions: 'гость,гостя,гостей', defaultCount: 0, minCount: 0, maxCount: 99}, 
-            {displayName: 'младенцы', type: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}], 
+          [ {
+            displayName: 'взрослые',
+            type: 'гость',
+            declensions: 'гость,гостя,гостей',
+            defaultCount: 0,
+            minCount: 0,
+            maxCount: 99,
+            }, 
+            {
+            displayName: 'дети',
+            type: 'гость',
+            declensions: 'гость,гостя,гостей',
+            defaultCount: 0,
+            minCount: 0,
+            maxCount: 99,
+            }, 
+            {
+            displayName: 'младенцы',
+            type: 'младенец',
+            declensions: 'младенец,младенца,младенцев',
+            defaultCount: 0,
+            minCount: 0,
+            maxCount: 99,
+            }], 
         type: 'dropDownGuests',
         placeholder: 'Сколько гостей',
         buttons: true,
         labelText: 'гости',
         width: 'wide'}
         )
-    div(class = elementName + '__search')
+    div(class = `${elementName}__search`)
       +button(
         {text: 'подобрать номер',
         type: 'submit',

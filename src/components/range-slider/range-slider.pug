@@ -1,18 +1,16 @@
 mixin range-slider({labelText = '', text = '', sliderType = 0, min = 0, max = 0, step = 0, from = 0, to = 0, isMinMaxHidden = false, isFromToHidden = false} = {})
   -
-    let elementName = 'range-slider'
-  div(class = elementName + ' js-' + elementName)
-    div(class = elementName + '__wrapper')
-      div(class = elementName + '__title-wrapper')
+    const elementName = 'range-slider'
+  div(class = `${elementName} js-${elementName}`)
+    div(class = `${elementName}__wrapper`)
+      div(class = `${elementName}__title-wrapper`)
         if labelText
-          p(class = elementName + '__title')= labelText
-        div(class = elementName + '__price')
-          input(class = elementName + '__price-from')
-          span(class = elementName + '__price-delimiter') -
-          input(class = elementName + '__price-to')
-      input(class = elementName + '__slider' type = 'text' data-type = sliderType data-min = min data-max = max data-step = step data-from = from data-to = to data-hide-min-max = isMinMaxHidden data-hide-from-to = isFromToHidden)
-      P(class = elementName + '__text')= text
-
-
-
-
+          p(class = `${elementName}__title`)= labelText
+        div(class = `${elementName}__price`)
+          input(class = `${elementName}__price-from`)
+          span(class = `${elementName}__price-delimiter`) -
+          input(class = `${elementName}__price-to`)
+      input(class = `${elementName}__slider` type = 'text'
+        data-type = sliderType data-min = min data-max = max data-step = step 
+        data-from = from data-to = to data-hide-min-max = isMinMaxHidden data-hide-from-to = isFromToHidden)
+      P(class = `${elementName}__text`)= text

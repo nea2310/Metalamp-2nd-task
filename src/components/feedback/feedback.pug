@@ -4,12 +4,12 @@ mixin feedback({image = '', name = '', date = '', description = '', alt = ''} = 
   -
     const elementName ='feedback'
   div(class = elementName)
-    image(class = elementName+'__image' src = image alt = alt)
-    p(class = elementName + '__name')= name
-    p(class = elementName + '__date')= date
-    div(class = elementName + '__like')
+    image(class = `${elementName}__image` src = image alt = alt)
+    p(class = `${elementName}__name`)= name
+    p(class = `${elementName}__date`)= date
+    div(class = `${elementName}__like`)
       +like-button()
-    p(class = elementName + '__description')= description
+    p(class = `${elementName}__description`)= description
 
 
 
