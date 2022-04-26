@@ -159,6 +159,7 @@
         }
       }
       @include media-breakpoint-down($md) {
+        gap: 20px;
         display: flex;
         flex-wrap: wrap;
         padding-left: 20px;

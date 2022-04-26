@@ -3,4 +3,7 @@ footer {
 }
 .delimiter {
   border-top: 1px solid $colorDarkShade15;
+  @include media-breakpoint-down($md) {
+    display: none;
+  }
 }
