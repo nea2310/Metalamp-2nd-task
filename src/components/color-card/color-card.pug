@@ -1,0 +1,7 @@
+mixin color-card({color = '', name = '', code = ''} = {})
+  -
+    const elementName = "color-card"
+  div(class = elementName)
+    div(class = `${elementName}__color ${elementName}__color_${color}`)
+    div(class = `${elementName}__name`)= name
+    div(class = `${elementName}__code`)= code
