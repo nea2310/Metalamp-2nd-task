@@ -158,6 +158,12 @@
           }
         }
       }
+      @include media-breakpoint-down($md) {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
     &-bottom {
       display: grid;
@@ -186,6 +192,12 @@
             }
           }
         }
+      }
+      @include media-breakpoint-down($md) {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 20px;
+        padding-right: 20px;
       }
     }
   }
