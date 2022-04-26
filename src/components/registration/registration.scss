@@ -6,18 +6,15 @@
   border-radius: 4px;
   width: 380px;
   height: 646px;
- padding: 30px;
+  padding: 30px;
 
   &__header {
     margin-top: 10px;
     @include font-h1;
   }
-  &__name-surname{
+  &__name-surname {
     margin-top: 16px;
   }
-  // &__name {
-  //   margin-top: 0px;
-  // }
   &__surname {
     margin-top: 6px;
   }
@@ -33,10 +30,6 @@
   &__credentials-legend {
     @include font-h3;
   }
-  // &__email {
-  //   margin-top: 0px;
-  // }
-
   &__password {
     margin-top: 7px;
   }

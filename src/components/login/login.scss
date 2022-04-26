@@ -8,15 +8,12 @@
   width: 380px;
   height: 358px;
   &__header {
- margin-top: 10px;
+    margin-top: 10px;
     @include font-h1;
   }
   &__credentials {
     margin-top: 17px;
   }
-  // &__email {
-  //   margin-top: 0px;
-  // }
   &__password {
     margin-top: 5px;
   }

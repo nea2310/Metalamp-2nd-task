@@ -50,7 +50,6 @@
     outline: none;
     cursor: pointer;
     text-overflow: ellipsis;
-    //padding-right: 100px;
     &::placeholder {
       color: $colorDarkShade25;
     }
@@ -61,7 +60,6 @@
     border-top-right-radius: 5px;
     border: 1px solid $colorDarkShade25;
     margin-top: 5px;
-    //border: 1px solid blue;
     width: 100%;
     display: block;
     &:hover {

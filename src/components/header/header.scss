@@ -150,9 +150,6 @@
     @include media-breakpoint-down($xs) {
       padding-left: 0;
     }
-    // @include media-breakpoint-down($xxs) {
-    //   padding-top: 20px;
-    // }
   }
   &__profile {
     border-left: 1px solid rgba(31, 32, 65, 0.1);
