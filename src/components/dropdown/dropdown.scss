@@ -31,6 +31,7 @@
   }
 
   &__image {
+    cursor: pointer;
     position: absolute;
     bottom: 17px;
     right: 16px;
@@ -107,6 +108,7 @@
   }
   &__count-increment,
   &__count-decrement {
+    cursor: pointer;
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -114,6 +116,7 @@
     border: 1px solid $colorDarkShade50;
     color: $colorDarkShade50;
     &[disabled] {
+      cursor: initial;
       border: 1px solid $colorDarkShade25;
       color: $colorDarkShade25;
     }

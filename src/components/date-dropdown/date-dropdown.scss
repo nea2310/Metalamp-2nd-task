@@ -42,6 +42,7 @@
     flex-direction: column;
   }
   &__image {
+    cursor: pointer;
     position: absolute;
     bottom: 18px;
     right: 16px;
@@ -60,6 +61,7 @@
     padding-left: 20px;
   }
   &__input {
+    cursor: pointer;
     outline: none;
     &::placeholder {
       color: $colorDarkShade75;
@@ -93,6 +95,7 @@
       padding: 4px 24px 4px 24px;
       min-height: 51px;
       &--title {
+        cursor: inherit;
         font-family: "Montserrat", Arial, Helvetica, sans-serif;
         font-weight: bold;
         font-size: 19px;
@@ -101,13 +104,16 @@
         i {
           color: $colorDarkShade100;
         }
-      }
-      &--action{
-        &[data-action='prev']{
-          background: url('./image/arrow-back.svg') center no-repeat;
+        &:hover {
+          background: none;
         }
-        &[data-action='next']{
-          background: url('./image/arrow-forward.svg') center no-repeat;
+      }
+      &--action {
+        &[data-action="prev"] {
+          background: url("./image/arrow-back.svg") center no-repeat;
+        }
+        &[data-action="next"] {
+          background: url("./image/arrow-forward.svg") center no-repeat;
         }
       }
     }
@@ -192,6 +198,9 @@
         position: relative;
         border-radius: 50%;
         background: $gradientPurple;
+        &.-disabled- {
+          background: none;
+        }
       }
 
       &.-selected- {
