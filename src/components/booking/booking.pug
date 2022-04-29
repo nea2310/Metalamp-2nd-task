@@ -74,7 +74,7 @@ mixin booking({roomNumber = '', isLux = '', roomPrice = '', daysAmount = '', tot
         div(class = `${elementName}__price-name`) Итого
         div(class = `${elementName}__price-total-filling`) 
         div(class = `${elementName}__price-cost`)= `${totalAmount} ₽`
-    div(class = `${elementName}__booking`)
+    div(class = `${elementName}__book-button`)
       +button(
         {text: 'забронировать',
         type: 'submit',
