@@ -55,7 +55,8 @@
     }
     @include font-body;
     height: 44px;
-    text-indent: 12px;
+    padding-left: 12px;
+    padding-right: 90px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: 1px solid $colorDarkShade25;
