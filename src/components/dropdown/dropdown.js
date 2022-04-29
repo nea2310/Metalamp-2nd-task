@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-console */
 import './dropdown.scss';
 
 class DropDown {
@@ -7,6 +9,8 @@ class DropDown {
     this._handleDropDownClickCounter = this._handleDropDownClickCounter.bind(this);
     this._handleDropDownMousedownInput = this._handleDropDownMousedownInput.bind(this);
     this._handleDropDownMouseupInput = this._handleDropDownMouseupInput.bind(this);
+    this._handleDropDownMousedownTip = this._handleDropDownMousedownTip.bind(this);
+    this._handleDropDownMouseupTip = this._handleDropDownMouseupTip.bind(this);
     this._handleDropDownFocusInput = this._handleDropDownFocusInput.bind(this);
     this._handleDropDownClickWrapper = this._handleDropDownClickWrapper.bind(this);
     this._handleDropDownClickDoc = this._handleDropDownClickDoc.bind(this);
@@ -89,6 +93,10 @@ class DropDown {
     this.input.addEventListener('mousedown', this._handleDropDownMousedownInput);
     this.input.addEventListener('mouseup', this._handleDropDownMouseupInput);
 
+    // клик по уголку
+    this.tip.addEventListener('mousedown', this._handleDropDownMousedownInput);
+    this.tip.addEventListener('mouseup', this._handleDropDownMouseupInput);
+
     // фокус на инпут
     this.input.addEventListener('focus', this._handleDropDownFocusInput);
 
@@ -150,13 +158,30 @@ class DropDown {
     this._updateCounterList(text, editedCounter);
   }
 
-  _handleDropDownMousedownInput() {
+  _handleDropDownMousedownInput(e) {
+    if (e.target.classList.contains('js-dropdown__image')) {
+      e.preventDefault();
+    }
+    console.log('_handleDropDownMousedownInput');
+    console.log(e.target);
     this.mouseDown = true;
   }
 
-  _handleDropDownMouseupInput() {
+  _handleDropDownMouseupInput(e) {
+    if (e.target.classList.contains('js-dropdown__image')) {
+      e.preventDefault();
+    }
     this._toggle(true);
     this.mouseDown = false;
+  }
+
+  _handleDropDownMousedownTip() {
+    return true;
+  }
+
+  _handleDropDownMouseupTip() {
+    this._toggle(true);
+    this.mouseDown = true;
   }
 
   _handleDropDownFocusInput() {
