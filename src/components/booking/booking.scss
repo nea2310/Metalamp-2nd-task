@@ -40,12 +40,6 @@
     color: $colorDarkShade50;
   }
 
-  &__detail-price-currency {
-    @include font-body;
-    font-weight: bold;
-    color: $colorDarkShade50;
-  }
-
   &__detail-label {
     @include font-body;
     font-size: 12px;
@@ -69,41 +63,19 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 13px;
+    position: relative;
   }
-  &__price-detail {
-    &:first-child {
-      position: relative;
-      box-sizing: border-box;
-      width: 216px;
-    }
-    flex-grow: 0;
-    flex-shrink: 0;
+  &__price-name {
+    max-width: 220px;
   }
 
-  &__price-detail-days-amount {
-    padding-left: 5px;
-  }
-  &__price-detail-day {
-    padding-left: 5px;
-  }
-
-  &__price-detail-sale-value {
-    padding-left: 5px;
-  }
-
-  &__price-detail-info {
+  &__price-info {
     position: absolute;
     cursor: pointer;
     top: 0;
-    right: -25px;
+    left: 220px;
   }
 
-  &__price-total {
-    margin-top: 25px;
-    display: flex;
-    justify-content: space-between;
-    @include font-h2;
-  }
   &__price-total-filling {
     flex-grow: 1;
     flex-shrink: 1;
