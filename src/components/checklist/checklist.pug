@@ -8,7 +8,7 @@ mixin checklist({categories = [], expand = false, rich = false, labelText = ''} 
     const nameStyle = rich == true ? `${elementName}__category-name_rich` : ''
   fieldset(class = `${elementName} js-${elementName} ${style}`)
     p(class = `${elementName}__label js-${elementName}__label ${labelStyle}` tabindex = 0)=labelText
-      image(class = `${elementName}'__image js-${elementName}__image ${elementName}__image_collapsed ${tipStyle}` 
+      image(class = `${elementName}__image js-${elementName}__image ${elementName}__image_collapsed ${tipStyle}` 
         src = require('@com/checklist/image/expand-more.svg') alt = 'развернуть')
     ul(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper ${listStyle}`)
       if categories.length
