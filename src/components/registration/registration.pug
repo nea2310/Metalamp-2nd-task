@@ -13,13 +13,15 @@ mixin registration()
         div(class = `${elementName}__name`)
           +input(
             {width: 'wide',
-            placeholder: 'имя'
+            placeholder: 'имя',
+            inputType: 'text',
             } 
             )
         div(class = `${elementName}__surname`)
           +input(
             {width: 'wide',
             placeholder: 'фамилия',
+            inputType: 'text',
 } 
   )
     div(class = `${elementName}__radiobuttons`)
@@ -32,7 +34,9 @@ mixin registration()
         {width: 'wide',
         placeholder: 'ДД.ММ.ГГГГ',
         js:' js-masked js-date',
-        labelText: 'дата рождения'} 
+        labelText: 'дата рождения',
+        inputType: 'date',
+        } 
         )
     fieldset(class = `${elementName}__credentials`) 
       legend(class = `${elementName}__credentials-legend`)  данные для входа в сервис
@@ -41,13 +45,14 @@ mixin registration()
           {width: 'wide',
           placeholder: 'Email',
           js:'js-check-email',
+          inputType: 'email',
           } 
           )
       div(class = `${elementName}__password`)
         +input(
           {width: 'wide',
           placeholder: 'Пароль',
-          type: 'password',
+          inputType: 'password',
           } 
           )
     div(class = `${elementName}__special-offer`)

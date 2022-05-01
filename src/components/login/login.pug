@@ -13,13 +13,14 @@ mixin login()
             {width: 'wide',
             placeholder: 'Email',
             js:'js-check-email',
+            inputType: 'email',
             }
             )
         div(class = `${elementName}__password`)
           +input(
             {width: 'wide',
             placeholder: 'Пароль',
-            type: 'password',
+            inputType: 'password',
             } 
             )
       div(class = `${elementName}__login-button`)

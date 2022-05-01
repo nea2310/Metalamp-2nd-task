@@ -7,6 +7,7 @@ class InputMask {
     this.calendarSingle = !!this.input.classList.contains('js-calendar');
     this.calendarDouble = !!this.input.classList.contains('js-calendar-double');
     this.date = !!this.input.classList.contains('js-date');
+    this.inputType = this.input.getAttribute('type');
     this._handleInputMaskingInput = this._handleInputMaskingInput.bind(this);
     this._checkFormat = this._checkFormat.bind(this);
     this._addZero = this._addZero.bind(this);
@@ -231,11 +232,7 @@ class InputMask {
   }
 
   _checkBirthDate(e) {
-    if (e.target.value.length === 10) {
-      /* Проверка, что введенная дата попадает в диапазон dateMinusHundred и
-    dateMinusEighteen */
-      const a = e.target.value.split('.');
-      const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
+    const processDate = (dateSelected) => {
       const correctFormat = dateSelected < this.dateMinusHundred
         || dateSelected > this.dateMinusEighteen
         || InputMask.formatIncorrect(dateSelected);
@@ -244,14 +241,24 @@ class InputMask {
           } до ${this.dateMinusEighteenTxt}`);
         e.target.value = '';// в случае некорректного ввода - очищаем инпут
       }
+    };
+
+    if (e.target.value.length === 10 && this.inputType === 'text') {
+      /* Проверка, что введенная дата попадает в диапазон dateMinusHundred и
+    dateMinusEighteen */
+      const a = e.target.value.split('.');
+      const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
+      return processDate(dateSelected);
     }
+    if (e.target.value[0] !== '0' && this.inputType === 'date') {
+      const dateSelected = new Date(e.target.value);
+      return processDate(dateSelected);
+    }
+    return true;
   }
 
   _checkRangeSingle(e) {
-    if (e.target.value.length === 10) {
-      /* Проверка, что введенная дата попадает в диапазон dateCurrent и datePlusYear */
-      const a = e.target.value.split('.');
-      const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
+    const processDate = (dateSelected) => {
       const correctFormat = dateSelected < this.dateCurrent
         || dateSelected > this.datePlusYear
         || InputMask.formatIncorrect(dateSelected);
@@ -260,7 +267,18 @@ class InputMask {
         e.target.value = this.dateCurrentTxt;/* в случае некорректного ввода -
           устанавливаем текущую дату */
       }
+    };
+    if (e.target.value.length === 10 && this.inputType === 'text') {
+      /* Проверка, что введенная дата попадает в диапазон dateCurrent и datePlusYear */
+      const a = e.target.value.split('.');
+      const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
+      return processDate(dateSelected);
     }
+    if (e.target.value[0] !== '0' && this.inputType === 'date') {
+      const dateSelected = new Date(e.target.value);
+      return processDate(dateSelected);
+    }
+    return true;
   }
 
   _checkRangeDouble(e) {

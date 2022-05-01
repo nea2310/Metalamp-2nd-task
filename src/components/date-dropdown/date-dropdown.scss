@@ -85,6 +85,19 @@
     &_width_wide {
       width: 266px;
     }
+    &::-webkit-datetime-edit-fields-wrapper {
+      font-family: "Montserrat", Arial, Helvetica, sans-serif;
+      color: $colorDarkShade75;
+      text-transform: uppercase;
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      -webkit-appearance: none;
+      display: none;
+    }
+    &[type="date"] {
+      text-indent: 6px;
+    }
   }
 
   .air-datepicker {

@@ -1,4 +1,4 @@
-mixin input({width = '', placeholder = '', labelText = '', image = false, name = '', js = ''} ={})
+mixin input({width = '', placeholder = '', labelText = '', image = false, name = '', js = '', inputType = 'text', inputMin = '', inputMax = ''} ={})
   -
     const elementName = 'input-field'
   div(class = `${elementName} ${elementName}_width_${width}`)
@@ -8,4 +8,4 @@ mixin input({width = '', placeholder = '', labelText = '', image = false, name =
       if image
         button(class = `${elementName}__link` aria-label = name)
           image(class = `${elementName}__image`, src = require('@com/input-field/image/arrow-forward.svg'))
-      input(class = `${elementName}__input ${js}` placeholder = placeholder type = inputType value = '')
+      input(class = `${elementName}__input ${js}` placeholder = placeholder type = inputType min = inputMin max = inputMax )

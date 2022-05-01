@@ -15,7 +15,8 @@ class DatePicker {
     this._handleDateDropDownClickDate = this._handleDateDropDownClickDate.bind(this);
     this._handleDateDropDownClickDoc = this._handleDateDropDownClickDoc.bind(this);
     this._handleDateDropDownClickCalendar = this._handleDateDropDownClickCalendar.bind(this);
-    this._handleDateDropDownInputWrapper = this._handleDateDropDownInputWrapper.bind(this);
+    this._handleDateDropDownInputFilter = this._handleDateDropDownInputFilter.bind(this);
+    this._handleDateDropDownInputNoFilter = this._handleDateDropDownInputNoFilter.bind(this);
     this._handleDateDropDownBlurDate = this._handleDateDropDownBlurDate.bind(this);
     this._handleDateDropDownFocusDate = this._handleDateDropDownFocusDate.bind(this);
     this._handleDateDropDownResizeLoadWindow = this._handleDateDropDownResizeLoadWindow.bind(this);
@@ -29,18 +30,19 @@ class DatePicker {
   }
 
   _render() {
-    const a = this._getElements(['input-wrapper']);
-    this.isFilter = a.length === 1;
+    const inputs = this._getElements(['input-wrapper']);
+    this.isFilter = inputs.length === 1;
 
     if (!this.isFilter) {
       this.inputDateFrom = this._getElement('input_from');
       this.inputDateTo = this._getElement('input_to');
+      this.inputType = this.inputDateFrom.getAttribute('type');
     } else {
       this.inputDate = this._getElement('input_from-to');
       this.defaultDates = this.inputDate.value.split(',');
     }
     this.tips = this._getElements(['image']);
-    this.clWrapper = this._getElement('calendar-wrapper');
+    this.calendarWrapper = this._getElement('calendar-wrapper');
     this.buttonClear = this._getElement('button-clear');
     this.buttonApply = this._getElement('button-apply');
   }
@@ -48,7 +50,8 @@ class DatePicker {
   /* Выбор даты в календаре */
   _init() {
     const separator = this.isFilter ? ' - ' : ',';
-    this.myDatepicker = new AirDatepicker(this.clWrapper, {
+    this.myDatepicker = new AirDatepicker(this.calendarWrapper, {
+      dateFormat: 'yyyy-MM-dd',
       disableNavWhenOutOfRange: false,
       altField: this.inputDate,
       altFieldDateFormat: 'dd MMM',
@@ -102,9 +105,14 @@ class DatePicker {
       this.inputDate.addEventListener('focus', this._handleDateDropDownFocusDate);
       this.inputDate.addEventListener('blur', this._handleDateDropDownBlurDate);
     }
-
-    // обработчик события окончания ввода в инпут по маске ДД.ММ.ГГГГ
-    this.wrapper.addEventListener('input', this._handleDateDropDownInputWrapper);
+    if (this.isFilter) {
+      // обработчик события окончания ввода в инпут по маске ДД.ММ.ГГГГ - ДД.ММ.ГГГГ
+      this.wrapper.addEventListener('input', this._handleDateDropDownInputFilter);
+    }
+    if (!this.isFilter) {
+      // обработчик события окончания ввода в инпут по маске ДД.ММ.ГГГГ
+      this.wrapper.addEventListener('input', this._handleDateDropDownInputNoFilter);
+    }
 
     // Показ  календаря при клике по инпуту
     if (!this.isFilter) {
@@ -170,56 +178,85 @@ class DatePicker {
     }
   }
 
-  _handleDateDropDownInputWrapper(e) {
-    const isDate = e.target === this.inputDateFrom
-      || e.target === this.inputDateTo;
-    const isDateLength = isDate && e.target.value.length === 10;
-    if (isDateLength) {
-      this.currentInput = e.target;
-      this.secondInput = this.currentInput.classList
-        .contains(`.${this.elementName}__input_from`)
-        ? this.inputDateTo : this.inputDateFrom;
-      if (this.secondInput.value) { // заполнены оба инпута
-        const a = this.currentInput.value.split('.');
-        const b = this.secondInput.value.split('.');
-        this.myDatepicker.clear();
-        this.myDatepicker.selectDate(
-          new Date(`${b[2]}-${b[1]}-${b[0]}`),
-        );
-        this.myDatepicker.selectDate(
-          new Date(`${a[2]}-${a[1]}-${a[0]}`),
-        );
-      } else {
-        // заполнен один инпут
-        const a = this.currentInput.value.split('.');
-        this.myDatepicker.clear();
-        this.myDatepicker.selectDate(
-          new Date(`${a[2]}-${a[1]}-${a[0]}`),
-        );
-      }
-    } else if ((e.target === this.inputDate)
-      && e.target.value.length === 23) {
-      const a = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
-      const b = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
+  _handleDateDropDownInputFilter(e) {
+    if (e.target.value.length === 23) {
+      const dateFromString = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
+      const dateToString = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
       this.myDatepicker.clear();
       this.myDatepicker.selectDate(
-        new Date(`${b[2]}-${b[1]}-${b[0]}`),
+        new Date(`${dateToString[2]}-${dateToString[1]}-${dateToString[0]}`),
       );
       this.myDatepicker.selectDate(
-        new Date(`${a[2]}-${a[1]}-${a[0]}`),
+        new Date(`${dateFromString[2]}-${dateFromString[1]}-${dateFromString[0]}`),
       );
     }
   }
 
+  _handleDateDropDownInputNoFilter(e) {
+    if (e.target.value.length === 10) {
+      const currentInput = e.target;
+      const secondInput = currentInput.classList
+        .contains(`.${this.elementName}__input_from`)
+        ? this.inputDateTo : this.inputDateFrom;
+      switch (this.inputType) {
+        case 'text':
+          {
+            const dateFromString = currentInput.value.split('.');
+            const dateToString = secondInput.value.split('.');
+            const dateFrom = `${dateFromString[2]}-${dateFromString[1]}-${dateFromString[0]}`;
+            const dateTo = `${dateToString[2]}-${dateToString[1]}-${dateToString[0]}`;
+            this.myDatepicker.clear();
+            if (secondInput.value) { // заполнены оба инпута
+              this.myDatepicker.selectDate(
+                new Date(dateTo),
+              );
+              this.myDatepicker.selectDate(
+                new Date(dateFrom),
+              );
+            } else {
+              // заполнен один инпут
+              this.myDatepicker.selectDate(
+                new Date(dateFrom),
+              );
+            }
+          }
+          break;
+        case 'date':
+          if (e.target.value[0] !== '0') {
+            const dateFrom = currentInput.value;
+            const dateTo = secondInput.value;
+            this.myDatepicker.clear();
+            if (secondInput.value) { // заполнены оба инпута
+              this.myDatepicker.selectDate(
+                new Date(dateTo),
+              );
+              this.myDatepicker.selectDate(
+                new Date(dateFrom),
+              );
+            } else {
+              // заполнен один инпут
+              this.myDatepicker.selectDate(
+                new Date(dateFrom),
+              );
+            }
+          }
+          break;
+        default:
+          return true;
+      }
+    }
+    return true;
+  }
+
   _handleDateDropDownClickDate() {
-    if (this.clWrapper.classList
+    if (this.calendarWrapper.classList
       .contains(`${this.elementName}__calendar-wrapper_hidden`)) {
       this._toggle(true);
     }
   }
 
   _handleDateDropDownClickDateFromTo() {
-    if (this.clWrapper.classList
+    if (this.calendarWrapper.classList
       .contains(`${this.elementName}__calendar-wrapper_hidden`)) { this._toggle(true); }
   }
 
@@ -227,7 +264,7 @@ class DatePicker {
     if (this.myDatepicker.selectedDates.length === 1) {
       alert('Введите дату выезда');
     } else {
-      this.clWrapper.classList
+      this.calendarWrapper.classList
         .add(`${this.elementName}__calendar-wrapper_hidden`);
       if (!this.isFilter) {
         this._toggle(false);
@@ -299,14 +336,14 @@ class DatePicker {
   _toggle(isExpanded) {
     const wrap = `${this.elementName}__`;
     if (isExpanded) {
-      this.clWrapper.classList
+      this.calendarWrapper.classList
         .remove(`${wrap}calendar-wrapper_hidden`);
       this.tips.forEach((tip) => {
         tip.classList.add(`${wrap}image_expanded`);
         tip.classList.remove(`${wrap}image_collapsed`);
       });
     } else {
-      this.clWrapper.classList
+      this.calendarWrapper.classList
         .add(`${wrap}calendar-wrapper_hidden`);
       this.tips.forEach((tip) => {
         tip.classList.remove(`${wrap}image_expanded`);

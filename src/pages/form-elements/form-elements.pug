@@ -27,14 +27,16 @@ block content
             {width: 'wide',
             placeholder: 'Email',
             js:'js-check-email',
-            labelText: 'text field'} 
+            labelText: 'text field',
+            inputType: 'email',} 
             )
         div(class="form-elements__comp-wrapper")
           +input(
             {width: 'wide',
             placeholder: 'Email',
             js:'js-check-email',
-            labelText: 'text field'}
+            labelText: 'text field',
+            inputType: 'email',}
             )
         div(class="form-elements__comp-wrapper")
           +dropdown(
@@ -52,8 +54,10 @@ block content
           +input(
             {width: 'wide',
             placeholder: 'ДД.ММ.ГГГГ',
-            js:' js-masked js-date',
-            labelText: 'masked text field'}
+            labelText: 'masked text field',
+            inputType: 'date',
+            js: "js-date js-masked",
+            }
             )
         div(class="form-elements__comp-wrapper")
           +date-dropdown(
@@ -75,7 +79,9 @@ block content
             js:' js-check-email',
             labelText: 'subscription text field',
             image: true,
-            name: 'оформить подписку'}
+            name: 'оформить подписку',
+            inputType: 'email',
+            }
             )
         div(class="form-elements__comp-wrapper")
           +dropdown(

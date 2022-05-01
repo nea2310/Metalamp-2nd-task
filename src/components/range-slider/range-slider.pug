@@ -7,9 +7,9 @@ mixin range-slider({labelText = '', text = '', sliderType = 0, min = 0, max = 0,
         if labelText
           p(class = `${elementName}__title`)= labelText
         div(class = `${elementName}__price`)
-          input(class = `${elementName}__price-from`)
+          input(class = `${elementName}__price-from` type = 'text')
           span(class = `${elementName}__price-delimiter`) -
-          input(class = `${elementName}__price-to`)
+          input(class = `${elementName}__price-to` type = 'text')
       input(class = `${elementName}__slider` type = 'text'
         data-type = sliderType data-min = min data-max = max data-step = step 
         data-from = from data-to = to data-hide-min-max = isMinMaxHidden data-hide-from-to = isFromToHidden)
