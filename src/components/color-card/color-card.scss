@@ -1,0 +1,50 @@
+.color-card {
+  margin-bottom: 20px;
+  font-size: 19px;
+  line-height: 28px;
+  color: $colorDarkShade100;
+  display: grid;
+  grid-template-rows: repeat(2, 35px);
+  grid-template-columns: 70px 180px;
+  grid-template-areas:
+    "post-1 post-2"
+    "post-1 post-3";
+  column-gap: 40px;
+
+  &__color {
+    grid-area: post-1;
+    border-radius: 6px;
+    &_dark-shade-100 {
+      background-color: $colorDarkShade100;
+    }
+    &_dark-shade-75 {
+      background-color: $colorDarkShade75;
+    }
+    &_dark-shade-50 {
+      background-color: $colorDarkShade50;
+    }
+    &_dark-shade-25 {
+      background-color: $colorDarkShade25;
+    }
+    &_dark-shade-5 {
+      background-color: $colorDarkShade5;
+    }
+    &_purple {
+      background-color: $colorPurple;
+    }
+    &_green {
+      background-color: $colorGreen;
+    }
+  }
+  &__name {
+    width: 171px;
+    padding-top: 8px;
+    grid-area: post-2;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+  }
+  &__code {
+    grid-area: post-3;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  }
+}

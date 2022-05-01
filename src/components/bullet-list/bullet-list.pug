@@ -3,7 +3,7 @@ mixin bullet-list({categories = []} = {})
     const elementName = 'bullet-list'
   fieldset(class = elementName)
     ul(class = `${elementName}__list-wrapper` type = 'disc')
-      if categories.length
+      if Array.isArray(categories) && categories.length
         each value in categories
           li(class = `${elementName}__category`)= value
 

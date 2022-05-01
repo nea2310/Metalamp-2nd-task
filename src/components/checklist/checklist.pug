@@ -1,23 +1,26 @@
 mixin checklist({categories = [], expand = false, rich = false, labelText = ''} = {})
   -
     const elementName = 'checklist'
+    expand = typeof expand === 'boolean' ? expand : false 
+    rich = typeof rich === 'boolean' ? rich : false 
     const style = expand == true ? `${elementName}_collapsing` : ''
     const listStyle = expand == true ? `${elementName}__list-wrapper_hidden` : ''
     const labelStyle = expand == true ? `${elementName}__label_collapsing` : `${elementName}__label_expanded`
     const tipStyle = expand == false ? `${elementName}__image_non-collapsing` : ''
     const nameStyle = rich == true ? `${elementName}__category-name_rich` : ''
   fieldset(class = `${elementName} js-${elementName} ${style}`)
-    p(class = `${elementName}__label js-${elementName}__label ${labelStyle}` tabindex = 0)=labelText
+    p(class = `${elementName}__label js-${elementName}__label ${labelStyle}` tabindex = 0)= labelText
       image(class = `${elementName}__image js-${elementName}__image ${elementName}__image_collapsed ${tipStyle}` 
         src = require('@com/checklist/image/expand-more.svg') alt = 'развернуть')
     ul(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper ${listStyle}`)
-      if categories.length
+      if Array.isArray(categories) && categories.length
         each value in categories
           li(class = `${elementName}__category-wrapper`)
             label(class = `${elementName}__category`)
-              input(class = `${elementName}__category-checkbox` type="checkbox" name = labelText value = value.name)
-              span(class = `${elementName}__category-checkmark`)
-              div(class = `${elementName}__category-text`)
-                p(class = `${elementName}__category-name ${nameStyle}`)=value.name
-                if rich == true
-                  p(class = `${elementName}__category-description`)=value.description
+              if value.name
+                input(class = `${elementName}__category-checkbox` type="checkbox" name = labelText value = value.name)
+                span(class = `${elementName}__category-checkmark`)
+                div(class = `${elementName}__category-text`)
+                  p(class = `${elementName}__category-name ${nameStyle}`)= value.name
+                  if rich == true && value.description
+                    p(class = `${elementName}__category-description`)= value.description

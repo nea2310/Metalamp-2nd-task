@@ -20,18 +20,18 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    &_liked {
+      border: 1px solid $colorPurple;
+      & > .like-button__counter {
+        color: $colorPurple;
+      }
+    }
   }
 
   &__counter {
     @include font-body;
     font-size: 10px;
     line-height: 12.19px;
-  }
-
-  &_liked {
-    border: 1px solid $colorPurple;
-    & > .like-button__counter {
-      color: $colorPurple;
-    }
   }
 }

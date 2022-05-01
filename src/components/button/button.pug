@@ -1,6 +1,16 @@
-mixin button({text = '', type = '', length = '', width = '', color = '', href = '', image = false} = {})
+mixin button({text = '', type = 'button', length = 'short', width = 'wide', color = 'dark', href = 'https://test/test', image = false} = {})
   -
     const elementName = 'button'
+    const validTypes = ['button', 'submit', 'link', 'plain-text']
+    const validLengths = ['very-long', 'long', 'short', 'very-short']
+    const validWidths = ['wide', 'narrow']
+    const validColors = ['dark', 'light']
+    type = validTypes.includes(type) ? type : 'button'
+    length = validLengths.includes(length) ? length : 'short'
+    width = validWidths.includes(width) ? width : 'wide'
+    color = validColors.includes(color) ? color : 'dark'
+    href = typeof href === 'string' ? href : 'https://test/test'
+    image = typeof image === 'boolean' ? image : false 
   case type
     when 'button'
       button(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 

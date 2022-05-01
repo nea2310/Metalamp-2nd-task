@@ -10,7 +10,7 @@ class LikeButton {
     this.elementName = elementName.replace(/^.js-/, '');
     this.wrapper = element;
     this._handleLikeButtonClick = this._handleLikeButtonClick.bind(this);
-    this._handleLikeButtonLoadWindow = this._handleLikeButtonLoadWindow.bind(this);
+    // this._handleLikeButtonLoadWindow = this._handleLikeButtonLoadWindow.bind(this);
     this._render();
     this._bindEventListeners();
   }
@@ -30,8 +30,8 @@ class LikeButton {
 
   _handleLikeButtonClick() {
     const value = parseInt(this.counter.innerText, 10);
-    this.button.classList.toggle(`${this.elementName}_liked`);
-    if (this.button.classList.contains(`${this.elementName}_liked`)) {
+    this.button.classList.toggle(`${this.elementName}__button_liked`);
+    if (this.button.classList.contains(`${this.elementName}__button_liked`)) {
       this.image.src = iconLike;
       this.counter.innerText = value + 1;
       localStorage.setItem('isLiked', 'liked');

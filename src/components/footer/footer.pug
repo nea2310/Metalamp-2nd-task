@@ -12,11 +12,11 @@ mixin footer({menu = []} = {})
             src = require('@com/footer/image/logo-purple.svg') alt = 'на главную')
         li(class = `${elementName}__item`)
           p(class = `${elementName}__long-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
-      if menu.length
+      if Array.isArray(menu) && menu.length
         each value in menu
           ul(class = `${elementName}__items`)
             lh(class = `${elementName}__items-header`)= value.name
-              if value.items.length
+              if Array.isArray(value.items) && value.items.length
                 each subValue in value.items
                   li(class = `${elementName}__item`)
                     a(class = `${elementName}__item-link` href = 'https://test/test')= subValue

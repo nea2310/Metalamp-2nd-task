@@ -158,8 +158,13 @@ block content
             )
         span(class='form-elements__label') like-button
         div(class="form-elements__comp-wrapper")
-          +like-button()
-          +like-button()
+          +like-button(
+            {likeAmount: '2'}
+            )
+          +like-button(
+            {isLiked: true,
+            likeAmount: '12'
+            })
         span(class='form-elements__label') rate button
         div(class="form-elements__comp-wrapper")
           +rate-button(

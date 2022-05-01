@@ -3,6 +3,8 @@ include ../button/button.pug
 mixin header({menu = [], authorized = false} = {})
   -
     const elementName = 'header'
+    authorized = typeof authorized === 'boolean' ? authorized : false
+
   header(class = `${elementName} js-${elementName}`)
     button(class = `${elementName}__burger-button js- + ${elementName}__burger-button` aria-label = 'навигация')
       span(class = `${elementName}__burger`)
@@ -11,14 +13,14 @@ mixin header({menu = [], authorized = false} = {})
         image(class = `${elementName}__logo-image` src = require('@com/header/image/logo-purple.svg') alt = 'на главную')
       nav(class = `${elementName}__nav-level1 js-${elementName}__nav-level1`) 
         ul(class = `${elementName}__nav-level1-items`)
-          if menu.length
+          if Array.isArray(menu) && menu.length
             each value in menu
               li(class = `${elementName}__nav-level1-item`)
                 a(class = `${elementName}__nav-level1-item-link` href = 'https://test/test')=value.name
                   if value.subMenu
                     image(class = `${elementName}__nav-level1-item-image js-${elementName}__nav-level1-item-image` src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
                     ul(class = `${elementName}__nav-level2 js-${elementName}__nav-level2`)
-                      if value.subMenu.length
+                      if Array.isArray(value.subMenu) && value.subMenu.length
                         each subValue in value.subMenu
                           li(class = `${elementName}__nav-level2-item`) 
                             a(class = `${elementName}__nav-level2-item-link` href = 'https://test/test')=subValue.name
