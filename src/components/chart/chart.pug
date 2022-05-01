@@ -1,10 +1,14 @@
 mixin chart()
   -
     const elementName = 'chart'
+    const marks = {
+      excellent: {rate: '130', label: 'Великолепно'},
+      good: {rate:'65', label: 'Хорошо'},
+      satisfied: {rate:'65', label: 'Удовлетворительно'},
+      bad: {rate:'0', label: 'Разочарован'},
+    }
   div(class = `${elementName} js-${elementName}`)
     canvas(class = `${elementName}__image js-${elementName}__image` height = '120' width = '120')
     ul(class = `${elementName}__legend`)
-      li(class = `${elementName}__legend-item js-${elementName}__legend-item` data-rate = '130' data-mark = 'excellent') Великолепно
-      li(class = `${elementName}__legend-item js-${elementName}__legend-item` data-rate = '65' data-mark = 'good') Хорошо
-      li(class = `${elementName}__legend-item js-${elementName}__legend-item` data-rate = '65' data-mark = 'satisfied') Удовлетворительно
-      li(class = `${elementName}__legend-item js-${elementName}__legend-item` data-rate = '0' data-mark = 'bad') Разочарован
+      for value, index in marks
+        li(class = `${elementName}__legend-item js-${elementName}__legend-item` data-rate = value.rate data-mark = index)= value.label
