@@ -1,13 +1,12 @@
-mixin like-button({labelText = '', isLiked = false, likeAmount = '0' } = {})
+mixin like-button({isLiked = false, likeAmount = '0' } = {})
   -
     const elementName = 'like-button'
+
+    isLiked = typeof isLiked === 'boolean' ? isLiked : false
     const isLikedModifier = isLiked ? `${elementName}__button_liked` : ''
     const image = isLiked ? 'favorite.svg' : 'favorite-border.svg'
-    isLiked = typeof isLiked === 'boolean' ? isLiked : false
 
   div(class = `${elementName} js-${elementName}`)
-    if labelText
-      p(class = `${elementName}__label-text`)= labelText
     button(class = `${elementName}__button js-${elementName}__button ${isLikedModifier}`)
       image(class = `${elementName}__image js-${elementName}__image`
         src = require(`@com/like-button/image/${image}`) alt = 'мне нравится')

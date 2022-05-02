@@ -34,23 +34,23 @@ class LikeButton {
     if (this.button.classList.contains(`${this.elementName}__button_liked`)) {
       this.image.src = iconLike;
       this.counter.innerText = value + 1;
-      localStorage.setItem('isLiked', 'liked');
+      //   localStorage.setItem('isLiked', 'liked');
     } else {
       this.image.src = iconUnlike;
       this.counter.innerText = value - 1;
-      localStorage.setItem('isLiked', 'unliked');
+      //   localStorage.setItem('isLiked', 'unliked');
     }
   }
 
-  _handleLikeButtonLoadWindow() {
-    if (localStorage.getItem('isLiked') === 'liked') {
-      this.button.classList.add(`${this.elementName}_liked`);
-      this.image.src = iconLike;
-    } else {
-      this.button.classList.remove(`${this.elementName}_liked`);
-      this.image.src = iconUnlike;
-    }
-  }
+  // _handleLikeButtonLoadWindow() {
+  //   if (localStorage.getItem('isLiked') === 'liked') {
+  //     this.button.classList.add(`${this.elementName}_liked`);
+  //     this.image.src = iconLike;
+  //   } else {
+  //     this.button.classList.remove(`${this.elementName}_liked`);
+  //     this.image.src = iconUnlike;
+  //   }
+  // }
 
   _getElement(selector, wrapper = this.wrapper) {
     return wrapper
