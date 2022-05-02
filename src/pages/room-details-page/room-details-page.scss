@@ -12,14 +12,18 @@ $sm-padding-right: 20px;
 
 $lg-padding-bottom: 30px;
 .room-details-page {
-  & h1 {
+  &__header {
     position: absolute;
     width: 1px;
     height: 1px;
     overflow: hidden;
     clip: rect(0 0 0 0);
   }
-  & h2 {
+  &__room-info-header,
+  &__room-impress-header,
+  &__feedback-header-label,
+  &__rules-header,
+  &__cancel-header {
     @include font-h2;
   }
 
