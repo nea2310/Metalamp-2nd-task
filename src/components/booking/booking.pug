@@ -10,6 +10,7 @@ mixin booking-info()
 mixin booking({roomNumber = '', isLux = '', roomPrice = '', daysAmount = '', totalPrice = '', sale = '', saleTotal = '', extraTotal = '', totalAmount = ''} = {})
   -
     const elementName = 'booking'
+
   form(class = `${elementName} js-${elementName}`)
     div(class = `${elementName}__details`)
       div(class = `${elementName}__details-room`)

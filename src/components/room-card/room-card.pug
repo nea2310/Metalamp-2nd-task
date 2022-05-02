@@ -3,6 +3,7 @@ include ../rate-button/rate-button.pug
 mixin room-card({roomNumber = '', roomPrice = '', feedbackAmount = '', ratingName = ''} = {})
   -
     const elementName = 'room-card'
+
   div(class = `${elementName} js-${elementName}`)
     div(class = `${elementName}__slider js-${elementName}__slider`)
       a(class = `${elementName}__photos` href = 'https://test/test' aria-label= 'Перейти к деталям номера')

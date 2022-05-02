@@ -7,8 +7,10 @@ mixin date-dropdown({ type = 'dateDropDown', labelTextFrom = '', labelTextTo = '
 
     const validTypes = ['dateDropDown', 'filterDateDropDown']
     type = validTypes.includes(type) ? type : 'dateDropDown'
+
     const modifier = type == 'filterDateDropDown' ? `${elementName}__calendar-wrapper_width_narrow` : ''
     const width =  type == 'filterDateDropDown' ? '_width_narrow' : '_width_wide'
+
   div(class = `${elementName} js-${elementName} ${elementName}${width}`)
     if type == 'dateDropDown'
       div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper`)

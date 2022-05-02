@@ -1,16 +1,30 @@
 mixin button({text = '', type = 'button', length = 'short', width = 'wide', color = 'dark', href = 'https://test/test', image = false} = {})
   -
+    function isInList (list, value, defaultValue) {
+      return value = list.includes(value) ? value : defaultValue
+    }
+
+    function checkType (type, value, defaultValue){
+      return typeof value === type ? value : defaultValue
+    }
+
     const elementName = 'button'
+
     const validTypes = ['button', 'submit', 'link', 'plain-text']
+    type = isInList(validTypes, type, 'button')
+
     const validLengths = ['very-long', 'long', 'short', 'very-short']
+    length = isInList(validLengths, length, 'short')
+
     const validWidths = ['wide', 'narrow']
+    width = isInList(validWidths, width, 'wide')
+
     const validColors = ['dark', 'light']
-    type = validTypes.includes(type) ? type : 'button'
-    length = validLengths.includes(length) ? length : 'short'
-    width = validWidths.includes(width) ? width : 'wide'
-    color = validColors.includes(color) ? color : 'dark'
-    href = typeof href === 'string' ? href : 'https://test/test'
-    image = typeof image === 'boolean' ? image : false 
+    color = isInList(validTypes, type, 'button')
+
+    href = checkType('string', href, 'https://test/test')
+    image = checkType('boolean', image, false)
+
   case type
     when 'button'
       button(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 

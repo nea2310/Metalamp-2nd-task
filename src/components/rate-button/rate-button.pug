@@ -2,6 +2,7 @@ mixin rate-button({labelText = '', name = ''} = {})
   -
     const elementName = 'rate-button'
     const rates = ['Очень плохо', 'Плохо', 'Удовлетворительно', 'Хорошо', 'Отлично']
+
   fieldset(class = elementName)
     legend(class = `${elementName}__caption`)= labelText
     div(class = `${elementName}__group`)

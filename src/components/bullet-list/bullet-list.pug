@@ -1,6 +1,7 @@
 mixin bullet-list({categories = []} = {})
   -
     const elementName = 'bullet-list'
+
   fieldset(class = elementName)
     ul(class = `${elementName}__list-wrapper` type = 'disc')
       if Array.isArray(categories) && categories.length

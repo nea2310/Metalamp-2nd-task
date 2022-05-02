@@ -3,6 +3,7 @@ include ../like-button/like-button.pug
 mixin feedback({image = '', name = '', date = '', description = '', alt = ''} = {})
   -
     const elementName ='feedback'
+
   div(class = elementName)
     image(class = `${elementName}__image` src = image alt = alt)
     p(class = `${elementName}__name`)= name

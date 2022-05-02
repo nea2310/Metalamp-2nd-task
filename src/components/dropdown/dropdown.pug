@@ -2,17 +2,20 @@ include ../button/button.pug
 
 mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', buttons = false, labelText = '', width = 'wide'} = {})
   -
+    function isInList (list, value, defaultValue) {
+      return value = list.includes(value) ? value : defaultValue
+    }
     const elementName = 'dropdown'
 
     const minus = '-'
     const plus = '+'
 
     const validWidths = ['wide', 'narrow']
-    width = validWidths.includes(width) ? width : 'wide'
+    width = isInList(validWidths, width, 'wide')
     const inputWidth = `_width_${width}`
 
     const validTypes = ['dropDownGuests', 'dropDownRooms']
-    type = validTypes.includes(type) ? type : 'dropDownGuests'
+    type = isInList(validTypes, type, 'dropDownGuests')
     const inputStyle = type=='dropDownRooms' ? '_not-rounded' : '_rounded'
 
     buttons = typeof buttons === 'boolean' ? buttons : false

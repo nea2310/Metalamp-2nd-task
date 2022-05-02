@@ -1,6 +1,7 @@
 mixin type-card({style = '', name = '', text = ''} = {})
   -
-    const elementName = "type-card"
+    const elementName = 'type-card'
+
   span(class = elementName)
     span(class=`${elementName}__name ${elementName}__name_${style}`)= name
     span(class=`${elementName}__text ${elementName}__text_${style}`)= text

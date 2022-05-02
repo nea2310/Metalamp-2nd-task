@@ -1,13 +1,19 @@
 mixin checklist({categories = [], expand = false, rich = false, labelText = ''} = {})
   -
+    function checkType (type, value, defaultValue){
+      return typeof value === type ? value : defaultValue
+    }
+
     const elementName = 'checklist'
-    expand = typeof expand === 'boolean' ? expand : false 
-    rich = typeof rich === 'boolean' ? rich : false 
+
+    expand = checkType('boolean', expand, false)
+    rich = checkType('boolean', rich, false)
     const style = expand == true ? `${elementName}_collapsing` : ''
     const listStyle = expand == true ? `${elementName}__list-wrapper_hidden` : ''
     const labelStyle = expand == true ? `${elementName}__label_collapsing` : `${elementName}__label_expanded`
     const tipStyle = expand == false ? `${elementName}__image_non-collapsing` : ''
     const nameStyle = rich == true ? `${elementName}__category-name_rich` : ''
+
   fieldset(class = `${elementName} js-${elementName} ${style}`)
     p(class = `${elementName}__label js-${elementName}__label ${labelStyle}` tabindex = 0)= labelText
       image(class = `${elementName}__image js-${elementName}__image ${elementName}__image_collapsed ${tipStyle}` 

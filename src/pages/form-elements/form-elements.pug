@@ -144,7 +144,8 @@ block content
             )
         span(class='form-elements__label') radio buttons
         div(class="form-elements__comp-wrapper")
-          +radiobuttons({categories:
+          +radiobuttons(
+            {categories:
             [{name:'Мужчина', checked: true}, 
             {name:'Женщина'}],
             radioGroupName: 'gender'})
@@ -197,13 +198,13 @@ block content
           +range-slider(
             {labelText: 'range slider',
             sliderType: 'double', 
-            min:1000, 
-            max:15000, 
-            step:1, 
-            from:5000, 
-            to:10000, 
-            isMinMaxHidden:'true', 
-            isFromToHidden:'true'}
+            min: '1000', 
+            max: '15000', 
+            step: '1', 
+            from: '5000', 
+            to: '10000', 
+            isMinMaxHidden: 'true', 
+            isFromToHidden: 'true'}
             )
         span(class='form-elements__label') buttons
         div(class="form-elements__comp-wrapper")

@@ -1,6 +1,7 @@
 mixin feature({image = '', name = '', description = '', alt = ''} = {})
   -
     const elementName = 'feature'
+
   div(class = elementName)
     image(class = `${elementName}__image` src = image alt = alt)
     p(class = `${elementName}__name`)= name

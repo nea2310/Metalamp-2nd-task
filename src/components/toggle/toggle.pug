@@ -1,12 +1,13 @@
 mixin toggle({js = '', labelText = '', name = ''} = {})
   -
-    const elementName='toggle'
+    const elementName = 'toggle'
+
   div(class = elementName)
     label(class = `${elementName}__label`)
       if labelText
-        p(class = `${elementName}__label-text`)=labelText
+        p(class = `${elementName}__label-text`)= labelText
       label(class = `${elementName}__wrapper`)
         input(class = `${elementName}__checkbox ${js}`, type = "checkbox" name = name value = name)
         span(class = `${elementName}__checkmark`)
           span(class = `${elementName}__ball`)
-        p(class = `${elementName}__name`)=name
+        p(class = `${elementName}__name`)= name

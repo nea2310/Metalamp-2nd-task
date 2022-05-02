@@ -1,6 +1,26 @@
-mixin range-slider({labelText = '', text = '', sliderType = 0, min = 0, max = 0, step = 0, from = 0, to = 0, isMinMaxHidden = false, isFromToHidden = false} = {})
+mixin range-slider({labelText = '', text = '', sliderType = 0, min = 0, max = 0, step = 0, from = 0, to = 0, isMinMaxHidden = 'false', isFromToHidden = 'false'} = {})
   -
     const elementName = 'range-slider'
+
+    function isNumber (value){
+      const valid = typeof min === 'number' || (typeof min === 'string' && (!Number.isNaN(+min)))
+      return valid ?  value : 0
+    }
+    function isInList (list, value, defaultValue) {
+      return value = list.includes(value) ? value : defaultValue
+    }
+
+    sliderType = isNumber(sliderType)
+    min = isNumber(min)
+    max = isNumber(max)
+    step = isNumber(step)
+    from = isNumber(from)
+    to = isNumber(to)
+
+    const validStates = ['true', 'false']
+    isMinMaxHidden = isInList(validStates, isMinMaxHidden, 'true')
+    isFromToHidden = isInList(validStates, isFromToHidden, 'true')
+
   div(class = `${elementName} js-${elementName}`)
     div(class = `${elementName}__wrapper`)
       div(class = `${elementName}__title-wrapper`)

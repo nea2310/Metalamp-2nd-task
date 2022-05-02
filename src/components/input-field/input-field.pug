@@ -1,10 +1,12 @@
 mixin input({width = '', placeholder = '', labelText = '', image = false, name = '', js = '', inputType = 'text', inputMin = '', inputMax = ''} ={})
   -
     const elementName = 'input-field'
+
     const validWidths = ['wide', 'medium', 'medium-narrow']
     width = validWidths.includes(width) ? width : 'wide'
 
     const inputWidth = `_width_${width}`
+
   div(class = `${elementName} ${elementName}_width_${width}`)
     label(class = `${elementName}__label`)
       if labelText
