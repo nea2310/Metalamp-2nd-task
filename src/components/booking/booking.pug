@@ -18,7 +18,7 @@ mixin booking({roomNumber = '', isLux = '', roomPrice = '', daysAmount = '', tot
         span(class = `${elementName}__detail-number`)= roomNumber
         span(class = `${elementName}__detail-is-lux`)= isLux
       div(class = `${elementName}__details-price`)
-        span(class = `${elementName}__detail-price`)= `${roomPrice} ₽`
+        span(class = `${elementName}__detail-price`)= `${roomPrice}₽`
         span(class = `${elementName}__detail-label`) в сутки
     div(class = `${elementName}__date-dropdown`)
       +date-dropdown(
@@ -61,20 +61,20 @@ mixin booking({roomNumber = '', isLux = '', roomPrice = '', daysAmount = '', tot
         )
     div(class = `${elementName}__price-breakdown`)
       div(class = `${elementName}__price-details`)
-        div(class = `${elementName}__price-name`)= `${roomPrice} ₽ x ${daysAmount} суток`
-        div(class = `${elementName}__price-cost`)= `${totalPrice} ₽`
+        div(class = `${elementName}__price-name`)= `${roomPrice}₽ x ${daysAmount} суток`
+        div(class = `${elementName}__price-cost`)= `${totalPrice}₽`
       div(class = `${elementName}__price-details`)
-        div(class = `${elementName}__price-name`)= `Сбор за услуги: скидка ${sale} ₽`
+        div(class = `${elementName}__price-name`)= `Сбор за услуги: скидка ${sale}₽`
           +booking-info()
-        div(class = `${elementName}__price-cost`)= `${saleTotal} ₽`
+        div(class = `${elementName}__price-cost`)= `${saleTotal}₽`
       div(class = `${elementName}__price-details`)
         div(class = `${elementName}__price-name`) Сбор за дополнительные услуги
           +booking-info()
-        div(class = `${elementName}__price-cost`)= `${extraTotal} ₽`
+        div(class = `${elementName}__price-cost`)= `${extraTotal}₽`
       div(class = `${elementName}__price-details`)
         div(class = `${elementName}__price-name`) Итого
         div(class = `${elementName}__price-total-filling`) 
-        div(class = `${elementName}__price-cost`)= `${totalAmount} ₽`
+        div(class = `${elementName}__price-cost`)= `${totalAmount}₽`
     div(class = `${elementName}__book-button`)
       +button(
         {text: 'забронировать',
