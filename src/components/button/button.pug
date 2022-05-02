@@ -20,7 +20,7 @@ mixin button({text = '', type = 'button', length = 'short', width = 'wide', colo
     width = isInList(validWidths, width, 'wide')
 
     const validColors = ['dark', 'light']
-    color = isInList(validTypes, type, 'button')
+    color = isInList(validColors, color, 'dark')
 
     href = checkType('string', href, 'https://test/test')
     image = checkType('boolean', image, false)
