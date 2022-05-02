@@ -152,7 +152,7 @@ block content
         span(class='form-elements__label') toggle
         div(class="form-elements__comp-wrapper")
           +toggle(
-            {name: 'Получать спецпредложения'}
+            {name: 'Получать спецпредложения', isChecked: true}
             )
           +toggle(
             {name: 'Получать спецпредложения'}
@@ -265,14 +265,14 @@ block content
       div(class="form-elements__column")
         div(class="form-elements__comp-wrapper")
           +feature(
-            {image: require('@pag/form-elements/image/smile.svg'),
+            {imageName: require('@pag/form-elements/image/smile.svg'),
             name: 'Комфорт',
             description: 'Шумопоглощающие стены',
             alt: 'smile'}
             )
         div(class="form-elements__comp-wrapper")
           +feature(
-            {image: require('@pag/form-elements/image/city.svg'),
+            {imageName: require('@pag/form-elements/image/city.svg'),
             name: 'Удобство',
             description: 'Окно в каждой из спален',
             alt: 'city'
@@ -281,7 +281,7 @@ block content
       div(class="form-elements__column")
         div(class="form-elements__comp-wrapper")
           +feedback(
-            {image: require('@pag/form-elements/image/murad.jpg'),
+            {imageName: require('@pag/form-elements/image/murad.jpg'),
             name: 'Мурад Сарафанов',
             date: '5 дней назад',
             description: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',

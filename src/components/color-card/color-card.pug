@@ -1,6 +1,11 @@
 mixin color-card({color = 'dark-shade-100', name = '', code = ''} = {})
   -
+    function isInList (list, value, defaultValue) {
+      return value = list.includes(value) ? value : defaultValue
+    }
+
     const elementName = 'color-card'
+
     const validColors = ['dark-shade-100',
       'dark-shade-75',
       'dark-shade-50',
@@ -8,7 +13,7 @@ mixin color-card({color = 'dark-shade-100', name = '', code = ''} = {})
       'dark-shade-5',
       'purple',
       'green',]
-    color = validColors.includes(color) ? color : 'dark-shade-100'
+    color = isInList(validColors, color, 'dark-shade-100')
 
   div(class = elementName)
     div(class = `${elementName}__color ${elementName}__color_${color}`)

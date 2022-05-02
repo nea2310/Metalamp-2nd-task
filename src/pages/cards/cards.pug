@@ -38,6 +38,12 @@ block content
           type:'dateDropDown'})
       div(class='cards__room-card')
         +room-card({
+          imageList: [
+            require('@pag/cards/image/room-1.jpg'),
+            require('@pag/cards/image/room-2.jpg'),
+            require('@pag/cards/image/room-3.jpg'),
+            require('@pag/cards/image/room-4.jpg'),
+            ],
           roomNumber: '888',
           isLux: 'люкс',
           roomPrice: '9 990',
@@ -45,6 +51,12 @@ block content
           ratingName: 'rating1'})
       div(class='cards__room-card')
         +room-card({
+          imageList: [
+            require('@pag/cards/image/room-1.jpg'),
+            require('@pag/cards/image/room-2.jpg'),
+            require('@pag/cards/image/room-3.jpg'),
+            require('@pag/cards/image/room-4.jpg'),
+            ],
           roomNumber: '840',
           roomPrice: '9 900',
           feedbackAmount: '65',

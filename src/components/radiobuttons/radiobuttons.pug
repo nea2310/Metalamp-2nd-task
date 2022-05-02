@@ -1,15 +1,15 @@
-mixin radiobuttons({labelStyle = '', labelText = '', categories = [], radioGroupName = ''} = {})
+mixin radiobuttons({labelText = '', categories = [], radioGroupName = ''} = {})
   -
-    const elementName='radiobuttons'
+    const elementName = 'radiobuttons'
 
   fieldset(class = elementName)
-    p(class = `${elementName}__label ${labelStyle}`)= labelText
+    p(class = `${elementName}__label`)= labelText
     ul(class = `${elementName}__list`)
       if Array.isArray(categories) && categories.length
         each value in categories
           li(class = `${elementName}__category-wrapper`)
             label(class = `${elementName}__category`)
               input(class = `${elementName}__category-checkbox`
-                type = "radio" name = radioGroupName, value = value.name, checked = value.checked)
+                type = "radio" name = radioGroupName value = value.name checked = value.checked)
               span(class = `${elementName}__category-radiomark`)
               p(class = `${elementName}__category-name`)= value.name

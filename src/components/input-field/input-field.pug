@@ -1,9 +1,12 @@
 mixin input({width = '', placeholder = '', labelText = '', image = false, name = '', js = '', inputType = 'text', inputMin = '', inputMax = ''} ={})
   -
+    function isInList (list, value, defaultValue) {
+      return value = list.includes(value) ? value : defaultValue
+    }
     const elementName = 'input-field'
 
     const validWidths = ['wide', 'medium', 'medium-narrow']
-    width = validWidths.includes(width) ? width : 'wide'
+    width = isInList(validWidths, width, 'wide')
 
     const inputWidth = `_width_${width}`
 

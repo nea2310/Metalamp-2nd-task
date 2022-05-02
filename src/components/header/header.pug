@@ -2,8 +2,12 @@ include ../button/button.pug
 
 mixin header({menu = [], authorized = false} = {})
   -
+    function checkType (type, value, defaultValue){
+      return typeof value === type ? value : defaultValue
+    }
+
     const elementName = 'header'
-    authorized = typeof authorized === 'boolean' ? authorized : false
+    authorized = checkType('boolean', authorized, false)
 
   header(class = `${elementName} js-${elementName}`)
     button(class = `${elementName}__burger-button js- + ${elementName}__burger-button` aria-label = 'навигация')

@@ -5,6 +5,11 @@ mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', butt
     function isInList (list, value, defaultValue) {
       return value = list.includes(value) ? value : defaultValue
     }
+
+    function checkType (type, value, defaultValue){
+      return typeof value === type ? value : defaultValue
+    }
+
     const elementName = 'dropdown'
 
     const minus = '-'
@@ -18,13 +23,13 @@ mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', butt
     type = isInList(validTypes, type, 'dropDownGuests')
     const inputStyle = type=='dropDownRooms' ? '_not-rounded' : '_rounded'
 
-    buttons = typeof buttons === 'boolean' ? buttons : false
+    buttons = checkType('boolean', buttons, false)
 
   div(class = `${elementName} js-${elementName} ${elementName}${inputWidth}`)
     div(class = `${elementName}__input-wrapper`)
       label(class = `${elementName}__label`)
         if labelText
-          p(class = `${elementName}__label-text`)=labelText
+          p(class = `${elementName}__label-text`)= labelText
         div(class = `${elementName}__test js-${elementName}__test`)
           image(class = `${elementName}__image js-${elementName}__image ${elementName}__image_collapsed`
             src = require('@com/dropdown/image/expand-more.svg')  alt = 'раскрывающийся список')
@@ -40,7 +45,7 @@ mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', butt
               div(class = `${elementName}__count-wrapper`)
                 button(class = `${elementName}__count-decrement js-${elementName}__count-decrement`
                   data-min = value.minCount type = 'button' aria-label = 'уменьшить количество')= minus
-                span(class = `${elementName}__count-value js-${elementName}__count-value`)=value.defaultCount
+                span(class = `${elementName}__count-value js-${elementName}__count-value`)= value.defaultCount
                 button(class = `${elementName}__count-increment js-${elementName}__count-increment`
                   data-max = value.maxCount type = 'button' aria-label = 'увеличить количество')= plus
       if (buttons)

@@ -2,11 +2,14 @@ include ../button/button.pug
 
 mixin date-dropdown({ type = 'dateDropDown', labelTextFrom = '', labelTextTo = '', labelTextFromTo = ''} = {})
   -
+    function isInList (list, value, defaultValue) {
+      return value = list.includes(value) ? value : defaultValue
+    }
     const elementName='date-dropdown'
     const link = require('@com/date-dropdown/image/expand-more.svg')
 
     const validTypes = ['dateDropDown', 'filterDateDropDown']
-    type = validTypes.includes(type) ? type : 'dateDropDown'
+    type = isInList(validTypes, type, 'dateDropDown')
 
     const modifier = type == 'filterDateDropDown' ? `${elementName}__calendar-wrapper_width_narrow` : ''
     const width =  type == 'filterDateDropDown' ? '_width_narrow' : '_width_wide'

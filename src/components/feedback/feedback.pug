@@ -1,11 +1,18 @@
 include ../like-button/like-button.pug
 
-mixin feedback({image = '', name = '', date = '', description = '', alt = ''} = {})
+mixin feedback({imageName = require('@com/feedback/image/default.svg'), name = '', date = '', description = '', alt = ''} = {})
   -
     const elementName ='feedback'
 
+    function isImage(path){
+      const result = /^assets\/images\//.test(path)
+      return result ? path : require('@com/feature/image/default.svg')
+      }
+
+    imageName = isImage(imageName)
+
   div(class = elementName)
-    image(class = `${elementName}__image` src = image alt = alt)
+    image(class = `${elementName}__image` src = imageName alt = alt)
     p(class = `${elementName}__name`)= name
     p(class = `${elementName}__date`)= date
     div(class = `${elementName}__like`)

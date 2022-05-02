@@ -3,7 +3,7 @@ mixin range-slider({labelText = '', text = '', sliderType = 0, min = 0, max = 0,
     const elementName = 'range-slider'
 
     function isNumber (value){
-      const valid = typeof min === 'number' || (typeof min === 'string' && (!Number.isNaN(+min)))
+      const valid = typeof value === 'number' || (typeof value === 'string' && (!Number.isNaN(+value)))
       return valid ?  value : 0
     }
     function isInList (list, value, defaultValue) {
