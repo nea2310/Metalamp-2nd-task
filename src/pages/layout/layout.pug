@@ -19,11 +19,11 @@ html(lang = 'ru')
       {name: 'О нас', items: ['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы']},
       {name: 'служба поддержки', items: ['Соглашения', 'Сообщества', 'Связь с нами']},
     ]
-  body
+  body(class = 'layout')
     +header({menu: headerLinks, authorized: false})
     block content
       main
-    div(class = 'delimiter')
+    div(class = 'layout__delimiter')
     +footer({menu: footerLinks})
 
 
