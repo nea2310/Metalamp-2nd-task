@@ -95,8 +95,7 @@
   &__book-button {
     margin-top: 20px;
   }
-}
-
-.js-error {
-  border: 1px solid red;
+  &-error {
+    outline: 1px solid $colorRed;
+  }
 }

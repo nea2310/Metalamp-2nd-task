@@ -50,8 +50,7 @@
       @include font-body;
     }
   }
-}
-
-.js-error {
-  border: 1px solid red;
+  &-error {
+    outline: 1px solid $colorRed;
+  }
 }

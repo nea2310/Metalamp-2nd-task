@@ -23,13 +23,13 @@ class Login {
     let isError = false;
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
-        input.classList.add('js-error');
+        input.classList.add('login-error');
       } else {
-        input.classList.remove('js-error');
+        input.classList.remove('login-error');
       }
     });
     for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('js-error')) {
+      if (this.inputs[i].classList.contains('login-error')) {
         isError = true;
         break;
       }
@@ -41,7 +41,7 @@ class Login {
   }
 
   static _handleLoginFocus(e) {
-    e.currentTarget.classList.remove('js-error');
+    e.currentTarget.classList.remove('login-error');
   }
 }
 

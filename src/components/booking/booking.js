@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-alert */
 class Booking {
   constructor(element) {
@@ -8,10 +9,10 @@ class Booking {
   }
 
   _render() {
-    this.dates = this.wrapper.querySelectorAll('.date-dropdown__input');
-    this.guests = this.wrapper.querySelector('.dropdown__input');
+    this.dates = this.wrapper.querySelectorAll('.js-date-dropdown__input');
+    this.guests = this.wrapper.querySelector('.js-dropdown__input');
     this.inputs = this.wrapper
-      .querySelectorAll('.dropdown__input, .date-dropdown__input');
+      .querySelectorAll('.js-dropdown__input, .js-date-dropdown__input');
   }
 
   _bindEventListeners() {
@@ -24,19 +25,19 @@ class Booking {
   _handleBookingSubmit(e) {
     let isError = false;
     this.dates.forEach((date) => {
-      if (/^\d{2}\.\d{2}\.\d{4}$/.test(date.value)) {
-        date.classList.remove('js-error');
+      if (/^\d{4}-\d{2}-\d{2}$/.test(date.value)) {
+        date.classList.remove('booking-error');
       } else {
-        date.classList.add('js-error');
+        date.classList.add('booking-error');
       }
     });
     if (this.guests.value.trim() === '') {
-      this.guests.classList.add('js-error');
+      this.guests.classList.add('booking-error');
     } else {
-      this.guests.classList.remove('js-error');
+      this.guests.classList.remove('booking-error');
     }
     for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('js-error')) {
+      if (this.inputs[i].classList.contains('booking-error')) {
         isError = true;
         break;
       }
@@ -48,7 +49,7 @@ class Booking {
   }
 
   static _handleBookingFocus(e) {
-    e.currentTarget.classList.remove('js-error');
+    e.currentTarget.classList.remove('booking-error');
   }
 }
 

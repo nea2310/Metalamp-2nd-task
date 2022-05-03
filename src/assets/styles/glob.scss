@@ -12,6 +12,7 @@ $colorDarkShade50: rgba(31, 32, 65, 0.5);
 $colorDarkShade25: rgba(31, 32, 65, 0.25);
 $colorDarkShade15: rgba(31, 32, 65, 0.15);
 $colorDarkShade5: rgba(31, 32, 65, 0.05);
+$colorRed: #ff0000;
 $colorPurple: #bc9cff;
 $colorPurpleOpaque: rgba(188, 156, 255, 0.5);
 $colorBlue: #8ba4f9;
@@ -100,7 +101,7 @@ fieldset {
 }
 
 form {
-margin-block-end: 0;
+  margin-block-end: 0;
 }
 
 button {

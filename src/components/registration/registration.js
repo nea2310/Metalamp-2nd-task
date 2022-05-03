@@ -24,20 +24,20 @@ class Registration {
     let isError = false;
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
-        input.classList.add('js-error');
+        input.classList.add('registration-error');
       } else {
-        input.classList.remove('js-error');
+        input.classList.remove('registration-error');
       }
     });
     // проверку на формат даты обязательно делать ПОСЛЕ проверки на заполненность поля
     if (/^\d{2}\.\d{2}\.\d{4}$/.test(this.date.value)) {
-      this.date.classList.remove('js-error');
+      this.date.classList.remove('registration-error');
     } else {
-      this.date.classList.add('js-error');
+      this.date.classList.add('registration-error');
     }
 
     for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('js-error')) {
+      if (this.inputs[i].classList.contains('registration-error')) {
         isError = true;
         break;
       }
@@ -49,7 +49,7 @@ class Registration {
   }
 
   static _handleRegistrationFocus(e) {
-    e.currentTarget.classList.remove('js-error');
+    e.currentTarget.classList.remove('registration-error');
   }
 }
 

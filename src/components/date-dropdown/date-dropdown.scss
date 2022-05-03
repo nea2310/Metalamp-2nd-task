@@ -62,7 +62,7 @@
   }
   &__input {
     cursor: pointer;
-    outline: none;
+    // outline: none;
     &::placeholder {
       color: $colorDarkShade75;
     }
@@ -78,6 +78,7 @@
     }
     &:focus {
       border-color: $colorDarkShade50;
+      outline: none;
     }
     &_width_narrow {
       width: 150px;

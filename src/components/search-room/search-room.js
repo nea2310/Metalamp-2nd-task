@@ -24,19 +24,19 @@ class SearchRoom {
   _handleSearchRoomSubmit(e) {
     let isError = false;
     this.dates.forEach((date) => {
-      if (/^\d{2}\.\d{2}\.\d{4}$/.test(date.value)) {
-        date.classList.remove('js-error');
+      if (/^\d{4}-\d{2}-\d{2}$/.test(date.value)) {
+        date.classList.remove('search-room-error');
       } else {
-        date.classList.add('js-error');
+        date.classList.add('search-room-error');
       }
     });
     if (this.guests.value.trim() === '') {
-      this.guests.classList.add('js-error');
+      this.guests.classList.add('search-room-error');
     } else {
-      this.guests.classList.remove('js-error');
+      this.guests.classList.remove('search-room-error');
     }
     for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('js-error')) {
+      if (this.inputs[i].classList.contains('search-room-error')) {
         isError = true;
         break;
       }
@@ -48,7 +48,7 @@ class SearchRoom {
   }
 
   static _handleSearchRoomFocus(e) {
-    e.currentTarget.classList.remove('js-error');
+    e.currentTarget.classList.remove('search-room-error');
   }
 }
 

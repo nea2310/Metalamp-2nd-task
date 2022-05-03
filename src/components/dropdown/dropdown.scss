@@ -48,7 +48,7 @@
   }
 
   &__input {
-    outline: none;
+    //  outline: none;
     cursor: pointer;
     text-overflow: ellipsis;
     &::placeholder {
@@ -69,6 +69,7 @@
     }
     &:focus {
       border-color: $colorDarkShade50;
+      outline: none;
     }
     &_rounded {
       border-bottom-left-radius: 5px;

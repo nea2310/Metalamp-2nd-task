@@ -23,59 +23,59 @@ mixin registration()
             {width: 'wide',
             placeholder: 'фамилия',
             inputType: 'text',
-} 
-  )
-    div(class = `${elementName}__radiobuttons`)
-      +radiobuttons({categories:
-        [{name:'Мужчина', checked: true}, 
-        {name:'Женщина'}],
-        radioGroupName: 'gender'})
-    div(class = `${elementName}__birth-date`)
-      +input(
-        {width: 'wide',
-        placeholder: 'ДД.ММ.ГГГГ',
-        js:' js-masked js-date',
-        labelText: 'дата рождения',
-        inputType: 'date',
-        } 
-        )
-    fieldset(class = `${elementName}__credentials`) 
-      legend(class = `${elementName}__credentials-legend`)  данные для входа в сервис
-      div(class = `${elementName}__email`)
+            } 
+              )
+      div(class = `${elementName}__radiobuttons`)
+        +radiobuttons({categories:
+          [{name:'Мужчина', checked: true}, 
+          {name:'Женщина'}],
+          radioGroupName: 'gender'})
+      div(class = `${elementName}__birth-date`)
         +input(
           {width: 'wide',
-          placeholder: 'Email',
-          js:'js-check-email',
-          inputType: 'email',
+          placeholder: 'ДД.ММ.ГГГГ',
+          js:' js-masked js-date',
+          labelText: 'дата рождения',
+          inputType: 'date',
           } 
           )
-      div(class = `${elementName}__password`)
-        +input(
-          {width: 'wide',
-          placeholder: 'Пароль',
-          inputType: 'password',
-          } 
+      fieldset(class = `${elementName}__credentials`) 
+        legend(class = `${elementName}__credentials-legend`)  данные для входа в сервис
+        div(class = `${elementName}__email`)
+          +input(
+            {width: 'wide',
+            placeholder: 'Email',
+            js:'js-check-email',
+            inputType: 'email',
+            } 
+            )
+        div(class = `${elementName}__password`)
+          +input(
+            {width: 'wide',
+            placeholder: 'Пароль',
+            inputType: 'password',
+            } 
+            )
+      div(class = `${elementName}__special-offer`)
+        +toggle(
+          {name: 'Получать спецпредложения'}
           )
-    div(class = `${elementName}__special-offer`)
-      +toggle(
-        {name: 'Получать спецпредложения'}
-        )
-    div(class = `${elementName}__search`)
-      +button(
-        {text: 'перейти к оплате',
-        type: 'submit',
-        length: 'very-long',
-        width: 'wide',
-        color: 'dark',
-        image: true}
-        )
-    div(class = `${elementName}__go-to-login` role='region' aria-label = 'Уже есть аккаунт на Toxin')
-      p(class = `${elementName}__go-to-login-legend` ) Уже есть аккаунт на Toxin
-      +button(
-        {text: 'войти',
-        type: 'link',
-        length: 'short',
-        width: 'wide',
-        color: 'light',
-        href: 'https://test/test'}
-        )
+      div(class = `${elementName}__search`)
+        +button(
+          {text: 'перейти к оплате',
+          type: 'submit',
+          length: 'very-long',
+          width: 'wide',
+          color: 'dark',
+          image: true}
+          )
+      div(class = `${elementName}__go-to-login` role='region' aria-label = 'Уже есть аккаунт на Toxin')
+        p(class = `${elementName}__go-to-login-legend` ) Уже есть аккаунт на Toxin
+        +button(
+          {text: 'войти',
+          type: 'link',
+          length: 'short',
+          width: 'wide',
+          color: 'light',
+          href: 'https://test/test'}
+          )
