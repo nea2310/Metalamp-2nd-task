@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-/* eslint-disable no-console */
 import './dropdown.scss';
 
 class DropDown {
@@ -162,8 +161,6 @@ class DropDown {
     if (e.target.classList.contains('js-dropdown__image')) {
       e.preventDefault();
     }
-    console.log('_handleDropDownMousedownInput');
-    console.log(e.target);
     this.mouseDown = true;
   }
 

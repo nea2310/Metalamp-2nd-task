@@ -116,12 +116,12 @@ class RoomCard {
         );
         newDot = this._getElemAdv(
           'dot',
-          'data-sequence', // ??
+          'data-sequence',
           i + 1,
         );
       } else {
         newPhoto = this._getElemAdv('photo', 'data-sequence', '1');
-        newDot = this._getElemAdv('dot', 'data-sequence', '1');// ??
+        newDot = this._getElemAdv('dot', 'data-sequence', '1');
       }
     }
     this._toggle(currentPhoto, currentDot, newPhoto, newDot);

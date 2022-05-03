@@ -43,8 +43,6 @@ class Chart {
       });
 
       this._draw();
-    } else {
-      // canvas-unsupported code here
     }
   }
 

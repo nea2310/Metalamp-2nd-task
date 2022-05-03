@@ -59,10 +59,9 @@
     height: 1px;
     margin: -1px;
 
- 
     &:focus + .checklist__category-checkmark {
       border: 1px solid $colorPurple;
-      }
+    }
 
     &:checked + .checklist__category-checkmark,
     &:checked:focus + .checklist__category-checkmark {
