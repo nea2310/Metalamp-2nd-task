@@ -33,7 +33,7 @@ mixin booking({roomNumber = '', isLux = '', roomPrice = '', daysAmount = '', tot
         {categories:
           [ {
             displayName: 'взрослые',
-            type: 'гость',
+            categoryType: 'гость',
             declensions: 'гость,гостя,гостей',
             defaultCount: 0,
             minCount: 0,
@@ -41,14 +41,14 @@ mixin booking({roomNumber = '', isLux = '', roomPrice = '', daysAmount = '', tot
             }, 
             {
             displayName: 'дети',
-            type: 'гость',
+            categoryType: 'гость',
             declensions: 'гость,гостя,гостей',
             defaultCount: 0,
             minCount: 0,
             maxCount: 99,
             },
             {displayName: 'младенцы',
-            type: 'младенец',
+            categoryType: 'младенец',
             declensions: 'младенец,младенца,младенцев',
             defaultCount: 0,
             minCount: 0,

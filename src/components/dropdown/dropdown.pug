@@ -38,15 +38,16 @@ mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', butt
       ul(class = `${elementName}__list`)
         if Array.isArray(categories) && categories.length
           each value in categories
+            - const {displayName = '', categoryType = '', declensions = '', defaultCount = 0, minCount = 0, maxCount = 99} = value
             li(class = `${elementName}__category-wrapper js-${elementName}__category-wrapper`)
               p(class = `${elementName}__category js-${elementName}__category`
-                data-type = value.type data-declensions = value.declensions)= value.displayName
+                data-type = categoryType data-declensions = declensions)= displayName
               div(class = `${elementName}__count-wrapper`)
                 button(class = `${elementName}__count-decrement js-${elementName}__count-decrement`
-                  data-min = value.minCount type = 'button' aria-label = 'уменьшить количество')= minus
-                span(class = `${elementName}__count-value js-${elementName}__count-value`)= value.defaultCount
+                  data-min = minCount type = 'button' aria-label = 'уменьшить количество')= minus
+                span(class = `${elementName}__count-value js-${elementName}__count-value`)= defaultCount
                 button(class = `${elementName}__count-increment js-${elementName}__count-increment`
-                  data-max = value.maxCount type = 'button' aria-label = 'увеличить количество')= plus
+                  data-max = maxCount type = 'button' aria-label = 'увеличить количество')= plus
       if (buttons)
         div(class = `${elementName}__buttons`)
           div(class = `${elementName}__button-clear js-${elementName}__button-clear`)

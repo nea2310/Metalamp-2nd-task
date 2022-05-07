@@ -19,15 +19,15 @@ mixin header({menu = [], authorized = false} = {})
         ul(class = `${elementName}__nav-level1-items`)
           if Array.isArray(menu) && menu.length
             each value in menu
+              - const {name = '', subMenu = []} = value
               li(class = `${elementName}__nav-level1-item`)
-                a(class = `${elementName}__nav-level1-item-link` href = 'https://test/test')=value.name
-                  if value.subMenu
+                a(class = `${elementName}__nav-level1-item-link` href = 'https://test/test')= name
+                  if Array.isArray(subMenu) && subMenu.length
                     image(class = `${elementName}__nav-level1-item-image js-${elementName}__nav-level1-item-image` src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
                     ul(class = `${elementName}__nav-level2 js-${elementName}__nav-level2`)
-                      if Array.isArray(value.subMenu) && value.subMenu.length
-                        each subValue in value.subMenu
-                          li(class = `${elementName}__nav-level2-item`) 
-                            a(class = `${elementName}__nav-level2-item-link` href = 'https://test/test')=subValue.name
+                      each subValue in subMenu
+                        li(class = `${elementName}__nav-level2-item`) 
+                          a(class = `${elementName}__nav-level2-item-link` href = 'https://test/test')= subValue
       div(class = `${elementName}__auth`) 
         if (!authorized)
           div(class = `${elementName}__button-login`) 

@@ -21,12 +21,13 @@ mixin checklist({categories = [], expand = false, rich = false, labelText = ''} 
     ul(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper ${listStyle}`)
       if Array.isArray(categories) && categories.length
         each value in categories
+          - const {name = '', description = ''} = value
           li(class = `${elementName}__category-wrapper`)
             label(class = `${elementName}__category`)
-              if value.name
-                input(class = `${elementName}__category-checkbox` type="checkbox" name = labelText value = value.name)
+              if name
+                input(class = `${elementName}__category-checkbox` type="checkbox" name = labelText value = name)
                 span(class = `${elementName}__category-checkmark`)
                 div(class = `${elementName}__category-text`)
-                  p(class = `${elementName}__category-name ${nameStyle}`)= value.name
-                  if rich == true && value.description
-                    p(class = `${elementName}__category-description`)= value.description
+                  p(class = `${elementName}__category-name ${nameStyle}`)= name
+                  if rich == true && description
+                    p(class = `${elementName}__category-description`)= description

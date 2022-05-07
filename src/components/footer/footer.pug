@@ -15,10 +15,11 @@ mixin footer({menu = []} = {})
           p(class = `${elementName}__long-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
       if Array.isArray(menu) && menu.length
         each value in menu
+          - const {name = '', items = []} = value
           ul(class = `${elementName}__items`)
-            lh(class = `${elementName}__items-header`)= value.name
-              if Array.isArray(value.items) && value.items.length
-                each subValue in value.items
+            lh(class = `${elementName}__items-header`)= name
+              if Array.isArray(items) && items.length
+                each subValue in items
                   li(class = `${elementName}__item`)
                     a(class = `${elementName}__item-link` href = 'https://test/test')= subValue
       ul(class = `${elementName}__items`)
