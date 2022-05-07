@@ -1,11 +1,6 @@
 mixin like-button({isLiked = false, likeAmount = '0' } = {})
   -
-    function checkType (type, value, defaultValue){
-      return typeof value === type ? value : defaultValue
-    }
     const elementName = 'like-button'
-
-    isLiked = checkType('boolean', isLiked, false)
     const isLikedModifier = isLiked ? `${elementName}__button_liked` : ''
     const image = isLiked ? 'favorite.svg' : 'favorite-border.svg'
 

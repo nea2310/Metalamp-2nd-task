@@ -6,10 +6,6 @@ mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', butt
       return value = list.includes(value) ? value : defaultValue
     }
 
-    function checkType (type, value, defaultValue){
-      return typeof value === type ? value : defaultValue
-    }
-
     const elementName = 'dropdown'
 
     const minus = '-'
@@ -22,8 +18,6 @@ mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', butt
     const validTypes = ['dropDownGuests', 'dropDownRooms']
     type = isInList(validTypes, type, 'dropDownGuests')
     const inputStyle = type=='dropDownRooms' ? '_not-rounded' : '_rounded'
-
-    buttons = checkType('boolean', buttons, false)
 
   div(class = `${elementName} js-${elementName} ${elementName}${inputWidth}`)
     div(class = `${elementName}__input-wrapper`)

@@ -23,7 +23,6 @@ mixin button({text = '', type = 'button', length = 'short', width = 'wide', colo
     color = isInList(validColors, color, 'dark')
 
     href = checkType('string', href, 'https://test/test')
-    image = checkType('boolean', image, false)
 
   case type
     when 'button'

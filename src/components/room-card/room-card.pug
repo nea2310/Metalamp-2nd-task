@@ -7,15 +7,8 @@ mixin add-image(imageNumber = 0, imageName = require('@com/room-card/image/defau
       return result ? path : require('@com/feature/image/default.svg')
       }
 
-    function checkType (type, value, defaultValue){
-      return typeof value === type ? value : defaultValue
-    }
-
     const elementName = 'room-card'
-
-    isFirstImage = checkType('boolean', isFirstImage, false)
     const modifier = isFirstImage ? `${elementName}__photo_shown js-${elementName}__photo_shown` : ''
-
     imageName = isImage(imageName)
 
   image(class = `${elementName}__photo js-${elementName}__photo ${modifier}` 

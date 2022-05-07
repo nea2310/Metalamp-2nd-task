@@ -1,13 +1,6 @@
 mixin checklist({categories = [], expand = false, rich = false, labelText = ''} = {})
   -
-    function checkType (type, value, defaultValue){
-      return typeof value === type ? value : defaultValue
-    }
-
     const elementName = 'checklist'
-
-    expand = checkType('boolean', expand, false)
-    rich = checkType('boolean', rich, false)
     const style = expand == true ? `${elementName}_collapsing` : ''
     const listStyle = expand == true ? `${elementName}__list-wrapper_hidden` : ''
     const labelStyle = expand == true ? `${elementName}__label_collapsing` : `${elementName}__label_expanded`

@@ -1,12 +1,6 @@
 mixin toggle({js = '', labelText = '', name = '', isChecked = false} = {})
   -
-    function checkType (type, value, defaultValue){
-      return typeof value === type ? value : defaultValue
-    }
-
     const elementName = 'toggle'
-
-    isChecked  = checkType('boolean', isChecked, false)
 
   div(class = elementName)
     label(class = `${elementName}__label`)
