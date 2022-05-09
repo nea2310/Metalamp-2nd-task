@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable no-alert */
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
@@ -6,6 +7,8 @@ class DatePicker {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
     this.wrapper = element;
+    this.calendarSingle = !!this.wrapper.classList.contains(`js-${this.elementName}_type_dateDropDown`);
+    this.calendarDouble = !!this.wrapper.classList.contains(`js-${this.elementName}_type_filterDateDropDown`);
     this.focusOnList = false;
 
     this._handleDateDropDownClickClear = this._handleDateDropDownClickClear.bind(this);
@@ -22,10 +25,12 @@ class DatePicker {
     this._handleDateDropDownResizeLoadWindow = this._handleDateDropDownResizeLoadWindow.bind(this);
     this._handleDateDropDownFocusinWrapper = this._handleDateDropDownFocusinWrapper.bind(this);
     this._handleDateDropDownFocusinDoc = this._handleDateDropDownFocusinDoc.bind(this);
+    this._handleDateDropDownInput = this._handleDateDropDownInput.bind(this);
 
     this._render();
     this._init();
     this._setDefaultDate();
+    this._processDate();
     this._bindEventListeners();
   }
 
@@ -98,6 +103,49 @@ class DatePicker {
     }
   }
 
+  _processDate() {
+    // работа с датой
+    // dateCurrent =  текущая дате
+    this.dateCurrent = new Date();
+    // dateTomorrow =  завтрашняя дате
+    this.dateTomorrow = new Date(+this.dateCurrent
+      + (new Date('2020-12-31') - new Date('2020-12-30')));
+    // datePlusYear = плюс один год к текущей дате
+    this.datePlusYear = new Date(+this.dateCurrent
+      + (new Date('2020-12-31') - new Date('2020-01-01')));
+    const regexpDate = /^\d{2}\.\d{2}\.\d{4}$/; // формат даты
+    this.dateCurrentTxt = `${this.dateCurrent.getDate()
+      }.${this.dateCurrent.getMonth() + 1
+      }.${this.dateCurrent.getFullYear()}`;
+
+    this.dateTomorrowTxt = `${this.dateTomorrow.getDate()
+      }.${this.dateTomorrow.getMonth() + 1
+      }.${this.dateTomorrow.getFullYear()}`;
+
+    this.datePlusYearTxt = `${this.datePlusYear.getDate()
+      }.${this.datePlusYear.getMonth() + 1
+      }.${this.datePlusYear.getFullYear()}`;
+
+    // вставляет нули, если число или месяц - однозначное
+    const formatDate = (dateValue) => {
+      let date = dateValue;
+      if (regexpDate.test(date) === false) {
+        const dateSplit = date.split('.');
+
+        for (let i = 0; i < dateSplit.length; i += 1) {
+          if (dateSplit[i].length === 1) {
+            dateSplit[i] = `0${dateSplit[i]}`;
+          }
+        }
+        date = dateSplit.join('.');
+      }
+      return date;
+    };
+    this.dateCurrentTxt = formatDate(this.dateCurrentTxt);
+    this.dateTomorrowTxt = formatDate(this.dateTomorrowTxt);
+    this.datePlusYearTxt = formatDate(this.datePlusYearTxt);
+  }
+
   _bindEventListeners() {
     /* Ввод даты в инпут с клавиатуры */
     if (this.isFilter) {
@@ -146,6 +194,14 @@ class DatePicker {
     // ресайз/лоад страницы
     window.addEventListener('resize', this._handleDateDropDownResizeLoadWindow);
     window.addEventListener('load', this._handleDateDropDownResizeLoadWindow);
+
+    /* запретить все типы ввода, кроме перечисленных */
+    if (!this.isFilter) {
+      this.inputDateFrom.addEventListener('input', this._handleDateDropDownInput);
+      this.inputDateTo.addEventListener('input', this._handleDateDropDownInput);
+    } else {
+      this.inputDate.addEventListener('input', this._handleDateDropDownInput);
+    }
   }
 
   _handleDateDropDownFocusDate(e) {
@@ -153,19 +209,19 @@ class DatePicker {
     const startDate = this.myDatepicker.selectedDates[0];
     const endDate = this.myDatepicker.selectedDates[1];
     if (startDate || endDate) {
-      const tempStDate = String(startDate.getDate());
-      const startDay = tempStDate.length === 1 ? `0${tempStDate}`
-        : tempStDate;
-      const tempStMonth = String(startDate.getMonth() + 1);
-      let startMonth = tempStMonth.length === 1
-        ? `0${tempStMonth}` : tempStMonth;
+      const dateString = String(startDate.getDate());
+      const startDay = dateString.length === 1 ? `0${dateString}`
+        : dateString;
+      const monthString = String(startDate.getMonth() + 1);
+      let startMonth = monthString.length === 1
+        ? `0${monthString}` : monthString;
       startMonth = startMonth === '12' ? '01' : startMonth;
-      const tempEndDate = String(endDate.getDate());
-      const endDay = tempEndDate.length === 1 ? `0${tempEndDate}`
-        : tempEndDate;
-      const tempEndMonth = String(endDate.getMonth() + 1);
-      let endMonth = tempEndMonth.length === 1 ? `0${tempEndMonth}`
-        : tempEndMonth;
+      const endDateString = String(endDate.getDate());
+      const endDay = endDateString.length === 1 ? `0${endDateString}`
+        : endDateString;
+      const endMonthString = String(endDate.getMonth() + 1);
+      let endMonth = endMonthString.length === 1 ? `0${endMonthString}`
+        : endMonthString;
       endMonth = endMonth === '12' ? '01' : endMonth;
       e.target.value = `${startDay}.${startMonth}.${startDate.getFullYear()} - ${endDay}.${endMonth}.${endDate.getFullYear()}`;
       this.initDateParsed = this.inputDate.value;
@@ -193,59 +249,29 @@ class DatePicker {
   }
 
   _handleDateDropDownInputNoFilter(e) {
-    if (e.target.value.length === 10) {
-      const currentInput = e.target;
-      const secondInput = currentInput.classList
-        .contains(`.${this.elementName}__input_from`)
-        ? this.inputDateTo : this.inputDateFrom;
-      switch (this.inputType) {
-        case 'text':
-          {
-            const dateFromString = currentInput.value.split('.');
-            const dateToString = secondInput.value.split('.');
-            const dateFrom = `${dateFromString[2]}-${dateFromString[1]}-${dateFromString[0]}`;
-            const dateTo = `${dateToString[2]}-${dateToString[1]}-${dateToString[0]}`;
-            this.myDatepicker.clear();
-            if (secondInput.value) { // заполнены оба инпута
-              this.myDatepicker.selectDate(
-                new Date(dateTo),
-              );
-              this.myDatepicker.selectDate(
-                new Date(dateFrom),
-              );
-            } else {
-              // заполнен один инпут
-              this.myDatepicker.selectDate(
-                new Date(dateFrom),
-              );
-            }
-          }
-          break;
-        case 'date':
-          if (e.target.value[0] !== '0') {
-            const dateFrom = currentInput.value;
-            const dateTo = secondInput.value;
-            this.myDatepicker.clear();
-            if (secondInput.value) { // заполнены оба инпута
-              this.myDatepicker.selectDate(
-                new Date(dateTo),
-              );
-              this.myDatepicker.selectDate(
-                new Date(dateFrom),
-              );
-            } else {
-              // заполнен один инпут
-              this.myDatepicker.selectDate(
-                new Date(dateFrom),
-              );
-            }
-          }
-          break;
-        default:
-          return true;
+    const currentInput = e.target;
+    const secondInput = currentInput.classList
+      .contains(`.${this.elementName}__input_from`)
+      ? this.inputDateTo : this.inputDateFrom;
+
+    if (e.target.value[0] !== '0') {
+      const dateFrom = currentInput.value;
+      const dateTo = secondInput.value;
+      this.myDatepicker.clear();
+      if (secondInput.value) { // заполнены оба инпута
+        this.myDatepicker.selectDate(
+          new Date(dateTo),
+        );
+        this.myDatepicker.selectDate(
+          new Date(dateFrom),
+        );
+      } else {
+        // заполнен один инпут
+        this.myDatepicker.selectDate(
+          new Date(dateFrom),
+        );
       }
     }
-    return true;
   }
 
   _handleDateDropDownClickDate() {
@@ -308,10 +334,12 @@ class DatePicker {
   }
 
   _handleDateDropDownClickDoc(e) {
-    const condA = (this.isFilter && e.target !== this.inputDate) || !this.isFilter;
-    const condB = e.target !== this.inputDateFrom && e.target !== this.inputDateTo;
-    const condC = e.target.closest(`.${this.elementName}`) == null;
-    const condFull = ((condA && condB) || condC) && this.clickOnCalendar === false;
+    const isFilter = this.isFilter && e.target !== this.inputDate;
+    const isNotFilter = !this.isFilter
+      && (e.target !== this.inputDateFrom && e.target !== this.inputDateTo);
+    const isNotDataDropDown = e.target.closest(`.${this.elementName}`) == null;
+    const condFull = (isFilter || isNotFilter || isNotDataDropDown)
+      && this.clickOnCalendar === false;
 
     if (condFull) {
       this._toggle(false);
@@ -329,6 +357,54 @@ class DatePicker {
       this._toggle(false);
     } else {
       this.focusOnList = false;
+    }
+  }
+
+  _handleDateDropDownInput(e) {
+    let inputTypeAllowed = false;
+    const allowedInpTypes = ['insertText',
+      'insertFromDrop',
+      'insertFromPaste',
+      'deleteByCut',
+      'deleteContentBackward'];
+    for (let i = 0; i <= allowedInpTypes.length; i += 1) {
+      if (e.inputType === allowedInpTypes[i]) {
+        inputTypeAllowed = true;
+        break;
+      }
+    }
+    if (!inputTypeAllowed) {
+      e.target.value = '';
+    }
+
+    /* при вводе перетаскиванием текста или из буфера обмена -
+    проверить на соответствие формату ДД.ММ.ГГГГ и если
+    не соответствует - очистить инпут */
+    DatePicker.checkFormat(e);
+
+    /* действия при вводе с клавиатуры */
+    if (e.inputType === 'insertText' && this.calendarDouble) {
+      DatePicker.addZero(e);
+
+      /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
+      DatePicker.addDot(e);
+
+      /* ставим знаки пробела и минус между датами (требуется только для calendarDouble) */
+      if (this.calendarDouble) {
+        DatePicker.addDash(e);
+      }
+
+      /* удаляем все символы после 24-го символа (требуется только для calendarDouble) */
+      DatePicker.truncAfter24(e);
+    }
+
+    // ввод даты закончен
+    if (this.calendarSingle && e.target.value[0] !== '0') {
+      this._checkRangeSingle(e);
+    }
+
+    if (this.calendarDouble && e.target.value.length === 23) {
+      this._checkRangeDouble(e);
     }
   }
 
@@ -352,6 +428,36 @@ class DatePicker {
     }
   }
 
+  _checkRangeSingle(e) {
+    const dateSelected = new Date(e.target.value);
+    const correctFormat = dateSelected < this.dateCurrent
+      || dateSelected > this.datePlusYear
+      || DatePicker.formatIncorrect(dateSelected);
+    if (correctFormat) {
+      alert(`Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
+      e.target.value = this.dateCurrentTxt;/* в случае некорректного ввода -
+        устанавливаем текущую дату */
+    }
+  }
+
+  _checkRangeDouble(e) {
+    /* Проверка, что введенная дата попадает в диапазон dateCurrent и datePlusYear */
+    const dateFrom = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
+    const dateTo = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
+    const dateCurrentSelected = new Date(`${dateFrom[2]}-${dateFrom[1]}-${dateFrom[0]}`);
+    const datePlusYearSelected = new Date(`${dateTo[2]}-${dateTo[1]}-${dateTo[0]}`);
+    const correctFormat = dateCurrentSelected < this.dateCurrent
+      || dateCurrentSelected > this.datePlusYear
+      || DatePicker.formatIncorrect(dateCurrentSelected)
+      || datePlusYearSelected < this.dateCurrent
+      || datePlusYearSelected > this.datePlusYear
+      || DatePicker.formatIncorrect(datePlusYearSelected);
+    if (correctFormat) {
+      alert(`Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
+      e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;// в случае некорректного ввода - устанавливаем диапазон [текущая дата - завтрашняя дата]
+    }
+  }
+
   _getElement(selector, wrapper = this.wrapper) {
     return wrapper
       .querySelector(`.js-${this.elementName}__${selector}`);
@@ -363,6 +469,77 @@ class DatePicker {
     selector = selector.substring(0, selector.length - 1);
     return this.wrapper
       .querySelectorAll(selector);
+  }
+
+  /* при вводе перетаскиванием текста или из буфера обмена -
+проверить на соответствие формату ДД.ММ.ГГГГ и если
+не соответствует - очистить инпут */
+  static checkFormat(e) {
+    const regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/; // формат даты
+    const correctFormat1 = (
+      regexpDateDouble.test(e.target.value) === false
+      && (e.inputType === 'insertFromDrop' || e.inputType === 'insertFromPaste'));
+    if (correctFormat1) {
+      e.target.value = '';
+    }
+  }
+
+  /* действия при вводе с клавиатуры */
+  static addZero(e) {
+    const plusZero = () => {
+      const position = e.target.value[e.target.value.length - 1];
+      e.target.value = `${e.target.value.slice(
+        0,
+        e.target.value.length - 1,
+      )}0${position}`;
+    };
+    e.target.value = e.target.value.replace(/[^0-9. -]/g, '');// все, кроме цифр, точек, пробелов и дефисов, заменяются на пустую строку
+    /* если ввод дня начинается с числа, больше 3 - то добавить перед ним ноль */
+    /* если ввод месяца начинается с числа, больше 1 - то добавить перед ним ноль */
+    const correctFormat = (parseInt(e.target.value[0], 10) >= 4
+      && e.target.value.length === 1)
+      || (parseInt(e.target.value[3], 10) >= 2
+        && e.target.value.length === 4)
+      || (parseInt(e.target.value[13], 10) >= 4
+        && e.target.value.length === 14)
+      || (parseInt(e.target.value[16], 10) >= 2
+        && e.target.value.length === 17);
+    if (correctFormat) {
+      plusZero();
+    }
+  }
+
+  /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
+  static addDot(e) {
+    const correctFormat3 = e.target.value.length === 2
+      || e.target.value.length === 5
+      || e.target.value.length === 15
+      || e.target.value.length === 18;
+    if (correctFormat3) {
+      e.target.value = `${e.target.value}.`;
+    }
+  }
+
+  /* ставим знаки пробела и минус между датами (требуется только для calendarDouble) */
+  static addDash(e) {
+    if (e.target.value.length === 10) {
+      e.target.value = `${e.target.value} - `;
+    }
+  }
+
+  /* удаляем все символы после 24-го символа (требуется только для calendarDouble) */
+  static truncAfter24(e) {
+    if (e.target.value.length > 24) {
+      e.target.value = e.target.value.slice(
+        0,
+        e.target.value.length - 1,
+      );
+    }
+  }
+
+  /* проверить корректность строки с датой */
+  static formatIncorrect(date) {
+    return Number.isNaN(+date);
   }
 }
 
