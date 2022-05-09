@@ -1,6 +1,6 @@
-mixin input({width = '', placeholder = '', labelText = '', image = false, name = '', js = '', inputType = 'text', inputMin = '', inputMax = ''} ={})
+mixin input({width = '', placeholder = '', labelText = '', image = false, name = '', js = '', inputType = 'text', inputMin = '', inputMax = '', validation = ''} ={})
   -
-    function isInList (list, value, defaultValue) {
+    function isInList (list, value, defaultValue = '') {
       return value = list.includes(value) ? value : defaultValue
     }
     const elementName = 'input-field'
@@ -8,13 +8,16 @@ mixin input({width = '', placeholder = '', labelText = '', image = false, name =
     const validWidths = ['wide', 'medium', 'medium-narrow']
     width = isInList(validWidths, width, 'wide')
 
+    const validationTypes = ['date', 'email']
+    validation = isInList(validationTypes, validation)
+
     const inputWidth = `_width_${width}`
 
-  div(class = `${elementName} ${elementName}_width_${width}`)
+  div(class = `${elementName} js-${elementName} ${elementName}_width_${width} js-${elementName}_validation_${validation}`)
     label(class = `${elementName}__label`)
       if labelText
         p(class = `${elementName}__label-text`)= labelText
       if image
         button(class = `${elementName}__link` aria-label = name)
           image(class = `${elementName}__image`, src = require('@com/input-field/image/arrow-forward.svg'))
-      input(class = `${elementName}__input ${js}` placeholder = placeholder type = inputType min = inputMin max = inputMax )
+      input(class = `${elementName}__input js-${elementName}__input` placeholder = placeholder type = inputType min = inputMin max = inputMax )
