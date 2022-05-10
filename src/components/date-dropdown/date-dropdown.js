@@ -35,8 +35,8 @@ class DatePicker {
   }
 
   _render() {
-    const inputs = this._getElements(['input-wrapper']);
-    this.isFilter = inputs.length === 1;
+    this.inputs = this._getElements(['input-wrapper']);
+    this.isFilter = this.inputs.length === 1;
 
     if (!this.isFilter) {
       this.inputDateFrom = this._getElement('input_from');
@@ -196,12 +196,7 @@ class DatePicker {
     window.addEventListener('load', this._handleDateDropDownResizeLoadWindow);
 
     /* запретить все типы ввода, кроме перечисленных */
-    if (!this.isFilter) {
-      this.inputDateFrom.addEventListener('input', this._handleDateDropDownInput);
-      this.inputDateTo.addEventListener('input', this._handleDateDropDownInput);
-    } else {
-      this.inputDate.addEventListener('input', this._handleDateDropDownInput);
-    }
+    this.inputs.forEach((input) => input.addEventListener('input', this._handleDateDropDownInput));
   }
 
   _handleDateDropDownFocusDate(e) {
@@ -361,43 +356,9 @@ class DatePicker {
   }
 
   _handleDateDropDownInput(e) {
-    let inputTypeAllowed = false;
-    const allowedInpTypes = ['insertText',
-      'insertFromDrop',
-      'insertFromPaste',
-      'deleteByCut',
-      'deleteContentBackward'];
-    for (let i = 0; i <= allowedInpTypes.length; i += 1) {
-      if (e.inputType === allowedInpTypes[i]) {
-        inputTypeAllowed = true;
-        break;
-      }
+    if (this.calendarDouble) {
+      DatePicker.processTextInput(e);
     }
-    if (!inputTypeAllowed) {
-      e.target.value = '';
-    }
-
-    /* при вводе перетаскиванием текста или из буфера обмена -
-    проверить на соответствие формату ДД.ММ.ГГГГ и если
-    не соответствует - очистить инпут */
-    DatePicker.checkFormat(e);
-
-    /* действия при вводе с клавиатуры */
-    if (e.inputType === 'insertText' && this.calendarDouble) {
-      DatePicker.addZero(e);
-
-      /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
-      DatePicker.addDot(e);
-
-      /* ставим знаки пробела и минус между датами (требуется только для calendarDouble) */
-      if (this.calendarDouble) {
-        DatePicker.addDash(e);
-      }
-
-      /* удаляем все символы после 24-го символа (требуется только для calendarDouble) */
-      DatePicker.truncAfter24(e);
-    }
-
     // ввод даты закончен
     if (this.calendarSingle && e.target.value[0] !== '0') {
       this._checkRangeSingle(e);
@@ -430,10 +391,10 @@ class DatePicker {
 
   _checkRangeSingle(e) {
     const dateSelected = new Date(e.target.value);
-    const correctFormat = dateSelected < this.dateCurrent
+    const needCorrectFormat = dateSelected < this.dateCurrent
       || dateSelected > this.datePlusYear
-      || DatePicker.formatIncorrect(dateSelected);
-    if (correctFormat) {
+      || DatePicker.isFormatIncorrect(dateSelected);
+    if (needCorrectFormat) {
       alert(`Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
       e.target.value = this.dateCurrentTxt;/* в случае некорректного ввода -
         устанавливаем текущую дату */
@@ -446,29 +407,53 @@ class DatePicker {
     const dateTo = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
     const dateCurrentSelected = new Date(`${dateFrom[2]}-${dateFrom[1]}-${dateFrom[0]}`);
     const datePlusYearSelected = new Date(`${dateTo[2]}-${dateTo[1]}-${dateTo[0]}`);
-    const correctFormat = dateCurrentSelected < this.dateCurrent
+    const needCorrectFormat = dateCurrentSelected < this.dateCurrent
       || dateCurrentSelected > this.datePlusYear
-      || DatePicker.formatIncorrect(dateCurrentSelected)
+      || DatePicker.isFormatIncorrect(dateCurrentSelected)
       || datePlusYearSelected < this.dateCurrent
       || datePlusYearSelected > this.datePlusYear
-      || DatePicker.formatIncorrect(datePlusYearSelected);
-    if (correctFormat) {
+      || DatePicker.isFormatIncorrect(datePlusYearSelected);
+    if (needCorrectFormat) {
       alert(`Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
       e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;// в случае некорректного ввода - устанавливаем диапазон [текущая дата - завтрашняя дата]
     }
   }
 
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.js-${this.elementName}__${selector}`);
-  }
+  static processTextInput(e) {
+    let isInputAllowed = false;
+    const allowedInputTypes = ['insertText',
+      'insertFromDrop',
+      'insertFromPaste',
+      'deleteByCut',
+      'deleteContentBackward'];
+    for (let i = 0; i <= allowedInputTypes.length; i += 1) {
+      if (e.inputType === allowedInputTypes[i]) {
+        isInputAllowed = true;
+        break;
+      }
+    }
+    if (!isInputAllowed) {
+      e.target.value = '';
+    }
 
-  _getElements(selectors) {
-    let selector = '';
-    selectors.forEach((item) => { selector += `.js-${this.elementName}__${item},`; });
-    selector = selector.substring(0, selector.length - 1);
-    return this.wrapper
-      .querySelectorAll(selector);
+    /* при вводе перетаскиванием текста или из буфера обмена -
+    проверить на соответствие формату ДД.ММ.ГГГГ и если
+    не соответствует - очистить инпут */
+    DatePicker.checkFormat(e);
+
+    /* действия при вводе с клавиатуры */
+    if (e.inputType === 'insertText') {
+      DatePicker.addZero(e);
+
+      /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
+      DatePicker.addDot(e);
+
+      /* ставим знаки пробела и минус между датами (требуется только для calendarDouble) */
+      DatePicker.addDash(e);
+
+      /* удаляем все символы после 24-го символа (требуется только для calendarDouble) */
+      DatePicker.truncAfter24(e);
+    }
   }
 
   /* при вводе перетаскиванием текста или из буфера обмена -
@@ -476,10 +461,10 @@ class DatePicker {
 не соответствует - очистить инпут */
   static checkFormat(e) {
     const regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/; // формат даты
-    const correctFormat1 = (
+    const needCorrectFormat = (
       regexpDateDouble.test(e.target.value) === false
       && (e.inputType === 'insertFromDrop' || e.inputType === 'insertFromPaste'));
-    if (correctFormat1) {
+    if (needCorrectFormat) {
       e.target.value = '';
     }
   }
@@ -496,7 +481,7 @@ class DatePicker {
     e.target.value = e.target.value.replace(/[^0-9. -]/g, '');// все, кроме цифр, точек, пробелов и дефисов, заменяются на пустую строку
     /* если ввод дня начинается с числа, больше 3 - то добавить перед ним ноль */
     /* если ввод месяца начинается с числа, больше 1 - то добавить перед ним ноль */
-    const correctFormat = (parseInt(e.target.value[0], 10) >= 4
+    const needCorrectFormat = (parseInt(e.target.value[0], 10) >= 4
       && e.target.value.length === 1)
       || (parseInt(e.target.value[3], 10) >= 2
         && e.target.value.length === 4)
@@ -504,18 +489,18 @@ class DatePicker {
         && e.target.value.length === 14)
       || (parseInt(e.target.value[16], 10) >= 2
         && e.target.value.length === 17);
-    if (correctFormat) {
+    if (needCorrectFormat) {
       plusZero();
     }
   }
 
   /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
   static addDot(e) {
-    const correctFormat3 = e.target.value.length === 2
+    const needCorrectFormat = e.target.value.length === 2
       || e.target.value.length === 5
       || e.target.value.length === 15
       || e.target.value.length === 18;
-    if (correctFormat3) {
+    if (needCorrectFormat) {
       e.target.value = `${e.target.value}.`;
     }
   }
@@ -538,8 +523,21 @@ class DatePicker {
   }
 
   /* проверить корректность строки с датой */
-  static formatIncorrect(date) {
+  static isFormatIncorrect(date) {
     return Number.isNaN(+date);
+  }
+
+  _getElement(selector, wrapper = this.wrapper) {
+    return wrapper
+      .querySelector(`.js-${this.elementName}__${selector}`);
+  }
+
+  _getElements(selectors) {
+    let selector = '';
+    selectors.forEach((item) => { selector += `.js-${this.elementName}__${item},`; });
+    selector = selector.substring(0, selector.length - 1);
+    return this.wrapper
+      .querySelectorAll(selector);
   }
 }
 

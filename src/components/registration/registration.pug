@@ -34,9 +34,9 @@ mixin registration()
         +input(
           {width: 'wide',
           placeholder: 'ДД.ММ.ГГГГ',
-          js:' js-masked js-date',
           labelText: 'дата рождения',
-          inputType: 'date',
+          inputType: 'text',
+          validation: 'date'
           } 
           )
       fieldset(class = `${elementName}__credentials`) 
@@ -45,8 +45,8 @@ mixin registration()
           +input(
             {width: 'wide',
             placeholder: 'Email',
-            js:'js-check-email',
             inputType: 'email',
+            validation: 'email'
             } 
             )
         div(class = `${elementName}__password`)

@@ -30,10 +30,10 @@ mixin footer({menu = []} = {})
           +input(
             {width: 'medium-narrow',
             placeholder: 'Email',
-            js:'js-check-email',
             image: true,
             name: 'оформить подписку',
             inputType: 'email',
+            validation: 'email'
             }
             )
     div(class = `${elementName}__wrapper-middle`)
