@@ -1,4 +1,4 @@
-mixin toggle({js = '', labelText = '', name = '', isChecked = false} = {})
+mixin toggle({labelText = '', name = '', isChecked = false} = {})
   -
     const elementName = 'toggle'
 
@@ -7,7 +7,7 @@ mixin toggle({js = '', labelText = '', name = '', isChecked = false} = {})
       if labelText
         p(class = `${elementName}__label-text`)= labelText
       label(class = `${elementName}__wrapper`)
-        input(class = `${elementName}__checkbox ${js}`, type = "checkbox" name = name value = name checked = isChecked)
+        input(class = `${elementName}__checkbox`, type = "checkbox" name = name value = name checked = isChecked)
         span(class = `${elementName}__checkmark`)
           span(class = `${elementName}__ball`)
         p(class = `${elementName}__name`)= name
