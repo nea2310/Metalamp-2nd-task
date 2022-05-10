@@ -47,7 +47,7 @@ mixin filter-form()
               }], 
           type: 'dropDownGuests',
           placeholder: 'Сколько гостей',
-          buttons: true,
+          hasButtons: true,
           labelText: 'гости',
           width: 'narrow'}
           )
@@ -70,8 +70,8 @@ mixin filter-form()
             [{name:'Можно курить'}, 
             {name:'Можно с питомцами'}, 
             {name:'Можно пригласить гостей (до 10 человек)'}],
-          expand: false,
-          rich: false, 
+          isExpanded: false,
+          isRich: false, 
           labelText: 'правила дома'}
           )
       div(class = `${elementName}__accessability-wrapper`)
@@ -85,8 +85,8 @@ mixin filter-form()
               name:'Помощник для инвалидов', 
               description: 'На 1 этаже вас встретит специалист и проводит до номера',
               }],
-            expand: false,
-            rich: true, 
+            isExpanded: false,
+            isRich: true, 
           labelText: 'доступность'}
           )
       div(class = `${elementName}__facilities-wrapper`)

@@ -6,7 +6,7 @@ mixin range-slider({labelText = '', text = '', sliderType = 0, min = 0, max = 0,
       const valid = typeof value === 'number' || (typeof value === 'string' && (!Number.isNaN(+value)))
       return valid ?  value : 0
     }
-    function isInList (list, value, defaultValue) {
+    function getValidValue (list, value, defaultValue) {
       return value = list.includes(value) ? value : defaultValue
     }
 
@@ -18,8 +18,8 @@ mixin range-slider({labelText = '', text = '', sliderType = 0, min = 0, max = 0,
     to = isNumber(to)
 
     const validStates = ['true', 'false']
-    isMinMaxHidden = isInList(validStates, isMinMaxHidden, 'true')
-    isFromToHidden = isInList(validStates, isFromToHidden, 'true')
+    isMinMaxHidden = getValidValue(validStates, isMinMaxHidden, 'true')
+    isFromToHidden = getValidValue(validStates, isFromToHidden, 'true')
 
   div(class = `${elementName} js-${elementName}`)
     div(class = `${elementName}__wrapper`)

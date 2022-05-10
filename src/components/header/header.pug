@@ -1,6 +1,6 @@
 include ../button/button.pug
 
-mixin header({menu = [], authorized = false} = {})
+mixin header({menu = [], isAuthorized = false} = {})
   -
     const elementName = 'header'
 
@@ -24,7 +24,7 @@ mixin header({menu = [], authorized = false} = {})
                         li(class = `${elementName}__nav-level2-item`) 
                           a(class = `${elementName}__nav-level2-item-link` href = 'https://test/test')= subValue
       div(class = `${elementName}__auth`) 
-        if (!authorized)
+        if (!isAuthorized)
           div(class = `${elementName}__button-login`) 
             +button(
               {text: 'войти',

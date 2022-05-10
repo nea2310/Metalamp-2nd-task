@@ -5,7 +5,7 @@ function checkType(type, value, defaultValue) {
   return typeof value === type ? value : defaultValue;
 }
 
-function isInList(list, value, defaultValue) {
+function getValidValue(list, value, defaultValue) {
   return list.includes(value) ? value : defaultValue;
 }
 
@@ -20,5 +20,5 @@ function isImage(path) {
 }
 
 export {
-  checkType, isInList, isNumber, isImage,
+  checkType, getValidValue, isNumber, isImage,
 };

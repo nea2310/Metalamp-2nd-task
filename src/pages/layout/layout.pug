@@ -20,7 +20,7 @@ html(lang = 'ru')
       {name: 'служба поддержки', items: ['Соглашения', 'Сообщества', 'Связь с нами']},
     ]
   body(class = 'layout')
-    +header({menu: headerLinks, authorized: false})
+    +header({menu: headerLinks, isAuthorized: false})
     block content
       main
     div(class = 'layout__delimiter')

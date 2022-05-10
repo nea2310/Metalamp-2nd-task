@@ -77,7 +77,7 @@ block content
             {width: 'medium',
             placeholder: 'Email',
             labelText: 'subscription text field',
-            image: true,
+            hasImage: true,
             name: 'оформить подписку',
             inputType: 'email',
             validation: 'email',
@@ -114,8 +114,8 @@ block content
               {name:'Кроватка'}, 
               {name:'Телевизор'}, 
               {name:'Шампунь'}],
-            expand: true,
-            rich: false, 
+            isExpanded: true,
+            isRich: false, 
             labelText: 'expandable checkbox list',}
             )
         div(class="form-elements__comp-wrapper")
@@ -127,8 +127,8 @@ block content
               {name:'Кроватка'}, 
               {name:'Телевизор'}, 
               {name:'Шампунь'}],
-            expand: true,
-            rich: false, 
+            isExpanded: true,
+            isRich: false, 
             labelText: 'expandable checkbox list'}
             )
       div(class="form-elements__column")
@@ -138,8 +138,8 @@ block content
               [{name:'Можно курить'}, 
               {name:'Можно с питомцами'}, 
               {name:'Можно пригласить гостей (до 10 человек)'}],
-            expand: false,
-            rich: false, 
+            isExpanded: false,
+            isRich: false, 
             labelText: 'checkbox buttons'}
             )
         span(class='form-elements__label') radio buttons
@@ -180,7 +180,7 @@ block content
               {displayName: 'младенцы', categoryType: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}], 
             type: 'dropDownGuests',
             placeholder: 'Сколько гостей',
-            buttons: true,
+            hasButtons: true,
             labelText: 'dropdown',
             width: 'wide'}
             )
@@ -189,9 +189,9 @@ block content
             {categories:
               [{name:'Широкий коридор', description: 'Ширина коридоров в номере не менее 91 см'}, 
               {name:'Помощник для инвалидов', description: 'На 1 этаже вас встретит специалист и проводит до номера'}],
-              expand: false,
-              rich: true, 
-            labelText: 'rich checkbox buttons'}
+              isExpanded: false,
+              isRich: true, 
+            labelText: 'isRich checkbox buttons'}
             )
       div(class="form-elements__column")
         div(class="form-elements__comp-wrapper")
@@ -237,7 +237,7 @@ block content
             length: 'very-long',
             width: 'wide',
             color: 'dark',
-            image: true}
+            hasImage: true}
             )
         span(class='form-elements__label') pagination
         div(class="form-elements__comp-wrapper")
@@ -250,7 +250,7 @@ block content
                 {displayName: 'младенцы', categoryType: 'младенец', declensions: 'младенец,младенца,младенцев', defaultCount: 0, minCount: 0, maxCount: 99}], 
             type: 'dropDownGuests',
             placeholder: 'Сколько гостей',
-            buttons: true,
+            hasButtons: true,
             labelText: 'dropdown',
             width: 'wide'}
             )

@@ -1,6 +1,6 @@
-mixin button({text = '', type = 'button', length = 'short', width = 'wide', color = 'dark', href = 'https://test/test', image = false} = {})
+mixin button({text = '', type = 'button', length = 'short', width = 'wide', color = 'dark', href = 'https://test/test', hasImage = false} = {})
   -
-    function isInList (list, value, defaultValue) {
+    function getValidValue (list, value, defaultValue) {
       return value = list.includes(value) ? value : defaultValue
     }
 
@@ -11,16 +11,16 @@ mixin button({text = '', type = 'button', length = 'short', width = 'wide', colo
     const elementName = 'button'
 
     const validTypes = ['button', 'submit', 'link', 'plain-text']
-    type = isInList(validTypes, type, 'button')
+    type = getValidValue(validTypes, type, 'button')
 
     const validLengths = ['very-long', 'long', 'short', 'very-short']
-    length = isInList(validLengths, length, 'short')
+    length = getValidValue(validLengths, length, 'short')
 
     const validWidths = ['wide', 'narrow']
-    width = isInList(validWidths, width, 'wide')
+    width = getValidValue(validWidths, width, 'wide')
 
     const validColors = ['dark', 'light']
-    color = isInList(validColors, color, 'dark')
+    color = getValidValue(validColors, color, 'dark')
 
     href = checkType('string', href, 'https://test/test')
 
@@ -31,7 +31,7 @@ mixin button({text = '', type = 'button', length = 'short', width = 'wide', colo
     when 'submit'
       button(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 
         type = 'submit')= text
-        if image
+        if hasImage
           image(class = `${elementName}__image`, src = require('@com/button/image/arrow-forward-white.svg'))
     when 'link'
       a(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` href = href)= text

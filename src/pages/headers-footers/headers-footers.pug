@@ -21,8 +21,8 @@ block content
     ]
   main(class="headers-footers")
     div(class='headers-footers__header')
-      +header({menu: headerLinks, authorized: false})
+      +header({menu: headerLinks, isAuthorized: false})
     div(class='headers-footers__header')
-      +header({menu: headerLinks, authorized: true})
+      +header({menu: headerLinks, isAuthorized: true})
     div(class='headers-footers__footer')
       +footer({menu: footerLinks})

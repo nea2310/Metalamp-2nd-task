@@ -1,8 +1,8 @@
 include ../button/button.pug
 
-mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', buttons = false, labelText = '', width = 'wide'} = {})
+mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', hasButtons = false, labelText = '', width = 'wide'} = {})
   -
-    function isInList (list, value, defaultValue) {
+    function getValidValue (list, value, defaultValue) {
       return value = list.includes(value) ? value : defaultValue
     }
 
@@ -12,11 +12,11 @@ mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', butt
     const plus = '+'
 
     const validWidths = ['wide', 'narrow']
-    width = isInList(validWidths, width, 'wide')
+    width = getValidValue(validWidths, width, 'wide')
     const inputWidth = `_width_${width}`
 
     const validTypes = ['dropDownGuests', 'dropDownRooms']
-    type = isInList(validTypes, type, 'dropDownGuests')
+    type = getValidValue(validTypes, type, 'dropDownGuests')
     const inputStyle = type=='dropDownRooms' ? '_not-rounded' : '_rounded'
 
   div(class = `${elementName} js-${elementName} ${elementName}${inputWidth}`)
@@ -42,7 +42,7 @@ mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', butt
                 span(class = `${elementName}__count-value js-${elementName}__count-value`)= defaultCount
                 button(class = `${elementName}__count-increment js-${elementName}__count-increment`
                   data-max = maxCount type = 'button' aria-label = 'увеличить количество')= plus
-      if (buttons)
+      if (hasButtons)
         div(class = `${elementName}__buttons`)
           div(class = `${elementName}__button-clear js-${elementName}__button-clear`)
             +button(

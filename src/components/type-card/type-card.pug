@@ -1,13 +1,13 @@
 mixin type-card({style = '', name = '', text = ''} = {})
   -
-    function isInList (list, value, defaultValue) {
+    function getValidValue (list, value, defaultValue) {
       return value = list.includes(value) ? value : defaultValue
     }
 
     const elementName = 'type-card'
 
     const validStyles = ['h1', 'h2', 'h3', 'body']
-    style = isInList(validStyles, style, 'h1')
+    style = getValidValue(validStyles, style, 'h1')
 
   span(class = elementName)
     span(class=`${elementName}__name ${elementName}__name_${style}`)= name
