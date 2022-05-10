@@ -3,7 +3,7 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 
-class DatePicker {
+class DateDropDown {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
     this.wrapper = element;
@@ -357,7 +357,7 @@ class DatePicker {
 
   _handleDateDropDownInput(e) {
     if (this.calendarDouble) {
-      DatePicker.processTextInput(e);
+      DateDropDown.processTextInput(e);
     }
     // ввод даты закончен
     if (this.calendarSingle && e.target.value[0] !== '0') {
@@ -393,7 +393,7 @@ class DatePicker {
     const dateSelected = new Date(e.target.value);
     const needCorrectFormat = dateSelected < this.dateCurrent
       || dateSelected > this.datePlusYear
-      || DatePicker.isFormatIncorrect(dateSelected);
+      || DateDropDown.isFormatIncorrect(dateSelected);
     if (needCorrectFormat) {
       alert(`Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
       e.target.value = this.dateCurrentTxt;/* в случае некорректного ввода -
@@ -409,10 +409,10 @@ class DatePicker {
     const datePlusYearSelected = new Date(`${dateTo[2]}-${dateTo[1]}-${dateTo[0]}`);
     const needCorrectFormat = dateCurrentSelected < this.dateCurrent
       || dateCurrentSelected > this.datePlusYear
-      || DatePicker.isFormatIncorrect(dateCurrentSelected)
+      || DateDropDown.isFormatIncorrect(dateCurrentSelected)
       || datePlusYearSelected < this.dateCurrent
       || datePlusYearSelected > this.datePlusYear
-      || DatePicker.isFormatIncorrect(datePlusYearSelected);
+      || DateDropDown.isFormatIncorrect(datePlusYearSelected);
     if (needCorrectFormat) {
       alert(`Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
       e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;// в случае некорректного ввода - устанавливаем диапазон [текущая дата - завтрашняя дата]
@@ -439,20 +439,20 @@ class DatePicker {
     /* при вводе перетаскиванием текста или из буфера обмена -
     проверить на соответствие формату ДД.ММ.ГГГГ и если
     не соответствует - очистить инпут */
-    DatePicker.checkFormat(e);
+    DateDropDown.checkFormat(e);
 
     /* действия при вводе с клавиатуры */
     if (e.inputType === 'insertText') {
-      DatePicker.addZero(e);
+      DateDropDown.addZero(e);
 
       /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
-      DatePicker.addDot(e);
+      DateDropDown.addDot(e);
 
       /* ставим знаки пробела и минус между датами (требуется только для calendarDouble) */
-      DatePicker.addDash(e);
+      DateDropDown.addDash(e);
 
       /* удаляем все символы после 24-го символа (требуется только для calendarDouble) */
-      DatePicker.truncAfter24(e);
+      DateDropDown.truncAfter24(e);
     }
   }
 
@@ -543,6 +543,6 @@ class DatePicker {
 
 function renderDateDropDowns(selector) {
   const dropDowns = document.querySelectorAll(selector);
-  dropDowns.forEach((dateDropDown) => new DatePicker(selector, dateDropDown));
+  dropDowns.forEach((dateDropDown) => new DateDropDown(selector, dateDropDown));
 }
 renderDateDropDowns('.js-date-dropdown');
