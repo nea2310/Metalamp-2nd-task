@@ -22,44 +22,35 @@ mixin booking({roomNumber = '', lux = '', roomPrice = '', daysAmount = '', total
         span(class = `${elementName}__detail-price`)= `${roomPrice}₽`
         span(class = `${elementName}__detail-label`) в сутки
     div(class = `${elementName}__date-dropdown`)
-      +date-dropdown(
-        {width:'wide',
+      +date-dropdown({width:'wide',
         type:'dateDropDown',
         labelTextFrom: 'Прибытие',
-        labelTextTo: 'Выезд'}
-        )
+        labelTextTo: 'Выезд'})
     div(class = `${elementName}__guests`)
-      +dropdown(
-        {categories:
-          [ {
-            displayName: 'взрослые',
-            categoryType: 'гость',
-            declensions: 'гость,гостя,гостей',
-            defaultCount: 0,
-            minCount: 0,
-            maxCount: 99,
-            }, 
-            {
-            displayName: 'дети',
-            categoryType: 'гость',
-            declensions: 'гость,гостя,гостей',
-            defaultCount: 0,
-            minCount: 0,
-            maxCount: 99,
-            },
-            {displayName: 'младенцы',
-            categoryType: 'младенец',
-            declensions: 'младенец,младенца,младенцев',
-            defaultCount: 0,
-            minCount: 0,
-            maxCount: 99,
-            }], 
+      +dropdown({categories:
+        [{displayName: 'взрослые',
+          categoryType: 'гость',
+          declensions: 'гость,гостя,гостей',
+          defaultCount: 0,
+          minCount: 0,
+          maxCount: 99},
+          {displayName: 'дети',
+          categoryType: 'гость',
+          declensions: 'гость,гостя,гостей',
+          defaultCount: 0,
+          minCount: 0,
+          maxCount: 99},
+          {displayName: 'младенцы',
+          categoryType: 'младенец',
+          declensions: 'младенец,младенца,младенцев',
+          defaultCount: 0,
+          minCount: 0,
+          maxCount: 99}],
         type: 'dropDownGuests',
         placeholder: 'Сколько гостей',
         hasButtons: true,
         labelText: 'гости',
-        width: 'wide'}
-        )
+        width: 'wide'})
     div(class = `${elementName}__price-breakdown`)
       div(class = `${elementName}__price-details`)
         div(class = `${elementName}__price-name`)= `${roomPrice}₽ x ${daysAmount} суток`
@@ -77,11 +68,9 @@ mixin booking({roomNumber = '', lux = '', roomPrice = '', daysAmount = '', total
         div(class = `${elementName}__price-total-filling`) 
         div(class = `${elementName}__price-cost`)= `${totalAmount}₽`
     div(class = `${elementName}__book-button`)
-      +button(
-        {text: 'забронировать',
+      +button({text: 'забронировать',
         type: 'submit',
         length: 'very-long',
         width: 'wide',
         color: 'dark',
-        hasImage: true}
-        )
+        hasImage: true})

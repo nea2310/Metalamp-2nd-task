@@ -10,36 +10,30 @@ mixin login()
       h1(class = `${elementName}__header`) Войти
       fieldset(class = `${elementName}__credentials`) 
         div(class = `${elementName}__email`)
-          +input-field(
-            {width: 'wide',
+          +input-field({
+            width: 'wide',
             placeholder: 'Email',
             inputType: 'email',
-            validation: 'email'
-            }
-            )
+            validation: 'email'})
         div(class = `${elementName}__password`)
-          +input-field(
-            {width: 'wide',
+          +input-field({
+            width: 'wide',
             placeholder: 'Пароль',
-            inputType: 'password',
-            } 
-            )
+            inputType: 'password'})
       div(class = `${elementName}__login-button`)
-        +button(
-          {text: 'войти',
+        +button({
+          text: 'войти',
           type: 'submit',
           length: 'very-long',
           width: 'wide',
           color: 'dark',
-          image: true}
-          )
+          image: true})
     div(class = `${elementName}__go-to-registration` role='region' aria-label = 'Нет аккаунта на Toxin')
       p(class = `${elementName}__go-to-registration-legend`) Нет аккаунта на Toxin?
-      +button(
-        {text: 'создать',
+      +button({
+        text: 'создать',
         type: 'link',
         length: 'short',
         width: 'wide',
         color: 'light',
-        href: 'https://test/test'}
-        )
+        href: 'https://test/test'})

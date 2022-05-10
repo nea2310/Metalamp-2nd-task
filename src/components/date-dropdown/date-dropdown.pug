@@ -42,12 +42,6 @@ mixin date-dropdown({ type = 'dateDropDown', labelTextFrom = '', labelTextTo = '
     div(class = `${elementName}__calendar-wrapper js-${elementName}__calendar-wrapper ${elementName}__calendar-wrapper_hidden ${modifier}`)
       div(class = `${elementName}__buttons`)
         div(class = `${elementName}__button-clear js-${elementName}__button-clear`)
-          +button(
-            {text: 'очистить',
-            type: 'plain-text'}
-            )
+          +button({text: 'очистить', type: 'plain-text'})
         div(class = `${elementName}__button-apply js-${elementName}__button-apply`)
-          +button(
-            {text: 'применить',
-            type: 'plain-text'}
-            )
+          +button({text: 'применить', type: 'plain-text'})

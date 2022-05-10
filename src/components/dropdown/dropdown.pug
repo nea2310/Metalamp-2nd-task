@@ -45,12 +45,6 @@ mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', hasB
       if (hasButtons)
         div(class = `${elementName}__buttons`)
           div(class = `${elementName}__button-clear js-${elementName}__button-clear`)
-            +button(
-              {text: 'очистить',
-              type: 'plain-text'}
-              )
+            +button({text: 'очистить', type: 'plain-text'})
           div(class = `${elementName}__button-apply js-${elementName}__button-apply`)
-            +button(
-              {text: 'применить',
-              type: 'plain-text'}
-              )
+            +button({text: 'применить', type: 'plain-text'})

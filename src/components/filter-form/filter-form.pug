@@ -14,46 +14,39 @@ mixin filter-form()
         src = require('@com/filter-form/image/filter.svg') alt = 'фильтр поиска')
     div(class = `${elementName}__wrapper js-${elementName}__wrapper`)
       div(class = `${elementName}__calendar-wrapper`)
-        +date-dropdown(
-          {width:'narrow',
+        +date-dropdown({
+          width:'narrow',
           type: 'filterDateDropDown',
-          labelTextFromTo: 'даты пребывания в отеле'}
-          )
+          labelTextFromTo: 'даты пребывания в отеле'})
       div(class = `${elementName}__guests-wrapper`)
-        +dropdown(
-          {categories:
-            [{
-              displayName: 'взрослые',
+        +dropdown({
+          categories:
+            [{displayName: 'взрослые',
               categoryType: 'гость', 
               declensions: 'гость,гостя,гостей',
               defaultCount: 0,
               minCount: 0,
-              maxCount: 99,
-              }, 
-            {
-              displayName: 'дети',
+              maxCount: 99},
+            {displayName: 'дети',
               categoryType: 'гость',
               declensions: 'гость,гостя,гостей',
               defaultCount: 0,
               minCount: 0,
-              maxCount: 99,},
-            {
-              displayName: 'младенцы',
+              maxCount: 99},
+            {displayName: 'младенцы',
               categoryType: 'младенец',
               declensions: 'младенец,младенца,младенцев',
               defaultCount: 0,
               minCount: 0,
-              maxCount: 99,
-              }], 
+              maxCount: 99}], 
           type: 'dropDownGuests',
           placeholder: 'Сколько гостей',
           hasButtons: true,
           labelText: 'гости',
-          width: 'narrow'}
-          )
+          width: 'narrow'})
       div(class = `${elementName}__price-filter-wrapper`)
-        +range-slider(
-          {labelText: 'диапазон цены',
+        +range-slider({
+          labelText: 'диапазон цены',
           sliderType: 'double', 
           min:1000, 
           max:15000, 
@@ -62,65 +55,52 @@ mixin filter-form()
           to:10000, 
           isMinMaxHidden:'true', 
           isFromToHidden:'true',
-          text: 'Стоимость за сутки пребывания в номере'}
-          )
+          text: 'Стоимость за сутки пребывания в номере'})
       div(class = `${elementName}__house-rules-wrapper`)
-        +checklist(
-          {categories:
+        +checklist({
+          categories:
             [{name:'Можно курить'}, 
             {name:'Можно с питомцами'}, 
             {name:'Можно пригласить гостей (до 10 человек)'}],
           isExpanded: false,
           isRich: false, 
-          labelText: 'правила дома'}
-          )
+          labelText: 'правила дома'})
       div(class = `${elementName}__accessability-wrapper`)
-        +checklist(
-          {categories:
-            [{
-              name:'Широкий коридор', 
-              description: 'Ширина коридоров в номере не менее 91 см',
-              }, 
-            {
-              name:'Помощник для инвалидов', 
-              description: 'На 1 этаже вас встретит специалист и проводит до номера',
-              }],
+        +checklist({
+          categories:
+            [{name:'Широкий коридор', 
+              description: 'Ширина коридоров в номере не менее 91 см'},
+            {name:'Помощник для инвалидов', 
+              description: 'На 1 этаже вас встретит специалист и проводит до номера'}],
             isExpanded: false,
             isRich: true, 
-          labelText: 'доступность'}
-          )
+          labelText: 'доступность'})
       div(class = `${elementName}__facilities-wrapper`)
-        +dropdown(
-          {categories:
-            [{
-              displayName: 'спальни',
+        +dropdown({
+          categories:
+            [{displayName: 'спальни',
               categoryType: 'спальня',
               declensions: 'спальня,спальни,спален',
               defaultCount: 0,
               minCount: 0,
-              maxCount: 5,
-              }, 
-              {
-              displayName: 'кровати',
+              maxCount: 5},
+              {displayName: 'кровати',
               categoryType: 'кровать',
               declensions: 'кровать,кровати,кроватей',
               defaultCount: 0,
               minCount: 0,
-              maxCount: 10,
-                }, 
-              {
-              displayName: 'ванные комнаты',
+              maxCount: 10},
+              {displayName: 'ванные комнаты',
               categoryType: 'ванная комната',
               declensions: 'ванная комната,ванные комнаты,ванных комнат',
               defaultCount: 0,
               minCount: 0,
-              maxCount: 3,
-                }], 
+              maxCount: 3}],
           type: 'dropDownRooms',
           placeholder: 'Сколько комнат',
           labelText: 'удобства номера',
-          width: 'narrow'}
-          )
+          width: 'narrow'})
+
 
 
 

@@ -26,23 +26,21 @@ mixin header({menu = [], isAuthorized = false} = {})
       div(class = `${elementName}__auth`) 
         if (!isAuthorized)
           div(class = `${elementName}__button-login`) 
-            +button(
-              {text: 'войти',
+            +button({
+              text: 'войти',
               type: 'link',
               length: 'very-short',
               width: 'narrow',
               color: 'light',
-              href: 'https://test/test'}
-              )
+              href: 'https://test/test'})
           div(class = `${elementName}__button-reg`) 
-            +button(
-              {text: 'зарегистрироваться',
+            +button({
+              text: 'зарегистрироваться',
               type: 'link',
               length: 'long',
               width: 'narrow',
               color: 'dark',
-              href: 'https://test/test'}
-              )
+              href: 'https://test/test'})
         else
           div(class = `${elementName}__profile`) 
             a(class = `${elementName}__profile-name` href = 'https://test/test')  Юлий Цезарь

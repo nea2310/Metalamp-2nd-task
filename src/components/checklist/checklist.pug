@@ -1,11 +1,11 @@
 mixin checklist({categories = [], isExpanded = false, isRich = false, labelText = ''} = {})
   -
     const elementName = 'checklist'
-    const style = isExpanded == true ? `${elementName}_collapsing` : ''
-    const listStyle = isExpanded == true ? `${elementName}__list-wrapper_hidden` : ''
-    const labelStyle = isExpanded == true ? `${elementName}__label_collapsing` : `${elementName}__label_expanded`
-    const tipStyle = isExpanded == false ? `${elementName}__image_non-collapsing` : ''
-    const nameStyle = isRich == true ? `${elementName}__category-name_rich` : ''
+    const style = isExpanded ? `${elementName}_collapsing` : ''
+    const listStyle = isExpanded ? `${elementName}__list-wrapper_hidden` : ''
+    const labelStyle = isExpanded ? `${elementName}__label_collapsing` : `${elementName}__label_expanded`
+    const tipStyle = !isExpanded ? `${elementName}__image_non-collapsing` : ''
+    const nameStyle = isRich ? `${elementName}__category-name_rich` : ''
 
   fieldset(class = `${elementName} js-${elementName} ${style}`)
     p(class = `${elementName}__label js-${elementName}__label ${labelStyle}` tabindex = 0)= labelText
@@ -22,5 +22,5 @@ mixin checklist({categories = [], isExpanded = false, isRich = false, labelText 
                 span(class = `${elementName}__category-checkmark`)
                 div(class = `${elementName}__category-text`)
                   p(class = `${elementName}__category-name ${nameStyle}`)= name
-                  if isRich == true && description
+                  if isRich && description
                     p(class = `${elementName}__category-description`)= description

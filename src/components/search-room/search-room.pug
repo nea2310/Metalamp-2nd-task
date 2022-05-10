@@ -9,51 +9,43 @@ mixin search-room()
   form(class = `${elementName} js-${elementName}`)
     h1(class = `${elementName}__header`) Найдем номера под ваши пожелания
     div(class = `${elementName}__date-dropdown`)
-      +date-dropdown(
-        {width:'wide',
+      +date-dropdown({
+        width:'wide',
         type:'dateDropDown',
         labelTextFrom: 'Прибытие',
-        labelTextTo: 'Выезд'}
-        )
+        labelTextTo: 'Выезд'})
     div(class = `${elementName}__guests`)
-      +dropdown(
-        {categories:
-          [ {
-            displayName: 'взрослые',
+      +dropdown({
+        categories:
+          [{displayName: 'взрослые',
             categoryType: 'гость',
             declensions: 'гость,гостя,гостей',
             defaultCount: 0,
             minCount: 0,
-            maxCount: 99,
-            }, 
-            {
-            displayName: 'дети',
+            maxCount: 99},
+            {displayName: 'дети',
             categoryType: 'гость',
             declensions: 'гость,гостя,гостей',
             defaultCount: 0,
             minCount: 0,
-            maxCount: 99,
-            }, 
-            {
-            displayName: 'младенцы',
+            maxCount: 99},
+            {displayName: 'младенцы',
             categoryType: 'младенец',
             declensions: 'младенец,младенца,младенцев',
             defaultCount: 0,
             minCount: 0,
-            maxCount: 99,
-            }], 
+            maxCount: 99}],
         type: 'dropDownGuests',
         placeholder: 'Сколько гостей',
         hasButtons: true,
         labelText: 'гости',
-        width: 'wide'}
-        )
+        width: 'wide'})
     div(class = `${elementName}__search`)
-      +button(
-        {text: 'подобрать номер',
+      +button({
+        text: 'подобрать номер',
         type: 'submit',
         length: 'very-long',
         width: 'wide',
         color: 'dark',
-        hasImage: true}
-        )
+        hasImage: true})
+
