@@ -12,14 +12,14 @@ mixin registration()
       h1(class = `${elementName}__header`) Регистрация аккаунта
       fieldset(class = `${elementName}__name-surname`)
         div(class = `${elementName}__name`)
-          +input(
+          +input-field(
             {width: 'wide',
             placeholder: 'имя',
             inputType: 'text',
             } 
             )
         div(class = `${elementName}__surname`)
-          +input(
+          +input-field(
             {width: 'wide',
             placeholder: 'фамилия',
             inputType: 'text',
@@ -31,7 +31,7 @@ mixin registration()
           {name:'Женщина'}],
           radioGroupName: 'gender'})
       div(class = `${elementName}__birth-date`)
-        +input(
+        +input-field(
           {width: 'wide',
           placeholder: 'ДД.ММ.ГГГГ',
           labelText: 'дата рождения',
@@ -42,7 +42,7 @@ mixin registration()
       fieldset(class = `${elementName}__credentials`) 
         legend(class = `${elementName}__credentials-legend`)  данные для входа в сервис
         div(class = `${elementName}__email`)
-          +input(
+          +input-field(
             {width: 'wide',
             placeholder: 'Email',
             inputType: 'email',
@@ -50,7 +50,7 @@ mixin registration()
             } 
             )
         div(class = `${elementName}__password`)
-          +input(
+          +input-field(
             {width: 'wide',
             placeholder: 'Пароль',
             inputType: 'password',

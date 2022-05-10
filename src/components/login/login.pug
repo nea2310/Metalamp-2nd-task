@@ -10,7 +10,7 @@ mixin login()
       h1(class = `${elementName}__header`) Войти
       fieldset(class = `${elementName}__credentials`) 
         div(class = `${elementName}__email`)
-          +input(
+          +input-field(
             {width: 'wide',
             placeholder: 'Email',
             inputType: 'email',
@@ -18,7 +18,7 @@ mixin login()
             }
             )
         div(class = `${elementName}__password`)
-          +input(
+          +input-field(
             {width: 'wide',
             placeholder: 'Пароль',
             inputType: 'password',
