@@ -4,30 +4,33 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+
 .dropdown__input_not-rounded.dropdown__input_expanded {
   border-color: $colorDarkShade50;
   border-bottom: none;
 }
+
 .dropdown {
   * {
     box-sizing: border-box;
   }
   user-select: none;
+  position: relative;
+
   &_width_wide {
     width: 320px;
   }
+
   &_width_narrow {
     width: 266px;
   }
-  position: relative;
 
   &__label {
     display: block;
     width: 100%;
-  }
-
-  &__label-text {
-    @include font-h3;
+    &-text {
+      @include font-h3;
+    }
   }
 
   &__image {
@@ -70,11 +73,13 @@
       border-color: $colorDarkShade50;
       outline: none;
     }
+
     &_rounded {
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
     }
   }
+
   &__list-wrapper {
     background-color: $colorWhite;
     width: 100%;
@@ -84,46 +89,52 @@
     box-sizing: border-box;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+
     &_hidden {
       display: none;
     }
   }
-  &__category-wrapper {
-    display: flex;
-    justify-content: space-between;
-    height: 37px;
-    align-items: center;
-  }
+
   &__category {
     @include font-h3;
     margin-left: 14px;
-  }
-  &__count-wrapper {
-    box-sizing: border-box;
-    margin-right: 5px;
-    width: 94px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  &__count-increment,
-  &__count-decrement {
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: $colorWhite;
-    border: 1px solid $colorDarkShade50;
-    color: $colorDarkShade50;
-    &[disabled] {
-      cursor: initial;
-      border: 1px solid $colorDarkShade25;
-      color: $colorDarkShade25;
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+      height: 37px;
+      align-items: center;
     }
   }
 
-  &__count-value {
-    @include font-h3;
+  &__count {
+    &-wrapper {
+      box-sizing: border-box;
+      margin-right: 5px;
+      width: 94px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-increment,
+    &-decrement {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: $colorWhite;
+      border: 1px solid $colorDarkShade50;
+      color: $colorDarkShade50;
+      &[disabled] {
+        cursor: initial;
+        border: 1px solid $colorDarkShade25;
+        color: $colorDarkShade25;
+      }
+    }
+
+    &-value {
+      @include font-h3;
+    }
   }
 
   &__button {
@@ -134,6 +145,7 @@
       flex-grow: 1;
     }
   }
+
   &__buttons {
     display: flex;
     justify-content: flex-end;

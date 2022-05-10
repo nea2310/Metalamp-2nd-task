@@ -17,7 +17,7 @@ mixin booking({roomNumber = '', lux = '', roomPrice = '', daysAmount = '', total
       div(class = `${elementName}__details-room`)
         span(class = `${elementName}__detail-mark`) №
         span(class = `${elementName}__detail-number`)= roomNumber
-        span(class = `${elementName}__detail-is-lux`)= lux
+        span(class = `${elementName}__detail-lux`)= lux
       div(class = `${elementName}__details-price`)
         span(class = `${elementName}__detail-price`)= `${roomPrice}₽`
         span(class = `${elementName}__detail-label`) в сутки

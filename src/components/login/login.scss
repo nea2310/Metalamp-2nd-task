@@ -7,21 +7,26 @@
   padding: 30px;
   width: 380px;
   height: 358px;
+
   &__header {
     margin-top: 10px;
     @include font-h1;
   }
+
   &__credentials {
     margin-top: 17px;
   }
+
   &__password {
     margin-top: 5px;
   }
+
   &__login-button {
     margin-top: 20px;
     display: flex;
     justify-content: center;
   }
+
   &__go-to-registration {
     margin-top: 30px;
     display: flex;
@@ -31,6 +36,7 @@
       @include font-body;
     }
   }
+
   &-error {
     outline: 1px solid $colorRed;
   }

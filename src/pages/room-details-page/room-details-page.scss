@@ -3,6 +3,8 @@ $sm-padding-left: 20px;
 $sm-padding-bottom: 30px;
 $sm-padding-top: 0;
 $sm-padding-right: 20px;
+$lg-padding-bottom: 30px;
+
 @mixin padding-sm() {
   padding-top: $sm-padding-top;
   padding-left: $sm-padding-left;
@@ -10,7 +12,6 @@ $sm-padding-right: 20px;
   margin: 0;
 }
 
-$lg-padding-bottom: 30px;
 .room-details-page {
   &__header {
     position: absolute;
@@ -19,6 +20,7 @@ $lg-padding-bottom: 30px;
     overflow: hidden;
     clip: rect(0 0 0 0);
   }
+
   &__room-info-header,
   &__room-impress-header,
   &__feedback-header-label,
@@ -26,7 +28,6 @@ $lg-padding-bottom: 30px;
   &__cancel-header {
     @include font-h2;
   }
-
   @include media-breakpoint-down($xs) {
     box-sizing: border-box;
     padding-top: 40px;
@@ -40,7 +41,6 @@ $lg-padding-bottom: 30px;
     box-sizing: border-box;
     margin: 0 auto;
     display: grid;
-
     grid-template-rows: 2fr 2fr;
     grid-template-columns: 2.75fr 1.25fr;
     grid-template-areas:
@@ -48,32 +48,36 @@ $lg-padding-bottom: 30px;
       "image-1 image-3";
   }
 
-  &__image-1 {
-    max-height: 485px;
-    box-sizing: border-box;
-    grid-area: image-1;
-    height: 100%;
-    width: 100%;
-    min-width: 100%;
-    object-fit: cover;
-  }
-  &__image-2 {
-    max-height: 242.5px;
-    box-sizing: border-box;
-    grid-area: image-2;
-    height: 100%;
-    width: 100%;
-    min-width: 100%;
-    object-fit: cover;
-  }
-  &__image-3 {
-    max-height: 242.5px;
-    box-sizing: border-box;
-    grid-area: image-3;
-    height: 100%;
-    width: 100%;
-    min-width: 100%;
-    object-fit: cover;
+  &__image {
+    &-1 {
+      max-height: 485px;
+      box-sizing: border-box;
+      grid-area: image-1;
+      height: 100%;
+      width: 100%;
+      min-width: 100%;
+      object-fit: cover;
+    }
+
+    &-2 {
+      max-height: 242.5px;
+      box-sizing: border-box;
+      grid-area: image-2;
+      height: 100%;
+      width: 100%;
+      min-width: 100%;
+      object-fit: cover;
+    }
+
+    &-3 {
+      max-height: 242.5px;
+      box-sizing: border-box;
+      grid-area: image-3;
+      height: 100%;
+      width: 100%;
+      min-width: 100%;
+      object-fit: cover;
+    }
   }
 
   &__main-info-wrapper {
@@ -82,14 +86,12 @@ $lg-padding-bottom: 30px;
     box-sizing: border-box;
     margin: 70px auto;
     display: grid;
-
     grid-template-rows: auto auto auto;
     grid-template-columns: 31% 36% auto;
     grid-template-areas:
       "info impress booking"
       "feedback feedback booking"
       "rules cancel booking";
-
     @include media-breakpoint-down($lg) {
       grid-template-rows: auto auto auto auto;
       grid-template-columns: 50% 50%;
@@ -99,7 +101,6 @@ $lg-padding-bottom: 30px;
         "feedback feedback"
         "rules cancel";
     }
-
     @include media-breakpoint-down($md) {
       margin: 30px auto 0px;
       grid-template-areas:
@@ -108,7 +109,6 @@ $lg-padding-bottom: 30px;
         "feedback feedback"
         "rules cancel";
     }
-
     @include media-breakpoint-down($sm) {
       grid-template-rows: auto auto auto auto auto;
       grid-template-columns: auto;
@@ -124,9 +124,11 @@ $lg-padding-bottom: 30px;
 
   &__room-info {
     padding-left: 3px;
+
     &-item {
       margin-top: 25px;
     }
+
     &-wrapper {
       grid-area: info;
       box-sizing: border-box;
@@ -139,11 +141,12 @@ $lg-padding-bottom: 30px;
       }
     }
   }
+
   &__room-impress {
     padding-top: 22px;
+
     &-wrapper {
       grid-area: impress;
-
       @include media-breakpoint-between($sm, $lg) {
         margin: 0 20px;
         padding-bottom: $lg-padding-bottom;
@@ -153,6 +156,7 @@ $lg-padding-bottom: 30px;
       }
     }
   }
+
   &__booking {
     &-wrapper {
       grid-area: booking;
@@ -163,22 +167,27 @@ $lg-padding-bottom: 30px;
       }
     }
   }
+
   &__feedback {
     padding-left: 2px;
+
     &-header {
       display: flex;
       justify-content: space-between;
       @include media-breakpoint-down($xs) {
         display: block;
       }
-      &-quant {
+
+      &-quantity {
         white-space: nowrap;
         @include font-body;
       }
     }
+
     &-item {
       margin-top: 22px;
     }
+
     &-wrapper {
       padding-right: 70px;
       padding-top: 14px;
@@ -195,6 +204,7 @@ $lg-padding-bottom: 30px;
       }
     }
   }
+
   &__rules {
     &-wrapper {
       padding-top: 33px;
@@ -209,6 +219,7 @@ $lg-padding-bottom: 30px;
         @include padding-sm;
       }
     }
+
     &-header {
       padding-left: 21px;
       margin-bottom: 19px;
@@ -217,6 +228,7 @@ $lg-padding-bottom: 30px;
       }
     }
   }
+
   &__cancel {
     @include font-body;
     margin-top: 19px;

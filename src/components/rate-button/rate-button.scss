@@ -28,11 +28,9 @@
     font-size: inherit;
     background-size: 20px auto;
     background-repeat: space;
-
     &:focus {
       outline: 1;
     }
-
     &:checked,
     &:hover {
       background-image: url("@com/rate-button/image/star.svg");
@@ -49,12 +47,10 @@
       width: 44px;
       z-index: 4;
     }
-
     &:nth-of-type(3) {
       width: 68px;
       z-index: 3;
     }
-
     &:nth-of-type(4) {
       width: 92px;
       z-index: 2;

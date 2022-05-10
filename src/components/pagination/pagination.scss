@@ -2,10 +2,12 @@
   display: inline-flex;
   flex-direction: column;
   align-items: center;
+
   &__pages {
     display: inline-flex;
     flex-direction: row;
   }
+
   &__element {
     @include font-body;
     font-size: 12px;
@@ -25,6 +27,7 @@
       @include font-h3;
       color: $colorWhite;
     }
+
     &-next-previous {
       background: $gradientGreen;
     }

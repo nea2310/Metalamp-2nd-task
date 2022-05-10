@@ -1,21 +1,28 @@
 .date-dropdown {
   user-select: none;
-  &_width_wide {
-    width: 320px;
-  }
-  &_width_narrow {
-    width: 266px;
-  }
   display: flex;
   justify-content: flex-start;
   position: relative;
+
+  &_width {
+    &_wide {
+      width: 320px;
+    }
+
+    &_narrow {
+      width: 266px;
+    }
+  }
+
   &__label {
     width: 100%;
     position: relative;
+
+    &-text {
+      @include font-h3;
+    }
   }
-  &__label-text {
-    @include font-h3;
-  }
+
   &__calendar-wrapper {
     position: absolute;
     z-index: 3;
@@ -26,21 +33,20 @@
     }
   }
 
-  &__button-clear {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-  }
-  &__button-apply {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+  &__button {
+    &-clear {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+    }
+
+    &-apply {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+    }
   }
 
-  &__input-wrapper {
-    display: flex;
-    flex-direction: column;
-  }
   &__image {
     cursor: pointer;
     position: absolute;
@@ -57,9 +63,7 @@
       transition: all 0.3s ease 0s;
     }
   }
-  &__input-wrapper:nth-child(2) {
-    padding-left: 20px;
-  }
+
   &__input {
     cursor: pointer;
     &::placeholder {
@@ -72,6 +76,14 @@
     border: 1px solid $colorDarkShade25;
     margin-top: 5px;
 
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      &:nth-child(2) {
+        padding-left: 20px;
+      }
+    }
+
     &:hover {
       border-color: $colorDarkShade50;
     }
@@ -79,12 +91,16 @@
       border-color: $colorDarkShade50;
       outline: none;
     }
-    &_width_narrow {
-      width: 150px;
+
+    &_width {
+      &_narrow {
+        width: 150px;
+      }
+      &_wide {
+        width: 266px;
+      }
     }
-    &_width_wide {
-      width: 266px;
-    }
+
     &::-webkit-datetime-edit-fields-wrapper {
       font-family: "Montserrat", Arial, Helvetica, sans-serif;
       color: $colorDarkShade75;

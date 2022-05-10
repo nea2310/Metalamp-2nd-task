@@ -40,6 +40,7 @@
         padding-bottom: 118px;
       }
     }
+
     &-middle {
       height: 1px;
       background-color: $colorDarkShade15;
@@ -51,6 +52,7 @@
 
   &__items {
     flex-grow: 1;
+
     &-link,
     &-header {
       @include font-body;
@@ -70,7 +72,6 @@
     }
     &:nth-child(1) {
       max-width: 270px;
-
       padding-right: 2.5%;
       @include media-breakpoint-down($lg) {
         padding-left: 5px;
@@ -114,6 +115,7 @@
     text-transform: initial;
     padding-top: 21px;
     white-space: nowrap;
+
     &-link {
       @include font-body;
       line-height: 17.07px;
@@ -123,6 +125,7 @@
       display: none;
     }
   }
+
   &__long-text {
     cursor: initial;
     white-space: initial;
@@ -130,6 +133,7 @@
     line-height: 17.07px;
     line-height: 22px;
   }
+
   &__social-links {
     display: flex;
     justify-content: space-between;

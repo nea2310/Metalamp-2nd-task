@@ -1,23 +1,29 @@
 .input-field {
   user-select: none;
-  &_width_wide {
-    width: 320px;
-  }
-  &_width_medium {
-    width: 266px;
-  }
-  &_width_medium-narrow {
-    width: 260px;
-  }
   display: flex;
   flex-direction: column;
+  &_width {
+    &_wide {
+      width: 320px;
+    }
+
+    &_medium {
+      width: 266px;
+    }
+
+    &_medium-narrow {
+      width: 260px;
+    }
+  }
 
   &__label {
     position: relative;
+
+    &-text {
+      @include font-h3;
+    }
   }
-  &__label-text {
-    @include font-h3;
-  }
+
   &__link {
     position: absolute;
     bottom: 13px;

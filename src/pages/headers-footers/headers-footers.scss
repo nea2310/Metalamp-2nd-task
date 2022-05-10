@@ -2,15 +2,18 @@
   width: 100%;
   margin: 0 auto;
   background-color: #f4f4f6;
+
   &__logo-wrapper {
     margin-top: 29px;
     margin-left: 51px;
   }
+
   &__header {
     &:nth-of-type(2) {
       margin-top: 40px;
     }
   }
+
   &__footer {
     margin-top: 40px;
   }

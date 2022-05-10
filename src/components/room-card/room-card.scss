@@ -66,7 +66,6 @@ $shift-vertical: 14px;
     &-image {
       display: none;
     }
-
     &:hover,
     &:focus {
       border-top-left-radius: 4px;
@@ -95,6 +94,7 @@ $shift-vertical: 14px;
       right: 20px;
     }
   }
+
   &__dots {
     display: flex;
     justify-content: space-between;
@@ -103,6 +103,7 @@ $shift-vertical: 14px;
     bottom: 16px;
     right: 15px;
   }
+
   &__dot {
     margin-left: 3px;
     width: 8px;
@@ -125,54 +126,55 @@ $shift-vertical: 14px;
     margin-top: 17px;
     display: flex;
     justify-content: space-between;
+    &-room {
+      flex-grow: 1;
+      border-bottom: 1px solid rgba(31, 32, 65, 0.1);
+      padding-bottom: 10px;
+      margin-top: 2px;
+    }
+
+    &-price {
+      border-bottom: 1px solid rgba(31, 32, 65, 0.1);
+      margin-top: 3px;
+    }
   }
 
-  &__details-room {
-    flex-grow: 1;
-    border-bottom: 1px solid rgba(31, 32, 65, 0.1);
-    padding-bottom: 10px;
-    margin-top: 2px;
-  }
+  &__detail {
+    &-mark {
+      @include font-h3;
+      font-size: 14px;
+      padding-left: 2px;
+    }
 
-  &__detail-mark {
-    @include font-h3;
-    font-size: 14px;
-    padding-left: 2px;
-  }
+    &-number {
+      @include font-h2;
+      padding-left: 4px;
+    }
 
-  &__detail-number {
-    @include font-h2;
-    padding-left: 4px;
-  }
+    &-lux {
+      @include font-h3;
+      color: $colorPurple;
+      padding-left: 4px;
+    }
 
-  &__detail-is-lux {
-    @include font-h3;
-    color: $colorPurple;
-    padding-left: 4px;
-  }
+    &-price {
+      @include font-body;
+      font-weight: bold;
+      color: $colorDarkShade50;
 
-  &__details-price {
-    border-bottom: 1px solid rgba(31, 32, 65, 0.1);
-    margin-top: 3px;
-  }
+      &-currency {
+        @include font-body;
+        font-weight: bold;
+        color: $colorDarkShade50;
+      }
+    }
 
-  &__detail-price {
-    @include font-body;
-    font-weight: bold;
-    color: $colorDarkShade50;
-  }
-
-  &__detail-price-currency {
-    @include font-body;
-    font-weight: bold;
-    color: $colorDarkShade50;
-  }
-
-  &__detail-label {
-    @include font-body;
-    font-size: 12px;
-    color: $colorDarkShade50;
-    padding-left: 3px;
+    &-label {
+      @include font-body;
+      font-size: 12px;
+      color: $colorDarkShade50;
+      padding-left: 3px;
+    }
   }
 
   &__rating {

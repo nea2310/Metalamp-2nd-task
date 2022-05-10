@@ -2,42 +2,47 @@
   &__wrapper {
     width: 266px;
   }
-  &__title-wrapper {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: -3px;
-  }
 
   &__title {
     white-space: nowrap;
     @include font-h3;
     width: 50%;
+
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: -3px;
+    }
   }
+
   &__price {
     display: flex;
-  }
-  &__price-delimiter {
-    width: 10px;
-    text-align: center;
+
+    &-delimiter {
+      width: 10px;
+      text-align: center;
+    }
+
+    &-from {
+      text-align: end;
+    }
+
+    &-to {
+      text-align: start;
+    }
+
+    &-from,
+    &-to,
+    &-delimiter {
+      border: none;
+      font-size: 12px;
+      text-transform: uppercase;
+      @include font-body;
+      font-size: 12px;
+      line-height: initial;
+    }
   }
 
-  &__price-from {
-    text-align: end;
-  }
-  &__price-to {
-    text-align: start;
-  }
-
-  &__price-from,
-  &__price-to,
-  &__price-delimiter {
-    border: none;
-    font-size: 12px;
-    text-transform: uppercase;
-    @include font-body;
-    font-size: 12px;
-    line-height: initial;
-  }
   &__text {
     @include font-body;
     font-size: 12px;

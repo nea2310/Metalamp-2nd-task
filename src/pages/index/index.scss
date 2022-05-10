@@ -2,12 +2,14 @@
   &__main {
     background-color: $colorDarkShade5;
   }
+
   &__header {
     padding-bottom: 20px;
     padding-bottom: 20px;
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     color: $colorDarkShade75;
   }
+
   &__pages {
     max-width: $lg;
     margin: 0 auto;
@@ -15,6 +17,7 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
   }
+
   &__link {
     display: flex;
     flex-direction: column;
@@ -29,6 +32,7 @@
       color: $colorDarkShade50;
     }
   }
+
   &__image {
     margin-bottom: 10px;
     width: 200px;
@@ -37,6 +41,7 @@
       opacity: 0.7;
     }
   }
+
   &__page {
     max-width: 200px;
     display: flex;

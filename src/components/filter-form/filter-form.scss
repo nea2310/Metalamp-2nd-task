@@ -11,13 +11,12 @@
     justify-content: center;
     align-items: center;
   }
-
   @include media-breakpoint-down($xs) {
     min-width: 319px;
   }
+
   &__wrapper {
     box-sizing: border-box;
-
     @include media-breakpoint-down($lg) {
       padding: 20px 5px;
       box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
@@ -45,14 +44,12 @@
         "price-filter accessability"
         "price-filter house-rules";
     }
-
     @include media-breakpoint-down($xs) {
       display: block;
       height: auto;
       max-width: 320px;
       box-shadow: none;
     }
-
     @include media-breakpoint-down($xxs) {
       display: flex;
       flex-direction: column;
@@ -74,6 +71,7 @@
       display: flex;
       cursor: pointer;
     }
+
     &-image {
       width: 20px;
       height: 20px;
@@ -93,6 +91,7 @@
     @include media-breakpoint-down($xxs) {
     }
   }
+
   &__guests-wrapper {
     box-sizing: border-box;
     margin-bottom: 31px;
@@ -104,6 +103,7 @@
       margin-bottom: 31px;
     }
   }
+
   &__price-filter-wrapper {
     box-sizing: border-box;
     margin-bottom: 23px;
@@ -115,6 +115,7 @@
       margin-bottom: 23px;
     }
   }
+
   &__house-rules-wrapper {
     box-sizing: border-box;
     margin-bottom: 145px;
@@ -126,6 +127,7 @@
       display: block;
     }
   }
+
   &__accessability-wrapper {
     box-sizing: border-box;
     margin-bottom: 160px;
@@ -136,6 +138,7 @@
       margin-bottom: 20px;
     }
   }
+
   &__facilities-wrapper {
     box-sizing: border-box;
     margin-bottom: 30px;

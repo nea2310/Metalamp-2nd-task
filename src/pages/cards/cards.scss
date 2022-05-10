@@ -8,19 +8,23 @@
   background-color: #f4f4f6;
   padding-bottom: 20px;
 
-  &__search-column {
-    @include media-breakpoint-down($md) {
-      margin: 0 auto;
+  &__search {
+    &-column {
+      @include media-breakpoint-down($md) {
+        margin: 0 auto;
+      }
+    }
+
+    &-room {
+      margin-top: 151px;
+      margin-left: 117px;
+      @include media-breakpoint-down($md) {
+        margin: 20px;
+        padding: 0;
+      }
     }
   }
-  &__search-room {
-    margin-top: 151px;
-    margin-left: 117px;
-    @include media-breakpoint-down($md) {
-      margin: 20px;
-      padding: 0;
-    }
-  }
+
   &__registration {
     margin-top: 40px;
     margin-left: 117px;
@@ -29,6 +33,7 @@
       padding: 0;
     }
   }
+
   &__booking {
     margin-top: 151px;
     padding-left: 2px;
@@ -37,6 +42,7 @@
       padding: 0;
     }
   }
+
   &__login {
     margin-top: 40px;
     padding-left: 2px;
@@ -45,6 +51,7 @@
       padding: 0;
     }
   }
+
   &__date-dropdown {
     margin-top: 146px;
     @include media-breakpoint-down($md) {

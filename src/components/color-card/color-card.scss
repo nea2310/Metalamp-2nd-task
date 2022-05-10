@@ -14,28 +14,37 @@
   &__color {
     grid-area: post-1;
     border-radius: 6px;
-    &_dark-shade-100 {
-      background-color: $colorDarkShade100;
+    &_dark-shade {
+      &-100 {
+        background-color: $colorDarkShade100;
+      }
+
+      &-75 {
+        background-color: $colorDarkShade75;
+      }
+
+      &-50 {
+        background-color: $colorDarkShade50;
+      }
+
+      &-25 {
+        background-color: $colorDarkShade25;
+      }
+
+      &-5 {
+        background-color: $colorDarkShade5;
+      }
     }
-    &_dark-shade-75 {
-      background-color: $colorDarkShade75;
-    }
-    &_dark-shade-50 {
-      background-color: $colorDarkShade50;
-    }
-    &_dark-shade-25 {
-      background-color: $colorDarkShade25;
-    }
-    &_dark-shade-5 {
-      background-color: $colorDarkShade5;
-    }
+
     &_purple {
       background-color: $colorPurple;
     }
+
     &_green {
       background-color: $colorGreen;
     }
   }
+
   &__name {
     width: 171px;
     padding-top: 8px;
@@ -43,6 +52,7 @@
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     font-weight: bold;
   }
+
   &__code {
     grid-area: post-3;
     font-family: "Montserrat", Arial, Helvetica, sans-serif;

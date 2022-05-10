@@ -40,7 +40,7 @@ mixin room-card({roomNumber = '', roomPrice = '', feedbackAmount = '', ratingNam
       a(class = `${elementName}__details-room` href = 'https://test/test' aria-label='Перейти к деталям номера')
         span(class = `${elementName}__detail-mark` role = 'region' aria-label = '№') №
         span(class = `${elementName}__detail-number` role = 'region' aria-label = 'номер комнаты')= roomNumber
-        span(class = `${elementName}__detail-is-lux` role = 'region' aria-label = 'люкс')= lux
+        span(class = `${elementName}__detail-lux` role = 'region' aria-label = 'люкс')= lux
       div(class = `${elementName}__details-price`)
         span(class = `${elementName}__detail-price` role = 'region' aria-label = 'цена')= `${roomPrice}₽`
         span(class = `${elementName}__detail-label` role = 'region' aria-label = 'в сутки') в сутки

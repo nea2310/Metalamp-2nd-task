@@ -7,7 +7,6 @@
     margin-top: 1px;
     margin-bottom: 49px;
   }
-
   &:nth-child(2) {
     margin-bottom: 39px;
   }
@@ -18,28 +17,31 @@
   &__name {
     text-align: right;
     grid-area: post-1;
-
+    font-weight: normal;
     &_h1 {
       @include font-h1;
       color: $colorDarkShade25;
       font-weight: normal;
     }
+
     &_h2 {
       @include font-h2;
       color: $colorDarkShade25;
       font-weight: normal;
     }
+
     &_h3 {
       @include font-h3;
       color: $colorDarkShade25;
       font-weight: normal;
     }
+
     &_body {
       @include font-body;
       color: $colorDarkShade25;
     }
-    font-weight: normal;
   }
+
   &__text {
     padding-left: 30px;
     grid-area: post-2;
@@ -47,13 +49,16 @@
     &_h1 {
       @include font-h1;
     }
+
     &_h2 {
       @include font-h2;
       max-width: 315px;
     }
+
     &_h3 {
       @include font-h3;
     }
+
     &_body {
       @include font-body;
       max-width: 305px;

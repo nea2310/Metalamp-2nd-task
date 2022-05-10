@@ -12,30 +12,39 @@
     margin-top: 10px;
     @include font-h1;
   }
+
   &__name-surname {
     margin-top: 16px;
   }
+
   &__surname {
     margin-top: 6px;
   }
+
   &__radiobuttons {
     margin-top: 12px;
   }
+
   &__birth-date {
     margin-top: 21px;
   }
+
   &__credentials {
     margin-top: 20px;
   }
+
   &__credentials-legend {
     @include font-h3;
   }
+
   &__password {
     margin-top: 7px;
   }
+
   &__special-offer {
     margin-top: 11px;
   }
+
   &__search {
     margin-top: 24px;
   }
@@ -50,6 +59,7 @@
       @include font-body;
     }
   }
+
   &-error {
     outline: 1px solid $colorRed;
   }

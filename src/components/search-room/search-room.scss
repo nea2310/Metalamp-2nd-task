@@ -7,19 +7,24 @@
   width: 380px;
   height: 374px;
   padding: 30px;
+
   &__header {
     margin-top: 10px;
     @include font-h1;
   }
+
   &__date-dropdown {
     margin-top: 22px;
   }
+
   &__guests {
     margin-top: 20px;
   }
+
   &__search {
     margin-top: 31px;
   }
+
   &-error {
     outline: 1px solid $colorRed;
   }
