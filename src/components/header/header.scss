@@ -132,6 +132,13 @@
   &__auth {
     display: flex;
 
+    &_is-authorized {
+      &_false {
+        flex-basis: 26%;
+        border: 1px solid red;
+      }
+    }
+
     @include media-breakpoint-down($lg) {
       margin-right: 20px;
     }

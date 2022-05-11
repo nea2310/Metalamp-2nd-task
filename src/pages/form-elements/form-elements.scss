@@ -79,13 +79,13 @@
             }
             &:nth-child(7) {
               display: flex;
-              width: 90px;
+              max-width: 90px;
               justify-content: space-between;
               margin-top: 16px;
             }
             &:nth-child(9) {
               display: flex;
-              width: 258px;
+              max-width: 258px;
               justify-content: space-between;
               margin-top: 17px;
             }

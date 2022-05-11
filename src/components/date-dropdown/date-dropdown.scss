@@ -6,11 +6,13 @@
 
   &_width {
     &_wide {
-      width: 320px;
+      max-width: 320px;
+      width: 100%;
     }
 
     &_narrow {
-      width: 266px;
+      max-width: 266px;
+      width: 100%;
     }
   }
 

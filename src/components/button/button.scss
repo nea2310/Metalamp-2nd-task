@@ -15,19 +15,22 @@ $borderWidth: 2px;
 
   &_length {
     &_very-long {
-      width: 100%;
       max-width: 320px;
+      width: 100%;
     }
 
     &_long {
-      width: 196px;
+      max-width: 196px;
+      width: 100%;
     }
 
     &_short {
-      width: 99px;
+      max-width: 99px;
+      width: 100%;
     }
     &_very-short {
-      width: 87px;
+      max-width: 87px;
+      width: 100%;
     }
   }
 
