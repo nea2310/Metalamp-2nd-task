@@ -135,7 +135,6 @@
     &_is-authorized {
       &_false {
         flex-basis: 26%;
-        border: 1px solid red;
       }
     }
 
@@ -159,6 +158,7 @@
     &-reg,
     &-login {
       margin-top: 3px;
+      flex-grow: 1;
     }
 
     &-reg {

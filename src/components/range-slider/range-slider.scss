@@ -1,6 +1,6 @@
 .range-slider {
   &__wrapper {
-    width: 266px;
+    max-width: 266px;
   }
 
   &__title {
@@ -56,7 +56,6 @@
   span.irs.irs--flat {
     .irs-line {
       cursor: pointer;
-      max-width: 266px;
       width: 100%;
       height: 6px;
       background: $colorWhite;

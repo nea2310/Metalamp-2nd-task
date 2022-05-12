@@ -6,7 +6,8 @@
   padding-left: 0;
   margin-left: 0;
   user-select: none;
-  width: 220px;
+  max-width: 220px;
+  width: 100%;
 
   &__label {
     @include font-h3;

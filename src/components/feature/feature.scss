@@ -1,5 +1,6 @@
 .feature {
-  width: 280px;
+  max-width: 280px;
+  width: 100%;
   border-bottom: 1px solid rgba(31, 32, 65, 0.1);
   display: grid;
   grid-template-rows: 21px 42px;

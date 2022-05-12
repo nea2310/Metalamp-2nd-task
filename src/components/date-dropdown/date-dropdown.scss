@@ -96,10 +96,10 @@
 
     &_width {
       &_narrow {
-        width: 150px;
+        min-width: 150px;
       }
       &_wide {
-        width: 266px;
+        min-width: 266px;
       }
     }
 

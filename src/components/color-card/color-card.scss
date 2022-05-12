@@ -46,7 +46,8 @@
   }
 
   &__name {
-    width: 171px;
+    max-width: 171px;
+    width: 100%;
     padding-top: 8px;
     grid-area: post-2;
     font-family: "Montserrat", Arial, Helvetica, sans-serif;

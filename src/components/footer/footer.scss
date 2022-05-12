@@ -137,7 +137,8 @@
   &__social-links {
     display: flex;
     justify-content: space-between;
-    width: 114px;
+    max-width: 114px;
+    width: 100%;
 
     @include media-breakpoint-down($md) {
       padding-top: 25px;

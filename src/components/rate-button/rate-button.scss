@@ -10,7 +10,7 @@
 
   &__group {
     position: relative;
-    width: 116px;
+    min-width: 116px;
     height: 19px;
     background-image: url("@com/rate-button/image/star-border.svg");
     background-size: 20px auto;
@@ -40,23 +40,23 @@
       opacity: 0;
     }
     &:nth-of-type(1) {
-      width: 20px;
+      min-width: 20px;
       z-index: 5;
     }
     &:nth-of-type(2) {
-      width: 44px;
+      min-width: 44px;
       z-index: 4;
     }
     &:nth-of-type(3) {
-      width: 68px;
+      min-width: 68px;
       z-index: 3;
     }
     &:nth-of-type(4) {
-      width: 92px;
+      min-width: 92px;
       z-index: 2;
     }
     &:nth-of-type(5) {
-      width: 116px;
+      min-width: 116px;
       z-index: 1;
     }
   }
