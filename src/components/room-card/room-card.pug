@@ -1,33 +1,24 @@
 include ../rate-button/rate-button.pug
 
-mixin add-image(imageNumber = 0, imageName = require('@com/room-card/image/default.svg'), isFirstImage = false)
+mixin room-card({roomNumber = '', roomPrice = '', feedbackAmount = '', ratingName = '', lux = '', imageList = []} = {})
   -
     function isImage(path){
       const result = /^assets\/images\//.test(path)
       return result ? path : require('@com/feature/image/default.svg')
       }
-
     const elementName = 'room-card'
-    const modifier = isFirstImage ? `${elementName}__photo_shown js-${elementName}__photo_shown` : ''
-    imageName = isImage(imageName)
-
-  image(class = `${elementName}__photo js-${elementName}__photo ${modifier}` 
-  alt = 'фото номера' src = imageName data-sequence = imageNumber)
-
-
-mixin room-card({roomNumber = '', roomPrice = '', feedbackAmount = '', ratingName = '', lux = '', imageList = []} = {})
-  -
-    const elementName = 'room-card'
-
 
   div(class = `${elementName} js-${elementName}`)
     div(class = `${elementName}__slider js-${elementName}__slider`)
       a(class = `${elementName}__photos` href = 'https://test/test' aria-label= 'Перейти к деталям номера')
-      each name, index in imageList
-        if index === 0
-          +add-image(index+1, name, true)
-        else
-          +add-image(index+1, name)
+      each imageName, index in imageList
+        - imageName = isImage(imageName)
+          if index === 0
+            image(class = `${elementName}__photo js-${elementName}__photo ${elementName}__photo_shown js-${elementName}__photo_shown` 
+              alt = 'фото номера' src = imageName data-sequence = index+1)
+          else
+            image(class = `${elementName}__photo js-${elementName}__photo` 
+              alt = 'фото номера' src = imageName data-sequence = index+1)
       div(class = `${elementName}__dots js-${elementName}__dots`)
       div(class = `${elementName}__buttons`)
         button(class = `${elementName}__previous js-${elementName}__previous` type = 'button' aria-label = 'предыдущее фото')

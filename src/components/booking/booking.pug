@@ -1,12 +1,5 @@
 include ../button/button.pug
-
-mixin booking-info()
-  -
-    const elementName = 'booking'
-
-  a(class = `${elementName}__price-info` href = 'https://test/test') 
-    image(class = `${elementName}__price-info-image` 
-      src = require('@com/booking/image/info.svg') alt = 'Узнать больше')
+include ../info/info.pug
 
 mixin booking({roomNumber = '', lux = '', roomPrice = '', daysAmount = '', totalPrice = '', sale = '', saleTotal = '', extraTotal = '', totalAmount = ''} = {})
   -
@@ -57,11 +50,13 @@ mixin booking({roomNumber = '', lux = '', roomPrice = '', daysAmount = '', total
         div(class = `${elementName}__price-cost`)= `${totalPrice}₽`
       div(class = `${elementName}__price-details`)
         div(class = `${elementName}__price-name`)= `Сбор за услуги: скидка ${sale}₽`
-          +booking-info()
+          div(class = `${elementName}__price-info`)
+            +info()
         div(class = `${elementName}__price-cost`)= `${saleTotal}₽`
       div(class = `${elementName}__price-details`)
         div(class = `${elementName}__price-name`) Сбор за дополнительные услуги
-          +booking-info()
+          div(class = `${elementName}__price-info`)
+            +info()
         div(class = `${elementName}__price-cost`)= `${extraTotal}₽`
       div(class = `${elementName}__price-details`)
         div(class = `${elementName}__price-name`) Итого
