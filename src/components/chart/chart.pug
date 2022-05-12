@@ -1,16 +1,10 @@
-mixin chart()
+mixin chart(marks = {})
   -
     const elementName = 'chart'
-
-    const marks = {
-      excellent: {rate: '130', label: 'Великолепно'},
-      good: {rate:'65', label: 'Хорошо'},
-      satisfied: {rate:'65', label: 'Удовлетворительно'},
-      bad: {rate:'0', label: 'Разочарован'},
-    }
 
   div(class = `${elementName} js-${elementName}`)
     canvas(class = `${elementName}__image js-${elementName}__image` height = '120' width = '120')
     ul(class = `${elementName}__legend`)
       for value, index in marks
-        li(class = `${elementName}__legend-item js-${elementName}__legend-item` data-rate = value.rate data-mark = index)= value.label
+        - const {rate = '', label = ''} = value
+          li(class = `${elementName}__legend-item js-${elementName}__legend-item` data-rate = rate data-mark = index)= label

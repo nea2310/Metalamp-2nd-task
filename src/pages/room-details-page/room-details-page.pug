@@ -40,7 +40,11 @@ block content
       div(class = 'room-details-page__room-impress-wrapper')
         h2(class = 'room-details-page__room-impress-header') Впечатления от номера
         div(class = 'room-details-page__room-impress')
-          +chart()
+          +chart({
+            excellent: {rate: '130', label: 'Великолепно'},
+            good: {rate:'65', label: 'Хорошо'},
+            satisfied: {rate:'65', label: 'Удовлетворительно'},
+            bad: {rate:'0', label: 'Разочарован'}})
       div(class = 'room-details-page__booking-wrapper')
         +booking({
           roomNumber: '888',
