@@ -1,7 +1,9 @@
 .sign-in-page {
   position: relative;
+  top: calc($headerHeight * -1);
   flex-grow: 1;
   @include media-breakpoint-down($sm) {
+    top: 0;
     margin-bottom: 310px;
   }
 

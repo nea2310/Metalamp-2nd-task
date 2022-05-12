@@ -1,9 +1,0 @@
-.layout {
-  &__delimiter {
-    border-top: 1px solid $colorDarkShade15;
-    margin-bottom: 100px;
-    @include media-breakpoint-down($md) {
-      display: none;
-    }
-  }
-}
