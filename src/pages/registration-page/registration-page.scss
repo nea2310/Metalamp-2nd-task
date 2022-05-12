@@ -4,13 +4,11 @@
   @include media-breakpoint-down($sm) {
     margin-bottom: 600px;
   }
-  @include media-breakpoint-down($xs) {
-    margin-top: 20px;
-  }
 
   &__background {
     box-sizing: border-box;
     width: 100%;
+    max-width: 1920px;
     object-fit: cover;
     @include media-breakpoint-down($sm) {
       display: none;
@@ -18,16 +16,15 @@
   }
 
   &__registration-wrapper {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     position: absolute;
-    top: 0;
-    @include media-breakpoint-down($xl) {
-      margin-top: 20px;
-      align-items: flex-start;
+    top: calc($headerHeight + 2.6%);
+
+    @include media-breakpoint-down($sm) {
+      top: 20px;
     }
   }
 }

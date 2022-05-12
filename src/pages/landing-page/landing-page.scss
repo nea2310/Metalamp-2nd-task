@@ -5,12 +5,13 @@
     margin-bottom: 310px;
   }
   @include media-breakpoint-down($xs) {
-    margin-top: 20px;
+    //  margin-top: 20px;
   }
 
   &__background {
     box-sizing: border-box;
     width: 100%;
+    max-width: 1920px;
     object-fit: cover;
     @include media-breakpoint-down($sm) {
       display: none;
@@ -22,16 +23,16 @@
     justify-content: flex-start;
     align-items: flex-start;
     position: absolute;
-    top: 0;
-    padding-top: 70px;
-    padding-left: 97px;
+    top: calc($headerHeight + 7.7%);
+    left: 9.8%;
     @include media-breakpoint-down($sm) {
       height: 100%;
       padding: 0;
-      margin-top: 20px;
       justify-content: center;
       width: 100%;
       height: 100%;
+      top: 20px;
+      left: 0;
     }
   }
 
