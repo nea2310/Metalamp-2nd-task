@@ -3,7 +3,7 @@ $borderWidth: 2px;
 .button {
   cursor: pointer;
   margin: 0;
-  padding: 0;
+  padding: 0 10px 0 10px;
   position: relative;
   @include font-h3;
   display: flex;
