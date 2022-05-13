@@ -23,7 +23,8 @@ html(lang = 'ru')
     +header({menu: headerLinks, isAuthorized: false})
     block content
       main
-    +footer({menu: footerLinks})
+    block footer
+      +footer({menu: footerLinks})
 
 
 

@@ -249,4 +249,8 @@ $lg-padding-bottom: 30px;
       }
     }
   }
+  &__footer {
+    border-top: 1px solid $colorDarkShade25;
+    padding-top: 100px;
+  }
 }
