@@ -8,7 +8,7 @@ class Registration {
   }
 
   _render() {
-    this.date = this.wrapper.querySelector('.js-masked');
+    this.date = this.wrapper.querySelector('.js-input-field_validation_date input');
     this.inputs = this.wrapper
       .querySelectorAll('input');
   }
