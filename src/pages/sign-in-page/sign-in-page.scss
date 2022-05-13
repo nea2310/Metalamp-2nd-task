@@ -1,5 +1,7 @@
 .sign-in-page {
   position: relative;
+  display: flex;
+  justify-content: center;
   top: calc($headerHeight * -1);
   flex-grow: 1;
   @include media-breakpoint-down($sm) {
@@ -10,7 +12,7 @@
   &__background {
     box-sizing: border-box;
     width: 100%;
-    object-fit: cover;
+    max-width: $xxl;
 
     @include media-breakpoint-down($sm) {
       display: none;

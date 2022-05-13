@@ -1,5 +1,7 @@
 .registration-page {
   position: relative;
+  display: flex;
+  justify-content: center;
   top: calc($headerHeight * -1);
   flex-grow: 1;
   @include media-breakpoint-down($lg) {
@@ -13,7 +15,7 @@
   &__background {
     box-sizing: border-box;
     width: 100%;
-    max-width: 1920px;
+    max-width: $xxl;
     object-fit: cover;
     @include media-breakpoint-down($sm) {
       display: none;
