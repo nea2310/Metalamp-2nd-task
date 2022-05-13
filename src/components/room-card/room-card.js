@@ -32,7 +32,6 @@ class RoomCard {
     this.dots = this._getElements(['dot']);
     this.dots[0].classList.add(`${this.elementName}__dot_active`);
     this.dots.forEach((dot) => {
-      // dot - точка, по которой кликнули (должна стать активной)
       dot.addEventListener('click', this._handleRoomCardClickDot);
     });
   }
@@ -49,13 +48,10 @@ class RoomCard {
       const xEnd = e.touches[0].clientX;
       const xDelta = xStart - xEnd;
       if (xDelta > 0) {
-        /* свайп влево */
         this._clickPrevNext(this.buttonPrevious);
       } else {
-        /* свайп вправо */
         this._clickPrevNext(this.buttonNext);
       }
-      /* сброс значения */
       xStart = null;
     };
     this.slider
@@ -74,14 +70,11 @@ class RoomCard {
   }
 
   _clickPrevNext(element) {
-    // определяем текущее фото
     const currentPhoto = this._getElement('photo_shown');
-    // определяем текущую точку
     const currentDot = this._getElement('dot_active'); // ??
     const i = parseInt(currentPhoto.getAttribute('data-sequence'), 10);
     let newPhoto;
     let newDot;
-    // Кликнули [Назад]
     if (element.className.match('previous') || element === 'leftSwipe') {
       if (i !== 1) {
         newPhoto = this._getElemAdv(
@@ -102,11 +95,10 @@ class RoomCard {
         );
         newDot = this._getElemAdv(
           'dot',
-          'data-sequence', // ??
+          'data-sequence',
           this.images.length,
         );
       }
-      // Кликнули [Вперед]
     } else if (element.className.match('next') || element === 'rightSwipe') {
       if (i !== this.images.length) {
         newPhoto = this._getElemAdv(
@@ -131,25 +123,16 @@ class RoomCard {
     const element = e.currentTarget;
     console.log(element);
     const sec = element.getAttribute('data-sequence');
-    // определяем текущее фото
     const currentPhoto = this._getElement('photo_shown');
-    // определяем активную точку
     const currentDot = this._getElement('dot_active');
-    /* определяем новое фото (атрибут data-sequence равен атрибуту data-sequence
-     нажатой точки [т.е. новой активной]) */
     const newPhoto = this._getElemAdv('photo', 'data-sequence', sec);
     this._toggle(currentPhoto, currentDot, newPhoto, element);
   }
 
-  // Меняем фото и точку
   _toggle(currentPhoto, currentDot, newPhoto, newDot) {
-    // скрываем текущее фото
     currentPhoto.classList.remove(`${this.elementName}__photo_shown`);
-    // обесцвечиваем текущую точку
     currentDot.classList.remove(`${this.elementName}__dot_active`);
-    // отображаем новое фото
     newPhoto.classList.add(`${this.elementName}__photo_shown`);
-    // закрашиваем новую точку
     newDot.classList.add(`${this.elementName}__dot_active`);
   }
 

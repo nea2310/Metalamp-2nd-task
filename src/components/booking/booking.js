@@ -15,9 +15,7 @@ class Booking {
   }
 
   _bindEventListeners() {
-    // Валидация инпутов на сабмите формы
     this.wrapper.addEventListener('submit', this._handleBookingSubmit);
-    // При фокусе убрать красную рамку с инпута
     this.inputs.forEach((input) => input.addEventListener('focus', Booking._handleBookingFocus));
   }
 

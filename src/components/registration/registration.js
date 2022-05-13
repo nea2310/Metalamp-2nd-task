@@ -14,9 +14,7 @@ class Registration {
   }
 
   _bindEventListeners() {
-    // Валидация инпутов на сабмите формы
     this.wrapper.addEventListener('submit', this._handleRegistrationSubmit);
-    // При фокусе убрать красную рамку с инпута
     this.inputs.forEach((input) => input.addEventListener('focus', Registration._handleRegistrationFocus));
   }
 
@@ -29,7 +27,6 @@ class Registration {
         input.classList.remove('registration-error');
       }
     });
-    // проверку на формат даты обязательно делать ПОСЛЕ проверки на заполненность поля
     if (/^\d{2}\.\d{2}\.\d{4}$/.test(this.date.value)) {
       this.date.classList.remove('registration-error');
     } else {

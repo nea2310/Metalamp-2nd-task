@@ -52,7 +52,6 @@ class DateDropDown {
     this.buttonApply = this._getElement('button-apply');
   }
 
-  /* Выбор даты в календаре */
   _init() {
     const separator = this.isFilter ? ' - ' : ',';
     this.myDatepicker = new AirDatepicker(this.calendarWrapper, {
@@ -75,9 +74,9 @@ class DateDropDown {
           if (!this.isFilter) {
             const dateArr = date;
             let value;
-            if (dateArr.length === 1) { // если выбрана одиночная дата
+            if (dateArr.length === 1) {
               value = '';
-            } else { // если выбран диапазон дат
+            } else {
               [, value] = dateArr;
             }
             [this.inputDateFrom.value] = dateArr;
@@ -93,7 +92,6 @@ class DateDropDown {
       .querySelector('.air-datepicker.-inline-');
   }
 
-  /* Установка даты из поля value в верстке */
   _setDefaultDate() {
     if (this.isFilter) {
       const dateFrom = this.defaultDates[0];
@@ -104,16 +102,12 @@ class DateDropDown {
   }
 
   _processDate() {
-    // работа с датой
-    // dateCurrent =  текущая дате
     this.dateCurrent = new Date();
-    // dateTomorrow =  завтрашняя дате
     this.dateTomorrow = new Date(+this.dateCurrent
       + (new Date('2020-12-31') - new Date('2020-12-30')));
-    // datePlusYear = плюс один год к текущей дате
     this.datePlusYear = new Date(+this.dateCurrent
       + (new Date('2020-12-31') - new Date('2020-01-01')));
-    const regexpDate = /^\d{2}\.\d{2}\.\d{4}$/; // формат даты
+    const regexpDate = /^\d{2}\.\d{2}\.\d{4}$/;
     this.dateCurrentTxt = `${this.dateCurrent.getDate()
       }.${this.dateCurrent.getMonth() + 1
       }.${this.dateCurrent.getFullYear()}`;
@@ -126,7 +120,6 @@ class DateDropDown {
       }.${this.datePlusYear.getMonth() + 1
       }.${this.datePlusYear.getFullYear()}`;
 
-    // вставляет нули, если число или месяц - однозначное
     const formatDate = (dateValue) => {
       let date = dateValue;
       if (regexpDate.test(date) === false) {
@@ -147,22 +140,17 @@ class DateDropDown {
   }
 
   _bindEventListeners() {
-    /* Ввод даты в инпут с клавиатуры */
     if (this.isFilter) {
-      // При фокусе на инпут преобразовать дату в формат ДД.ММ.ГГГГ - ДД.ММ.ГГГГ
       this.inputDate.addEventListener('focus', this._handleDateDropDownFocusDate);
       this.inputDate.addEventListener('blur', this._handleDateDropDownBlurDate);
     }
     if (this.isFilter) {
-      // обработчик события окончания ввода в инпут по маске ДД.ММ.ГГГГ - ДД.ММ.ГГГГ
       this.wrapper.addEventListener('input', this._handleDateDropDownInputFilter);
     }
     if (!this.isFilter) {
-      // обработчик события окончания ввода в инпут по маске ДД.ММ.ГГГГ
       this.wrapper.addEventListener('input', this._handleDateDropDownInputNoFilter);
     }
 
-    // Показ  календаря при клике по инпуту
     if (!this.isFilter) {
       this.inputDateFrom.addEventListener('click', this._handleDateDropDownClickDateFromTo);
       this.inputDateTo.addEventListener('click', this._handleDateDropDownClickDateFromTo);
@@ -170,32 +158,15 @@ class DateDropDown {
       this.inputDate.addEventListener('click', this._handleDateDropDownClickDate);
     }
 
-    // Удаление даты из инпута
     this.wrapper.addEventListener('input', this._handleDateDropDownClickWrapper);
-
-    // клик по кнопке [Применить]
     this.buttonApply.addEventListener('click', this._handleDateDropDownClickApply);
-
-    // клик по кнопке [Очистить]
     this.buttonClear.addEventListener('click', this._handleDateDropDownClickClear);
-
-    // проверка, клик был снаружи или внутри календаря
     this.calendar.addEventListener('click', this._handleDateDropDownClickCalendar);
-
-    // проверка, фокус был снаружи или внутри календаря
     this.wrapper.addEventListener('focusin', this._handleDateDropDownFocusinWrapper);
-
-    // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
     document.addEventListener('click', this._handleDateDropDownClickDoc);
-
-    // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
     document.addEventListener('focusin', this._handleDateDropDownFocusinDoc);
-
-    // ресайз/лоад страницы
     window.addEventListener('resize', this._handleDateDropDownResizeLoadWindow);
     window.addEventListener('load', this._handleDateDropDownResizeLoadWindow);
-
-    /* запретить все типы ввода, кроме перечисленных */
     this.inputs.forEach((input) => input.addEventListener('input', this._handleDateDropDownInput));
   }
 
@@ -253,7 +224,7 @@ class DateDropDown {
       const dateFrom = currentInput.value;
       const dateTo = secondInput.value;
       this.myDatepicker.clear();
-      if (secondInput.value) { // заполнены оба инпута
+      if (secondInput.value) {
         this.myDatepicker.selectDate(
           new Date(dateTo),
         );
@@ -261,7 +232,6 @@ class DateDropDown {
           new Date(dateFrom),
         );
       } else {
-        // заполнен один инпут
         this.myDatepicker.selectDate(
           new Date(dateFrom),
         );
@@ -298,13 +268,12 @@ class DateDropDown {
   _handleDateDropDownClickWrapper(e) {
     if (e.target === this.inputDateFrom
       || e.target === this.inputDateTo) {
-      if (e.target.value === '') { // Если инпут очищен
-        if (e.target === this.inputDateFrom) { // очищен левый инпут
-          this.inputDateTo.value = '';// очистить правый инпут
-          this.myDatepicker.clear();// очистить календарь (снять выделение с обеих дат)
-        } else { // очищен правый инпут
+      if (e.target.value === '') {
+        if (e.target === this.inputDateFrom) {
+          this.inputDateTo.value = '';
+          this.myDatepicker.clear();
+        } else {
           const a = this.myDatepicker.selectedDates[1];
-          // снять выделение с второй даты (левый инпут и первая дата остаются)
           this.myDatepicker.unselectDate(a);
         }
       }
@@ -359,7 +328,6 @@ class DateDropDown {
     if (this.calendarDouble) {
       DateDropDown.processTextInput(e);
     }
-    // ввод даты закончен
     if (this.calendarSingle && e.target.value[0] !== '0') {
       this._checkRangeSingle(e);
     }
@@ -369,7 +337,6 @@ class DateDropDown {
     }
   }
 
-  // Открывание/ закрывание календаря
   _toggle(isExpanded) {
     const wrap = `${this.elementName}__`;
     if (isExpanded) {
@@ -396,13 +363,11 @@ class DateDropDown {
       || DateDropDown.isFormatIncorrect(dateSelected);
     if (needCorrectFormat) {
       alert(`Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
-      e.target.value = this.dateCurrentTxt;/* в случае некорректного ввода -
-        устанавливаем текущую дату */
+      e.target.value = this.dateCurrentTxt;
     }
   }
 
   _checkRangeDouble(e) {
-    /* Проверка, что введенная дата попадает в диапазон dateCurrent и datePlusYear */
     const dateFrom = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
     const dateTo = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
     const dateCurrentSelected = new Date(`${dateFrom[2]}-${dateFrom[1]}-${dateFrom[0]}`);
@@ -415,7 +380,7 @@ class DateDropDown {
       || DateDropDown.isFormatIncorrect(datePlusYearSelected);
     if (needCorrectFormat) {
       alert(`Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
-      e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;// в случае некорректного ввода - устанавливаем диапазон [текущая дата - завтрашняя дата]
+      e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;
     }
   }
 
@@ -436,31 +401,18 @@ class DateDropDown {
       e.target.value = '';
     }
 
-    /* при вводе перетаскиванием текста или из буфера обмена -
-    проверить на соответствие формату ДД.ММ.ГГГГ и если
-    не соответствует - очистить инпут */
     DateDropDown.checkFormat(e);
 
-    /* действия при вводе с клавиатуры */
     if (e.inputType === 'insertText') {
       DateDropDown.addZero(e);
-
-      /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
       DateDropDown.addDot(e);
-
-      /* ставим знаки пробела и минус между датами (требуется только для calendarDouble) */
       DateDropDown.addDash(e);
-
-      /* удаляем все символы после 24-го символа (требуется только для calendarDouble) */
       DateDropDown.truncAfter24(e);
     }
   }
 
-  /* при вводе перетаскиванием текста или из буфера обмена -
-проверить на соответствие формату ДД.ММ.ГГГГ и если
-не соответствует - очистить инпут */
   static checkFormat(e) {
-    const regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/; // формат даты
+    const regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/;
     const needCorrectFormat = (
       regexpDateDouble.test(e.target.value) === false
       && (e.inputType === 'insertFromDrop' || e.inputType === 'insertFromPaste'));
@@ -469,7 +421,6 @@ class DateDropDown {
     }
   }
 
-  /* действия при вводе с клавиатуры */
   static addZero(e) {
     const plusZero = () => {
       const position = e.target.value[e.target.value.length - 1];
@@ -478,9 +429,7 @@ class DateDropDown {
         e.target.value.length - 1,
       )}0${position}`;
     };
-    e.target.value = e.target.value.replace(/[^0-9. -]/g, '');// все, кроме цифр, точек, пробелов и дефисов, заменяются на пустую строку
-    /* если ввод дня начинается с числа, больше 3 - то добавить перед ним ноль */
-    /* если ввод месяца начинается с числа, больше 1 - то добавить перед ним ноль */
+    e.target.value = e.target.value.replace(/[^0-9. -]/g, '');
     const needCorrectFormat = (parseInt(e.target.value[0], 10) >= 4
       && e.target.value.length === 1)
       || (parseInt(e.target.value[3], 10) >= 2
@@ -494,7 +443,6 @@ class DateDropDown {
     }
   }
 
-  /* ставим точку после 2-го, 5-го, 15-го, 18-го символа (после дня и месяца) */
   static addDot(e) {
     const needCorrectFormat = e.target.value.length === 2
       || e.target.value.length === 5
@@ -505,14 +453,12 @@ class DateDropDown {
     }
   }
 
-  /* ставим знаки пробела и минус между датами (требуется только для calendarDouble) */
   static addDash(e) {
     if (e.target.value.length === 10) {
       e.target.value = `${e.target.value} - `;
     }
   }
 
-  /* удаляем все символы после 24-го символа (требуется только для calendarDouble) */
   static truncAfter24(e) {
     if (e.target.value.length > 24) {
       e.target.value = e.target.value.slice(
@@ -522,7 +468,6 @@ class DateDropDown {
     }
   }
 
-  /* проверить корректность строки с датой */
   static isFormatIncorrect(date) {
     return Number.isNaN(+date);
   }

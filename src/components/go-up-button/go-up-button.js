@@ -7,9 +7,7 @@ class GoUpButton {
   }
 
   _bindEventListeners() {
-    // скролл страницы
     window.addEventListener('scroll', this._handleGoUpButtonScroll);
-    // клик по кнопке
     this.wrapper.addEventListener('click', GoUpButton._handleGoUpButtonClick);
   }
 

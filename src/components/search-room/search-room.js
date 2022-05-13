@@ -15,9 +15,7 @@ class SearchRoom {
   }
 
   _bindEventListeners() {
-    // Валидация инпутов на сабмите формы
     this.wrapper.addEventListener('submit', this._handleSearchRoomSubmit);
-    // При фокусе убрать красную рамку с инпута
     this.inputs.forEach((input) => input.addEventListener('focus', SearchRoom._handleSearchRoomFocus));
   }
 

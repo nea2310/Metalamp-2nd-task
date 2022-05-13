@@ -21,7 +21,6 @@ class LikeButton {
   }
 
   _bindEventListeners() {
-    // клик по кнопке
     this.button.addEventListener('click', this._handleLikeButtonClick);
 
     window.addEventListener('load', this._handleLikeButtonLoadWindow);

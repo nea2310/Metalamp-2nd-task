@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable indent */
 class InputField {
@@ -25,16 +23,13 @@ class InputField {
   _init() {
     this.input = this._getElement('input');
     if (this.date) {
-      // dateCurrent =  текущая дате
       this.dateCurrent = new Date();
-      // dateMinusHundred  - текущая дата минус 100 лет
       this.dateMinusHundred = new Date(+this.dateCurrent
         - (new Date('2120-12-31') - new Date('2020-01-01')));
-      // dateMinusEighteen  - текущая дата минус 18 лет
       this.dateMinusEighteen = new Date(+this.dateCurrent
         - (new Date('2037-12-31') - new Date('2020-01-01')));
-      this.regexpDate = /^\d{2}\.\d{2}\.\d{4}$/; // формат даты
-      this.regexInput = /[^0-9.]/g; // формат ввода в инпут - все, кроме цифр и точек(будет заменяться на пустую строку)
+      this.regexpDate = /^\d{2}\.\d{2}\.\d{4}$/;
+      this.regexInput = /[^0-9.]/g;
 
       this.dateMinusHundredTxt = `${this.dateMinusHundred.getDate()
         }.${this.dateMinusHundred.getMonth() + 1
@@ -44,7 +39,6 @@ class InputField {
         }.${this.dateMinusEighteen.getMonth() + 1
         }.${this.dateMinusEighteen.getFullYear()}`;
 
-      // вставляет нули, если число или месяц - однозначное
       const formatDate = (dateValue) => {
         let date = dateValue;
         if (this.regexpDate.test(date) === false) {
@@ -68,7 +62,6 @@ class InputField {
   }
 
   _bindEventListeners() {
-    /* запретить все типы ввода, кроме перечисленных */
     if (this.date) {
       this.input.addEventListener('input', this._handleInputFieldInput);
     }
@@ -97,19 +90,11 @@ class InputField {
       e.target.value = '';
     }
 
-    /* при вводе перетаскиванием текста или из буфера обмена -
-    проверить на соответствие формату ДД.ММ.ГГГГ и если
-    не соответствует - очистить инпут */
     InputField.checkFormat(e);
 
-    /* действия при вводе с клавиатуры */
     if (e.inputType === 'insertText') {
       InputField.addZero(e);
-
-      /* ставим точку после 2-го, 5-го символа (после дня и месяца) */
       InputField.addDot(e);
-
-      /* удаляем все символы после 10-го символа */
       InputField.truncAfter10(e);
     }
     this._checkBirthDate(e);
@@ -117,8 +102,6 @@ class InputField {
 
   _checkBirthDate(e) {
     if (e.target.value.length === 10) {
-      /* Проверка, что введенная дата попадает в диапазон dateMinusHundred и
-    dateMinusEighteen */
       const a = e.target.value.split('.');
       const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
       const needCorrectFormat = dateSelected < this.dateMinusHundred
@@ -127,7 +110,7 @@ class InputField {
       if (needCorrectFormat) {
         alert(`Введите дату от ${this.dateMinusHundredTxt
           } до ${this.dateMinusEighteenTxt}`);
-        e.target.value = '';// в случае некорректного ввода - очищаем инпут
+        e.target.value = '';
       }
     }
   }
@@ -140,9 +123,6 @@ class InputField {
     InputField.testEmail(this.input.value);
   }
 
-  /* при вводе перетаскиванием текста или из буфера обмена -
- проверить на соответствие формату ДД.ММ.ГГГГ и если
- не соответствует - очистить инпут */
   static checkFormat(e) {
     const regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/; // формат даты
     const needCorrectFormat = (
@@ -153,7 +133,6 @@ class InputField {
     }
   }
 
-  /* действия при вводе с клавиатуры */
   static addZero(e) {
     const plusZero = () => {
       const position = e.target.value[e.target.value.length - 1];
@@ -162,9 +141,7 @@ class InputField {
         e.target.value.length - 1,
       )}0${position}`;
     };
-    e.target.value = e.target.value.replace(/[^0-9. -]/g, '');// все, кроме цифр, точек, пробелов и дефисов, заменяются на пустую строку
-    /* если ввод дня начинается с числа, больше 3 - то добавить перед ним ноль */
-    /* если ввод месяца начинается с числа, больше 1 - то добавить перед ним ноль */
+    e.target.value = e.target.value.replace(/[^0-9. -]/g, '');
     const needCorrectFormat = (
       parseInt(e.target.value[0], 10) >= 4
       && e.target.value.length === 1)
@@ -175,7 +152,6 @@ class InputField {
     }
   }
 
-  /* ставим точку после 2-го, 5-го символа (после дня и месяца) */
   static addDot(e) {
     const needCorrectFormat = e.target.value.length === 2
       || e.target.value.length === 5;
@@ -184,7 +160,6 @@ class InputField {
     }
   }
 
-  /* удаляем все символы после 10-го символа */
   static truncAfter10(e) {
     if (e.target.value.length > 10) {
       e.target.value = e.target.value.slice(

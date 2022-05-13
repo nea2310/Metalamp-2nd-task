@@ -42,8 +42,6 @@ class DropDown {
     this._getInitialCounterList(this.listElements);
   }
 
-  /* Получение начального состояния счетчиков (текущее значение;
-    является ли оно минимальным или максимальным; название и тип категории) */
   _getInitialCounterList(counterList) {
     this.counters = [];
     for (let i = 0; i < counterList.length; i += 1) {
@@ -71,8 +69,6 @@ class DropDown {
     }
   }
 
-  /* определяем неактивные кнопки (если начальное значение счетчика -
-    минимальное или максимальное) */
   _initializeButtons(counterList) {
     for (let i = 0; i < counterList.length; i += 1) {
       const element = this.listElements[i];
@@ -88,43 +84,22 @@ class DropDown {
   }
 
   _bindEventListeners() {
-    // клик по инпуту
     this.input.addEventListener('mousedown', this._handleDropDownMousedownInput);
     this.input.addEventListener('mouseup', this._handleDropDownMouseupInput);
-
-    // клик по уголку
     this.tip.addEventListener('mousedown', this._handleDropDownMousedownInput);
     this.tip.addEventListener('mouseup', this._handleDropDownMouseupInput);
-
-    // фокус на инпут
     this.input.addEventListener('focus', this._handleDropDownFocusInput);
-
-    // обработка клика по кнопкам Плюс / Минус
     this.counts.forEach((element) => element.addEventListener('click', this._handleDropDownClickCounter));
-
-    // клик по кнопке [Применить]
     if (this.clearApplyButtons) {
       this.buttonApply.addEventListener('click', this._handleDropDownClickApply);
     }
-
-    // клик по кнопке [очистить]
     if (this.clearApplyButtons) {
       this.buttonClear.addEventListener('click', this._handleDropDownClickClear);
     }
-
-    // проверка, клик был снаружи или внутри виджета
     this.wrapper.addEventListener('click', this._handleDropDownClickWrapper);
-
-    // проверка, фокус был снаружи или внутри виджета
     this.wrapper.addEventListener('focusin', this._handleDropDownFocusinWrapper);
-
-    // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
     document.addEventListener('click', this._handleDropDownClickDoc);
-
-    // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
     document.addEventListener('focusin', this._handleDropDownFocusinDoc);
-
-    // ресайз/лоад страницы
     window.addEventListener('resize', this._handleDropDownResizeLoadWindow);
     window.addEventListener('load', this._handleDropDownResizeLoadWindow);
   }
@@ -134,22 +109,18 @@ class DropDown {
     const text = e.target.parentElement.parentElement
       .firstElementChild.innerText.toLowerCase();
     let editedCounter;
-    // Для кнопки "минус"
     if (element.classList
       .contains(`${this.elementName}__count-decrement`)) {
-      // Сделать активной кнопку "плюс" при клике на кнопку "минус"
       element.parentElement.lastElementChild.disabled = false;
-      // Уменьшить счетчик на единицу
       const currentCounter = parseInt(e.target.nextElementSibling.innerText, 10);
       editedCounter = String(currentCounter - 1);
       e.target.nextElementSibling.innerText = editedCounter;
-    } else { // для кнопки "плюс": Сделать активной кнопку "минус" при клике на кнопку "плюс"
+    } else {
       element.parentElement.firstElementChild.disabled = false;
-      if (this.clearApplyButtons) { // Показать кнопку [Очистить]
+      if (this.clearApplyButtons) {
         this.buttonClear
           .classList.remove(`${this.elementName}__button_hidden`);
       }
-      // Увеличить счетчик на единицу
       const currentCounter = parseInt(e.target.previousElementSibling.innerText, 10);
       editedCounter = String(currentCounter + 1);
       e.target.previousElementSibling.innerText = editedCounter;
@@ -232,7 +203,6 @@ class DropDown {
     this._toggle(false);
   }
 
-  /* обновление состояния счетчиков */
   _updateCounterList(text, editedCounter) {
     this.counters = this.counters.map((counter) => {
       if (counter.text === text) {
@@ -262,21 +232,15 @@ class DropDown {
     this._updateCategoriesList(this.counters);
   }
 
-  /* обновление кнопок Плюс/ Минус (делаем неактивными,
-    если достигнуто минимальное/ максимальное значение) */
   _updateButtons(counters) {
     for (let i = 0; i < counters.length; i += 1) {
       const { count } = counters[i];
       const countToChange = this.listElements[i]
         .querySelector(`.${this.elementName}__count-value`);
       countToChange.innerText = count;
-      /* Если обновленное значение - минимальное разрешенное значение,
-      то сделать кнопку "минус" неактивной */
       if (counters[i].isMin) {
         countToChange.previousElementSibling.disabled = true;
       }
-      /* Если обновленное значение - максимальное разрешенное значение,
-      то сделать кнопку "плюс" неактивной */
       if (counters[i].isMax) {
         countToChange.nextElementSibling.disabled = true;
       }
@@ -286,26 +250,20 @@ class DropDown {
     }
   }
 
-  // Скрыть кнопку [очистить]
   _hideButtonClear(buttonsMinus) {
     const arr = [];
     buttonsMinus.forEach((button) => arr.push(button.disabled));
-    // есть ли среди кнопок "Минус" активные (disabled==false)
     let isCleared = arr.find((item) => item
       === false);
-    // если активные кнопки не обнаружены - isCleared=true
     if (isCleared === undefined) {
       isCleared = true;
-      // скрыть кнопку [Очистить]
       this.buttonClear.classList.add(`${this.elementName}__button_hidden`);
     }
   }
 
-  /* Обновление списка категорий, которые выводятся в инпуте */
   _updateCategoriesList(changedCounters) {
     this.countersToDisplay = [];
     for (let i = 0; i < changedCounters.length; i += 1) {
-      // Если категории такого типа еще нет
       const check = i === 0 || (i > 0 && changedCounters[i].type !== changedCounters[i - 1].type);
       if (check) {
         const { type } = changedCounters[i];
@@ -315,15 +273,12 @@ class DropDown {
         element.type = type;
         element.declensions = declensions.split(',');
         element.count = count;
-        // То добавить в массив, который в конце будет присвоен changedCountersToDisplay
         this.countersToDisplay.push(element);
       }
-      // Если  категория такого типа уже есть
       if (i > 0 && changedCounters[i].type
         === changedCounters[i - 1].type) {
         const element = this.countersToDisplay.find((item) => item.type
           === changedCounters[i].type);
-        // То в массив не добавлять, а прибавить значение к значению счетчика этой категории
         element.count = String(parseInt(element.count, 10)
           + parseInt(changedCounters[i].count, 10));
       }
@@ -331,9 +286,7 @@ class DropDown {
     this._updateInput(this.countersToDisplay);
   }
 
-  /* обновление значения в инпуте */
   _updateInput(countersToDisplay) {
-    // Определение падежа категории в зависимости от значения счетчика
     function getWordForm(count, words) {
       let value = count;
       value = Math.abs(value) % 100;
@@ -345,7 +298,6 @@ class DropDown {
     }
     let value = '';
     countersToDisplay.forEach((counter) => {
-      // исключаем категории, у которых счетчик = 0
       if (parseInt(counter.count, 10) !== 0) {
         value += `${counter.count} ${getWordForm(
           parseInt(counter.count, 10),
@@ -356,7 +308,6 @@ class DropDown {
     this.input.value = value.substring(0, value.length - 2);
   }
 
-  // Открывание/ закрывание дропдауна
   _toggle(isExpanded) {
     const wrapper = `${this.elementName}__`;
     if (isExpanded) {

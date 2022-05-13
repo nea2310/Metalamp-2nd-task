@@ -27,7 +27,6 @@ class Chart {
       };
       const getColor = (rateType) => this.colors[rateType];
       this.legendItems = Array.from(this.legendItems).reverse();
-      // создаем объект конфигурации
       this.votes = 0;
       this.legendItems.forEach((item) => {
         const rate = item.getAttribute('data-rate');
@@ -47,7 +46,6 @@ class Chart {
   }
 
   _drawCircles() {
-    // Градиентная заливка маркеров списка
     const getColor = (rateType) => this.colors[rateType];
     this.legendItems.forEach((item) => {
       const circle = document.createElement('span');
@@ -57,8 +55,6 @@ class Chart {
       color-stop(1,
       ${getColor(item.getAttribute('data-mark')).color2})`;
       item.prepend(circle);
-
-      // добавление скрытых DOM-элементов с кол-вом голосов (для экр. читалок)
       const label = document.createElement('span');
       label.className = `${this.elementName}__legend-item-label`;
       label.innerText = item.getAttribute('data-rate');
@@ -100,8 +96,8 @@ class Chart {
       isFilled,
     ) => {
       ctx.fillStyle = color;
-      ctx.strokeStyle = color; // Цвет обводки
-      ctx.lineWidth = 1; // Ширина линии
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(centerX, centerY);
       ctx.arc(centerX, centerY, radius, startAngle, endAngle);
@@ -144,7 +140,6 @@ class Chart {
 
       color.colorStops.forEach((cs) => grad.addColorStop(cs.stop, cs.color));
 
-      // Сектора
       drawPieSlice(
         this.ctx,
         this.canvas.width / 2,
@@ -156,7 +151,6 @@ class Chart {
         true,
       );
 
-      // Обводка секторов
       drawPieSlice(
         this.ctx,
         this.canvas.width / 2,
@@ -170,7 +164,6 @@ class Chart {
       startAngle += sliceAngle;
     }
 
-    // Центр диаграммы
     drawPieSlice(
       this.ctx,
       this.canvas.width / 2,

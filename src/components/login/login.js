@@ -13,9 +13,7 @@ class Login {
   }
 
   _bindEventListeners() {
-    // Валидация инпутов на сабмите формы
     this.wrapper.addEventListener('submit', this._handleLoginSubmit);
-    // При фокусе убрать красную рамку с инпута
     this.inputs.forEach((input) => input.addEventListener('focus', Login._handleLoginFocus));
   }
 

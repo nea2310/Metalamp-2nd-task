@@ -27,26 +27,13 @@ class CheckList {
   }
 
   _bindEventListeners() {
-    // клик по лейблу
     this.label.addEventListener('mousedown', this._handleCheckListMouseDownLabel);
     this.label.addEventListener('mouseup', this._handleCheckListMouseUpLabel);
-
-    // фокус на лейбл
     this.label.addEventListener('focus', this._handleCheckListFocusLabel);
-
-    // проверка, клик был снаружи или внутри списка
     this.wrapper.addEventListener('click', this._handleCheckListClickWrapper);
-
-    // проверка, фокус был снаружи или внутри списка
     this.wrapper.addEventListener('focusin', this._handleCheckListFocusWrapper);
-
-    // отлавливаем все клики по документу, если клик снаружи виджета - сворачиваем виджет
     document.addEventListener('click', this._handleCheckListClickFocusDoc);
-
-    // отлавливаем все фокусы по документу, если фокус снаружи виджета - сворачиваем виджет
     document.addEventListener('focusin', this._handleCheckListClickFocusDoc);
-
-    // ресайз/лоад страницы
     window.addEventListener('resize', this._handleCheckListResizeLoadWindow);
     window.addEventListener('load', this._handleCheckListResizeLoadWindow);
   }
@@ -115,7 +102,6 @@ class CheckList {
       window.innerWidth <= this.breakPoint || this._isCollapsing());
   }
 
-  // Открывание/ закрывание списка
   _toggleList(flag) {
     const wrap = `${this.elementName}__`;
     if (flag) {

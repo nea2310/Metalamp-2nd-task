@@ -27,16 +27,12 @@ class Header {
   _bindEventListeners() {
     this.navLevel1.addEventListener('mouseover', this._handleHeaderMouseoverLevel1);
     this.navLevel1.addEventListener('focusin', this._handleHeaderFocusinLevel1);
-
-    // открыть меню 2-го уровня по нажатию клавиши Пробел
     this.navLevel1.addEventListener('keydown', this._handleHeaderKeydownLevel1);
     this.navLevel2.forEach((element) => element.addEventListener('mouseout', this._handleHeaderMouseoutLevel2));
     this.tips.forEach((element) => {
       element.addEventListener('click', this._handleHeaderClickLevel2);
     });
     this.burger.addEventListener('click', this._handleHeaderClickBurger);
-
-    // закрыть меню-бургер при ресайзе страницы
     document.addEventListener('click', this._handleHeaderClickDoc);
     document.addEventListener('focusin', this._handleHeaderFocusinDoc);
     window.addEventListener('resize', this._handleHeaderResizeWindow);
@@ -85,29 +81,26 @@ class Header {
     }
   }
 
-  // показать/ скрыть мобильное меню
   _handleHeaderClickBurger() {
     this.burger.classList.toggle(`${this.elementName}__burger-button_active`);
     this.navLevel1.classList.toggle(`${this.elementName}__nav-level1_active`);
   }
 
-  // показать/ скрыть меню второго уровня
   _toggleLevel2Menu(element, event) {
     const condMatch = element.matches(`.${this.elementName}__nav-level1-item-link`)
       && element.firstElementChild.matches(`.${this.elementName}__nav-level1-item-image`);
     const condFull = condMatch && element.firstElementChild != null && event.type !== 'focusin';
 
-    // для ссылки - открыть меню 2 уровня
     if (condFull) {
       this._closeLevel2Menu();
       element.parentElement.lastElementChild.classList.add(`${this.elementName}__nav-level2-item_expanded`);
-    } else if (element // для стрелки - открыть меню 2 уровня
+    } else if (element
       .matches(`.${this.elementName}__nav-level1-item-image`)) {
       this._closeLevel2Menu();
       element.parentElement.parentElement
         .lastElementChild.classList
         .add(`${this.elementName}__nav-level2-item_expanded`);
-    } else if (element // для ссылки - закрыть меню 2 уровня
+    } else if (element
       .matches(`.${this.elementName}__nav-level1-item-link`)
       && element.firstElementChild == null
     ) {
@@ -115,7 +108,6 @@ class Header {
     }
   }
 
-  // скрыть меню второго уровня
   _closeLevel2Menu() {
     this.navLevel2.forEach((item) => item.classList.remove(`${this.elementName}__nav-level2-item_expanded`));
   }
