@@ -1,10 +1,13 @@
 include ../button/button.pug
 
-mixin date-dropdown({ type = 'dateDropDown', labelTextFrom = '', labelTextTo = '', labelTextFromTo = ''} = {})
+mixin date-dropdown(options = {})
   -
     function getValidValue (list, value, defaultValue) {
       return value = list.includes(value) ? value : defaultValue
     }
+    let { type = 'dateDropDown'} = options
+    const { labelTextFrom = '', labelTextTo = '', labelTextFromTo = ''} = options
+
     const elementName='date-dropdown'
     const link = require('@com/date-dropdown/image/expand-more.svg')
 

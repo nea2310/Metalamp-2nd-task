@@ -1,5 +1,10 @@
-mixin feature({imageName = require('@com/feature/image/default.svg'), name = '', description = '', alt = ''} = {})
+mixin feature(options = {})
   -
+
+    let {imageName = require('@com/feature/image/default.svg')} = options
+    const { name = '',
+      description = '',
+      alt = ''} = options
     const elementName = 'feature'
 
     function isImage(path){

@@ -1,5 +1,15 @@
-mixin range-slider({labelText = '', text = '', sliderType = 0, min = 0, max = 0, step = 0, from = 0, to = 0, isMinMaxHidden = 'false', isFromToHidden = 'false'} = {})
+mixin range-slider(options = {})
   -
+    let {sliderType = 0,
+      min = 0,
+      max = 0,
+      step = 0,
+      from = 0,
+      to = 0,
+      isMinMaxHidden = 'false',
+      isFromToHidden = 'false'} = options
+    const {labelText = '', text = ''} = options
+
     const elementName = 'range-slider'
 
     function isNumber (value){

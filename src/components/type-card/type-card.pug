@@ -1,8 +1,11 @@
-mixin type-card({style = '', name = '', text = ''} = {})
+mixin type-card(options = {})
   -
     function getValidValue (list, value, defaultValue) {
       return value = list.includes(value) ? value : defaultValue
     }
+
+    let {style = ''} = options
+    const { name = '', text = ''} = options
 
     const elementName = 'type-card'
 

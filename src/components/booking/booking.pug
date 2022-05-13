@@ -1,8 +1,17 @@
 include ../button/button.pug
 include ../info/info.pug
 
-mixin booking({roomNumber = '', lux = '', roomPrice = '', daysAmount = '', totalPrice = '', sale = '', saleTotal = '', extraTotal = '', totalAmount = ''} = {})
+mixin booking(options = {})
   -
+    const {roomNumber = '',
+      lux = '', roomPrice = '',
+      daysAmount = '',
+      totalPrice = '',
+      sale = '',
+      saleTotal = '',
+      extraTotal = '',
+      totalAmount = ''} = options
+
     const elementName = 'booking'
 
   form(class = `${elementName} js-${elementName}`)

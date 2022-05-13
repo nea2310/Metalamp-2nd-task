@@ -1,11 +1,19 @@
 include ../rate-button/rate-button.pug
 
-mixin room-card({roomNumber = '', roomPrice = '', feedbackAmount = '', ratingName = '', lux = '', imageList = []} = {})
+mixin room-card(options = {})
   -
     function isImage(path){
       const result = /^assets\/images\//.test(path)
       return result ? path : require('@com/feature/image/default.svg')
       }
+
+    const {roomNumber = '',
+      roomPrice = '',
+      feedbackAmount = '',
+      ratingName = '',
+      lux = '',
+      imageList = []} = options
+
     const elementName = 'room-card'
 
   div(class = `${elementName} js-${elementName}`)

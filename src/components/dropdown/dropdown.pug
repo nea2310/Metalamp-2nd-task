@@ -1,10 +1,16 @@
 include ../button/button.pug
 
-mixin dropdown({categories = [], type = 'dropDownGuests', placeholder = '', hasButtons = false, labelText = '', width = 'wide'} = {})
+mixin dropdown(options = {})
   -
     function getValidValue (list, value, defaultValue) {
       return value = list.includes(value) ? value : defaultValue
     }
+
+    let {type = 'dropDownGuests', width = 'wide'} = options
+    const {categories = [], 
+      placeholder = '', 
+      hasButtons = false, 
+      labelText = ''} = options
 
     const elementName = 'dropdown'
 

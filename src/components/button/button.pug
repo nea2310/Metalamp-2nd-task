@@ -1,4 +1,4 @@
-mixin button({text = '', type = 'button', length = 'short', width = 'wide', color = 'dark', href = 'https://test/test', hasImage = false} = {})
+mixin button(options = {})
   -
     function getValidValue (list, value, defaultValue) {
       return value = list.includes(value) ? value : defaultValue
@@ -7,6 +7,15 @@ mixin button({text = '', type = 'button', length = 'short', width = 'wide', colo
     function checkType (type, value, defaultValue){
       return typeof value === type ? value : defaultValue
     }
+
+    let {type = 'button', 
+      length = 'short', 
+      width = 'wide', 
+      color = 'dark',
+      href = 'https://test/test'} = options
+
+    const {text = '', 
+      hasImage = false} = options
 
     const elementName = 'button'
 

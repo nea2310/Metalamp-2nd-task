@@ -1,5 +1,9 @@
-mixin radiobuttons({labelText = '', categories = [], radioGroupName = ''} = {})
+mixin radiobuttons(options = {})
   -
+    const {labelText = '',
+      categories = [],
+      radioGroupName = ''} = options
+
     const elementName = 'radiobuttons'
 
   fieldset(class = elementName)

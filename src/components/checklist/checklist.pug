@@ -1,6 +1,13 @@
-mixin checklist({categories = [], isExpanded = false, isRich = false, labelText = ''} = {})
+mixin checklist(options = {})
   -
+
+    const {categories = [],
+      isExpanded = false,
+      isRich = false,
+      labelText = ''} = options
+
     const elementName = 'checklist'
+
     const style = isExpanded ? `${elementName}_collapsing` : ''
     const listStyle = isExpanded ? `${elementName}__list-wrapper_hidden` : ''
     const labelStyle = isExpanded ? `${elementName}__label_collapsing` : `${elementName}__label_expanded`

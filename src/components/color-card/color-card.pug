@@ -1,8 +1,11 @@
-mixin color-card({color = 'dark-shade-100', name = '', code = ''} = {})
+mixin color-card(options = {})
   -
     function getValidValue (list, value, defaultValue) {
       return value = list.includes(value) ? value : defaultValue
     }
+
+    let {color = 'dark-shade-100'} = options
+    const {name = '', code = ''} = options
 
     const elementName = 'color-card'
 

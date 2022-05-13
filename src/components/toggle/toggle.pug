@@ -1,5 +1,9 @@
-mixin toggle({labelText = '', name = '', isChecked = false} = {})
+mixin toggle(options = {})
   -
+    const {labelText = '',
+      name = '',
+      isChecked = false} = options
+
     const elementName = 'toggle'
 
   div(class = elementName)
