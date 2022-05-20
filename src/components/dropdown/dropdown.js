@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable class-methods-use-this */
 import './dropdown.scss';
 
@@ -44,24 +45,24 @@ class DropDown {
 
   _getInitialCounterList(counterList) {
     this.counters = [];
-    for (let i = 0; i < counterList.length; i += 1) {
+    counterList.forEach((item) => {
       const dropDownObject = {};
-      const categoryName = this._getElement('category', counterList[i]);
-      const catCnt = this._getElement('count-value', counterList[i]);
-      const categoryIncrement = this._getElement('count-increment', counterList[i]);
-      const categoryDecrement = this._getElement('count-decrement', counterList[i]);
+      const categoryName = this._getElement('category', item);
+      const categoryCount = this._getElement('count-value', item);
+      const categoryIncrement = this._getElement('count-increment', item);
+      const categoryDecrement = this._getElement('count-decrement', item);
 
       dropDownObject.text = categoryName.innerText.toLowerCase();
       dropDownObject.type = categoryName.getAttribute('data-type');
       dropDownObject.declensions = categoryName.getAttribute('data-declensions');
-      dropDownObject.count = catCnt.innerText;
+      dropDownObject.count = categoryCount.innerText;
       dropDownObject.maxCount = categoryIncrement.getAttribute('data-max');
       dropDownObject.minCount = categoryDecrement.getAttribute('data-min');
       dropDownObject.isMax = dropDownObject.count === dropDownObject.maxCount;
       dropDownObject.isMin = dropDownObject.count === dropDownObject.minCount;
 
       this.counters.push(dropDownObject);
-    }
+    });
 
     this._initializeButtons(this.counters);
     if (this.clearApplyButtons) {
@@ -70,17 +71,17 @@ class DropDown {
   }
 
   _initializeButtons(counterList) {
-    for (let i = 0; i < counterList.length; i += 1) {
+    counterList.forEach((item, i) => {
       const element = this.listElements[i];
-      if (counterList[i].isMin) {
+      if (item.isMin) {
         const minus = this._getElement('count-decrement', element);
         minus.disabled = true;
       }
-      if (counterList[i].isMax) {
+      if (item.isMax) {
         const plus = this._getElement('count-increment', element);
         plus.disabled = true;
       }
-    }
+    });
   }
 
   _bindEventListeners() {
@@ -189,13 +190,13 @@ class DropDown {
   }
 
   _handleDropDownClickClear() {
-    for (let i = 0; i < this.countValues.length; i += 1) {
+    this.countValues.forEach((item, i) => {
       this.countValues[i].innerText = this.counters[i].minCount;
       this._updateCounterList(
         this.counters[i].text,
-        this.countValues[i].innerText,
+        item.innerText,
       );
-    }
+    });
     this.input.value = '';
   }
 
@@ -233,18 +234,19 @@ class DropDown {
   }
 
   _updateButtons(counters) {
-    for (let i = 0; i < counters.length; i += 1) {
-      const { count } = counters[i];
+    counters.forEach((item, i) => {
+      const { count } = item;
       const countToChange = this.listElements[i]
         .querySelector(`.${this.elementName}__count-value`);
       countToChange.innerText = count;
-      if (counters[i].isMin) {
+      if (item.isMin) {
         countToChange.previousElementSibling.disabled = true;
       }
-      if (counters[i].isMax) {
+      if (item.isMax) {
         countToChange.nextElementSibling.disabled = true;
       }
-    }
+    });
+
     if (this.clearApplyButtons) {
       this._hideButtonClear(this.buttonsMinus);
     }
@@ -263,26 +265,22 @@ class DropDown {
 
   _updateCategoriesList(changedCounters) {
     this.countersToDisplay = [];
-    for (let i = 0; i < changedCounters.length; i += 1) {
-      const check = i === 0 || (i > 0 && changedCounters[i].type !== changedCounters[i - 1].type);
+
+    changedCounters.forEach((counter, i, array) => {
+      const check = i === 0 || (i > 0 && counter.type !== array[i - 1].type);
       if (check) {
-        const { type } = changedCounters[i];
-        const { declensions } = changedCounters[i];
-        const { count } = changedCounters[i];
-        const element = {};
-        element.type = type;
-        element.declensions = declensions.split(',');
-        element.count = count;
-        this.countersToDisplay.push(element);
+        const { type, declensions, count } = counter;
+        this.countersToDisplay.push({ type, count, declensions: declensions.split(',') });
       }
-      if (i > 0 && changedCounters[i].type
-        === changedCounters[i - 1].type) {
+      if (i > 0 && counter.type
+        === array[i - 1].type) {
         const element = this.countersToDisplay.find((item) => item.type
-          === changedCounters[i].type);
+          === counter.type);
         element.count = String(parseInt(element.count, 10)
-          + parseInt(changedCounters[i].count, 10));
+          + parseInt(counter.count, 10));
       }
-    }
+    });
+
     this._updateInput(this.countersToDisplay);
   }
 
