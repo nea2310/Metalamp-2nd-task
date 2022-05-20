@@ -20,7 +20,7 @@ class RoomCard {
   }
 
   _createDots() {
-    for (let i = 1; i <= this.images.length; i += 1) {
+    this.images.forEach((item, i) => {
       const dot = document.createElement('button');
       dot.classList.add(`${this.elementName}__dot`);
       dot.classList.add(`js-${this.elementName}__dot`);
@@ -28,7 +28,7 @@ class RoomCard {
       dot.setAttribute('aria-label', 'фото номера');
       dot.setAttribute('tabindex', '-1');
       this.dotsWrapper.append(dot);
-    }
+    });
     this.dots = this._getElements(['dot']);
     this.dots[0].classList.add(`${this.elementName}__dot_active`);
     this.dots.forEach((dot) => {
@@ -71,10 +71,11 @@ class RoomCard {
 
   _clickPrevNext(element) {
     const currentPhoto = this._getElement('photo_shown');
-    const currentDot = this._getElement('dot_active'); // ??
+    const currentDot = this._getElement('dot_active');
     const i = parseInt(currentPhoto.getAttribute('data-sequence'), 10);
     let newPhoto;
     let newDot;
+
     if (element.className.match('previous') || element === 'leftSwipe') {
       if (i !== 1) {
         newPhoto = this._getElemAdv(

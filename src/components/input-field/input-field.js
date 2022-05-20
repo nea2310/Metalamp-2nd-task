@@ -44,12 +44,11 @@ class InputField {
         if (this.regexpDate.test(date) === false) {
           const dateSplit = date.split('.');
 
-          for (let i = 0; i < dateSplit.length; i += 1) {
-            if (dateSplit[i].length === 1) {
-              dateSplit[i] = `0${dateSplit[i]}`;
-            }
-          }
-          date = dateSplit.join('.');
+          const newDateSplit = dateSplit.map((element) => {
+            const result = element.length === 1 ? `0${element}` : element;
+            return result;
+          });
+          date = newDateSplit.join('.');
         }
         return date;
       };
@@ -80,12 +79,9 @@ class InputField {
       'insertFromPaste',
       'deleteByCut',
       'deleteContentBackward'];
-    for (let i = 0; i <= allowedInputTypes.length; i += 1) {
-      if (e.inputType === allowedInputTypes[i]) {
-        isInputAllowed = true;
-        break;
-      }
-    }
+
+    isInputAllowed = allowedInputTypes.some((element) => e.inputType === element);
+
     if (!isInputAllowed) {
       e.target.value = '';
     }
