@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-alert */
 class Login {
   constructor(element) {
@@ -18,7 +19,7 @@ class Login {
   }
 
   _handleLoginSubmit(e) {
-    let isError = false;
+    e.preventDefault();
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
         input.classList.add('login-error');
@@ -26,12 +27,9 @@ class Login {
         input.classList.remove('login-error');
       }
     });
-    for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('login-error')) {
-        isError = true;
-        break;
-      }
-    }
+
+    const isError = Array.from(this.inputs).some((item) => item.classList.contains('login-error'));
+
     if (isError) {
       e.preventDefault();
       alert('Заполните все поля!');

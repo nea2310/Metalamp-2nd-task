@@ -19,7 +19,6 @@ class Registration {
   }
 
   _handleRegistrationSubmit(e) {
-    let isError = false;
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
         input.classList.add('registration-error');
@@ -33,12 +32,7 @@ class Registration {
       this.date.classList.add('registration-error');
     }
 
-    for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('registration-error')) {
-        isError = true;
-        break;
-      }
-    }
+    const isError = this.inputs.some((item) => item.classList.contains('login-error'));
     if (isError) {
       e.preventDefault();
       alert('Заполните все поля!');

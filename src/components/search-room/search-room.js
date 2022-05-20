@@ -20,7 +20,6 @@ class SearchRoom {
   }
 
   _handleSearchRoomSubmit(e) {
-    let isError = false;
     this.dates.forEach((date) => {
       if (/^\d{4}-\d{2}-\d{2}$/.test(date.value)) {
         date.classList.remove('search-room-error');
@@ -33,12 +32,8 @@ class SearchRoom {
     } else {
       this.guests.classList.remove('search-room-error');
     }
-    for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('search-room-error')) {
-        isError = true;
-        break;
-      }
-    }
+
+    const isError = Array.from(this.inputs).some((item) => item.classList.contains('search-room-error'));
     if (isError) {
       e.preventDefault();
       alert('Заполните все поля!');

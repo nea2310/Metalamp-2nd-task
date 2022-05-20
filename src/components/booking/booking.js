@@ -20,7 +20,6 @@ class Booking {
   }
 
   _handleBookingSubmit(e) {
-    let isError = false;
     this.dates.forEach((date) => {
       if (/^\d{4}-\d{2}-\d{2}$/.test(date.value)) {
         date.classList.remove('booking-error');
@@ -33,12 +32,8 @@ class Booking {
     } else {
       this.guests.classList.remove('booking-error');
     }
-    for (let i = 0; i < this.inputs.length; i += 1) {
-      if (this.inputs[i].classList.contains('booking-error')) {
-        isError = true;
-        break;
-      }
-    }
+
+    const isError = Array.from(this.inputs).some((item) => item.classList.contains('booking-error'));
     if (isError) {
       e.preventDefault();
       alert('Заполните все поля!');
