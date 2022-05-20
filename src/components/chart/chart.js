@@ -106,19 +106,18 @@ class Chart {
       else ctx.stroke();
     };
 
-    const keys = Object.keys(this.data);
     const values = Object.values(this.data);
 
     let totalValue = 0;
     const shift = (Math.PI / 180) * 270;
-    for (let i = 0; i < keys.length; i += 1) {
-      const value = parseInt(values[i].rate, 10);
+    values.forEach((item) => {
+      const value = parseInt(item.rate, 10);
       totalValue += value;
-    }
+    });
 
     let startAngle = 0;
-    for (let i = 0; i < keys.length; i += 1) {
-      const value = parseInt(values[i].rate, 10);
+    values.forEach((item) => {
+      const value = parseInt(item.rate, 10);
       const sliceAngle = (2 * Math.PI * value) / totalValue;
       const color = {
         x1: this.canvas.width - 180,
@@ -126,8 +125,8 @@ class Chart {
         x2: this.canvas.width,
         y2: this.canvas.height - 180,
         colorStops: [
-          { stop: 0, color: values[i].color1 },
-          { stop: 1, color: values[i].color2 },
+          { stop: 0, color: item.color1 },
+          { stop: 1, color: item.color2 },
         ],
       };
 
@@ -162,7 +161,7 @@ class Chart {
         false,
       );
       startAngle += sliceAngle;
-    }
+    });
 
     drawPieSlice(
       this.ctx,
