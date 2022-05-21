@@ -9,12 +9,12 @@ mixin feedback(options = {})
       alt = ''} = options
     const elementName ='feedback'
 
-    function isImage(path){
+    function validateImagePath(path){
       const result = /^assets\/images\//.test(path)
       return result ? path : require('@com/feature/image/default.svg')
       }
 
-    imageName = isImage(imageName)
+    imageName = validateImagePath(imageName)
 
   div(class = elementName)
     image(class = `${elementName}__image` src = imageName alt = alt)

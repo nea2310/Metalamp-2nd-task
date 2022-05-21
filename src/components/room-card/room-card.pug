@@ -2,7 +2,7 @@ include ../rate-button/rate-button.pug
 
 mixin room-card(options = {})
   -
-    function isImage(path){
+    function validateImagePath(path){
       const result = /^assets\/images\//.test(path)
       return result ? path : require('@com/feature/image/default.svg')
       }
@@ -20,7 +20,7 @@ mixin room-card(options = {})
     div(class = `${elementName}__slider js-${elementName}__slider`)
       a(class = `${elementName}__photos` href = 'https://test/test' aria-label= 'Перейти к деталям номера')
       each imageName, index in imageList
-        - imageName = isImage(imageName)
+        - imageName = validateImagePath(imageName)
           if index === 0
             image(class = `${elementName}__photo js-${elementName}__photo ${elementName}__photo_shown js-${elementName}__photo_shown` 
               alt = 'фото номера' src = imageName data-sequence = index+1)
