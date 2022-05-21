@@ -473,11 +473,11 @@ class DateDropDown {
   }
 
   _getElements(selectors) {
-    let selector = '';
-    selectors.forEach((item) => { selector += `.js-${this.elementName}__${item},`; });
-    selector = selector.substring(0, selector.length - 1);
+    let string = '';
+    selectors.forEach((item) => { string += `.js-${this.elementName}__${item},`; });
+    string = string.substring(0, string.length - 1);
     return this.wrapper
-      .querySelectorAll(selector);
+      .querySelectorAll(string);
   }
 }
 

@@ -120,7 +120,7 @@ class InputField {
   }
 
   static checkFormat(e) {
-    const regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/; // формат даты
+    const regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/;
     const needCorrectFormat = (
       regexpDateDouble.test(e.target.value) === false
       && (e.inputType === 'insertFromDrop' || e.inputType === 'insertFromPaste'));
