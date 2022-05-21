@@ -70,11 +70,11 @@ class RangeSlider {
   }
 
   _getElements(selectors) {
-    let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elementName}__${selector},`; });
-    sel = sel.substring(0, sel.length - 1);
+    let string = '';
+    selectors.forEach((selector) => { string += `.js-${this.elementName}__${selector},`; });
+    string = string.substring(0, string.length - 1);
     return this.wrapper
-      .querySelectorAll(sel);
+      .querySelectorAll(string);
   }
 }
 
