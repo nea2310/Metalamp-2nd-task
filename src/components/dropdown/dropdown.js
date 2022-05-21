@@ -207,7 +207,7 @@ class DropDown {
   _updateCounterList(text, editedCounter) {
     this.counters = this.counters.map((counter) => {
       if (counter.text === text) {
-        const obj = {
+        const object = {
           text: counter.text,
           type: counter.type,
           declensions: counter.declensions,
@@ -217,16 +217,16 @@ class DropDown {
         };
         switch (editedCounter) {
           case counter.minCount:
-            obj.isMin = true;
+            object.isMin = true;
             break;
           case counter.maxCount:
-            obj.isMax = true;
+            object.isMax = true;
             break;
           default:
-            obj.isMin = false;
-            obj.isMax = false;
+            object.isMin = false;
+            object.isMax = false;
         }
-        return obj;
+        return object;
       } return counter;
     });
     this._updateButtons(this.counters);
@@ -331,11 +331,11 @@ class DropDown {
   }
 
   _getElements(selectors) {
-    let sel = '';
-    selectors.forEach((selector) => { sel += `.js-${this.elementName}__${selector},`; });
-    sel = sel.substring(0, sel.length - 1);
+    let string = '';
+    selectors.forEach((selector) => { string += `.js-${this.elementName}__${selector},`; });
+    string = string.substring(0, string.length - 1);
     return this.wrapper
-      .querySelectorAll(sel);
+      .querySelectorAll(string);
   }
 }
 
