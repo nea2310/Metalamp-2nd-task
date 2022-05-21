@@ -17,8 +17,7 @@ class RangeSlider {
   }
 
   _init() {
-    const { priceFrom } = this;
-    const { priceTo } = this;
+    const { priceFrom, priceTo } = this;
     const displayPrice = (data) => {
       const { from, to } = data;
       priceFrom.value = `${from.toLocaleString()}₽`;
