@@ -9,10 +9,15 @@
     margin-bottom: 310px;
   }
 
+  @include media-breakpoint-up($xxl) {
+    max-width: $xxl;
+    align-self: center;
+  }
+
   &__background {
     box-sizing: border-box;
     width: 100%;
-    max-width: $xxl;
+    object-fit: cover;
 
     @include media-breakpoint-down($sm) {
       display: none;
