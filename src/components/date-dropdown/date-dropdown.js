@@ -70,20 +70,13 @@ class DateDropDown {
       nextHtml: '<image src="">',
       onSelect: (selectedDate) => {
         const date = selectedDate.formattedDate;
-        if (date.length !== 0) {
-          if (!this.isFilter) {
-            const dateArr = date;
-            let value;
-            if (dateArr.length === 1) {
-              value = '';
-            } else {
-              [, value] = dateArr;
-            }
-            [this.inputDateFrom.value] = dateArr;
-            this.inputDateTo.value = value;
-          } else {
-            this.inputDate.value = this.inputDate.value.toLowerCase();
-          }
+        if (!this.isFilter) {
+          const dateArr = date;
+          const value = (dateArr.length === 1) ? '' : dateArr[1];
+          [this.inputDateFrom.value] = dateArr;
+          this.inputDateTo.value = value;
+        } else {
+          this.inputDate.value = this.inputDate.value.toLowerCase();
         }
       },
     });
@@ -103,11 +96,15 @@ class DateDropDown {
 
   _processDate() {
     this.dateCurrent = new Date();
+
     this.dateTomorrow = new Date(+this.dateCurrent
       + (new Date('2020-12-31') - new Date('2020-12-30')));
+
     this.datePlusYear = new Date(+this.dateCurrent
       + (new Date('2020-12-31') - new Date('2020-01-01')));
+
     const regexpDate = /^\d{2}\.\d{2}\.\d{4}$/;
+
     this.dateCurrentTxt = `${this.dateCurrent.getDate()
       }.${this.dateCurrent.getMonth() + 1
       }.${this.dateCurrent.getFullYear()}`;
@@ -133,6 +130,7 @@ class DateDropDown {
       }
       return date;
     };
+
     this.dateCurrentTxt = formatDate(this.dateCurrentTxt);
     this.dateTomorrowTxt = formatDate(this.dateTomorrowTxt);
     this.datePlusYearTxt = formatDate(this.datePlusYearTxt);
@@ -173,20 +171,17 @@ class DateDropDown {
     this.initDate = this.inputDate.value;
     const startDate = this.myDatepicker.selectedDates[0];
     const endDate = this.myDatepicker.selectedDates[1];
+
     if (startDate || endDate) {
       const dateString = String(startDate.getDate());
-      const startDay = dateString.length === 1 ? `0${dateString}`
-        : dateString;
+      const startDay = dateString.length === 1 ? `0${dateString}` : dateString;
       const monthString = String(startDate.getMonth() + 1);
-      let startMonth = monthString.length === 1
-        ? `0${monthString}` : monthString;
+      let startMonth = monthString.length === 1 ? `0${monthString}` : monthString;
       startMonth = startMonth === '12' ? '01' : startMonth;
       const endDateString = String(endDate.getDate());
-      const endDay = endDateString.length === 1 ? `0${endDateString}`
-        : endDateString;
+      const endDay = endDateString.length === 1 ? `0${endDateString}` : endDateString;
       const endMonthString = String(endDate.getMonth() + 1);
-      let endMonth = endMonthString.length === 1 ? `0${endMonthString}`
-        : endMonthString;
+      let endMonth = endMonthString.length === 1 ? `0${endMonthString}` : endMonthString;
       endMonth = endMonth === '12' ? '01' : endMonth;
       e.target.value = `${startDay}.${startMonth}.${startDate.getFullYear()} - ${endDay}.${endMonth}.${endDate.getFullYear()}`;
       this.initDateParsed = this.inputDate.value;
@@ -265,18 +260,22 @@ class DateDropDown {
   }
 
   _handleDateDropDownClickWrapper(e) {
-    if (e.target === this.inputDateFrom
-      || e.target === this.inputDateTo) {
-      if (e.target.value === '') {
-        if (e.target === this.inputDateFrom) {
+    if (e.target.value === '') {
+      switch (e.target) {
+        case this.inputDateFrom: {
           this.inputDateTo.value = '';
           this.myDatepicker.clear();
-        } else {
-          const a = this.myDatepicker.selectedDates[1];
-          this.myDatepicker.unselectDate(a);
+          break;
         }
+        case this.inputDateTo: {
+          const date = this.myDatepicker.selectedDates[1];
+          this.myDatepicker.unselectDate(date);
+          break;
+        }
+        default: return false;
       }
     }
+    return true;
   }
 
   _handleDateDropDownClickClear() {
