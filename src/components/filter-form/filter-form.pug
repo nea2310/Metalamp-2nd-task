@@ -6,6 +6,16 @@ include ../button/button.pug
 
 mixin filter-form()
   -
+    const {
+      dropdownRooms,
+      dropdownGuests,
+      filterDateDropdown,
+      rangeSlider,
+      checkListExpandable,
+      checkListCheckBox,
+      checkListRichCheckBox,
+    } = require('@com/filter-form/filter-form.json')
+
     const elementName ='filter-form'
 
   form(class = `${elementName} js-${elementName}`)
@@ -15,103 +25,54 @@ mixin filter-form()
     div(class = `${elementName}__wrapper js-${elementName}__wrapper`)
       div(class = `${elementName}__calendar-wrapper`)
         +date-dropdown({
-          width:'narrow',
-          type: 'filterDateDropDown',
-          labelTextFromTo: 'даты пребывания в отеле'})
+          width: filterDateDropdown.width,
+          type: filterDateDropdown.type,
+          labelTextFromTo: filterDateDropdown.labelTextFromTo})
       div(class = `${elementName}__guests-wrapper`)
         +dropdown({
-          categories:
-            [{displayName: 'взрослые',
-              categoryType: 'гость', 
-              declensions: 'гость,гостя,гостей',
-              defaultCount: 0,
-              minCount: 0,
-              maxCount: 99},
-            {displayName: 'дети',
-              categoryType: 'гость',
-              declensions: 'гость,гостя,гостей',
-              defaultCount: 0,
-              minCount: 0,
-              maxCount: 99},
-            {displayName: 'младенцы',
-              categoryType: 'младенец',
-              declensions: 'младенец,младенца,младенцев',
-              defaultCount: 0,
-              minCount: 0,
-              maxCount: 99}], 
-          type: 'dropDownGuests',
-          placeholder: 'Сколько гостей',
-          hasButtons: true,
-          labelText: 'гости',
-          width: 'narrow'})
+          categories: dropdownGuests.categories, 
+          type: dropdownGuests.type,
+          placeholder: dropdownGuests.placeholder,
+          hasButtons: dropdownGuests.hasButtons,
+          labelText: dropdownGuests.labelText,
+          width: dropdownGuests.width})
       div(class = `${elementName}__price-filter-wrapper`)
         +range-slider({
-          labelText: 'диапазон цены',
-          sliderType: 'double', 
-          min:1000, 
-          max:15000, 
-          step:1, 
-          from:5000, 
-          to:10000, 
-          isMinMaxHidden:'true', 
-          isFromToHidden:'true',
-          text: 'Стоимость за сутки пребывания в номере'})
+          labelText: rangeSlider.labelText,
+          sliderType: rangeSlider.sliderType, 
+          min: rangeSlider.min, 
+          max: rangeSlider.max, 
+          step: rangeSlider.step, 
+          from: rangeSlider.from, 
+          to: rangeSlider.to, 
+          isMinMaxHidden: rangeSlider.isMinMaxHidden, 
+          isFromToHidden: rangeSlider.isFromToHidden,
+          text: rangeSlider.text})
       div(class = `${elementName}__house-rules-wrapper`)
         +checklist({
-          categories:
-            [{name:'Можно курить'}, 
-            {name:'Можно с питомцами'}, 
-            {name:'Можно пригласить гостей (до 10 человек)'}],
-          isExpanded: false,
-          isRich: false, 
-          labelText: 'правила дома'})
+          categories: checkListCheckBox.categories,
+          isExpanded: checkListCheckBox.isExpanded,
+          isRich: checkListCheckBox.isRich, 
+          labelText: checkListCheckBox.labelText})
       div(class = `${elementName}__accessability-wrapper`)
         +checklist({
-          categories:
-            [{name:'Широкий коридор', 
-              description: 'Ширина коридоров в номере не менее 91 см'},
-            {name:'Помощник для инвалидов', 
-              description: 'На 1 этаже вас встретит специалист и проводит до номера'}],
-            isExpanded: false,
-            isRich: true, 
-          labelText: 'доступность'})
+          categories: checkListRichCheckBox.categories,
+          isExpanded: checkListRichCheckBox.isExpanded,
+          isRich: checkListRichCheckBox.isRich, 
+          labelText: checkListRichCheckBox.labelText})
       div(class = `${elementName}__facilities-wrapper`)
         +dropdown({
-          categories:
-            [{displayName: 'спальни',
-              categoryType: 'спальня',
-              declensions: 'спальня,спальни,спален',
-              defaultCount: 0,
-              minCount: 0,
-              maxCount: 5},
-              {displayName: 'кровати',
-              categoryType: 'кровать',
-              declensions: 'кровать,кровати,кроватей',
-              defaultCount: 0,
-              minCount: 0,
-              maxCount: 10},
-              {displayName: 'ванные комнаты',
-              categoryType: 'ванная комната',
-              declensions: 'ванная комната,ванные комнаты,ванных комнат',
-              defaultCount: 0,
-              minCount: 0,
-              maxCount: 3}],
-          type: 'dropDownRooms',
-          placeholder: 'Сколько комнат',
-          labelText: 'удобства номера',
-          width: 'narrow'})
+          categories: dropdownRooms.categories, 
+          type: dropdownRooms.type,
+          placeholder: dropdownRooms.placeholder,
+          labelText: dropdownRooms.labelText,
+          width: dropdownRooms.width})
       div(class = elemName + '__facilities-adv-wrapper')
         +checklist({
-          categories:
-            [{name:'Завтрак'}, 
-            {name:'Письменный стол'}, 
-            {name:'Стул для кормления'}, 
-            {name:'Кроватка'}, 
-            {name:'Телевизор'}, 
-            {name:'Шампунь'}],
-          isExpanded: true,
-          isRich: false, 
-          labelText: 'дополнительные удобства'})
+          categories: checkListExpandable.categories,
+          isExpanded: checkListExpandable.isExpanded,
+          isRich: checkListExpandable.isRich, 
+          labelText: checkListExpandable.labelText})
 
 
 

@@ -4,6 +4,12 @@ include ../button/button.pug
 
 mixin search-room()
   -
+    const {
+      dropdownGuests,
+      dateDropdown,
+      buttonDarkLong
+    } = require('@com/search-room/search-room.json')
+
     const elementName = 'search-room'
 
   form(class = `${elementName} js-${elementName}`)

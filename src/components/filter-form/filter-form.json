@@ -1,0 +1,141 @@
+{
+  "rangeSlider": {
+    "labelText": "диапазон цены",
+    "sliderType": "double",
+    "min": "1000",
+    "max": "15000",
+    "step": "1",
+    "from": "5000",
+    "to": "10000",
+    "isMinMaxHidden": "true",
+    "isFromToHidden": "true",
+    "text": "Стоимость за сутки пребывания в номере"
+  },
+  "filterDateDropdown": {
+    "width": "wide",
+    "type": "filterDateDropDown",
+    "labelTextFromTo": "даты пребывания в отеле"
+  },
+  "dropdownRooms": {
+    "categories": [
+      {
+        "displayName": "спальни",
+        "categoryType": "спальня",
+        "declensions": "спальня,спальни,спален",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 5
+      },
+      {
+        "displayName": "кровати",
+        "categoryType": "кровать",
+        "declensions": "кровать,кровати,кроватей",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 10
+      },
+      {
+        "displayName": "ванные комнаты",
+        "categoryType": "ванная комната",
+        "declensions": "ванная комната,ванные комнаты,ванных комнат",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 3
+      }
+    ],
+    "type": "dropDownRooms",
+    "placeholder": "Сколько комнат",
+    "labelText": "dropdown",
+    "width": "narrow"
+  },
+  "dropdownGuests": {
+    "categories": [
+      {
+        "displayName": "взрослые",
+        "categoryType": "гость",
+        "declensions": "гость,гостя,гостей",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 99
+      },
+      {
+        "displayName": "дети",
+        "categoryType": "гость",
+        "declensions": "гость,гостя,гостей",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 99
+      },
+      {
+        "displayName": "младенцы",
+        "categoryType": "младенец",
+        "declensions": "младенец,младенца,младенцев",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 99
+      }
+    ],
+    "type": "dropDownGuests",
+    "placeholder": "Сколько гостей",
+    "hasButtons": true,
+    "buttons": true,
+    "labelText": "dropdown",
+    "width": "narrow"
+  },
+  "checkListExpandable": {
+    "categories": [
+      {
+        "name": "Завтрак"
+      },
+      {
+        "name": "Письменный стол"
+      },
+      {
+        "name": "Стул для кормления"
+      },
+      {
+        "name": "Кроватка"
+      },
+      {
+        "name": "Телевизор"
+      },
+      {
+        "name": "Шампунь"
+      }
+    ],
+    "isExpanded": true,
+    "isRich": false,
+    "labelText": "дополнительные удобства"
+  },
+  "checkListCheckBox": {
+    "categories": [
+      {
+        "name": "Можно курить"
+      },
+      {
+        "name": "Можно с питомцами"
+      },
+      {
+        "name": "Можно пригласить гостей (до 10 человек)"
+      }
+    ],
+    "isExpanded": false,
+    "isRich": false,
+    "labelText": "правила дома"
+  },
+  "checkListRichCheckBox": {
+    "categories": [
+      {
+        "name": "Широкий коридор",
+        "description": "Ширина коридоров в номере не менее 91 см"
+      },
+      {
+        "name": "Помощник для инвалидов",
+        "description": "На 1 этаже вас встретит специалист и проводит до номера"
+      }
+    ],
+    "isExpanded": false,
+    "isRich": true,
+    "labelText": "доступность"
+  }
+}

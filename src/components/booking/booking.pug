@@ -13,6 +13,12 @@ mixin booking(options = {})
       extraTotal = '',
       totalAmount = ''} = options
 
+    const {
+      dropdownGuests,
+      dateDropdown,
+      button
+    } = require('@com/booking/booking.json')
+
     const elementName = 'booking'
 
   form(class = `${elementName} js-${elementName}`)
@@ -25,35 +31,19 @@ mixin booking(options = {})
         span(class = `${elementName}__detail-price`)= `${roomPrice}₽`
         span(class = `${elementName}__detail-label`) в сутки
     div(class = `${elementName}__date-dropdown`)
-      +date-dropdown({width:'wide',
-        type:'dateDropDown',
-        labelTextFrom: 'Прибытие',
-        labelTextTo: 'Выезд'})
+      +date-dropdown({
+        width: dateDropdown.width,
+        type: dateDropdown.type,
+        labelTextFrom: dateDropdown.labelTextFrom,
+        labelTextTo: dateDropdown.labelTextTo})
     div(class = `${elementName}__guests`)
-      +dropdown({categories:
-        [{displayName: 'взрослые',
-          categoryType: 'гость',
-          declensions: 'гость,гостя,гостей',
-          defaultCount: 0,
-          minCount: 0,
-          maxCount: 99},
-          {displayName: 'дети',
-          categoryType: 'гость',
-          declensions: 'гость,гостя,гостей',
-          defaultCount: 0,
-          minCount: 0,
-          maxCount: 99},
-          {displayName: 'младенцы',
-          categoryType: 'младенец',
-          declensions: 'младенец,младенца,младенцев',
-          defaultCount: 0,
-          minCount: 0,
-          maxCount: 99}],
-        type: 'dropDownGuests',
-        placeholder: 'Сколько гостей',
-        hasButtons: true,
-        labelText: 'гости',
-        width: 'wide'})
+      +dropdown({
+        categories: dropdownGuests.categories, 
+        type: dropdownGuests.type,
+        placeholder: dropdownGuests.placeholder,
+        hasButtons: dropdownGuests.hasButtons,
+        labelText: dropdownGuests.labelText,
+        width: dropdownGuests.width})
     div(class = `${elementName}__price-breakdown`)
       div(class = `${elementName}__price-details`)
         div(class = `${elementName}__price-name`)= `${roomPrice}₽ x ${daysAmount} суток`
@@ -73,9 +63,10 @@ mixin booking(options = {})
         div(class = `${elementName}__price-total-filling`) 
         div(class = `${elementName}__price-cost`)= `${totalAmount}₽`
     div(class = `${elementName}__book-button`)
-      +button({text: 'забронировать',
-        type: 'submit',
-        length: 'very-long',
-        width: 'wide',
-        color: 'dark',
-        hasImage: true})
+      +button({
+        text: button.text,
+        type: button.type,
+        length: button.length,
+        width: button.width,
+        color: button.color,
+        hasImage: button.hasImage})

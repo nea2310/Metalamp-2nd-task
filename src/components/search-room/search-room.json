@@ -1,0 +1,50 @@
+{
+  "dateDropdown": {
+    "width": "wide",
+    "type": "dateDropDown",
+    "labelTextFrom": "Прибытие",
+    "labelTextTo": "Выезд"
+  },
+  "dropdownGuests": {
+    "categories": [
+      {
+        "displayName": "взрослые",
+        "categoryType": "гость",
+        "declensions": "гость,гостя,гостей",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 99
+      },
+      {
+        "displayName": "дети",
+        "categoryType": "гость",
+        "declensions": "гость,гостя,гостей",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 99
+      },
+      {
+        "displayName": "младенцы",
+        "categoryType": "младенец",
+        "declensions": "младенец,младенца,младенцев",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 99
+      }
+    ],
+    "type": "dropDownGuests",
+    "placeholder": "Сколько гостей",
+    "hasButtons": true,
+    "buttons": true,
+    "labelText": "dropdown",
+    "width": "wide"
+  },
+  "buttonDarkLong": {
+    "text": "подобрать номер",
+    "type": "submit",
+    "length": "very-long",
+    "width": "wide",
+    "color": "dark",
+    "hasImage": true
+  }
+}
