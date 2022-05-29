@@ -1,0 +1,254 @@
+{
+  "textField": {
+    "width": "wide",
+    "placeholder": "Email",
+    "labelText": "text field",
+    "inputType": "email",
+    "validation": "email"
+  },
+  "maskedTextField": {
+    "width": "wide",
+    "placeholder": "ДД.ММ.ГГГГ",
+    "labelText": "masked text field",
+    "inputType": "text",
+    "validation": "date"
+  },
+  "subscriptionTextField": {
+    "width": "medium",
+    "placeholder": "Email",
+    "labelText": "subscription text field",
+    "hasImage": true,
+    "name": "оформить подписку",
+    "inputType": "email",
+    "validation": "email"
+  },
+  "radiobuttons": {
+    "categories": [
+      {
+        "name": "Мужчина",
+        "checked": true
+      },
+      {
+        "name": "Женщина"
+      }
+    ],
+    "radioGroupName": "gender"
+  },
+  "toggles": {
+    "name": "Получать спецпредложения",
+    "isChecked": true
+  },
+  "likeButtons": [
+    {
+      "isLiked": false,
+      "likeAmount": "2"
+    },
+    {
+      "isLiked": true,
+      "likeAmount": "12"
+    }
+  ],
+  "rateButtons": [
+    "rateButtonLeft",
+    "rateButtonRight"
+  ],
+  "rangeSlider": {
+    "labelText": "range slider",
+    "sliderType": "double",
+    "min": "1000",
+    "max": "15000",
+    "step": "1",
+    "from": "5000",
+    "to": "10000",
+    "isMinMaxHidden": "true",
+    "isFromToHidden": "true"
+  },
+  "dateDropdown": {
+    "width": "wide",
+    "type": "dateDropDown",
+    "labelTextFrom": "date dropdown",
+    "labelTextTo": "date dropdown"
+  },
+  "filterDateDropdown": {
+    "width": "narrow",
+    "type": "filterDateDropDown",
+    "labelTextFromTo": "filter date dropdown"
+  },
+  "dropdownRooms": {
+    "categories": [
+      {
+        "displayName": "спальни",
+        "categoryType": "спальня",
+        "declensions": "спальня,спальни,спален",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 5
+      },
+      {
+        "displayName": "кровати",
+        "categoryType": "кровать",
+        "declensions": "кровать,кровати,кроватей",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 10
+      },
+      {
+        "displayName": "ванные комнаты",
+        "categoryType": "ванная комната",
+        "declensions": "ванная комната,ванные комнаты,ванных комнат",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 3
+      }
+    ],
+    "type": "dropDownRooms",
+    "placeholder": "Сколько комнат",
+    "labelText": "dropdown",
+    "width": "narrow"
+  },
+  "dropdownGuests": {
+    "categories": [
+      {
+        "displayName": "взрослые",
+        "categoryType": "гость",
+        "declensions": "гость,гостя,гостей",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 99
+      },
+      {
+        "displayName": "дети",
+        "categoryType": "гость",
+        "declensions": "гость,гостя,гостей",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 99
+      },
+      {
+        "displayName": "младенцы",
+        "categoryType": "младенец",
+        "declensions": "младенец,младенца,младенцев",
+        "defaultCount": 0,
+        "minCount": 0,
+        "maxCount": 99
+      }
+    ],
+    "type": "dropDownGuests",
+    "placeholder": "Сколько гостей",
+    "hasButtons": true,
+    "buttons": true,
+    "labelText": "dropdown",
+    "width": "wide"
+  },
+  "checkListExpandable": {
+    "categories": [
+      {
+        "name": "Завтрак"
+      },
+      {
+        "name": "Письменный стол"
+      },
+      {
+        "name": "Стул для кормления"
+      },
+      {
+        "name": "Кроватка"
+      },
+      {
+        "name": "Телевизор"
+      },
+      {
+        "name": "Шампунь"
+      }
+    ],
+    "isExpanded": true,
+    "isRich": false,
+    "labelText": "expandable checkbox list"
+  },
+  "checkListCheckBox": {
+    "categories": [
+      {
+        "name": "Можно курить"
+      },
+      {
+        "name": "Можно с питомцами"
+      },
+      {
+        "name": "Можно пригласить гостей (до 10 человек)"
+      }
+    ],
+    "isExpanded": false,
+    "isRich": false,
+    "labelText": "checkbox buttons"
+  },
+  "checkListRichCheckBox": {
+    "categories": [
+      {
+        "name": "Широкий коридор",
+        "description": "Ширина коридоров в номере не менее 91 см"
+      },
+      {
+        "name": "Помощник для инвалидов",
+        "description": "На 1 этаже вас встретит специалист и проводит до номера"
+      }
+    ],
+    "isExpanded": false,
+    "isRich": true,
+    "labelText": "rich checkbox buttons"
+  },
+  "buttonDarkShort": {
+    "text": "click me",
+    "type": "link",
+    "length": "short",
+    "width": "wide",
+    "color": "dark",
+    "href": "https://test/test"
+  },
+  "buttonLightShort": {
+    "text": "click me",
+    "type": "link",
+    "length": "short",
+    "width": "wide",
+    "color": "light",
+    "href": "https://test/test"
+  },
+  "buttonPlain": {
+    "text": "click me",
+    "type": "plain-text"
+  },
+  "buttonDarkLong": {
+    "text": "перейти к оплате",
+    "type": "submit",
+    "length": "very-long",
+    "width": "wide",
+    "color": "dark",
+    "hasImage": true
+  },
+  "bulletList": {
+    "categories": [
+      "Нельзя с питомцами",
+      "Без вечеринок и мероприятий",
+      "Время прибытия — после 13:00, а выезд до 12:00"
+    ]
+  },
+  "features": [
+    {
+      "name": "Комфорт",
+      "description": "Шумопоглощающие стены",
+      "alt": "smile"
+    },
+    {
+      "name": "Удобство",
+      "description": "Окно в каждой из спален",
+      "alt": "city"
+    }
+  ],
+  "feedback": {
+    "name": "Мурад Сарафанов",
+    "date": "5 дней назад",
+    "description": "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
+    "alt": "Мурад Сарафанов",
+    "isLiked": true,
+    "likeAmount": "12"
+  }
+}

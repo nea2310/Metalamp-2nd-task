@@ -6,7 +6,9 @@ mixin feedback(options = {})
     const {name = '', 
       date = '',
       description = '',
-      alt = ''} = options
+      alt = '',
+      isLiked = false,
+      likeAmount = 0} = options
     const elementName ='feedback'
 
     function validateImagePath(path){
@@ -21,7 +23,9 @@ mixin feedback(options = {})
     p(class = `${elementName}__name`)= name
     p(class = `${elementName}__date`)= date
     div(class = `${elementName}__like`)
-      +like-button()
+      +like-button({
+        isLiked, 
+        likeAmount})
     p(class = `${elementName}__description`)= description
 
 

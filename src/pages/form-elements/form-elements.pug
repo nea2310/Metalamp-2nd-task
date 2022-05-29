@@ -19,310 +19,228 @@ include ../../components/pagination/pagination.pug
 block title
   title Form Elements
 block content
+  -
+    const {
+      textField,
+      dropdownRooms,
+      dropdownGuests,
+      checkListExpandable,
+      checkListCheckBox,
+      checkListRichCheckBox,
+      maskedTextField,
+      dateDropdown,
+      filterDateDropdown,
+      subscriptionTextField,
+      radiobuttons,
+      toggles,
+      likeButtons,
+      rateButtons,
+      rangeSlider,
+      buttonDarkShort,
+      buttonLightShort,
+      buttonPlain,
+      buttonDarkLong,
+      bulletList,
+      features,
+      feedback
+    } = require('./form-elements.json')
+
   main(class="form-elements")
     div(class="form-elements__wrapper-top")
       div(class="form-elements__column")
         div(class="form-elements__comp-wrapper")
           +input-field({
-            width: 'wide',
-            placeholder: 'Email',
-            labelText: 'text field',
-            inputType: 'email',
-            validation: 'email'})
+            width: textField.width,
+            placeholder: textField.placeholder,
+            labelText: textField.labelText,
+            inputType: textField.inputType,
+            validation: textField.validation})
         div(class="form-elements__comp-wrapper")
           +input-field({
-            width: 'wide',
-            placeholder: 'Email',
-            labelText: 'text field',
-            inputType: 'email',
-            validation: 'email'})
+            width: textField.width,
+            placeholder: textField.placeholder,
+            labelText: textField.labelText,
+            inputType: textField.inputType,
+            validation: textField.validation})
         div(class="form-elements__comp-wrapper")
           +dropdown({
-            categories:
-              [{displayName: 'взрослые', 
-                categoryType: 'гость', 
-                declensions: 'гость,гостя,гостей',  
-                defaultCount: 0, 
-                minCount: 0, 
-                maxCount: 99}, 
-                {displayName: 'дети', 
-                categoryType: 'гость', 
-                declensions: 'гость,гостя,гостей', 
-                defaultCount: 0, 
-                minCount: 0, 
-                maxCount: 99}, 
-                {displayName: 'младенцы', 
-                categoryType: 'младенец', 
-                declensions: 'младенец,младенца,младенцев', 
-                defaultCount: 0, 
-                minCount: 0, 
-                maxCount: 99}], 
-            type: 'dropDownGuests',
-            placeholder: 'Сколько гостей',
-            buttons: true,
-            labelText: 'dropdown',
-            width: 'wide'})
+            categories: dropdownRooms.categories, 
+            type: dropdownRooms.type,
+            placeholder: dropdownRooms.placeholder,
+            labelText: dropdownRooms.labelText,
+            width: dropdownRooms.width})
         div(class="form-elements__comp-wrapper")
           +input-field({
-            width: 'wide',
-            placeholder: 'ДД.ММ.ГГГГ',
-            labelText: 'masked text field',
-            inputType: 'text',
-            validation: 'date'})
+            width: maskedTextField.width,
+            placeholder: maskedTextField.placeholder,
+            labelText: maskedTextField.labelText,
+            inputType: maskedTextField.inputType,
+            validation: maskedTextField.validation})
         div(class="form-elements__comp-wrapper")
           +date-dropdown({
-            width:'wide',
-            type:'dateDropDown',
-            labelTextFrom: 'date dropdown',
-            labelTextTo: 'date dropdown'})
+            width: dateDropdown.width,
+            type: dateDropdown.type,
+            labelTextFrom: dateDropdown.labelTextFrom,
+            labelTextTo: dateDropdown.labelTextTo})
         div(class="form-elements__comp-wrapper")
           +date-dropdown({
-            width:'narrow',
-            type: 'filterDateDropDown',
-            labelTextFromTo: 'filter date dropdown'})
+            width: filterDateDropdown.width,
+            type: filterDateDropdown.type,
+            labelTextFromTo: filterDateDropdown.labelTextFromTo})
         div(class="form-elements__comp-wrapper")
           +input-field({
-            width: 'medium',
-            placeholder: 'Email',
-            labelText: 'subscription text field',
-            hasImage: true,
-            name: 'оформить подписку',
-            inputType: 'email',
-            validation: 'email'})
+            width: subscriptionTextField.width,
+            placeholder: subscriptionTextField.placeholder,
+            labelText: subscriptionTextField.labelText,
+            hasImage: subscriptionTextField.hasImage,
+            name: subscriptionTextField.name,
+            inputType: subscriptionTextField.inputType,
+            validation: subscriptionTextField.validation})
         div(class="form-elements__comp-wrapper")
           +dropdown({
-            categories:
-              [{displayName: 'спальни',
-                categoryType: 'спальня',
-                declensions: 'спальня,спальни,спален',
-                defaultCount: 0,
-                minCount: 0,
-                maxCount: 5},
-                {displayName: 'кровати',
-                categoryType: 'кровать',
-                declensions: 'кровать,кровати,кроватей',
-                defaultCount: 0,
-                minCount: 0,
-                maxCount: 10},
-                {displayName: 'ванные комнаты',
-                categoryType: 'ванная комната',
-                declensions: 'ванная комната,ванные комнаты,ванных комнат',
-                defaultCount: 0,
-                minCount: 0,
-                maxCount: 3}],
-            type: 'dropDownRooms',
-            placeholder: 'Сколько комнат',
-            labelText: 'dropdown',
-            width: 'narrow'})
+            categories: dropdownRooms.categories, 
+            type: dropdownRooms.type,
+            placeholder: dropdownRooms.placeholder,
+            labelText: dropdownRooms.labelText,
+            width: dropdownRooms.width})
         div(class="form-elements__comp-wrapper")
           +dropdown({
-            categories:
-              [{displayName: 'спальни',
-                categoryType: 'спальня',
-                declensions: 'спальня,спальни,спален',
-                defaultCount: 0,
-                minCount: 0,
-                maxCount: 5},
-                {displayName: 'кровати',
-                categoryType: 'кровать',
-                declensions: 'кровать,кровати,кроватей',
-                defaultCount: 0,
-                minCount: 0,
-                maxCount: 10},
-                {displayName: 'ванные комнаты',
-                categoryType: 'ванная комната',
-                declensions: 'ванная комната,ванные комнаты,ванных комнат',
-                defaultCount: 0,
-                minCount: 0,
-                maxCount: 3}],
-            type: 'dropDownRooms',
-            placeholder: 'Сколько комнат',
-            labelText: 'dropdown',
-            width: 'narrow'})
+            categories: dropdownRooms.categories, 
+            type: dropdownRooms.type,
+            placeholder: dropdownRooms.placeholder,
+            labelText: dropdownRooms.labelText,
+            width: dropdownRooms.width})
         div(class="form-elements__comp-wrapper")
           +checklist({
-            categories:
-              [{name:'Завтрак'}, 
-              {name:'Письменный стол'}, 
-              {name:'Стул для кормления'}, 
-              {name:'Кроватка'}, 
-              {name:'Телевизор'}, 
-              {name:'Шампунь'}],
-            isExpanded: true,
-            isRich: false, 
-            labelText: 'expandable checkbox list'})
+            categories: checkListExpandable.categories,
+            isExpanded: checkListExpandable.isExpanded,
+            isRich: checkListExpandable.isRich, 
+            labelText: checkListExpandable.labelText})
         div(class="form-elements__comp-wrapper")
           +checklist({
-            categories:
-              [{name:'Завтрак'}, 
-              {name:'Письменный стол'}, 
-              {name:'Стул для кормления'}, 
-              {name:'Кроватка'}, 
-              {name:'Телевизор'}, 
-              {name:'Шампунь'}],
-            isExpanded: true,
-            isRich: false, 
-            labelText: 'expandable checkbox list'})
+            categories: checkListExpandable.categories,
+            isExpanded: checkListExpandable.isExpanded,
+            isRich: checkListExpandable.isRich, 
+            labelText: checkListExpandable.labelText})
       div(class="form-elements__column")
         div(class="form-elements__comp-wrapper")
           +checklist({
-            categories:
-              [{name:'Можно курить'}, 
-              {name:'Можно с питомцами'}, 
-              {name:'Можно пригласить гостей (до 10 человек)'}],
-            isExpanded: false,
-            isRich: false, 
-            labelText: 'checkbox buttons'})
+            categories: checkListCheckBox.categories,
+            isExpanded: checkListCheckBox.isExpanded,
+            isRich: checkListCheckBox.isRich, 
+            labelText: checkListCheckBox.labelText})
         span(class='form-elements__label') radio buttons
         div(class="form-elements__comp-wrapper")
           +radiobuttons({
-            categories:
-            [{name:'Мужчина', checked: true}, 
-            {name:'Женщина'}],
-            radioGroupName: 'gender'})
+            categories: radiobuttons.categories,
+            radioGroupName: radiobuttons.radioGroupName})
         span(class='form-elements__label') toggle
         div(class="form-elements__comp-wrapper")
-          +toggle({name: 'Получать спецпредложения', isChecked: true})
-          +toggle({name: 'Получать спецпредложения'})
+          +toggle({name: toggles.name, isChecked: toggles.isChecked})
+          +toggle({name: toggles.name})
         span(class='form-elements__label') like-button
         div(class="form-elements__comp-wrapper")
-          +like-button({isLiked: [false], likeAmount: '2'})
-          +like-button({isLiked: [true], likeAmount: '12'})
+          +like-button({
+            isLiked: likeButtons[0].isLiked, 
+            likeAmount: likeButtons[0].likeAmount})
+          +like-button({
+            isLiked: likeButtons[1].isLiked, 
+            likeAmount: likeButtons[1].likeAmount})
         span(class='form-elements__label') rate button
         div(class="form-elements__comp-wrapper")
-          +rate-button({name: 'nameOne'})
-          +rate-button({name: 'nameTwo'})
+          +rate-button({name: rateButtons[0]})
+          +rate-button({name: rateButtons[1]})
         div(class="form-elements__comp-wrapper")
           +dropdown({
-            categories:
-              [{displayName: 'взрослые', 
-                categoryType: 'гость', 
-                declensions: 'гость,гостя,гостей',  
-                defaultCount: 0, 
-                minCount: 0, 
-                maxCount: 99}, 
-              {displayName: 'дети', 
-                categoryType: 'гость', 
-                declensions: 'гость,гостя,гостей', 
-                defaultCount: 0, 
-                minCount: 0, 
-                maxCount: 99}, 
-              {displayName: 'младенцы', 
-                categoryType: 'младенец', 
-                declensions: 'младенец,младенца,младенцев', 
-                defaultCount: 0, 
-                minCount: 0, 
-                maxCount: 99}], 
-            type: 'dropDownGuests',
-            placeholder: 'Сколько гостей',
-            hasButtons: true,
-            labelText: 'dropdown',
-            width: 'wide'})
+            categories: dropdownGuests.categories, 
+            type: dropdownGuests.type,
+            placeholder: dropdownGuests.placeholder,
+            hasButtons: dropdownGuests.hasButtons,
+            labelText: dropdownGuests.labelText,
+            width: dropdownGuests.width})
         div(class="form-elements__comp-wrapper")
           +checklist({
-            categories:
-              [{name:'Широкий коридор', 
-                description: 'Ширина коридоров в номере не менее 91 см'}, 
-              {name:'Помощник для инвалидов', 
-                description: 'На 1 этаже вас встретит специалист и проводит до номера'}],
-            isExpanded: false,
-            isRich: true, 
-            labelText: 'isRich checkbox buttons'})
+            categories: checkListRichCheckBox.categories,
+            isExpanded: checkListRichCheckBox.isExpanded,
+            isRich: checkListRichCheckBox.isRich, 
+            labelText: checkListRichCheckBox.labelText})
       div(class="form-elements__column")
         div(class="form-elements__comp-wrapper")
           +range-slider({
-            labelText: 'range slider',
-            sliderType: 'double', 
-            min: '1000', 
-            max: '15000', 
-            step: '1', 
-            from: '5000', 
-            to: '10000', 
-            isMinMaxHidden: 'true', 
-            isFromToHidden: 'true'})
+            labelText: rangeSlider.labelText,
+            sliderType: rangeSlider.sliderType, 
+            min: rangeSlider.min, 
+            max: rangeSlider.max, 
+            step: rangeSlider.step, 
+            from: rangeSlider.from, 
+            to: rangeSlider.to, 
+            isMinMaxHidden: rangeSlider.isMinMaxHidden, 
+            isFromToHidden: rangeSlider.isFromToHidden})
         span(class='form-elements__label') buttons
         div(class="form-elements__comp-wrapper")
           +button({
-            text: 'click me',
-            type: 'link',
-            length: 'short',
-            width: 'wide',
-            color: 'dark',
-            href: 'https://test/test'})
+            text: buttonDarkShort.text,
+            type: buttonDarkShort.type,
+            length: buttonDarkShort.length,
+            width: buttonDarkShort.width,
+            color: buttonDarkShort.color,
+            href: buttonDarkShort.href})
         div(class="form-elements__comp-wrapper")
           +button({
-            text: 'click me',
-            type: 'link',
-            length: 'short',
-            width: 'wide',
-            color: 'light',
-            href: 'https://test/test'})
+            text: buttonLightShort.text,
+            type: buttonLightShort.type,
+            length: buttonLightShort.length,
+            width: buttonLightShort.width,
+            color: buttonLightShort.color,
+            href: buttonLightShort.href})
         div(class="form-elements__comp-wrapper")
           +button({
-            text: 'click me',
-            type: 'plain-text'})
+            text: buttonPlain.text,
+            type: buttonPlain.type})
         div(class="form-elements__comp-wrapper")
           +button({
-            text: 'перейти к оплате',
-            type: 'submit',
-            length: 'very-long',
-            width: 'wide',
-            color: 'dark',
-            hasImage: true})
+            text: buttonDarkLong.text,
+            type: buttonDarkLong.type,
+            length: buttonDarkLong.length,
+            width: buttonDarkLong.width,
+            color: buttonDarkLong.color,
+            hasImage: buttonDarkLong.hasImage})
         span(class='form-elements__label') pagination
         div(class="form-elements__comp-wrapper")
           +pagination()
         div(class="form-elements__comp-wrapper")
           +dropdown({
-            categories:
-              [{displayName: 'взрослые',
-                categoryType: 'гость',
-                declensions: 'гость,гостя,гостей',
-                defaultCount: 0,
-                minCount: 0,
-                maxCount: 99},
-                {displayName: 'дети',
-                categoryType: 'гость',
-                declensions: 'гость,гостя,гостей',
-                defaultCount: 0,
-                minCount: 0,
-                maxCount: 99},
-                {displayName: 'младенцы',
-                categoryType: 'младенец',
-                declensions: 'младенец,младенца,младенцев',
-                defaultCount: 0,
-                minCount: 0,
-                maxCount: 99}],
-            type: 'dropDownGuests',
-            placeholder: 'Сколько гостей',
-            hasButtons: true,
-            labelText: 'dropdown',
-            width: 'wide'})
+            categories: dropdownGuests.categories, 
+            type: dropdownGuests.type,
+            placeholder: dropdownGuests.placeholder,
+            hasButtons: dropdownGuests.hasButtons,
+            labelText: dropdownGuests.labelText,
+            width: dropdownGuests.width})
         span(class='form-elements__label') bullet list
         div(class="form-elements__comp-wrapper")
           +bullet-list({
-            categories: ['Нельзя с питомцами',
-              'Без вечеринок и мероприятий',
-              'Время прибытия — после 13:00, а выезд до 12:00']})
+            categories: bulletList.categories})
     div(class="form-elements__wrapper-bottom")
       div(class="form-elements__column")
         div(class="form-elements__comp-wrapper")
           +feature({
             imageName: require('@pag/form-elements/image/smile.svg'),
-            name: 'Комфорт',
-            description: 'Шумопоглощающие стены',
-            alt: 'smile'})
+            name: features[0].name,
+            description: features[0].description,
+            alt: features[0].alt})
         div(class="form-elements__comp-wrapper")
           +feature({
             imageName: require('@pag/form-elements/image/city.svg'),
-            name: 'Удобство',
-            description: 'Окно в каждой из спален',
-            alt: 'city'})
+            name: features[1].name,
+            description: features[1].description,
+            alt: features[1].alt})
       div(class="form-elements__column")
         div(class="form-elements__comp-wrapper")
           +feedback({
             imageName: require('@pag/form-elements/image/murad.jpg'),
-            name: 'Мурад Сарафанов',
-            date: '5 дней назад',
-            description: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
-            alt: 'Мурад Сарафанов'})
+            name: feedback.name,
+            date: feedback.date,
+            description: feedback.description,
+            alt: feedback.alt,
+            isLiked: feedback.isLiked, 
+            likeAmount: feedback.likeAmount})
