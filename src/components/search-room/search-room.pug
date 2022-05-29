@@ -16,42 +16,24 @@ mixin search-room()
     h1(class = `${elementName}__header`) Найдем номера под ваши пожелания
     div(class = `${elementName}__date-dropdown`)
       +date-dropdown({
-        width:'wide',
-        type:'dateDropDown',
-        labelTextFrom: 'Прибытие',
-        labelTextTo: 'Выезд'})
+        width: dateDropdown.width,
+        type: dateDropdown.type,
+        labelTextFrom: dateDropdown.labelTextFrom,
+        labelTextTo: dateDropdown.labelTextTo})
     div(class = `${elementName}__guests`)
       +dropdown({
-        categories:
-          [{displayName: 'взрослые',
-            categoryType: 'гость',
-            declensions: 'гость,гостя,гостей',
-            defaultCount: 0,
-            minCount: 0,
-            maxCount: 99},
-            {displayName: 'дети',
-            categoryType: 'гость',
-            declensions: 'гость,гостя,гостей',
-            defaultCount: 0,
-            minCount: 0,
-            maxCount: 99},
-            {displayName: 'младенцы',
-            categoryType: 'младенец',
-            declensions: 'младенец,младенца,младенцев',
-            defaultCount: 0,
-            minCount: 0,
-            maxCount: 99}],
-        type: 'dropDownGuests',
-        placeholder: 'Сколько гостей',
-        hasButtons: true,
-        labelText: 'гости',
-        width: 'wide'})
+        categories: dropdownGuests.categories, 
+        type: dropdownGuests.type,
+        placeholder: dropdownGuests.placeholder,
+        hasButtons: dropdownGuests.hasButtons,
+        labelText: dropdownGuests.labelText,
+        width: dropdownGuests.width})
     div(class = `${elementName}__search`)
       +button({
-        text: 'подобрать номер',
-        type: 'submit',
-        length: 'very-long',
-        width: 'wide',
-        color: 'dark',
-        hasImage: true})
+        text: buttonDarkLong.text,
+        type: buttonDarkLong.type,
+        length: buttonDarkLong.length,
+        width: buttonDarkLong.width,
+        color: buttonDarkLong.color,
+        hasImage: buttonDarkLong.hasImage})
 
