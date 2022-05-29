@@ -7,18 +7,8 @@ html(lang = 'ru')
     block title
       title Layout
   -
-    const headerLinks = [
-      {name: 'О нас'},
-      {name: 'Услуги', subMenu: ['Ссылка 1', 'Ссылка 2', 'Ссылка 3']},
-      {name: 'Вакансии'},
-      {name: 'Новости'},
-      {name: 'Соглашения', subMenu: ['Ссылка 4', 'Ссылка 5', 'Ссылка 6']},
-    ]
-    const footerLinks = [
-      {name: 'навигация', items: ['О нас', 'Новости', 'Служба поддержки', 'Услуги']},
-      {name: 'О нас', items: ['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы']},
-      {name: 'служба поддержки', items: ['Соглашения', 'Сообщества', 'Связь с нами']},
-    ]
+    const {headerLinks, footerLinks} = require('@pag/layout/layout.json')
+
   body(class = 'layout')
     +header({menu: headerLinks, isAuthorized: false})
     block content

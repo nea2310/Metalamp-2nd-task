@@ -43,7 +43,7 @@ block content
       bulletList,
       features,
       feedback
-    } = require('./form-elements.json')
+    } = require('@pag/form-elements/form-elements.json')
 
   main(class="form-elements")
     div(class="form-elements__wrapper-top")
@@ -218,8 +218,7 @@ block content
             width: dropdownGuests.width})
         span(class='form-elements__label') bullet list
         div(class="form-elements__comp-wrapper")
-          +bullet-list({
-            categories: bulletList.categories})
+          +bullet-list({categories: bulletList.categories})
     div(class="form-elements__wrapper-bottom")
       div(class="form-elements__column")
         div(class="form-elements__comp-wrapper")
