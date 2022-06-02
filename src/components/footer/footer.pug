@@ -17,13 +17,13 @@ mixin footer({menu = []} = {})
         each value in menu
           - const {name = '', items = []} = value
           ul(class = `${elementName}__items`)
-            lh(class = `${elementName}__items-header`)= name
+            li(class = `${elementName}__items-header`)= name
               if Array.isArray(items) && items.length
                 each subValue in items
                   li(class = `${elementName}__item`)
                     a(class = `${elementName}__item-link` href = 'https://test/test')= subValue
       ul(class = `${elementName}__items`)
-        lh(class = `${elementName}__items-header`) подписка
+        li(class = `${elementName}__items-header`) подписка
         li(class = `${elementName}__item`)
           p(class = `${elementName}__long-text`) Получайте специальные предложения и новости сервиса
         li(class = `${elementName}__item`)
