@@ -39,7 +39,7 @@
     "labelText": "dropdown",
     "width": "wide"
   },
-  "buttonDarkLong": {
+  "button": {
     "text": "подобрать номер",
     "type": "submit",
     "length": "very-long",

@@ -31,19 +31,9 @@ mixin booking(options = {})
         span(class = `${elementName}__detail-price`)= `${roomPrice}₽`
         span(class = `${elementName}__detail-label`) в сутки
     div(class = `${elementName}__date-dropdown`)
-      +date-dropdown({
-        width: dateDropdown.width,
-        type: dateDropdown.type,
-        labelTextFrom: dateDropdown.labelTextFrom,
-        labelTextTo: dateDropdown.labelTextTo})
+      +date-dropdown(dateDropdown)
     div(class = `${elementName}__guests`)
-      +dropdown({
-        categories: dropdownGuests.categories, 
-        type: dropdownGuests.type,
-        placeholder: dropdownGuests.placeholder,
-        hasButtons: dropdownGuests.hasButtons,
-        labelText: dropdownGuests.labelText,
-        width: dropdownGuests.width})
+      +dropdown(dropdownGuests)
     div(class = `${elementName}__price-breakdown`)
       div(class = `${elementName}__price-details`)
         div(class = `${elementName}__price-name`)= `${roomPrice}₽ x ${daysAmount} суток`
@@ -63,10 +53,4 @@ mixin booking(options = {})
         div(class = `${elementName}__price-total-filling`) 
         div(class = `${elementName}__price-cost`)= `${totalAmount}₽`
     div(class = `${elementName}__book-button`)
-      +button({
-        text: button.text,
-        type: button.type,
-        length: button.length,
-        width: button.width,
-        color: button.color,
-        hasImage: button.hasImage})
+      +button(button)

@@ -7,14 +7,14 @@ html(lang = 'ru')
     block title
       title Layout
   -
-    const {headerLinks, footerLinks} = require('@pag/layout/layout.json')
+    const {header, footer} = require('@pag/layout/layout.json')
 
   body(class = 'layout')
-    +header({menu: headerLinks, isAuthorized: false})
+    +header(header)
     block content
       main
     block footer
-      +footer({menu: footerLinks})
+      +footer(footer)
 
 
 

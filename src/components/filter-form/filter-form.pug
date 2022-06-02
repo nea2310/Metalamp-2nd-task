@@ -24,55 +24,19 @@ mixin filter-form()
         src = require('@com/filter-form/image/filter.svg') alt = 'фильтр поиска')
     div(class = `${elementName}__wrapper js-${elementName}__wrapper`)
       div(class = `${elementName}__calendar-wrapper`)
-        +date-dropdown({
-          width: filterDateDropdown.width,
-          type: filterDateDropdown.type,
-          labelTextFromTo: filterDateDropdown.labelTextFromTo})
+        +date-dropdown(filterDateDropdown)
       div(class = `${elementName}__guests-wrapper`)
-        +dropdown({
-          categories: dropdownGuests.categories, 
-          type: dropdownGuests.type,
-          placeholder: dropdownGuests.placeholder,
-          hasButtons: dropdownGuests.hasButtons,
-          labelText: dropdownGuests.labelText,
-          width: dropdownGuests.width})
+        +dropdown(dropdownGuests)
       div(class = `${elementName}__price-filter-wrapper`)
-        +range-slider({
-          labelText: rangeSlider.labelText,
-          sliderType: rangeSlider.sliderType, 
-          min: rangeSlider.min, 
-          max: rangeSlider.max, 
-          step: rangeSlider.step, 
-          from: rangeSlider.from, 
-          to: rangeSlider.to, 
-          isMinMaxHidden: rangeSlider.isMinMaxHidden, 
-          isFromToHidden: rangeSlider.isFromToHidden,
-          text: rangeSlider.text})
+        +range-slider(rangeSlider)
       div(class = `${elementName}__house-rules-wrapper`)
-        +checklist({
-          categories: checkListCheckBox.categories,
-          isExpandable: checkListCheckBox.isExpandable,
-          isRich: checkListCheckBox.isRich, 
-          labelText: checkListCheckBox.labelText})
+        +checklist(checkListCheckBox)
       div(class = `${elementName}__accessability-wrapper`)
-        +checklist({
-          categories: checkListRichCheckBox.categories,
-          isExpandable: checkListRichCheckBox.isExpandable,
-          isRich: checkListRichCheckBox.isRich, 
-          labelText: checkListRichCheckBox.labelText})
+        +checklist(checkListRichCheckBox)
       div(class = `${elementName}__facilities-wrapper`)
-        +dropdown({
-          categories: dropdownRooms.categories, 
-          type: dropdownRooms.type,
-          placeholder: dropdownRooms.placeholder,
-          labelText: dropdownRooms.labelText,
-          width: dropdownRooms.width})
+        +dropdown(dropdownRooms)
       div(class = elemName + '__facilities-adv-wrapper')
-        +checklist({
-          categories: checkListExpandable.categories,
-          isExpandable: checkListExpandable.isExpandable,
-          isRich: checkListExpandable.isRich, 
-          labelText: checkListExpandable.labelText})
+        +checklist(checkListExpandable)
 
 
 

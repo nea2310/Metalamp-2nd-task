@@ -7,7 +7,7 @@ mixin search-room()
     const {
       dropdownGuests,
       dateDropdown,
-      buttonDarkLong
+      button
     } = require('@com/search-room/search-room.json')
 
     const elementName = 'search-room'
@@ -15,25 +15,9 @@ mixin search-room()
   form(class = `${elementName} js-${elementName}`)
     h1(class = `${elementName}__header`) Найдем номера под ваши пожелания
     div(class = `${elementName}__date-dropdown`)
-      +date-dropdown({
-        width: dateDropdown.width,
-        type: dateDropdown.type,
-        labelTextFrom: dateDropdown.labelTextFrom,
-        labelTextTo: dateDropdown.labelTextTo})
+      +date-dropdown(dateDropdown)
     div(class = `${elementName}__guests`)
-      +dropdown({
-        categories: dropdownGuests.categories, 
-        type: dropdownGuests.type,
-        placeholder: dropdownGuests.placeholder,
-        hasButtons: dropdownGuests.hasButtons,
-        labelText: dropdownGuests.labelText,
-        width: dropdownGuests.width})
+      +dropdown(dropdownGuests)
     div(class = `${elementName}__search`)
-      +button({
-        text: buttonDarkLong.text,
-        type: buttonDarkLong.type,
-        length: buttonDarkLong.length,
-        width: buttonDarkLong.width,
-        color: buttonDarkLong.color,
-        hasImage: buttonDarkLong.hasImage})
+      +button(button)
 

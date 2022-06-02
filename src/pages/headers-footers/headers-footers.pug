@@ -7,12 +7,12 @@ block title
   title Headers & Footers
 block content
   -
-    const {headerLinks, footerLinks} = require('@pag/headers-footers/headers-footers.json')
+    const {header, footer} = require('@pag/headers-footers/headers-footers.json')
 
   main(class="headers-footers")
     div(class='headers-footers__header')
-      +header({menu: headerLinks, isAuthorized: false})
+      +header(header)
     div(class='headers-footers__header')
-      +header({menu: headerLinks, isAuthorized: true})
+      +header({...header, isAuthorized: true})
     div(class='headers-footers__footer')
-      +footer({menu: footerLinks})
+      +footer(footer)
