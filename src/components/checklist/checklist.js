@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 class CheckList {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
@@ -84,9 +83,6 @@ class CheckList {
   }
 
   _handleCheckListResizeLoadWindow() {
-    console.log(this.wrapper);
-    console.log(this.wrapper.classList.contains(`${this.elementName}_collapsing`));
-    // const isCollapsing = this._isCollapsing();
     if (!this._isCollapsing()) {
       if (window.innerWidth > this.breakPoint) {
         this._toggleList(true);
@@ -113,15 +109,10 @@ class CheckList {
   }
 
   _toggleList(flag) {
-    const wrap = `${this.elementName}__`;
     if (flag) {
       this.wrapper.classList.add(`${this.elementName}_expanded`);
-      this.tip.classList.add(`${wrap}image-expanded`);
-      this.tip.classList.remove(`${wrap}image_collapsed`);
     } else {
       this.wrapper.classList.remove(`${this.elementName}_expanded`);
-      this.tip.classList.remove(`${wrap}image-expanded`);
-      this.tip.classList.add(`${wrap}image_collapsed`);
     }
   }
 }

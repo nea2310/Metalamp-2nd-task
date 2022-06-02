@@ -26,6 +26,11 @@
     .checklist__list-wrapper {
       display: block;
     }
+
+    .checklist__image {
+      transform: rotate(180deg);
+      display: block;
+    }
   }
 
   user-select: none;
@@ -42,16 +47,6 @@
     right: 15px;
     top: 3px;
     transition: all 0.3s ease 0s;
-
-    &-expanded {
-      transform: rotate(180deg);
-      display: block;
-    }
-
-    &_collapsed {
-      transform: rotate(0deg);
-      display: block;
-    }
   }
 
   &__list-wrapper {
