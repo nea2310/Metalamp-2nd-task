@@ -103,7 +103,7 @@
         "name": "Шампунь"
       }
     ],
-    "isExpanded": true,
+    "isExpandable": true,
     "isRich": false,
     "labelText": "дополнительные удобства"
   },
@@ -119,7 +119,7 @@
         "name": "Можно пригласить гостей (до 10 человек)"
       }
     ],
-    "isExpanded": false,
+    "isExpandable": false,
     "isRich": false,
     "labelText": "правила дома"
   },
@@ -134,7 +134,7 @@
         "description": "На 1 этаже вас встретит специалист и проводит до номера"
       }
     ],
-    "isExpanded": false,
+    "isExpandable": false,
     "isRich": true,
     "labelText": "доступность"
   }

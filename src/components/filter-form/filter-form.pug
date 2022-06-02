@@ -51,13 +51,13 @@ mixin filter-form()
       div(class = `${elementName}__house-rules-wrapper`)
         +checklist({
           categories: checkListCheckBox.categories,
-          isExpanded: checkListCheckBox.isExpanded,
+          isExpandable: checkListCheckBox.isExpandable,
           isRich: checkListCheckBox.isRich, 
           labelText: checkListCheckBox.labelText})
       div(class = `${elementName}__accessability-wrapper`)
         +checklist({
           categories: checkListRichCheckBox.categories,
-          isExpanded: checkListRichCheckBox.isExpanded,
+          isExpandable: checkListRichCheckBox.isExpandable,
           isRich: checkListRichCheckBox.isRich, 
           labelText: checkListRichCheckBox.labelText})
       div(class = `${elementName}__facilities-wrapper`)
@@ -70,7 +70,7 @@ mixin filter-form()
       div(class = elemName + '__facilities-adv-wrapper')
         +checklist({
           categories: checkListExpandable.categories,
-          isExpanded: checkListExpandable.isExpanded,
+          isExpandable: checkListExpandable.isExpandable,
           isRich: checkListExpandable.isRich, 
           labelText: checkListExpandable.labelText})
 

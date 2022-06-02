@@ -1,20 +1,23 @@
 mixin checklist(options = {})
   -
     const {categories = [],
-      isExpanded = false,
+      isExpandable = false,
       isRich = false,
       labelText = ''} = options
 
     const elementName = 'checklist'
-
-    const style = isExpanded ? `${elementName}_collapsing` : ''
-    const listStyle = isExpanded ? `${elementName}__list-wrapper_hidden` : ''
-    const labelStyle = isExpanded ? `${elementName}__label_collapsing` : `${elementName}__label_expanded`
-    const tipStyle = !isExpanded ? `${elementName}__image_non-collapsing` : ''
+    let style = ''
+    let listStyle = ''
+    let tipStyle = `${elementName}__image_hidden`
+    if (isExpandable){
+      style = `${elementName}_collapsing`
+      listStyle = `${elementName}__list-wrapper_hidden`
+      tipStyle = ''
+    }
     const nameStyle = isRich ? `${elementName}__category-name_rich` : ''
 
   fieldset(class = `${elementName} js-${elementName} ${style}`)
-    p(class = `${elementName}__label js-${elementName}__label ${labelStyle}` tabindex = 0)= labelText
+    p(class = `${elementName}__label js-${elementName}__label` tabindex = 0)= labelText
       image(class = `${elementName}__image js-${elementName}__image ${elementName}__image_collapsed ${tipStyle}` 
         src = require('@com/checklist/image/expand-more.svg') alt = 'развернуть')
     ul(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper ${listStyle}`)

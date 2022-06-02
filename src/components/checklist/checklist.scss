@@ -3,6 +3,13 @@
     box-sizing: border-box;
   }
 
+  &_collapsing,
+  &_temporarily-collapsing {
+    .checklist__label {
+      cursor: pointer;
+    }
+  }
+
   user-select: none;
   max-width: 266px;
   width: 100%;
@@ -10,9 +17,9 @@
   &__label {
     @include font-h3;
     position: relative;
-    &_collapsing {
-      cursor: pointer;
-    }
+    // &_collapsing {
+    //   cursor: pointer;
+    // }
   }
 
   &__image {
@@ -29,7 +36,7 @@
       transform: rotate(0deg);
       transition: all 0.3s ease 0s;
     }
-    &_non-collapsing {
+    &_hidden {
       display: none;
     }
   }

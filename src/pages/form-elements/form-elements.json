@@ -161,7 +161,7 @@
         "name": "Шампунь"
       }
     ],
-    "isExpanded": true,
+    "isExpandable": true,
     "isRich": false,
     "labelText": "expandable checkbox list"
   },
@@ -177,7 +177,7 @@
         "name": "Можно пригласить гостей (до 10 человек)"
       }
     ],
-    "isExpanded": false,
+    "isExpandable": false,
     "isRich": false,
     "labelText": "checkbox buttons"
   },
@@ -192,7 +192,7 @@
         "description": "На 1 этаже вас встретит специалист и проводит до номера"
       }
     ],
-    "isExpanded": false,
+    "isExpandable": false,
     "isRich": true,
     "labelText": "rich checkbox buttons"
   },

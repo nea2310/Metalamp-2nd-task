@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 class CheckList {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
@@ -85,7 +86,14 @@ class CheckList {
   _handleCheckListResizeLoadWindow() {
     if (window.innerWidth > this.breakPoint && !this._isCollapsing()) {
       this._toggleList(true);
-    } else this._toggleList(false);
+      this.wrapper.classList.remove(`${this.elementName}_temporarily-collapsing`);
+      this.tip.classList.add(`${this.elementName}__image_hidden`);
+    } else {
+      console.log(this.wrapper.classList);
+      this._toggleList(false);
+      this.wrapper.classList.add(`${this.elementName}_temporarily-collapsing`);
+      this.tip.classList.remove(`${this.elementName}__image_hidden`);
+    }
   }
 
   _getElement(selector, wrapper = this.wrapper) {
@@ -94,7 +102,8 @@ class CheckList {
   }
 
   _isCollapsing() {
-    return this.label.classList.contains(`${this.elementName}__label_collapsing`);
+    // return this.label.classList.contains(`${this.elementName}__label_collapsing`);
+    return this.wrapper.classList.contains(`${this.elementName}_collapsing`);
   }
 
   _needCollapse() {
@@ -107,13 +116,17 @@ class CheckList {
     if (flag) {
       this.listWrapper.classList
         .remove(`${wrap}list-wrapper_hidden`);
-      this.tip.classList.add(`${wrap}image-expanded`);
-      this.tip.classList.remove(`${wrap}image_collapsed`);
+      if (this.tip) {
+        this.tip.classList.add(`${wrap}image-expanded`);
+        this.tip.classList.remove(`${wrap}image_collapsed`);
+      }
     } else {
       this.listWrapper.classList
         .add(`${wrap}list-wrapper_hidden`);
-      this.tip.classList.remove(`${wrap}image-expanded`);
-      this.tip.classList.add(`${wrap}image_collapsed`);
+      if (this.tip) {
+        this.tip.classList.remove(`${wrap}image-expanded`);
+        this.tip.classList.add(`${wrap}image_collapsed`);
+      }
     }
   }
 }
