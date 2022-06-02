@@ -10,6 +10,12 @@
     }
   }
 
+  &_expanded {
+    .checklist__list-wrapper {
+      display: block;
+    }
+  }
+
   user-select: none;
   max-width: 266px;
   width: 100%;
@@ -17,9 +23,6 @@
   &__label {
     @include font-h3;
     position: relative;
-    // &_collapsing {
-    //   cursor: pointer;
-    // }
   }
 
   &__image {
@@ -48,9 +51,9 @@
     position: absolute;
     z-index: 2;
     padding-top: 14px;
-    &_hidden {
-      display: none;
-    }
+    // &_hidden {
+    display: none;
+    // }
   }
 
   &__category {

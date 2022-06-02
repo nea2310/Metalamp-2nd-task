@@ -44,17 +44,17 @@ class CheckList {
   }
 
   _handleCheckListMouseUpLabel() {
-    const isHidden = this.listWrapper.classList.contains(`${this.elementName}__list-wrapper_hidden`);
-    if (isHidden) {
+    const isExpanded = this.wrapper.classList.contains(`${this.elementName}_expanded`);
+    if (!isExpanded) {
       this._toggleList(true);
-    } else if (!isHidden && this._needCollapse()) {
+    } else if (isExpanded && this._needCollapse()) {
       this._toggleList(false);
     }
     this.mouseDown = false;
   }
 
   _handleCheckListFocusLabel() {
-    if (this.listWrapper.classList.contains(`${this.elementName}__list-wrapper_hidden`)
+    if (!this.wrapper.classList.contains(`${this.elementName}_expanded`)
       && this.mouseDown === false) {
       this._toggleList(true);
     }
@@ -84,15 +84,19 @@ class CheckList {
   }
 
   _handleCheckListResizeLoadWindow() {
-    if (window.innerWidth > this.breakPoint && !this._isCollapsing()) {
-      this._toggleList(true);
-      this.wrapper.classList.remove(`${this.elementName}_temporarily-collapsing`);
-      this.tip.classList.add(`${this.elementName}__image_hidden`);
-    } else {
-      console.log(this.wrapper.classList);
-      this._toggleList(false);
-      this.wrapper.classList.add(`${this.elementName}_temporarily-collapsing`);
-      this.tip.classList.remove(`${this.elementName}__image_hidden`);
+    console.log(this.wrapper);
+    console.log(this.wrapper.classList.contains(`${this.elementName}_collapsing`));
+    // const isCollapsing = this._isCollapsing();
+    if (!this._isCollapsing()) {
+      if (window.innerWidth > this.breakPoint) {
+        this._toggleList(true);
+        this.wrapper.classList.remove(`${this.elementName}_temporarily-collapsing`);
+        this.tip.classList.add(`${this.elementName}__image_hidden`);
+      } else {
+        this._toggleList(false);
+        this.wrapper.classList.add(`${this.elementName}_temporarily-collapsing`);
+        this.tip.classList.remove(`${this.elementName}__image_hidden`);
+      }
     }
   }
 
@@ -114,19 +118,19 @@ class CheckList {
   _toggleList(flag) {
     const wrap = `${this.elementName}__`;
     if (flag) {
-      this.listWrapper.classList
-        .remove(`${wrap}list-wrapper_hidden`);
-      if (this.tip) {
-        this.tip.classList.add(`${wrap}image-expanded`);
-        this.tip.classList.remove(`${wrap}image_collapsed`);
-      }
+      this.wrapper.classList.add(`${this.elementName}_expanded`);
+      // this.listWrapper.classList
+      //   .remove(`${wrap}list-wrapper_hidden`);
+
+      this.tip.classList.add(`${wrap}image-expanded`);
+      this.tip.classList.remove(`${wrap}image_collapsed`);
     } else {
-      this.listWrapper.classList
-        .add(`${wrap}list-wrapper_hidden`);
-      if (this.tip) {
-        this.tip.classList.remove(`${wrap}image-expanded`);
-        this.tip.classList.add(`${wrap}image_collapsed`);
-      }
+      this.wrapper.classList.remove(`${this.elementName}_expanded`);
+      // this.listWrapper.classList
+      //   .add(`${wrap}list-wrapper_hidden`);
+
+      this.tip.classList.remove(`${wrap}image-expanded`);
+      this.tip.classList.add(`${wrap}image_collapsed`);
     }
   }
 }
