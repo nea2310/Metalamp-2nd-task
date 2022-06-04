@@ -77,44 +77,45 @@ class RoomCard {
     let newDot;
 
     if (element.className.match('previous') || element === 'leftSwipe') {
-      if (i !== 1) {
-        newPhoto = this._getElemAdv(
+      console.log('i>>>', i);
+      if (i !== 0) {
+        newPhoto = this._getElemAdvanced(
           'photo',
           'data-sequence',
           i - 1,
         );
-        newDot = this._getElemAdv(
+        newDot = this._getElemAdvanced(
           'dot',
           'data-sequence',
           i - 1,
         );
       } else {
-        newPhoto = this._getElemAdv(
+        newPhoto = this._getElemAdvanced(
           'photo',
           'data-sequence',
-          this.images.length,
+          this.images.length - 1,
         );
-        newDot = this._getElemAdv(
+        newDot = this._getElemAdvanced(
           'dot',
           'data-sequence',
-          this.images.length,
+          this.images.length - 1,
         );
       }
     } else if (element.className.match('next') || element === 'rightSwipe') {
-      if (i !== this.images.length) {
-        newPhoto = this._getElemAdv(
+      if (i !== this.images.length - 1) {
+        newPhoto = this._getElemAdvanced(
           'photo',
           'data-sequence',
           i + 1,
         );
-        newDot = this._getElemAdv(
+        newDot = this._getElemAdvanced(
           'dot',
           'data-sequence',
           i + 1,
         );
       } else {
-        newPhoto = this._getElemAdv('photo', 'data-sequence', '1');
-        newDot = this._getElemAdv('dot', 'data-sequence', '1');
+        newPhoto = this._getElemAdvanced('photo', 'data-sequence', '0');
+        newDot = this._getElemAdvanced('dot', 'data-sequence', '0');
       }
     }
     this._toggle(currentPhoto, currentDot, newPhoto, newDot);
@@ -126,7 +127,7 @@ class RoomCard {
     const sec = element.getAttribute('data-sequence');
     const currentPhoto = this._getElement('photo_shown');
     const currentDot = this._getElement('dot_active');
-    const newPhoto = this._getElemAdv('photo', 'data-sequence', sec);
+    const newPhoto = this._getElemAdvanced('photo', 'data-sequence', sec);
     this._toggle(currentPhoto, currentDot, newPhoto, element);
   }
 
@@ -143,7 +144,7 @@ class RoomCard {
     );
   }
 
-  _getElemAdv(className, attrName, attrVal, wrap = this.wrapper) {
+  _getElemAdvanced(className, attrName, attrVal, wrap = this.wrapper) {
     return wrap.querySelector(
       `.${this.elementName}__${className
       }[${attrName}="${attrVal}"]`,

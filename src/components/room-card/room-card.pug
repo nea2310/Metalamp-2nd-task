@@ -23,10 +23,10 @@ mixin room-card(options = {})
         - imageName = validateImagePath(imageName)
           if index === 0
             image(class = `${elementName}__photo js-${elementName}__photo ${elementName}__photo_shown js-${elementName}__photo_shown` 
-              alt = 'фото номера' src = imageName data-sequence = index+1)
+              alt = 'фото номера' src = imageName data-sequence = index)
           else
             image(class = `${elementName}__photo js-${elementName}__photo` 
-              alt = 'фото номера' src = imageName data-sequence = index+1)
+              alt = 'фото номера' src = imageName data-sequence = index)
       div(class = `${elementName}__dots js-${elementName}__dots`)
       div(class = `${elementName}__buttons`)
         button(class = `${elementName}__previous js-${elementName}__previous` type = 'button' aria-label = 'предыдущее фото')
