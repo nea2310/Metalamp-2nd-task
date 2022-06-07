@@ -14,7 +14,9 @@ $lg-padding-bottom: 30px;
 
 .room-details-page {
   border-bottom: 1px solid $colorDarkShade25;
-  margin-bottom: 100px;
+  position: relative;
+  top: $headerHeight;
+  margin-bottom: calc($headerHeight + 30px);
   &__header {
     position: absolute;
     width: 1px;

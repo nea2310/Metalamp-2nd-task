@@ -1,4 +1,6 @@
 .search-room-page {
+  position: relative;
+  top: $headerHeight;
   box-sizing: border-box;
   display: flex;
   margin: 0 auto;
@@ -94,6 +96,7 @@
   &__delimiter {
     height: 2px;
     border-top: 1px solid $colorDarkShade25;
-    padding-bottom: 100px;
+    margin-top: $headerHeight;
+    margin-bottom: 30px;
   }
 }

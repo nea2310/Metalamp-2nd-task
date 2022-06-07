@@ -92,6 +92,10 @@ body {
   min-width: 320px;
 }
 
+header {
+  position: absolute;
+}
+
 main {
   flex-grow: 1;
 }
