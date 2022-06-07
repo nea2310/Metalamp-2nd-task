@@ -13,6 +13,8 @@ $lg-padding-bottom: 30px;
 }
 
 .room-details-page {
+  border-bottom: 1px solid $colorDarkShade25;
+  margin-bottom: 100px;
   &__header {
     position: absolute;
     width: 1px;
@@ -248,9 +250,5 @@ $lg-padding-bottom: 30px;
         margin: 0 20px;
       }
     }
-  }
-  &__footer {
-    border-top: 1px solid $colorDarkShade25;
-    padding-top: 100px;
   }
 }
