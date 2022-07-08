@@ -49,8 +49,8 @@ module.exports = merge(common, {
 
     new CopyPlugin({
       patterns: [
-        { from: `${src}/assets/favicons/favicon.ico`, to: `${dist}` },
-        { from: `${src}/assets/favicons/`, to: `${dist}/assets/favicons/` },
+        { from: `${src}/assets/favicons/favicons-main`, to: `${dist}` },
+        { from: `${src}/assets/favicons/favicons-extra`, to: `${dist}/assets/favicons/` },
       ],
     }),
   ],
