@@ -33,7 +33,6 @@ module.exports = {
   },
 
   mode,
-  devtool: 'source-map',
   entry: `${src}/index.js`,
   output: {
   },
