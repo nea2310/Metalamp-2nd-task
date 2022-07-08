@@ -1,10 +1,12 @@
 const webpack = require('webpack');
 const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const path = require('path');
 
 const src = path.join(__dirname, '../src');
+const dist = path.join(__dirname, '../dist');
 const PAGES_DIR = path.join(src, 'pages/');
 const PAGES = [];
 fs.readdirSync(PAGES_DIR).forEach((file) => {
@@ -42,12 +44,26 @@ module.exports = {
       filename: `./${page}.html`,
       inject: true,
     })),
+
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
     }),
+
     new ESLintPlugin(),
+
+    /*  подход 2022г. по созданию фавиконов:
+    * https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
+    * рекомендации HTML-академии:
+    * https://habr.com/ru/company/htmlacademy/blog/578224/ */
+
+    new CopyPlugin({
+      patterns: [
+        { from: `${src}/assets/favicons/favicons-main`, to: `${dist}` },
+        { from: `${src}/assets/favicons/favicons-extra`, to: `${dist}/assets/favicons/` },
+      ],
+    }),
   ],
   module: {
     rules: [
