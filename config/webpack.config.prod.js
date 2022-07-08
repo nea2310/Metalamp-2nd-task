@@ -8,16 +8,6 @@ const common = require('./webpack.config');
 const src = path.join(__dirname, '../src');
 const dist = path.join(__dirname, '../dist');
 
-/*
- * css-loader - импортировать CSS-файлы
- * style-loader - поместить CSS-код в тег <style> (мы его не используем)
- * MiniCssExtractPlugin - извлечь CSS в отдельный файл
- * не исключаем node-modules, т.к. оттуда берутся файлы стилей плагинов
- * postcss-loader - инструмент пост-обработки CSS
- * postcss-preset-env - набор расширений для эмуляции функций из незаконченных
- * черновиков CSS-спецификаций
- * cssnano — уменьшает размер CSS-кода, убирая пробелы и переписывая код в сжатой форме
- */
 const processCSS = [
   MiniCssExtractPlugin.loader,
   'css-loader',
@@ -38,7 +28,6 @@ const processCSS = [
 ];
 
 module.exports = merge(common, {
-  // Set the mode to production
   mode: 'production',
   output: {
     filename: 'assets/js/[name].[contenthash].js',
@@ -48,12 +37,11 @@ module.exports = merge(common, {
       filename: 'assets/css/[name].[contenthash].css',
     }),
 
-    /* копируем файлы фавиконов и манифеста в dist
-    подход 2022г. по созданию фавиконов:
+    /*  подход 2022г. по созданию фавиконов:
     * https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
     * рекомендации HTML-академии:
-    * https://habr.com/ru/company/htmlacademy/blog/578224/
-*/
+    * https://habr.com/ru/company/htmlacademy/blog/578224/ */
+
     new CopyPlugin({
       patterns: [
         { from: `${src}/assets/favicons/favicon.ico`, to: `${dist}` },
@@ -62,7 +50,6 @@ module.exports = merge(common, {
     }),
   ],
   module: {
-    // module.rules - все лоадеры
     rules: [
       {
         test: /\.css$/i,

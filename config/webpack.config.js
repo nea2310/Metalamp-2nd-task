@@ -34,29 +34,15 @@ module.exports = {
 
   mode,
   devtool: 'source-map',
-  /* настройки точки входа */
   entry: `${src}/index.js`,
-  /* настройки директории выходного файла (бандла) */
   output: {
-    /* очищать dist перед очередным запуском npm run build или npm run dev */
-    // clean: true, !этот параметр вызывает проблемы с отображением картинок, подключенных через PUG
   },
-  /* В отличие от лоадеров, плагины позволяют выполнять задачи после сборки бандла.
-  Эти задачи могут касаться как самого бандла, так и другого кода */
   plugins: [
-    /* HtmlWebpackPlugin создает index.html в директории с бандлом и автоматически добавляет в него
-     ссылку на бандл. HtmlWebpackPlugin создаст новый файл index.html в директории dist и добавит
-     в него ссылку на бандл — <script src='main.js'></script>
-     (или  <script src='main.[hash].js'></script>, если это build режим).
-     Мы создаем html файл из каждого pug файла, поэтому обходим циклом массив с названиями всех
-      pug-страниц и для каждой создаем объект HtmlWebpackPlugin
-     */
     ...PAGES.map((page) => new HtmlWebpackPlugin({
       template: `${src}/pages/${page}/${page}.pug`,
       filename: `./${page}.html`,
       inject: true,
     })),
-    // Подключение jquery
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -65,15 +51,12 @@ module.exports = {
     new ESLintPlugin(),
   ],
   module: {
-    // module.rules - все лоадеры
     rules: [
-      // обработчик для pug файлов
       {
         test: /\.pug$/,
         loader: 'pug-loader',
         exclude: /node_modules/,
       },
-      /* преобразование JavaScript следующего поколения в современный JavaScript с помощью Babel. */
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -82,14 +65,10 @@ module.exports = {
           options: {
             // https://runebook.dev/ru/docs/babel/babel-preset-env/index
             presets: [['@babel/preset-env', { targets: '> 0.25%, not dead' }]],
-            /* Использование кэша для избежания рекомпиляции при каждом запуске */
             cacheDirectory: true,
           },
         },
       },
-      /* asset/resource это аналог file-loader.
-      Файлы, которые будут подпадать под правило с type: 'asset/resource',
-       будут складываться в директорию с бандлом */
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
         type: 'asset/resource',
