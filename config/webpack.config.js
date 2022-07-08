@@ -3,6 +3,7 @@ const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
 const src = path.join(__dirname, '../src');
@@ -36,8 +37,7 @@ module.exports = {
 
   mode,
   entry: `${src}/index.js`,
-  output: {
-  },
+  output: { path: dist },
   plugins: [
     ...PAGES.map((page) => new HtmlWebpackPlugin({
       template: `${src}/pages/${page}/${page}.pug`,
@@ -64,6 +64,10 @@ module.exports = {
         { from: `${src}/assets/favicons/favicons-extra`, to: `${dist}/assets/favicons/` },
       ],
     }),
+    /* поле output обязательно д.б. заполнено, даже если берем значение по умолчанию { path: dist },
+     иначе плагин выдаст ошибку options.output.path not defined. Plugin disabled */
+
+    new CleanWebpackPlugin(),
   ],
   module: {
     rules: [
