@@ -2,6 +2,7 @@ const { merge } = require('webpack-merge');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const path = require('path');
 const common = require('./webpack.config');
@@ -33,7 +34,7 @@ module.exports = merge(common, {
   },
   optimization: {
     minimizer: [
-      new CssMinimizerPlugin(),
+      new CssMinimizerPlugin(), new TerserPlugin(),
     ],
   },
   plugins: [
