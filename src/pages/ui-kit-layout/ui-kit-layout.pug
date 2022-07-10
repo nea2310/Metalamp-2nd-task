@@ -2,13 +2,9 @@ include ../../components/head/head.pug
 include ../../components/logo/logo.pug
 include ../../components/logo/logo.pug
 
-doctype html
-html(lang = 'ru')
-  block head
-    block title
-      title UI-kit Layout
-  body(class = 'ui-kit-layout')
-    header(class = 'ui-kit-layout__header')
-      +logo()
-    block content
+block head
+body(class = 'ui-kit-layout')
+  header(class = 'ui-kit-layout__header')
+    +logo()
+  block content
 

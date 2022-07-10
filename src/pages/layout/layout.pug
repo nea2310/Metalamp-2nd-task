@@ -1,19 +1,17 @@
 include ../../components/head/head.pug
 include ../../components/header/header.pug
 include ../../components/footer/footer.pug
-doctype html
-html(lang = 'ru')
-  block head
-    block title
-      title Layout
-  -
-    const {header, footer} = require('@pag/layout/layout.json')
 
-  body(class = 'layout')
-    +header(header)
-    block content
-      main
-    +footer(footer)
+
+block head
+-
+  const {header, footer} = require('@pag/layout/layout.json')
+
+body(class = 'layout')
+  +header(header)
+  block content
+    main
+  +footer(footer)
 
 
 
