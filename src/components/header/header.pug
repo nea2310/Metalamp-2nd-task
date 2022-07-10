@@ -9,7 +9,7 @@ mixin header({menu = [], isAuthorized = false} = {})
       span(class = `${elementName}__burger`)
     div(class = `${elementName}__wrapper`)
       a(class = `${elementName}__logo` href = 'index.html')
-        image(class = `${elementName}__logo-image` src = require('@com/header/image/logo-purple.svg') alt = 'на главную')
+        img(class = `${elementName}__logo-image` src = require('@com/header/image/logo-purple.svg') alt = 'на главную')
       nav(class = `${elementName}__nav-level1 js-${elementName}__nav-level1`) 
         ul(class = `${elementName}__nav-level1-items`)
           if Array.isArray(menu) && menu.length
@@ -18,7 +18,7 @@ mixin header({menu = [], isAuthorized = false} = {})
               li(class = `${elementName}__nav-level1-item`)
                 a(class = `${elementName}__nav-level1-item-link` href = 'https://test/test')= name
                   if Array.isArray(subMenu) && subMenu.length
-                    image(class = `${elementName}__nav-level1-item-image js-${elementName}__nav-level1-item-image` src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
+                    img(class = `${elementName}__nav-level1-item-image js-${elementName}__nav-level1-item-image` src = require('@com/header/image/expand-more.svg') alt = 'раскрывающийся список')
                     ul(class = `${elementName}__nav-level2 js-${elementName}__nav-level2`)
                       each subValue in subMenu
                         li(class = `${elementName}__nav-level2-item`) 

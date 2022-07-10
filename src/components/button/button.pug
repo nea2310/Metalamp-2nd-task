@@ -41,7 +41,7 @@ mixin button(options = {})
       button(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 
         type = 'submit')= text
         if hasImage
-          image(class = `${elementName}__image`, src = require('@com/button/image/arrow-forward-white.svg'))
+          img(class = `${elementName}__image`, src = require('@com/button/image/arrow-forward-white.svg'))
     when 'link'
       a(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` href = href)= text
     when 'plain-text'

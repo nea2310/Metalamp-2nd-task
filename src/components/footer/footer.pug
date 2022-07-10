@@ -9,7 +9,7 @@ mixin footer({menu = []} = {})
     div(class = `${elementName}__wrapper-top`)
       ul(class = `${elementName}__items`)
         a(class = `${elementName}__logo` href = 'https://test/test')
-          image(class = `${elementName}__logo-image`
+          img(class = `${elementName}__logo-image`
             src = require('@com/footer/image/logo-purple.svg') alt = 'на главную')
         li(class = `${elementName}__item`)
           p(class = `${elementName}__long-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
@@ -41,4 +41,4 @@ mixin footer({menu = []} = {})
       div(class = `${elementName}__social-links`)
         each value in social
           a(class = `${elementName}__social-link-${value}` href = 'https://test/test')
-            image(class = `${elementName}__social-link-${value}-image` src = require(`@com/footer/image/${value}.svg`) alt = `${value} link`)
+            img(class = `${elementName}__social-link-${value}-image` src = require(`@com/footer/image/${value}.svg`) alt = `${value} link`)

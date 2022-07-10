@@ -11,7 +11,7 @@ mixin checklist(options = {})
 
   fieldset(class = `${elementName} js-${elementName} ${style}`)
     p(class = `${elementName}__label js-${elementName}__label` tabindex = 0)= labelText
-      image(class = `${elementName}__image js-${elementName}__image ${elementName}__image_collapsed` 
+      img(class = `${elementName}__image js-${elementName}__image ${elementName}__image_collapsed` 
         src = require('@com/checklist/image/expand-more.svg') alt = 'развернуть')
     ul(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper`)
       if Array.isArray(categories) && categories.length

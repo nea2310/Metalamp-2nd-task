@@ -19,7 +19,7 @@ mixin feedback(options = {})
     imageName = validateImagePath(imageName)
 
   div(class = elementName)
-    image(class = `${elementName}__image` src = imageName alt = alt)
+    img(class = `${elementName}__image` src = imageName alt = alt)
     p(class = `${elementName}__name`)= name
     p(class = `${elementName}__date`)= date
     div(class = `${elementName}__like`)

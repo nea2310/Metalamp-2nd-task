@@ -22,18 +22,18 @@ mixin room-card(options = {})
       each imageName, index in imageList
         - imageName = validateImagePath(imageName)
           if index === 0
-            image(class = `${elementName}__photo js-${elementName}__photo ${elementName}__photo_shown js-${elementName}__photo_shown` 
+            img(class = `${elementName}__photo js-${elementName}__photo ${elementName}__photo_shown js-${elementName}__photo_shown` 
               alt = 'фото номера' src = imageName data-sequence = index)
           else
-            image(class = `${elementName}__photo js-${elementName}__photo` 
+            img(class = `${elementName}__photo js-${elementName}__photo` 
               alt = 'фото номера' src = imageName data-sequence = index)
       div(class = `${elementName}__dots js-${elementName}__dots`)
       div(class = `${elementName}__buttons`)
         button(class = `${elementName}__previous js-${elementName}__previous` type = 'button' aria-label = 'предыдущее фото')
-          image(class = `${elementName}__previous-image` alt = 'предыдущее фото'
+          img(class = `${elementName}__previous-image` alt = 'предыдущее фото'
             src = require('@com/room-card/image/expand-more-white.svg'))
         button(class = `${elementName}__next js-${elementName}__next` type = 'button' aria-label = 'следующее фото')
-          image(class = `${elementName}__next-image` alt = 'следующее фото'
+          img(class = `${elementName}__next-image` alt = 'следующее фото'
             src = require('@com/room-card/image/expand-more-white.svg'))
     div(class = `${elementName}__details`)
       a(class = `${elementName}__details-room` href = 'https://test/test' aria-label='Перейти к деталям номера')

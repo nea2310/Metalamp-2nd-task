@@ -6,6 +6,6 @@ mixin like-button({isLiked = false, likeAmount = '0' } = {})
 
   div(class = `${elementName} js-${elementName}`)
     button(class = `${elementName}__button js-${elementName}__button ${isLikedModifier}`)
-      image(class = `${elementName}__image js-${elementName}__image`
+      img(class = `${elementName}__image js-${elementName}__image`
         src = require(`@com/like-button/image/${image}`) alt = 'мне нравится')
       span(class = `${elementName}__counter js-${elementName}__counter`)= likeAmount
