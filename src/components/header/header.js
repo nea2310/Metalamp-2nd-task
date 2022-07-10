@@ -87,6 +87,7 @@ class Header {
   }
 
   _toggleLevel2Menu(element, event) {
+    if (!element.firstElementChild) return;
     const condMatch = element.matches(`.${this.elementName}__nav-level1-item-link`)
       && element.firstElementChild.matches(`.${this.elementName}__nav-level1-item-image`);
     const condFull = condMatch && element.firstElementChild != null && event.type !== 'focusin';
