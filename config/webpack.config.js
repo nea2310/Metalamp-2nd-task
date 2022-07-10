@@ -62,6 +62,7 @@ module.exports = {
       patterns: [
         { from: `${src}/assets/favicons/favicons-main`, to: `${dist}` },
         { from: `${src}/assets/favicons/favicons-extra`, to: `${dist}/assets/favicons/` },
+        { from: `${src}/assets/favicons/manifest`, to: `${dist}/assets/favicons/` },
       ],
     }),
     /* поле output обязательно д.б. заполнено, даже если берем значение по умолчанию { path: dist },
