@@ -1,5 +1,6 @@
 include ../../components/header/header.pug
 include ../../components/footer/footer.pug
+include ../../components/head/head.pug
 
 
 -
@@ -7,21 +8,7 @@ include ../../components/footer/footer.pug
 doctype html
 html(lang = 'ru')
   head
-    meta(charset='utf-8')
-    meta(name = 'viewport' content='initial-scale=1.0, width=device-width')
-    meta(name = 'keywords' content='toxin, отель')
-    meta(name ='description' content='отель Toxin')
-    meta(property = 'og:title' content='отель Toxin')
-    meta(property = 'og:description' content = 'отель Toxin')
-    meta(property = 'og:image' content = 'https://nea2310.github.io/Metalamp-2nd-task/_social/social-image.jpg')
-    meta(property = 'og:url' content = 'https://nea2310.github.io/Metalamp-2nd-task/landing-page.html')
-    meta(http-equiv = 'Content-Type' content = 'text/html; charset=utf-8')
-    meta(http-equiv = 'X-UA-Compatible' content = 'IE=edge')
-    meta(name = 'viewport' content = 'width=device-width')
-    link(rel = 'icon' href= './favicon.ico' sizes = 'any')
-    link(rel = 'icon' href='./assets/favicons/icon.svg' type = 'image/svg+xml')
-    link(rel = 'apple-touch-icon' href = './assets/favicons/apple-touch-icon.png')
-    link(rel = 'manifest' href = './assets/favicons/manifest.json')
+    +head()
     block title
       title Layout
   body(class = 'layout')
