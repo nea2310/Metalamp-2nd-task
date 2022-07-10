@@ -1,4 +1,7 @@
 .date-dropdown {
+  * {
+    box-sizing: border-box;
+  }
   user-select: none;
   display: flex;
   justify-content: flex-start;
