@@ -16,7 +16,7 @@ $lg-padding-bottom: 30px;
   border-bottom: 1px solid $colorDarkShade25;
   position: relative;
   top: $headerHeight;
-  margin-bottom: calc($headerHeight + 30px);
+  margin-bottom: $headerHeight;
   &__header {
     position: absolute;
     width: 1px;
