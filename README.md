@@ -6,9 +6,9 @@ second test task from MetaLamp.
 https://nea2310.github.io/Metalamp-2nd-task/index.html
 
 ## Dependency
-jQuery Core 1.2.0+
-Ion.RangeSlider jQuery plugin 2.3.1+
-Air Datepicker jQuery plugin 3.1.1+
+[jQuery](https://jquery.com/)
+[Ion.RangeSlider](https://github.com/IonDen/ion.rangeSlider)
+[Air Datepicker](https://github.com/t1m0n/air-datepicker)
 
 ### File structure
 ```
