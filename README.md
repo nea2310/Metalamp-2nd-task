@@ -1,7 +1,6 @@
 # MetaLamp second task
 second test task from MetaLamp.
 
-
 ## Demo production version
 https://nea2310.github.io/Metalamp-2nd-task/index.html
 
@@ -23,11 +22,11 @@ src
 └─── pages
 
 ```
-`index.js` is a main file that imports each `.js` and `.scss` file in the `src` folder and automatically adds it to the bundle.
+`index.js` is the main file that imports each `.js` and `.scss` file in the `src` folder and  adds it to the bundle.
 
-`components` - this folder includes all components available for all pages.
+`components` -  components available for all pages of the project.
 
-`pages` - this folder includes all pages of the project.
+`pages` - all pages of the project.
 
 #### `components`
 `components` has the following structure:
@@ -87,8 +86,14 @@ assets
 └─── styles
 ```
 
+* `favicons-main` - main favicon of the project. 
+* `favicons-extra` - additional favicons for different browsers and screen resolution
+* `manifest` -  manifest file
+* `fonts` - font files
+* `styles` - files with global styles of the project
+
 #### `utils`
-`utils` has the following structure:
+`utils`  contains service functions used for data validation
 
 ## How to work
 #### Install dependencies
@@ -96,14 +101,18 @@ assets
 npm i
 ```
 
-#### Start dev server
+#### Start Webpack devserver
 ```commandline
 npm start
 ```
-go to `http://localhost:8080/`
+go to http://localhost:8080/
 
+#### Create bundle files in development mode
+```commandline
+npm run dev
+```
 
-#### On the production server create the bundle files
+#### Create bundle files in production mode
 ```commandline
 npm run build
 ```
