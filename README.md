@@ -12,7 +12,7 @@ https://nea2310.github.io/Metalamp-2nd-task/index.html
 ### File structure
 
 #### `configuration`
-Contains webpack configuration
+`configuration` contains webpack configuration
 
 #### `src`
 ```
