@@ -68,10 +68,6 @@
       position: relative;
       &:last-child {
         margin-top: 27px;
-        .booking__price-name,
-        .booking__price-cost {
-          @include font-h2;
-        }
       }
     }
     &-name {
@@ -85,11 +81,17 @@
       left: 220px;
     }
 
-    &-total-filling {
-      flex-grow: 1;
-      flex-shrink: 1;
-      border-bottom: 1px dashed $colorBorder;
-      margin-bottom: 5px;
+    &-total {
+      &-filling {
+        flex-grow: 1;
+        flex-shrink: 1;
+        border-bottom: 1px dashed $colorBorder;
+        margin-bottom: 5px;
+      }
+      &-name,
+      &-cost {
+        @include font-h2;
+      }
     }
   }
 

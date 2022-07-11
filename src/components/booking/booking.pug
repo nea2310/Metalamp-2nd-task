@@ -49,8 +49,8 @@ mixin booking(options = {})
             +info()
         div(class = `${elementName}__price-cost`)= `${extraTotal}₽`
       div(class = `${elementName}__price-details`)
-        div(class = `${elementName}__price-name`) Итого
+        div(class = `${elementName}__price-total-name`) Итого
         div(class = `${elementName}__price-total-filling`) 
-        div(class = `${elementName}__price-cost`)= `${totalAmount}₽`
+        div(class = `${elementName}__price-total-cost`)= `${totalAmount}₽`
     div(class = `${elementName}__book-button`)
       +button(button)
