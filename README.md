@@ -6,9 +6,9 @@ second test task from MetaLamp.
 https://nea2310.github.io/Metalamp-2nd-task/index.html
 
 ## Dependency
-[jQuery](https://jquery.com/)
-[Ion.RangeSlider](https://github.com/IonDen/ion.rangeSlider)
-[Air Datepicker](https://github.com/t1m0n/air-datepicker)
+[jQuery](https://jquery.com/)<br>
+[Ion.RangeSlider](https://github.com/IonDen/ion.rangeSlider)<br>
+[Air Datepicker](https://github.com/t1m0n/air-datepicker)<br>
 
 ### File structure
 ```
