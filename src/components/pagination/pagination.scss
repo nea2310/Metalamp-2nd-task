@@ -18,7 +18,8 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    &:not(span) {
+
+    &-page {
       cursor: pointer;
     }
 
@@ -26,10 +27,12 @@
       background: $gradientMain;
       @include font-h3;
       color: $colorTextBackground;
+      cursor: pointer;
     }
 
     &-next-previous {
       background: $gradientSecondary;
+      cursor: pointer;
     }
   }
 
