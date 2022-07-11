@@ -7,6 +7,20 @@
     position: relative;
   }
 
+  &__checkmark {
+    border: 1px solid $colorBorder;
+  }
+
+  &__ball {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    position: absolute;
+    background-color: $colorBorder;
+  }
+
   &__checkbox {
     position: absolute;
     left: 7px;
@@ -15,22 +29,9 @@
     height: 1px;
     outline-offset: 12px;
 
-    & + .toggle__checkmark {
-      border: 1px solid $colorBorder;
-      & > .toggle__ball {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        top: 3px;
-        left: 3px;
-        position: absolute;
-        background-color: $colorBorder;
-      }
-    }
-
     &:checked + .toggle__checkmark {
       border: 1px solid $colorMain;
-      & > .toggle__ball {
+      .toggle__ball {
         background-image: $gradientMain;
         right: 3px;
         left: auto;
