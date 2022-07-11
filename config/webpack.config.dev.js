@@ -36,7 +36,7 @@ module.exports = merge(common, {
             loader: 'sass-resources-loader',
             options: {
               resources: [
-                `${src}/assets/styles/glob.scss`,
+                `${src}/assets/styles/global.scss`,
               ],
             },
           }],
