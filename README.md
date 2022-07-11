@@ -12,15 +12,15 @@ https://nea2310.github.io/Metalamp-2nd-task/index.html
 [Air Datepicker](https://github.com/t1m0n/air-datepicker)<br>
 
 
-### File structure
+### File structure<br>
 
 
 #### `config`
-`config` contains webpack configuration
+`config` contains webpack configuration<br>
 
 
 #### `pixel-perfect`
-`pixel-perfect` contains layout files
+`pixel-perfect` contains layout files<br>
 
 
 #### `src`
@@ -35,7 +35,7 @@ src
 
 `components` -  components available for all pages of the project
 
-`pages` - all pages of the project
+`pages` - all pages of the project<br>
 
 
 #### `components`
@@ -59,7 +59,7 @@ components
 * `components` contains one folder per component
 * each component folder contains main `.pug` file with the template <br>
 `.js`  and `.scss` files which are dynamically loaded in the `index.js` are included in the component folder if needed
-* `.scss` contains **one BEM block** in the root of the file and all elements and modificators inside this block's structure
+* `.scss` contains **one BEM block** in the root of the file and all elements and modificators inside this block's structure<br>
 
 
 #### `pages`
@@ -82,7 +82,7 @@ pages
 | | |  bedroom.jpg
 ```
 
-* each page is extended from `pages/layout/layout.pug | pages/ui-kit-layout/ui-kit-layout.pug`
+* each page is extended from `pages/layout/layout.pug | pages/ui-kit-layout/ui-kit-layout.pug`<br>
 
 
 #### `assets`
@@ -102,10 +102,10 @@ assets
 * `favicons-extra` - additional favicons for different browsers and screen resolution
 * `manifest` -  manifest file
 * `fonts` - font files
-* `styles` - files with global styles of the project
+* `styles` - files with global styles of the project<br>
 
 #### `utils`
-`utils`  contains service functions used for data validation
+`utils`  contains service functions used for data validation<br>
 
 ## How to work
 #### Install dependencies
