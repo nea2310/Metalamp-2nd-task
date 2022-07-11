@@ -6,7 +6,7 @@
   &__header {
     padding-bottom: 20px;
     padding-bottom: 20px;
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-family: $fontMain;
     color: $colorTextNormal;
   }
 
@@ -22,7 +22,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-family: $fontMain;
     font-weight: bold;
     font-size: 1rem;
     color: $colorTextNormal;

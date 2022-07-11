@@ -107,7 +107,7 @@
     }
 
     &::-webkit-datetime-edit-fields-wrapper {
-      font-family: "Montserrat", Arial, Helvetica, sans-serif;
+      font-family: $fontMain;
       color: $colorTextNormal;
       text-transform: uppercase;
     }
@@ -130,11 +130,7 @@
       min-height: 51px;
       &--title {
         cursor: inherit;
-        font-family: "Montserrat", Arial, Helvetica, sans-serif;
-        font-weight: bold;
-        font-size: 19px;
-        line-height: 23px;
-        color: $colorTitle;
+        @include font-h2;
         i {
           color: $colorTitle;
         }
@@ -155,13 +151,9 @@
     &-body {
       &--day {
         &-name {
-          color: $colorMain;
-          font-family: "Montserrat", Arial, Helvetica, sans-serif;
-          font-weight: bold;
-          font-weight: 700;
-          font-size: 12px;
-          line-height: 14.63px;
+          @include font-h3;
           text-transform: capitalize;
+          color: $colorMain;
         }
       }
       &--cells {
@@ -176,12 +168,9 @@
     &-cell {
       height: 39px;
       &.-day- {
+        @include font-h3;
         color: $colorTextLight;
-        font-family: "Montserrat", Arial, Helvetica, sans-serif;
         font-weight: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 14.63px;
       }
     }
     &--content {

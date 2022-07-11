@@ -8,6 +8,8 @@ $xxl: 1920px;
 
 $headerHeight: 70px;
 
+$fontMain: "Montserrat", Arial, Helvetica, sans-serif;
+
 $colorTitle: #1f2041;
 $colorTextNormal: rgba(31, 32, 65, 0.75);
 $colorTextLight: rgba(31, 32, 65, 0.5);
@@ -26,7 +28,7 @@ $gradientMain: linear-gradient($colorMain 0%, $colorGradientBorder 100%);
 $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 100%);
 
 @mixin font-h1() {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: $fontMain;
   font-weight: bold;
   font-size: 24px;
   line-height: 29px;
@@ -34,7 +36,7 @@ $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 
 }
 
 @mixin font-h2() {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: $fontMain;
   font-weight: bold;
   font-size: 19px;
   line-height: 23px;
@@ -42,7 +44,7 @@ $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 
 }
 
 @mixin font-h3() {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: $fontMain;
   font-weight: bold;
   font-size: 12px;
   line-height: 15px;
@@ -51,7 +53,7 @@ $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 
 }
 
 @mixin font-body() {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: $fontMain;
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;

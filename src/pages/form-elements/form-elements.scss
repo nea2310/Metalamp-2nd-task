@@ -5,12 +5,7 @@
   margin: 143px auto 0;
 
   &__label {
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
-    color: #1f2041;
-    text-transform: uppercase;
+    @include font-h3;
     display: inline-block;
   }
 

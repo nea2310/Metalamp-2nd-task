@@ -50,12 +50,12 @@
     width: 100%;
     padding-top: 8px;
     grid-area: post-2;
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-family: $fontMain;
     font-weight: bold;
   }
 
   &__code {
     grid-area: post-3;
-    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    font-family: $fontMain;
   }
 }

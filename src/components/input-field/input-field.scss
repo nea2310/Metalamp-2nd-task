@@ -64,7 +64,7 @@
     }
 
     &::-webkit-datetime-edit-fields-wrapper {
-      font-family: "Montserrat", Arial, Helvetica, sans-serif;
+      font-family: $fontMain;
       color: $colorTextNormal;
       text-transform: uppercase;
     }
