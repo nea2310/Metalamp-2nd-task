@@ -11,8 +11,11 @@ https://nea2310.github.io/Metalamp-2nd-task/index.html
 
 ### File structure
 
-#### `configuration`
-`configuration` contains webpack configuration
+#### `config`
+`config` contains webpack configuration
+
+#### `pixel-perfect`
+`pixel-perfect` contains layout files
 
 #### `src`
 ```
@@ -47,7 +50,7 @@ components
 | | |  arrow-forward-white.svg
 ```
 * `components` contains one folder per component. 
-* Each component folder contains main `.pug` file with the template. <br>
+* each component folder contains main `.pug` file with the template. <br>
 `.js`  and `.scss` files which are dynamically loaded in the `index.js` are included in the component folder if needed.
 * `.scss` contains **one BEM block** in the root of the file and all elements and modificators inside this block's structure.
 
@@ -101,7 +104,7 @@ assets
 npm i
 ```
 
-#### Start Webpack devserver
+#### Start webpack devserver
 ```commandline
 npm start
 ```
@@ -111,8 +114,10 @@ go to http://localhost:8080/
 ```commandline
 npm run dev
 ```
+bundle files will be created in folder **dist**
 
 #### Create bundle files in production mode
 ```commandline
 npm run build
 ```
+bundle files will be created in folder **dist**
