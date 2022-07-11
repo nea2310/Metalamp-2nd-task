@@ -1,21 +1,27 @@
 # MetaLamp second task
 second test task from MetaLamp.
 
+
 ## Demo production version
 https://nea2310.github.io/Metalamp-2nd-task/index.html
+
 
 ## Dependency
 [jQuery](https://jquery.com/)<br>
 [Ion.RangeSlider](https://github.com/IonDen/ion.rangeSlider)<br>
 [Air Datepicker](https://github.com/t1m0n/air-datepicker)<br>
 
+
 ### File structure
+
 
 #### `config`
 `config` contains webpack configuration
 
+
 #### `pixel-perfect`
 `pixel-perfect` contains layout files
+
 
 #### `src`
 ```
@@ -25,11 +31,12 @@ src
 └─── pages
 
 ```
-`index.js` is the main file that imports each `.js` and `.scss` file in the `src` folder and  adds it to the bundle.
+`index.js` is the main file that imports each `.js` and `.scss` file in the `src` folder and  adds it to the bundle
 
-`components` -  components available for all pages of the project.
+`components` -  components available for all pages of the project
 
-`pages` - all pages of the project.
+`pages` - all pages of the project
+
 
 #### `components`
 `components` has the following structure:
@@ -49,10 +56,11 @@ components
 | └─── image
 | | |  arrow-forward-white.svg
 ```
-* `components` contains one folder per component. 
-* each component folder contains main `.pug` file with the template. <br>
-`.js`  and `.scss` files which are dynamically loaded in the `index.js` are included in the component folder if needed.
-* `.scss` contains **one BEM block** in the root of the file and all elements and modificators inside this block's structure.
+* `components` contains one folder per component
+* each component folder contains main `.pug` file with the template <br>
+`.js`  and `.scss` files which are dynamically loaded in the `index.js` are included in the component folder if needed
+* `.scss` contains **one BEM block** in the root of the file and all elements and modificators inside this block's structure
+
 
 #### `pages`
 `pages` has the following structure:
@@ -75,6 +83,7 @@ pages
 ```
 
 * each page is extended from `pages/layout/layout.pug | pages/ui-kit-layout/ui-kit-layout.pug`
+
 
 #### `assets`
 `assets` has the following structure:
