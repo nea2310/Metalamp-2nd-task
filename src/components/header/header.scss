@@ -1,6 +1,5 @@
 .header {
   width: 100%;
-  box-sizing: border-box;
   height: $headerHeight;
   margin: 0 auto;
   display: flex;
@@ -19,7 +18,6 @@
   }
 
   &__wrapper {
-    box-sizing: border-box;
     max-width: 1161px;
     width: 100%;
     margin: 0 auto;

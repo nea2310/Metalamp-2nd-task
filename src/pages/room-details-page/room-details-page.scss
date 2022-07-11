@@ -33,7 +33,6 @@ $lg-padding-bottom: 30px;
     @include font-h2;
   }
   @include media-breakpoint-down($xs) {
-    box-sizing: border-box;
     padding-top: 40px;
     margin: 0 auto;
   }
@@ -42,7 +41,6 @@ $lg-padding-bottom: 30px;
     max-height: 485px;
     max-width: $xxl;
     width: 100%;
-    box-sizing: border-box;
     margin: 0 auto;
     display: grid;
     grid-template-rows: 2fr 2fr;
@@ -55,7 +53,6 @@ $lg-padding-bottom: 30px;
   &__image {
     &-1 {
       max-height: 485px;
-      box-sizing: border-box;
       grid-area: image-1;
       height: 100%;
       width: 100%;
@@ -65,7 +62,6 @@ $lg-padding-bottom: 30px;
 
     &-2 {
       max-height: 242.5px;
-      box-sizing: border-box;
       grid-area: image-2;
       height: 100%;
       width: 100%;
@@ -75,7 +71,6 @@ $lg-padding-bottom: 30px;
 
     &-3 {
       max-height: 242.5px;
-      box-sizing: border-box;
       grid-area: image-3;
       height: 100%;
       width: 100%;
@@ -87,7 +82,6 @@ $lg-padding-bottom: 30px;
   &__main-info-wrapper {
     max-width: 1162px;
     width: 100%;
-    box-sizing: border-box;
     margin: 70px auto;
     display: grid;
     grid-template-rows: auto auto auto;
@@ -135,7 +129,6 @@ $lg-padding-bottom: 30px;
 
     &-wrapper {
       grid-area: info;
-      box-sizing: border-box;
       @include media-breakpoint-between($sm, $lg) {
         margin: 0 20px;
         padding-bottom: $lg-padding-bottom;
@@ -164,7 +157,6 @@ $lg-padding-bottom: 30px;
   &__booking {
     &-wrapper {
       grid-area: booking;
-      box-sizing: border-box;
       @include media-breakpoint-down($lg) {
         margin: 0 auto;
         padding-bottom: $lg-padding-bottom;
@@ -196,7 +188,6 @@ $lg-padding-bottom: 30px;
       padding-right: 70px;
       padding-top: 14px;
       grid-area: feedback;
-      box-sizing: border-box;
       @include media-breakpoint-between($sm, $lg) {
         padding-bottom: $lg-padding-bottom;
         margin: 0 20px;
@@ -213,7 +204,6 @@ $lg-padding-bottom: 30px;
     &-wrapper {
       padding-top: 33px;
       grid-area: rules;
-      box-sizing: border-box;
       @include media-breakpoint-between($sm, $lg) {
         padding-bottom: $lg-padding-bottom;
         padding-top: 0;
@@ -241,7 +231,6 @@ $lg-padding-bottom: 30px;
       padding-top: 32px;
       padding-left: 1px;
       grid-area: cancel;
-      box-sizing: border-box;
       @include media-breakpoint-down($sm) {
         @include padding-sm;
       }

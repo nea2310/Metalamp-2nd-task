@@ -78,6 +78,10 @@ $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
   width: 100%;

@@ -60,7 +60,6 @@
       height: 6px;
       background: $colorTextBackground;
       border: 1px solid $colorBorder;
-      box-sizing: border-box;
       border-radius: 3px;
     }
 
@@ -71,7 +70,6 @@
       background: $gradientSecondary;
       border: 2px solid $colorTextBackground;
       border-radius: 50%;
-      box-sizing: border-box;
       outline: none;
       cursor: pointer;
 

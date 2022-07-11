@@ -1,7 +1,6 @@
 .search-room-page {
   position: relative;
   top: $headerHeight;
-  box-sizing: border-box;
   display: flex;
   margin: 0 auto;
   padding-top: 31px;
@@ -61,7 +60,6 @@
 
     &-wrapper {
       max-width: 100%;
-      box-sizing: border-box;
       padding-left: 59px;
       @include media-breakpoint-down($lg) {
         padding: 0;

@@ -1,8 +1,4 @@
 .checklist {
-  * {
-    box-sizing: border-box;
-  }
-
   &_collapsing,
   &_temporarily-collapsing {
     .checklist__label {
