@@ -11,20 +11,19 @@ https://nea2310.github.io/Metalamp-2nd-task/index.html
 [Air Datepicker](https://github.com/t1m0n/air-datepicker)<br>
 
 ### File structure
-```
-configuration
-```
-Contains webpack configuration imported in the webpack.config.js from the root directory
+
+#### `configuration`
+Contains webpack configuration
 
 #### `src`
 ```
 src
-| index.ts
+| index.js
 └─── components
 └─── pages
 
 ```
-`index.ts` is a main file that imports each `.js` file in the `src` folder and automatically adds it to the bundle.
+`index.js` is a main file that imports each `.js` and `.scss` file in the `src` folder and automatically adds it to the bundle.
 
 `components` - this folder includes all components available for all pages.
 
@@ -49,10 +48,9 @@ components
 | | |  arrow-forward-white.svg
 ```
 * `components` contains one folder per component. 
-* Each component folder contains main `.pug` file with the template, `.js` that is dynamically loaded in the `index.ts`, scripts for this particular component and `.scss` file.
-* `.scss` is imported in the `.js` and contains **one BEM block** in the root of the file and all elements and modificators inside this block's structure.
-
-
+* Each component folder contains main `.pug` file with the template. <br>
+`.js`  and `.scss` files which are dynamically loaded in the `index.js` are included in the component folder if needed.
+* `.scss` contains **one BEM block** in the root of the file and all elements and modificators inside this block's structure.
 
 #### `pages`
 `pages` has the following structure:
@@ -74,7 +72,23 @@ pages
 | | |  bedroom.jpg
 ```
 
-* each page is independent extended from `pages/layout/layout.pug | pages/ui-kit-layout/ui-kit-layout.pug`
+* each page is extended from `pages/layout/layout.pug | pages/ui-kit-layout/ui-kit-layout.pug`
+
+#### `assets`
+`assets` has the following structure:
+
+```
+assets
+└─── favicons
+| └─── favicons-extra
+| └─── favicons-main
+| └─── manifest
+└─── fonts
+└─── styles
+```
+
+#### `utils`
+`utils` has the following structure:
 
 ## How to work
 #### Install dependencies
