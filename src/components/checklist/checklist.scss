@@ -1,20 +1,24 @@
+@mixin image() {
+  display: block;
+  position: absolute;
+  right: 15px;
+  top: 3px;
+  transition: all 0.3s ease 0s;
+}
+
 .checklist {
+  user-select: none;
+  max-width: 266px;
+  width: 100%;
+
   &_collapsing,
   &_temporarily-collapsing {
     .checklist__label {
       cursor: pointer;
     }
-  }
 
-  &:not(.checklist_collapsing) {
     .checklist__image {
-      display: none;
-    }
-  }
-
-  &:not(.checklist_collapsing).checklist_temporarily-collapsing {
-    .checklist__image {
-      display: block;
+      @include image;
     }
   }
 
@@ -25,24 +29,16 @@
 
     .checklist__image {
       transform: rotate(180deg);
-      display: block;
     }
   }
 
-  user-select: none;
-  max-width: 266px;
-  width: 100%;
+  &__image {
+    display: none;
+  }
 
   &__label {
     @include font-h3;
     position: relative;
-  }
-
-  &__image {
-    position: absolute;
-    right: 15px;
-    top: 3px;
-    transition: all 0.3s ease 0s;
   }
 
   &__list-wrapper {
@@ -103,11 +99,12 @@
     }
 
     &-name {
-      cursor: pointer;
       @include font-body;
+      cursor: pointer;
       line-height: 19px;
       padding-top: 2px;
       max-width: 215px;
+
       &_rich {
         font-family: $fontMain;
         font-weight: bold;
