@@ -1,6 +1,6 @@
 .booking {
   box-sizing: border-box;
-  background-color: $colorWhite;
+  background-color: $colorTextBackground;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
@@ -30,20 +30,20 @@
 
     &-lux {
       @include font-h3;
-      color: $colorPurple;
+      color: $colorMain;
       padding-left: 9px;
     }
 
     &-price {
       @include font-body;
       font-weight: bold;
-      color: $colorDarkShade50;
+      color: $colorTextLight;
     }
 
     &-label {
       @include font-body;
       font-size: 12px;
-      color: $colorDarkShade50;
+      color: $colorTextLight;
       padding-left: 3px;
     }
   }
@@ -89,7 +89,7 @@
     &-total-filling {
       flex-grow: 1;
       flex-shrink: 1;
-      border-bottom: 1px dashed $colorDarkShade25;
+      border-bottom: 1px dashed $colorBorder;
       margin-bottom: 5px;
     }
   }
@@ -98,6 +98,6 @@
     margin-top: 20px;
   }
   &-error {
-    outline: 1px solid $colorRed;
+    outline: 1px solid $colorBorderError;
   }
 }

@@ -8,7 +8,7 @@
     "post-4 post-5";
 
   &__image {
-    border: 1px solid $colorWhite;
+    border: 1px solid $colorTextBackground;
     box-shadow: 0px 0px 5px 0px rgba(31, 32, 65, 0.1);
     border-radius: 50%;
     grid-area: post-1;
@@ -18,7 +18,7 @@
     grid-area: post-2;
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     font-weight: bold;
-    color: $colorDarkShade75;
+    color: $colorTextNormal;
     font-size: 14px;
     padding-top: 4px;
   }

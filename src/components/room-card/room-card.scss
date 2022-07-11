@@ -5,7 +5,7 @@ $shift-vertical: 14px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  background-color: $colorWhite;
+  background-color: $colorTextBackground;
   @include media-breakpoint-between($xxs, $xs) {
     width: calc(100vw - #{$shift-horizontal});
     min-width: 100%;
@@ -110,15 +110,15 @@ $shift-vertical: 14px;
     margin-left: 3px;
     width: 8px;
     height: 8px;
-    border: 1px solid $colorWhite;
+    border: 1px solid $colorTextBackground;
     border-radius: 50%;
     cursor: pointer;
     &:hover,
     &:focus {
-      background-color: $colorWhite;
+      background-color: $colorTextBackground;
     }
     &_active {
-      background-color: $colorWhite;
+      background-color: $colorTextBackground;
     }
   }
 
@@ -155,26 +155,26 @@ $shift-vertical: 14px;
 
     &-lux {
       @include font-h3;
-      color: $colorPurple;
+      color: $colorMain;
       padding-left: 4px;
     }
 
     &-price {
       @include font-body;
       font-weight: bold;
-      color: $colorDarkShade50;
+      color: $colorTextLight;
 
       &-currency {
         @include font-body;
         font-weight: bold;
-        color: $colorDarkShade50;
+        color: $colorTextLight;
       }
     }
 
     &-label {
       @include font-body;
       font-size: 12px;
-      color: $colorDarkShade50;
+      color: $colorTextLight;
       padding-left: 3px;
     }
   }
@@ -192,7 +192,7 @@ $shift-vertical: 14px;
     margin-bottom: 18px;
     &-amount {
       font-weight: bold;
-      color: $colorDarkShade50;
+      color: $colorTextLight;
     }
     &-mark {
       padding-left: 4px;

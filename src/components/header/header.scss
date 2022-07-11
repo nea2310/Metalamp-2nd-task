@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-  background-color: $colorWhite;
+  background-color: $colorTextBackground;
   // position: absolute;
   z-index: 10;
   @include media-breakpoint-down($sm) {
@@ -30,7 +30,7 @@
       margin: 0 20px 0 40px;
       display: flex;
       align-items: center;
-      background-color: $colorWhite;
+      background-color: $colorTextBackground;
     }
     @include media-breakpoint-down($xs) {
       flex-direction: column;
@@ -46,7 +46,7 @@
       @include media-breakpoint-down($md) {
         display: none;
         position: absolute;
-        background-color: $colorWhite;
+        background-color: $colorTextBackground;
         left: 0;
         top: 45px;
         z-index: 1;
@@ -97,7 +97,7 @@
     &-level2 {
       position: absolute;
       z-index: 1;
-      background-color: $colorWhite;
+      background-color: $colorTextBackground;
       display: none;
 
       &-item {
@@ -226,7 +226,7 @@
         @include media-breakpoint-down($md) {
           border-radius: 1px;
           content: "";
-          background-color: $colorPurple;
+          background-color: $colorMain;
           position: absolute;
           width: 100%;
           height: 2px;
@@ -237,13 +237,13 @@
       &:before {
         @include media-breakpoint-down($md) {
           top: 0;
-          background-color: $colorPurple;
+          background-color: $colorMain;
         }
       }
       &:after {
         @include media-breakpoint-down($md) {
           bottom: 0;
-          background-color: $colorPurple;
+          background-color: $colorMain;
         }
       }
     }
@@ -252,7 +252,7 @@
   &__burger-button &__burger {
     @include media-breakpoint-down($md) {
       position: absolute;
-      background-color: $colorPurple;
+      background-color: $colorMain;
       left: 0;
       width: 100%;
       height: 2px;

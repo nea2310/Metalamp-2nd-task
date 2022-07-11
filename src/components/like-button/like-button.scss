@@ -14,7 +14,7 @@
   &__button {
     outline-offset: 5px;
     background: none;
-    border: 1px solid $colorDarkShade25;
+    border: 1px solid $colorBorder;
     width: 40px;
     height: 20px;
     border-radius: 22px;
@@ -24,9 +24,9 @@
     justify-content: space-around;
 
     &_liked {
-      border: 1px solid $colorPurple;
+      border: 1px solid $colorMain;
       & > .like-button__counter {
-        color: $colorPurple;
+        color: $colorMain;
       }
     }
   }

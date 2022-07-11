@@ -58,8 +58,8 @@
       cursor: pointer;
       width: 100%;
       height: 6px;
-      background: $colorWhite;
-      border: 1px solid $colorDarkShade25;
+      background: $colorTextBackground;
+      border: 1px solid $colorBorder;
       box-sizing: border-box;
       border-radius: 3px;
     }
@@ -68,8 +68,8 @@
       width: 14px;
       height: 14px;
       margin-top: -1px;
-      background: linear-gradient(180deg, $colorGreen 0%, $colorLightBlue 100%);
-      border: 2px solid $colorWhite;
+      background: $gradientSecondary;
+      border: 2px solid $colorTextBackground;
       border-radius: 50%;
       box-sizing: border-box;
       outline: none;
@@ -87,7 +87,7 @@
     .irs-bar {
       cursor: pointer;
       height: 6px;
-      background: linear-gradient(180deg, $colorGreen 0%, $colorLightBlue 100%);
+      background: $gradientSecondary;
       border-radius: 3px;
     }
   }

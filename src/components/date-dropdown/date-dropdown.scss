@@ -72,13 +72,13 @@
   &__input {
     cursor: pointer;
     &::placeholder {
-      color: $colorDarkShade75;
+      color: $colorTextNormal;
     }
     @include font-body;
     height: 44px;
     text-indent: 12px;
     border-radius: 5px;
-    border: 1px solid $colorDarkShade25;
+    border: 1px solid $colorBorder;
     margin-top: 5px;
 
     &-wrapper {
@@ -90,10 +90,10 @@
     }
 
     &:hover {
-      border-color: $colorDarkShade50;
+      border-color: $colorTextLight;
     }
     &:focus {
-      border-color: $colorDarkShade50;
+      border-color: $colorTextLight;
       outline: none;
     }
 
@@ -108,7 +108,7 @@
 
     &::-webkit-datetime-edit-fields-wrapper {
       font-family: "Montserrat", Arial, Helvetica, sans-serif;
-      color: $colorDarkShade75;
+      color: $colorTextNormal;
       text-transform: uppercase;
     }
 
@@ -134,9 +134,9 @@
         font-weight: bold;
         font-size: 19px;
         line-height: 23px;
-        color: $colorDarkShade100;
+        color: $colorTitle;
         i {
-          color: $colorDarkShade100;
+          color: $colorTitle;
         }
         &:hover {
           background: none;
@@ -155,7 +155,7 @@
     &-body {
       &--day {
         &-name {
-          color: $colorPurple;
+          color: $colorMain;
           font-family: "Montserrat", Arial, Helvetica, sans-serif;
           font-weight: bold;
           font-weight: 700;
@@ -176,7 +176,7 @@
     &-cell {
       height: 39px;
       &.-day- {
-        color: $colorDarkShade50;
+        color: $colorTextLight;
         font-family: "Montserrat", Arial, Helvetica, sans-serif;
         font-weight: normal;
         font-weight: 400;
@@ -189,12 +189,12 @@
     }
     &-cell.-day- {
       &.-disabled- {
-        color: $colorDarkShade25;
+        color: $colorBorder;
       }
 
       &.-current- {
         border-radius: 50%;
-        background: $gradientGreen;
+        background: $gradientSecondary;
       }
 
       &.-range-from- {
@@ -205,7 +205,7 @@
           content: "";
           height: 39px;
           width: 40px;
-          background: $gradientPurple;
+          background: $gradientMain;
           opacity: 0.5;
           border-bottom-left-radius: 50%;
           border-top-left-radius: 50%;
@@ -220,7 +220,7 @@
           content: "";
           height: 39px;
           width: 40px;
-          background: $gradientPurple;
+          background: $gradientMain;
           opacity: 0.5;
           border-bottom-right-radius: 50%;
           border-top-right-radius: 50%;
@@ -231,7 +231,7 @@
         font-weight: 700;
         position: relative;
         border-radius: 50%;
-        background: $gradientPurple;
+        background: $gradientMain;
         &.-disabled- {
           background: none;
         }
@@ -241,30 +241,30 @@
         font-weight: 700;
         position: relative;
         border-radius: 50%;
-        background: $gradientPurple;
+        background: $gradientMain;
       }
 
       &.-focus-.-selected- {
-        background: $gradientPurple;
+        background: $gradientMain;
         font-weight: 700;
       }
 
       &.-in-range- {
-        background: $gradientPurple;
+        background: $gradientMain;
         opacity: 0.5;
       }
 
       &.-in-range-.-focus- {
         position: relative;
         border-radius: 50%;
-        background: $gradientPurple;
+        background: $gradientMain;
         opacity: 1;
         &::before {
           position: absolute;
           content: "";
           height: 39px;
           width: 40px;
-          background: $gradientPurple;
+          background: $gradientMain;
           opacity: 0.5;
         }
       }

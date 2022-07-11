@@ -1,6 +1,6 @@
 .registration {
   box-sizing: border-box;
-  background-color: $colorWhite;
+  background-color: $colorTextBackground;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
@@ -61,6 +61,6 @@
   }
 
   &-error {
-    outline: 1px solid $colorRed;
+    outline: 1px solid $colorBorderError;
   }
 }

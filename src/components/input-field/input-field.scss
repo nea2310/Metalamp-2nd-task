@@ -36,36 +36,36 @@
     right: 6px;
     height: 19px;
     cursor: pointer;
-    background-color: $colorWhite;
+    background-color: $colorTextBackground;
     border: none;
     width: 30px;
     &:focus {
-      outline: solid 1px $colorDarkShade25;
+      outline: solid 1px $colorBorder;
     }
   }
 
   &__input {
     outline: none;
     &::placeholder {
-      color: $colorDarkShade25;
+      color: $colorBorder;
     }
     @include font-body;
     height: 44px;
     text-indent: 12px;
     border-radius: 5px;
-    border: 1px solid $colorDarkShade25;
+    border: 1px solid $colorBorder;
     margin-top: 4px;
     width: 100%;
     &:hover {
-      border-color: $colorDarkShade50;
+      border-color: $colorTextLight;
     }
     &:focus {
-      border-color: $colorDarkShade50;
+      border-color: $colorTextLight;
     }
 
     &::-webkit-datetime-edit-fields-wrapper {
       font-family: "Montserrat", Arial, Helvetica, sans-serif;
-      color: $colorDarkShade75;
+      color: $colorTextNormal;
       text-transform: uppercase;
     }
 

@@ -45,19 +45,19 @@ $borderWidth: 2px;
   }
 
   &_type_plain-text {
-    color: $colorPurple;
+    color: $colorMain;
     border: none;
     background: none;
     &:hover,
     &:focus {
-      color: $colorDarkShade50;
+      color: $colorTextLight;
     }
   }
 
   &_color {
     &_dark {
-      background: $gradientPurple;
-      color: $colorWhite;
+      background: $gradientMain;
+      color: $colorTextBackground;
       &:hover,
       &:focus {
         opacity: 0.5;
@@ -65,12 +65,12 @@ $borderWidth: 2px;
     }
 
     &_light {
-      background-color: $colorWhite;
-      box-shadow: inset 0px 2px 0px 0px $colorPurple, inset 0px 0px 0px 2px $colorBlue;
-      color: $colorPurple;
+      background-color: $colorTextBackground;
+      box-shadow: inset 0px 2px 0px 0px $colorMain, inset 0px 0px 0px 2px $colorGradientBorder;
+      color: $colorMain;
       &:hover,
       &:focus {
-        box-shadow: inset 0px 2px 0px 0px $colorPurpleOpaque, inset 0px 0px 0px 2px $colorBlueOpaque;
+        box-shadow: inset 0px 2px 0px 0px $colorMainHover, inset 0px 0px 0px 2px $colorGradientBorderHover;
       }
     }
   }

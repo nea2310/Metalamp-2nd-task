@@ -8,29 +8,29 @@ $xxl: 1920px;
 
 $headerHeight: 70px;
 
-$colorDarkShade100: #1f2041;
-$colorDarkShade75: rgba(31, 32, 65, 0.75);
-$colorDarkShade50: rgba(31, 32, 65, 0.5);
-$colorDarkShade25: rgba(31, 32, 65, 0.25);
-$colorDarkShade15: rgba(31, 32, 65, 0.15);
-$colorDarkShade5: rgba(31, 32, 65, 0.05);
-$colorRed: #ff0000;
-$colorPurple: #bc9cff;
-$colorPurpleOpaque: rgba(188, 156, 255, 0.5);
-$colorBlue: #8ba4f9;
-$colorBlueOpaque: rgba(139, 164, 249, 0.5);
-$colorGreen: #6fcf97;
-$colorWhite: #ffffff;
-$colorLightBlue: #66d2ea;
-$gradientPurple: linear-gradient($colorPurple 0%, $colorBlue 100%);
-$gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
+$colorTitle: #1f2041;
+$colorTextNormal: rgba(31, 32, 65, 0.75);
+$colorTextLight: rgba(31, 32, 65, 0.5);
+$colorBorder: rgba(31, 32, 65, 0.25);
+$colorFooterDelimiter: rgba(31, 32, 65, 0.15);
+$colorBackground: rgba(31, 32, 65, 0.05);
+$colorBorderError: #ff0000;
+$colorMain: #bc9cff;
+$colorMainHover: rgba(188, 156, 255, 0.5);
+$colorGradientBorder: #8ba4f9;
+$colorGradientBorderHover: rgba(139, 164, 249, 0.5);
+$colorSecondary: #6fcf97;
+$colorTextBackground: #ffffff;
+$colorGradientSecondary: #66d2ea;
+$gradientMain: linear-gradient($colorMain 0%, $colorGradientBorder 100%);
+$gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 100%);
 
 @mixin font-h1() {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 24px;
   line-height: 29px;
-  color: $colorDarkShade100;
+  color: $colorTitle;
 }
 
 @mixin font-h2() {
@@ -38,7 +38,7 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
   font-weight: bold;
   font-size: 19px;
   line-height: 23px;
-  color: $colorDarkShade100;
+  color: $colorTitle;
 }
 
 @mixin font-h3() {
@@ -46,7 +46,7 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
   font-weight: bold;
   font-size: 12px;
   line-height: 15px;
-  color: $colorDarkShade100;
+  color: $colorTitle;
   text-transform: uppercase;
 }
 
@@ -55,7 +55,7 @@ $gradientGreen: linear-gradient($colorGreen 0%, $colorLightBlue 100%);
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;
-  color: $colorDarkShade75;
+  color: $colorTextNormal;
 }
 
 @mixin media-breakpoint-up($width) {
@@ -88,7 +88,7 @@ body {
   padding: 0;
   min-height: 100vh;
   width: 100%;
-  background: rgb(255, 255, 255);
+  background: $colorTextBackground;
   min-width: 320px;
 }
 

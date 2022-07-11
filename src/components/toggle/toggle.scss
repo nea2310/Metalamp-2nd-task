@@ -20,7 +20,7 @@
     outline-offset: 12px;
 
     & + .toggle__checkmark {
-      border: 1px solid $colorDarkShade25;
+      border: 1px solid $colorBorder;
       & > .toggle__ball {
         width: 10px;
         height: 10px;
@@ -28,14 +28,14 @@
         top: 3px;
         left: 3px;
         position: absolute;
-        background-color: $colorDarkShade25;
+        background-color: $colorBorder;
       }
     }
 
     &:checked + .toggle__checkmark {
-      border: 1px solid $colorPurple;
+      border: 1px solid $colorMain;
       & > .toggle__ball {
-        background-image: $gradientPurple;
+        background-image: $gradientMain;
         right: 3px;
         left: auto;
       }
@@ -46,11 +46,11 @@
     cursor: pointer;
     display: inline-block;
     position: relative;
-    border: 1px solid $colorDarkShade25;
+    border: 1px solid $colorBorder;
     width: 38px;
     height: 18px;
     border-radius: 22px;
-    background-color: $colorWhite;
+    background-color: $colorTextBackground;
   }
 
   &__name {

@@ -1,12 +1,12 @@
 .dropdown__input_rounded.dropdown__input_expanded {
-  border-color: $colorDarkShade50;
+  border-color: $colorTextLight;
   border-bottom: none;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 .dropdown__input_not-rounded.dropdown__input_expanded {
-  border-color: $colorDarkShade50;
+  border-color: $colorTextLight;
   border-bottom: none;
 }
 
@@ -56,7 +56,7 @@
     cursor: pointer;
     text-overflow: ellipsis;
     &::placeholder {
-      color: $colorDarkShade25;
+      color: $colorBorder;
     }
     @include font-body;
     height: 44px;
@@ -64,15 +64,15 @@
     padding-right: 90px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    border: 1px solid $colorDarkShade25;
+    border: 1px solid $colorBorder;
     margin-top: 5px;
     width: 100%;
     display: block;
     &:hover {
-      border-color: $colorDarkShade50;
+      border-color: $colorTextLight;
     }
     &:focus {
-      border-color: $colorDarkShade50;
+      border-color: $colorTextLight;
       outline: none;
     }
 
@@ -83,11 +83,11 @@
   }
 
   &__list-wrapper {
-    background-color: $colorWhite;
+    background-color: $colorTextBackground;
     width: 100%;
     position: absolute;
     z-index: 3;
-    border: 1px solid $colorDarkShade50;
+    border: 1px solid $colorTextLight;
     box-sizing: border-box;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -125,13 +125,13 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background-color: $colorWhite;
-      border: 1px solid $colorDarkShade50;
-      color: $colorDarkShade50;
+      background-color: $colorTextBackground;
+      border: 1px solid $colorTextLight;
+      color: $colorTextLight;
       &[disabled] {
         cursor: initial;
-        border: 1px solid $colorDarkShade25;
-        color: $colorDarkShade25;
+        border: 1px solid $colorBorder;
+        color: $colorBorder;
       }
     }
 

@@ -1,13 +1,13 @@
 .index {
   &__main {
-    background-color: $colorDarkShade5;
+    background-color: $colorBackground;
   }
 
   &__header {
     padding-bottom: 20px;
     padding-bottom: 20px;
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
-    color: $colorDarkShade75;
+    color: $colorTextNormal;
   }
 
   &__pages {
@@ -25,11 +25,11 @@
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     font-weight: bold;
     font-size: 1rem;
-    color: $colorDarkShade75;
+    color: $colorTextNormal;
     &:hover,
     &:visited,
     &:focus {
-      color: $colorDarkShade50;
+      color: $colorTextLight;
     }
   }
 

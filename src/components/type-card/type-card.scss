@@ -20,25 +20,25 @@
     font-weight: normal;
     &_h1 {
       @include font-h1;
-      color: $colorDarkShade25;
+      color: $colorBorder;
       font-weight: normal;
     }
 
     &_h2 {
       @include font-h2;
-      color: $colorDarkShade25;
+      color: $colorBorder;
       font-weight: normal;
     }
 
     &_h3 {
       @include font-h3;
-      color: $colorDarkShade25;
+      color: $colorBorder;
       font-weight: normal;
     }
 
     &_body {
       @include font-body;
-      color: $colorDarkShade25;
+      color: $colorBorder;
     }
   }
 

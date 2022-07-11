@@ -11,7 +11,7 @@
   &__element {
     @include font-body;
     font-size: 12px;
-    color: $colorDarkShade50;
+    color: $colorTextLight;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -23,13 +23,13 @@
     }
 
     &-first-last-page {
-      background: $gradientPurple;
+      background: $gradientMain;
       @include font-h3;
-      color: $colorWhite;
+      color: $colorTextBackground;
     }
 
     &-next-previous {
-      background: $gradientGreen;
+      background: $gradientSecondary;
     }
   }
 
