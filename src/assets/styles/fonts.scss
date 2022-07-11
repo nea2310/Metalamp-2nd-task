@@ -4,14 +4,18 @@ $normal: "montserrat-regular";
 
 @font-face {
   font-family: "Montserrat";
-  src: url("#{$path}#{$normal}.woff2") format("woff2"), url("#{$path}#{$normal}.woff") format("woff"),
-    url("#{$path}#{$normal}.ttf") format("truetype");
+  src: 
+  url("#{$path}#{$normal}.woff2") format("woff2"), 
+  url("#{$path}#{$normal}.woff") format("woff"),
+  url("#{$path}#{$normal}.ttf") format("truetype");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("#{$path}#{$bold}.woff2") format("woff2"), url("#{$path}#{$bold}.woff") format("woff"),
-    url("#{$path}#{$bold}.ttf") format("truetype");
+  src: 
+  url("#{$path}#{$bold}.woff2") format("woff2"), 
+  url("#{$path}#{$bold}.woff") format("woff"),
+  url("#{$path}#{$bold}.ttf") format("truetype");
   font-weight: bold;
 }
