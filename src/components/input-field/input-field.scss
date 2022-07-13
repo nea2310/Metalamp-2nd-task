@@ -2,6 +2,7 @@
   user-select: none;
   display: flex;
   flex-direction: column;
+
   &_width {
     &_wide {
       max-width: 320px;
@@ -36,16 +37,13 @@
     background-color: $colorTextBackground;
     border: none;
     width: 30px;
+
     &:focus {
       outline: solid 1px $colorBorder;
     }
   }
 
   &__input {
-    outline: none;
-    &::placeholder {
-      color: $colorBorder;
-    }
     @include font-body;
     height: 44px;
     text-indent: 12px;
@@ -53,9 +51,16 @@
     border: 1px solid $colorBorder;
     margin-top: 4px;
     width: 100%;
+    outline: none;
+
+    &::placeholder {
+      color: $colorBorder;
+    }
+
     &:hover {
       border-color: $colorTextLight;
     }
+
     &:focus {
       border-color: $colorTextLight;
     }
@@ -70,6 +75,7 @@
       -webkit-appearance: none;
       display: none;
     }
+
     &[type="date"] {
       text-indent: 6px;
     }
