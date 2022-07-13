@@ -4,8 +4,9 @@
   user-select: none;
 
   &__label-text {
-    max-width: 100px;
     @include font-h3;
+    max-width: 100px;
+
     &-text {
       margin-bottom: 16px;
     }
@@ -25,7 +26,8 @@
 
     &_liked {
       border: 1px solid $colorMain;
-      & > .like-button__counter {
+
+      .like-button__counter {
         color: $colorMain;
       }
     }

@@ -51,8 +51,8 @@
     }
 
     &-name {
-      cursor: pointer;
       @include font-body;
+      cursor: pointer;
       line-height: 19px;
       padding-left: 10px;
     }
