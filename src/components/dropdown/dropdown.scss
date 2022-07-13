@@ -27,6 +27,7 @@
   &__label {
     display: block;
     width: 100%;
+
     &-text {
       @include font-h3;
     }
@@ -50,12 +51,9 @@
   }
 
   &__input {
+    @include font-body;
     cursor: pointer;
     text-overflow: ellipsis;
-    &::placeholder {
-      color: $colorBorder;
-    }
-    @include font-body;
     height: 44px;
     padding-left: 12px;
     padding-right: 90px;
@@ -65,9 +63,15 @@
     margin-top: 5px;
     width: 100%;
     display: block;
+
+    &::placeholder {
+      color: $colorBorder;
+    }
+
     &:hover {
       border-color: $colorTextLight;
     }
+
     &:focus {
       border-color: $colorTextLight;
       outline: none;
@@ -97,6 +101,7 @@
   &__category {
     @include font-h3;
     margin-left: 14px;
+
     &-wrapper {
       display: flex;
       justify-content: space-between;
@@ -125,6 +130,7 @@
       background-color: $colorTextBackground;
       border: 1px solid $colorTextLight;
       color: $colorTextLight;
+
       &[disabled] {
         cursor: initial;
         border: 1px solid $colorBorder;
@@ -141,6 +147,7 @@
     &_hidden {
       display: none;
     }
+
     &-clear {
       flex-grow: 1;
     }
