@@ -7,6 +7,7 @@
 }
 
 .checklist {
+  @include fieldset-reset-style;
   user-select: none;
   max-width: 266px;
   width: 100%;
@@ -38,10 +39,12 @@
 
   &__label {
     @include font-h3;
+    margin: 0;
     position: relative;
   }
 
   &__list-wrapper {
+    @include ul-reset-style;
     max-width: 266px;
     width: 100%;
     background-color: $colorTextBackground;
@@ -100,6 +103,7 @@
 
     &-name {
       @include font-body;
+      margin: 0;
       cursor: pointer;
       line-height: 19px;
       padding-top: 2px;
@@ -113,6 +117,7 @@
     }
 
     &-description {
+      margin: 0;
       max-width: 230px;
       cursor: pointer;
       font-family: $fontMain;

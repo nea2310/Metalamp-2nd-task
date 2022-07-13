@@ -25,6 +25,7 @@ $shift-vertical: 14px;
   }
 
   &__photos::before {
+    text-decoration: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -58,6 +59,7 @@ $shift-vertical: 14px;
 
   &__previous,
   &__next {
+    @include button-reset-style;
     border-top-left-radius: 4px;
     cursor: pointer;
     margin: 0;
@@ -114,6 +116,7 @@ $shift-vertical: 14px;
   }
 
   &__dot {
+    @include button-reset-style;
     margin-left: 3px;
     width: 8px;
     height: 8px;
@@ -138,6 +141,7 @@ $shift-vertical: 14px;
     justify-content: space-between;
 
     &-room {
+      text-decoration: none;
       flex-grow: 1;
       border-bottom: 1px solid rgba(31, 32, 65, 0.1);
       padding-bottom: 10px;

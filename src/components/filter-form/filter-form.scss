@@ -9,6 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-block-end: 0;
   }
 
   @include media-breakpoint-down($xs) {

@@ -13,6 +13,7 @@ $lg-padding-bottom: 30px;
 }
 
 .room-details-page {
+  flex-grow: 1;
   border-bottom: 1px solid $colorBorder;
   position: relative;
   top: $headerHeight;
@@ -31,6 +32,7 @@ $lg-padding-bottom: 30px;
   &__rules-header,
   &__cancel-header {
     @include font-h2;
+    margin: 0;
   }
   @include media-breakpoint-down($xs) {
     padding-top: 40px;
@@ -176,6 +178,7 @@ $lg-padding-bottom: 30px;
 
       &-quantity {
         white-space: nowrap;
+        margin: 0;
         @include font-body;
       }
     }
@@ -225,7 +228,7 @@ $lg-padding-bottom: 30px;
 
   &__cancel {
     @include font-body;
-    margin-top: 19px;
+    margin: 19px 0 0;
     &-wrapper {
       padding-right: 73px;
       padding-top: 32px;

@@ -8,6 +8,7 @@
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   background-color: $colorTextBackground;
   z-index: 10;
+  position: absolute;
 
   @include media-breakpoint-down($sm) {
     position: relative;
@@ -62,6 +63,7 @@
       }
 
       &-items {
+        @include ul-reset-style;
         margin-left: auto;
         display: flex;
         align-items: center;
@@ -95,12 +97,14 @@
         }
 
         &-link {
+          text-decoration: none;
           @include font-body;
         }
       }
     }
 
     &-level2 {
+      @include ul-reset-style;
       position: absolute;
       z-index: 1;
       background-color: $colorTextBackground;
@@ -110,6 +114,7 @@
         margin-top: 10px;
 
         &-link {
+          text-decoration: none;
           @include font-body;
         }
 
@@ -127,6 +132,8 @@
   }
 
   &__logo {
+    text-decoration: none;
+
     @include media-breakpoint-down($lg) {
       padding-left: 20px;
     }
@@ -187,6 +194,7 @@
   }
 
   &__button {
+    @include button-reset-style;
     &-reg,
     &-login {
       margin-top: 3px;
@@ -213,6 +221,7 @@
 
     &-name {
       @include font-body;
+      text-decoration: none;
       padding-left: 20px;
       white-space: nowrap;
 
@@ -226,6 +235,7 @@
     border-radius: 1px;
 
     &-button {
+      @include button-reset-style;
       display: none;
       cursor: pointer;
 

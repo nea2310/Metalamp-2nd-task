@@ -1,4 +1,5 @@
 .go-up-button {
+  @include button-reset-style;
   border: 2px solid $colorMain;
   width: 40px;
   height: 40px;

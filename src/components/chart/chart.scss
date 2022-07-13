@@ -3,6 +3,7 @@
   align-items: flex-end;
 
   &__legend {
+    @include ul-reset-style;
     @include font-body;
     margin-left: 30px;
 

@@ -20,11 +20,13 @@
     font-weight: bold;
     color: $colorTextNormal;
     font-size: 14px;
+    margin: 0;
   }
 
   &__description {
     @include font-body;
     grid-area: post-3;
     font-size: 14px;
+    margin: 0;
   }
 }

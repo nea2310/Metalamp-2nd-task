@@ -1,4 +1,5 @@
 .search-room-page {
+  flex-grow: 1;
   position: relative;
   top: $headerHeight;
   display: flex;
@@ -30,6 +31,7 @@
 
   &__title {
     display: flex;
+    margin: 0;
     @include font-h1;
     margin-bottom: 20px;
     text-align: center;

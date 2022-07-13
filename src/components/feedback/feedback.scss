@@ -16,6 +16,7 @@
 
   &__name {
     grid-area: post-2;
+    margin: 0;
     font-family: $fontMain;
     font-weight: bold;
     color: $colorTextNormal;
@@ -25,6 +26,7 @@
 
   &__date {
     @include font-body;
+    margin: 0;
     grid-area: post-3;
     font-size: 14px;
   }
@@ -39,6 +41,7 @@
 
   &__description {
     @include font-body;
+    margin: 0;
     grid-area: post-5;
     font-size: 14px;
   }

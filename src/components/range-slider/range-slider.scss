@@ -5,6 +5,7 @@
 
   &__title {
     @include font-h3;
+    margin: 0;
     white-space: nowrap;
     width: 50%;
 
@@ -45,6 +46,7 @@
 
   &__text {
     @include font-body;
+    margin: 0;
     font-size: 12px;
   }
 

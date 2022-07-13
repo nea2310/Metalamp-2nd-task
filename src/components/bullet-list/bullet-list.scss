@@ -1,10 +1,12 @@
 .bullet-list {
   &__label {
+    @include fieldset-reset-style;
     @include font-h3;
     margin-bottom: 14px;
   }
 
   &__list-wrapper {
+    @include ul-reset-style;
     padding-left: 17px;
     max-width: 240px;
     list-style-image: url("@com/bullet-list/image/ellipse.svg");

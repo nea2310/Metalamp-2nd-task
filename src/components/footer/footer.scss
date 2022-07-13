@@ -56,7 +56,12 @@
     }
   }
 
+  &__logo {
+    text-decoration: none;
+  }
+
   &__items {
+    @include ul-reset-style;
     flex-grow: 1;
 
     &-link,
@@ -130,6 +135,7 @@
 
     &-link {
       @include font-body;
+      text-decoration: none;
       line-height: 17.07px;
       color: $colorTextLight;
     }
@@ -145,6 +151,11 @@
     white-space: initial;
     line-height: 17.07px;
     line-height: 22px;
+    margin: 0;
+  }
+
+  &__social-link {
+    text-decoration: none;
   }
 
   &__social-links {

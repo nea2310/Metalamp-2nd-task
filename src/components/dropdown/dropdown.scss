@@ -30,6 +30,7 @@
 
     &-text {
       @include font-h3;
+      margin: 0;
     }
   }
 
@@ -83,23 +84,28 @@
     }
   }
 
-  &__list-wrapper {
-    background-color: $colorTextBackground;
-    width: 100%;
-    position: absolute;
-    z-index: 3;
-    border: 1px solid $colorTextLight;
-    box-sizing: border-box;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+  &__list {
+    @include ul-reset-style;
 
-    &_hidden {
-      display: none;
+    &-wrapper {
+      background-color: $colorTextBackground;
+      width: 100%;
+      position: absolute;
+      z-index: 3;
+      border: 1px solid $colorTextLight;
+      box-sizing: border-box;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+
+      &_hidden {
+        display: none;
+      }
     }
   }
 
   &__category {
     @include font-h3;
+    margin: 0;
     margin-left: 14px;
 
     &-wrapper {
@@ -123,6 +129,7 @@
 
     &-increment,
     &-decrement {
+      @include button-reset-style;
       cursor: pointer;
       width: 30px;
       height: 30px;

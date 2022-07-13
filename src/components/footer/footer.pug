@@ -40,5 +40,5 @@ mixin footer({menu = []} = {})
         p(class = `${elementName}__long-text`) Copyright © 2018 Toxin отель. Все права защищены.
       div(class = `${elementName}__social-links`)
         each value in social
-          a(class = `${elementName}__social-link-${value}` href = 'https://test/test')
-            img(class = `${elementName}__social-link-${value}-image` src = require(`@com/footer/image/${value}.svg`) alt = `${value} link`)
+          a(class = `${elementName}__social-link ${elementName}__social-link_${value}` href = 'https://test/test')
+            img(class = `${elementName}__social-link-image ${elementName}__social-link-image_${value}` src = require(`@com/footer/image/${value}.svg`) alt = `${value} link`)

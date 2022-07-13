@@ -2,6 +2,8 @@ $borderWidth: 2px;
 
 .button {
   @include font-h3;
+  @include button-reset-style;
+  text-decoration: none;
   cursor: pointer;
   margin: 0;
   padding: 0 10px 0 10px;

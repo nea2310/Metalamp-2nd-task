@@ -25,17 +25,18 @@
 
     &-text {
       @include font-h3;
+      margin: 0;
     }
   }
 
   &__link {
+    @include button-reset-style;
     position: absolute;
     bottom: 13px;
     right: 6px;
     height: 19px;
     cursor: pointer;
     background-color: $colorTextBackground;
-    border: none;
     width: 30px;
 
     &:focus {
