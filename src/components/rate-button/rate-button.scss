@@ -1,8 +1,8 @@
 .rate-button {
+  @include font-h3;
   margin: 0px 0px 0px 0px;
   padding: 0;
   border: none;
-  @include font-h3;
 
   &__caption {
     padding: 0;
@@ -28,33 +28,41 @@
     font-size: inherit;
     background-size: 20px auto;
     background-repeat: space;
+
     &:focus {
       outline: 1;
     }
+
     &:checked,
     &:hover {
       background-image: url("@com/rate-button/image/star.svg");
       cursor: pointer;
     }
+
     &:hover ~ .rate-button__star {
       opacity: 0;
     }
+
     &:nth-of-type(1) {
       min-width: 20px;
       z-index: 5;
     }
+
     &:nth-of-type(2) {
       min-width: 44px;
       z-index: 4;
     }
+
     &:nth-of-type(3) {
       min-width: 68px;
       z-index: 3;
     }
+
     &:nth-of-type(4) {
       min-width: 92px;
       z-index: 2;
     }
+
     &:nth-of-type(5) {
       min-width: 116px;
       z-index: 1;
