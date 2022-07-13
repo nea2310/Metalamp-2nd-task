@@ -21,13 +21,13 @@ class Login {
     e.preventDefault();
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
-        input.classList.add('login-error');
+        input.classList.add('login_error');
       } else {
-        input.classList.remove('login-error');
+        input.classList.remove('login_error');
       }
     });
 
-    const isError = Array.from(this.inputs).some((item) => item.classList.contains('login-error'));
+    const isError = Array.from(this.inputs).some((item) => item.classList.contains('login_error'));
 
     if (isError) {
       e.preventDefault();
@@ -36,7 +36,7 @@ class Login {
   }
 
   static _handleLoginFocus(e) {
-    e.currentTarget.classList.remove('login-error');
+    e.currentTarget.classList.remove('login_error');
   }
 }
 

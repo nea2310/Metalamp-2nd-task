@@ -22,18 +22,18 @@ class SearchRoom {
   _handleSearchRoomSubmit(e) {
     this.dates.forEach((date) => {
       if (/^\d{4}-\d{2}-\d{2}$/.test(date.value)) {
-        date.classList.remove('search-room-error');
+        date.classList.remove('search-room_error');
       } else {
-        date.classList.add('search-room-error');
+        date.classList.add('search-room_error');
       }
     });
     if (this.guests.value.trim() === '') {
-      this.guests.classList.add('search-room-error');
+      this.guests.classList.add('search-room_error');
     } else {
-      this.guests.classList.remove('search-room-error');
+      this.guests.classList.remove('search-room_error');
     }
 
-    const isError = Array.from(this.inputs).some((item) => item.classList.contains('search-room-error'));
+    const isError = Array.from(this.inputs).some((item) => item.classList.contains('search-room_error'));
     if (isError) {
       e.preventDefault();
       alert('Заполните все поля!');
@@ -41,7 +41,7 @@ class SearchRoom {
   }
 
   static _handleSearchRoomFocus(e) {
-    e.currentTarget.classList.remove('search-room-error');
+    e.currentTarget.classList.remove('search-room_error');
   }
 }
 

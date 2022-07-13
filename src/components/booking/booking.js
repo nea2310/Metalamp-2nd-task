@@ -22,18 +22,18 @@ class Booking {
   _handleBookingSubmit(e) {
     this.dates.forEach((date) => {
       if (/^\d{4}-\d{2}-\d{2}$/.test(date.value)) {
-        date.classList.remove('booking-error');
+        date.classList.remove('booking_error');
       } else {
-        date.classList.add('booking-error');
+        date.classList.add('booking_error');
       }
     });
     if (this.guests.value.trim() === '') {
-      this.guests.classList.add('booking-error');
+      this.guests.classList.add('booking_error');
     } else {
-      this.guests.classList.remove('booking-error');
+      this.guests.classList.remove('booking_error');
     }
 
-    const isError = Array.from(this.inputs).some((item) => item.classList.contains('booking-error'));
+    const isError = Array.from(this.inputs).some((item) => item.classList.contains('booking_error'));
     if (isError) {
       e.preventDefault();
       alert('Заполните все поля!');
@@ -41,7 +41,7 @@ class Booking {
   }
 
   static _handleBookingFocus(e) {
-    e.currentTarget.classList.remove('booking-error');
+    e.currentTarget.classList.remove('booking_error');
   }
 }
 

@@ -21,15 +21,15 @@ class Registration {
   _handleRegistrationSubmit(e) {
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
-        input.classList.add('registration-error');
+        input.classList.add('registration_error');
       } else {
-        input.classList.remove('registration-error');
+        input.classList.remove('registration_error');
       }
     });
     if (/^\d{2}\.\d{2}\.\d{4}$/.test(this.date.value)) {
-      this.date.classList.remove('registration-error');
+      this.date.classList.remove('registration_error');
     } else {
-      this.date.classList.add('registration-error');
+      this.date.classList.add('registration_error');
     }
 
     const isError = this.inputs.some((item) => item.classList.contains('login-error'));
@@ -40,7 +40,7 @@ class Registration {
   }
 
   static _handleRegistrationFocus(e) {
-    e.currentTarget.classList.remove('registration-error');
+    e.currentTarget.classList.remove('registration_error');
   }
 }
 
