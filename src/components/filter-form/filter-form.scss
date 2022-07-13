@@ -14,6 +14,7 @@
   @include media-breakpoint-down($xs) {
     min-width: 319px;
   }
+
   &__wrapper {
     @include media-breakpoint-down($lg) {
       padding: 20px 5px;
@@ -31,6 +32,7 @@
         "house-rules facilities facilities-adv"
         "accessability facilities facilities-adv";
     }
+
     @include media-breakpoint-down($md) {
       height: 250px;
       grid-template-rows: 75px 35px 35px 33px 35px;
@@ -64,6 +66,7 @@
 
   &__show-filter {
     display: none;
+
     @include media-breakpoint-down($xs) {
       align-self: flex-start;
       display: block;
@@ -71,6 +74,7 @@
       display: flex;
       cursor: pointer;
     }
+
     &-image {
       width: 20px;
       height: 20px;
@@ -79,38 +83,49 @@
 
   &__calendar-wrapper {
     margin-bottom: 20px;
+
     @include media-breakpoint-down($lg) {
       margin: 0;
       grid-area: calendar;
     }
+
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
     }
+
     @include media-breakpoint-down($xxs) {
     }
   }
+
   &__guests-wrapper {
     margin-bottom: 31px;
+
     @include media-breakpoint-down($lg) {
       margin: 0;
       grid-area: guests;
     }
+
     @include media-breakpoint-down($xs) {
       margin-bottom: 31px;
     }
   }
+
   &__price-filter-wrapper {
     margin-bottom: 23px;
+
     @include media-breakpoint-down($lg) {
       margin: 0;
       grid-area: price-filter;
     }
+
     @include media-breakpoint-down($xs) {
       margin-bottom: 23px;
     }
   }
+
   &__house-rules-wrapper {
     margin-bottom: 145px;
+
     @include media-breakpoint-down($lg) {
       grid-area: house-rules;
     }
@@ -119,21 +134,27 @@
       display: block;
     }
   }
+
   &__accessability-wrapper {
     margin-bottom: 150px;
+
     @include media-breakpoint-down($lg) {
       grid-area: accessability;
     }
+
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
     }
   }
+
   &__facilities-wrapper {
     margin-bottom: 30px;
+
     @include media-breakpoint-down($lg) {
       margin: 0;
       grid-area: facilities;
     }
+
     @include media-breakpoint-down($xs) {
       margin-bottom: 30px;
     }
@@ -141,6 +162,7 @@
 
   &__facilities-adv-wrapper {
     padding-bottom: 50px;
+
     @include media-breakpoint-down($lg) {
       margin: 0;
       grid-area: facilities-adv;
