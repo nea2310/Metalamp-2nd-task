@@ -11,6 +11,7 @@
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
+
     &-price {
       margin-top: 6px;
     }
@@ -57,19 +58,22 @@
 
   &__price {
     &-breakdown {
-      margin-top: 20px;
       @include font-body;
+      margin-top: 20px;
       line-height: 21px;
     }
+
     &-details {
       display: flex;
       justify-content: space-between;
       margin-bottom: 13px;
       position: relative;
+
       &:last-child {
         margin-top: 27px;
       }
     }
+
     &-name {
       max-width: 220px;
     }
@@ -88,6 +92,7 @@
         border-bottom: 1px dashed $colorBorder;
         margin-bottom: 5px;
       }
+
       &-name,
       &-cost {
         @include font-h2;
@@ -98,6 +103,7 @@
   &__book-button {
     margin-top: 20px;
   }
+
   &-error {
     outline: 1px solid $colorBorderError;
   }
