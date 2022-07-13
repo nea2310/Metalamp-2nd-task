@@ -8,8 +8,8 @@
   padding: 30px;
 
   &__header {
-    margin-top: 10px;
     @include font-h1;
+    margin-top: 10px;
   }
 
   &__date-dropdown {
