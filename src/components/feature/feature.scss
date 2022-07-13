@@ -23,8 +23,8 @@
   }
 
   &__description {
-    grid-area: post-3;
     @include font-body;
+    grid-area: post-3;
     font-size: 14px;
   }
 }
