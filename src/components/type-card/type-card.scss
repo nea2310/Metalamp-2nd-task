@@ -4,6 +4,10 @@
   grid-template-columns: 40px 457px;
   grid-template-areas: "post-1 post-2";
 
+  @include media-breakpoint-down($sm) {
+    display: flex;
+  }
+
   &:nth-child(1) {
     margin-top: 1px;
     margin-bottom: 49px;
@@ -67,9 +71,5 @@
       @include font-body;
       max-width: 305px;
     }
-  }
-
-  @include media-breakpoint-down($sm) {
-    display: flex;
   }
 }

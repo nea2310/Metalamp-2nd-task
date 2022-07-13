@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   flex-grow: 1;
+
   @include media-breakpoint-down($sm) {
     top: 0;
     margin-bottom: 310px;
@@ -22,6 +23,7 @@
       display: none;
     }
   }
+
   &__login-wrapper {
     display: flex;
     justify-content: center;
@@ -29,6 +31,7 @@
     width: 100%;
     position: absolute;
     top: calc($headerHeight + 22.5%);
+
     @include media-breakpoint-down($sm) {
       top: 20px;
     }

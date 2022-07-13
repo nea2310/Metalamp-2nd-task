@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   flex-grow: 1;
+
   @include media-breakpoint-down($sm) {
     top: 0;
     margin-bottom: 310px;
@@ -30,6 +31,7 @@
     position: absolute;
     top: calc($headerHeight + 7.7%);
     left: 9.8%;
+
     @include media-breakpoint-down($sm) {
       height: 100%;
       padding: 0;
@@ -39,23 +41,26 @@
       top: 20px;
       left: 0;
     }
+
     @include media-breakpoint-up($xxl) {
       left: 9.8%;
     }
   }
 
   &__text {
+    @include font-body;
     margin: 0;
     position: absolute;
     bottom: 21px;
     right: 127px;
     max-width: 265px;
-    @include font-body;
     text-align: end;
+
     @include media-breakpoint-down($md) {
       bottom: 21px;
       right: 21px;
     }
+
     @include media-breakpoint-down($sm) {
       display: none;
     }

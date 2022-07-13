@@ -18,6 +18,12 @@ $lg-padding-bottom: 30px;
   position: relative;
   top: $headerHeight;
   margin-bottom: $headerHeight;
+
+  @include media-breakpoint-down($xs) {
+    padding-top: 40px;
+    margin: 0 auto;
+  }
+
   &__header {
     position: absolute;
     width: 1px;
@@ -33,10 +39,6 @@ $lg-padding-bottom: 30px;
   &__cancel-header {
     @include font-h2;
     margin: 0;
-  }
-  @include media-breakpoint-down($xs) {
-    padding-top: 40px;
-    margin: 0 auto;
   }
 
   &__banner-wrapper {
@@ -92,6 +94,7 @@ $lg-padding-bottom: 30px;
       "info impress booking"
       "feedback feedback booking"
       "rules cancel booking";
+
     @include media-breakpoint-down($lg) {
       grid-template-rows: auto auto auto auto;
       grid-template-columns: 50% 50%;
@@ -101,6 +104,7 @@ $lg-padding-bottom: 30px;
         "feedback feedback"
         "rules cancel";
     }
+
     @include media-breakpoint-down($md) {
       margin: 30px auto 0px;
       grid-template-areas:
@@ -109,6 +113,7 @@ $lg-padding-bottom: 30px;
         "feedback feedback"
         "rules cancel";
     }
+
     @include media-breakpoint-down($sm) {
       grid-template-rows: auto auto auto auto auto;
       grid-template-columns: auto;

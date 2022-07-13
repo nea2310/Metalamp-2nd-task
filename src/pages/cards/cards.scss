@@ -19,6 +19,7 @@
     &-room {
       margin-top: 151px;
       margin-left: 117px;
+
       @include media-breakpoint-down($md) {
         margin: 20px;
         padding: 0;
@@ -29,6 +30,7 @@
   &__registration {
     margin-top: 40px;
     margin-left: 117px;
+
     @include media-breakpoint-down($md) {
       margin: 20px;
       padding: 0;
@@ -38,6 +40,7 @@
   &__booking {
     margin-top: 151px;
     padding-left: 2px;
+
     @include media-breakpoint-down($md) {
       margin: 20px;
       padding: 0;
@@ -47,6 +50,7 @@
   &__login {
     margin-top: 40px;
     padding-left: 2px;
+
     @include media-breakpoint-down($md) {
       margin: 20px;
       padding: 0;
@@ -55,6 +59,7 @@
 
   &__date-dropdown {
     margin-top: 146px;
+
     @include media-breakpoint-down($md) {
       margin: 0;
       padding: 0;
@@ -63,8 +68,10 @@
 
   &__room-card {
     margin-right: 213px;
+
     &:nth-child(2) {
       margin-top: 364px;
+
       @include media-breakpoint-down($md) {
         margin: 0;
         padding: 0;
@@ -72,6 +79,7 @@
     }
     &:last-child {
       margin-top: 37px;
+
       @include media-breakpoint-down($md) {
         margin: 0;
         padding: 0;

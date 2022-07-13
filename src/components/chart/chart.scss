@@ -2,10 +2,18 @@
   display: flex;
   align-items: flex-end;
 
+  @include media-breakpoint-down($xs) {
+    display: block;
+  }
+
   &__legend {
     @include ul-reset-style;
     @include font-body;
     margin-left: 30px;
+
+    @include media-breakpoint-down($xs) {
+      margin-left: 0;
+    }
 
     &-item {
       display: flex;
@@ -28,13 +36,5 @@
         clip: rect(0 0 0 0);
       }
     }
-
-    @include media-breakpoint-down($xs) {
-      margin-left: 0;
-    }
-  }
-
-  @include media-breakpoint-down($xs) {
-    display: block;
   }
 }
