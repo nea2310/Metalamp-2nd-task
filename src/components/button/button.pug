@@ -45,4 +45,4 @@ mixin button(options = {})
     when 'link'
       a(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` href = href)= text
     when 'plain-text'
-      button(class = `${elementName} ${elementName}_type_plain-text` type = 'button')= text
+      button(class = `${elementName} ${elementName}_plain-text` type = 'button')= text
