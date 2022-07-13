@@ -24,22 +24,22 @@
   }
 
   &__date {
-    grid-area: post-3;
     @include font-body;
+    grid-area: post-3;
     font-size: 14px;
   }
 
   &__like {
-    grid-area: post-4;
     @include font-body;
+    grid-area: post-4;
     font-size: 14px;
     padding-left: 3px;
     padding-top: 2px;
   }
 
   &__description {
-    grid-area: post-5;
     @include font-body;
+    grid-area: post-5;
     font-size: 14px;
   }
 }
