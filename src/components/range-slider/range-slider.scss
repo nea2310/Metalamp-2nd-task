@@ -4,8 +4,8 @@
   }
 
   &__title {
-    white-space: nowrap;
     @include font-h3;
+    white-space: nowrap;
     width: 50%;
 
     &-wrapper {
@@ -34,10 +34,10 @@
     &-from,
     &-to,
     &-delimiter {
+      @include font-body;
       border: none;
       font-size: 12px;
       text-transform: uppercase;
-      @include font-body;
       font-size: 12px;
       line-height: initial;
     }
