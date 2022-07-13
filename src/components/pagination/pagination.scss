@@ -24,8 +24,8 @@
     }
 
     &-first-last-page {
-      background: $gradientMain;
       @include font-h3;
+      background: $gradientMain;
       color: $colorTextBackground;
       cursor: pointer;
     }
@@ -37,7 +37,7 @@
   }
 
   &__label {
-    padding-top: 7px;
     @include font-body;
+    padding-top: 7px;
   }
 }
