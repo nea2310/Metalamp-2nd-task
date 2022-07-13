@@ -12,10 +12,12 @@
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
+
       @include media-breakpoint-down($lg) {
         padding-left: 20px;
         padding-right: 20px;
       }
+
       @include media-breakpoint-down($md) {
         padding: 0;
         justify-content: center;
@@ -30,10 +32,12 @@
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
+
       @include media-breakpoint-down($lg) {
         padding-left: 20px;
         padding-right: 20px;
       }
+
       @include media-breakpoint-down($md) {
         padding-top: 18px;
         flex-direction: column;
@@ -45,6 +49,7 @@
     &-middle {
       height: 1px;
       background-color: $colorFooterDelimiter;
+
       @include media-breakpoint-down($md) {
         display: none;
       }
@@ -67,6 +72,7 @@
     }
     &:not(:first-child) {
       padding-top: 4px;
+
       @include media-breakpoint-down($md) {
         display: none;
       }
@@ -74,6 +80,7 @@
     &:nth-child(1) {
       max-width: 270px;
       padding-right: 2.5%;
+
       @include media-breakpoint-down($lg) {
         padding-left: 5px;
         padding-right: 5px;
@@ -81,6 +88,7 @@
     }
     &:nth-child(2) {
       padding-right: 5%;
+
       @include media-breakpoint-down($lg) {
         padding-left: 5px;
         padding-right: 5px;
@@ -88,6 +96,7 @@
     }
     &:nth-child(3) {
       padding-right: 8%;
+
       @include media-breakpoint-down($lg) {
         padding-left: 5px;
         padding-right: 5px;
@@ -95,6 +104,7 @@
     }
     &:nth-child(4) {
       padding-right: 4.5%;
+
       @include media-breakpoint-down($lg) {
         padding-left: 5px;
         padding-right: 5px;
@@ -105,6 +115,7 @@
         max-width: 270px;
       }
     }
+
     @include media-breakpoint-down($md) {
       display: flex;
       justify-content: center;
@@ -122,15 +133,16 @@
       line-height: 17.07px;
       color: $colorTextLight;
     }
+
     @include media-breakpoint-down($md) {
       display: none;
     }
   }
 
   &__long-text {
+    @include font-body;
     cursor: initial;
     white-space: initial;
-    @include font-body;
     line-height: 17.07px;
     line-height: 22px;
   }
