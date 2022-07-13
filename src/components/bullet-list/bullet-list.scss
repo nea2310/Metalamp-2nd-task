@@ -10,14 +10,23 @@
     @include ul-reset-style;
     padding-left: 17px;
     max-width: 240px;
-    list-style-image: url("@com/bullet-list/image/ellipse.svg");
   }
 
   &__category {
     @include font-body;
+    position: relative;
     padding-left: 4px;
     margin-bottom: 10px;
     line-height: 24px;
+
+    &::before {
+      position: absolute;
+      content: "●";
+      font-size: 23px;
+      color: $colorBorder;
+      top: -2px;
+      left: -18px;
+    }
 
     &:last-child {
       margin-bottom: 0px;
