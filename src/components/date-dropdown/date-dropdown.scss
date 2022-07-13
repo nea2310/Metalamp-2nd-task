@@ -67,20 +67,22 @@
   }
 
   &__input {
-    cursor: pointer;
-    &::placeholder {
-      color: $colorTextNormal;
-    }
     @include font-body;
+    cursor: pointer;
     height: 44px;
     text-indent: 12px;
     border-radius: 5px;
     border: 1px solid $colorBorder;
     margin-top: 5px;
 
+    &::placeholder {
+      color: $colorTextNormal;
+    }
+
     &-wrapper {
       display: flex;
       flex-direction: column;
+
       &:nth-child(2) {
         padding-left: 20px;
       }
@@ -98,6 +100,7 @@
       &_narrow {
         min-width: 150px;
       }
+
       &_wide {
         min-width: 266px;
       }
@@ -113,6 +116,7 @@
       -webkit-appearance: none;
       display: none;
     }
+
     &[type="date"] {
       text-indent: 6px;
     }
@@ -121,24 +125,30 @@
   .air-datepicker {
     box-sizing: border-box;
     width: 320px;
+
     &-nav {
       border: none;
       padding: 4px 24px 4px 24px;
       min-height: 51px;
+
       &--title {
-        cursor: inherit;
         @include font-h2;
+        cursor: inherit;
+
         i {
           color: $colorTitle;
         }
+
         &:hover {
           background: none;
         }
       }
+
       &--action {
         &[data-action="prev"] {
           background: url("./image/arrow-back.svg") center no-repeat;
         }
+
         &[data-action="next"] {
           background: url("./image/arrow-forward.svg") center no-repeat;
         }
@@ -146,15 +156,15 @@
     }
 
     &-body {
-      &--day {
-        &-name {
-          @include font-h3;
-          text-transform: capitalize;
-          color: $colorMain;
-        }
+      &--day-name {
+        @include font-h3;
+        text-transform: capitalize;
+        color: $colorMain;
       }
+
       &--cells {
         padding-top: 10px;
+
         &.-days- {
           grid-template-columns: repeat(7, 40px);
           grid-auto-rows: 39px;
@@ -164,15 +174,18 @@
 
     &-cell {
       height: 39px;
+
       &.-day- {
         @include font-h3;
         color: $colorTextLight;
         font-weight: normal;
       }
     }
+
     &--content {
       padding: 17px 18px 54px 20px;
     }
+
     &-cell.-day- {
       &.-disabled- {
         color: $colorBorder;
@@ -185,6 +198,7 @@
 
       &.-range-from- {
         border: none;
+
         &::after {
           position: absolute;
           z-index: -1;
@@ -200,6 +214,7 @@
 
       &.-range-to- {
         border: none;
+
         &::before {
           position: absolute;
           z-index: -1;
@@ -218,6 +233,7 @@
         position: relative;
         border-radius: 50%;
         background: $gradientMain;
+
         &.-disabled- {
           background: none;
         }
@@ -245,6 +261,7 @@
         border-radius: 50%;
         background: $gradientMain;
         opacity: 1;
+
         &::before {
           position: absolute;
           content: "";
@@ -260,30 +277,29 @@
   &_width_narrow {
     .air-datepicker {
       width: 266px;
-      &-body {
-        &--cells {
-          &.-days- {
-            grid-template-columns: repeat(7, 32px);
-            grid-auto-rows: 32px;
-          }
-        }
+      &-body--cells.-days- {
+        grid-template-columns: repeat(7, 32px);
+        grid-auto-rows: 32px;
       }
 
       &-cell {
         height: 32px;
-      }
-      &-cell.-day- {
-        &.-range-from-::after {
-          height: 32px;
-          width: 32.2px;
-        }
-        &.-range-to-::before {
-          height: 32px;
-          width: 32.2px;
-        }
-        &.-in-range-.-focus-::before {
-          height: 32px;
-          width: 32.27px;
+
+        &.-day- {
+          &.-range-from-::after {
+            height: 32px;
+            width: 32.2px;
+          }
+
+          &.-range-to-::before {
+            height: 32px;
+            width: 32.2px;
+          }
+
+          &.-in-range-.-focus-::before {
+            height: 32px;
+            width: 32.27px;
+          }
         }
       }
     }
