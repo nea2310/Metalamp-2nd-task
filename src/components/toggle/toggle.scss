@@ -1,6 +1,6 @@
 .toggle {
-  user-select: none;
   @include font-h3;
+  user-select: none;
 
   &__wrapper {
     display: flex;
@@ -31,6 +31,7 @@
 
     &:checked + .toggle__checkmark {
       border: 1px solid $colorMain;
+
       .toggle__ball {
         background-image: $gradientMain;
         right: 3px;
@@ -51,8 +52,8 @@
   }
 
   &__name {
-    cursor: pointer;
     @include font-body;
+    cursor: pointer;
     line-height: 19px;
     padding-left: 10px;
     text-transform: none;
