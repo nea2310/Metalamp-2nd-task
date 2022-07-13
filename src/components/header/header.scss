@@ -8,9 +8,11 @@
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   background-color: $colorTextBackground;
   z-index: 10;
+
   @include media-breakpoint-down($sm) {
     position: relative;
   }
+
   @include media-breakpoint-down($xs) {
     height: auto;
     align-items: flex-start;
@@ -22,6 +24,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+
     @include media-breakpoint-down($md) {
       width: 100%;
       margin: 0 20px 0 40px;
@@ -29,6 +32,7 @@
       align-items: center;
       background-color: $colorTextBackground;
     }
+
     @include media-breakpoint-down($xs) {
       flex-direction: column;
       padding-top: 50px;
@@ -40,6 +44,7 @@
     &-level1 {
       display: flex;
       flex-grow: 1;
+
       @include media-breakpoint-down($md) {
         display: none;
         position: absolute;
@@ -60,15 +65,18 @@
         margin-left: auto;
         display: flex;
         align-items: center;
+
         @include media-breakpoint-down($md) {
           display: block;
           padding-left: 20px;
         }
       }
+
       &-item {
         position: relative;
         white-space: nowrap;
         padding-right: 24px;
+
         @include media-breakpoint-down($md) {
           margin-top: 20px;
         }
@@ -80,6 +88,7 @@
         &-image {
           cursor: pointer;
           padding-left: 3px;
+
           @include media-breakpoint-down($md) {
             display: none;
           }
@@ -108,6 +117,7 @@
           padding-left: 20px;
           padding-right: 20px;
           display: block;
+
           @include media-breakpoint-down($md) {
             display: none;
           }
@@ -120,10 +130,12 @@
     @include media-breakpoint-down($lg) {
       padding-left: 20px;
     }
+
     @include media-breakpoint-down($md) {
       top: -55px;
       left: 50%;
     }
+
     @include media-breakpoint-down($xs) {
       padding-left: 0;
       margin-bottom: 20px;
@@ -136,12 +148,15 @@
     &_is-authorized {
       &_false {
         flex-basis: 26%;
+
         @include media-breakpoint-down($lg) {
           flex-basis: 30%;
         }
+
         @include media-breakpoint-down($md) {
           flex-basis: 40%;
         }
+
         @include media-breakpoint-down($sm) {
           flex-basis: 50%;
         }
@@ -156,11 +171,13 @@
     @include media-breakpoint-down($lg) {
       margin-right: 20px;
     }
+
     @include media-breakpoint-down($md) {
       top: 0;
       left: 50%;
       margin-left: 20px;
     }
+
     @include media-breakpoint-down($xs) {
       flex-direction: column;
       height: 90px;
@@ -178,6 +195,7 @@
 
     &-reg {
       padding-left: 20px;
+
       @include media-breakpoint-down($xs) {
         padding-left: 0;
       }
@@ -188,6 +206,7 @@
     border-left: 1px solid rgba(31, 32, 65, 0.1);
     align-self: center;
     line-height: 30px;
+
     @include media-breakpoint-down($md) {
       border: none;
     }
@@ -196,6 +215,7 @@
       @include font-body;
       padding-left: 20px;
       white-space: nowrap;
+
       @include media-breakpoint-down($md) {
         padding: 0;
       }
@@ -208,16 +228,7 @@
     &-button {
       display: none;
       cursor: pointer;
-      @include media-breakpoint-down($md) {
-        display: block;
-        position: absolute;
-        width: 20px;
-        height: 20px;
-        left: 10px;
-      }
-      @include media-breakpoint-down($xs) {
-        top: 20px;
-      }
+
       &:before,
       &:after {
         @include media-breakpoint-down($md) {
@@ -231,22 +242,56 @@
           transition: all 0.5s ease 0s;
         }
       }
+
       &:before {
         @include media-breakpoint-down($md) {
           top: 0;
           background-color: $colorMain;
         }
       }
+
       &:after {
         @include media-breakpoint-down($md) {
           bottom: 0;
           background-color: $colorMain;
         }
       }
-    }
-  }
 
-  &__burger-button &__burger {
+      &_active {
+        .header__burger {
+          @include media-breakpoint-down($md) {
+            transform: scale(0);
+          }
+        }
+
+        &:before {
+          @include media-breakpoint-down($md) {
+            transform: rotate(45deg);
+            top: 9px;
+          }
+        }
+
+        &:after {
+          @include media-breakpoint-down($md) {
+            transform: rotate(-45deg);
+            bottom: 9px;
+          }
+        }
+      }
+
+      @include media-breakpoint-down($md) {
+        display: block;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        left: 10px;
+      }
+
+      @include media-breakpoint-down($xs) {
+        top: 20px;
+      }
+    }
+
     @include media-breakpoint-down($md) {
       position: absolute;
       background-color: $colorMain;
@@ -255,26 +300,6 @@
       height: 2px;
       top: 9px;
       transition: all 0.9s ease 0s;
-    }
-  }
-
-  &__burger-button.header__burger-button_active:before {
-    @include media-breakpoint-down($md) {
-      transform: rotate(45deg);
-      top: 9px;
-    }
-  }
-
-  &__burger-button.header__burger-button_active:after {
-    @include media-breakpoint-down($md) {
-      transform: rotate(-45deg);
-      bottom: 9px;
-    }
-  }
-
-  &__burger-button.header__burger-button_active &__burger {
-    @include media-breakpoint-down($md) {
-      transform: scale(0);
     }
   }
 }
