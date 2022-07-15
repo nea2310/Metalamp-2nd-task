@@ -1,10 +1,3 @@
-const iconLike = require(
-  './image/favorite.svg',
-);
-const iconUnlike = require(
-  './image/favorite-border.svg',
-);
-
 class LikeButton {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
@@ -30,10 +23,8 @@ class LikeButton {
     const value = parseInt(this.counter.innerText, 10);
     this.button.classList.toggle(`${this.elementName}__button_liked`);
     if (this.button.classList.contains(`${this.elementName}__button_liked`)) {
-      this.image.src = iconLike;
       this.counter.innerText = value + 1;
     } else {
-      this.image.src = iconUnlike;
       this.counter.innerText = value - 1;
     }
   }

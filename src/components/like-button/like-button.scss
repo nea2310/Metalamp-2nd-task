@@ -14,6 +14,7 @@
 
   &__button {
     @include button-reset-style;
+    position: relative;
     outline-offset: 5px;
     border: 1px solid $colorBorder;
     width: 40px;
@@ -22,10 +23,27 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-end;
+    padding-right: 7px;
+
+    &::after {
+      position: absolute;
+      left: 5px;
+      content: "♡";
+      color: $colorBorder;
+      font-size: 15px;
+    }
 
     &_liked {
       border: 1px solid $colorMain;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: "❤";
+        color: $colorMain;
+        font-size: 10px;
+      }
 
       .like-button__counter {
         color: $colorMain;
