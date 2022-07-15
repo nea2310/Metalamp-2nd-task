@@ -30,8 +30,7 @@ mixin dropdown(options = {})
       label(class = `${elementName}__label`)
         if labelText
           p(class = `${elementName}__label-text`)= labelText
-          img(class = `${elementName}__image js-${elementName}__image ${elementName}__image_collapsed`
-            src = require('@com/dropdown/image/expand-more.svg')  alt = 'раскрывающийся список')
+          span(class = `${elementName}__image js-${elementName}__image ${elementName}__image_collapsed`)
           input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_collapsed ${elementName}__input${inputStyle}`
             readonly = true value = '' placeholder = placeholder type = 'text')
     div(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper ${elementName}__list-wrapper_hidden`)

@@ -37,17 +37,17 @@
   &__image {
     cursor: pointer;
     position: absolute;
-    bottom: 17px;
-    right: 16px;
-
-    &_expanded {
-      transform: rotate(180deg);
-      transition: all 0.3s ease 0s;
+    bottom: 24px;
+    right: 17px;
+    &::after {
+      @include tip-style;
+      right: 0px;
     }
 
-    &_collapsed {
-      transform: rotate(0deg);
-      transition: all 0.3s ease 0s;
+    &_expanded {
+      &::after {
+        transform: rotate(-45deg);
+      }
     }
   }
 

@@ -6,9 +6,6 @@
   transition: all 0.3s ease 0s;
 }
 
-// $tipBorder: 2px solid $colorTextLight;
-// $tipSize: 6px;
-
 .checklist {
   @include fieldset-reset-style;
   user-select: none;
@@ -25,13 +22,6 @@
       position: relative;
 
       &::after {
-        //         position: absolute;
-        //         content: "";
-        //         height: $tipSize;
-        //         width: $tipSize;
-        //         border-left: $tipBorder;
-        //         border-bottom: $tipBorder;
-        //  transform: rotate(135deg);
         @include tip-style;
         right: 0px;
       }
