@@ -6,10 +6,6 @@ $lg: 1199px;
 $xl: 1440px;
 $xxl: 1920px;
 
-$headerHeight: 70px;
-
-$fontMain: "Montserrat", Arial, Helvetica, sans-serif;
-
 $colorTitle: #1f2041;
 $colorTextNormal: rgba(31, 32, 65, 0.75);
 $colorTextLight: rgba(31, 32, 65, 0.5);
@@ -26,6 +22,13 @@ $colorTextBackground: #ffffff;
 $colorGradientSecondary: #66d2ea;
 $gradientMain: linear-gradient($colorMain 0%, $colorGradientBorder 100%);
 $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 100%);
+
+$headerHeight: 70px;
+
+$tipBorder: 2px solid $colorTextLight;
+$tipSize: 6px;
+
+$fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 
 @mixin button-reset-style() {
   background: none;
@@ -44,6 +47,16 @@ $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+@mixin tip-style() {
+  position: absolute;
+  content: "";
+  height: $tipSize;
+  width: $tipSize;
+  border-left: $tipBorder;
+  border-bottom: $tipBorder;
+  transform: rotate(135deg);
 }
 
 @mixin font-h1() {
