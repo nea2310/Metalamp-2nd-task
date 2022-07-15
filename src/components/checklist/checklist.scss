@@ -1,10 +1,13 @@
 @mixin image() {
   display: block;
   position: absolute;
-  right: 15px;
-  top: 3px;
+  right: 17px;
+  top: 4px;
   transition: all 0.3s ease 0s;
 }
+
+$tipBorder: 2px solid $colorTextLight;
+$tipSize: 6px;
 
 .checklist {
   @include fieldset-reset-style;
@@ -19,6 +22,18 @@
     }
 
     .checklist__image {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: "";
+        height: $tipSize;
+        width: $tipSize;
+        border-left: $tipBorder;
+        border-bottom: $tipBorder;
+        right: 0px;
+        transform: rotate(135deg);
+      }
       @include image;
     }
   }
@@ -29,7 +44,9 @@
     }
 
     .checklist__image {
-      transform: rotate(180deg);
+      &::after {
+        transform: rotate(-45deg);
+      }
     }
   }
 
@@ -95,9 +112,6 @@
       width: 18px;
       height: 18px;
       border-radius: 5px;
-      display: inline-block;
-      width: 18px;
-      height: 18px;
       background-color: $colorTextBackground;
     }
 
