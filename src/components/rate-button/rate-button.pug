@@ -5,6 +5,8 @@ mixin rate-button({labelText = '', name = ''} = {})
 
   fieldset(class = elementName)
     legend(class = `${elementName}__caption`)= labelText
+    div(class = `${elementName}__star-image-group`)
     div(class = `${elementName}__group`)
       for rateValue in rates
         input(class = `${elementName}__star` type = 'radio' name = name value = '1' aria-label = rateValue)
+        span(class = `${elementName}__star-image`)
