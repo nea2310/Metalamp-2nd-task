@@ -26,8 +26,8 @@ class CheckList {
   }
 
   _bindEventListeners() {
-    this.label.addEventListener('mousedown', this._handleCheckListMouseDownLabel);
-    this.label.addEventListener('mouseup', this._handleCheckListMouseUpLabel);
+    this.wrapper.addEventListener('mousedown', this._handleCheckListMouseDownLabel);
+    this.wrapper.addEventListener('mouseup', this._handleCheckListMouseUpLabel);
     this.label.addEventListener('focus', this._handleCheckListFocusLabel);
     this.wrapper.addEventListener('click', this._handleCheckListClickWrapper);
     this.wrapper.addEventListener('focusin', this._handleCheckListFocusWrapper);
