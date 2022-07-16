@@ -22,7 +22,6 @@ class CheckList {
     this.mouseDown = false;
     this.label = this._getElement('label');
     this.listWrapper = this._getElement('list-wrapper');
-    this.tip = this._getElement('image');
     this.clickOnList = false;
   }
 

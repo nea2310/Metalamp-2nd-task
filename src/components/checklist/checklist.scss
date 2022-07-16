@@ -11,6 +11,7 @@
   user-select: none;
   max-width: 266px;
   width: 100%;
+  position: relative;
 
   &_collapsing,
   &_temporarily-collapsing {
@@ -18,14 +19,10 @@
       cursor: pointer;
     }
 
-    .checklist__image {
-      position: relative;
-
-      &::after {
-        @include tip-style;
-        right: 0px;
-      }
-      @include image;
+    &::after {
+      @include tip-style;
+      right: 19px;
+      top: 4px;
     }
   }
 
@@ -34,10 +31,8 @@
       display: block;
     }
 
-    .checklist__image {
-      &::after {
-        transform: rotate(-45deg);
-      }
+    &::after {
+      transform: rotate(-45deg);
     }
   }
 
