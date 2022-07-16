@@ -51,6 +51,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 }
 
 @mixin tip-style() {
+  cursor: pointer;
   position: absolute;
   content: "";
   height: $tipSize;

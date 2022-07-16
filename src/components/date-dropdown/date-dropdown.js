@@ -16,7 +16,7 @@ class DateDropDown {
     this._handleDateDropDownClickApply = this._handleDateDropDownClickApply.bind(this);
     this._handleDateDropDownClickDateFromTo = this._handleDateDropDownClickDateFromTo.bind(this);
     this._handleDateDropDownClickDate = this._handleDateDropDownClickDate.bind(this);
-    this._handleDateDropDownClickDoc = this._handleDateDropDownClickDoc.bind(this);
+    this._handleDateDropDownClickDocument = this._handleDateDropDownClickDocument.bind(this);
     this._handleDateDropDownClickCalendar = this._handleDateDropDownClickCalendar.bind(this);
     this._handleDateDropDownInputFilter = this._handleDateDropDownInputFilter.bind(this);
     this._handleDateDropDownInputNoFilter = this._handleDateDropDownInputNoFilter.bind(this);
@@ -24,7 +24,7 @@ class DateDropDown {
     this._handleDateDropDownFocusDate = this._handleDateDropDownFocusDate.bind(this);
     this._handleDateDropDownResizeLoadWindow = this._handleDateDropDownResizeLoadWindow.bind(this);
     this._handleDateDropDownFocusinWrapper = this._handleDateDropDownFocusinWrapper.bind(this);
-    this._handleDateDropDownFocusinDoc = this._handleDateDropDownFocusinDoc.bind(this);
+    this._handleDateDropDownFocusinDocument = this._handleDateDropDownFocusinDocument.bind(this);
     this._handleDateDropDownInput = this._handleDateDropDownInput.bind(this);
 
     this._render();
@@ -35,8 +35,9 @@ class DateDropDown {
   }
 
   _render() {
-    this.inputs = this._getElements(['input-wrapper']);
-    this.isFilter = this.inputs.length === 1;
+    this.inputWrappers = this._getElements(['input-wrapper']);
+    [this.inputWrapperFrom, this.inputWrapperTo] = this.inputWrappers;
+    this.isFilter = this.inputWrappers.length === 1;
 
     if (!this.isFilter) {
       this.inputDateFrom = this._getElement('input_from');
@@ -149,9 +150,12 @@ class DateDropDown {
     }
 
     if (!this.isFilter) {
+      this.inputWrapperFrom.addEventListener('click', this._handleDateDropDownClickDateFromTo);
       this.inputDateFrom.addEventListener('click', this._handleDateDropDownClickDateFromTo);
+      this.inputWrapperTo.addEventListener('click', this._handleDateDropDownClickDateFromTo);
       this.inputDateTo.addEventListener('click', this._handleDateDropDownClickDateFromTo);
     } else {
+      this.inputWrapperFrom.addEventListener('click', this._handleDateDropDownClickDate);
       this.inputDate.addEventListener('click', this._handleDateDropDownClickDate);
     }
 
@@ -160,11 +164,11 @@ class DateDropDown {
     this.buttonClear.addEventListener('click', this._handleDateDropDownClickClear);
     this.calendar.addEventListener('click', this._handleDateDropDownClickCalendar);
     this.wrapper.addEventListener('focusin', this._handleDateDropDownFocusinWrapper);
-    document.addEventListener('click', this._handleDateDropDownClickDoc);
-    document.addEventListener('focusin', this._handleDateDropDownFocusinDoc);
+    document.addEventListener('click', this._handleDateDropDownClickDocument);
+    document.addEventListener('focusin', this._handleDateDropDownFocusinDocument);
     window.addEventListener('resize', this._handleDateDropDownResizeLoadWindow);
     window.addEventListener('load', this._handleDateDropDownResizeLoadWindow);
-    this.inputs.forEach((input) => input.addEventListener('input', this._handleDateDropDownInput));
+    this.inputWrappers.forEach((input) => input.addEventListener('input', this._handleDateDropDownInput));
   }
 
   _handleDateDropDownFocusDate(e) {
@@ -295,10 +299,12 @@ class DateDropDown {
     this.clickOnCalendar = true;
   }
 
-  _handleDateDropDownClickDoc(e) {
-    const isFilter = this.isFilter && e.target !== this.inputDate;
+  _handleDateDropDownClickDocument(e) {
+    const isFilter = this.isFilter && e.target !== this.inputDate
+      && e.target !== this.inputWrapperFrom;
     const isNotFilter = !this.isFilter
-      && (e.target !== this.inputDateFrom && e.target !== this.inputDateTo);
+      && (e.target !== this.inputDateFrom && e.target !== this.inputDateTo
+        && e.target !== this.inputWrapperFrom && e.target !== this.inputWrapperTo);
     const isNotDataDropDown = e.target.closest(`.${this.elementName}`) == null;
     const condFull = (isFilter || isNotFilter || isNotDataDropDown)
       && this.clickOnCalendar === false;
@@ -314,7 +320,7 @@ class DateDropDown {
     this.focusOnList = true;
   }
 
-  _handleDateDropDownFocusinDoc() {
+  _handleDateDropDownFocusinDocument() {
     if (this.focusOnList === false) {
       this._toggle(false);
     } else {
@@ -340,18 +346,17 @@ class DateDropDown {
     if (isExpanded) {
       this.calendarWrapper.classList
         .remove(`${wrap}calendar-wrapper_hidden`);
-      this.tips.forEach((tip) => {
-        tip.classList.add(`${wrap}image_expanded`);
-        tip.classList.remove(`${wrap}image_collapsed`);
+      this.inputWrappers.forEach((input) => {
+        input.classList.add(`${wrap}input-wrapper_expanded`);
       });
-    } else {
-      this.calendarWrapper.classList
-        .add(`${wrap}calendar-wrapper_hidden`);
-      this.tips.forEach((tip) => {
-        tip.classList.remove(`${wrap}image_expanded`);
-        tip.classList.add(`${wrap}image_collapsed`);
-      });
+      return true;
     }
+    this.calendarWrapper.classList
+      .add(`${wrap}calendar-wrapper_hidden`);
+    this.inputWrappers.forEach((input) => {
+      input.classList.remove(`${wrap}input-wrapper_expanded`);
+    });
+    return true;
   }
 
   _checkRangeSingle(e) {

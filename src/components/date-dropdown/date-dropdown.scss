@@ -50,29 +50,6 @@
     }
   }
 
-  &__image {
-    cursor: pointer;
-    position: absolute;
-    bottom: 24px;
-    right: 17px;
-
-    &::after {
-      @include tip-style;
-      right: 0px;
-    }
-
-    &_expanded {
-      &::after {
-        transform: rotate(-45deg);
-      }
-    }
-
-    &_collapsed {
-      transform: rotate(0deg);
-      transition: all 0.3s ease 0s;
-    }
-  }
-
   &__input {
     @include font-body;
     cursor: pointer;
@@ -87,11 +64,24 @@
     }
 
     &-wrapper {
+      position: relative;
       display: flex;
       flex-direction: column;
 
+      &::after {
+        @include tip-style;
+        right: 14px;
+        top: 40px;
+      }
+
       &:nth-child(2) {
         padding-left: 20px;
+      }
+
+      &_expanded {
+        &::after {
+          transform: rotate(-45deg);
+        }
       }
     }
 
