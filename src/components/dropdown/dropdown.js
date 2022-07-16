@@ -8,8 +8,6 @@ class DropDown {
     this._handleDropDownClickCounter = this._handleDropDownClickCounter.bind(this);
     this._handleDropDownMousedownInput = this._handleDropDownMousedownInput.bind(this);
     this._handleDropDownMouseupInput = this._handleDropDownMouseupInput.bind(this);
-    this._handleDropDownMousedownTip = this._handleDropDownMousedownTip.bind(this);
-    this._handleDropDownMouseupTip = this._handleDropDownMouseupTip.bind(this);
     this._handleDropDownFocusInput = this._handleDropDownFocusInput.bind(this);
     this._handleDropDownClickWrapper = this._handleDropDownClickWrapper.bind(this);
     this._handleDropDownClickDoc = this._handleDropDownClickDoc.bind(this);
@@ -29,6 +27,7 @@ class DropDown {
     this.mouseDown = false;
 
     this.input = this._getElement('input');
+    this.inputWrapper = this._getElement('input-wrapper');
     this.listWrapper = this._getElement('list-wrapper');
     this.counts = this._getElements(['count-decrement', 'count-increment']);
     this.countValues = this._getElements(['count-value']);
@@ -36,8 +35,6 @@ class DropDown {
     this.buttonClear = this._getElement('button-clear');
     this.buttonApply = this._getElement('button-apply');
     this.buttonsMinus = this._getElements(['count-decrement']);
-    this.tip = this._getElement('image');
-
     this.clearApplyButtons = this.buttonClear != null && this.buttonApply != null;
     this._getInitialCounterList(this.listElements);
   }
@@ -84,10 +81,8 @@ class DropDown {
   }
 
   _bindEventListeners() {
-    this.input.addEventListener('mousedown', this._handleDropDownMousedownInput);
-    this.input.addEventListener('mouseup', this._handleDropDownMouseupInput);
-    this.tip.addEventListener('mousedown', this._handleDropDownMousedownInput);
-    this.tip.addEventListener('mouseup', this._handleDropDownMouseupInput);
+    this.inputWrapper.addEventListener('mousedown', this._handleDropDownMousedownInput);
+    this.inputWrapper.addEventListener('mouseup', this._handleDropDownMouseupInput);
     this.input.addEventListener('focus', this._handleDropDownFocusInput);
     this.counts.forEach((element) => element.addEventListener('click', this._handleDropDownClickCounter));
     if (this.clearApplyButtons) {
@@ -128,28 +123,13 @@ class DropDown {
     this._updateCounterList(text, editedCounter);
   }
 
-  _handleDropDownMousedownInput(e) {
-    if (e.target.classList.contains('js-dropdown__image')) {
-      e.preventDefault();
-    }
+  _handleDropDownMousedownInput() {
     this.mouseDown = true;
   }
 
-  _handleDropDownMouseupInput(e) {
-    if (e.target.classList.contains('js-dropdown__image')) {
-      e.preventDefault();
-    }
+  _handleDropDownMouseupInput() {
     this._toggle(true);
     this.mouseDown = false;
-  }
-
-  _handleDropDownMousedownTip() {
-    return true;
-  }
-
-  _handleDropDownMouseupTip() {
-    this._toggle(true);
-    this.mouseDown = true;
   }
 
   _handleDropDownFocusInput() {
@@ -164,8 +144,11 @@ class DropDown {
     this.clickOnList = true;
   }
 
-  _handleDropDownClickDoc() {
-    if (this.clickOnList === false) {
+  _handleDropDownClickDoc(e) {
+    const condition = this.clickOnList === false
+      || (e.target !== this.input && e.target !== this.inputWrapper);
+
+    if (condition) {
       this._toggle(false);
     } else {
       this.clickOnList = false;
@@ -307,18 +290,17 @@ class DropDown {
 
   _toggle(isExpanded) {
     const wrapper = `${this.elementName}__`;
+
     if (isExpanded) {
       this.listWrapper.classList
         .toggle(`${wrapper}list-wrapper_hidden`);
-      this.tip.classList.toggle(`${wrapper}image_expanded`);
-      this.tip.classList.toggle(`${wrapper}image_collapsed`);
+      this.inputWrapper.classList.toggle(`${wrapper}input-wrapper_expanded`);
       this.input.classList.toggle(`${wrapper}input_expanded`);
       this.input.classList.toggle(`${wrapper}input_collapsed`);
     } else {
       this.listWrapper.classList
         .add(`${wrapper}list-wrapper_hidden`);
-      this.tip.classList.remove(`${wrapper}image_expanded`);
-      this.tip.classList.add(`${wrapper}image_collapsed`);
+      this.inputWrapper.classList.remove(`${wrapper}input-wrapper_expanded`);
       this.input.classList.remove(`${wrapper}input_expanded`);
       this.input.classList.add(`${wrapper}input_collapsed`);
     }

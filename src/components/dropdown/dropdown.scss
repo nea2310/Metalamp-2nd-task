@@ -34,23 +34,6 @@
     }
   }
 
-  &__image {
-    cursor: pointer;
-    position: absolute;
-    bottom: 24px;
-    right: 17px;
-    &::after {
-      @include tip-style;
-      right: 0px;
-    }
-
-    &_expanded {
-      &::after {
-        transform: rotate(-45deg);
-      }
-    }
-  }
-
   &__input {
     @include font-body;
     cursor: pointer;
@@ -81,6 +64,19 @@
     &_rounded {
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
+    }
+    &-wrapper {
+      &::after {
+        @include tip-style;
+        right: 17px;
+        top: 40px;
+      }
+
+      &_expanded {
+        &::after {
+          transform: rotate(-45deg);
+        }
+      }
     }
   }
 
