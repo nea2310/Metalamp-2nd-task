@@ -31,7 +31,11 @@ $tipTransition: all 0.3s ease 0s;
 
 $arrowSize: 10px;
 
-$fontMain: 'Montserrat', Arial, Helvetica, sans-serif;
+$fontMain: 
+'Montserrat', 
+Arial, 
+Helvetica, 
+sans-serif;
 
 @mixin button-reset-style() {
   background: none;

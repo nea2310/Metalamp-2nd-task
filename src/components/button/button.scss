@@ -79,12 +79,16 @@
 
     &_light {
       background-color: $colorTextBackground;
-      box-shadow: inset 0px 2px 0px 0px $colorMain, inset 0px 0px 0px 2px $colorGradientBorder;
+      box-shadow: 
+      inset 0px 2px 0px 0px $colorMain, 
+      inset 0px 0px 0px 2px $colorGradientBorder;
       color: $colorMain;
 
       &:hover,
       &:focus {
-        box-shadow: inset 0px 2px 0px 0px $colorMainHover, inset 0px 0px 0px 2px $colorGradientBorderHover;
+        box-shadow: 
+        inset 0px 2px 0px 0px $colorMainHover, 
+        inset 0px 0px 0px 2px $colorGradientBorderHover;
       }
     }
   }
