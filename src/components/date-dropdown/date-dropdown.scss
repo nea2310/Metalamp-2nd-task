@@ -143,11 +143,26 @@
 
       &--action {
         &[data-action="prev"] {
-          background: url("./image/arrow-back.svg") center no-repeat;
+          &::before {
+            @include arrow-basis-style($colorMain);
+            align-self: center;
+          }
+          &::after {
+            @include arrow-tip-style($colorMain);
+            align-self: center;
+            transform: rotate(45deg);
+          }
         }
 
         &[data-action="next"] {
-          background: url("./image/arrow-forward.svg") center no-repeat;
+          &::before {
+            @include arrow-basis-style($colorMain);
+            align-self: center;
+          }
+          &::after {
+            @include arrow-tip-style($colorMain);
+            align-self: center;
+          }
         }
       }
     }
