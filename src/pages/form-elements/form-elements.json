@@ -17,7 +17,7 @@
     "width": "medium",
     "placeholder": "Email",
     "labelText": "subscription text field",
-    "hasImage": true,
+    "hasArrow": true,
     "name": "оформить подписку",
     "inputType": "email",
     "validation": "email"
@@ -222,7 +222,7 @@
     "length": "very-long",
     "width": "wide",
     "color": "dark",
-    "hasImage": true
+    "hasArrow": true
   },
   "bulletList": {
     "categories": [

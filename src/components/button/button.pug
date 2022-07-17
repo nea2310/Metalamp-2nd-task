@@ -15,9 +15,10 @@ mixin button(options = {})
       href = 'https://test/test'} = options
 
     const {text = '', 
-      hasImage = false} = options
+      hasArrow = false} = options
 
     const elementName = 'button'
+    const imageModifier = hasArrow ? `${elementName}_has-arrow` : ''
 
     const validTypes = ['button', 'submit', 'link', 'plain-text']
     type = getValidValue(validTypes, type, 'button')
@@ -38,10 +39,8 @@ mixin button(options = {})
       button(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 
         type = 'button')= text
     when 'submit'
-      button(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 
+      button(class = `${elementName} ${imageModifier} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 
         type = 'submit')= text
-        if hasImage
-          img(class = `${elementName}__image`, src = require('@com/button/image/arrow-forward-white.svg'))
     when 'link'
       a(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` href = href)= text
     when 'plain-text'

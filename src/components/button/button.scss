@@ -12,6 +12,19 @@
   user-select: none;
   border-radius: 22px;
 
+  &_has-arrow {
+    &::before {
+      @include arrow-basis-style($colorTextBackground);
+      align-self: center;
+      right: 17px;
+    }
+    &::after {
+      @include arrow-tip-style($colorTextBackground);
+      align-self: center;
+      right: 17px;
+    }
+  }
+
   &_length {
     &_very-long {
       max-width: 320px;
@@ -66,14 +79,12 @@
 
     &_light {
       background-color: $colorTextBackground;
-      box-shadow: inset 0px 2px 0px 0px $colorMain, 
-      inset 0px 0px 0px 2px $colorGradientBorder;
+      box-shadow: inset 0px 2px 0px 0px $colorMain, inset 0px 0px 0px 2px $colorGradientBorder;
       color: $colorMain;
 
       &:hover,
       &:focus {
-        box-shadow: inset 0px 2px 0px 0px $colorMainHover, 
-        inset 0px 0px 0px 2px $colorGradientBorderHover;
+        box-shadow: inset 0px 2px 0px 0px $colorMainHover, inset 0px 0px 0px 2px $colorGradientBorderHover;
       }
     }
   }

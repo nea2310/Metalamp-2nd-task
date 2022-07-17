@@ -45,6 +45,6 @@
     "length": "very-long",
     "width": "wide",
     "color": "dark",
-    "hasImage": true
+    "hasArrow": true
   }
 }
