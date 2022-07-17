@@ -114,7 +114,7 @@
       display: none;
     }
 
-    &[type="date"] {
+    &[type='date'] {
       text-indent: 6px;
     }
   }
@@ -142,7 +142,7 @@
       }
 
       &--action {
-        &[data-action="prev"] {
+        &[data-action='prev'] {
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;
@@ -154,7 +154,7 @@
           }
         }
 
-        &[data-action="next"] {
+        &[data-action='next'] {
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;
@@ -214,7 +214,7 @@
         &::after {
           position: absolute;
           z-index: -1;
-          content: "";
+          content: '';
           height: 39px;
           width: 40px;
           background: $gradientMain;
@@ -230,7 +230,7 @@
         &::before {
           position: absolute;
           z-index: -1;
-          content: "";
+          content: '';
           height: 39px;
           width: 40px;
           background: $gradientMain;
@@ -276,7 +276,7 @@
 
         &::before {
           position: absolute;
-          content: "";
+          content: '';
           height: 39px;
           width: 40px;
           background: $gradientMain;

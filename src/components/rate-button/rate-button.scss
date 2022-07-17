@@ -17,7 +17,7 @@
 
     &::after {
       position: absolute;
-      content: "☆☆☆☆☆";
+      content: '☆☆☆☆☆';
       color: $colorMain;
       font-size: 27px;
       letter-spacing: 1px;
@@ -75,7 +75,7 @@
       & ~ .rate-button__star-image {
         &::after {
           position: absolute;
-          content: "★";
+          content: '★';
           color: $colorMain;
           font-size: 27px;
           top: 1px;

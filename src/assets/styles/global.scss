@@ -31,7 +31,7 @@ $tipTransition: all 0.3s ease 0s;
 
 $arrowSize: 10px;
 
-$fontMain: "Montserrat", Arial, Helvetica, sans-serif;
+$fontMain: 'Montserrat', Arial, Helvetica, sans-serif;
 
 @mixin button-reset-style() {
   background: none;
@@ -55,7 +55,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 @mixin tip-style() {
   cursor: pointer;
   position: absolute;
-  content: "";
+  content: '';
   height: $tipSize;
   width: $tipSize;
   border-left: $tipBorder;
@@ -67,7 +67,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 @mixin arrow-tip-style($color) {
   cursor: pointer;
   position: absolute;
-  content: "";
+  content: '';
   height: $arrowSize;
   width: $arrowSize;
   border-left: 2px solid $color;
@@ -78,7 +78,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 @mixin arrow-basis-style($color) {
   cursor: pointer;
   position: absolute;
-  content: "";
+  content: '';
   height: 2px;
   width: 14px;
   background-color: $color;

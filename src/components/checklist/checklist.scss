@@ -73,7 +73,7 @@
         border: 1px solid $colorMain;
         &::before {
           position: absolute;
-          content: "";
+          content: '';
           height: 8px;
           width: 4px;
           background-image: $gradientMain;
@@ -83,7 +83,7 @@
         }
         &::after {
           position: absolute;
-          content: "";
+          content: '';
           height: 8px;
           width: 4px;
           background-color: $colorTextBackground;

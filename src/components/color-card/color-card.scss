@@ -7,8 +7,8 @@
   grid-template-rows: repeat(2, 35px);
   grid-template-columns: 70px 180px;
   grid-template-areas:
-    "post-1 post-2"
-    "post-1 post-3";
+    'post-1 post-2'
+    'post-1 post-3';
   column-gap: 40px;
 
   &__color {
