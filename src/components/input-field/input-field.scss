@@ -51,7 +51,7 @@
 
   &__input {
     @include font-body;
-    height: 44px;
+    padding: 11px 0;
     text-indent: 12px;
     border-radius: 5px;
     border: 1px solid $colorBorder;

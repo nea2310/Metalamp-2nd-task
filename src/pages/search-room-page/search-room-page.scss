@@ -25,6 +25,8 @@
   }
 
   &__filter-form-wrapper {
+    margin-bottom: 20px;
+
     @include media-breakpoint-down($sm) {
     }
   }

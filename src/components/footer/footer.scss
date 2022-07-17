@@ -7,7 +7,7 @@
 
   &__wrapper {
     &-top {
-      height: 272px;
+      min-height: 272px;
       max-width: 1161px;
       margin: 0 auto;
       display: flex;
@@ -21,13 +21,13 @@
       @include media-breakpoint-down($md) {
         padding: 0;
         justify-content: center;
-        height: 162px;
+        min-height: 162px;
       }
     }
 
     &-bottom {
       align-items: center;
-      height: 70px;
+      min-height: 70px;
       max-width: 1161px;
       margin: 0 auto;
       display: flex;
@@ -73,11 +73,11 @@
     &-link,
     &-header {
       @include font-body;
-      line-height: 17.07px;
+      line-height: 17px;
       font-weight: bold;
       color: $colorTitle;
       font-size: 12px;
-      line-height: 14.63px;
+      line-height: 15px;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -144,7 +144,7 @@
     &-link {
       @include font-body;
       text-decoration: none;
-      line-height: 17.07px;
+      line-height: 17px;
       color: $colorTextLight;
     }
   }
@@ -153,7 +153,7 @@
     @include font-body;
     cursor: initial;
     white-space: initial;
-    line-height: 17.07px;
+    line-height: 17px;
     line-height: 22px;
     margin: 0;
   }

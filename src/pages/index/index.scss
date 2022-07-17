@@ -39,7 +39,7 @@
 
   &__image {
     margin-bottom: 10px;
-    height: 250px;
+    min-height: 250px;
 
     &:hover {
       opacity: 0.7;

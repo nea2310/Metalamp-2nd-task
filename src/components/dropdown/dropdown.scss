@@ -38,9 +38,7 @@
     @include font-body;
     cursor: pointer;
     text-overflow: ellipsis;
-    height: 44px;
-    padding-left: 12px;
-    padding-right: 90px;
+    padding: 11px 90px 11px 12px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: 1px solid $colorBorder;
@@ -107,7 +105,7 @@
     &-wrapper {
       display: flex;
       justify-content: space-between;
-      height: 37px;
+      padding: 4px 0;
       align-items: center;
     }
   }

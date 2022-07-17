@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 class CheckList {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
@@ -48,7 +47,6 @@ class CheckList {
     if (!isExpanded) {
       this._toggleList(true);
     } else if (isExpanded && this._needCollapse()) {
-      console.log('_handleCheckListMouseUpLabel');
       this._toggleList(false);
     }
     this.mouseDown = false;
@@ -62,8 +60,6 @@ class CheckList {
   }
 
   _handleCheckListClickWrapper() {
-    console.log('_handleCheckListClickWrapper');
-
     this.clickOnList = true;
   }
 
@@ -78,7 +74,6 @@ class CheckList {
     if (this._needCollapse()) {
       if (e.target.closest(`.${this.elementName}` == null)
         || checkClickFocus) {
-        console.log('_handleCheckListClickFocusDoc');
         this._toggleList(false);
       } else {
         return setClickFocus;
@@ -89,18 +84,11 @@ class CheckList {
 
   _handleCheckListResizeLoadWindow() {
     if (!this._isCollapsing()) {
-      console.log(this._isCollapsing());
-      console.log(window.innerWidth);
-      console.log(this.breakPoint);
-
       if (window.innerWidth > this.breakPoint) {
         this._toggleList(true);
-        console.log('1');
-
         this.wrapper.classList.remove(`${this.elementName}_temporarily-collapsing`);
       } else {
         this._toggleList(false);
-        console.log('2');
         this.wrapper.classList.add(`${this.elementName}_temporarily-collapsing`);
       }
     }
