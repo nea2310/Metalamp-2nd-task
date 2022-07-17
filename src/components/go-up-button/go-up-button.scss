@@ -5,7 +5,19 @@
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-  transform: rotate(-90deg);
+  position: relative;
+  &::before {
+    @include arrow-basis-style($colorMain);
+    transform: rotate(90deg);
+    top: 17px;
+    left: 11px;
+  }
+  &::after {
+    @include arrow-tip-style($colorMain);
+    transform: rotate(135deg);
+    top: 11px;
+    left: 12px;
+  }
 
   &_hidden {
     display: none;
