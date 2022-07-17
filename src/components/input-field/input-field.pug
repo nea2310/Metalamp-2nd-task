@@ -28,5 +28,4 @@ mixin input-field(options ={})
         p(class = `${elementName}__label-text`)= labelText
       if hasImage
         button(class = `${elementName}__link` aria-label = name)
-          img(class = `${elementName}__image`, src = require('@com/input-field/image/arrow-forward.svg'))
       input(class = `${elementName}__input js-${elementName}__input` placeholder = placeholder type = inputType min = inputMin max = inputMax )

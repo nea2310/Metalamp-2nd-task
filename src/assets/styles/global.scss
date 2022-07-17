@@ -29,6 +29,8 @@ $tipBorder: 2px solid $colorTextLight;
 $tipSize: 6px;
 $tipTransition: all 0.3s ease 0s;
 
+$arrowSize: 10px;
+
 $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 
 @mixin button-reset-style() {
@@ -60,6 +62,26 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
   border-bottom: $tipBorder;
   transform: rotate(135deg);
   transition: $tipTransition;
+}
+
+@mixin arrow-tip-style($color) {
+  cursor: pointer;
+  position: absolute;
+  content: "";
+  height: $arrowSize;
+  width: $arrowSize;
+  border-left: 2px solid $color;
+  border-bottom: 2px solid $color;
+  transform: rotate(-135deg);
+}
+
+@mixin arrow-basis-style($color) {
+  cursor: pointer;
+  position: absolute;
+  content: "";
+  height: 2px;
+  width: 14px;
+  background-color: $color;
 }
 
 @mixin font-h1() {

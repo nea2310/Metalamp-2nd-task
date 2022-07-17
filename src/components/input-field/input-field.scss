@@ -32,15 +32,20 @@
   &__link {
     @include button-reset-style;
     position: absolute;
-    bottom: 13px;
-    right: 6px;
-    height: 19px;
+    bottom: 28px;
+    right: 28px;
     cursor: pointer;
-    background-color: $colorTextBackground;
-    width: 30px;
 
     &:focus {
       outline: solid 1px $colorBorder;
+    }
+    &::before {
+      @include arrow-basis-style($colorMain);
+      top: 5px;
+      right: -12px;
+    }
+    &::after {
+      @include arrow-tip-style($colorMain);
     }
   }
 
