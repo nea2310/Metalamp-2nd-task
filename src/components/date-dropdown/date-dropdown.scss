@@ -71,7 +71,7 @@
       &::after {
         @include tip-style;
         right: 14px;
-        top: 40px;
+        bottom: 18px;
       }
 
       &:nth-child(2) {
