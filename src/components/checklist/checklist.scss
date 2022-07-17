@@ -83,10 +83,26 @@
       &:checked + .checklist__category-checkmark,
       &:checked:focus + .checklist__category-checkmark {
         border: 1px solid $colorMain;
-        background-image: url("@com/checklist/image/tip.svg");
-        background-position-y: 42%;
-        background-position-x: 40%;
-        background-repeat: no-repeat;
+        &::before {
+          position: absolute;
+          content: "";
+          height: 8px;
+          width: 4px;
+          background-image: $gradientMain;
+          transform: rotate(45deg);
+          top: 3px;
+          left: 6px;
+        }
+        &::after {
+          position: absolute;
+          content: "";
+          height: 8px;
+          width: 4px;
+          background-color: $colorTextBackground;
+          transform: rotate(45deg) translateX(3px);
+          top: -2px;
+          left: 4px;
+        }
       }
     }
 
