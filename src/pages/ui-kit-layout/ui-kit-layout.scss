@@ -1,8 +1,7 @@
 .ui-kit-layout {
-  &__header {
-    left: 30px;
-    top: 30px;
-    position: absolute;
-    z-index: 5;
+  &__logo {
+    max-width: $xl;
+    width: 100%;
+    margin: 0 auto;
   }
 }

@@ -5,6 +5,8 @@ include ../../components/footer/footer.pug
 
 block title
   title Headers & Footers
+block logo 
+  +logo({color: 'grey'})
 block content
   -
     const {header, footer} = require('@pag/headers-footers/headers-footers.json')

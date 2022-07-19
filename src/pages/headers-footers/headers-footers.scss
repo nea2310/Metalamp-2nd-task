@@ -4,7 +4,8 @@
   padding-top: 141px;
   width: 100%;
   margin: 0 auto;
-  background-color: #f4f4f6;
+  background-color: $colorBackground;
+  max-width: $xl;
 
   &__logo-wrapper {
     margin-top: 29px;
