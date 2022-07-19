@@ -1,27 +1,13 @@
-$shift-horizontal: 25px;
-$shift-vertical: 14px;
-
 .room-card {
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   background-color: $colorTextBackground;
 
-  @include media-breakpoint-between($xxs, $xs) {
-    width: calc(100vw - #{$shift-horizontal});
-    min-width: 100%;
-  }
-
   &__slider {
     position: relative;
     min-width: 270px;
     min-height: 152px;
-
-    @include media-breakpoint-between($xxs, $xs) {
-      height: calc(56.3vw - #{$shift-vertical});
-      height: 56.3vw;
-      width: auto;
-    }
   }
 
   &__photos::before {
@@ -47,10 +33,6 @@ $shift-vertical: 14px;
     opacity: 0;
     transition: opacity 1s;
     z-index: 1;
-
-    @include media-breakpoint-between($xxs, $xs) {
-      height: 56.3vw;
-    }
 
     &_shown {
       opacity: 1;
