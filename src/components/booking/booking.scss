@@ -5,11 +5,10 @@
   border-radius: 4px;
   max-width: 380px;
   width: 100%;
-  padding: 30px;
+  padding: 40px 30px 23px 26px;
   margin-block-end: 0;
 
   &__details {
-    margin-top: 10px;
     display: flex;
     justify-content: space-between;
 
@@ -60,43 +59,63 @@
   &__price {
     &-breakdown {
       @include font-body;
+      display: grid;
+      grid-template-columns: 2.5fr 1fr;
+      grid-template-rows: repeat(4, auto);
       margin-top: 20px;
       line-height: 21px;
+      row-gap: 15px;
     }
 
-    &-details {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 13px;
-      position: relative;
-
-      &:last-child {
-        margin-top: 27px;
+    &-base{
+      &-cost {
+        justify-self: end;
       }
     }
 
-    &-name {
-      max-width: 220px;
+    &-service{
+      &-name{
+        width: 100%;
+        position: relative;
+
+        &::after{
+          @include info-sign-style;
+          right: -11px;
+          top: -1px;
+        }
+      }
+
+      &-cost {
+        justify-self: end;
+      }
     }
 
-    &-info {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 220px;
+    &-extra{
+      &-name{
+        width: 100%;
+        position: relative;
+
+      &::after{
+        @include info-sign-style;
+        right: -11px;
+        top: -1px;
+      }
+      }
+
+      &-cost {
+        justify-self: end;
+      }
     }
 
     &-total {
-      &-filling {
-        flex-grow: 1;
-        flex-shrink: 1;
-        border-bottom: 1px dashed $colorBorder;
-        margin-bottom: 5px;
-      }
-
       &-name,
       &-cost {
         @include font-h2;
+        padding-top: 10px;
+      }
+
+      &-cost {
+        justify-self: end;
       }
     }
   }

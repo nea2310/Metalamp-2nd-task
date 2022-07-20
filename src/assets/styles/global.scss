@@ -88,6 +88,19 @@ sans-serif;
   background-color: $color;
 }
 
+@mixin info-sign-style() {
+  cursor: pointer;
+  position: absolute;
+  content: 'i';
+  width: 18px;
+  height: 18px;
+  border: 1px solid $colorTextLight;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @mixin font-h1() {
   font-family: $fontMain;
   font-weight: bold;
