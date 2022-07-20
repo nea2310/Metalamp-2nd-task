@@ -36,7 +36,7 @@
     "placeholder": "Сколько гостей",
     "hasButtons": true,
     "buttons": true,
-    "labelText": "dropdown",
+    "labelText": "гости",
     "width": "wide"
   },
   "button": {

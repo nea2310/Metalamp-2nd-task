@@ -18,7 +18,7 @@ mixin button(options = {})
       hasArrow = false} = options
 
     const elementName = 'button'
-    const imageModifier = hasArrow ? `${elementName}_has-arrow` : ''
+    const arrowModifier = hasArrow ? `${elementName}_has-arrow` : ''
 
     const validTypes = ['button', 'submit', 'link', 'plain-text']
     type = getValidValue(validTypes, type, 'button')
@@ -39,7 +39,7 @@ mixin button(options = {})
       button(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 
         type = 'button')= text
     when 'submit'
-      button(class = `${elementName} ${imageModifier} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 
+      button(class = `${elementName} ${arrowModifier} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 
         type = 'submit')= text
     when 'link'
       a(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` href = href)= text

@@ -1,7 +1,5 @@
 .filter-form {
   @include media-breakpoint-down($xs) {
-    position: absolute;
-    z-index: 4;
     background: $colorTextBackground;
     left: 0;
     right: 0;

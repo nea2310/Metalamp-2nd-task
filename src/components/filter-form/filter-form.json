@@ -45,7 +45,7 @@
     ],
     "type": "dropDownRooms",
     "placeholder": "Сколько комнат",
-    "labelText": "dropdown",
+    "labelText": "удобства номера",
     "width": "narrow"
   },
   "dropdownGuests": {
@@ -79,7 +79,7 @@
     "placeholder": "Сколько гостей",
     "hasButtons": true,
     "buttons": true,
-    "labelText": "dropdown",
+    "labelText": "гости",
     "width": "narrow"
   },
   "checkListExpandable": {
