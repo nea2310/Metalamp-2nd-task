@@ -6,7 +6,7 @@ block title
   title Landing
 block content 
   main(class = 'landing-page')
-    img(class = 'landing-page__background'  alt = 'фоновое изображение - гостиная' src = require('@pag/landing-page/image/living-room.jpg'))
-    section(class = 'landing-page__search-room-wrapper')
-      +search-room()
-    p(class = 'landing-page__text') Лучшие номера для вашей работы, отдыха и просто вдохновения
+    div(class = 'landing-page__wrapper')
+      section(class = 'landing-page__search-room-wrapper')
+        +search-room()
+      p(class = 'landing-page__text') Лучшие номера для вашей работы, отдыха и просто вдохновения

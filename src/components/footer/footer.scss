@@ -12,7 +12,7 @@
   &__wrapper {
     &-top {
       min-height: 272px;
-      max-width: 1161px;
+      max-width: $wrapperWidth;
       width: 100%;
       margin: 0 auto;
       display: flex;
@@ -33,7 +33,7 @@
     &-bottom {
       align-items: center;
       min-height: 70px;
-      max-width: 1161px;
+      max-width: $wrapperWidth;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;

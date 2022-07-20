@@ -5,6 +5,7 @@ $md: 991px;
 $lg: 1199px;
 $xl: 1440px;
 $xxl: 1920px;
+$wrapperWidth: 1161px;
 
 $colorTitle: #1f2041;
 $colorTextNormal: rgba(31, 32, 65, 0.75);
@@ -99,6 +100,11 @@ sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@mixin page-background($imagePath) {
+  background: url($imagePath) no-repeat center;
+  background-size: cover;
 }
 
 @mixin font-h1() {
