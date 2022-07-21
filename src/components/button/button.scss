@@ -1,3 +1,5 @@
+$button-style-map: (very-long 320, long 196, short 99, very-short 87);
+
 .button {
   @include font-h3;
   @include button-reset-style;
@@ -27,19 +29,10 @@
   }
 
   &_length {
-    &_very-long {
-      max-width: 320px;
-    }
-
-    &_long {
-      max-width: 196px;
-    }
-
-    &_short {
-      max-width: 99px;
-    }
-    &_very-short {
-      max-width: 87px;
+    @each $key, $value in $button-style-map {
+      &_#{$key}{
+        max-width: #{$value}px;
+      }
     }
   }
 

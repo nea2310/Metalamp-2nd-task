@@ -1,3 +1,9 @@
+$labelTopMiddleMap: (1 155, 2 37, 3 45, 4 41);
+$compWrapperTopLeftMap: (2 21, 3 21, 4 23, 5 41, 6 40, 7 42, 8 100, 9 19, 10 173, 11 49);
+$compWrapperTopMiddleMap: (1 0, 2 156, 3 17, 4 79, 5 15, 6 199, 7 16, 9 17, 10 198, 11 256);
+$compWrapperTopRightMap: (1 36, 2 0, 3 14, 4 29, 5 32, 6 30, 7 20, 8 17, 9 233, 10 257);
+
+
 .form-elements {
   flex-grow: 1;
   width: 100%;
@@ -21,158 +27,55 @@
     }
 
     &_position_top-middle {
-      &:nth-of-type(1) {
-        margin-top: 155px;
-      }
-
-      &:nth-of-type(2) {
-        margin-top: 37px;
-      }
-
-      &:nth-of-type(3) {
-        margin-top: 45px;
-      }
-
-      &:nth-of-type(4) {
-        margin-top: 41px;
+      @each $key, $value in $labelTopMiddleMap {
+        &:nth-of-type(#{$key}){
+          margin-top: #{$value}px;
+            }
       }
     }
   }
 
   &__comp-wrapper_position {
     &_top-left {
-      &:nth-child(2) {
-        margin-top: 21px;
-      }
-
-      &:nth-child(3) {
-        margin-top: 21px;
-      }
-
-      &:nth-child(4) {
-        margin-top: 23px;
-      }
-
-      &:nth-child(5) {
-        margin-top: 41px;
-      }
-
-      &:nth-child(6) {
-        margin-top: 40px;
-      }
-
-      &:nth-child(7) {
-        margin-top: 42px;
-      }
-
-      &:nth-child(8) {
-        margin-top: 100px;
-      }
-      &:nth-child(9) {
-        margin-top: 19px;
-      }
-
-      &:nth-child(10) {
-        margin-top: 173px;
-      }
-
-      &:nth-child(11) {
-        margin-top: 49px;
+      @each $key, $value in $compWrapperTopLeftMap {
+        &:nth-child(#{$key}){
+          margin-top: #{$value}px;
+            }
       }
     }
 
     &_top-middle {
-      &:nth-child(1) {
-        margin-top: 0px;
-      }
-
-      &:nth-child(2) {
-        margin-top: 156px;
-      }
-
-      &:nth-child(3) {
-        margin-top: 17px;
-      }
-
-      &:nth-child(4) {
-        margin-top: 79px;
+      @each $key, $value in $compWrapperTopMiddleMap {
+        &:nth-child(#{$key}){
+          margin-top: #{$value}px;
+            }
       }
 
       &:nth-child(5) {
-        margin-top: 15px;
         display: flex;
         flex-direction: column;
         min-height: 54px;
         justify-content: space-between;
       }
 
-      &:nth-child(6) {
-        margin-top: 199px;
-      }
-
       &:nth-child(7) {
         display: flex;
         max-width: 90px;
         justify-content: space-between;
-        margin-top: 16px;
       }
 
       &:nth-child(9) {
         display: flex;
         max-width: 258px;
         justify-content: space-between;
-        margin-top: 17px;
-      }
-
-      &:nth-child(10) {
-        margin-top: 198px;
-      }
-
-      &:nth-child(11) {
-        margin-top: 256px;
       }
     }
 
     &_top-right {
-      &:nth-child(1) {
-        margin-bottom: 36px;
-      }
-
-      &:nth-child(2) {
-        margin-top: 0px;
-      }
-
-      &:nth-child(3) {
-        margin-top: 14px;
-      }
-
-      &:nth-child(4) {
-        margin-top: 29px;
-      }
-
-      &:nth-child(5) {
-        margin-top: 32px;
-      }
-
-      &:nth-child(6) {
-        margin-top: 30px;
-        margin-bottom: 41px;
-      }
-
-      &:nth-child(7) {
-        margin-top: 20px;
-      }
-
-      &:nth-child(8) {
-        margin-top: 17px;
-      }
-
-      &:nth-child(9) {
-        margin-top: 233px;
-      }
-
-      &:nth-child(10) {
-        margin-top: 257px;
+      @each $key, $value in $compWrapperTopRightMap {
+        &:nth-child(#{$key}){
+          margin-top: #{$value}px;
+            }
       }
     }
 
