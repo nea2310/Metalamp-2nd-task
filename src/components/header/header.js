@@ -3,15 +3,14 @@ class Header {
     this.elementName = elementName.replace(/^.js-/, '');
     this.wrapper = element;
 
-    this._handleHeaderMouseoverLevel1 = this._handleHeaderMouseoverLevel1.bind(this);
-    this._handleHeaderFocusinLevel1 = this._handleHeaderFocusinLevel1.bind(this);
     this._handleHeaderKeydownLevel1 = this._handleHeaderKeydownLevel1.bind(this);
-    this._handleHeaderMouseoutLevel2 = this._handleHeaderMouseoutLevel2.bind(this);
     this._handleHeaderClickLevel2 = this._handleHeaderClickLevel2.bind(this);
     this._handleHeaderClickBurger = this._handleHeaderClickBurger.bind(this);
     this._handleHeaderResizeWindow = this._handleHeaderResizeWindow.bind(this);
     this._handleHeaderClickDoc = this._handleHeaderClickDoc.bind(this);
     this._handleHeaderFocusinDoc = this._handleHeaderFocusinDoc.bind(this);
+
+    this._handleHeaderMouseoverLevel1 = this._handleHeaderMouseoverLevel1.bind(this);
 
     this._render();
     this._bindEventListeners();
@@ -21,14 +20,21 @@ class Header {
     this.burger = this._getElement('burger-button');
     this.navLevel1 = this._getElement('nav-level1');
     this.navLevel2 = this._getElements(['nav-level2']);
-    this.tips = this._getElements(['nav-level1-item-image']);
+    this.menuItemsLevel1 = this._getElements(['nav-level1-item']);
+    this.tips = this._getElements(['nav-level1-item-tip']);
+    this.linksLevel1 = this._getElements(['__nav-level1-item-link']);
   }
 
   _bindEventListeners() {
-    this.navLevel1.addEventListener('mouseover', this._handleHeaderMouseoverLevel1);
-    this.navLevel1.addEventListener('focusin', this._handleHeaderFocusinLevel1);
     this.navLevel1.addEventListener('keydown', this._handleHeaderKeydownLevel1);
-    this.navLevel2.forEach((element) => element.addEventListener('mouseout', this._handleHeaderMouseoutLevel2));
+    this.menuItemsLevel1.forEach((element) => {
+      element.addEventListener('mouseover', this._handleHeaderMouseoverLevel1);
+    });
+
+    this.linksLevel1.forEach((element) => {
+      element.addEventListener('keydown', this._handleHeaderKeydownLevel1);
+    });
+
     this.tips.forEach((element) => {
       element.addEventListener('click', this._handleHeaderClickLevel2);
     });
@@ -39,27 +45,27 @@ class Header {
   }
 
   _handleHeaderMouseoverLevel1(e) {
-    this._toggleLevel2Menu(e.relatedTarget, e);
-    this._toggleLevel2Menu(e.target, e);
+    const list = e.target.querySelector(`.${this.elementName}__nav-level2`);
+    if (list) {
+      list.classList.add(`${this.elementName}__nav-level2-item_expanded`);
+    }
   }
 
-  _handleHeaderFocusinLevel1(e) {
-    this._toggleLevel2Menu(e.target, e);
+  _handleHeaderClickLevel2(e) {
+    const list = e.currentTarget.parentElement.querySelector(`.${this.elementName}__nav-level2`);
+    if (list) {
+      list.classList.toggle(`${this.elementName}__nav-level2-item_expanded`);
+    }
   }
 
   _handleHeaderKeydownLevel1(e) {
     if (e.keyCode === 32) {
       e.preventDefault();
-      this._toggleLevel2Menu(e.target, e);
+      const list = e.target.parentElement.querySelector(`.${this.elementName}__nav-level2`);
+      if (list) {
+        list.classList.toggle(`${this.elementName}__nav-level2-item_expanded`);
+      }
     }
-  }
-
-  _handleHeaderMouseoutLevel2(e) {
-    if (e.relatedTarget.className.indexOf('nav-level2') === -1) { this._closeLevel2Menu(); }
-  }
-
-  _handleHeaderClickLevel2(e) {
-    this._toggleLevel2Menu(e.currentTarget, e);
   }
 
   _handleHeaderResizeWindow() {
@@ -70,7 +76,8 @@ class Header {
   }
 
   _handleHeaderClickDoc(e) {
-    if (!e.target.closest(`.${this.elementName}__nav-level2`)) {
+    if (!e.target.closest(`.${this.elementName}__nav-level2`)
+    && (!e.target.className.match('tip'))) {
       this._closeLevel2Menu();
     }
   }
@@ -84,29 +91,6 @@ class Header {
   _handleHeaderClickBurger() {
     this.burger.classList.toggle(`${this.elementName}__burger-button_active`);
     this.navLevel1.classList.toggle(`${this.elementName}__nav-level1_active`);
-  }
-
-  _toggleLevel2Menu(element, event) {
-    if (!element.firstElementChild) return;
-    const condMatch = element.matches(`.${this.elementName}__nav-level1-item-link`)
-      && element.firstElementChild.matches(`.${this.elementName}__nav-level1-item-image`);
-    const condFull = condMatch && element.firstElementChild != null && event.type !== 'focusin';
-
-    if (condFull) {
-      this._closeLevel2Menu();
-      element.parentElement.lastElementChild.classList.add(`${this.elementName}__nav-level2-item_expanded`);
-    } else if (element
-      .matches(`.${this.elementName}__nav-level1-item-image`)) {
-      this._closeLevel2Menu();
-      element.parentElement.parentElement
-        .lastElementChild.classList
-        .add(`${this.elementName}__nav-level2-item_expanded`);
-    } else if (element
-      .matches(`.${this.elementName}__nav-level1-item-link`)
-      && element.firstElementChild == null
-    ) {
-      this._closeLevel2Menu();
-    }
   }
 
   _closeLevel2Menu() {

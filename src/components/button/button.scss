@@ -4,7 +4,8 @@
   text-decoration: none;
   cursor: pointer;
   margin: 0;
-  padding: 0 10px 0 10px;
+  width: 100%;
+  padding: 10px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -28,31 +29,23 @@
   &_length {
     &_very-long {
       max-width: 320px;
-      width: 100%;
     }
 
     &_long {
       max-width: 196px;
-      width: 100%;
     }
 
     &_short {
       max-width: 99px;
-      width: 100%;
     }
     &_very-short {
       max-width: 87px;
-      width: 100%;
     }
   }
 
   &_width {
     &_wide {
-      padding: 15px 0;
-    }
-
-    &_narrow {
-      padding: 10px 0;
+      padding: 15px 10px;
     }
   }
 
