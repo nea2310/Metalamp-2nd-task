@@ -117,24 +117,16 @@
 
       &-item {
         margin-top: 10px;
-        
-        &:focus{
-          outline: 1px solid red;
-        }
 
         &-link {
-          text-decoration: none;
           @include font-body;
+          text-decoration: none;
         }
 
         &_expanded {
           padding-left: 20px;
           padding-right: 20px;
           display: block;
-
-          &:focus{
-            outline: 1px solid red;
-          }
 
           @include media-breakpoint-down($md) {
             display: none;
