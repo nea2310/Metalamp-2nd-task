@@ -27,7 +27,7 @@
   }
 
   &__radiobuttons {
-    margin-top: 12px;
+    margin-top: 15px;
   }
 
   &__birth-date {
@@ -36,7 +36,7 @@
 
   &__credentials {
     @include fieldset-reset-style;
-    margin-top: 20px;
+    margin-top: 25px;
 
     &-legend {
       @include font-h3;

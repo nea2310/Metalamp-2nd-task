@@ -1,43 +1,12 @@
 .registration-page {
+  @include page-background('@pag/registration-page/image/bedroom.jpg');
   flex-grow: 1;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-grow: 1;
+  min-height: 686px;
+  display: grid;
+  align-items: center;
 
-  @include media-breakpoint-down($lg) {
-    margin-bottom: 200px;
-  }
-
-  @include media-breakpoint-down($sm) {
-    top: 0;
-    margin-bottom: 600px;
-  }
-
-  @include media-breakpoint-up($xxl) {
-    max-width: $xxl;
-    align-self: center;
-  }
-
-  &__background {
-    width: 100%;
-    object-fit: cover;
-
-    @include media-breakpoint-down($sm) {
-      display: none;
+    &__registration-wrapper{
+      display: flex;
+      justify-content: center;
     }
-  }
-
-  &__registration-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    position: absolute;
-    top: calc($headerHeight + 2.6%);
-
-    @include media-breakpoint-down($sm) {
-      top: 20px;
-    }
-  }
 }
