@@ -152,10 +152,12 @@
 
       &--action {
         &[data-action='prev'] {
+
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;
           }
+
           &::after {
             @include arrow-tip-style($colorMain);
             align-self: center;
@@ -168,6 +170,7 @@
             @include arrow-basis-style($colorMain);
             align-self: center;
           }
+          
           &::after {
             @include arrow-tip-style($colorMain);
             align-self: center;

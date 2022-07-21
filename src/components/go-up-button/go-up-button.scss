@@ -6,12 +6,14 @@
   border-radius: 50%;
   cursor: pointer;
   position: relative;
+
   &::before {
     @include arrow-basis-style($colorMain);
     transform: rotate(90deg);
     top: 17px;
     left: 11px;
   }
+  
   &::after {
     @include arrow-tip-style($colorMain);
     transform: rotate(135deg);

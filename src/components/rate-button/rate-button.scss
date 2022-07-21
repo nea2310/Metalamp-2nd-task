@@ -83,7 +83,7 @@
       }
     }
 
-    &:hover ~ .rate-button__star {
+    &:hover ~ &__star {
       opacity: 0;
     }
 

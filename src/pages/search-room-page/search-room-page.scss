@@ -43,6 +43,7 @@
       display: block;
       font-size: 1.25rem;
     }
+
     @include media-breakpoint-down($sm) {
       font-size: 1rem;
     }
@@ -57,7 +58,6 @@
 
     @include media-breakpoint-down($lg) {
       max-width: 100%;
-    
     }
 
     @include media-breakpoint-down($md) {

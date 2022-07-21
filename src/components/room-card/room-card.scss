@@ -71,6 +71,7 @@
 
   &__previous {
     bottom: 0px;
+
     &-image {
       left: 20px;
     }
@@ -78,6 +79,7 @@
 
   &__next {
     right: 0px;
+    
     &:hover,
     &:focus {
       transform: matrix(-1, 0, 0, 1, 0, 0);

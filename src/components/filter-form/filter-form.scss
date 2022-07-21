@@ -91,9 +91,6 @@
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
     }
-
-    @include media-breakpoint-down($xxs) {
-    }
   }
 
   &__guests-wrapper {
@@ -128,6 +125,7 @@
     @include media-breakpoint-down($lg) {
       grid-area: house-rules;
     }
+
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
       display: block;

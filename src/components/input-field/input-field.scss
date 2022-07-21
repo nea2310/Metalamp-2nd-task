@@ -39,11 +39,13 @@
     &:focus {
       outline: solid 1px $colorBorder;
     }
+
     &::before {
       @include arrow-basis-style($colorMain);
       top: 5px;
       right: -12px;
     }
+    
     &::after {
       @include arrow-tip-style($colorMain);
     }

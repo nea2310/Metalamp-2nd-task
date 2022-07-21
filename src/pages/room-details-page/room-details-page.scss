@@ -136,10 +136,12 @@ $lg-padding-bottom: 30px;
 
     &-wrapper {
       grid-area: info;
+
       @include media-breakpoint-between($sm, $lg) {
         margin: 0 20px;
         padding-bottom: $lg-padding-bottom;
       }
+
       @include media-breakpoint-down($sm) {
         @include padding-sm;
       }
@@ -151,10 +153,12 @@ $lg-padding-bottom: 30px;
 
     &-wrapper {
       grid-area: impress;
+
       @include media-breakpoint-between($sm, $lg) {
         margin: 0 20px;
         padding-bottom: $lg-padding-bottom;
       }
+
       @include media-breakpoint-down($sm) {
         @include padding-sm;
       }
@@ -164,6 +168,7 @@ $lg-padding-bottom: 30px;
   &__booking {
     &-wrapper {
       grid-area: booking;
+
       @include media-breakpoint-down($lg) {
         margin: 0 auto;
         padding-bottom: $lg-padding-bottom;
@@ -177,14 +182,15 @@ $lg-padding-bottom: 30px;
     &-header {
       display: flex;
       justify-content: space-between;
+
       @include media-breakpoint-down($xs) {
         display: block;
       }
 
       &-quantity {
+        @include font-body;
         white-space: nowrap;
         margin: 0;
-        @include font-body;
       }
     }
 
@@ -196,12 +202,14 @@ $lg-padding-bottom: 30px;
       padding-right: 70px;
       padding-top: 14px;
       grid-area: feedback;
+
       @include media-breakpoint-between($sm, $lg) {
         padding-bottom: $lg-padding-bottom;
         margin: 0 20px;
         padding-right: 0;
         padding-top: 0;
       }
+
       @include media-breakpoint-down($sm) {
         @include padding-sm;
       }
@@ -212,11 +220,13 @@ $lg-padding-bottom: 30px;
     &-wrapper {
       padding-top: 33px;
       grid-area: rules;
+
       @include media-breakpoint-between($sm, $lg) {
         padding-bottom: $lg-padding-bottom;
         padding-top: 0;
         margin: 0 20px;
       }
+
       @include media-breakpoint-down($sm) {
         @include padding-sm;
       }
@@ -225,6 +235,7 @@ $lg-padding-bottom: 30px;
     &-header {
       padding-left: 21px;
       margin-bottom: 19px;
+
       @include media-breakpoint-down($xs) {
         padding-left: 0;
       }
@@ -234,14 +245,17 @@ $lg-padding-bottom: 30px;
   &__cancel {
     @include font-body;
     margin: 19px 0 0;
+
     &-wrapper {
       padding-right: 73px;
       padding-top: 32px;
       padding-left: 1px;
       grid-area: cancel;
+
       @include media-breakpoint-down($sm) {
         @include padding-sm;
       }
+      
       @include media-breakpoint-between($sm, $lg) {
         padding-bottom: $lg-padding-bottom;
         padding-top: 0;

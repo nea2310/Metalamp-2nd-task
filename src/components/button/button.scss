@@ -21,6 +21,7 @@ $button-style-map: (very-long 320, long 196, short 99, very-short 87);
       align-self: center;
       right: 17px;
     }
+    
     &::after {
       @include arrow-tip-style($colorTextBackground);
       align-self: center;
