@@ -7,10 +7,6 @@
   width: 100%;
   padding: 30px;
 
-  &__registration-form {
-    margin-block-end: 0;
-  }
-
   &__header {
     @include font-h1;
     margin: 0;

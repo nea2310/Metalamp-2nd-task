@@ -25,6 +25,7 @@ $gradientMain: linear-gradient($colorMain 0%, $colorGradientBorder 100%);
 $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 100%);
 
 $headerHeight: 70px;
+$lg-padding-bottom: 30px;
 
 $tipBorder: 2px solid $colorTextLight;
 $tipSize: 6px;
@@ -37,6 +38,13 @@ $fontMain:
 Arial, 
 Helvetica, 
 sans-serif;
+
+@mixin indents() {
+  padding-top: 0;
+  padding-left: 20px;
+  padding-bottom: 30px;
+  margin: 0;
+}
 
 @mixin button-reset-style() {
   background: none;

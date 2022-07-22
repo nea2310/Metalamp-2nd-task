@@ -101,8 +101,8 @@
         }
 
         &-link {
-          text-decoration: none;
           @include font-body;
+          text-decoration: none;
         }
       }
     }
