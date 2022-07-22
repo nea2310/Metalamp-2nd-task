@@ -68,15 +68,12 @@
 
     @include media-breakpoint-down($xs) {
       align-self: flex-start;
-      display: block;
       padding: 10px;
       display: flex;
       cursor: pointer;
-    }
-
-    &-image {
       width: 20px;
       height: 20px;
+      background: url('@com/filter-form/image/filter.svg');
     }
   }
 

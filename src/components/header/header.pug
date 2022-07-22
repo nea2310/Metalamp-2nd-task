@@ -9,7 +9,6 @@ mixin header({menu = [], isAuthorized = false} = {})
       span(class = `${elementName}__burger`)
     div(class = `${elementName}__wrapper`)
       a(class = `${elementName}__logo` href = 'index.html')
-        img(class = `${elementName}__logo-image` src = require('@com/header/image/logo-purple.svg') alt = 'на главную')
       nav(class = `${elementName}__nav-level1 js-${elementName}__nav-level1`) 
         ul(class = `${elementName}__nav-level1-items`)
           if Array.isArray(menu) && menu.length

@@ -62,7 +62,10 @@
   }
 
   &__logo {
+    display: block;
+    height: 50px;
     text-decoration: none;
+    background: url('@com/footer/image/logo-purple.svg') no-repeat top left;
   }
 
   &__items {
@@ -103,7 +106,7 @@
 
   &__item {
     text-transform: initial;
-    padding-top: 14px;
+    padding-top: 20px;
     white-space: nowrap;
 
     @include media-breakpoint-down($md) {

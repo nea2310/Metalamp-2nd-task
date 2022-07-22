@@ -139,6 +139,11 @@
 
   &__logo {
     text-decoration: none;
+    display: block;
+    height: 50px;
+    width: 110px;
+    text-decoration: none;
+    background: url('@com/header/image/logo-purple.svg') no-repeat top left;
 
     @include media-breakpoint-down($lg) {
       padding-left: 20px;
