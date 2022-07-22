@@ -32,16 +32,6 @@
     width: 25px;
     height: 1px;
     outline-offset: 12px;
-
-    &:checked + .toggle__checkmark {
-      border: 1px solid $colorMain;
-
-      .toggle__ball {
-        background-image: $gradientMain;
-        right: 3px;
-        left: auto;
-      }
-    }
   }
 
   &__checkmark {
@@ -53,6 +43,16 @@
     height: 18px;
     border-radius: 22px;
     background-color: $colorTextBackground;
+  }
+
+  &__checkbox:checked + &__checkmark {
+    border: 1px solid $colorMain;
+
+    .toggle__ball {
+      background-image: $gradientMain;
+      right: 3px;
+      left: auto;
+    }
   }
 
   &__name {

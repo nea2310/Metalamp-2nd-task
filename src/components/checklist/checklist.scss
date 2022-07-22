@@ -63,37 +63,6 @@
       width: 1px;
       height: 1px;
       margin: -1px;
-
-      &:focus + &__category-checkmark {
-        border: 1px solid $colorMain;
-      }
-
-      &:checked + .checklist__category-checkmark,
-      &:checked:focus + &__category-checkmark {
-        border: 1px solid $colorMain;
-        &::before {
-          position: absolute;
-          content: '';
-          height: 8px;
-          width: 4px;
-          background-image: $gradientMain;
-          transform: rotate(45deg);
-          top: 3px;
-          left: 6px;
-        }
-        &::after {
-          position: absolute;
-          content: '';
-          height: 8px;
-          width: 4px;
-          background-color: $colorTextBackground;
-          transform: 
-          rotate(45deg) 
-          translateX(3px);
-          top: -2px;
-          left: 4px;
-        }
-      }
     }
 
     &-checkmark {
@@ -105,6 +74,37 @@
       height: 18px;
       border-radius: 5px;
       background-color: $colorTextBackground;
+    }
+
+    &-checkbox:focus + &-checkmark {
+      border: 1px solid $colorMain;
+    }
+
+    &-checkbox:checked + &-checkmark,
+    &-checkbox:checked:focus + &-checkmark {
+      border: 1px solid $colorMain;
+      &::before {
+        position: absolute;
+        content: '';
+        height: 8px;
+        width: 4px;
+        background-image: $gradientMain;
+        transform: rotate(45deg);
+        top: 3px;
+        left: 6px;
+      }
+      &::after {
+        position: absolute;
+        content: '';
+        height: 8px;
+        width: 4px;
+        background-color: $colorTextBackground;
+        transform: 
+        rotate(45deg) 
+        translateX(3px);
+        top: -2px;
+        left: 4px;
+      }
     }
 
     &-name {
