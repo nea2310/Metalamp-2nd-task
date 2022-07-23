@@ -45,6 +45,29 @@ $starStyle: (1 2 116, 2 25 92, 3 49 68, 4 73 44, 5 96 20);
     font-size: inherit;
     cursor: pointer;
 
+    @each $index, $rightShift, $minWidth in $starStyle {
+      &:nth-of-type(#{$index}){
+        min-width: #{$minWidth}px;
+        z-index: #{$index};
+          }
+    }
+    
+    &:focus {
+      outline: 1;
+    }
+
+    &:hover ~ &-image {
+      &::after {
+        @include star-style;
+      }
+    } 
+
+    &:checked ~ &-image {
+      &::after {
+        @include star-style;
+      }
+    } 
+
     &-image {
       position: absolute;
       width: 21px;
@@ -55,50 +78,19 @@ $starStyle: (1 2 116, 2 25 92, 3 49 68, 4 73 44, 5 96 20);
           right: #{$rightShift}px;
             }
       }
-    }
+
+      &-group {
+        position: relative;
     
-    &:focus {
-      outline: 1;
-    }
-
-    &:checked,
-    &:hover {
-      border-color: $colorMain;
-
-      & ~ .rate-button__star-image {
         &::after {
           position: absolute;
-          content: '★';
+          content: '☆☆☆☆☆';
           color: $colorMain;
           font-size: 27px;
+          letter-spacing: 1px;
           top: 1px;
+          left: -1px;
         }
-      }
-    }
-
-    &:hover ~ &__star {
-      opacity: 0;
-    }
-
-    @each $index, $rightShift, $minWidth in $starStyle {
-      &:nth-of-type(#{$index}){
-        min-width: #{$minWidth}px;
-        z-index: #{$index};
-          }
-    }
-  }
-
-  &__star:checked,
-  &__star:hover {
-    border-color: $colorMain;
-
-    & ~ .rate-button__star-image {
-      &::after {
-        position: absolute;
-        content: '★';
-        color: $colorMain;
-        font-size: 27px;
-        top: 1px;
       }
     }
   }
