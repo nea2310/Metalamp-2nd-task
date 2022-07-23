@@ -4,22 +4,22 @@ html(lang = 'ru')
   head
     block title
       -
-        const pageNames = [
-          'Colors & Type',
-          'Form Elements',
-          'Cards',
-          'Headers & Footers',
-          'Landing page',
-          'Search room',
-          'Room details',
-          'Registration',
-          'Sign in'
-          ]
+        const pageNames = {
+          'Colors & Type': 'colors-types',
+          'Form Elements': 'form-elements',
+          'Cards': 'cards',
+          'Headers & Footers': 'headers-footers',
+          'Landing page': 'landing',
+          'Search room': 'search-room',
+          'Room details': 'room-details',
+          'Registration': 'registration',
+          'Sign in': 'sign-in'
+          }
       title MetaLamp Frontend
   body
     main(class='index__main')
       section
         ul(class='index__pages')
-          each value in pageNames
-            li(class='index__page')
-              a(class='index__link' href='colors-types.html')= value
+          each value, key in pageNames
+              li(class='index__page')
+                a(class='index__link' href=`${value}.html`)= key
