@@ -47,12 +47,12 @@
 
   &__checkbox:checked + &__checkmark {
     border: 1px solid $colorMain;
+  }
 
-    .toggle__ball {
-      background-image: $gradientMain;
-      right: 3px;
-      left: auto;
-    }
+  &__checkbox:checked + &__checkmark &__ball {
+    background-image: $gradientMain;
+    right: 3px;
+    left: auto;
   }
 
   &__name {
