@@ -30,11 +30,7 @@ mixin room-card(options = {})
       div(class = `${elementName}__dots js-${elementName}__dots`)
       div(class = `${elementName}__buttons`)
         button(class = `${elementName}__previous js-${elementName}__previous` type = 'button' aria-label = 'предыдущее фото')
-          img(class = `${elementName}__previous-image` alt = 'предыдущее фото'
-            src = require('@com/room-card/image/expand-more-white.svg'))
         button(class = `${elementName}__next js-${elementName}__next` type = 'button' aria-label = 'следующее фото')
-          img(class = `${elementName}__next-image` alt = 'следующее фото'
-            src = require('@com/room-card/image/expand-more-white.svg'))
     div(class = `${elementName}__details`)
       a(class = `${elementName}__details-room` href = 'https://test/test' aria-label='Перейти к деталям номера')
         span(class = `${elementName}__detail-mark` role = 'region' aria-label = '№') №

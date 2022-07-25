@@ -53,40 +53,41 @@
     position: absolute;
     z-index: 2;
 
-    &-image {
-      display: none;
-    }
-
     &:hover,
     &:focus {
       border-top-left-radius: 4px;
       background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
-    }
-
-    &:hover &-image,
-    &:focus &-image {
-      display: inline;
     }
   }
 
   &__previous {
     bottom: 0px;
 
-    &-image {
-      left: 20px;
+    &:hover::after, &:focus::after {
+      @include tip-style;
+      border-left: 3px solid $colorTextBackground;
+      border-bottom: 3px solid $colorTextBackground;
+      transform: rotate(45deg);
+      right: 18px;
+      bottom: 73px;
     }
   }
 
   &__next {
     right: 0px;
+
+    &:hover::after, &:focus::after {
+      @include tip-style;
+      border-left: 3px solid $colorTextBackground;
+      border-bottom: 3px solid $colorTextBackground;
+      transform: rotate(45deg);
+      right: 18px;
+      bottom: 73px;
+    }
     
     &:hover,
     &:focus {
       transform: matrix(-1, 0, 0, 1, 0, 0);
-    }
-
-    &-image {
-      right: 20px;
     }
   }
 
