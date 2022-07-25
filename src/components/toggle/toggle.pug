@@ -6,12 +6,10 @@ mixin toggle(options = {})
 
     const elementName = 'toggle'
 
-  div(class = elementName)
-    label(class = `${elementName}__label`)
-      if labelText
-        p(class = `${elementName}__label-text`)= labelText
-      label(class = `${elementName}__wrapper`)
-        input(class = `${elementName}__checkbox`, type = "checkbox" name = name value = name checked = isChecked)
-        span(class = `${elementName}__checkmark`)
-          span(class = `${elementName}__ball`)
-        p(class = `${elementName}__name`)= name
+  label(class = elementName)
+    if labelText
+      h3(class = `${elementName}__label-text`)= labelText
+    input(class = `${elementName}__checkbox`, type = "checkbox" name = name value = name checked = isChecked)
+    span(class = `${elementName}__checkmark`)
+      span(class = `${elementName}__ball`)
+    span(class = `${elementName}__name`)= name
