@@ -35,6 +35,8 @@ class DateDropDown {
   }
 
   _render() {
+    const prepareDate = (date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
     this.inputWrappers = this._getElements(['input-wrapper']);
     [this.inputWrapperFrom, this.inputWrapperTo] = this.inputWrappers;
     this.isFilter = this.inputWrappers.length === 1;
@@ -45,7 +47,11 @@ class DateDropDown {
       this.inputType = this.inputDateFrom.getAttribute('type');
     } else {
       this.inputDate = this._getElement('input_from-to');
-      this.defaultDates = this.inputDate.value.split(',');
+      this.defaultDates = [];
+      const dateFrom = new Date();
+      this.defaultDates.push(prepareDate(dateFrom));
+      const dateTo = new Date(dateFrom.setDate(dateFrom.getDate() + 4));
+      this.defaultDates.push(prepareDate(dateTo));
     }
     this.tips = this._getElements(['image']);
     this.calendarWrapper = this._getElement('calendar-wrapper');
