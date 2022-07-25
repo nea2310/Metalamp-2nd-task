@@ -6,11 +6,12 @@ mixin checklist(options = {})
       labelText = ''} = options
 
     const elementName = 'checklist'
-    const style = isExpandable?`${elementName}_collapsing`: ''
+    const style = isExpandable ? `${elementName}_collapsing`: ''
+    const tabindexValue = isExpandable ? 0 : -1;
     const nameStyle = isRich ? `${elementName}__category-name_rich` : ''
 
   fieldset(class = `${elementName} js-${elementName} ${style}`)
-    p(class = `${elementName}__label js-${elementName}__label` tabindex = 0)= labelText
+    p(class = `${elementName}__label js-${elementName}__label` tabindex = tabindexValue)= labelText
     ul(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper`)
       if Array.isArray(categories) && categories.length
         each value in categories

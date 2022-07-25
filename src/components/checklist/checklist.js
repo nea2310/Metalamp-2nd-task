@@ -87,9 +87,11 @@ class CheckList {
       if (window.innerWidth > this.breakPoint) {
         this._toggleList(true);
         this.wrapper.classList.remove(`${this.elementName}_temporarily-collapsing`);
+        this.label.setAttribute('tabindex', -1);
       } else {
         this._toggleList(false);
         this.wrapper.classList.add(`${this.elementName}_temporarily-collapsing`);
+        this.label.setAttribute('tabindex', 0);
       }
     }
   }
