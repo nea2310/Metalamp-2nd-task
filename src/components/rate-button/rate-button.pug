@@ -1,12 +1,12 @@
 mixin rate-button({labelText = '', name = ''} = {})
   -
     const elementName = 'rate-button'
-    const rates = ['Очень плохо', 'Плохо', 'Удовлетворительно', 'Хорошо', 'Отлично']
+    const rates = ['Отлично', 'Хорошо', 'Удовлетворительно', 'Плохо', 'Очень плохо']
 
   fieldset(class = elementName)
     legend(class = `${elementName}__caption`)= labelText
     div(class = `${elementName}__star-image-group`)
     div(class = `${elementName}__group`)
-      for rateValue in rates
-        input(class = `${elementName}__star` type = 'radio' name = name value = '1' aria-label = rateValue)
+      for rateValue, index in rates
+        input(class = `${elementName}__star` type = 'radio' name = name value = index aria-label = rateValue)
         span(class = `${elementName}__star-image`)
