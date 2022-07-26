@@ -1,16 +1,82 @@
 mixin button(options = {})
   -
-    const {prepareOptions} = require ('@com/button/utils/button.js');
-    const {text, elementName, arrowModifier, type, length, width, color, href} = prepareOptions(options)
+    //======= вариант 1 - статический импорт: ошибка Module parse failed: 'import' and 'export' may only appear at the top level
+    // import {prepareOptions} from './button-utils.js'
 
-  case type
+    const {
+      type = 'button',
+      length = 'short',
+      width = 'wide',
+      color = 'dark',
+      href = 'https://test/test',
+      text = '',
+      hasArrow = false,
+    } = options;
+
+    //======= вариант 2 - динамический импорт, относительный путь: ошибка Can't resolve './button-utils.js' in 'C:\Users\Екатерина\Documents\GIT\Metalamp-2nd-task\src\pages\room-details-page'
+    //- const promise = import('./button-utils.js')
+    //-     .then(object => object.prepareOptions({
+    //-     type,
+    //-     length,
+    //-     width,
+    //-     color,
+    //-     href,
+    //-     hasArrow}))
+
+    //- const {
+    //-   elementName,
+    //-   arrowModifier,
+    //-   typeChecked,
+    //-   lengthChecked,
+    //-   widthChecked,
+    //-   colorChecked,
+    //-   hrefChecked} = promise;
+
+    //======= вариант 3 - динамический импорт, путь с использованием алиаса @com: ошибка Cannot find module './assets/js/src_components_button_button-utils_js-_98f31.js'
+    //- const promise = import('@com/button/button-utils.js') 
+    //- .then(object => object.prepareOptions({
+    //-     type,
+    //-     length,
+    //-     width,
+    //-     color,
+    //-     href,
+    //-     hasArrow}))
+
+    //- const {
+    //-   elementName,
+    //-   arrowModifier,
+    //-   typeChecked,
+    //-   lengthChecked,
+    //-   widthChecked,
+    //-   colorChecked,
+    //-   hrefChecked} = promise;
+
+    //======= вариант 4 - через require, работает
+    
+    const {prepareOptions} = require ('@com/button/button-utils.js'); // это работает
+    const {
+      elementName,
+      arrowModifier,
+      typeChecked,
+      lengthChecked,
+      widthChecked,
+      colorChecked,
+      hrefChecked} = prepareOptions({
+        type,
+        length,
+        width,
+        color,
+        href,
+        hasArrow});
+
+  case typeChecked
     when 'button'
-      button(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 
+      button(class = `${elementName} ${elementName}_length_${lengthChecked} ${elementName}_width_${widthChecked} ${elementName}_color_${colorChecked}` 
         type = 'button')= text
     when 'submit'
-      button(class = `${elementName} ${arrowModifier} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` 
+      button(class = `${elementName} ${arrowModifier} ${elementName}_length_${lengthChecked} ${elementName}_width_${widthChecked} ${elementName}_color_${colorChecked}` 
         type = 'submit')= text
     when 'link'
-      a(class = `${elementName} ${elementName}_length_${length} ${elementName}_width_${width} ${elementName}_color_${color}` href = href)= text
+      a(class = `${elementName} ${elementName}_length_${lengthChecked} ${elementName}_width_${widthChecked} ${elementName}_color_${colorChecked}` href = hrefChecked)= text
     when 'plain-text'
       button(class = `${elementName} ${elementName}_plain-text` type = 'button')= text
