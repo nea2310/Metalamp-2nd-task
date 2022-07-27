@@ -1,8 +1,5 @@
 mixin button(options = {})
   -
-    //======= вариант 1 - статический импорт: ошибка Module parse failed: 'import' and 'export' may only appear at the top level
-    // import {prepareOptions} from './button-utils.js'
-
     const {
       type = 'button',
       length = 'short',
@@ -12,49 +9,10 @@ mixin button(options = {})
       text = '',
       hasArrow = false,
     } = options;
-
-    //======= вариант 2 - динамический импорт, относительный путь: ошибка Can't resolve './button-utils.js' in 'C:\Users\Екатерина\Documents\GIT\Metalamp-2nd-task\src\pages\room-details-page'
-    //- const promise = import('./button-utils.js')
-    //-     .then(object => object.prepareOptions({
-    //-     type,
-    //-     length,
-    //-     width,
-    //-     color,
-    //-     href,
-    //-     hasArrow}))
-
-    //- const {
-    //-   elementName,
-    //-   arrowModifier,
-    //-   typeChecked,
-    //-   lengthChecked,
-    //-   widthChecked,
-    //-   colorChecked,
-    //-   hrefChecked} = promise;
-
-    //======= вариант 3 - динамический импорт, путь с использованием алиаса @com: ошибка Cannot find module './assets/js/src_components_button_button-utils_js-_98f31.js'
-    //- const promise = import('@com/button/button-utils.js') 
-    //- .then(object => object.prepareOptions({
-    //-     type,
-    //-     length,
-    //-     width,
-    //-     color,
-    //-     href,
-    //-     hasArrow}))
-
-    //- const {
-    //-   elementName,
-    //-   arrowModifier,
-    //-   typeChecked,
-    //-   lengthChecked,
-    //-   widthChecked,
-    //-   colorChecked,
-    //-   hrefChecked} = promise;
-
-    //======= вариант 4 - через require, работает
     
-    const {prepareOptions} = require ('@com/button/button-utils.js'); // это работает
-    const {
+    const prepareOptions = require ('@com/button/button-utils.js').default;
+
+      const {
       elementName,
       arrowModifier,
       typeChecked,

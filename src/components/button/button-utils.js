@@ -1,4 +1,5 @@
-import { getValidValue, checkType } from '../../utils/helpers';
+import getValidValue from '../../shared/helpers/getValidValue';
+import checkType from '../../shared/helpers/checkType';
 
 export default function prepareOptions(options) {
   const {
@@ -26,5 +27,3 @@ export default function prepareOptions(options) {
     hrefChecked: checkType('string', href, 'https://test/test'),
   };
 }
-
-export { prepareOptions };
