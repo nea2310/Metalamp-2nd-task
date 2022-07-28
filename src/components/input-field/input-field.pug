@@ -1,28 +1,27 @@
 mixin input-field(options ={})
   -
-    function getValidValue (list, value, defaultValue = '') {
-      return value = list.includes(value) ? value : defaultValue
-    }
-
-    let {width = '', validation = ''} = options
-    const { placeholder = '',
+    const { 
+      width = '',
+      validation = '',
+      placeholder = '',
       labelText = '',
       hasArrow = false,
       inputType = 'text',
       inputMin = '',
-      inputMax = ''} = options
+      inputMax = '',
+    } = options
 
-    const elementName = 'input-field'
+    const prepareOptions = require ('@com/input-field/input-field-utils.js').default;
 
-    const validWidths = ['wide', 'medium', 'medium-narrow']
-    width = getValidValue(validWidths, width, 'wide')
+    const {
+      elementName,
+      widthChecked,
+      validationChecked} = prepareOptions({
+        width,
+        validation,
+    });
 
-    const validationTypes = ['date', 'email']
-    validation = getValidValue(validationTypes, validation)
-
-    const inputWidth = `_width_${width}`
-
-  div(class = `${elementName} js-${elementName} ${elementName}_width_${width} js-${elementName}_validation_${validation}`)
+  div(class = `${elementName} js-${elementName} ${elementName}_width_${widthChecked} js-${elementName}_validation_${validationChecked}`)
     label(class = `${elementName}__label`)
       if labelText
         p(class = `${elementName}__label-text`)= labelText
