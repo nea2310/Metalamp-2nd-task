@@ -1,17 +1,11 @@
 mixin type-card(options = {})
   -
-    function getValidValue (list, value, defaultValue) {
-      return value = list.includes(value) ? value : defaultValue
-    }
+    const { style = '', name = '', text = '' } = options;
 
-    let {style = ''} = options
-    const { name = '', text = ''} = options
+    const prepareOptions = require ('@com/type-card/type-card-utils.js').default;
 
-    const elementName = 'type-card'
-
-    const validStyles = ['h1', 'h2', 'h3', 'body']
-    style = getValidValue(validStyles, style, 'h1')
+    const { elementName, styleChecked} = prepareOptions({ style });
 
   span(class = elementName)
-    span(class=`${elementName}__name ${elementName}__name_${style}`)= name
-    span(class=`${elementName}__text ${elementName}__text_${style}`)= text
+    span(class=`${elementName}__name ${elementName}__name_${styleChecked}`)= name
+    span(class=`${elementName}__text ${elementName}__text_${styleChecked}`)= text
