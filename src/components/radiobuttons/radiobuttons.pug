@@ -7,7 +7,7 @@ mixin radiobuttons(options = {})
     const elementName = 'radiobuttons'
 
   fieldset(class = elementName)
-    p(class = `${elementName}__label`)= labelText
+    h3(class = `${elementName}__label`)= labelText
     ul(class = `${elementName}__list`)
       if Array.isArray(categories) && categories.length
         each category in categories
@@ -17,4 +17,4 @@ mixin radiobuttons(options = {})
               input(class = `${elementName}__category-checkbox`
                 type = "radio" name = radioGroupName value = value checked = checked)
               span(class = `${elementName}__category-radiomark`)
-              p(class = `${elementName}__category-name`)= value
+              span(class = `${elementName}__category-name`)= value

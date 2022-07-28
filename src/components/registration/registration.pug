@@ -59,7 +59,7 @@ mixin registration()
           color: 'dark',
           hasArrow: true})
       div(class = `${elementName}__go-to-login` role='region' aria-label = 'Уже есть аккаунт на Toxin')
-        p(class = `${elementName}__go-to-login-legend` ) Уже есть аккаунт на Toxin
+        span(class = `${elementName}__go-to-login-legend` ) Уже есть аккаунт на Toxin
         +button({
           text: 'войти',
           type: 'link',

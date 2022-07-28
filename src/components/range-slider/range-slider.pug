@@ -40,7 +40,7 @@ mixin range-slider(options = {})
     div(class = `${elementName}__wrapper`)
       div(class = `${elementName}__title-wrapper`)
         if labelText
-          p(class = `${elementName}__title`)= labelText
+          h3(class = `${elementName}__title`)= labelText
         div(class = `${elementName}__price`)
           input(class = `${elementName}__price-from` type = 'text')
           span(class = `${elementName}__price-delimiter`) -
@@ -48,4 +48,4 @@ mixin range-slider(options = {})
       input(class = `${elementName}__slider` type = 'text'
         data-type = sliderTypeChecked data-min = minChecked data-max = maxChecked data-step = stepChecked 
         data-from = fromChecked data-to = toChecked data-hide-min-max = isMinMaxHiddenChecked data-hide-from-to = isFromToHiddenChecked)
-      P(class = `${elementName}__text`)= text
+      span(class = `${elementName}__text`)= text

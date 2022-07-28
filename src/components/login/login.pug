@@ -29,7 +29,7 @@ mixin login()
           color: 'dark',
           hasArrow: true})
     div(class = `${elementName}__go-to-registration` role='region' aria-label = 'Нет аккаунта на Toxin')
-      p(class = `${elementName}__go-to-registration-legend`) Нет аккаунта на Toxin?
+      span(class = `${elementName}__go-to-registration-legend`) Нет аккаунта на Toxin?
       +button({
         text: 'создать',
         type: 'link',

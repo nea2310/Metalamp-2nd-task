@@ -24,7 +24,7 @@ mixin input-field(options ={})
   div(class = `${elementName} js-${elementName} ${elementName}_width_${widthChecked} js-${elementName}_validation_${validationChecked}`)
     label(class = `${elementName}__label`)
       if labelText
-        p(class = `${elementName}__label-text`)= labelText
+        h3(class = `${elementName}__label-text`)= labelText
       if hasArrow
         button(class = `${elementName}__link` aria-label = name)
       input(class = `${elementName}__input js-${elementName}__input` placeholder = placeholder type = inputType min = inputMin max = inputMax )

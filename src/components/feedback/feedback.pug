@@ -18,8 +18,8 @@ mixin feedback(options = {})
 
   div(class = elementName)
     img(class = `${elementName}__image` src = imagePathChecked alt = alt)
-    p(class = `${elementName}__name`)= name
-    p(class = `${elementName}__date`)= date
+    span(class = `${elementName}__name`)= name
+    span(class = `${elementName}__date`)= date
     div(class = `${elementName}__like`)
       +like-button({
         isLiked, 
