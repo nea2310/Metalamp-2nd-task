@@ -2,28 +2,26 @@ include ../button/button.pug
 
 mixin dropdown(options = {})
   -
-    function getValidValue (list, value, defaultValue) {
-      return value = list.includes(value) ? value : defaultValue
-    }
-
-    let {type = 'dropDownGuests', width = 'wide'} = options
-    const {categories = [], 
+    const {
+      type = 'dropDownGuests',
+      width = 'wide',
+      categories = [], 
       placeholder = '', 
       hasButtons = false, 
       labelText = ''} = options
 
-    const elementName = 'dropdown'
+    const prepareOptions = require ('@com/dropdown/dropdown-utils.js').default;
 
-    const minus = '-'
-    const plus = '+'
-
-    const validWidths = ['wide', 'narrow']
-    width = getValidValue(validWidths, width, 'wide')
-    const inputWidth = `_width_${width}`
-
-    const validTypes = ['dropDownGuests', 'dropDownRooms']
-    type = getValidValue(validTypes, type, 'dropDownGuests')
-    const inputStyle = type=='dropDownRooms' ? '_not-rounded' : '_rounded'
+    const {
+      elementName,
+      inputWidth,
+      inputStyle,
+      minus,
+      plus,
+      } = prepareOptions({
+        type,
+        width,
+        });
 
   div(class = `${elementName} js-${elementName} ${elementName}${inputWidth}`)
     div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper`)
