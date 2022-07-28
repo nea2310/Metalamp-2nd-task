@@ -2,24 +2,22 @@ include ../like-button/like-button.pug
 
 mixin feedback(options = {})
   -
-    let {imageName = require('@com/feedback/image/default.svg')} = options
-    const {name = '', 
+    const {
+      imageName = require('@com/feedback/image/default.svg'),
+      name = '', 
       date = '',
       description = '',
       alt = '',
       isLiked = false,
-      likeAmount = 0} = options
-    const elementName ='feedback'
+      likeAmount = 0
+      } = options
+    
+    const prepareOptions = require ('@com/feedback/feedback-utils.js').default;
 
-    function validateImagePath(path){
-      const result = /^assets\/images\//.test(path)
-      return result ? path : require('@com/feature/image/default.svg')
-      }
-
-    imageName = validateImagePath(imageName)
+    const { elementName, imagePathChecked} = prepareOptions({imageName});
 
   div(class = elementName)
-    img(class = `${elementName}__image` src = imageName alt = alt)
+    img(class = `${elementName}__image` src = imagePathChecked alt = alt)
     p(class = `${elementName}__name`)= name
     p(class = `${elementName}__date`)= date
     div(class = `${elementName}__like`)
