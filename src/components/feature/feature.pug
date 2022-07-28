@@ -2,11 +2,10 @@ mixin feature(options = {})
   -
 
     const { 
-      imageName = require('@com/feature/image/default.svg'),
+      imageName = require('@/shared/images/logo-purple.svg'),
       name = '',
       description = '',
-      alt = ''
-      } = options
+      alt = ''} = options
 
     const prepareOptions = require ('@com/feature/feature-utils.js').default;
 
