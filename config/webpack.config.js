@@ -22,6 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   resolve: {
     alias: {
+      '@': src,
       '@fav': `${src}/assets/favicons`,
       '@com': `${src}/components`,
       '@pag': `${src}/pages`,
