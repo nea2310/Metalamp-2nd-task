@@ -5,10 +5,17 @@ mixin checklist(options = {})
       isRich = false,
       labelText = ''} = options
 
-    const elementName = 'checklist'
-    const style = isExpandable ? `${elementName}_collapsing`: ''
-    const tabindexValue = isExpandable ? 0 : -1;
-    const nameStyle = isRich ? `${elementName}__category-name_rich` : ''
+    const prepareOptions = require ('@com/checklist/checklist-utils.js').default;
+
+    const {
+      elementName,
+      style,
+      tabindexValue,
+      nameStyle
+      } = prepareOptions({
+        isExpandable,
+        isRich,
+        });
 
   fieldset(class = `${elementName} js-${elementName} ${style}`)
     p(class = `${elementName}__label js-${elementName}__label` tabindex = tabindexValue)= labelText
