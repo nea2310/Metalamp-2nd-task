@@ -1,44 +1,44 @@
 {
   "bulletList": {
     "categories": [
-      "Нельзя с питомцами",
-      "Без вечеринок и мероприятий",
-      "Время прибытия — после 13:00, а выезд до 12:00"
+      "Нельзя с питомцами Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "Без вечеринок и мероприятий Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "Время прибытия — после 13:00, а выезд до 12:00 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in"
     ]
   },
   "features": [
     {
-      "name": "Комфорт",
-      "description": "Шумопоглощающие стены",
+      "name": "Комфорт Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "description": "Шумопоглощающие стены Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
       "alt": "smile"
     },
     {
-      "name": "Удобство",
-      "description": "Окно в каждой из спален",
+      "name": "Удобство Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "description": "Окно в каждой из спален Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
       "alt": "city"
     },
     {
-      "name": "Уют",
-      "description": "Номер оснащен камином",
+      "name": "Уют Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "description": "Номер оснащен камином Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
       "alt": "fireplace"
     }
   ],
   "feedbacks": [
     {
-      "name": "Мурад Сарафанов",
-      "date": "5 дней назад",
-      "description": "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
+      "name": "Мурад Сарафанов Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "date": "5 дней назад Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "description": " Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum inВеликолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
       "alt": "Мурад Сарафанов",
       "isLiked": true,
-      "likeAmount": "12"
+      "likeAmount": "129999"
     },
     {
-      "name": "Патрисия Стёклышкова",
-      "date": "Неделю назад",
-      "description": "Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, Каждый день новое блюдо и десерт как комплимент",
+      "name": "Патрисия Стёклышкова Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "date": "Неделю назад Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum inОбслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, Каждый день новое блюдо и десерт как комплимент",
       "alt": "Патрисия Стеклышкова",
       "isLiked": false,
-      "likeAmount": "2"
+      "likeAmount": "29999"
     }
   ]
 }

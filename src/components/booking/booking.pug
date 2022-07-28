@@ -28,17 +28,17 @@ mixin booking(options = {})
         span(class = `${elementName}__detail-lux`)= lux
       div(class = `${elementName}__details-price`)
         span(class = `${elementName}__detail-price`)= `${roomPrice}₽`
-        span(class = `${elementName}__detail-label`) в сутки
+        span(class = `${elementName}__detail-label`) в сутки люкс
     div(class = `${elementName}__date-dropdown`)
       +date-dropdown(dateDropdown)
     div(class = `${elementName}__guests`)
       +dropdown(dropdownGuests)
     div(class = `${elementName}__price-breakdown`)
-      div(class = `${elementName}__price-base-name`)= `${roomPrice}₽ x ${daysAmount} суток`
+      div(class = `${elementName}__price-base-name`)= `${roomPrice}₽ x ${daysAmount} суток Lorem ipsum dolor sit amet consectetur adipisicing elit`
       div(class = `${elementName}__price-base-cost`)= `${totalPrice}₽`
-      div(class = `${elementName}__price-service-name`)= `Сбор за услуги: скидка ${sale}₽`
+      div(class = `${elementName}__price-service-name`)= `Сбор за услуги: скидка Lorem ipsum dolor sit amet consectetur adipisicing elit ${sale}₽`
       div(class = `${elementName}__price-service-cost`)= `${saleTotal}₽`
-      div(class = `${elementName}__price-extra-name`) Сбор за дополнительные услуги
+      div(class = `${elementName}__price-extra-name`) Сбор за дополнительные услуги Lorem ipsum dolor sit amet consectetur adipisicing elit
       div(class = `${elementName}__price-extra-cost`)= `${extraTotal}₽`
       div(class = `${elementName}__price-total-name`) Итого
       div(class = `${elementName}__price-total-cost`)= `${totalAmount}₽`

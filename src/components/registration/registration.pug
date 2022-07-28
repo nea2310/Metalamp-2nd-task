@@ -9,53 +9,53 @@ mixin registration()
 
   div(class = `${elementName} js-${elementName}`)
     form(class = `${elementName}__registration-form js-${elementName}__registration-form`)
-      h1(class = `${elementName}__header`) Регистрация аккаунта
+      h1(class = `${elementName}__header`) Регистрация аккаунта Lorem ipsum dolor sit amet consectetur adipisicing elit
       fieldset(class = `${elementName}__name-surname`)
         div(class = `${elementName}__name`)
           +input-field({
             width: 'wide',
-            placeholder: 'имя',
+            placeholder: 'имя Lorem ipsum dolor sit amet consectetur adipisicing elit',
             inputType: 'text',
           })
         div(class = `${elementName}__surname`)
           +input-field({
             width: 'wide',
-            placeholder: 'фамилия',
+            placeholder: 'фамилия Lorem ipsum dolor sit amet consectetur adipisicing elit',
             inputType: 'text',
           })
       div(class = `${elementName}__radiobuttons`)
         +radiobuttons({
           categories:
-            [{value:'Мужчина', checked: true}, {value:'Женщина'}],
+            [{value:'Мужчина Lorem ipsum dolor sit amet consectetur adipisicing elit', checked: true}, {value:'Женщина Lorem ipsum dolor sit amet consectetur adipisicing elit'}],
           radioGroupName: 'gender'})
       div(class = `${elementName}__birth-date`)
         +input-field({
           width: 'wide',
           placeholder: 'ДД.ММ.ГГГГ',
-          labelText: 'дата рождения',
+          labelText: 'дата рождения Lorem ipsum dolor sit amet consectetur adipisicing elit',
           inputType: 'text',
           validation: 'date',
         })
       fieldset(class = `${elementName}__credentials`) 
-        legend(class = `${elementName}__credentials-legend`)  данные для входа в сервис
+        legend(class = `${elementName}__credentials-legend`)  данные для входа в сервис Lorem ipsum dolor sit amet consectetur adipisicing elit
         div(class = `${elementName}__email`)
           +input-field({
             width: 'wide',
-            placeholder: 'Email',
+            placeholder: 'Email Lorem ipsum dolor sit amet consectetur adipisicing elit',
             inputType: 'email',
             validation: 'email',
           })
         div(class = `${elementName}__password`)
           +input-field({
             width: 'wide',
-            placeholder: 'Пароль',
+            placeholder: 'Пароль Lorem ipsum dolor sit amet consectetur adipisicing elit',
             inputType: 'password',
           })
       div(class = `${elementName}__special-offer`)
-        +toggle({value: 'Получать спецпредложения'})
+        +toggle({value: 'Получать спецпредложения Lorem ipsum dolor sit amet consectetur adipisicing elit'})
       div(class = `${elementName}__search`)
         +button({
-          text: 'зарегистрироваться',
+          text: 'зарегистрироваться Lorem ipsum dolor sit amet consectetur adipisicing elit',
           type: 'submit',
           length: 'very-long',
           width: 'wide',
@@ -63,9 +63,9 @@ mixin registration()
           hasArrow: true,
         })
       div(class = `${elementName}__go-to-login` role='region' aria-label = 'Уже есть аккаунт на Toxin')
-        span(class = `${elementName}__go-to-login-legend` ) Уже есть аккаунт на Toxin
+        span(class = `${elementName}__go-to-login-legend` ) Уже есть аккаунт на Toxin Lorem ipsum dolor sit amet consectetur adipisicing elit
         +button({
-          text: 'войти',
+          text: 'войти Lorem ipsum dolor sit amet consectetur adipisicing elit',
           type: 'link',
           length: 'short',
           width: 'wide',

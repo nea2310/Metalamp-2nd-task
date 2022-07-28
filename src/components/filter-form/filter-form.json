@@ -1,20 +1,20 @@
 {
   "rangeSlider": {
-    "labelText": "диапазон цены",
+    "labelText": "диапазон цены Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "sliderType": "double",
-    "min": "1000",
-    "max": "15000",
+    "min": "1000000000",
+    "max": "15000000000",
     "step": "1",
-    "from": "5000",
-    "to": "10000",
+    "from": "5000000000",
+    "to": "10000000000",
     "isMinMaxHidden": "true",
     "isFromToHidden": "true",
-    "text": "Стоимость за сутки пребывания в номере"
+    "text": "Стоимость за сутки пребывания в номере Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in"
   },
   "filterDateDropdown": {
     "width": "wide",
     "type": "filterDateDropDown",
-    "labelTextFromTo": "даты пребывания в отеле"
+    "labelTextFromTo": "даты пребывания в отеле Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in"
   },
   "dropdownRooms": {
     "categories": [
@@ -85,27 +85,27 @@
   "checkListExpandable": {
     "categories": [
       {
-        "value": "Завтрак",
+        "value": "Завтрак Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "breakfast"
       },
       {
-        "value": "Письменный стол",
+        "value": "Письменный стол Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "desk"
       },
       {
-        "value": "Стул для кормления",
+        "value": "Стул для кормления Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "babyChair"
       },
       {
-        "value": "Кроватка",
+        "value": "Кроватка Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "babyBad"
       },
       {
-        "value": "Телевизор",
+        "value": "Телевизор Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "tv"
       },
       {
-        "value": "Шампунь",
+        "value": "Шампунь Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "shampoo"
       }
     ],
@@ -116,15 +116,15 @@
   "checkListCheckBox": {
     "categories": [
       {
-        "value": "Можно курить",
+        "value": "Можно курить Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "smokingAllowed"
       },
       {
-        "value": "Можно с питомцами",
+        "value": "Можно с питомцами Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "petsAllowed"
       },
       {
-        "value": "Можно пригласить гостей (до 10 человек)",
+        "value": "Можно пригласить гостей (до 10 человек) Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "guestsAllowed"
       }
     ],
@@ -135,13 +135,13 @@
   "checkListRichCheckBox": {
     "categories": [
       {
-        "value": "Широкий коридор",
-        "description": "Ширина коридоров в номере не менее 91 см",
+        "value": "Широкий коридор Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+        "description": "Ширина коридоров в номере не менее 91 см Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "wideСorridor"
       },
       {
-        "value": "Помощник для инвалидов",
-        "description": "На 1 этаже вас встретит специалист и проводит до номера",
+        "value": "Помощник для инвалидов Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+        "description": "На 1 этаже вас встретит специалист и проводит до номера Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "assistance"
       }
     ],

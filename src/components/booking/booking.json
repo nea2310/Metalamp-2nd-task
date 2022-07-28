@@ -2,8 +2,8 @@
   "dateDropdown": {
     "width": "wide",
     "type": "dateDropDown",
-    "labelTextFrom": "Прибытие",
-    "labelTextTo": "Выезд"
+    "labelTextFrom": "Прибытие Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    "labelTextTo": "Выезд Lorem ipsum dolor sit amet consectetur adipisicing elit"
   },
   "dropdownGuests": {
     "categories": [
@@ -40,7 +40,7 @@
     "width": "wide"
   },
   "button": {
-    "text": "забронировать",
+    "text": "забронировать Lorem ipsum dolor sit amet consectetur adipisicing elit",
     "type": "submit",
     "length": "very-long",
     "width": "wide",

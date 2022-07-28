@@ -1,52 +1,52 @@
 {
   "textField": {
     "width": "wide",
-    "placeholder": "Email",
-    "labelText": "text field",
+    "placeholder": "Email Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+    "labelText": "text field Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "inputType": "email",
     "validation": "email"
   },
   "maskedTextField": {
     "width": "wide",
-    "placeholder": "ДД.ММ.ГГГГ",
-    "labelText": "masked text field",
+    "placeholder": "ДД.ММ.ГГГГ Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+    "labelText": "masked text field Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "inputType": "text",
     "validation": "date"
   },
   "subscriptionTextField": {
     "width": "medium",
-    "placeholder": "Email",
-    "labelText": "subscription text field",
+    "placeholder": "Email Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+    "labelText": "subscription text field Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "hasArrow": true,
-    "name": "оформить подписку",
+    "name": "оформить подписку Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "inputType": "email",
     "validation": "email"
   },
   "radiobuttons": {
     "categories": [
       {
-        "value": "Мужчина",
+        "value": "Мужчина Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checked": true
       },
       {
-        "value": "Женщина"
+        "value": "Женщина Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in"
       }
     ],
     "radioGroupName": "gender"
   },
   "toggles": {
     "toggleName": "getSpecialOffer",
-    "value": "Получать спецпредложения",
+    "value": "Получать спецпредложения Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "isChecked": true
   },
   "likeButtons": [
     {
       "isLiked": false,
-      "likeAmount": "2"
+      "likeAmount": "222222222222222222"
     },
     {
       "isLiked": true,
-      "likeAmount": "12"
+      "likeAmount": "1222222222222222"
     }
   ],
   "rateButtons": [
@@ -54,31 +54,31 @@
     "rateButtonRight"
   ],
   "rangeSlider": {
-    "labelText": "range slider",
+    "labelText": "range slider Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "sliderType": "double",
-    "min": "1000",
-    "max": "15000",
+    "min": "10000000000000",
+    "max": "10000000000000000",
     "step": "1",
-    "from": "5000",
-    "to": "10000",
+    "from": "50000000000000",
+    "to": "10000000000000000",
     "isMinMaxHidden": "true",
     "isFromToHidden": "true"
   },
   "dateDropdown": {
     "width": "wide",
     "type": "dateDropDown",
-    "labelTextFrom": "date dropdown",
-    "labelTextTo": "date dropdown"
+    "labelTextFrom": "date dropdown Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+    "labelTextTo": "date dropdown Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in"
   },
   "filterDateDropdown": {
     "width": "narrow",
     "type": "filterDateDropDown",
-    "labelTextFromTo": "filter date dropdown"
+    "labelTextFromTo": "filter date dropdown Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in"
   },
   "dropdownRooms": {
     "categories": [
       {
-        "displayName": "спальни",
+        "displayName": "спальни Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "categoryType": "спальня",
         "declensions": "спальня,спальни,спален",
         "defaultCount": 0,
@@ -86,7 +86,7 @@
         "maxCount": 5
       },
       {
-        "displayName": "кровати",
+        "displayName": "кровати Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "categoryType": "кровать",
         "declensions": "кровать,кровати,кроватей",
         "defaultCount": 0,
@@ -94,7 +94,7 @@
         "maxCount": 10
       },
       {
-        "displayName": "ванные комнаты",
+        "displayName": "ванные комнаты Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "categoryType": "ванная комната",
         "declensions": "ванная комната,ванные комнаты,ванных комнат",
         "defaultCount": 0,
@@ -103,14 +103,14 @@
       }
     ],
     "type": "dropDownRooms",
-    "placeholder": "Сколько комнат",
+    "placeholder": "Сколько комнат Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "labelText": "dropdown",
     "width": "narrow"
   },
   "dropdownGuests": {
     "categories": [
       {
-        "displayName": "взрослые",
+        "displayName": "взрослые Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "categoryType": "гость",
         "declensions": "гость,гостя,гостей",
         "defaultCount": 0,
@@ -118,7 +118,7 @@
         "maxCount": 99
       },
       {
-        "displayName": "дети",
+        "displayName": "дети Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "categoryType": "гость",
         "declensions": "гость,гостя,гостей",
         "defaultCount": 0,
@@ -126,7 +126,7 @@
         "maxCount": 99
       },
       {
-        "displayName": "младенцы",
+        "displayName": "младенцы Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "categoryType": "младенец",
         "declensions": "младенец,младенца,младенцев",
         "defaultCount": 0,
@@ -135,7 +135,7 @@
       }
     ],
     "type": "dropDownGuests",
-    "placeholder": "Сколько гостей",
+    "placeholder": "Сколько гостей Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "hasButtons": true,
     "buttons": true,
     "labelText": "dropdown",
@@ -144,72 +144,72 @@
   "checkListExpandable": {
     "categories": [
       {
-        "value": "Завтрак",
+        "value": "Завтрак Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "breakfast"
       },
       {
-        "value": "Письменный стол",
+        "value": "Письменный стол Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "desk"
       },
       {
-        "value": "Стул для кормления",
+        "value": "Стул для кормления Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "babyChair"
       },
       {
-        "value": "Кроватка",
+        "value": "Кроватка Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "babyBad"
       },
       {
-        "value": "Телевизор",
+        "value": "Телевизор Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "tv"
       },
       {
-        "value": "Шампунь",
+        "value": "Шампунь Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "shampoo"
       }
     ],
     "isExpandable": true,
     "isRich": false,
-    "labelText": "expandable checkbox list"
+    "labelText": "expandable checkbox list Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in"
   },
   "checkListCheckBox": {
     "categories": [
       {
-        "value": "Можно курить",
+        "value": "Можно курить Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "smokingAllowed"
       },
       {
-        "value": "Можно с питомцами",
+        "value": "Можно с питомцами Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "petsAllowed"
       },
       {
-        "value": "Можно пригласить гостей (до 10 человек)",
+        "value": "Можно пригласить гостей (до 10 человек) Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "guestsAllowed"
       }
     ],
     "isExpandable": false,
     "isRich": false,
-    "labelText": "checkbox buttons"
+    "labelText": "checkbox buttons Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in"
   },
   "checkListRichCheckBox": {
     "categories": [
       {
-        "value": "Широкий коридор",
-        "description": "Ширина коридоров в номере не менее 91 см",
+        "value": "Широкий коридор Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+        "description": "Ширина коридоров в номере не менее 91 см Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "wideСorridor"
       },
       {
-        "value": "Помощник для инвалидов",
-        "description": "На 1 этаже вас встретит специалист и проводит до номера",
+        "value": "Помощник для инвалидов Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+        "description": "На 1 этаже вас встретит специалист и проводит до номера Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
         "checkBoxName": "assistance"
       }
     ],
     "isExpandable": false,
     "isRich": true,
-    "labelText": "rich checkbox buttons"
+    "labelText": "rich checkbox buttons Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in"
   },
   "buttonDarkShort": {
-    "text": "click me",
+    "text": "click me Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "type": "link",
     "length": "short",
     "width": "wide",
@@ -217,7 +217,7 @@
     "href": "https://test/test"
   },
   "buttonLightShort": {
-    "text": "click me",
+    "text": "click me Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "type": "link",
     "length": "short",
     "width": "wide",
@@ -225,11 +225,11 @@
     "href": "https://test/test"
   },
   "buttonPlain": {
-    "text": "click me",
+    "text": "click me Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "type": "plain-text"
   },
   "buttonDarkLong": {
-    "text": "перейти к оплате",
+    "text": "перейти к оплате Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "type": "submit",
     "length": "very-long",
     "width": "wide",
@@ -238,29 +238,29 @@
   },
   "bulletList": {
     "categories": [
-      "Нельзя с питомцами",
-      "Без вечеринок и мероприятий",
-      "Время прибытия — после 13:00, а выезд до 12:00"
+      "Нельзя с питомцами Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "Без вечеринок и мероприятий Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "Время прибытия — после 13:00, а выезд до 12:00 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in" 
     ]
   },
   "features": [
     {
-      "name": "Комфорт",
-      "description": "Шумопоглощающие стены",
+      "name": "Комфорт Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "description": "Шумопоглощающие стены Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
       "alt": "smile"
     },
     {
-      "name": "Удобство",
-      "description": "Окно в каждой из спален",
+      "name": "Удобство Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+      "description": "Окно в каждой из спален Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
       "alt": "city"
     }
   ],
   "feedback": {
-    "name": "Мурад Сарафанов",
-    "date": "5 дней назад",
-    "description": "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
+    "name": "Мурад Сарафанов Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+    "date": "5 дней назад Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
+    "description": "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "alt": "Мурад Сарафанов",
     "isLiked": true,
-    "likeAmount": "12"
+    "likeAmount": "1200"
   }
 }

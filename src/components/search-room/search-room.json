@@ -2,8 +2,8 @@
   "dateDropdown": {
     "width": "wide",
     "type": "dateDropDown",
-    "labelTextFrom": "Прибытие",
-    "labelTextTo": "Выезд"
+    "labelTextFrom": "Прибытие Lorem ipsum dolor sit amet consectetur adipisicing elit",
+    "labelTextTo": "Выезд Lorem ipsum dolor sit amet consectetur adipisicing elit"
   },
   "dropdownGuests": {
     "categories": [
@@ -36,11 +36,11 @@
     "placeholder": "Сколько гостей",
     "hasButtons": true,
     "buttons": true,
-    "labelText": "гости",
+    "labelText": "гости Lorem ipsum dolor sit amet consectetur adipisicing elit",
     "width": "wide"
   },
   "button": {
-    "text": "подобрать номер",
+    "text": "подобрать номер Lorem ipsum dolor sit amet consectetur adipisicing elit",
     "type": "submit",
     "length": "very-long",
     "width": "wide",

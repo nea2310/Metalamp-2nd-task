@@ -7,7 +7,7 @@ mixin login()
 
   div(class = `${elementName} js-${elementName}`)
     form(class = `${elementName}__login-form js-${elementName}__login-form`)
-      h1(class = `${elementName}__header`) Войти
+      h1(class = `${elementName}__header`) Войти Lorem ipsum dolor sit amet consectetur adipisicing elit
       fieldset(class = `${elementName}__credentials`) 
         div(class = `${elementName}__email`)
           +input-field({
@@ -23,7 +23,7 @@ mixin login()
           })
       div(class = `${elementName}__login-button`)
         +button({
-          text: 'войти',
+          text: 'войти Lorem ipsum dolor sit amet consectetur adipisicing elit',
           type: 'submit',
           length: 'very-long',
           width: 'wide',
@@ -31,9 +31,9 @@ mixin login()
           hasArrow: true,
         })
     div(class = `${elementName}__go-to-registration` role='region' aria-label = 'Нет аккаунта на Toxin')
-      span(class = `${elementName}__go-to-registration-legend`) Нет аккаунта на Toxin?
+      span(class = `${elementName}__go-to-registration-legend`) Нет аккаунта на Toxin Lorem ipsum dolor sit amet consectetur adipisicing elit?
       +button({
-        text: 'создать',
+        text: 'создать Lorem ipsum dolor sit amet consectetur adipisicing elit',
         type: 'link',
         length: 'short',
         width: 'wide',
