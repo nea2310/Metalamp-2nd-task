@@ -2,22 +2,21 @@ include ../button/button.pug
 
 mixin date-dropdown(options = {})
   -
-    function getValidValue (list, value, defaultValue) {
-      return value = list.includes(value) ? value : defaultValue
-    }
-    let { type = 'dateDropDown'} = options
-    const { labelTextFrom = '', labelTextTo = '', labelTextFromTo = ''} = options
+    const { type, labelTextFrom = '', labelTextTo = '', labelTextFromTo = ''} = options
 
-    const elementName='date-dropdown'
+    const prepareOptions = require ('@com/date-dropdown/date-dropdown-utils.js').default;
 
-    const validTypes = ['dateDropDown', 'filterDateDropDown']
-    type = getValidValue(validTypes, type, 'dateDropDown')
+    const {
+      elementName,
+      typeChecked,
+      modifier,
+      width,
+      } = prepareOptions({
+        type,
+        });
 
-    const modifier = type == 'filterDateDropDown' ? `${elementName}__calendar-wrapper_width_narrow` : ''
-    const width =  type == 'filterDateDropDown' ? '_width_narrow' : '_width_wide'
-
-  div(class = `${elementName} js-${elementName} js-${elementName}_type_${type} ${elementName}${width}`)
-    if type == 'dateDropDown'
+  div(class = `${elementName} js-${elementName} js-${elementName}_type_${typeChecked} ${elementName}${width}`)
+    if typeChecked == 'dateDropDown'
       div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper`)
         label(class = `${elementName}__label`)
           if labelTextFrom
@@ -30,7 +29,7 @@ mixin date-dropdown(options = {})
             p(class = `${elementName}__label-text`)= labelTextTo
           input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_to js-${elementName}__input_to ${elementName}__input_width_narrow`
             placeholder = 'ДД.ММ.ГГГГ', type = "date")
-    if type == 'filterDateDropDown'
+    if typeChecked == 'filterDateDropDown'
       div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper`)
         label(class = `${elementName}__label`)
           if labelTextFromTo
