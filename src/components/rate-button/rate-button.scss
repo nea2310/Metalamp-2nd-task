@@ -1,7 +1,6 @@
 $starStyle: (1 2 116, 2 25 92, 3 49 68, 4 73 44, 5 96 20);
 
 .rate-button {
-  @include fieldset-reset-style;
   @include font-h3;
   margin: 0px 0px 0px 0px;
   padding: 0;

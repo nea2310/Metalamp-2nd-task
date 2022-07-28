@@ -1,10 +1,10 @@
 import isImage from '../../shared/helpers/isImage';
 
 export default function prepareOptions(options) {
-  const { imageName } = options;
+  const { imagePath } = options;
 
   return {
     elementName: 'feedback',
-    imagePathChecked: isImage(imageName),
+    imagePathChecked: isImage(imagePath),
   };
 }

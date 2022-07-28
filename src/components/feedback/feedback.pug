@@ -3,7 +3,7 @@ include ../like-button/like-button.pug
 mixin feedback(options = {})
   -
     const {
-      imageName = require('@/shared/images/logo-purple.svg'),
+      imagePath = require('@/shared/images/logo-purple.svg'),
       name = '', 
       date = '',
       description = '',
@@ -14,7 +14,7 @@ mixin feedback(options = {})
     
     const prepareOptions = require ('@com/feedback/feedback-utils.js').default;
 
-    const { elementName, imagePathChecked} = prepareOptions({imageName});
+    const { elementName, imagePathChecked} = prepareOptions({imagePath});
 
   div(class = elementName)
     img(class = `${elementName}__image` src = imagePathChecked alt = alt)

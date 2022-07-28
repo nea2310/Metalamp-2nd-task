@@ -1,6 +1,4 @@
 .bullet-list {
-  @include fieldset-reset-style;
-
   &__label {
     @include font-h3;
     margin-bottom: 14px;
