@@ -81,15 +81,15 @@ block content
         span(class='form-elements__label form-elements__label_position_top-middle') toggle
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
           +toggle(toggles)
-          +toggle({name: toggles.name})
+          +toggle({value: toggles.value})
         span(class='form-elements__label form-elements__label_position_top-middle') like-button
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
           +like-button(likeButtons[0])
           +like-button(likeButtons[1])
         span(class='form-elements__label form-elements__label_position_top-middle') rate button
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
-          +rate-button({name: rateButtons[0]})
-          +rate-button({name: rateButtons[1]})
+          +rate-button({ratingName: rateButtons[0]})
+          +rate-button({ratingName: rateButtons[1]})
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
           +dropdown(dropdownGuests)
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")

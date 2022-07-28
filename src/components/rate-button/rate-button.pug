@@ -1,4 +1,4 @@
-mixin rate-button({labelText = '', name = ''} = {})
+mixin rate-button({labelText = '', ratingName = ''} = {})
   -
     const elementName = 'rate-button'
     const rates = ['Отлично', 'Хорошо', 'Удовлетворительно', 'Плохо', 'Очень плохо']
@@ -8,5 +8,5 @@ mixin rate-button({labelText = '', name = ''} = {})
     div(class = `${elementName}__star-image-group`)
     div(class = `${elementName}__group`)
       for rateValue, index in rates
-        input(class = `${elementName}__star` type = 'radio' name = name value = index aria-label = rateValue)
+        input(class = `${elementName}__star` type = 'radio' name = ratingName value = index aria-label = rateValue)
         span(class = `${elementName}__star-image`)

@@ -40,7 +40,7 @@ mixin room-card(options = {})
         span(class = `${elementName}__detail-label` role = 'region' aria-label = 'в сутки') в сутки
     div(class = `${elementName}__rating`)
       div(class = `${elementName}__rate`)
-        +rate-button({name: ratingName})
+        +rate-button({ratingName})
       div(class = `${elementName}__feedback`)
         span(class = `${elementName}__feedback-amount` role = 'region' aria-label = 'количество отзывов')= feedbackAmount
         span(class = `${elementName}__feedback-mark` role = 'region' aria-label = 'отзывы') Отзывов

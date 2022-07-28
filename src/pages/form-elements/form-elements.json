@@ -25,17 +25,18 @@
   "radiobuttons": {
     "categories": [
       {
-        "name": "Мужчина",
+        "value": "Мужчина",
         "checked": true
       },
       {
-        "name": "Женщина"
+        "value": "Женщина"
       }
     ],
     "radioGroupName": "gender"
   },
   "toggles": {
-    "name": "Получать спецпредложения",
+    "toggleName": "getSpecialOffer",
+    "value": "Получать спецпредложения",
     "isChecked": true
   },
   "likeButtons": [
@@ -143,22 +144,28 @@
   "checkListExpandable": {
     "categories": [
       {
-        "name": "Завтрак"
+        "value": "Завтрак",
+        "checkBoxName": "breakfast"
       },
       {
-        "name": "Письменный стол"
+        "value": "Письменный стол",
+        "checkBoxName": "desk"
       },
       {
-        "name": "Стул для кормления"
+        "value": "Стул для кормления",
+        "checkBoxName": "babyChair"
       },
       {
-        "name": "Кроватка"
+        "value": "Кроватка",
+        "checkBoxName": "babyBad"
       },
       {
-        "name": "Телевизор"
+        "value": "Телевизор",
+        "checkBoxName": "tv"
       },
       {
-        "name": "Шампунь"
+        "value": "Шампунь",
+        "checkBoxName": "shampoo"
       }
     ],
     "isExpandable": true,
@@ -168,13 +175,16 @@
   "checkListCheckBox": {
     "categories": [
       {
-        "name": "Можно курить"
+        "value": "Можно курить",
+        "checkBoxName": "smokingAllowed"
       },
       {
-        "name": "Можно с питомцами"
+        "value": "Можно с питомцами",
+        "checkBoxName": "petsAllowed"
       },
       {
-        "name": "Можно пригласить гостей (до 10 человек)"
+        "value": "Можно пригласить гостей (до 10 человек)",
+        "checkBoxName": "guestsAllowed"
       }
     ],
     "isExpandable": false,
@@ -184,12 +194,14 @@
   "checkListRichCheckBox": {
     "categories": [
       {
-        "name": "Широкий коридор",
-        "description": "Ширина коридоров в номере не менее 91 см"
+        "value": "Широкий коридор",
+        "description": "Ширина коридоров в номере не менее 91 см",
+        "checkBoxName": "wideСorridor"
       },
       {
-        "name": "Помощник для инвалидов",
-        "description": "На 1 этаже вас встретит специалист и проводит до номера"
+        "value": "Помощник для инвалидов",
+        "description": "На 1 этаже вас встретит специалист и проводит до номера",
+        "checkBoxName": "assistance"
       }
     ],
     "isExpandable": false,

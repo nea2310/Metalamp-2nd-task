@@ -3,7 +3,8 @@ mixin checklist(options = {})
     const {categories = [],
       isExpandable = false,
       isRich = false,
-      labelText = ''} = options
+      labelText = '',
+      } = options
 
     const prepareOptions = require ('@com/checklist/checklist-utils.js').default;
 
@@ -21,14 +22,14 @@ mixin checklist(options = {})
     p(class = `${elementName}__label js-${elementName}__label` tabindex = tabindexValue)= labelText
     ul(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper`)
       if Array.isArray(categories) && categories.length
-        each value in categories
-          - const {name = '', description = ''} = value
+        each category in categories
+          - const {value = '', description = '', checkBoxName = ''} = category
           li(class = `${elementName}__category-wrapper`)
             label(class = `${elementName}__category`)
-              if name
-                input(class = `${elementName}__category-checkbox` type="checkbox" name = labelText value = name)
+              if value
+                input(class = `${elementName}__category-checkbox` type = "checkbox" name = checkBoxName value = value)
                 span(class = `${elementName}__category-checkmark`)
                 div(class = `${elementName}__category-text`)
-                  p(class = `${elementName}__category-name ${nameStyle}`)= name
+                  p(class = `${elementName}__category-name ${nameStyle}`)= value
                   if isRich && description
                     p(class = `${elementName}__category-description`)= description

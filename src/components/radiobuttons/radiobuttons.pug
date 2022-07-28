@@ -10,11 +10,11 @@ mixin radiobuttons(options = {})
     p(class = `${elementName}__label`)= labelText
     ul(class = `${elementName}__list`)
       if Array.isArray(categories) && categories.length
-        each value in categories
-          - const {name = '', checked = false} = value
+        each category in categories
+          - const {value = '', checked = false} = category
           li(class = `${elementName}__category-wrapper`)
             label(class = `${elementName}__category`)
               input(class = `${elementName}__category-checkbox`
-                type = "radio" name = radioGroupName value = name checked = checked)
+                type = "radio" name = radioGroupName value = value checked = checked)
               span(class = `${elementName}__category-radiomark`)
-              p(class = `${elementName}__category-name`)= name
+              p(class = `${elementName}__category-name`)= value

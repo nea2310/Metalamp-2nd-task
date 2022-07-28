@@ -26,7 +26,7 @@ mixin registration()
       div(class = `${elementName}__radiobuttons`)
         +radiobuttons({
           categories:
-            [{name:'Мужчина', checked: true}, {name:'Женщина'}],
+            [{value:'Мужчина', checked: true}, {value:'Женщина'}],
           radioGroupName: 'gender'})
       div(class = `${elementName}__birth-date`)
         +input-field({
@@ -49,7 +49,7 @@ mixin registration()
             placeholder: 'Пароль',
             inputType: 'password'})
       div(class = `${elementName}__special-offer`)
-        +toggle({name: 'Получать спецпредложения'})
+        +toggle({value: 'Получать спецпредложения'})
       div(class = `${elementName}__search`)
         +button({
           text: 'зарегистрироваться',
