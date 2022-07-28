@@ -1,13 +1,8 @@
 mixin logo({color = 'white'} = {})
   -
-    function getValidValue (list, value, defaultValue = '') {
-      return value = list.includes(value) ? value : defaultValue
-    }
+    const prepareOptions = require ('@com/logo/logo-utils.js').default;
 
-    const validColors = ['white', 'grey']
-    const logoColor = getValidValue(validColors, color, 'white')
-
-    const elementName = 'logo'
+    const { elementName, logoColor} = prepareOptions({ color });
 
   div(class = `${elementName} ${elementName}_color_${logoColor}`)
     a(class = `${elementName}__link` href = 'index.html' alt = 'на главную')
