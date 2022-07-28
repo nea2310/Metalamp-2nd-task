@@ -30,14 +30,16 @@ block content
           sale: '2 179',
           saleTotal: '0',
           extraTotal: '300',
-          totalAmount: '38 081'})
+          totalAmount: '38 081',
+        })
       div(class='cards__login')
         +login()
     div(class='cards__search-column cards__search-column-right')
       div(class='cards__date-dropdown')
         +date-dropdown({
           width:'wide',
-          type:'dateDropDown'})
+          type:'dateDropDown',
+        })
       div(class='cards__room-card')
         +room-card({
           imageList: [
@@ -50,7 +52,8 @@ block content
           lux: 'люкс',
           roomPrice: '9 990',
           feedbackAmount: '145',
-          ratingName: 'room888Rating'})
+          ratingName: 'room888Rating',
+        })
       div(class='cards__room-card')
         +room-card({
           imageList: [
@@ -62,4 +65,5 @@ block content
           roomNumber: '840',
           roomPrice: '9 900',
           feedbackAmount: '65',
-          ratingName: 'room840Rating'})
+          ratingName: 'room840Rating',
+        })

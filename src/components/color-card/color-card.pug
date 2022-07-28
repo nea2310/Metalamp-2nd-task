@@ -1,14 +1,10 @@
 mixin color-card(options = {})
   -
-    function getValidValue (list, value, defaultValue) {
-      return value = list.includes(value) ? value : defaultValue
-    }
-
     const {
       color = 'dark-shade-100',
       name = '',
-      code = ''
-      } = options
+      code = '',
+    } = options
 
     const prepareOptions = require ('@com/color-card/color-card-utils.js').default;
     const {elementName, colorChecked} = prepareOptions({color});

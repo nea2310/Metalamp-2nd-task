@@ -16,13 +16,13 @@ mixin registration()
             width: 'wide',
             placeholder: 'имя',
             inputType: 'text',
-            })
+          })
         div(class = `${elementName}__surname`)
           +input-field({
             width: 'wide',
             placeholder: 'фамилия',
             inputType: 'text',
-            })
+          })
       div(class = `${elementName}__radiobuttons`)
         +radiobuttons({
           categories:
@@ -34,7 +34,8 @@ mixin registration()
           placeholder: 'ДД.ММ.ГГГГ',
           labelText: 'дата рождения',
           inputType: 'text',
-          validation: 'date'})
+          validation: 'date',
+        })
       fieldset(class = `${elementName}__credentials`) 
         legend(class = `${elementName}__credentials-legend`)  данные для входа в сервис
         div(class = `${elementName}__email`)
@@ -42,12 +43,14 @@ mixin registration()
             width: 'wide',
             placeholder: 'Email',
             inputType: 'email',
-            validation: 'email'})
+            validation: 'email',
+          })
         div(class = `${elementName}__password`)
           +input-field({
             width: 'wide',
             placeholder: 'Пароль',
-            inputType: 'password'})
+            inputType: 'password',
+          })
       div(class = `${elementName}__special-offer`)
         +toggle({value: 'Получать спецпредложения'})
       div(class = `${elementName}__search`)
@@ -57,7 +60,8 @@ mixin registration()
           length: 'very-long',
           width: 'wide',
           color: 'dark',
-          hasArrow: true})
+          hasArrow: true,
+        })
       div(class = `${elementName}__go-to-login` role='region' aria-label = 'Уже есть аккаунт на Toxin')
         span(class = `${elementName}__go-to-login-legend` ) Уже есть аккаунт на Toxin
         +button({
@@ -66,4 +70,5 @@ mixin registration()
           length: 'short',
           width: 'wide',
           color: 'light',
-          href: 'https://test/test'})
+          href: 'https://test/test',
+        })

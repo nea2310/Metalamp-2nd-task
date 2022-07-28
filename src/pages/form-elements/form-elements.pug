@@ -105,7 +105,8 @@ block content
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
           +button({
             text: buttonPlain.text,
-            type: buttonPlain.type})
+            type: buttonPlain.type,
+          })
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
           +button(buttonDarkLong)
         span(class='form-elements__label form-elements__label_position_top-right') pagination
@@ -121,13 +122,16 @@ block content
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-left")
           +feature({
             ...features[0],
-            imagePath: require('@pag/form-elements/image/smile.svg')})
+            imagePath: require('@pag/form-elements/image/smile.svg'),
+          })
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-left")
           +feature({
             ...features[1],
-            imagePath: require('@pag/form-elements/image/city.svg')})
+            imagePath: require('@pag/form-elements/image/city.svg'),
+          })
       div(class="form-elements__column")
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-right")
           +feedback({
             ...feedback,
-            imagePath: require('@pag/form-elements/image/murad.jpg')})
+            imagePath: require('@pag/form-elements/image/murad.jpg'),
+          })

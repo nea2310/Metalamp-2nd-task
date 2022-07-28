@@ -11,9 +11,7 @@ mixin date-dropdown(options = {})
       typeChecked,
       modifier,
       width,
-      } = prepareOptions({
-        type,
-        });
+      } = prepareOptions({ type });
 
   div(class = `${elementName} js-${elementName} js-${elementName}_type_${typeChecked} ${elementName}${width}`)
     if typeChecked == 'dateDropDown'

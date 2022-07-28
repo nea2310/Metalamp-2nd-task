@@ -8,7 +8,8 @@ mixin dropdown(options = {})
       categories = [], 
       placeholder = '', 
       hasButtons = false, 
-      labelText = ''} = options
+      labelText = '',
+    } = options
 
     const prepareOptions = require ('@com/dropdown/dropdown-utils.js').default;
 
@@ -21,7 +22,7 @@ mixin dropdown(options = {})
       } = prepareOptions({
         type,
         width,
-        });
+      });
 
   div(class = `${elementName} js-${elementName} ${elementName}${inputWidth}`)
     div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper`)

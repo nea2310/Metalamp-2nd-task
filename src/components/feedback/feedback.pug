@@ -9,8 +9,8 @@ mixin feedback(options = {})
       description = '',
       alt = '',
       isLiked = false,
-      likeAmount = 0
-      } = options
+      likeAmount = 0,
+    } = options
     
     const prepareOptions = require ('@com/feedback/feedback-utils.js').default;
 
@@ -23,7 +23,8 @@ mixin feedback(options = {})
     div(class = `${elementName}__like`)
       +like-button({
         isLiked, 
-        likeAmount})
+        likeAmount,
+      })
     p(class = `${elementName}__description`)= description
 
 

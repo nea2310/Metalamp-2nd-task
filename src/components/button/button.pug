@@ -19,13 +19,15 @@ mixin button(options = {})
       lengthChecked,
       widthChecked,
       colorChecked,
-      hrefChecked} = prepareOptions({
+      hrefChecked,
+    } = prepareOptions({
         type,
         length,
         width,
         color,
         href,
-        hasArrow});
+        hasArrow,
+      });
 
   case typeChecked
     when 'button'

@@ -12,11 +12,11 @@ mixin checklist(options = {})
       elementName,
       style,
       tabindexValue,
-      nameStyle
+      nameStyle,
       } = prepareOptions({
         isExpandable,
         isRich,
-        });
+      });
 
   div(class = `${elementName} js-${elementName} ${style}`)
     h3(class = `${elementName}__label js-${elementName}__label` tabindex = tabindexValue)= labelText
