@@ -8,12 +8,10 @@ mixin feature(options = {})
       alt = '',
     } = options
 
-    const prepareOptions = require ('@com/feature/feature-utils.js').default;
-
-    const { elementName, imagePathChecked} = prepareOptions({imagePath});
+    const elementName = 'feature'
 
   div(class = elementName)
-    img(class = `${elementName}__image` src = imagePathChecked alt = alt)
+    img(class = `${elementName}__image` src = imagePath alt = alt)
     span(class = `${elementName}__name`)= name
     span(class = `${elementName}__description`)= description
 

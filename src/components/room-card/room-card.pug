@@ -13,19 +13,16 @@ mixin room-card(options = {})
 
     const elementName = 'room-card'
 
-    const isImage = require ('@/shared/helpers/isImage').default;
-
   div(class = `${elementName} js-${elementName}`)
     div(class = `${elementName}__slider js-${elementName}__slider`)
       a(class = `${elementName}__photos` href = 'https://test/test' aria-label= 'Перейти к деталям номера')
       each imagePath, index in imageList
-        - imagePath = isImage(imagePath)
-          if index === 0
-            img(class = `${elementName}__photo js-${elementName}__photo ${elementName}__photo_shown js-${elementName}__photo_shown` 
-              alt = 'фото номера' src = imagePath data-sequence = index)
-          else
-            img(class = `${elementName}__photo js-${elementName}__photo` 
-              alt = 'фото номера' src = imagePath data-sequence = index)
+        if index === 0
+          img(class = `${elementName}__photo js-${elementName}__photo ${elementName}__photo_shown js-${elementName}__photo_shown` 
+            alt = 'фото номера' src = imagePath data-sequence = index)
+        else
+          img(class = `${elementName}__photo js-${elementName}__photo` 
+            alt = 'фото номера' src = imagePath data-sequence = index)
       div(class = `${elementName}__dots js-${elementName}__dots`)
       div(class = `${elementName}__buttons`)
         button(class = `${elementName}__previous js-${elementName}__previous` type = 'button' aria-label = 'предыдущее фото')
