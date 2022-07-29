@@ -11,6 +11,7 @@
   &__details {
     display: flex;
     justify-content: space-between;
+    gap: 5px;
 
     &-price {
       margin-top: 6px;
@@ -116,6 +117,19 @@
 
       &-cost {
         justify-self: end;
+        white-space: nowrap;
+      }
+
+      &-name {
+        position: relative;
+        &::after{
+          position: absolute;
+          content: '';
+          right: 0;
+          left: 60px;
+          bottom: 0;
+          border-bottom: 1px dotted $colorBorder;
+        }
       }
     }
   }

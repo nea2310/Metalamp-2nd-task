@@ -23,8 +23,8 @@
       min-height: 195px;
       display: grid;
       column-gap: 9px;
-      grid-template-rows: 45px 40px 40px 40px;
-      grid-template-columns: auto auto auto;
+      grid-template-rows: repeat(4, auto);
+      grid-template-columns: repeat(3, auto);
       grid-template-areas:
         'calendar guests price-filter'
         'calendar guests price-filter'
@@ -34,7 +34,7 @@
 
     @include media-breakpoint-down($md) {
       min-height: 250px;
-      grid-template-rows: 75px 35px 35px 33px 35px;
+      grid-template-rows: repeat(5, auto);
       grid-template-columns: auto auto;
       grid-template-areas:
         'calendar guests'
@@ -117,10 +117,11 @@
   }
 
   &__house-rules-wrapper {
-    margin-bottom: 145px;
+    margin-bottom: 20px;
 
     @include media-breakpoint-down($lg) {
       grid-area: house-rules;
+      margin-bottom: 0;
     }
 
     @include media-breakpoint-down($xs) {
@@ -130,10 +131,11 @@
   }
 
   &__accessability-wrapper {
-    margin-bottom: 150px;
+    margin-bottom: 20px;
 
     @include media-breakpoint-down($lg) {
       grid-area: accessability;
+      margin-bottom: 0;
     }
 
     @include media-breakpoint-down($xs) {

@@ -70,7 +70,8 @@
 
   &__items {
     @include ul-reset-style;
-    margin: 0 auto;
+    padding-right: 5px;
+    padding-left: 5px;
 
     @include media-breakpoint-down($md) {
       display: flex;
@@ -86,28 +87,28 @@
       font-size: 12px;
       line-height: 15px;
       text-transform: uppercase;
-      white-space: nowrap;
     }
     &:not(:first-child) {
-
       @include media-breakpoint-down($md) {
         display: none;
       }
     }
+
     &:nth-child(1) {
       max-width: 270px;
     }
 
-    &:last-child { max-width: 270px;
-      @include media-breakpoint-down($lg) {
-      }
+    &:last-child {
+      @include font-h3;
+      max-width: 270px;
+      display: flex;
+      flex-direction: column;
     }
   }
 
   &__item {
     text-transform: initial;
     padding-top: 20px;
-    white-space: nowrap;
 
     @include media-breakpoint-down($md) {
       display: none;
@@ -124,8 +125,12 @@
   &__long-text {
     @include font-body;
     cursor: initial;
-    white-space: initial;
-    margin: 0;
+    text-transform: initial;
+    margin-top: 20px;
+  }
+
+  &__subscription{
+    margin-top: 20px;
   }
 
   &__social-link {

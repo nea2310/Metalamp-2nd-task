@@ -6,7 +6,7 @@
   &__title {
     @include font-h3;
     margin: 0;
-    white-space: nowrap;
+    //white-space: nowrap;
     width: 50%;
 
     &-wrapper {
@@ -18,6 +18,9 @@
 
   &__price {
     display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
 
     &-delimiter {
       width: 10px;

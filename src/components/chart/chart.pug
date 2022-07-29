@@ -7,4 +7,5 @@ mixin chart(marks = {})
     ul(class = `${elementName}__legend`)
       for value, index in marks
         - const {rate = '', label = ''} = value
-          li(class = `${elementName}__legend-item js-${elementName}__legend-item` data-rate = rate data-mark = index)= label
+          li(class = `${elementName}__legend-item js-${elementName}__legend-item` data-rate = rate data-mark = index)
+            span(class = `${elementName}__legend-label`)= label

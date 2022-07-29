@@ -7,10 +7,9 @@ mixin footer({menu = []} = {})
 
   footer(class = elementName role = 'contentinfo')
     div(class = `${elementName}__wrapper-top`)
-      ul(class = `${elementName}__items`)
+      div(class = `${elementName}__items`)
         a(class = `${elementName}__logo` href = 'https://test/test')
-        li(class = `${elementName}__item`)
-          span(class = `${elementName}__long-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
+        span(class = `${elementName}__long-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
       if Array.isArray(menu) && menu.length
         each value in menu
           - const {name = '', items = []} = value
@@ -20,11 +19,9 @@ mixin footer({menu = []} = {})
                 each subValue in items
                   li(class = `${elementName}__item`)
                     a(class = `${elementName}__item-link` href = 'https://test/test')= subValue
-      ul(class = `${elementName}__items`)
-        li(class = `${elementName}__items-header`) подписка
-        li(class = `${elementName}__item`)
-          span(class = `${elementName}__long-text`) Получайте специальные предложения и новости сервиса
-        li(class = `${elementName}__item`)
+      div(class = `${elementName}__items`) подписка
+        span(class = `${elementName}__long-text`) Получайте специальные предложения и новости сервиса
+        div(class = `${elementName}__subscription`)
           +input-field({
             width: 'medium-narrow',
             placeholder: 'Email',
