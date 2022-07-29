@@ -2,29 +2,38 @@
   "header": {
     "menu": [
       {
-        "name": "О нас Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        "name": "О нас"
       },
       {
-        "name": "Услуги Lorem ipsum dolor sit amet consectetur adipisicing elit",
+        "name": "Услуги",
         "subMenu": [
-          "Ссылка 1 Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Ссылка 2 Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Ссылка 3 Lorem ipsum dolor sit amet consectetur adipisicing elit"
+          "Ссылка 1",
+          "Ссылка 2",
+          "Ссылка 3"
         ]
       },
       {
-        "name": "Вакансии Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        "name": "Вакансии"
       },
       {
-        "name": "Новости Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        "name": "Новости"
       },
       {
-        "name": "Соглашения Lorem ipsum dolor sit amet consectetur adipisicing elit",
+        "name": "Соглашения",
         "subMenu": [
-          "Ссылка 4 Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Ссылка 5 Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Ссылка 6 Lorem ipsum dolor sit amet consectetur adipisicing elit"
+          "Ссылка 4",
+          "Ссылка 5",
+          "Ссылка 6"
         ]
+      },
+      {
+        "name": "Test item"
+      },
+      {
+        "name": "Test item"
+      },
+      {
+        "name": "Test item"
       }
     ],
     "isAuthorized": false
@@ -32,29 +41,37 @@
   "footer": {
     "menu": [
       {
-        "name": "навигация Lorem ipsum dolor sit amet consectetur adipisicing elit",
+        "name": "навигация",
         "items": [
-          "О нас Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Новости Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Служба поддержки Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Услуги Lorem ipsum dolor sit amet consectetur adipisicing elit"
+          "О нас",
+          "Новости",
+          "Служба поддержки",
+          "Услуги"
         ]
       },
       {
-        "name": "О нас Lorem ipsum dolor sit amet consectetur adipisicing elit",
+        "name": "О нас",
         "items": [
-          "О сервисе Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Наша команда Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Вакансии Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Инвесторы Lorem ipsum dolor sit amet consectetur adipisicing elit"
+          "О сервисе",
+          "Наша команда",
+          "Вакансии",
+          "Инвесторы"
         ]
       },
       {
-        "name": "служба поддержки Lorem ipsum dolor sit amet consectetur adipisicing elit",
+        "name": "служба поддержки",
         "items": [
-          "Соглашения Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Сообщества Lorem ipsum dolor sit amet consectetur adipisicing elit",
-          "Связь с нами Lorem ipsum dolor sit amet consectetur adipisicing elit"
+          "Соглашения",
+          "Сообщества",
+          "Связь с нами"
+        ]
+      },
+      {
+        "name": "Test column",
+        "items": [
+          "Test item 1",
+          "Test item 2",
+          "Test item 3"
         ]
       }
     ]

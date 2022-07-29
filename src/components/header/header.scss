@@ -7,6 +7,7 @@
   align-items: center;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   background-color: $colorTextBackground;
+  border: 1px solid black;
 
   @include media-breakpoint-down($sm) {
     position: relative;
@@ -22,6 +23,7 @@
     width: 100%;
     margin: 0 auto;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 
     @include media-breakpoint-down($md) {
@@ -42,8 +44,8 @@
   &__nav {
     &-level1 {
       display: flex;
-      flex-grow: 1;
-
+   //   flex-grow: 1;
+      
       @include media-breakpoint-down($md) {
         display: none;
         position: absolute;
@@ -61,10 +63,16 @@
       }
 
       &-items {
+        border: 1px solid blue;
         @include ul-reset-style;
         margin-left: auto;
-        display: flex;
-        align-items: center;
+        // display: flex;
+        // justify-content: space-around;
+        // flex-wrap: wrap;
+      //  align-items: center;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      row-gap: 20px;
 
         @include media-breakpoint-down($md) {
           display: block;
@@ -74,7 +82,8 @@
 
       &-item {
         position: relative;
-        white-space: nowrap;
+        max-width: 150px;
+       // white-space: nowrap;
         padding-right: 24px;
 
         @include media-breakpoint-down($md) {
@@ -138,10 +147,11 @@
   }
 
   &__logo {
+    border: 1px solid red;
     text-decoration: none;
     display: block;
     height: 50px;
-    width: 110px;
+    width: 180px;
     text-decoration: none;
     background: url('@/shared/images/logo-purple.svg') no-repeat top left;
 
@@ -162,6 +172,7 @@
 
   &__auth {
     display: flex;
+    align-items: center;
 
     @include media-breakpoint-down($lg) {
       margin-right: 20px;
@@ -223,7 +234,7 @@
 
   &__profile {
     border-left: 1px solid rgba(31, 32, 65, 0.1);
-    align-self: center;
+   // align-self: center;
     line-height: 30px;
 
     @include media-breakpoint-down($md) {
@@ -234,7 +245,7 @@
       @include font-body;
       text-decoration: none;
       padding-left: 20px;
-      white-space: nowrap;
+    // white-space: nowrap;
 
       @include media-breakpoint-down($md) {
         padding: 0;

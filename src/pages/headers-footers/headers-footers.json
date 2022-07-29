@@ -25,6 +25,15 @@
           "Ссылка 5 Lorem ipsum dolor sit amet consectetur adipisicing elit",
           "Ссылка 6 Lorem ipsum dolor sit amet consectetur adipisicing elit"
         ]
+      },
+      {
+        "name": "Тестовый пункт меню Lorem ipsum dolor sit amet consectetur adipisicing elit"
+      },
+      {
+        "name": "Тестовый пункт меню Lorem ipsum dolor sit amet consectetur adipisicing elit"
+      },
+      {
+        "name": "Тестовый пункт меню Lorem ipsum dolor sit amet consectetur adipisicing elit"
       }
     ],
     "isAuthorized": false
@@ -55,6 +64,14 @@
           "Соглашения Lorem ipsum dolor sit amet consectetur adipisicing elit",
           "Сообщества Lorem ipsum dolor sit amet consectetur adipisicing elit",
           "Связь с нами Lorem ipsum dolor sit amet consectetur adipisicing elit"
+        ]
+      },
+      {
+        "name": "Тестовая колонка Lorem ipsum dolor sit amet consectetur adipisicing elit",
+        "items": [
+          "Тестовая колонка Lorem ipsum dolor sit amet consectetur adipisicing elit",
+          "Тестовая колонка Lorem ipsum dolor sit amet consectetur adipisicing elit",
+          "Тестовая колонка Lorem ipsum dolor sit amet consectetur adipisicing elit"
         ]
       }
     ]
