@@ -7,7 +7,6 @@
   align-items: center;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   background-color: $colorTextBackground;
-  border: 1px solid black;
 
   @include media-breakpoint-down($sm) {
     position: relative;
@@ -44,8 +43,7 @@
   &__nav {
     &-level1 {
       display: flex;
-   //   flex-grow: 1;
-      
+
       @include media-breakpoint-down($md) {
         display: none;
         position: absolute;
@@ -63,16 +61,11 @@
       }
 
       &-items {
-        border: 1px solid blue;
         @include ul-reset-style;
         margin-left: auto;
-        // display: flex;
-        // justify-content: space-around;
-        // flex-wrap: wrap;
-      //  align-items: center;
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      row-gap: 20px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        row-gap: 20px;
 
         @include media-breakpoint-down($md) {
           display: block;
@@ -83,7 +76,6 @@
       &-item {
         position: relative;
         max-width: 150px;
-       // white-space: nowrap;
         padding-right: 24px;
 
         @include media-breakpoint-down($md) {
@@ -147,7 +139,6 @@
   }
 
   &__logo {
-    border: 1px solid red;
     text-decoration: none;
     display: block;
     height: 50px;

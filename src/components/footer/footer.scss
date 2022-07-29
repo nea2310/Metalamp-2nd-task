@@ -11,7 +11,6 @@
 
   &__wrapper {
     &-top {
-      border: 1px solid red;
       min-height: 272px;
       max-width: $wrapperWidth;
       width: 100%;
@@ -71,8 +70,6 @@
 
   &__items {
     @include ul-reset-style;
-   // margin: 0 auto;
-    border: 1px solid blue;
     padding-right: 5px;
     padding-left: 5px;
 
@@ -90,35 +87,28 @@
       font-size: 12px;
       line-height: 15px;
       text-transform: uppercase;
-     // white-space: nowrap;
     }
     &:not(:first-child) {
-
       @include media-breakpoint-down($md) {
         display: none;
       }
     }
+
     &:nth-child(1) {
       max-width: 270px;
     }
 
     &:last-child {
       @include font-h3;
-      border: 1px solid red; 
       max-width: 270px;
       display: flex;
       flex-direction: column;
     }
-
-    // &:last-child &-header{ 
-    //   margin-bottom: 18px;
-    // }
   }
 
   &__item {
     text-transform: initial;
     padding-top: 20px;
-   // white-space: nowrap;
 
     @include media-breakpoint-down($md) {
       display: none;
@@ -136,7 +126,6 @@
     @include font-body;
     cursor: initial;
     text-transform: initial;
-  //  white-space: initial;
     margin-top: 20px;
   }
 
