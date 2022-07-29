@@ -32,11 +32,12 @@ mixin login()
         })
     div(class = `${elementName}__go-to-registration` role='region' aria-label = 'Нет аккаунта на Toxin')
       span(class = `${elementName}__go-to-registration-legend`) Нет аккаунта на Toxin?
-      +button({
-        text: 'создать',
-        type: 'link',
-        length: 'short',
-        width: 'wide',
-        color: 'light',
-        href: 'https://test/test',
+      div(class = `${elementName}__create`)
+        +button({
+          text: 'создать',
+          type: 'link',
+          length: 'short',
+          width: 'wide',
+          color: 'light',
+          href: 'https://test/test',
         })

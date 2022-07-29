@@ -1,4 +1,4 @@
-// $button-style-map: (very-long 320, long 196, short 99, very-short 87);
+$button-style-map: (very-long 320, long 196, short 99, very-short 87);
 
 .button {
   @include font-h3;
@@ -12,6 +12,7 @@
   padding: 10px;
   user-select: none;
   border-radius: 22px;
+ // min-width: 99px;
 
 
   &_has-arrow {
@@ -32,19 +33,19 @@
     }
   }
 
-  // &_length {
-  //   @each $key, $value in $button-style-map {
-  //     &_#{$key}{
-  //       max-width: #{$value}px;
-  //     }
-  //   }
-  // }
+  &_length {
+    @each $key, $value in $button-style-map {
+      &_#{$key}{
+        min-width: #{$value}px;
+      }
+    }
+  }
 
-  // &_width {
-  //   &_wide {
-  //     padding: 15px 10px;
-  //   }
-  // }
+  &_width {
+    &_wide {
+      padding: 15px 10px;
+    }
+  }
 
   &_plain-text {
     color: $colorMain;

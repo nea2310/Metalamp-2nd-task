@@ -43,6 +43,10 @@
     }
   }
 
+  &__create{
+    flex-shrink: 1;
+  }
+
   &_error {
     outline: 1px solid $colorBorderError;
   }
