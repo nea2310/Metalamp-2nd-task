@@ -56,11 +56,11 @@
   "rangeSlider": {
     "labelText": "range slider Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, veniam error omnis excepturi harum in",
     "sliderType": "double",
-    "min": "10000000000000",
-    "max": "10000000000000000",
+    "min": "10000000",
+    "max": "50000000",
     "step": "1",
-    "from": "50000000000000",
-    "to": "10000000000000000",
+    "from": "20000000",
+    "to": "40000000",
     "isMinMaxHidden": "true",
     "isFromToHidden": "true"
   },

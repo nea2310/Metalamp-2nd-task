@@ -3,7 +3,6 @@
   padding-left: 0;
   margin-left: 0;
   user-select: none;
-  max-width: 220px;
   width: 100%;
 
   &__label {
@@ -16,15 +15,13 @@
     @include ul-reset-style;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
   }
 
   &__category {
-    display: inline-flex;
+    @include font-body;
+    display: flex;
     position: relative;
-
-    &-text {
-      margin-left: 9px;
-    }
 
     &-checkbox {
       position: absolute;
@@ -43,7 +40,7 @@
 
     &-radiomark {
       cursor: pointer;
-      display: inline-block;
+      display: block;
       position: relative;
       border: 1px solid $colorBorder;
       width: 18.5px;
@@ -51,6 +48,7 @@
       border-radius: 50%;
       content: '';
       background-color: $colorTextBackground;
+    
     }
 
     &-name {
@@ -59,6 +57,7 @@
       cursor: pointer;
       line-height: 19px;
       padding-left: 10px;
+      flex-shrink: 10;
     }
   }
 }

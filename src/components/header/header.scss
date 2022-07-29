@@ -225,9 +225,9 @@
 
   &__profile {
     border-left: 1px solid rgba(31, 32, 65, 0.1);
-   // align-self: center;
     line-height: 30px;
-
+    padding-left: 20px;
+    
     @include media-breakpoint-down($md) {
       border: none;
     }
@@ -235,8 +235,6 @@
     &-name {
       @include font-body;
       text-decoration: none;
-      padding-left: 20px;
-    // white-space: nowrap;
 
       @include media-breakpoint-down($md) {
         padding: 0;
