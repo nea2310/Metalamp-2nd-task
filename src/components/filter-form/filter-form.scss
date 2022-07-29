@@ -117,7 +117,7 @@
   }
 
   &__house-rules-wrapper {
-    margin-bottom: 145px;
+    margin-bottom: 20px;
 
     @include media-breakpoint-down($lg) {
       grid-area: house-rules;
@@ -131,7 +131,7 @@
   }
 
   &__accessability-wrapper {
-    margin-bottom: 150px;
+    margin-bottom: 20px;
 
     @include media-breakpoint-down($lg) {
       grid-area: accessability;

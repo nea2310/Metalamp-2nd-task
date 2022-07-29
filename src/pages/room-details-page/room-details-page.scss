@@ -1,9 +1,6 @@
 .room-details-page {
   flex-grow: 1;
   border-bottom: 1px solid $colorBorder;
-  position: relative;
-  top: $headerHeight;
-  margin-bottom: $headerHeight;
 
   @include media-breakpoint-down($xs) {
     padding-top: 40px;

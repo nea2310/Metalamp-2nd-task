@@ -1,6 +1,6 @@
 .chart {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 
   @include media-breakpoint-down($xs) {
     display: block;
@@ -13,6 +13,10 @@
 
     @include media-breakpoint-down($xs) {
       margin-left: 0;
+    }
+
+    &-label{
+      flex-shrink: 10;
     }
 
     &-item {

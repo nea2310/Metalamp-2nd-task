@@ -3,8 +3,8 @@
   width: 100%;
   border-bottom: 1px solid rgba(31, 32, 65, 0.1);
   display: grid;
-  grid-template-rows: 21px 42px;
-  grid-template-columns: 56px 205px;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(2, auto);
   grid-template-areas:
     'post-1 post-2'
     'post-1 post-3';
@@ -12,6 +12,7 @@
   &__image {
     padding-left: 3px;
     grid-area: post-1;
+    margin-right: 10px;
   }
 
   &__name {
