@@ -17,9 +17,9 @@ html(lang = 'ru')
         }
       title MetaLamp Frontend
   body
-    main(class='index__main')
+    main(class = "index__main")
       section
-        ul(class='index__pages')
+        ul(class = "index__pages")
           each value, key in pageNames
-              li(class='index__page')
-                a(class='index__link' href=`${value}.html`)= key
+              li(class = "index__page")
+                a(class = "index__link" href=`${value}.html`)= key

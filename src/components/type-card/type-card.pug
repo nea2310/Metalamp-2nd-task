@@ -1,10 +1,17 @@
 mixin type-card(options = {})
   -
-    const { style = '', name = '', text = '' } = options;
+    const { 
+      style = '',
+      name = '', 
+      text = '',
+    } = options;
 
     const prepareOptions = require ('@com/type-card/type-card-utils.js').default;
 
-    const { elementName, styleChecked} = prepareOptions({ style });
+    const { 
+      elementName, 
+      styleChecked,
+    } = prepareOptions({ style });
 
   span(class = elementName)
     span(class=`${elementName}__name ${elementName}__name_${styleChecked}`)= name

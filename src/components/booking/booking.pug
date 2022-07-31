@@ -2,7 +2,8 @@ include ../button/button.pug
 
 mixin booking(options = {})
   -
-    const {roomNumber = '',
+    const {
+      roomNumber = '',
       lux = '',
       roomPrice = '',
       daysAmount = '',
@@ -10,7 +11,8 @@ mixin booking(options = {})
       sale = '',
       saleTotal = '',
       extraTotal = '',
-      totalAmount = ''} = options
+      totalAmount = ''
+    } = options
 
     const {
       dropdownGuests,

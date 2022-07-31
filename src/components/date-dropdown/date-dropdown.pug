@@ -2,7 +2,12 @@ include ../button/button.pug
 
 mixin date-dropdown(options = {})
   -
-    const { type, labelTextFrom = '', labelTextTo = '', labelTextFromTo = ''} = options
+    const { 
+      type, 
+      labelTextFrom = '', 
+      labelTextTo = '', 
+      labelTextFromTo = '',
+    } = options
 
     const prepareOptions = require ('@com/date-dropdown/date-dropdown-utils.js').default;
 
@@ -11,7 +16,7 @@ mixin date-dropdown(options = {})
       typeChecked,
       modifier,
       width,
-      } = prepareOptions({ type });
+    } = prepareOptions({ type });
 
   div(class = `${elementName} js-${elementName} js-${elementName}_type_${typeChecked} ${elementName}${width}`)
     if typeChecked == 'dateDropDown'
@@ -20,13 +25,13 @@ mixin date-dropdown(options = {})
           if labelTextFrom
             h3(class = `${elementName}__label-text`)= labelTextFrom
           input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_from js-${elementName}__input_from ${elementName}__input_width_narrow`
-            placeholder = 'ДД.ММ.ГГГГ' type = "date")
+            placeholder = "ДД.ММ.ГГГГ" type = "date")
       div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper`)
         label(class = `${elementName}__label`)
           if labelTextTo
             h3(class = `${elementName}__label-text`)= labelTextTo
           input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_to js-${elementName}__input_to ${elementName}__input_width_narrow`
-            placeholder = 'ДД.ММ.ГГГГ', type = "date")
+            placeholder = "ДД.ММ.ГГГГ", type = "date")
     if typeChecked == 'filterDateDropDown'
       div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper`)
         label(class = `${elementName}__label`)
@@ -37,6 +42,12 @@ mixin date-dropdown(options = {})
     div(class = `${elementName}__calendar-wrapper js-${elementName}__calendar-wrapper ${elementName}__calendar-wrapper_hidden ${modifier}`)
       div(class = `${elementName}__buttons`)
         div(class = `${elementName}__button-clear js-${elementName}__button-clear`)
-          +button({text: 'очистить', type: 'plain-text'})
+          +button({
+            text: 'очистить', 
+            type: 'plain-text',
+          })
         div(class = `${elementName}__button-apply js-${elementName}__button-apply`)
-          +button({text: 'применить', type: 'plain-text'})
+          +button({
+            text: 'применить', 
+            type: 'plain-text',
+          })

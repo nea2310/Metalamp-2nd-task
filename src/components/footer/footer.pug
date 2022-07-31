@@ -5,10 +5,10 @@ mixin footer({menu = []} = {})
     const elementName = 'footer'
     const social = ['twitter', 'facebook', 'instagram']
 
-  footer(class = elementName role = 'contentinfo')
+  footer(class = elementName role = "contentinfo")
     div(class = `${elementName}__wrapper-top`)
       div(class = `${elementName}__items`)
-        a(class = `${elementName}__logo` href = 'https://test/test')
+        a(class = `${elementName}__logo` href = "https://test/test")
         span(class = `${elementName}__long-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
       if Array.isArray(menu) && menu.length
         each value in menu
@@ -18,7 +18,7 @@ mixin footer({menu = []} = {})
               if Array.isArray(items) && items.length
                 each subValue in items
                   li(class = `${elementName}__item`)
-                    a(class = `${elementName}__item-link` href = 'https://test/test')= subValue
+                    a(class = `${elementName}__item-link` href = "https://test/test")= subValue
       div(class = `${elementName}__items`) подписка
         span(class = `${elementName}__long-text`) Получайте специальные предложения и новости сервиса
         div(class = `${elementName}__subscription`)
@@ -36,5 +36,5 @@ mixin footer({menu = []} = {})
         span(class = `${elementName}__long-text`) Copyright © 2018 Toxin отель. Все права защищены.
       div(class = `${elementName}__social-links`)
         each value in social
-          a(class = `${elementName}__social-link ${elementName}__social-link_${value}` href = 'https://test/test')
+          a(class = `${elementName}__social-link ${elementName}__social-link_${value}` href = "https://test/test")
             img(class = `${elementName}__social-link-image ${elementName}__social-link-image_${value}` src = require(`@com/footer/image/${value}.svg`) alt = `${value} link`)

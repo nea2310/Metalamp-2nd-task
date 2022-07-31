@@ -15,7 +15,7 @@ mixin room-card(options = {})
 
   div(class = `${elementName} js-${elementName}`)
     div(class = `${elementName}__slider js-${elementName}__slider`)
-      a(class = `${elementName}__photos` href = 'https://test/test' aria-label= 'Перейти к деталям номера')
+      a(class = `${elementName}__photos` href = "https://test/test" aria-label = "Перейти к деталям номера")
       each imagePath, index in imageList
         if index === 0
           img(class = `${elementName}__photo js-${elementName}__photo ${elementName}__photo_shown js-${elementName}__photo_shown` 
@@ -25,19 +25,19 @@ mixin room-card(options = {})
             alt = 'фото номера' src = imagePath data-sequence = index)
       div(class = `${elementName}__dots js-${elementName}__dots`)
       div(class = `${elementName}__buttons`)
-        button(class = `${elementName}__previous js-${elementName}__previous` type = 'button' aria-label = 'предыдущее фото')
-        button(class = `${elementName}__next js-${elementName}__next` type = 'button' aria-label = 'следующее фото')
+        button(class = `${elementName}__previous js-${elementName}__previous` type = "button" aria-label = "предыдущее фото")
+        button(class = `${elementName}__next js-${elementName}__next` type = "button" aria-label = "следующее фото")
     div(class = `${elementName}__details`)
-      a(class = `${elementName}__details-room` href = 'https://test/test' aria-label='Перейти к деталям номера')
-        span(class = `${elementName}__detail-mark` role = 'region' aria-label = '№') №
-        span(class = `${elementName}__detail-number` role = 'region' aria-label = 'номер комнаты')= roomNumber
-        span(class = `${elementName}__detail-lux` role = 'region' aria-label = 'люкс')= lux
+      a(class = `${elementName}__details-room` href = "https://test/test" aria-label = "Перейти к деталям номера")
+        span(class = `${elementName}__detail-mark` role = "region" aria-label = "№") №
+        span(class = `${elementName}__detail-number` role = "region" aria-label = "номер комнаты")= roomNumber
+        span(class = `${elementName}__detail-lux` role = "region" aria-label = "люкс")= lux
       div(class = `${elementName}__details-price`)
-        span(class = `${elementName}__detail-price` role = 'region' aria-label = 'цена')= `${roomPrice}₽`
-        span(class = `${elementName}__detail-label` role = 'region' aria-label = 'в сутки') в сутки
+        span(class = `${elementName}__detail-price` role = "region" aria-label = "цена")= `${roomPrice}₽`
+        span(class = `${elementName}__detail-label` role = "region" aria-label = "в сутки") в сутки
     div(class = `${elementName}__rating`)
       div(class = `${elementName}__rate`)
         +rate-button({ratingName})
       div(class = `${elementName}__feedback`)
-        span(class = `${elementName}__feedback-amount` role = 'region' aria-label = 'количество отзывов')= feedbackAmount
-        span(class = `${elementName}__feedback-mark` role = 'region' aria-label = 'отзывы') Отзывов
+        span(class = `${elementName}__feedback-amount` role = "region" aria-label = "количество отзывов")= feedbackAmount
+        span(class = `${elementName}__feedback-mark` role = "region" aria-label = "отзывы") Отзывов

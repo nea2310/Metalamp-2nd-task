@@ -1,10 +1,11 @@
 mixin checklist(options = {})
   -
-    const {categories = [],
+    const {
+      categories = [],
       isExpandable = false,
       isRich = false,
       labelText = '',
-      } = options
+    } = options
 
     const prepareOptions = require ('@com/checklist/checklist-utils.js').default;
 
@@ -13,7 +14,7 @@ mixin checklist(options = {})
       style,
       tabindexValue,
       nameStyle,
-      } = prepareOptions({
+    } = prepareOptions({
         isExpandable,
         isRich,
       });

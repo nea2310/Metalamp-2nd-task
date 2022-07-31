@@ -14,7 +14,8 @@ mixin login()
             width: 'wide',
             placeholder: 'Email',
             inputType: 'email',
-            validation: 'email'})
+            validation: 'email',
+          })
         div(class = `${elementName}__password`)
           +input-field({
             width: 'wide',
@@ -30,7 +31,7 @@ mixin login()
           color: 'dark',
           hasArrow: true,
         })
-    div(class = `${elementName}__go-to-registration` role='region' aria-label = 'Нет аккаунта на Toxin')
+    div(class = `${elementName}__go-to-registration` role="region" aria-label = "Нет аккаунта на Toxin")
       span(class = `${elementName}__go-to-registration-legend`) Нет аккаунта на Toxin?
       div(class = `${elementName}__create`)
         +button({

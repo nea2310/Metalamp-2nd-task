@@ -3,7 +3,7 @@ mixin chart(marks = {})
     const elementName = 'chart'
 
   div(class = `${elementName} js-${elementName}`)
-    canvas(class = `${elementName}__image js-${elementName}__image` height = '120' width = '120')
+    canvas(class = `${elementName}__image js-${elementName}__image` height = "120" width = "120")
     ul(class = `${elementName}__legend`)
       for value, index in marks
         - const {rate = '', label = ''} = value

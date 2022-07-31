@@ -32,11 +32,11 @@ mixin button(options = {})
   case typeChecked
     when 'button'
       button(class = `${elementName} ${elementName}_length_${lengthChecked} ${elementName}_width_${widthChecked} ${elementName}_color_${colorChecked}` 
-        type = 'button')= text
+        type = "button")= text
     when 'submit'
       button(class = `${elementName} ${arrowModifier} ${elementName}_length_${lengthChecked} ${elementName}_width_${widthChecked} ${elementName}_color_${colorChecked}` 
-        type = 'submit')= text
+        type = "submit")= text
     when 'link'
       a(class = `${elementName} ${elementName}_length_${lengthChecked} ${elementName}_width_${widthChecked} ${elementName}_color_${colorChecked}` href = hrefChecked)= text
     when 'plain-text'
-      button(class = `${elementName} ${elementName}_plain-text` type = 'button')= text
+      button(class = `${elementName} ${elementName}_plain-text` type = "button")= text

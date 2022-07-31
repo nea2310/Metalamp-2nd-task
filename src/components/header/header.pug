@@ -5,22 +5,22 @@ mixin header({menu = [], isAuthorized = false} = {})
     const elementName = 'header'
 
   header(class = `${elementName} js-${elementName}`)
-    button(class = `${elementName}__burger-button` aria-label = 'навигация')
+    button(class = `${elementName}__burger-button` aria-label = "навигация")
       span(class = `${elementName}__burger`)
     div(class = `${elementName}__wrapper`)
-      a(class = `${elementName}__logo` href = 'index.html')
+      a(class = `${elementName}__logo` href = "index.html")
       nav(class = `${elementName}__nav-level1 js-${elementName}__nav-level1`) 
         ul(class = `${elementName}__nav-level1-items`)
           if Array.isArray(menu) && menu.length
             each value in menu
               - const {name = '', subMenu = []} = value
               li(class = `${elementName}__nav-level1-item js-${elementName}__nav-level1-item`)
-                a(class = `${elementName}__nav-level1-item-link` href = 'https://test/test')= name
+                a(class = `${elementName}__nav-level1-item-link` href = "https://test/test")= name
                 if Array.isArray(subMenu) && subMenu.length
                   ul(class = `${elementName}__nav-level2 js-${elementName}__nav-level2`)
                     each subValue in subMenu
                       li(class = `${elementName}__nav-level2-item`) 
-                        a(class = `${elementName}__nav-level2-item-link` href = 'https://test/test')= subValue
+                        a(class = `${elementName}__nav-level2-item-link` href = "https://test/test")= subValue
                 if Array.isArray(subMenu) && subMenu.length
                   span(class = `${elementName}__nav-level1-item-tip js-${elementName}__nav-level1-item-tip`)
       div(class = `${elementName}__auth ${elementName}__auth_is-authorized_${isAuthorized}`) 
@@ -33,7 +33,7 @@ mixin header({menu = [], isAuthorized = false} = {})
               width: 'narrow',
               color: 'light',
               href: 'https://test/test',
-            })
+          })
           div(class = `${elementName}__button-reg`) 
             +button({
               text: 'зарегистрироваться',
@@ -45,4 +45,4 @@ mixin header({menu = [], isAuthorized = false} = {})
             })
         else
           div(class = `${elementName}__profile`) 
-            a(class = `${elementName}__profile-name` href = 'https://test/test')  Юлий Цезарь
+            a(class = `${elementName}__profile-name` href = "https://test/test")  Юлий Цезарь

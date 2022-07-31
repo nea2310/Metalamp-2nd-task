@@ -14,5 +14,5 @@ mixin rate-button({labelText = '', ratingName = ''} = {})
     div(class = `${elementName}__star-image-group`)
     div(class = `${elementName}__group`)
       for rateValue, index in rates
-        input(class = `${elementName}__star` type = 'radio' name = ratingName value = rateValue aria-label = index)
+        input(class = `${elementName}__star` type = "radio" name = ratingName value = rateValue aria-label = index)
         span(class = `${elementName}__star-image`)

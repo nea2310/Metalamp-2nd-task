@@ -25,7 +25,7 @@ mixin range-slider(options = {})
       stepChecked,
       fromChecked,
       toChecked,
-      } = prepareOptions({
+    } = prepareOptions({
         isMinMaxHidden,
         isFromToHidden,
         sliderType,
@@ -34,7 +34,7 @@ mixin range-slider(options = {})
         step,
         from,
         to,
-      });
+    });
 
   div(class = `${elementName} js-${elementName}`)
     div(class = `${elementName}__wrapper`)
@@ -42,10 +42,10 @@ mixin range-slider(options = {})
         if labelText
           h3(class = `${elementName}__title`)= labelText
         div(class = `${elementName}__price`)
-          input(class = `${elementName}__price-from` type = 'text')
+          input(class = `${elementName}__price-from` type = "text")
           span(class = `${elementName}__price-delimiter`) -
-          input(class = `${elementName}__price-to` type = 'text')
-      input(class = `${elementName}__slider` type = 'text'
+          input(class = `${elementName}__price-to` type = "text")
+      input(class = `${elementName}__slider` type = "text"
         data-type = sliderTypeChecked data-min = minChecked data-max = maxChecked data-step = stepChecked 
         data-from = fromChecked data-to = toChecked data-hide-min-max = isMinMaxHiddenChecked data-hide-from-to = isFromToHiddenChecked)
       span(class = `${elementName}__text`)= text

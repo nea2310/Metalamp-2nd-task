@@ -6,15 +6,18 @@ include ../../components/footer/footer.pug
 block title
   title Headers & Footers
 block logo 
-  +logo({color: 'grey'})
+  +logo({ color: 'grey' })
 block content
   -
     const {header, footer} = require('@pag/headers-footers/headers-footers.json')
 
-  main(class="headers-footers")
-    div(class='headers-footers__header')
+  main(class = "headers-footers")
+    div(class = "headers-footers__header")
       +header(header)
-    div(class='headers-footers__header')
-      +header({...header, isAuthorized: true})
-    div(class='headers-footers__footer')
+    div(class = "headers-footers__header")
+      +header({
+        ...header, 
+        isAuthorized: true,
+      })
+    div(class = "headers-footers__footer")
       +footer(footer)

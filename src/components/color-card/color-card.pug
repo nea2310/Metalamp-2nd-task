@@ -7,7 +7,10 @@ mixin color-card(options = {})
     } = options
 
     const prepareOptions = require ('@com/color-card/color-card-utils.js').default;
-    const {elementName, colorChecked} = prepareOptions({color});
+    const {
+      elementName, 
+      colorChecked,
+    } = prepareOptions({color});
 
   div(class = elementName)
     div(class = `${elementName}__color ${elementName}__color_${colorChecked}`)
