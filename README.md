@@ -104,8 +104,29 @@ assets
 * `fonts` - font files
 * `styles` - files with global styles of the project<br><br>
 
-#### `utils`
-`utils`  contains service functions used for data validation<br><br>
+#### `shared`
+`shared` has the following structure:
+
+```
+shared
+└─── helpers
+└─── images
+```
+`helpers` contains service functions used for data validation<br><br>
+`images` contains images shared among more than one component<br><br>
+
+#### `public`
+`public` has the following structure:
+
+```
+public
+└─── images
+  └─── feedback
+  └─── room-card
+  └─── room-details
+```
+
+`images` contains mock images used by components or pages which will be replaced by real data from back-end in production mode<br><br>
 
 ## How to work
 #### Install dependencies
