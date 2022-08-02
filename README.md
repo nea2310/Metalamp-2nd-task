@@ -112,7 +112,7 @@ shared
 └─── helpers
 └─── images
 ```
-`helpers` contains service functions used for data validation<br><br>
+`helpers` contains service functions used for data validation in components<br><br>
 `images` contains images shared among more than one component<br><br>
 
 #### `public`
