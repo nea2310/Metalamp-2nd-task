@@ -14,12 +14,12 @@ block logo
   +logo({ color: 'grey' })
 block content 
   main(class = "cards")
-    div(class = "cards__search-column cards__search-column-left")
+    div(class = "cards__search-column")
       div(class = "cards__search-room")
         +search-room()
       div(class = "cards__registration")
         +registration()
-    div(class = "cards__search-column cards__search-column-center")
+    div(class = "cards__search-column")
       div(class = "cards__booking")
         +booking({
           roomNumber: 888,
@@ -34,7 +34,7 @@ block content
         })
       div(class = "cards__login")
         +login()
-    div(class = "cards__search-column cards__search-column-right")
+    div(class = "cards__search-column")
       div(class = "cards__date-dropdown")
         +date-dropdown({
           width:'wide',
