@@ -19,7 +19,7 @@ mixin date-dropdown(options = {})
     } = prepareOptions({ type });
 
   div(class = `${elementName} js-${elementName} js-${elementName}_type_${typeChecked} ${elementName}${width}`)
-    if typeChecked == 'dateDropDown'
+    if typeChecked === 'dateDropDown'
       div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper`)
         label(class = `${elementName}__label`)
           if labelTextFrom
@@ -32,7 +32,7 @@ mixin date-dropdown(options = {})
             h3(class = `${elementName}__label-text`)= labelTextTo
           input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_to js-${elementName}__input_to ${elementName}__input_width_narrow`
             placeholder = "ДД.ММ.ГГГГ", type = "date")
-    if typeChecked == 'filterDateDropDown'
+    if typeChecked === 'filterDateDropDown'
       div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper`)
         label(class = `${elementName}__label`)
           if labelTextFromTo

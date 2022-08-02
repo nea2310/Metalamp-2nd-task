@@ -84,28 +84,28 @@ block content
         span(class = "form-elements__label form-elements__label_position_top-middle") toggle
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
           +toggle(toggles)
-          +toggle({value: toggles.value})
+          +toggle({ value: toggles.value })
         span(class = "form-elements__label form-elements__label_position_top-middle") like-button
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
           +like-button(likeButtons[0])
           +like-button(likeButtons[1])
-        span(class='form-elements__label form-elements__label_position_top-middle') rate button
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
-          +rate-button({ratingName: rateButtons[0]})
-          +rate-button({ratingName: rateButtons[1]})
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
+        span(class = "form-elements__label form-elements__label_position_top-middle") rate button
+        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
+          +rate-button({ ratingName: rateButtons[0] })
+          +rate-button({ ratingName: rateButtons[1] })
+        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
           +dropdown(dropdownGuests)
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
+        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
           +checklist(checkListRichCheckBox)
-      div(class="form-elements__column")
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
+      div(class = "form-elements__column")
+        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
           +range-slider(rangeSlider)
-        span(class='form-elements__label form-elements__label_position_top-right') buttons
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
+        span(class = "form-elements__label form-elements__label_position_top-right") buttons
+        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
           +button(buttonDarkShort)
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
+        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
           +button(buttonLightShort)
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
+        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
           +button({
             text: buttonPlain.text,
             type: buttonPlain.type,
@@ -119,21 +119,21 @@ block content
           +dropdown(dropdownGuests)
         span(class='form-elements__label form-elements__label_position_top-right') bullet list
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
-          +bullet-list({categories: bulletList.categories})
+          +bullet-list({ categories: bulletList.categories })
     div(class="form-elements__wrapper-bottom")
-      div(class="form-elements__column")
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-left")
+      div(class = "form-elements__column")
+        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-left")
           +feature({
             ...features[0],
             imagePath: require('@pag/form-elements/image/smile.svg'),
           })
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-left")
+        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-left")
           +feature({
             ...features[1],
             imagePath: require('@pag/form-elements/image/city.svg'),
           })
-      div(class="form-elements__column")
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-right")
+      div(class = "form-elements__column")
+        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-right")
           +feedback({
             ...feedback,
             imagePath: require('@pag/form-elements/image/murad.jpg'),

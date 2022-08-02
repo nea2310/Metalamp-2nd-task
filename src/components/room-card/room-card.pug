@@ -19,10 +19,10 @@ mixin room-card(options = {})
       each imagePath, index in imageList
         if index === 0
           img(class = `${elementName}__photo js-${elementName}__photo ${elementName}__photo_shown js-${elementName}__photo_shown` 
-            alt = 'фото номера' src = imagePath data-sequence = index)
+            alt = "фото номера" src = imagePath data-sequence = index)
         else
           img(class = `${elementName}__photo js-${elementName}__photo` 
-            alt = 'фото номера' src = imagePath data-sequence = index)
+            alt = "фото номера" src = imagePath data-sequence = index)
       div(class = `${elementName}__dots js-${elementName}__dots`)
       div(class = `${elementName}__buttons`)
         button(class = `${elementName}__previous js-${elementName}__previous` type = "button" aria-label = "предыдущее фото")

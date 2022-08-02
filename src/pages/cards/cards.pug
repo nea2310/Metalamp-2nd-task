@@ -11,16 +11,16 @@ include ../../components/date-dropdown/date-dropdown.pug
 block title
   title Cards
 block logo 
-  +logo({color: 'grey'})
+  +logo({ color: 'grey' })
 block content 
-  main(class="cards")
-    div(class='cards__search-column cards__search-column-left')
-      div(class='cards__search-room')
+  main(class = "cards")
+    div(class = "cards__search-column cards__search-column-left")
+      div(class = "cards__search-room")
         +search-room()
-      div(class='cards__registration')
+      div(class = "cards__registration")
         +registration()
-    div(class='cards__search-column cards__search-column-center')
-      div(class='cards__booking')
+    div(class = "cards__search-column cards__search-column-center")
+      div(class = "cards__booking")
         +booking({
           roomNumber: 888,
           lux: 'люкс',
@@ -32,15 +32,15 @@ block content
           extraTotal: '300',
           totalAmount: '38 081',
         })
-      div(class='cards__login')
+      div(class = "cards__login")
         +login()
-    div(class='cards__search-column cards__search-column-right')
-      div(class='cards__date-dropdown')
+    div(class = "cards__search-column cards__search-column-right")
+      div(class = "cards__date-dropdown")
         +date-dropdown({
           width:'wide',
           type:'dateDropDown',
         })
-      div(class='cards__room-card')
+      div(class = "cards__room-card")
         +room-card({
           imageList: [
             require('@pag/cards/image/room-1.jpg'),
@@ -54,7 +54,7 @@ block content
           feedbackAmount: '145',
           ratingName: 'room888Rating',
         })
-      div(class='cards__room-card')
+      div(class = 'cards__room-card')
         +room-card({
           imageList: [
             require('@pag/cards/image/room-1.jpg'),
