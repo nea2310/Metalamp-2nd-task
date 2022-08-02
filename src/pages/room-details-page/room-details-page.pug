@@ -22,42 +22,54 @@ block content
   main(class = "room-details-page")
     h1(class = "room-details-page__header") подробная информация о номере
     section(class = "room-details-page__banner-wrapper")
-      img(class = "room-details-page__image-1" alt = "фоновое изображение - спальня" src = require('@pag/room-details-page/image/room-details-1.jpg'))
-      img(class = "room-details-page__image-2" alt = "фоновое изображение - спальня" src = require('@pag/room-details-page/image/room-details-2.jpg'))
-      img(class = "room-details-page__image-3" alt = "фоновое изображение - спальня" src = require('@pag/room-details-page/image/room-details-3.jpg'))
+      img(class = "room-details-page__image-1" alt = "фоновое изображение - спальня" src = require('@pub/images/room-details/room-details-1.jpg'))
+      img(class = "room-details-page__image-2" alt = "фоновое изображение - спальня" src = require('@pub/images/room-details/room-details-2.jpg'))
+      img(class = "room-details-page__image-3" alt = "фоновое изображение - спальня" src = require('@pub/images/room-details/room-details-3.jpg'))
     section(class = "room-details-page__main-info-wrapper")
       div(class = "room-details-page__room-info-wrapper")
         h2(class = "room-details-page__room-info-header") Сведения о номере
         div(class = "room-details-page__room-info")
           div(class = "room-details-page__room-info-item")
             +feature({
-              imagePath: require('@pag/room-details-page/image/smile.svg'),
               name: features[0].name,
               description: features[0].description,
               alt: features[0].alt,
+              image: features[0].image,
             })
           div(class = "room-details-page__room-info-item")
             +feature({
-              imagePath: require('@pag/room-details-page/image/city.svg'),
               name: features[1].name,
               description: features[1].description,
               alt: features[1].alt,
+              image: features[1].image,
             })
           div(class = "room-details-page__room-info-item")
             +feature({
-              imagePath: require('@pag/room-details-page/image/fireplace.svg'),
               name: features[2].name,
               description: features[2].description,
               alt: features[2].alt,
+              image: features[2].image,
             })
       div(class = "room-details-page__room-impress-wrapper")
         h2(class = "room-details-page__room-impress-header") Впечатления от номера
         div(class = "room-details-page__room-impress")
           +chart({
-            excellent: {rate: '130', label: 'Великолепно'},
-            good: {rate:'65', label: 'Хорошо'},
-            satisfied: {rate:'65', label: 'Удовлетворительно'},
-            bad: {rate:'0', label: 'Разочарован'},
+            excellent: {
+              rate: '130', 
+              label: 'Великолепно',
+            },
+            good: {
+              rate:'65', 
+              label: 'Хорошо',
+            },
+            satisfied: {
+              rate:'65', 
+              label: 'Удовлетворительно',
+            },
+            bad: {
+              rate:'0', 
+              label: 'Разочарован',
+            },
           })
       div(class = "room-details-page__booking-wrapper")
         +booking({
@@ -78,7 +90,7 @@ block content
         div(class = "room-details-page__feedback")
           div(class = "room-details-page__feedback-item")
             +feedback({
-              imagePath: require('@pag/room-details-page/image/murad.jpg'),
+              imagePath: require('@pub/images/feedback/murad.jpg'),
               name: feedbacks[0].name,
               date: feedbacks[0].date,
               description: feedbacks[0].description,
@@ -88,7 +100,7 @@ block content
             })
           div(class = "room-details-page__feedback-item")
             +feedback({
-              imagePath: require('@pag/room-details-page/image/patricia.jpg'),
+              imagePath: require('@pub/images/feedback/patricia.jpg'),
               name: feedbacks[1].name,
               date: feedbacks[1].date,
               description: feedbacks[1].description,

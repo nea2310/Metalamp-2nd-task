@@ -247,12 +247,14 @@
     {
       "name": "Комфорт",
       "description": "Шумопоглощающие стены",
-      "alt": "smile"
+      "alt": "smile",
+      "image": "smile"
     },
     {
       "name": "Удобство",
       "description": "Окно в каждой из спален",
-      "alt": "city"
+      "alt": "city",
+      "image": "city"
     }
   ],
   "feedback": {

@@ -123,18 +123,12 @@ block content
     div(class="form-elements__wrapper-bottom")
       div(class = "form-elements__column")
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-left")
-          +feature({
-            ...features[0],
-            imagePath: require('@pag/form-elements/image/smile.svg'),
-          })
+          +feature(features[0])
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-left")
-          +feature({
-            ...features[1],
-            imagePath: require('@pag/form-elements/image/city.svg'),
-          })
+          +feature(features[1])
       div(class = "form-elements__column")
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-right")
           +feedback({
             ...feedback,
-            imagePath: require('@pag/form-elements/image/murad.jpg'),
+            imagePath: require('@pub/images/feedback/murad.jpg'),
           })

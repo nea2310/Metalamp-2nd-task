@@ -23,6 +23,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': src,
+      '@pub': `${src}/public`,
       '@fav': `${src}/assets/favicons`,
       '@com': `${src}/components`,
       '@pag': `${src}/pages`,

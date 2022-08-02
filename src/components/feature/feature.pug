@@ -2,16 +2,21 @@ mixin feature(options = {})
   -
 
     const { 
-      imagePath = require('@/shared/images/logo-purple.svg'),
+      image = '',
       name = '',
       description = '',
       alt = '',
     } = options
 
-    const elementName = 'feature'
+    const prepareOptions = require ('@com/feature/feature-utils.js').default;
+
+    const {
+      elementName,
+      imageChecked,
+    } = prepareOptions({ image });
 
   div(class = elementName)
-    img(class = `${elementName}__image` src = imagePath alt = alt)
+    img(class = `${elementName}__image` src = require(`@com/feature/image/${imageChecked}.svg`) alt = alt)
     span(class = `${elementName}__name`)= name
     span(class = `${elementName}__description`)= description
 
