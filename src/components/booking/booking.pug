@@ -29,20 +29,20 @@ mixin booking(options = {})
         span(class = `${elementName}__detail-number`)= roomNumber
         span(class = `${elementName}__detail-lux`)= lux
       div(class = `${elementName}__details-price`)
-        span(class = `${elementName}__detail-price`)= `${roomPrice}₽`
+        span(class = `${elementName}__detail-price`)= `${roomPrice.toLocaleString('ru-RU')}₽`
         span(class = `${elementName}__detail-label`) в сутки
     div(class = `${elementName}__date-dropdown`)
       +date-dropdown(dateDropdown)
     div(class = `${elementName}__guests`)
       +dropdown(dropdownGuests)
     div(class = `${elementName}__price-breakdown`)
-      div(class = `${elementName}__price-base-name`)= `${roomPrice}₽ x ${daysAmount} суток`
-      div(class = `${elementName}__price-base-cost`)= `${totalPrice}₽`
-      div(class = `${elementName}__price-service-name`)= `Сбор за услуги: скидка ${sale}₽`
+      div(class = `${elementName}__price-base-name`)= `${roomPrice.toLocaleString('ru-RU')}₽ x ${daysAmount} суток`
+      div(class = `${elementName}__price-base-cost`)= `${totalPrice.toLocaleString('ru-RU')}₽`
+      div(class = `${elementName}__price-service-name`)= `Сбор за услуги: скидка ${sale.toLocaleString('ru-RU')}₽`
       div(class = `${elementName}__price-service-cost`)= `${saleTotal}₽`
       div(class = `${elementName}__price-extra-name`) Сбор за дополнительные услуги
-      div(class = `${elementName}__price-extra-cost`)= `${extraTotal}₽`
+      div(class = `${elementName}__price-extra-cost`)= `${extraTotal.toLocaleString('ru-RU')}₽`
       div(class = `${elementName}__price-total-name`) Итого
-      div(class = `${elementName}__price-total-cost`)= `${totalAmount}₽`
+      div(class = `${elementName}__price-total-cost`)= `${totalAmount.toLocaleString('ru-RU')}₽`
     div(class = `${elementName}__book-button`)
       +button(button)

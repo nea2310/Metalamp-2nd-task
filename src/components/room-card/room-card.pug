@@ -33,7 +33,7 @@ mixin room-card(options = {})
         span(class = `${elementName}__detail-number` role = "region" aria-label = "номер комнаты")= roomNumber
         span(class = `${elementName}__detail-lux` role = "region" aria-label = "люкс")= lux
       div(class = `${elementName}__details-price`)
-        span(class = `${elementName}__detail-price` role = "region" aria-label = "цена")= `${roomPrice}₽`
+        span(class = `${elementName}__detail-price` role = "region" aria-label = "цена")= `${roomPrice.toLocaleString('ru-RU')}₽`
         span(class = `${elementName}__detail-label` role = "region" aria-label = "в сутки") в сутки
     div(class = `${elementName}__rating`)
       div(class = `${elementName}__rate`)

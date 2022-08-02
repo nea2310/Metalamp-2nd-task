@@ -42,11 +42,11 @@
   "likeButtons": [
     {
       "isLiked": false,
-      "likeAmount": "2"
+      "likeAmount": 2
     },
     {
       "isLiked": true,
-      "likeAmount": "12"
+      "likeAmount": 12
     }
   ],
   "rateButtons": [
@@ -56,13 +56,11 @@
   "rangeSlider": {
     "labelText": "range slider",
     "sliderType": "double",
-    "min": "1000",
-    "max": "15000",
-    "step": "1",
-    "from": "5000",
-    "to": "10000",
-    "isMinMaxHidden": "true",
-    "isFromToHidden": "true"
+    "min": 1000,
+    "max": 15000,
+    "step": 1,
+    "from": 5000,
+    "to": 10000
   },
   "dateDropdown": {
     "width": "wide",
@@ -115,7 +113,7 @@
         "declensions": "гость,гостя,гостей",
         "defaultCount": 0,
         "minCount": 0,
-        "maxCount": 99
+        "maxCount": 10
       },
       {
         "displayName": "дети",
@@ -123,7 +121,7 @@
         "declensions": "гость,гостя,гостей",
         "defaultCount": 0,
         "minCount": 0,
-        "maxCount": 99
+        "maxCount": 10
       },
       {
         "displayName": "младенцы",
@@ -131,7 +129,7 @@
         "declensions": "младенец,младенца,младенцев",
         "defaultCount": 0,
         "minCount": 0,
-        "maxCount": 99
+        "maxCount": 10
       }
     ],
     "type": "dropDownGuests",
@@ -263,6 +261,6 @@
     "description": "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.",
     "alt": "Мурад Сарафанов",
     "isLiked": true,
-    "likeAmount": "12"
+    "likeAmount": 12
   }
 }
