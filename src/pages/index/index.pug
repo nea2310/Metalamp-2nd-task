@@ -3,23 +3,23 @@ include ../../components/head/head.pug
 html(lang = "ru")
   head
     block title
-      -
-        const pageNames = {
-          'Colors & Type': 'colors-types',
-          'Form Elements': 'form-elements',
-          'Cards': 'cards',
-          'Headers & Footers': 'headers-footers',
-          'Landing page': 'landing-page',
-          'Search room': 'search-room-page',
-          'Room details': 'room-details-page',
-          'Registration': 'registration-page',
-          'Sign in': 'sign-in-page',
-        }
       title MetaLamp Frontend
   body
     main(class = "index__main")
       section
         ul(class = "index__pages")
+          -
+            const pageNames = { 
+              'colors-types':'Colors & Type',
+              'form-elements':'Form Elements',
+              'cards':'Cards', 
+              'headers-footers':'Headers & Footers',
+              'landing-page':'Landing page',
+              'search-room-page':'Search room',
+              'room-details-page':'Room details',
+              'registration-page':'Registration',
+              'sign-in-page':'Sign in',
+              }
           each value, key in pageNames
               li(class = "index__page")
-                a(class = "index__link" href=`${value}.html`)= key
+                a(class = "index__link" href=`${key}.html`)= value
