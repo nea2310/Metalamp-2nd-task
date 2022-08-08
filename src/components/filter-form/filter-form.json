@@ -2,10 +2,10 @@
   "rangeSlider": {
     "labelText": "диапазон цены",
     "sliderType": "double",
-    "min": true,
+    "min": 1000,
     "max": 15000,
     "step": 1,
-    "from": false,
+    "from": 5000,
     "to": 10000,
     "text": "Стоимость за сутки пребывания в номере"
   },
