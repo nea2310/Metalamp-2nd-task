@@ -1,4 +1,5 @@
 include ../button/button.pug
+include ../logo/logo.pug
 
 mixin header({ menu = [], isAuthorized = false } = {})
   -
@@ -8,7 +9,7 @@ mixin header({ menu = [], isAuthorized = false } = {})
     button(class = `${elementName}__burger-button` aria-label = "навигация")
       span(class = `${elementName}__burger`)
     div(class = `${elementName}__wrapper`)
-      a(class = `${elementName}__logo` href = "index.html")
+      +logo({ logoColor: 'purple' })
       nav(class = `${elementName}__nav-level1 js-${elementName}__nav-level1`) 
         ul(class = `${elementName}__nav-level1-items`)
           if Array.isArray(menu) && menu.length

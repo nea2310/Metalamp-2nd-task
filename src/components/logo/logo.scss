@@ -1,19 +1,10 @@
 .logo{
   margin: 0 auto;
   display: block;
-  padding-top: 20px;
-  padding-left: 20px;
 
-  &__link{
-    display: block;
-    width: 50px;
-    height: 50px;
-    background: url('@com/logo/images/logo-grey.svg') no-repeat center;
-  }
-  
-  &_color_grey{
-    background-color: $colorBackground;
-  }
+    &_background_grey{
+      background-color: $colorBackground;
+    }
 }
 
 

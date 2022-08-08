@@ -61,13 +61,6 @@
     }
   }
 
-  &__logo {
-    display: block;
-    height: 50px;
-    text-decoration: none;
-    background: url('@/shared/images/logo-purple.svg') no-repeat top left;
-  }
-
   &__items {
     @include ul-reset-style;
     padding-right: 5px;
@@ -103,6 +96,10 @@
       max-width: 270px;
       display: flex;
       flex-direction: column;
+
+      @include media-breakpoint-down($md) {
+        display: none;
+      }
     }
   }
 
@@ -127,10 +124,18 @@
     cursor: initial;
     text-transform: initial;
     margin-top: 20px;
+
+      @include media-breakpoint-down($md) {
+      display: none;
+    } 
   }
 
   &__subscription{
     margin-top: 20px;
+  }
+
+  &__copyright{
+    @include font-body;
   }
 
   &__social-link {

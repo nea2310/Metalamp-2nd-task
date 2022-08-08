@@ -1,14 +1,18 @@
-mixin logo({ color = 'white' } = {})
+mixin logo({ logoColor = 'grey', backgroundColor = 'white' } = {})
   -
     const prepareOptions = require ('@com/logo/logo-utils.js').default;
 
     const { 
       elementName, 
+      backgroundColorChecked,
+      logoColorChecked,
+    } = prepareOptions({ 
+      backgroundColor,
       logoColor,
-    } = prepareOptions({ color });
+    });
 
-  div(class = `${elementName} ${elementName}_color_${logoColor}`)
-    a(class = `${elementName}__link` href = "index.html" alt = "на главную")
+  a(class = `${elementName} ${elementName}_color_${logoColorChecked} ${elementName}_background_${backgroundColorChecked}` href = "index.html" alt = "на главную")
+    img(class = `${elementName}__logo-image` src = require(`@com/logo/images/logo-${logoColorChecked}.svg`))
 
 
 

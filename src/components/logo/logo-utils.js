@@ -1,12 +1,19 @@
 import getValidValue from '../../shared/helpers/getValidValue';
 
 export default function prepareOptions(options) {
-  const { color } = options;
+  const {
+    backgroundColor,
+    logoColor,
+  } = options;
 
-  const validColors = ['white', 'grey'];
+  const validBackgroundColors = ['white', 'grey'];
+  const validLogoColors = ['grey', 'purple'];
+
+  const logoColorChecked = getValidValue(validLogoColors, logoColor, 'white');
 
   return {
     elementName: 'logo',
-    logoColor: getValidValue(validColors, color, 'white'),
+    backgroundColorChecked: getValidValue(validBackgroundColors, backgroundColor, 'white'),
+    logoColorChecked,
   };
 }

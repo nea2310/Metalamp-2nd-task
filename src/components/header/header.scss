@@ -139,13 +139,6 @@
   }
 
   &__logo {
-    text-decoration: none;
-    display: block;
-    height: 50px;
-    width: 180px;
-    text-decoration: none;
-    background: url('@/shared/images/logo-purple.svg') no-repeat top left;
-
     @include media-breakpoint-down($lg) {
       padding-left: 20px;
     }
