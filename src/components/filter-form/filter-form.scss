@@ -157,8 +157,6 @@
   }
 
   &__facilities-adv-wrapper {
-    padding-bottom: 50px;
-
     @include media-breakpoint-down($lg) {
       margin: 0;
       grid-area: facilities-adv;
