@@ -1,5 +1,4 @@
 import getValidValue from '../../shared/helpers/getValidValue';
-import isNumber from '../../shared/helpers/isNumber';
 
 export default function prepareOptions(options) {
   const {
@@ -19,11 +18,11 @@ export default function prepareOptions(options) {
     elementName: 'range-slider',
     isMinMaxHiddenChecked: getValidValue(validStates, isMinMaxHidden, 'true'),
     isFromToHiddenChecked: getValidValue(validStates, isFromToHidden, 'true'),
-    sliderTypeChecked: isNumber(sliderType),
-    minChecked: isNumber(min),
-    maxChecked: isNumber(max),
-    stepChecked: isNumber(step),
-    fromChecked: isNumber(from),
-    toChecked: isNumber(to),
+    sliderTypeChecked: Number.isFinite(sliderType) ? sliderType : 0,
+    minChecked: Number.isFinite(min) ? min : 0,
+    maxChecked: Number.isFinite(max) ? max : 0,
+    stepChecked: Number.isFinite(step) ? step : 0,
+    fromChecked: Number.isFinite(from) ? from : 0,
+    toChecked: Number.isFinite(to) ? to : 0,
   };
 }
