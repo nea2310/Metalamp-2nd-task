@@ -126,7 +126,7 @@ public
   └─── room-details
 ```
 
-`images` contains mock images used by components or pages which will be replaced by real data from back-end in production mode<br><br>
+`images` contains mock images used by components or pages. These images will be replaced by real data from back-end in production mode<br><br>
 
 ## How to work
 #### Install dependencies
