@@ -1,21 +1,21 @@
-/* eslint-disable no-alert */
 class Registration {
   constructor(element) {
     this.wrapper = element;
-    this._handleRegistrationSubmit = this._handleRegistrationSubmit.bind(this);
     this._render();
     this._bindEventListeners();
   }
 
   _render() {
     this.date = this.wrapper.querySelector('.js-input-field_validation_date input');
-    this.inputs = this.wrapper
-      .querySelectorAll('input');
+    this.inputs = this.wrapper.querySelectorAll('input');
+    this.message = this.wrapper.querySelector('.js-registration__message');
+    this._handleRegistrationSubmit = this._handleRegistrationSubmit.bind(this);
+    this._handleRegistrationFocus = this._handleRegistrationFocus.bind(this);
   }
 
   _bindEventListeners() {
     this.wrapper.addEventListener('submit', this._handleRegistrationSubmit);
-    this.inputs.forEach((input) => input.addEventListener('focus', Registration._handleRegistrationFocus));
+    this.inputs.forEach((input) => input.addEventListener('focus', this._handleRegistrationFocus));
   }
 
   _handleRegistrationSubmit(e) {
@@ -32,15 +32,24 @@ class Registration {
       this.date.classList.add('registration_error');
     }
 
-    const isError = this.inputs.some((item) => item.classList.contains('login-error'));
+    const isError = Array.from(this.inputs).some((item) => item.classList.contains('registration_error'));
     if (isError) {
       e.preventDefault();
-      alert('Заполните все поля!');
+      this._toggleMessage();
     }
   }
 
-  static _handleRegistrationFocus(e) {
+  _toggleMessage(isError = true) {
+    if (isError) {
+      this.message.classList.add('registration__message_active');
+      return;
+    }
+    this.message.classList.remove('registration__message_active');
+  }
+
+  _handleRegistrationFocus(e) {
     e.currentTarget.classList.remove('registration_error');
+    this._toggleMessage(false);
   }
 }
 

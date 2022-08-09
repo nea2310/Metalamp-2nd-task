@@ -1,20 +1,21 @@
-/* eslint-disable no-alert */
 class Login {
   constructor(element) {
     this.wrapper = element;
-    this._handleLoginSubmit = this._handleLoginSubmit.bind(this);
+
     this._render();
     this._bindEventListeners();
   }
 
   _render() {
-    this.inputs = this.wrapper
-      .querySelectorAll('input');
+    this.inputs = this.wrapper.querySelectorAll('input');
+    this.message = this.wrapper.querySelector('.js-login__message');
+    this._handleLoginSubmit = this._handleLoginSubmit.bind(this);
+    this._handleLoginFocus = this._handleLoginFocus.bind(this);
   }
 
   _bindEventListeners() {
     this.wrapper.addEventListener('submit', this._handleLoginSubmit);
-    this.inputs.forEach((input) => input.addEventListener('focus', Login._handleLoginFocus));
+    this.inputs.forEach((input) => input.addEventListener('focus', this._handleLoginFocus));
   }
 
   _handleLoginSubmit(e) {
@@ -31,12 +32,21 @@ class Login {
 
     if (isError) {
       e.preventDefault();
-      alert('Заполните все поля!');
+      this._toggleMessage();
     }
   }
 
-  static _handleLoginFocus(e) {
+  _toggleMessage(isError = true) {
+    if (isError) {
+      this.message.classList.add('login__message_active');
+      return;
+    }
+    this.message.classList.remove('login__message_active');
+  }
+
+  _handleLoginFocus(e) {
     e.currentTarget.classList.remove('login_error');
+    this._toggleMessage(false);
   }
 }
 

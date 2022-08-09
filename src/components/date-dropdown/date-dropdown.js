@@ -38,6 +38,7 @@ class DateDropDown {
     const prepareDate = (date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
     this.inputWrappers = this._getElements(['input-wrapper']);
+    this.message = this._getElement('message');
     [this.inputWrapperFrom, this.inputWrapperTo] = this.inputWrappers;
     this.isFilter = this.inputWrappers.length === 1;
 
@@ -257,15 +258,17 @@ class DateDropDown {
 
   _handleDateDropDownClickApply() {
     if (this.myDatepicker.selectedDates.length === 1) {
-      alert('Введите дату выезда');
+      this._toggleMessage(true, 'Введите дату выезда');
     } else {
+      this._toggleMessage(false);
       this.calendarWrapper.classList
         .add(`${this.elementName}__calendar-wrapper_hidden`);
-      if (!this.isFilter) {
         this._toggle(false);
-      } else {
-        this._toggle(false);
-      }
+      // if (!this.isFilter) {
+      //   this._toggle(false);
+      // } else {
+      //   this._toggle(false);
+      // }
     }
   }
 
@@ -489,6 +492,15 @@ class DateDropDown {
     string = string.substring(0, string.length - 1);
     return this.wrapper
       .querySelectorAll(string);
+  }
+
+  _toggleMessage(isError, message) {
+    if (isError) {
+      this.message.classList.add(`${this.elementName}__message_active`);
+      this.message.innerText = message;
+      return;
+    }
+    this.message.classList.remove(`${this.elementName}__message_active`);
   }
 }
 

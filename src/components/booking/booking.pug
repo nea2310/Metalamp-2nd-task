@@ -23,6 +23,7 @@ mixin booking(options = {})
     const elementName = 'booking'
 
   form(class = `${elementName} js-${elementName}`)
+    span(class = `${elementName}__message js-${elementName}__message`) Заполните все поля!
     div(class = `${elementName}__details`)
       div(class = `${elementName}__details-room`)
         span(class = `${elementName}__detail-mark`) №

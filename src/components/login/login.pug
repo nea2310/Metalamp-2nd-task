@@ -6,6 +6,7 @@ mixin login()
     const elementName = 'login'
 
   div(class = `${elementName} js-${elementName}`)
+    span(class = `${elementName}__message js-${elementName}__message`) Заполните все поля!
     form(class = `${elementName}__login-form js-${elementName}__login-form`)
       h1(class = `${elementName}__header`) Войти
       fieldset(class = `${elementName}__credentials`) 

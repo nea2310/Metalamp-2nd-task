@@ -8,6 +8,7 @@ mixin registration()
     const elementName = 'registration'
 
   div(class = `${elementName} js-${elementName}`)
+    span(class = `${elementName}__message js-${elementName}__message`) Заполните все поля!
     form(class = `${elementName}__registration-form js-${elementName}__registration-form`)
       h1(class = `${elementName}__header`) Регистрация аккаунта
       fieldset(class = `${elementName}__name-surname`)
