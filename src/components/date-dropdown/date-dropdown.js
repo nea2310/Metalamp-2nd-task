@@ -1,5 +1,3 @@
-/* eslint-disable indent */
-/* eslint-disable no-alert */
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 
@@ -114,16 +112,16 @@ class DateDropDown {
     const regexpDate = /^\d{2}\.\d{2}\.\d{4}$/;
 
     this.dateCurrentTxt = `${this.dateCurrent.getDate()
-      }.${this.dateCurrent.getMonth() + 1
-      }.${this.dateCurrent.getFullYear()}`;
+    }.${this.dateCurrent.getMonth() + 1
+    }.${this.dateCurrent.getFullYear()}`;
 
     this.dateTomorrowTxt = `${this.dateTomorrow.getDate()
-      }.${this.dateTomorrow.getMonth() + 1
-      }.${this.dateTomorrow.getFullYear()}`;
+    }.${this.dateTomorrow.getMonth() + 1
+    }.${this.dateTomorrow.getFullYear()}`;
 
     this.datePlusYearTxt = `${this.datePlusYear.getDate()
-      }.${this.datePlusYear.getMonth() + 1
-      }.${this.datePlusYear.getFullYear()}`;
+    }.${this.datePlusYear.getMonth() + 1
+    }.${this.datePlusYear.getFullYear()}`;
 
     const formatDate = (dateValue) => {
       let date = dateValue;
@@ -248,27 +246,26 @@ class DateDropDown {
     if (this.calendarWrapper.classList
       .contains(`${this.elementName}__calendar-wrapper_hidden`)) {
       this._toggle(true);
+      this._toggleMessage();
     }
   }
 
   _handleDateDropDownClickDateFromTo() {
     if (this.calendarWrapper.classList
-      .contains(`${this.elementName}__calendar-wrapper_hidden`)) { this._toggle(true); }
+      .contains(`${this.elementName}__calendar-wrapper_hidden`)) {
+      this._toggle(true);
+      this._toggleMessage();
+    }
   }
 
   _handleDateDropDownClickApply() {
     if (this.myDatepicker.selectedDates.length === 1) {
       this._toggleMessage(true, 'Введите дату выезда');
     } else {
-      this._toggleMessage(false);
+      this._toggleMessage();
       this.calendarWrapper.classList
         .add(`${this.elementName}__calendar-wrapper_hidden`);
-        this._toggle(false);
-      // if (!this.isFilter) {
-      //   this._toggle(false);
-      // } else {
-      //   this._toggle(false);
-      // }
+      this._toggle(false);
     }
   }
 
@@ -374,9 +371,9 @@ class DateDropDown {
       || dateSelected > this.datePlusYear
       || DateDropDown.isFormatIncorrect(dateSelected);
     if (needCorrectFormat) {
-      alert(`Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
+      this._toggleMessage(true, `Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
       e.target.value = this.dateCurrentTxt;
-    }
+    } else this._toggleMessage();
   }
 
   _checkRangeDouble(e) {
@@ -391,9 +388,9 @@ class DateDropDown {
       || datePlusYearSelected > this.datePlusYear
       || DateDropDown.isFormatIncorrect(datePlusYearSelected);
     if (needCorrectFormat) {
-      alert(`Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
+      this._toggleMessage(true, `Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
       e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;
-    }
+    } else this._toggleMessage();
   }
 
   static processTextInput(e) {
@@ -494,7 +491,7 @@ class DateDropDown {
       .querySelectorAll(string);
   }
 
-  _toggleMessage(isError, message) {
+  _toggleMessage(isError = false, message = '') {
     if (isError) {
       this.message.classList.add(`${this.elementName}__message_active`);
       this.message.innerText = message;

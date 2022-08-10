@@ -6,11 +6,14 @@
 
   &__message{
     @include font-body;
+    font-weight: bold;
     color: $colorBorderError;
     position: absolute;
     right: 0;
+    top: -20px;
     z-index: 1;
     display: none;
+    text-align: end;
   
     &_active{
       display: inline;

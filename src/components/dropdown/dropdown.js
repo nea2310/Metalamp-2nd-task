@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable class-methods-use-this */
 import './dropdown.scss';
 
 class DropDown {
@@ -148,9 +146,6 @@ class DropDown {
   _handleDropDownClickDoc(e) {
     const condition = (e.target !== this.input && e.target !== this.inputWrapper
       && Array.of(this.counts).some((element) => element === e.target));
-    console.log(condition);
-    console.log(e.target);
-
     if (condition) {
       this._toggle(false);
     } else {

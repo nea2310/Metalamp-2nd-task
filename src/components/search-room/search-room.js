@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 class SearchRoom {
   constructor(element) {
     this.wrapper = element;

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 class RoomCard {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
@@ -77,7 +76,6 @@ class RoomCard {
     let newDot;
 
     if (element.className.match('previous') || element === 'leftSwipe') {
-      console.log('i>>>', i);
       if (i !== 0) {
         newPhoto = this._getElemAdvanced(
           'photo',
@@ -123,7 +121,6 @@ class RoomCard {
 
   _handleRoomCardClickDot(e) {
     const element = e.currentTarget;
-    console.log(element);
     const sec = element.getAttribute('data-sequence');
     const currentPhoto = this._getElement('photo_shown');
     const currentDot = this._getElement('dot_active');

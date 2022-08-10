@@ -1,5 +1,3 @@
-/* eslint-disable no-alert */
-/* eslint-disable indent */
 class InputField {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
@@ -22,6 +20,7 @@ class InputField {
 
   _init() {
     this.input = this._getElement('input');
+    this.message = this._getElement('message');
     if (this.date) {
       this.dateCurrent = new Date();
       this.dateMinusHundred = new Date(+this.dateCurrent
@@ -32,12 +31,12 @@ class InputField {
       this.regexInput = /[^0-9.]/g;
 
       this.dateMinusHundredTxt = `${this.dateMinusHundred.getDate()
-        }.${this.dateMinusHundred.getMonth() + 1
-        }.${this.dateMinusHundred.getFullYear()}`;
+      }.${this.dateMinusHundred.getMonth() + 1
+      }.${this.dateMinusHundred.getFullYear()}`;
 
       this.dateMinusEighteenTxt = `${this.dateMinusEighteen.getDate()
-        }.${this.dateMinusEighteen.getMonth() + 1
-        }.${this.dateMinusEighteen.getFullYear()}`;
+      }.${this.dateMinusEighteen.getMonth() + 1
+      }.${this.dateMinusEighteen.getFullYear()}`;
 
       const formatDate = (dateValue) => {
         let date = dateValue;
@@ -104,19 +103,18 @@ class InputField {
         || dateSelected > this.dateMinusEighteen
         || Number.isNaN(+dateSelected);
       if (needCorrectFormat) {
-        alert(`Введите дату от ${this.dateMinusHundredTxt
-          } до ${this.dateMinusEighteenTxt}`);
+        this._toggleMessage(true, `Введите дату от ${this.dateMinusHundredTxt} до ${this.dateMinusEighteenTxt}`);
         e.target.value = '';
-      }
+      } else this._toggleMessage();
     }
   }
 
   _handleInputFieldChange() {
-    InputField.testEmail(this.input.value);
+    this._testEmail(this.input.value);
   }
 
   _handleInputFieldClick() {
-    InputField.testEmail(this.input.value);
+    this._testEmail(this.input.value);
   }
 
   static checkFormat(e) {
@@ -165,16 +163,25 @@ class InputField {
     }
   }
 
-  static testEmail(value) {
+  _testEmail(value) {
     const test = /.+@.+\..+/i.test(value);
     if (value && !test) {
-      alert(`Введенный e-mail ${value} имеет некорректный формат`);
-    }
+      this._toggleMessage(true, `Введенный e-mail ${value} имеет некорректный формат`);
+    } else this._toggleMessage();
   }
 
   _getElement(selector, wrapper = this.wrapper) {
     return wrapper
       .querySelector(`.js-${this.elementName}__${selector}`);
+  }
+
+  _toggleMessage(isError = false, message = '') {
+    if (isError) {
+      this.message.classList.add(`${this.elementName}__message_active`);
+      this.message.innerText = message;
+      return;
+    }
+    this.message.classList.remove(`${this.elementName}__message_active`);
   }
 }
 
