@@ -1,4 +1,4 @@
-import Booking from './booking';
+import Booking from './Booking';
 
 function renderBookings(selector) {
   const bookings = document.querySelectorAll(selector);

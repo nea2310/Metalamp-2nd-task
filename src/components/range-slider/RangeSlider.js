@@ -62,14 +62,14 @@ class RangeSlider {
   }
 
   _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(
-      `.${this.elementName}__${selector}`,
-    );
+    return wrapper.querySelector(`.${this.elementName}__${selector}`);
   }
 
   _getElements(selectors) {
     let string = '';
-    selectors.forEach((selector) => { string += `.js-${this.elementName}__${selector},`; });
+    selectors.forEach((selector) => {
+      string += `.js-${this.elementName}__${selector},`;
+    });
     string = string.substring(0, string.length - 1);
     return this.wrapper
       .querySelectorAll(string);

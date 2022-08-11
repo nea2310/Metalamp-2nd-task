@@ -18,105 +18,6 @@ class InputField {
     this._bindEventListeners();
   }
 
-  _init() {
-    this.input = this._getElement('input');
-    this.message = this._getElement('message');
-    if (this.date) {
-      this.dateCurrent = new Date();
-      this.dateMinusHundred = new Date(+this.dateCurrent
-        - (new Date('2120-12-31') - new Date('2020-01-01')));
-      this.dateMinusEighteen = new Date(+this.dateCurrent
-        - (new Date('2037-12-31') - new Date('2020-01-01')));
-      this.regexpDate = /^\d{2}\.\d{2}\.\d{4}$/;
-      this.regexInput = /[^0-9.]/g;
-
-      this.dateMinusHundredTxt = `${this.dateMinusHundred.getDate()
-      }.${this.dateMinusHundred.getMonth() + 1
-      }.${this.dateMinusHundred.getFullYear()}`;
-
-      this.dateMinusEighteenTxt = `${this.dateMinusEighteen.getDate()
-      }.${this.dateMinusEighteen.getMonth() + 1
-      }.${this.dateMinusEighteen.getFullYear()}`;
-
-      const formatDate = (dateValue) => {
-        let date = dateValue;
-        if (this.regexpDate.test(date) === false) {
-          const dateSplit = date.split('.');
-
-          const newDateSplit = dateSplit.map((element) => {
-            const result = element.length === 1 ? `0${element}` : element;
-            return result;
-          });
-          date = newDateSplit.join('.');
-        }
-        return date;
-      };
-      this.dateMinusHundredTxt = formatDate(this.dateMinusHundredTxt);
-      this.dateMinusEighteenTxt = formatDate(this.dateMinusEighteenTxt);
-    }
-    if (this.email) {
-      this.link = this.wrapper.querySelector(`${this.elementName}__link`);
-    }
-  }
-
-  _bindEventListeners() {
-    if (this.date) {
-      this.input.addEventListener('input', this._handleInputFieldInput);
-    }
-    if (this.email) {
-      this.input.addEventListener('change', this._handleInputFieldChange);
-      if (this.link) {
-        this.link.addEventListener('click', this._handleInputFieldClick);
-      }
-    }
-  }
-
-  _handleInputFieldInput(e) {
-    let isInputAllowed = false;
-    const allowedInputTypes = ['insertText',
-      'insertFromDrop',
-      'insertFromPaste',
-      'deleteByCut',
-      'deleteContentBackward'];
-
-    isInputAllowed = allowedInputTypes.some((element) => e.inputType === element);
-
-    if (!isInputAllowed) {
-      e.target.value = '';
-    }
-
-    InputField.checkFormat(e);
-
-    if (e.inputType === 'insertText') {
-      InputField.addZero(e);
-      InputField.addDot(e);
-      InputField.truncAfter10(e);
-    }
-    this._checkBirthDate(e);
-  }
-
-  _checkBirthDate(e) {
-    if (e.target.value.length === 10) {
-      const a = e.target.value.split('.');
-      const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
-      const needCorrectFormat = dateSelected < this.dateMinusHundred
-        || dateSelected > this.dateMinusEighteen
-        || Number.isNaN(+dateSelected);
-      if (needCorrectFormat) {
-        this._toggleMessage(true, `Введите дату от ${this.dateMinusHundredTxt} до ${this.dateMinusEighteenTxt}`);
-        e.target.value = '';
-      } else this._toggleMessage();
-    }
-  }
-
-  _handleInputFieldChange() {
-    this._testEmail(this.input.value);
-  }
-
-  _handleInputFieldClick() {
-    this._testEmail(this.input.value);
-  }
-
   static checkFormat(e) {
     const regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/;
     const needCorrectFormat = (
@@ -163,6 +64,107 @@ class InputField {
     }
   }
 
+  _init() {
+    this.input = this._getElement('input');
+    this.message = this._getElement('message');
+    if (this.date) {
+      this.dateCurrent = new Date();
+      this.dateMinusHundred = new Date(+this.dateCurrent
+        - (new Date('2120-12-31') - new Date('2020-01-01')));
+      this.dateMinusEighteen = new Date(+this.dateCurrent
+        - (new Date('2037-12-31') - new Date('2020-01-01')));
+      this.regexpDate = /^\d{2}\.\d{2}\.\d{4}$/;
+      this.regexInput = /[^0-9.]/g;
+
+      this.dateMinusHundredTxt = `${this.dateMinusHundred.getDate()}.
+                                  ${this.dateMinusHundred.getMonth() + 1}.
+                                  ${this.dateMinusHundred.getFullYear()}`;
+
+      this.dateMinusEighteenTxt = `${this.dateMinusEighteen.getDate()}.
+                                   ${this.dateMinusEighteen.getMonth() + 1}.
+                                   ${this.dateMinusEighteen.getFullYear()}`;
+
+      const formatDate = (dateValue) => {
+        let date = dateValue;
+        if (this.regexpDate.test(date) === false) {
+          const dateSplit = date.split('.');
+
+          const newDateSplit = dateSplit.map((element) => {
+            const result = element.length === 1 ? `0${element}` : element;
+            return result;
+          });
+          date = newDateSplit.join('.');
+        }
+        return date;
+      };
+      this.dateMinusHundredTxt = formatDate(this.dateMinusHundredTxt);
+      this.dateMinusEighteenTxt = formatDate(this.dateMinusEighteenTxt);
+    }
+    if (this.email) {
+      this.link = this.wrapper.querySelector(`${this.elementName}__link`);
+    }
+  }
+
+  _bindEventListeners() {
+    if (this.date) {
+      this.input.addEventListener('input', this._handleInputFieldInput);
+    }
+    if (this.email) {
+      this.input.addEventListener('change', this._handleInputFieldChange);
+      if (this.link) {
+        this.link.addEventListener('click', this._handleInputFieldClick);
+      }
+    }
+  }
+
+  _handleInputFieldInput(e) {
+    let isInputAllowed = false;
+    const allowedInputTypes = [
+      'insertText',
+      'insertFromDrop',
+      'insertFromPaste',
+      'deleteByCut',
+      'deleteContentBackward',
+    ];
+
+    isInputAllowed = allowedInputTypes.some((element) => e.inputType === element);
+
+    if (!isInputAllowed) {
+      e.target.value = '';
+    }
+
+    InputField.checkFormat(e);
+
+    if (e.inputType === 'insertText') {
+      InputField.addZero(e);
+      InputField.addDot(e);
+      InputField.truncAfter10(e);
+    }
+    this._checkBirthDate(e);
+  }
+
+  _checkBirthDate(e) {
+    if (e.target.value.length === 10) {
+      const a = e.target.value.split('.');
+      const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
+      const needCorrectFormat = dateSelected < this.dateMinusHundred
+        || dateSelected > this.dateMinusEighteen
+        || Number.isNaN(+dateSelected);
+      if (needCorrectFormat) {
+        this._toggleMessage(true, `Введите дату от ${this.dateMinusHundredTxt} до ${this.dateMinusEighteenTxt}`);
+        e.target.value = '';
+      } else this._toggleMessage();
+    }
+  }
+
+  _handleInputFieldChange() {
+    this._testEmail(this.input.value);
+  }
+
+  _handleInputFieldClick() {
+    this._testEmail(this.input.value);
+  }
+
   _testEmail(value) {
     const test = /.+@.+\..+/i.test(value);
     if (value && !test) {
@@ -171,8 +173,7 @@ class InputField {
   }
 
   _getElement(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.js-${this.elementName}__${selector}`);
+    return wrapper.querySelector(`.js-${this.elementName}__${selector}`);
   }
 
   _toggleMessage(isError = false, message = '') {

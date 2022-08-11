@@ -1,4 +1,4 @@
-import Chart from './chart';
+import Chart from './Chart';
 
 function renderCharts(selector) {
   const charts = document.querySelectorAll(selector);

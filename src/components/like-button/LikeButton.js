@@ -15,8 +15,6 @@ class LikeButton {
 
   _bindEventListeners() {
     this.button.addEventListener('click', this._handleLikeButtonClick);
-
-    window.addEventListener('load', this._handleLikeButtonLoadWindow);
   }
 
   _handleLikeButtonClick() {
@@ -30,8 +28,7 @@ class LikeButton {
   }
 
   _getElement(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.${this.elementName}__${selector}`);
+    return wrapper.querySelector(`.${this.elementName}__${selector}`);
   }
 }
 

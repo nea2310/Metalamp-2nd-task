@@ -1,4 +1,4 @@
-import DropDown from './dropdown';
+import DropDown from './Dropdown';
 
 function _renderDropDowns(selector) {
   const dropDowns = document.querySelectorAll(selector);

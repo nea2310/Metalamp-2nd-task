@@ -1,4 +1,4 @@
-import DateDropDown from './date-dropdown';
+import DateDropDown from './DateDropdown';
 
 function renderDateDropDowns(selector) {
   const dropDowns = document.querySelectorAll(selector);

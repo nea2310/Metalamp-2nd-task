@@ -1,4 +1,4 @@
-import RoomCard from './room-card';
+import RoomCard from './RoomCard';
 
 function renderRoomCards(selector) {
   const roomCards = document.querySelectorAll(selector);

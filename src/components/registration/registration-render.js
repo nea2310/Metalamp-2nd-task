@@ -1,4 +1,4 @@
-import Registration from './registration';
+import Registration from './Registration';
 
 function renderRegistrations(selector) {
   const registrations = document.querySelectorAll(selector);

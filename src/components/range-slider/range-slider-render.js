@@ -1,4 +1,4 @@
-import RangeSlider from './range-slider';
+import RangeSlider from './RangeSlider';
 
 function renderRangeSliders(selector) {
   const rangeSliders = document.querySelectorAll(selector);

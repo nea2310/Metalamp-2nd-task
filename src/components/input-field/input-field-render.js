@@ -1,4 +1,4 @@
-import InputField from './input-field';
+import InputField from './InputField';
 
 function renderInputsMask(selector) {
   const inputFields = document.querySelectorAll(selector);

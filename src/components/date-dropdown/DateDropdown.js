@@ -32,6 +32,90 @@ class DateDropDown {
     this._bindEventListeners();
   }
 
+  static processTextInput(e) {
+    let isInputAllowed = false;
+    const allowedInputTypes = ['insertText',
+      'insertFromDrop',
+      'insertFromPaste',
+      'deleteByCut',
+      'deleteContentBackward'];
+
+    isInputAllowed = allowedInputTypes.some((element) => e.inputType === element);
+
+    if (!isInputAllowed) {
+      e.target.value = '';
+    }
+
+    DateDropDown.checkFormat(e);
+
+    if (e.inputType === 'insertText') {
+      DateDropDown.addZero(e);
+      DateDropDown.addDot(e);
+      DateDropDown.addDash(e);
+      DateDropDown.truncAfter24(e);
+    }
+  }
+
+  static checkFormat(e) {
+    const regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/;
+    const needCorrectFormat = (regexpDateDouble.test(e.target.value) === false
+      && (e.inputType === 'insertFromDrop' || e.inputType === 'insertFromPaste'));
+    if (needCorrectFormat) {
+      e.target.value = '';
+    }
+  }
+
+  static addZero(e) {
+    const plusZero = () => {
+      const position = e.target.value[e.target.value.length - 1];
+      e.target.value = `${e.target.value.slice(
+        0,
+        e.target.value.length - 1,
+      )}0${position}`;
+    };
+    e.target.value = e.target.value.replace(/[^0-9. -]/g, '');
+    const needCorrectFormat = (parseInt(e.target.value[0], 10) >= 4
+      && e.target.value.length === 1)
+      || (parseInt(e.target.value[3], 10) >= 2
+        && e.target.value.length === 4)
+      || (parseInt(e.target.value[13], 10) >= 4
+        && e.target.value.length === 14)
+      || (parseInt(e.target.value[16], 10) >= 2
+        && e.target.value.length === 17);
+    if (needCorrectFormat) {
+      plusZero();
+    }
+  }
+
+  static addDot(e) {
+    const needCorrectFormat = e.target.value.length === 2
+      || e.target.value.length === 5
+      || e.target.value.length === 15
+      || e.target.value.length === 18;
+    if (needCorrectFormat) {
+      e.target.value = `${e.target.value}.`;
+    }
+  }
+
+  static addDash(e) {
+    if (e.target.value.length === 10) {
+      e.target.value = `${e.target.value} - `;
+    }
+  }
+
+  static truncAfter24(e) {
+    if (e.target.value.length > 24) {
+      e.target.value = e.target.value.slice(
+        0,
+        e.target.value.length - 1,
+      );
+    }
+  }
+
+  static isFormatIncorrect(date) {
+    return Number.isNaN(+date);
+  }
+
   _render() {
     const prepareDate = (date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
@@ -87,8 +171,7 @@ class DateDropDown {
       },
     });
 
-    this.calendar = this.wrapper
-      .querySelector('.air-datepicker.-inline-');
+    this.calendar = this.wrapper.querySelector('.air-datepicker.-inline-');
   }
 
   _setDefaultDate() {
@@ -111,17 +194,17 @@ class DateDropDown {
 
     const regexpDate = /^\d{2}\.\d{2}\.\d{4}$/;
 
-    this.dateCurrentTxt = `${this.dateCurrent.getDate()
-    }.${this.dateCurrent.getMonth() + 1
-    }.${this.dateCurrent.getFullYear()}`;
+    this.dateCurrentTxt = `${this.dateCurrent.getDate()}.
+                           ${this.dateCurrent.getMonth() + 1}.
+                           ${this.dateCurrent.getFullYear()}`;
 
-    this.dateTomorrowTxt = `${this.dateTomorrow.getDate()
-    }.${this.dateTomorrow.getMonth() + 1
-    }.${this.dateTomorrow.getFullYear()}`;
+    this.dateTomorrowTxt = `${this.dateTomorrow.getDate()}.
+                            ${this.dateTomorrow.getMonth() + 1}.
+                            ${this.dateTomorrow.getFullYear()}`;
 
-    this.datePlusYearTxt = `${this.datePlusYear.getDate()
-    }.${this.datePlusYear.getMonth() + 1
-    }.${this.datePlusYear.getFullYear()}`;
+    this.datePlusYearTxt = `${this.datePlusYear.getDate()}.
+                            ${this.datePlusYear.getMonth() + 1}.
+                            ${this.datePlusYear.getFullYear()}`;
 
     const formatDate = (dateValue) => {
       let date = dateValue;
@@ -208,19 +291,14 @@ class DateDropDown {
       const dateFromString = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
       const dateToString = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
       this.myDatepicker.clear();
-      this.myDatepicker.selectDate(
-        new Date(`${dateToString[2]}-${dateToString[1]}-${dateToString[0]}`),
-      );
-      this.myDatepicker.selectDate(
-        new Date(`${dateFromString[2]}-${dateFromString[1]}-${dateFromString[0]}`),
-      );
+      this.myDatepicker.selectDate(new Date(`${dateToString[2]}-${dateToString[1]}-${dateToString[0]}`));
+      this.myDatepicker.selectDate(new Date(`${dateFromString[2]}-${dateFromString[1]}-${dateFromString[0]}`));
     }
   }
 
   _handleDateDropDownInputNoFilter(e) {
     const currentInput = e.target;
-    const secondInput = currentInput.classList
-      .contains(`.${this.elementName}__input_from`)
+    const secondInput = currentInput.classList.contains(`.${this.elementName}__input_from`)
       ? this.inputDateTo : this.inputDateFrom;
 
     if (e.target.value[0] !== '0') {
@@ -251,8 +329,7 @@ class DateDropDown {
   }
 
   _handleDateDropDownClickDateFromTo() {
-    if (this.calendarWrapper.classList
-      .contains(`${this.elementName}__calendar-wrapper_hidden`)) {
+    if (this.calendarWrapper.classList.contains(`${this.elementName}__calendar-wrapper_hidden`)) {
       this._toggle(true);
       this._toggleMessage();
     }
@@ -308,10 +385,13 @@ class DateDropDown {
   _handleDateDropDownClickDocument(e) {
     const isFilter = this.isFilter && e.target !== this.inputDate
       && e.target !== this.inputWrapperFrom;
+
     const isNotFilter = !this.isFilter
       && (e.target !== this.inputDateFrom && e.target !== this.inputDateTo
         && e.target !== this.inputWrapperFrom && e.target !== this.inputWrapperTo);
+
     const isNotDataDropDown = e.target.closest(`.${this.elementName}`) == null;
+
     const condFull = (isFilter || isNotFilter || isNotDataDropDown)
       && this.clickOnCalendar === false;
 
@@ -350,15 +430,13 @@ class DateDropDown {
   _toggle(isExpanded) {
     const wrap = `${this.elementName}__`;
     if (isExpanded) {
-      this.calendarWrapper.classList
-        .remove(`${wrap}calendar-wrapper_hidden`);
+      this.calendarWrapper.classList.remove(`${wrap}calendar-wrapper_hidden`);
       this.inputWrappers.forEach((input) => {
         input.classList.add(`${wrap}input-wrapper_expanded`);
       });
       return true;
     }
-    this.calendarWrapper.classList
-      .add(`${wrap}calendar-wrapper_hidden`);
+    this.calendarWrapper.classList.add(`${wrap}calendar-wrapper_hidden`);
     this.inputWrappers.forEach((input) => {
       input.classList.remove(`${wrap}input-wrapper_expanded`);
     });
@@ -393,102 +471,17 @@ class DateDropDown {
     } else this._toggleMessage();
   }
 
-  static processTextInput(e) {
-    let isInputAllowed = false;
-    const allowedInputTypes = ['insertText',
-      'insertFromDrop',
-      'insertFromPaste',
-      'deleteByCut',
-      'deleteContentBackward'];
-
-    isInputAllowed = allowedInputTypes.some((element) => e.inputType === element);
-
-    if (!isInputAllowed) {
-      e.target.value = '';
-    }
-
-    DateDropDown.checkFormat(e);
-
-    if (e.inputType === 'insertText') {
-      DateDropDown.addZero(e);
-      DateDropDown.addDot(e);
-      DateDropDown.addDash(e);
-      DateDropDown.truncAfter24(e);
-    }
-  }
-
-  static checkFormat(e) {
-    const regexpDateDouble = /^\d{2}\.\d{2}\.\d{4} - \d{2}\.\d{2}\.\d{4}$/;
-    const needCorrectFormat = (
-      regexpDateDouble.test(e.target.value) === false
-      && (e.inputType === 'insertFromDrop' || e.inputType === 'insertFromPaste'));
-    if (needCorrectFormat) {
-      e.target.value = '';
-    }
-  }
-
-  static addZero(e) {
-    const plusZero = () => {
-      const position = e.target.value[e.target.value.length - 1];
-      e.target.value = `${e.target.value.slice(
-        0,
-        e.target.value.length - 1,
-      )}0${position}`;
-    };
-    e.target.value = e.target.value.replace(/[^0-9. -]/g, '');
-    const needCorrectFormat = (parseInt(e.target.value[0], 10) >= 4
-      && e.target.value.length === 1)
-      || (parseInt(e.target.value[3], 10) >= 2
-        && e.target.value.length === 4)
-      || (parseInt(e.target.value[13], 10) >= 4
-        && e.target.value.length === 14)
-      || (parseInt(e.target.value[16], 10) >= 2
-        && e.target.value.length === 17);
-    if (needCorrectFormat) {
-      plusZero();
-    }
-  }
-
-  static addDot(e) {
-    const needCorrectFormat = e.target.value.length === 2
-      || e.target.value.length === 5
-      || e.target.value.length === 15
-      || e.target.value.length === 18;
-    if (needCorrectFormat) {
-      e.target.value = `${e.target.value}.`;
-    }
-  }
-
-  static addDash(e) {
-    if (e.target.value.length === 10) {
-      e.target.value = `${e.target.value} - `;
-    }
-  }
-
-  static truncAfter24(e) {
-    if (e.target.value.length > 24) {
-      e.target.value = e.target.value.slice(
-        0,
-        e.target.value.length - 1,
-      );
-    }
-  }
-
-  static isFormatIncorrect(date) {
-    return Number.isNaN(+date);
-  }
-
   _getElement(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.js-${this.elementName}__${selector}`);
+    return wrapper.querySelector(`.js-${this.elementName}__${selector}`);
   }
 
   _getElements(selectors) {
     let string = '';
-    selectors.forEach((item) => { string += `.js-${this.elementName}__${item},`; });
+    selectors.forEach((item) => {
+      string += `.js-${this.elementName}__${item},`;
+    });
     string = string.substring(0, string.length - 1);
-    return this.wrapper
-      .querySelectorAll(string);
+    return this.wrapper.querySelectorAll(string);
   }
 
   _toggleMessage(isError = false, message = '') {

@@ -1,4 +1,4 @@
-import CheckList from './checklist';
+import CheckList from './CheckList';
 
 function renderCheckLists(selector) {
   const checkLists = document.querySelectorAll(selector);

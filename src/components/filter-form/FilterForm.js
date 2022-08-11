@@ -47,8 +47,7 @@ class FilterForm {
   }
 
   _getElement(selector, wrapper = this.wrapper) {
-    return wrapper
-      .querySelector(`.${this.elementName}__${selector}`);
+    return wrapper.querySelector(`.${this.elementName}__${selector}`);
   }
 }
 

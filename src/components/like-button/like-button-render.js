@@ -1,4 +1,4 @@
-import LikeButton from './like-button';
+import LikeButton from './LikeButton';
 
 function renderLikeButtons(selector) {
   const likeButtons = document.querySelectorAll(selector);

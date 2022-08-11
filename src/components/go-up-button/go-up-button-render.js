@@ -1,4 +1,4 @@
-import GoUpButton from './go-up-button';
+import GoUpButton from './GoUpButton';
 
 function renderGoUpButtons(selector) {
   const goUpButtons = document.querySelectorAll(selector);

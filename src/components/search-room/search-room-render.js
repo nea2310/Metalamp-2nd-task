@@ -1,4 +1,4 @@
-import SearchRoom from './search-room';
+import SearchRoom from './SearchRoom';
 
 function renderSearchRooms(selector) {
   const searchRooms = document.querySelectorAll(selector);

@@ -41,9 +41,8 @@ class RoomCard {
       xStart = e.touches[0].clientX;
     };
     const handleTouchMove = (e) => {
-      if (!xStart) {
-        return;
-      }
+      if (!xStart) return;
+
       const xEnd = e.touches[0].clientX;
       const xDelta = xStart - xEnd;
       if (xDelta > 0) {
@@ -51,12 +50,11 @@ class RoomCard {
       } else {
         this._clickPrevNext(this.buttonNext);
       }
+
       xStart = null;
     };
-    this.slider
-      .addEventListener('touchstart', handleTouchStart);
-    this.slider
-      .addEventListener('touchmove', handleTouchMove);
+    this.slider.addEventListener('touchstart', handleTouchStart);
+    this.slider.addEventListener('touchmove', handleTouchMove);
   }
 
   _bindEventListeners() {
@@ -136,24 +134,20 @@ class RoomCard {
   }
 
   _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(
-      `.${this.elementName}__${selector}`,
-    );
+    return wrapper.querySelector(`.${this.elementName}__${selector}`);
   }
 
   _getElemAdvanced(className, attrName, attrVal, wrap = this.wrapper) {
-    return wrap.querySelector(
-      `.${this.elementName}__${className
-      }[${attrName}="${attrVal}"]`,
-    );
+    return wrap.querySelector(`.${this.elementName}__${className}[${attrName}='${attrVal}']`);
   }
 
   _getElements(selectors) {
     let string = '';
-    selectors.forEach((selector) => { string += `.js-${this.elementName}__${selector},`; });
+    selectors.forEach((selector) => {
+      string += `.js-${this.elementName}__${selector},`;
+    });
     string = string.substring(0, string.length - 1);
-    return this.wrapper
-      .querySelectorAll(string);
+    return this.wrapper.querySelectorAll(string);
   }
 }
 

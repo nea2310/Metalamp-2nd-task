@@ -1,4 +1,4 @@
-import FilterForm from './filter-form';
+import FilterForm from './FilterForm';
 
 function renderFilterForms(selector) {
   const filterForms = document.querySelectorAll(selector);

@@ -6,6 +6,10 @@ class GoUpButton {
     this._bindEventListeners();
   }
 
+  static _handleGoUpButtonClick() {
+    window.scrollTo(0, 0);
+  }
+
   _bindEventListeners() {
     window.addEventListener('scroll', this._handleGoUpButtonScroll);
     this.wrapper.addEventListener('click', GoUpButton._handleGoUpButtonClick);
@@ -17,10 +21,6 @@ class GoUpButton {
     } else {
       this.wrapper.classList.add(`${this.elementName}_hidden`);
     }
-  }
-
-  static _handleGoUpButtonClick() {
-    window.scrollTo(0, 0);
   }
 }
 
