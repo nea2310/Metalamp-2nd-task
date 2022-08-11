@@ -50,8 +50,4 @@ class Login {
   }
 }
 
-function renderLogins(selector) {
-  const logins = document.querySelectorAll(selector);
-  logins.forEach((login) => new Login(login));
-}
-renderLogins('.js-login');
+export default Login;

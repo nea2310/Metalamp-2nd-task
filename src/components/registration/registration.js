@@ -54,8 +54,4 @@ class Registration {
   }
 }
 
-function renderRegistrations(selector) {
-  const registrations = document.querySelectorAll(selector);
-  registrations.forEach((registration) => new Registration(registration));
-}
-renderRegistrations('.js-registration');
+export default Registration;

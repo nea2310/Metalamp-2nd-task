@@ -190,8 +190,4 @@ class Chart {
   }
 }
 
-function renderCharts(selector) {
-  const charts = document.querySelectorAll(selector);
-  charts.forEach((booking) => new Chart(selector, booking));
-}
-renderCharts('.js-chart');
+export default Chart;

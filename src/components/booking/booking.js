@@ -55,8 +55,4 @@ class Booking {
   }
 }
 
-function renderBookings(selector) {
-  const bookings = document.querySelectorAll(selector);
-  bookings.forEach((booking) => new Booking(booking));
-}
-renderBookings('.js-booking');
+export default Booking;

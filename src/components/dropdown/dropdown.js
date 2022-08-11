@@ -318,8 +318,4 @@ class DropDown {
   }
 }
 
-function _renderDropDowns(selector) {
-  const dropDowns = document.querySelectorAll(selector);
-  dropDowns.forEach((dropDown) => new DropDown(selector, dropDown));
-}
-_renderDropDowns('.js-dropdown');
+export default DropDown;
