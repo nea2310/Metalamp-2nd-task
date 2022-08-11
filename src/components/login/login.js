@@ -1,14 +1,14 @@
 class Login {
-  constructor(element) {
+  constructor(elementName, element) {
     this.wrapper = element;
-
+    this.elementName = elementName.replace(/^.js-/, '');
     this._render();
     this._bindEventListeners();
   }
 
   _render() {
     this.inputs = this.wrapper.querySelectorAll('input');
-    this.message = this.wrapper.querySelector('.js-login__message');
+    this.message = this.wrapper.querySelector(`.js-${this.elementName}__message`);
     this._handleLoginSubmit = this._handleLoginSubmit.bind(this);
     this._handleLoginFocus = this._handleLoginFocus.bind(this);
   }
@@ -22,13 +22,13 @@ class Login {
     e.preventDefault();
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
-        input.classList.add('login_error');
+        input.classList.add(`${this.elementName}_error`);
       } else {
-        input.classList.remove('login_error');
+        input.classList.remove(`${this.elementName}_error`);
       }
     });
 
-    const isError = Array.from(this.inputs).some((item) => item.classList.contains('login_error'));
+    const isError = Array.from(this.inputs).some((item) => item.classList.contains(`${this.elementName}_error`));
 
     if (isError) {
       e.preventDefault();

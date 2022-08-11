@@ -1,6 +1,7 @@
 class Registration {
-  constructor(element) {
+  constructor(elementName, element) {
     this.wrapper = element;
+    this.elementName = elementName.replace(/^.js-/, '');
     this._render();
     this._bindEventListeners();
   }
@@ -8,7 +9,7 @@ class Registration {
   _render() {
     this.date = this.wrapper.querySelector('.js-input-field_validation_date input');
     this.inputs = this.wrapper.querySelectorAll('input');
-    this.message = this.wrapper.querySelector('.js-registration__message');
+    this.message = this.wrapper.querySelector(`.js-${this.elementName}__message`);
     this._handleRegistrationSubmit = this._handleRegistrationSubmit.bind(this);
     this._handleRegistrationFocus = this._handleRegistrationFocus.bind(this);
   }
@@ -21,18 +22,18 @@ class Registration {
   _handleRegistrationSubmit(e) {
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
-        input.classList.add('registration_error');
+        input.classList.add(`${this.elementName}_error`);
       } else {
-        input.classList.remove('registration_error');
+        input.classList.remove(`${this.elementName}_error`);
       }
     });
     if (/^\d{2}\.\d{2}\.\d{4}$/.test(this.date.value)) {
-      this.date.classList.remove('registration_error');
+      this.date.classList.remove(`${this.elementName}_error`);
     } else {
-      this.date.classList.add('registration_error');
+      this.date.classList.add(`${this.elementName}_error`);
     }
 
-    const isError = Array.from(this.inputs).some((item) => item.classList.contains('registration_error'));
+    const isError = Array.from(this.inputs).some((item) => item.classList.contains(`${this.elementName}_error`));
     if (isError) {
       e.preventDefault();
       this._toggleMessage();
@@ -41,14 +42,14 @@ class Registration {
 
   _toggleMessage(isError = true) {
     if (isError) {
-      this.message.classList.add('registration__message_active');
+      this.message.classList.add(`${this.elementName}__message_active`);
       return;
     }
-    this.message.classList.remove('registration__message_active');
+    this.message.classList.remove(`${this.elementName}__message_active`);
   }
 
   _handleRegistrationFocus(e) {
-    e.currentTarget.classList.remove('registration_error');
+    e.currentTarget.classList.remove(`${this.elementName}_error`);
     this._toggleMessage(false);
   }
 }

@@ -1,6 +1,7 @@
 class SearchRoom {
-  constructor(element) {
+  constructor(elementName, element) {
     this.wrapper = element;
+    this.elementName = elementName.replace(/^.js-/, '');
     this._render();
     this._bindEventListeners();
   }
@@ -9,7 +10,7 @@ class SearchRoom {
     this.dates = this.wrapper.querySelectorAll('.js-date-dropdown__input');
     this.guests = this.wrapper.querySelector('.js-dropdown__input');
     this.inputs = this.wrapper.querySelectorAll('.js-dropdown__input, .js-date-dropdown__input');
-    this.message = this.wrapper.querySelector('.js-search-room__message');
+    this.message = this.wrapper.querySelector(`.js-${this.elementName}__message`);
     this._handleSearchRoomSubmit = this._handleSearchRoomSubmit.bind(this);
     this._handleSearchRoomFocus = this._handleSearchRoomFocus.bind(this);
   }
@@ -22,18 +23,18 @@ class SearchRoom {
   _handleSearchRoomSubmit(e) {
     this.dates.forEach((date) => {
       if (/^\d{4}-\d{2}-\d{2}$/.test(date.value)) {
-        date.classList.remove('search-room_error');
+        date.classList.remove(`${this.elementName}_error`);
       } else {
-        date.classList.add('search-room_error');
+        date.classList.add(`${this.elementName}_error`);
       }
     });
     if (this.guests.value.trim() === '') {
-      this.guests.classList.add('search-room_error');
+      this.guests.classList.add(`${this.elementName}_error`);
     } else {
-      this.guests.classList.remove('search-room_error');
+      this.guests.classList.remove(`${this.elementName}_error`);
     }
 
-    const isError = Array.from(this.inputs).some((item) => item.classList.contains('search-room_error'));
+    const isError = Array.from(this.inputs).some((item) => item.classList.contains(`${this.elementName}_error`));
     if (isError) {
       e.preventDefault();
       this._toggleMessage();
@@ -42,20 +43,20 @@ class SearchRoom {
 
   _toggleMessage(isError = true) {
     if (isError) {
-      this.message.classList.add('search-room__message_active');
+      this.message.classList.add(`${this.elementName}__message_active`);
       return;
     }
-    this.message.classList.remove('search-room__message_active');
+    this.message.classList.remove(`${this.elementName}__message_active`);
   }
 
   _handleSearchRoomFocus(e) {
-    e.currentTarget.classList.remove('search-room_error');
+    e.currentTarget.classList.remove(`${this.elementName}_error`);
     this._toggleMessage(false);
   }
 }
 
 function renderSearchRooms(selector) {
   const searchRooms = document.querySelectorAll(selector);
-  searchRooms.forEach((searchRoom) => new SearchRoom(searchRoom));
+  searchRooms.forEach((searchRoom) => new SearchRoom(selector, searchRoom));
 }
 renderSearchRooms('.js-search-room');
