@@ -88,7 +88,7 @@
 
         &-tip {
           position: relative;
-          
+
           &::after {
             @include tip-style;
             transform: rotate(-45deg);
@@ -114,8 +114,6 @@
       z-index: 1;
       background-color: $colorTextBackground;
       display: none;
-
-
 
       &-item {
         margin-top: 10px;
@@ -220,7 +218,7 @@
     border-left: 1px solid rgba(31, 32, 65, 0.1);
     line-height: 30px;
     padding-left: 20px;
-    
+
     @include media-breakpoint-down($md) {
       border: none;
     }
@@ -269,7 +267,7 @@
       &:after {
         @include media-breakpoint-down($md) {
           border-radius: 1px;
-          content: '';
+          content: "";
           background-color: $colorMain;
           position: absolute;
           width: 100%;
@@ -294,12 +292,6 @@
       }
 
       &_active {
-        .header__burger {
-          @include media-breakpoint-down($md) {
-            transform: scale(0);
-          }
-        }
-
         &:before {
           @include media-breakpoint-down($md) {
             transform: rotate(45deg);
@@ -313,6 +305,12 @@
             bottom: 9px;
           }
         }
+      }
+    }
+
+    &-button_active & {
+      @include media-breakpoint-down($md) {
+        transform: scale(0);
       }
     }
   }
