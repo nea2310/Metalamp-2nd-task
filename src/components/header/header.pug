@@ -9,7 +9,8 @@ mixin header({ menu = [], isAuthorized = false } = {})
     button(class = `${elementName}__burger-button` aria-label = "навигация")
       span(class = `${elementName}__burger`)
     div(class = `${elementName}__wrapper`)
-      +logo({ logoColor: 'purple' })
+      div(class = `${elementName}__logo`)
+        +logo({ logoColor: 'purple' })
       nav(class = `${elementName}__nav-level1 js-${elementName}__nav-level1`) 
         ul(class = `${elementName}__nav-level1-items`)
           if Array.isArray(menu) && menu.length
@@ -23,7 +24,7 @@ mixin header({ menu = [], isAuthorized = false } = {})
                       li(class = `${elementName}__nav-level2-item`) 
                         a(class = `${elementName}__nav-level2-item-link` href = "https://test/test")= subValue
                 if Array.isArray(subMenu) && subMenu.length
-                  span(class = `${elementName}__nav-level1-item-tip js-${elementName}__nav-level1-item-tip`)
+                  div(class = `${elementName}__nav-level1-item-tip js-${elementName}__nav-level1-item-tip`)
       div(class = `${elementName}__auth ${elementName}__auth_is-authorized_${isAuthorized}`) 
         if (!isAuthorized)
           div(class = `${elementName}__button-login`) 

@@ -5,7 +5,7 @@ $md: 991px;
 $lg: 1199px;
 $xl: 1440px;
 $xxl: 1920px;
-$wrapperWidth: 1161px;
+$wrapperWidth: 1170px;
 
 $colorTitle: #1f2041;
 $colorTextNormal: rgba(31, 32, 65, 0.75);
@@ -33,11 +33,7 @@ $tipTransition: all 0.3s ease 0s;
 
 $arrowSize: 10px;
 
-$fontMain: 
-'Montserrat', 
-Arial, 
-Helvetica, 
-sans-serif;
+$fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 
 @mixin indents() {
   padding-top: 0;
@@ -68,7 +64,7 @@ sans-serif;
 @mixin tip-style() {
   cursor: pointer;
   position: absolute;
-  content: '';
+  content: "";
   height: $tipSize;
   width: $tipSize;
   border-left: $tipBorder;
@@ -80,7 +76,7 @@ sans-serif;
 @mixin arrow-tip-style($color) {
   cursor: pointer;
   position: absolute;
-  content: '';
+  content: "";
   height: $arrowSize;
   width: $arrowSize;
   border-left: 2px solid $color;
@@ -91,7 +87,7 @@ sans-serif;
 @mixin arrow-basis-style($color) {
   cursor: pointer;
   position: absolute;
-  content: '';
+  content: "";
   height: 2px;
   width: 14px;
   background-color: $color;
@@ -100,7 +96,7 @@ sans-serif;
 @mixin info-sign-style() {
   cursor: pointer;
   position: absolute;
-  content: 'i';
+  content: "i";
   width: 18px;
   height: 18px;
   border: 1px solid $colorTextLight;
@@ -110,9 +106,9 @@ sans-serif;
   align-items: center;
 }
 
-@mixin star-style(){
+@mixin star-style() {
   position: absolute;
-  content: '★';
+  content: "★";
   color: $colorMain;
   font-size: 27px;
   top: 1px;

@@ -15,7 +15,7 @@
     @include ul-reset-style;
     display: flex;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 20px;
   }
 
   &__category {
@@ -43,19 +43,18 @@
       display: block;
       position: relative;
       border: 1px solid $colorBorder;
-      width: 18.5px;
-      height: 18px;
+      width: 20.5px;
+      height: 20px;
       border-radius: 50%;
-      content: '';
+      content: "";
       background-color: $colorTextBackground;
-    
     }
 
     &-name {
       @include font-body;
       margin: 0;
       cursor: pointer;
-      line-height: 19px;
+      line-height: 15px;
       padding-left: 10px;
       flex-shrink: 10;
     }

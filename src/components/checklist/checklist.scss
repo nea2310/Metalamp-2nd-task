@@ -16,8 +16,8 @@
 
     &::after {
       @include tip-style;
-      right: 19px;
-      bottom: 4px;
+      right: 17px;
+      bottom: 2px;
     }
   }
 
@@ -39,11 +39,10 @@
 
   &__list-wrapper {
     @include ul-reset-style;
-    max-width: 266px;
     width: 100%;
     background-color: $colorTextBackground;
     z-index: 2;
-    padding-top: 14px;
+    padding-top: 15px;
     display: none;
     position: static;
   }
@@ -53,12 +52,11 @@
     position: relative;
 
     &-wrapper {
-      margin-bottom: 7px;
+      margin-bottom: 10px;
     }
 
     &-text {
       margin-left: 9px;
-      max-width: 200px;
       display: flex;
       flex-direction: column;
     }
@@ -72,13 +70,13 @@
     }
 
     &-checkmark {
+      box-sizing: border-box;
       cursor: pointer;
-      display: inline-block;
       display: block;
       position: relative;
       border: 1px solid $colorBorder;
-      width: 18px;
-      height: 18px;
+      width: 21px;
+      height: 21px;
       border-radius: 5px;
       background-color: $colorTextBackground;
     }
@@ -92,7 +90,7 @@
       border: 1px solid $colorMain;
       &::before {
         position: absolute;
-        content: '';
+        content: "";
         height: 8px;
         width: 4px;
         background-image: $gradientMain;
@@ -102,13 +100,11 @@
       }
       &::after {
         position: absolute;
-        content: '';
+        content: "";
         height: 8px;
         width: 4px;
         background-color: $colorTextBackground;
-        transform: 
-        rotate(45deg) 
-        translateX(3px);
+        transform: rotate(45deg) translateX(3px);
         top: -2px;
         left: 4px;
       }
@@ -118,8 +114,9 @@
       @include font-body;
       margin: 0;
       cursor: pointer;
-      line-height: 19px;
+      line-height: 17px;
       padding-top: 2px;
+      max-width: 210px;
 
       &_rich {
         font-family: $fontMain;
@@ -137,7 +134,7 @@
       font-size: 12px;
       line-height: 14px;
       color: $colorTextNormal;
-      padding-bottom: 2px;
+      padding-top: 1px;
     }
   }
 }

@@ -3,12 +3,12 @@
   display: flex;
   margin: 0 auto;
   padding-top: 31px;
-  max-width: 1161px;
+  max-width: $wrapperWidth;
+  width: 100%;
+  justify-content: space-between;
 
   @include media-breakpoint-between($lg, $xl) {
-    padding-left: 0;
-    padding-right: 0;
-
+    padding: 31px 5px 0;
   }
 
   @include media-breakpoint-down($lg) {
@@ -51,7 +51,8 @@
     max-width: $md;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 9px;
+    grid-column-gap: 9px;
+    grid-row-gap: 20px;
 
     @include media-breakpoint-down($lg) {
       max-width: 100%;
@@ -67,8 +68,8 @@
     }
 
     &-wrapper {
-      max-width: 100%;
-      padding-left: 20px;
+      flex-grow: 1;
+      padding-left: 58px;
 
       @include media-breakpoint-down($lg) {
         padding: 0;
@@ -81,8 +82,8 @@
   }
 
   &__pagination-wrapper {
-    margin-top: 32px;
-    margin-bottom: 74px;
+    margin-top: 40px;
+    margin-bottom: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -103,6 +104,5 @@
   &__delimiter {
     height: 2px;
     border-top: 1px solid $colorBorder;
-    margin-top: $headerHeight;
   }
 }

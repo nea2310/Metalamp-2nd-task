@@ -16,7 +16,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    content: '';
+    content: "";
     z-index: 2;
   }
 
@@ -62,7 +62,8 @@
   &__previous {
     bottom: 0px;
 
-    &:hover::after, &:focus::after {
+    &:hover::after,
+    &:focus::after {
       @include tip-style;
       border-left: 3px solid $colorTextBackground;
       border-bottom: 3px solid $colorTextBackground;
@@ -75,7 +76,8 @@
   &__next {
     right: 0px;
 
-    &:hover::after, &:focus::after {
+    &:hover::after,
+    &:focus::after {
       @include tip-style;
       border-left: 3px solid $colorTextBackground;
       border-bottom: 3px solid $colorTextBackground;
@@ -83,7 +85,7 @@
       right: 18px;
       bottom: 73px;
     }
-    
+
     &:hover,
     &:focus {
       transform: matrix(-1, 0, 0, 1, 0, 0);
@@ -182,6 +184,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 11px;
+    margin-bottom: 3px;
     padding-left: 22px;
     padding-right: 20px;
     gap: 5px;

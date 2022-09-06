@@ -10,12 +10,13 @@
     @include ul-reset-style;
     @include font-body;
     margin-left: 30px;
+    padding-top: 23px;
 
     @include media-breakpoint-down($xs) {
       margin-left: 0;
     }
 
-    &-label{
+    &-label {
       flex-shrink: 10;
     }
 

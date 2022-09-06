@@ -1,35 +1,31 @@
 .cards {
   flex-grow: 1;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto 20px auto;
+  margin: 0 auto;
+  max-width: 1160px;
+  gap: 0px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   background-color: #f4f4f6;
   padding-bottom: 20px;
 
-  &__search {
-    &-column {
-      @include media-breakpoint-down($md) {
-        margin: 0 auto;
-      }
+  &__column {
+    @include media-breakpoint-down($md) {
+      margin: 0 auto;
     }
+  }
+  &__search-room {
+    margin-top: 151px;
 
-    &-room {
-      margin-top: 151px;
-      margin-left: 117px;
-
-      @include media-breakpoint-down($md) {
-        margin: 20px;
-        padding: 0;
-      }
+    @include media-breakpoint-down($md) {
+      margin: 20px;
+      padding: 0;
     }
   }
 
   &__registration {
-    margin-top: 40px;
-    margin-left: 117px;
+    margin-top: 38px;
 
     @include media-breakpoint-down($md) {
       margin: 20px;
@@ -48,7 +44,7 @@
   }
 
   &__login {
-    margin-top: 40px;
+    margin-top: 42px;
     padding-left: 2px;
 
     @include media-breakpoint-down($md) {
@@ -67,7 +63,7 @@
   }
 
   &__room-card {
-    margin-right: 213px;
+    max-width: 270px;
 
     &:nth-child(2) {
       margin-top: 364px;

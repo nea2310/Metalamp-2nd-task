@@ -4,7 +4,7 @@
   flex-direction: column;
   position: relative;
 
-  &__message{
+  &__message {
     @include font-body;
     font-weight: bold;
     color: $colorBorderError;
@@ -14,8 +14,8 @@
     z-index: 1;
     display: none;
     text-align: end;
-  
-    &_active{
+
+    &_active {
       display: inline;
     }
   }
@@ -62,7 +62,7 @@
       top: 5px;
       right: -12px;
     }
-    
+
     &::after {
       @include arrow-tip-style($colorMain);
     }
@@ -70,7 +70,7 @@
 
   &__input {
     @include font-body;
-    padding: 8px 0;
+    padding: 9px 0;
     text-indent: 12px;
     border-radius: 5px;
     border: 1px solid $colorBorder;
@@ -101,7 +101,7 @@
       display: none;
     }
 
-    &[type='date'] {
+    &[type="date"] {
       text-indent: 6px;
     }
   }

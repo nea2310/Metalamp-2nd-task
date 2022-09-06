@@ -12,8 +12,6 @@ $button-style-map: (very-long 320, long 196, short 99, very-short 87);
   padding: 10px;
   user-select: none;
   border-radius: 22px;
- // min-width: 99px;
-
 
   &_has-arrow {
     position: relative;
@@ -25,7 +23,7 @@ $button-style-map: (very-long 320, long 196, short 99, very-short 87);
       align-self: center;
       right: 17px;
     }
-    
+
     &::after {
       @include arrow-tip-style($colorTextBackground);
       align-self: center;
@@ -35,7 +33,7 @@ $button-style-map: (very-long 320, long 196, short 99, very-short 87);
 
   &_length {
     @each $key, $value in $button-style-map {
-      &_#{$key}{
+      &_#{$key} {
         min-width: #{$value}px;
       }
     }
@@ -51,6 +49,7 @@ $button-style-map: (very-long 320, long 196, short 99, very-short 87);
     color: $colorMain;
     border: none;
     background: none;
+    padding: 0;
     &:hover,
     &:focus {
       color: $colorTextLight;
@@ -70,16 +69,12 @@ $button-style-map: (very-long 320, long 196, short 99, very-short 87);
 
     &_light {
       background-color: $colorTextBackground;
-      box-shadow: 
-      inset 0px 2px 0px 0px $colorMain, 
-      inset 0px 0px 0px 2px $colorGradientBorder;
+      box-shadow: inset 0px 2px 0px 0px $colorMain, inset 0px 0px 0px 2px $colorGradientBorder;
       color: $colorMain;
 
       &:hover,
       &:focus {
-        box-shadow: 
-        inset 0px 2px 0px 0px $colorMainHover, 
-        inset 0px 0px 0px 2px $colorGradientBorderHover;
+        box-shadow: inset 0px 2px 0px 0px $colorMainHover, inset 0px 0px 0px 2px $colorGradientBorderHover;
       }
     }
   }

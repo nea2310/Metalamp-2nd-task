@@ -9,7 +9,8 @@ mixin footer({ menu = [] } = {})
   footer(class = elementName role = "contentinfo")
     div(class = `${elementName}__wrapper-top`)
       div(class = `${elementName}__items`)
-        +logo({ logoColor: 'purple' })
+        div(class = `${elementName}__logo`)
+          +logo({ logoColor: 'purple' })
         span(class = `${elementName}__long-text`) Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»
       if Array.isArray(menu) && menu.length
         each value in menu

@@ -26,10 +26,10 @@
       grid-template-rows: repeat(4, auto);
       grid-template-columns: repeat(3, auto);
       grid-template-areas:
-        'calendar guests price-filter'
-        'calendar guests price-filter'
-        'house-rules facilities facilities-adv'
-        'accessability facilities facilities-adv';
+        "calendar guests price-filter"
+        "calendar guests price-filter"
+        "house-rules facilities facilities-adv"
+        "accessability facilities facilities-adv";
     }
 
     @include media-breakpoint-down($md) {
@@ -37,11 +37,11 @@
       grid-template-rows: repeat(5, auto);
       grid-template-columns: auto auto;
       grid-template-areas:
-        'calendar guests'
-        'price-filter house-rules'
-        'price-filter accessability'
-        'price-filter facilities'
-        'facilities-adv facilities-adv';
+        "calendar guests"
+        "price-filter house-rules"
+        "price-filter accessability"
+        "price-filter facilities"
+        "facilities-adv facilities-adv";
     }
 
     @include media-breakpoint-down($xs) {
@@ -73,7 +73,7 @@
       cursor: pointer;
       width: 20px;
       height: 20px;
-      background: url('@com/filter-form/image/filter.svg');
+      background: url("@com/filter-form/image/filter.svg");
     }
   }
 
@@ -117,7 +117,7 @@
   }
 
   &__house-rules-wrapper {
-    margin-bottom: 20px;
+    margin-bottom: 35px;
 
     @include media-breakpoint-down($lg) {
       grid-area: house-rules;
@@ -131,7 +131,7 @@
   }
 
   &__accessability-wrapper {
-    margin-bottom: 20px;
+    margin-bottom: 29px;
 
     @include media-breakpoint-down($lg) {
       grid-area: accessability;

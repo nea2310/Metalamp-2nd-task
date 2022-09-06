@@ -39,7 +39,7 @@
         @include arrow-basis-style($colorTextBackground);
         align-self: center;
       }
-      
+
       &::after {
         @include arrow-tip-style($colorTextBackground);
         align-self: center;
@@ -50,6 +50,6 @@
   &__label {
     @include font-body;
     margin: 0;
-    padding-top: 7px;
+    padding-top: 8px;
   }
 }

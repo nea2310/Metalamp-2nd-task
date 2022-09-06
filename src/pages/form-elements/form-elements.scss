@@ -1,8 +1,7 @@
-$labelTopMiddleMap: (1 20, 2 37, 3 45, 4 41);
-$compWrapperTopLeftMap: (2 21, 3 21, 4 23, 5 41, 6 40, 7 42, 8 100, 9 19, 10 173, 11 49);
-$compWrapperTopMiddleMap: (1 0, 2 156, 3 17, 4 79, 5 15, 6 199, 7 16, 9 17, 10 45, 11 256);
-$compWrapperTopRightMap: (1 0, 2 0, 3 14, 4 29, 5 32, 6 30, 7 20, 8 17, 9 233, 10 257);
-
+$labelTopMiddleMap: (1 32, 2 40, 3 45, 4 41);
+$compWrapperTopLeftMap: (2 21, 3 21, 4 23, 5 41, 6 42, 7 42, 8 101, 9 21, 10 173, 11 49);
+$compWrapperTopMiddleMap: (1 0, 2 156, 3 17, 4 79, 5 15, 6 199, 7 16, 9 17, 10 199, 11 256);
+$compWrapperTopRightMap: (1 0, 2 0, 3 12, 4 29, 5 32, 6 28, 7 20, 8 2, 9 233, 10 257);
 
 .form-elements {
   flex-grow: 1;
@@ -16,21 +15,25 @@ $compWrapperTopRightMap: (1 0, 2 0, 3 14, 4 29, 5 32, 6 30, 7 20, 8 17, 9 233, 1
 
     &_position_top-right {
       &:nth-of-type(1) {
-        margin-top: -3px;
+        margin-top: 35px;
         margin-bottom: 2px;
       }
 
+      &:nth-of-type(2) {
+        margin-top: 40px;
+        margin-bottom: 14px;
+      }
       &:nth-of-type(3) {
         margin-top: 257px;
-        margin-bottom: 14px;
+        margin-bottom: 13px;
       }
     }
 
     &_position_top-middle {
       @each $key, $value in $labelTopMiddleMap {
-        &:nth-of-type(#{$key}){
+        &:nth-of-type(#{$key}) {
           margin-top: #{$value}px;
-            }
+        }
       }
     }
   }
@@ -38,17 +41,17 @@ $compWrapperTopRightMap: (1 0, 2 0, 3 14, 4 29, 5 32, 6 30, 7 20, 8 17, 9 233, 1
   &__comp-wrapper_position {
     &_top-left {
       @each $key, $value in $compWrapperTopLeftMap {
-        &:nth-child(#{$key}){
+        &:nth-child(#{$key}) {
           margin-top: #{$value}px;
-            }
+        }
       }
     }
 
     &_top-middle {
       @each $key, $value in $compWrapperTopMiddleMap {
-        &:nth-child(#{$key}){
+        &:nth-child(#{$key}) {
           margin-top: #{$value}px;
-            }
+        }
       }
 
       &:nth-child(5) {
@@ -66,22 +69,38 @@ $compWrapperTopRightMap: (1 0, 2 0, 3 14, 4 29, 5 32, 6 30, 7 20, 8 17, 9 233, 1
 
       &:nth-child(9) {
         display: flex;
-        max-width: 258px;
+        max-width: 255px;
         justify-content: space-between;
       }
     }
 
     &_top-right {
       @each $key, $value in $compWrapperTopRightMap {
-        &:nth-child(#{$key}){
+        &:nth-child(#{$key}) {
           margin-top: #{$value}px;
-            }
+        }
+      }
+
+      &:nth-child(3),
+      &:nth-child(4) {
+        width: 100%;
+        max-width: 99px;
+      }
+
+      &:nth-child(5) {
+        width: auto;
+        display: inline-block;
+      }
+
+      &:nth-child(6) {
+        width: 100%;
+        max-width: 200px;
       }
     }
 
     &_bottom-left {
       &:nth-child(1) {
-        margin-top: 224px;
+        margin-top: 216px;
       }
 
       &:nth-child(2) {
@@ -91,7 +110,9 @@ $compWrapperTopRightMap: (1 0, 2 0, 3 14, 4 29, 5 32, 6 30, 7 20, 8 17, 9 233, 1
 
     &_bottom-right {
       &:nth-child(1) {
-        margin-top: 234px;
+        margin-top: 222px;
+        width: 100%;
+        max-width: 710px;
 
         @include media-breakpoint-down($md) {
           margin-top: 20px;

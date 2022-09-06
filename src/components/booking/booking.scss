@@ -8,8 +8,8 @@
   padding: 40px 30px 23px 26px;
   margin-block-end: 0;
   position: relative;
-  
-  &__message{
+
+  &__message {
     @include font-body;
     color: $colorBorderError;
     font-weight: bold;
@@ -17,8 +17,8 @@
     top: 10px;
     right: 10px;
     display: none;
-  
-    &_active{
+
+    &_active {
       display: inline;
     }
   }
@@ -78,23 +78,23 @@
       display: grid;
       grid-template-columns: 2.5fr 1fr;
       grid-template-rows: repeat(4, auto);
-      margin-top: 20px;
-      line-height: 21px;
+      margin-top: 22px;
+      line-height: 19px;
       row-gap: 15px;
     }
 
-    &-base{
+    &-base {
       &-cost {
         justify-self: end;
       }
     }
 
-    &-service{
-      &-name{
+    &-service {
+      &-name {
         width: 100%;
         position: relative;
 
-        &::after{
+        &::after {
           @include info-sign-style;
           right: -11px;
           top: -1px;
@@ -106,16 +106,16 @@
       }
     }
 
-    &-extra{
-      &-name{
+    &-extra {
+      &-name {
         width: 100%;
         position: relative;
 
-      &::after{
-        @include info-sign-style;
-        right: -11px;
-        top: -1px;
-      }
+        &::after {
+          @include info-sign-style;
+          right: -11px;
+          top: -1px;
+        }
       }
 
       &-cost {
@@ -127,7 +127,7 @@
       &-name,
       &-cost {
         @include font-h2;
-        padding-top: 10px;
+        padding-top: 13px;
       }
 
       &-cost {
@@ -137,12 +137,12 @@
 
       &-name {
         position: relative;
-        &::after{
+        &::after {
           position: absolute;
-          content: '';
+          content: "";
           right: 0;
           left: 60px;
-          bottom: 0;
+          bottom: 4px;
           border-bottom: 1px dotted $colorBorder;
         }
       }
@@ -151,6 +151,7 @@
 
   &__book-button {
     margin-top: 20px;
+    margin-bottom: 5px;
   }
 
   &_error {

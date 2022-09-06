@@ -21,6 +21,7 @@
     max-width: $wrapperWidth;
     width: 100%;
     margin: 0 auto;
+    padding: 0 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,6 +44,7 @@
   &__nav {
     &-level1 {
       display: flex;
+      flex-grow: 1;
 
       @include media-breakpoint-down($md) {
         display: none;
@@ -63,8 +65,10 @@
       &-items {
         @include ul-reset-style;
         margin-left: auto;
+        margin-right: 25px;
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(5, auto);
+        column-gap: 20px;
         row-gap: 20px;
 
         @include media-breakpoint-down($md) {
@@ -75,8 +79,7 @@
 
       &-item {
         position: relative;
-        max-width: 150px;
-        padding-right: 24px;
+        display: flex;
 
         @include media-breakpoint-down($md) {
           margin-top: 20px;
@@ -88,12 +91,14 @@
 
         &-tip {
           position: relative;
+          width: 10px;
+          margin-left: 10px;
+          display: flex;
+          align-items: center;
 
           &::after {
             @include tip-style;
             transform: rotate(-45deg);
-            left: 5px;
-            bottom: 5px;
           }
 
           @include media-breakpoint-down($md) {
@@ -173,40 +178,23 @@
       align-items: center;
     }
 
-    &_is-authorized {
-      &_false {
-        flex-basis: 26%;
-
-        @include media-breakpoint-down($lg) {
-          flex-basis: 30%;
-        }
-
-        @include media-breakpoint-down($md) {
-          flex-basis: 40%;
-        }
-
-        @include media-breakpoint-down($sm) {
-          flex-basis: 50%;
-        }
-
-        @include media-breakpoint-down($xs) {
-          display: flex;
-          flex-direction: column;
-        }
+    &_is-authorized_false {
+      @include media-breakpoint-down($xs) {
+        display: flex;
+        flex-direction: column;
       }
     }
   }
 
   &__button {
     @include button-reset-style;
-    &-reg,
     &-login {
-      margin-top: 3px;
+      padding-right: 5px;
       flex-grow: 1;
     }
 
     &-reg {
-      padding-left: 20px;
+      padding-left: 15px;
 
       @include media-breakpoint-down($xs) {
         padding-left: 0;

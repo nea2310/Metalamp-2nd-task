@@ -4,7 +4,7 @@
   justify-content: flex-start;
   position: relative;
 
-  &__message{
+  &__message {
     @include font-body;
     font-weight: bold;
     color: $colorBorderError;
@@ -14,8 +14,8 @@
     z-index: 1;
     display: none;
     text-align: end;
-  
-    &_active{
+
+    &_active {
       display: inline;
     }
   }
@@ -89,7 +89,7 @@
 
       &::after {
         @include tip-style;
-        right: 14px;
+        right: 19px;
         bottom: 18px;
       }
 
@@ -133,12 +133,13 @@
       display: none;
     }
 
-    &[type='date'] {
+    &[type="date"] {
       text-indent: 6px;
     }
   }
 
   .air-datepicker {
+    display: initial;
     z-index: 10;
     box-sizing: border-box;
     border: none;
@@ -167,8 +168,7 @@
       }
 
       &--action {
-        &[data-action='prev'] {
-
+        &[data-action="prev"] {
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;
@@ -181,12 +181,12 @@
           }
         }
 
-        &[data-action='next'] {
+        &[data-action="next"] {
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;
           }
-          
+
           &::after {
             @include arrow-tip-style($colorMain);
             align-self: center;
@@ -243,7 +243,7 @@
         &::after {
           position: absolute;
           z-index: -1;
-          content: '';
+          content: "";
           height: 39px;
           width: 40px;
           background: $gradientMain;
@@ -259,7 +259,7 @@
         &::before {
           position: absolute;
           z-index: -1;
-          content: '';
+          content: "";
           height: 39px;
           width: 40px;
           background: $gradientMain;
@@ -305,7 +305,7 @@
 
         &::before {
           position: absolute;
-          content: '';
+          content: "";
           height: 39px;
           width: 40px;
           background: $gradientMain;

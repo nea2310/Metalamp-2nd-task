@@ -7,7 +7,7 @@
   &__list-wrapper {
     @include ul-reset-style;
     padding-left: 17px;
-    max-width: 240px;
+    max-width: 255px;
   }
 
   &__category {
@@ -19,7 +19,7 @@
 
     &::before {
       position: absolute;
-      content: '●';
+      content: "●";
       font-size: 23px;
       color: $colorBorder;
       top: -2px;
