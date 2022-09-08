@@ -11,40 +11,42 @@ mixin header({ menu = [], isAuthorized = false } = {})
     div(class = `${elementName}__wrapper`)
       div(class = `${elementName}__logo`)
         +logo({ logoColor: 'purple' })
-      nav(class = `${elementName}__nav-level1 js-${elementName}__nav-level1`) 
-        ul(class = `${elementName}__nav-level1-items`)
-          if Array.isArray(menu) && menu.length
-            each value in menu
-              - const {name = '', subMenu = []} = value
-              li(class = `${elementName}__nav-level1-item js-${elementName}__nav-level1-item`)
-                a(class = `${elementName}__nav-level1-item-link` href = "https://test/test")= name
-                if Array.isArray(subMenu) && subMenu.length
-                  ul(class = `${elementName}__nav-level2 js-${elementName}__nav-level2`)
-                    each subValue in subMenu
-                      li(class = `${elementName}__nav-level2-item`) 
-                        a(class = `${elementName}__nav-level2-item-link` href = "https://test/test")= subValue
-                if Array.isArray(subMenu) && subMenu.length
-                  div(class = `${elementName}__nav-level1-item-tip js-${elementName}__nav-level1-item-tip`)
-      div(class = `${elementName}__auth ${elementName}__auth_is-authorized_${isAuthorized}`) 
-        if (!isAuthorized)
-          div(class = `${elementName}__button-login`) 
-            +button({
-              text: 'войти',
-              type: 'link',
-              length: 'very-short',
-              width: 'narrow',
-              color: 'light',
-              href: 'https://test/test',
-          })
-          div(class = `${elementName}__button-reg`) 
-            +button({
-              text: 'зарегистрироваться',
-              type: 'link',
-              length: 'long',
-              width: 'narrow',
-              color: 'dark',
-              href: 'https://test/test',
-            })
-        else
-          div(class = `${elementName}__profile`) 
-            a(class = `${elementName}__profile-name` href = "https://test/test")  Юлий Цезарь
+      div(class = `${elementName}__content`)
+        div(class = `${elementName}__content-wrapper`)  
+          nav(class = `${elementName}__nav-level1 js-${elementName}__nav-level1`) 
+            ul(class = `${elementName}__nav-level1-items`)
+              if Array.isArray(menu) && menu.length
+                each value in menu
+                  - const {name = '', subMenu = []} = value
+                  li(class = `${elementName}__nav-level1-item js-${elementName}__nav-level1-item`)
+                    a(class = `${elementName}__nav-level1-item-link` href = "https://test/test")= name
+                    if Array.isArray(subMenu) && subMenu.length
+                      ul(class = `${elementName}__nav-level2 js-${elementName}__nav-level2`)
+                        each subValue in subMenu
+                          li(class = `${elementName}__nav-level2-item`) 
+                            a(class = `${elementName}__nav-level2-item-link` href = "https://test/test")= subValue
+                    if Array.isArray(subMenu) && subMenu.length
+                      div(class = `${elementName}__nav-level1-item-tip js-${elementName}__nav-level1-item-tip`)
+          div(class = `${elementName}__auth ${elementName}__auth_is-authorized_${isAuthorized}`) 
+            if (!isAuthorized)
+              div(class = `${elementName}__button-login`) 
+                +button({
+                  text: 'войти',
+                  type: 'link',
+                  length: 'very-short',
+                  width: 'narrow',
+                  color: 'light',
+                  href: 'https://test/test',
+              })
+              div(class = `${elementName}__button-reg`) 
+                +button({
+                  text: 'зарегистрироваться',
+                  type: 'link',
+                  length: 'long',
+                  width: 'narrow',
+                  color: 'dark',
+                  href: 'https://test/test',
+                })
+            else
+              div(class = `${elementName}__profile`) 
+                a(class = `${elementName}__profile-name` href = "https://test/test")  Юлий Цезарь

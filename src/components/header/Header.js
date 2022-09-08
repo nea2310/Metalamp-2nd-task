@@ -17,6 +17,7 @@ class Header {
 
   _render() {
     this.burger = this._getElement('burger-button');
+    this.content = this._getElement('content');
     this.navLevel1 = this._getElement('nav-level1');
     this.navLevel2 = this._getElements(['nav-level2']);
     this.menuItemsLevel1 = this._getElements(['nav-level1-item']);
@@ -76,7 +77,7 @@ class Header {
 
   _handleHeaderClickDoc(e) {
     if (!e.target.closest(`.${this.elementName}__nav-level2`)
-    && (!e.target.className.match('tip'))) {
+      && (!e.target.className.match('tip'))) {
       this._closeLevel2Menu();
     }
   }
@@ -89,7 +90,7 @@ class Header {
 
   _handleHeaderClickBurger() {
     this.burger.classList.toggle(`${this.elementName}__burger-button_active`);
-    this.navLevel1.classList.toggle(`${this.elementName}__nav-level1_active`);
+    this.content.classList.toggle(`${this.elementName}__content_active`);
   }
 
   _closeLevel2Menu() {

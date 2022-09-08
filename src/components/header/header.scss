@@ -12,11 +12,6 @@
     position: relative;
   }
 
-  @include media-breakpoint-down($xs) {
-    height: auto;
-    align-items: flex-start;
-  }
-
   &__wrapper {
     max-width: $wrapperWidth;
     width: 100%;
@@ -25,19 +20,35 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
 
     @include media-breakpoint-down($md) {
-      width: 100%;
-      margin: 0 20px 0 40px;
-      display: flex;
-      align-items: center;
+      display: none;
+      position: absolute;
       background-color: $colorTextBackground;
+      right: 0;
+      top: 70px;
+      padding: 20px 0;
     }
 
-    @include media-breakpoint-down($xs) {
-      flex-direction: column;
-      padding-top: 50px;
-      padding-bottom: 20px;
+    &_active {
+      @include card-border;
+      display: flex;
+      z-index: 99;
+      width: 100%;
+    }
+
+    &-wrapper {
+      display: flex;
+    }
+
+    &_active &-wrapper {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      margin: 0 auto;
     }
   }
 
@@ -45,21 +56,11 @@
     &-level1 {
       display: flex;
       flex-grow: 1;
+      padding-top: 6px;
 
       @include media-breakpoint-down($md) {
-        display: none;
-        position: absolute;
-        background-color: $colorTextBackground;
-        left: 0;
-        top: 45px;
-        z-index: 1;
-      }
-
-      &_active {
-        @include media-breakpoint-down($md) {
-          display: block;
-          z-index: 99;
-        }
+        padding: 0;
+        width: 100%;
       }
 
       &-items {
@@ -71,7 +72,8 @@
 
         @include media-breakpoint-down($md) {
           display: block;
-          padding-left: 20px;
+          margin: 0;
+          width: 100%;
         }
       }
 
@@ -98,10 +100,6 @@
           &::after {
             @include tip-style;
             transform: rotate(-45deg);
-          }
-
-          @include media-breakpoint-down($md) {
-            display: none;
           }
         }
 
@@ -133,17 +131,14 @@
         }
 
         &_expanded {
+          @include card-border;
           top: 30px;
-          background-color: $colorTextBackground;
-          border: 1px solid rgba(0, 0, 0, 0.12);
-          box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
-          border-radius: 4px;
           padding: 20px;
           display: block;
-          width: 150px;
+          width: 200px;
 
           @include media-breakpoint-down($md) {
-            display: none;
+            width: 100%;
           }
         }
       }
@@ -160,11 +155,6 @@
       top: -55px;
       left: 50%;
     }
-
-    @include media-breakpoint-down($xs) {
-      padding-left: 0;
-      margin-bottom: 20px;
-    }
   }
 
   &__auth {
@@ -176,23 +166,8 @@
     }
 
     @include media-breakpoint-down($md) {
-      top: 0;
-      left: 50%;
-      margin-left: 20px;
-    }
-
-    @include media-breakpoint-down($xs) {
-      flex-direction: column;
-      min-height: 90px;
       justify-content: space-between;
-      align-items: center;
-    }
-
-    &_is-authorized_false {
-      @include media-breakpoint-down($xs) {
-        display: flex;
-        flex-direction: column;
-      }
+      margin: 0;
     }
   }
 
@@ -201,14 +176,13 @@
     &-login {
       padding-right: 5px;
       flex-grow: 1;
+      @include media-breakpoint-down($md) {
+        max-width: 87px;
+      }
     }
 
     &-reg {
       padding-left: 15px;
-
-      @include media-breakpoint-down($xs) {
-        padding-left: 0;
-      }
     }
   }
 
@@ -254,11 +228,7 @@
         position: absolute;
         width: 20px;
         height: 20px;
-        left: 10px;
-      }
-
-      @include media-breakpoint-down($xs) {
-        top: 20px;
+        right: 20px;
       }
 
       &:before,
