@@ -5,7 +5,7 @@
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   background-color: $colorTextBackground;
 
-  @include media-breakpoint-down($lg) {
+  @include media-breakpoint-down($md) {
     padding: 0;
   }
 
@@ -35,7 +35,7 @@
       min-height: 72px;
       max-width: $wrapperWidth;
       margin: 0 auto;
-      padding: 0 5px;
+      padding: 0 4px;
       display: flex;
       justify-content: space-between;
 
@@ -109,6 +109,19 @@
         display: none;
       }
     }
+
+    &:not(:first-child):not(:last-child) {
+      width: calc((100% - (270px * 2)) / 3);
+    }
+    &:nth-child(2) {
+      padding-left: 35px;
+    }
+    &:nth-child(3) {
+      padding-left: 25px;
+    }
+    &:nth-child(4) {
+      padding-left: 15px;
+    }
   }
 
   &__item {
@@ -131,7 +144,7 @@
     @include font-body;
     cursor: initial;
     text-transform: initial;
-    margin-top: 19px;
+    margin-top: 18px;
 
     @include media-breakpoint-down($md) {
       display: none;
@@ -144,6 +157,10 @@
 
   &__copyright {
     @include font-body;
+
+    @include media-breakpoint-down($md) {
+      text-align: center;
+    }
   }
 
   &__social-link {
@@ -155,6 +172,8 @@
     justify-content: space-between;
     max-width: 114px;
     width: 100%;
+    padding-top: 3px;
+    padding-right: 2px;
 
     @include media-breakpoint-down($md) {
       padding-top: 25px;

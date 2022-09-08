@@ -8,6 +8,7 @@ $xxl: 1920px;
 $wrapperWidth: 1170px;
 
 $colorTitle: #1f2041;
+$colorText: rgba(31, 32, 65, 0.5);
 $colorTextNormal: rgba(31, 32, 65, 0.75);
 $colorTextLight: #8f8fa0;
 $colorBorder: rgba(31, 32, 65, 0.25);
@@ -27,7 +28,7 @@ $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 
 $headerHeight: 70px;
 $lg-padding-bottom: 30px;
 
-$tipBorder: 2px solid $colorTextLight;
+$tipBorder: 2px solid $colorText;
 $tipSize: 6px;
 $tipTransition: all 0.3s ease 0s;
 
@@ -69,7 +70,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
   width: $tipSize;
   border-left: $tipBorder;
   border-bottom: $tipBorder;
-  transform: rotate(135deg);
+  transform: rotate(-45deg);
   transition: $tipTransition;
 }
 

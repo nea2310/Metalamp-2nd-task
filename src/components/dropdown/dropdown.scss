@@ -17,6 +17,10 @@
   &_width_wide {
     max-width: 320px;
     width: 100%;
+
+    @include media-breakpoint-down($xs) {
+      max-width: initial;
+    }
   }
 
   &_width_narrow {
@@ -38,7 +42,7 @@
     @include font-body;
     cursor: pointer;
     text-overflow: ellipsis;
-    padding: 9px 90px 8px 12px;
+    padding: 9px 90px 8px 14px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border: 1px solid $colorBorder;
@@ -66,7 +70,7 @@
     &-wrapper {
       &::after {
         @include tip-style;
-        right: 19px;
+        right: 18px;
         bottom: 18px;
       }
 

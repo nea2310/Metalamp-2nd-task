@@ -65,10 +65,8 @@
       &-items {
         @include ul-reset-style;
         margin-left: auto;
-        margin-right: 25px;
         display: grid;
         grid-template-columns: repeat(5, auto);
-        column-gap: 20px;
         row-gap: 20px;
 
         @include media-breakpoint-down($md) {
@@ -80,6 +78,7 @@
       &-item {
         position: relative;
         display: flex;
+        padding-right: 20px;
 
         @include media-breakpoint-down($md) {
           margin-top: 20px;
@@ -91,10 +90,10 @@
 
         &-tip {
           position: relative;
-          width: 10px;
-          margin-left: 10px;
+          margin-left: 9px;
           display: flex;
-          align-items: center;
+          padding-top: 7px;
+          padding-right: 17px;
 
           &::after {
             @include tip-style;
@@ -108,6 +107,7 @@
 
         &-link {
           @include font-body;
+          color: $colorText;
           text-decoration: none;
         }
       }
@@ -121,17 +121,26 @@
       display: none;
 
       &-item {
-        margin-top: 10px;
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
 
         &-link {
           @include font-body;
+          color: $colorText;
           text-decoration: none;
+          line-height: 10px;
         }
 
         &_expanded {
-          padding-left: 20px;
-          padding-right: 20px;
+          top: 30px;
+          background-color: $colorTextBackground;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+          border-radius: 4px;
+          padding: 20px;
           display: block;
+          width: 150px;
 
           @include media-breakpoint-down($md) {
             display: none;
@@ -142,6 +151,7 @@
   }
 
   &__logo {
+    padding-top: 2px;
     @include media-breakpoint-down($lg) {
       padding-left: 20px;
     }

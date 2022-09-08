@@ -1,4 +1,4 @@
-$button-style-map: (very-long 320, long 196, short 99, very-short 87);
+$button-style-map: (long 196, short 99, very-short 87);
 
 .button {
   @include font-h3;
@@ -21,13 +21,13 @@ $button-style-map: (very-long 320, long 196, short 99, very-short 87);
     &::before {
       @include arrow-basis-style($colorTextBackground);
       align-self: center;
-      right: 17px;
+      right: 16px;
     }
 
     &::after {
       @include arrow-tip-style($colorTextBackground);
       align-self: center;
-      right: 17px;
+      right: 16px;
     }
   }
 
