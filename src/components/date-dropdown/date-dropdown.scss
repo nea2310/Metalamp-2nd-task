@@ -26,16 +26,113 @@
 
   &_width {
     &_wide {
+      box-sizing: border-box;
       max-width: 320px;
       width: 100%;
+
       @include media-breakpoint-down($xs) {
         max-width: initial;
+      }
+
+      .air-datepicker {
+        width: 320px;
+        &-body--cells.-days- {
+          grid-template-columns: repeat(7, 40px);
+          grid-auto-rows: 40px;
+        }
+
+        &-cell {
+          height: 40px;
+        }
+      }
+
+      .air-datepicker-cell.-day- {
+        &.-range-from-,
+        &.-in-range-.-current- {
+          &::before {
+            @include cell-background-rounded(40px, 40px);
+          }
+
+          &::after {
+            @include cell-background(20px, 40px, initial, 0px);
+          }
+        }
+
+        &.-range-to- {
+          &::before {
+            @include cell-background-rounded(40px, 40px);
+          }
+
+          &::after {
+            @include cell-background(20px, 40px, 0px, initial);
+          }
+        }
+
+        &.-in-range-.-focus- {
+          position: relative;
+
+          &::before {
+            @include cell-background-rounded(40px, 40px);
+          }
+
+          &::after {
+            @include cell-background(40px, 40px, 0px, 0px);
+          }
+        }
       }
     }
 
     &_narrow {
       max-width: 266px;
       width: 100%;
+      box-sizing: border-box;
+
+      .air-datepicker {
+        width: 266px;
+        &-body--cells.-days- {
+          grid-template-columns: repeat(7, 32px);
+          grid-auto-rows: 32px;
+        }
+
+        &-cell {
+          height: 32px;
+        }
+      }
+
+      .air-datepicker-cell.-day- {
+        &.-range-from-,
+        &.-in-range-.-current- {
+          &::before {
+            @include cell-background-rounded(32px, 32px);
+          }
+
+          &::after {
+            @include cell-background(16px, 32px, initial, 0px);
+          }
+        }
+
+        &.-range-to- {
+          &::before {
+            @include cell-background-rounded(32px, 32px);
+          }
+
+          &::after {
+            @include cell-background(16px, 32px, 0px, initial);
+          }
+        }
+
+        &.-in-range-.-focus- {
+          position: relative;
+
+          &::before {
+            @include cell-background-rounded(32px, 32px);
+          }
+
+          &::after {
+            @include cell-background(32px, 32px, 0px, 0px);
+          }
+        }
+      }
     }
   }
 
@@ -63,7 +160,7 @@
   }
 
   &__buttons {
-    border: 1px solid $colorTextLight;
+    border: 1px solid $colorText;
     border-top: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -71,7 +168,7 @@
     background-color: $colorTextBackground;
     display: flex;
     justify-content: space-between;
-    padding: 0 10px 10px;
+    padding: 0 19px 19px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
   }
@@ -108,23 +205,19 @@
         bottom: 18px;
       }
 
-      // &:nth-child(2) {
-      //   padding-left: 20px;
-
-      // }
-
       &_expanded {
         &::after {
-          transform: rotate(-45deg);
+          transform: rotate(135deg);
         }
       }
     }
 
     &:hover {
-      border-color: $colorTextLight;
+      border-color: $colorText;
     }
+
     &:focus {
-      border-color: $colorTextLight;
+      border-color: $colorText;
       outline: none;
     }
 
@@ -167,15 +260,14 @@
     z-index: 10;
     box-sizing: border-box;
     border: none;
-    width: 320px;
-    border: 1px solid $colorTextLight;
+    border: 1px solid $colorText;
     border-bottom: none;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
     &-nav {
       border: none;
-      padding: 4px 24px 4px 24px;
+      padding: 5px 16px 4px;
       min-height: 51px;
 
       &--title {
@@ -228,21 +320,6 @@
 
       &--cells {
         padding-top: 10px;
-
-        &.-days- {
-          grid-template-columns: repeat(7, 40px);
-          grid-auto-rows: 39px;
-        }
-      }
-    }
-
-    &-cell {
-      height: 39px;
-
-      &.-day- {
-        @include font-h3;
-        color: $colorTextLight;
-        font-weight: normal;
       }
     }
 
@@ -252,45 +329,20 @@
     }
 
     &-cell.-day- {
+      @include font-h3;
+      color: $colorText;
+      font-weight: normal;
+      border: none;
+
       &.-disabled- {
         color: $colorBorder;
       }
 
       &.-current- {
+        color: $colorTextBackground;
+        font-weight: 700;
         border-radius: 50%;
         background: $gradientSecondary;
-      }
-
-      &.-range-from- {
-        border: none;
-
-        &::after {
-          position: absolute;
-          z-index: -1;
-          content: "";
-          height: 39px;
-          width: 40px;
-          background: $gradientMain;
-          opacity: 0.5;
-          border-bottom-left-radius: 50%;
-          border-top-left-radius: 50%;
-        }
-      }
-
-      &.-range-to- {
-        border: none;
-
-        &::before {
-          position: absolute;
-          z-index: -1;
-          content: "";
-          height: 39px;
-          width: 40px;
-          background: $gradientMain;
-          opacity: 0.5;
-          border-bottom-right-radius: 50%;
-          border-top-right-radius: 50%;
-        }
       }
 
       &.-focus- {
@@ -301,10 +353,12 @@
 
         &.-disabled- {
           background: none;
+          font-weight: initial;
         }
       }
 
       &.-selected- {
+        color: $colorTextBackground;
         font-weight: 700;
         position: relative;
         border-radius: 50%;
@@ -317,54 +371,30 @@
       }
 
       &.-in-range- {
-        background: $gradientMain;
-        opacity: 0.5;
+        background: $colorBackgroundDataDropdown;
       }
 
-      &.-in-range-.-focus- {
-        position: relative;
-        border-radius: 50%;
-        background: $gradientMain;
-        opacity: 1;
+      &.-range-from-.-disabled- {
+        background: none;
 
         &::before {
-          position: absolute;
-          content: "";
-          height: 39px;
-          width: 40px;
-          background: $gradientMain;
-          opacity: 0.5;
+          background: none;
+        }
+
+        &::after {
+          background: none;
         }
       }
-    }
-  }
 
-  &_width_narrow {
-    .air-datepicker {
-      width: 266px;
-      &-body--cells.-days- {
-        grid-template-columns: repeat(7, 32px);
-        grid-auto-rows: 32px;
-      }
+      &.-in-range-.-disabled- {
+        background: none;
 
-      &-cell {
-        height: 32px;
+        &::before {
+          background: none;
+        }
 
-        &.-day- {
-          &.-range-from-::after {
-            height: 32px;
-            width: 32.2px;
-          }
-
-          &.-range-to-::before {
-            height: 32px;
-            width: 32.2px;
-          }
-
-          &.-in-range-.-focus-::before {
-            height: 32px;
-            width: 32.27px;
-          }
+        &::after {
+          background: none;
         }
       }
     }

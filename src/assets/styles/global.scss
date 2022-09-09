@@ -22,6 +22,7 @@ $colorGradientBorderHover: rgba(139, 164, 249, 0.5);
 $colorSecondary: #6fcf97;
 $colorTextBackground: #ffffff;
 $colorGradientSecondary: #66d2ea;
+$colorBackgroundDataDropdown: #e6e8fe;
 $gradientMain: linear-gradient($colorMain 0%, $colorGradientBorder 100%);
 $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 100%);
 
@@ -35,6 +36,27 @@ $tipTransition: all 0.3s ease 0s;
 $arrowSize: 10px;
 
 $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
+
+@mixin cell-background($width, $height, $left, $right) {
+  left: $left;
+  right: $right;
+  position: absolute;
+  content: "";
+  width: $width;
+  height: $height;
+  background: $colorBackgroundDataDropdown;
+  z-index: -2;
+}
+
+@mixin cell-background-rounded($width, $height) {
+  position: absolute;
+  content: "";
+  width: $width;
+  height: $height;
+  background: $gradientMain;
+  border-radius: 50%;
+  z-index: -1;
+}
 
 @mixin indents() {
   padding-top: 0;
