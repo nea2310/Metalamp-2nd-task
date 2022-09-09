@@ -76,7 +76,7 @@
 
       &_expanded {
         &::after {
-          transform: rotate(-45deg);
+          transform: rotate(135deg);
         }
       }
     }
@@ -146,6 +146,8 @@
 
     &-value {
       @include font-h3;
+      width: 20%;
+      text-align: center;
     }
   }
 
