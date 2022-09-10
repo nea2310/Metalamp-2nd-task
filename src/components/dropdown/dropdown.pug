@@ -20,8 +20,8 @@ mixin dropdown(options = {})
       minus,
       plus,
     } = prepareOptions({
-        type,
-        width,
+      type,
+      width,
       });
 
   div(class = `${elementName} js-${elementName} ${elementName}${inputWidth}`)
@@ -35,7 +35,7 @@ mixin dropdown(options = {})
       ul(class = `${elementName}__list`)
         if Array.isArray(categories) && categories.length
           each value in categories
-            - const {displayName = '', categoryType = '', declensions = '', defaultCount = 0, minCount = 0, maxCount = 10} = value
+            - const {displayName = '', categoryType = '', declensions = '', defaultCount = 0, minCount = 0, maxCount = 10, maxTypeCount = 10} = value
             li(class = `${elementName}__category-wrapper js-${elementName}__category-wrapper`)
               span(class = `${elementName}__category js-${elementName}__category`
                 data-type = categoryType data-declensions = declensions)= displayName
@@ -44,7 +44,7 @@ mixin dropdown(options = {})
                   data-min = minCount type = "button" aria-label = "уменьшить количество")= minus
                 span(class = `${elementName}__count-value js-${elementName}__count-value`)= defaultCount
                 button(class = `${elementName}__count-increment js-${elementName}__count-increment`
-                  data-max = maxCount type = "button" aria-label = "увеличить количество")= plus
+                  data-max = maxCount data-type-max = maxTypeCount type = "button" aria-label = "увеличить количество")= plus
       if (hasButtons)
         div(class = `${elementName}__buttons`)
           div(class = `${elementName}__button-clear js-${elementName}__button-clear`)

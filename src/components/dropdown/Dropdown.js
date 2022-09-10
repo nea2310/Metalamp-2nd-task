@@ -9,9 +9,9 @@ class DropDown {
     this._handleDropDownMouseupInput = this._handleDropDownMouseupInput.bind(this);
     this._handleDropDownFocusInput = this._handleDropDownFocusInput.bind(this);
     this._handleDropDownClickWrapper = this._handleDropDownClickWrapper.bind(this);
-    this._handleDropDownClickDoc = this._handleDropDownClickDoc.bind(this);
+    this._handleDropDownClickDocument = this._handleDropDownClickDocument.bind(this);
     this._handleDropDownFocusinWrapper = this._handleDropDownFocusinWrapper.bind(this);
-    this._handleDropDownFocusinDoc = this._handleDropDownFocusinDoc.bind(this);
+    this._handleDropDownFocusinDocument = this._handleDropDownFocusinDocument.bind(this);
     this._handleDropDownClickApply = this._handleDropDownClickApply.bind(this);
     this._handleDropDownClickClear = this._handleDropDownClickClear.bind(this);
     this._handleDropDownResizeLoadWindow = this._handleDropDownResizeLoadWindow.bind(this);
@@ -34,49 +34,39 @@ class DropDown {
     this.buttonClear = this._getElement('button-clear');
     this.buttonApply = this._getElement('button-apply');
     this.buttonsMinus = this._getElements(['count-decrement']);
+    this.buttonsPlus = this._getElements(['count-increment']);
     this.clearApplyButtons = this.buttonClear != null && this.buttonApply != null;
     this._getInitialCounterList(this.listElements);
   }
 
   _getInitialCounterList(counterList) {
-    this.counters = [];
-    counterList.forEach((item) => {
+    this.categories = [];
+
+    counterList.forEach((item, i) => {
       const dropDownObject = {};
       const categoryName = this._getElement('category', item);
       const categoryCount = this._getElement('count-value', item);
       const categoryIncrement = this._getElement('count-increment', item);
       const categoryDecrement = this._getElement('count-decrement', item);
 
-      dropDownObject.text = categoryName.innerText.toLowerCase();
+      dropDownObject.name = categoryName.innerText.toLowerCase();
       dropDownObject.type = categoryName.getAttribute('data-type');
       dropDownObject.declensions = categoryName.getAttribute('data-declensions');
-      dropDownObject.count = categoryCount.innerText;
-      dropDownObject.maxCount = categoryIncrement.getAttribute('data-max');
-      dropDownObject.minCount = categoryDecrement.getAttribute('data-min');
-      dropDownObject.isMax = dropDownObject.count === dropDownObject.maxCount;
-      dropDownObject.isMin = dropDownObject.count === dropDownObject.minCount;
+      dropDownObject.defaultCount = Number(categoryCount.innerText);
+      dropDownObject.currentCount = dropDownObject.defaultCount;
+      dropDownObject.maxCount = Number(categoryIncrement.getAttribute('data-max'));
+      dropDownObject.minCount = Number(categoryDecrement.getAttribute('data-min'));
+      dropDownObject.maxTypeCount = Number(categoryIncrement.getAttribute('data-type-max'));
+      dropDownObject.currentTypeCount = 0;
+      dropDownObject.index = i;
 
-      this.counters.push(dropDownObject);
+      this.categories.push(dropDownObject);
     });
 
-    this._initializeButtons(this.counters);
+    this._updateButtons(this.categories);
     if (this.clearApplyButtons) {
       this._hideButtonClear(this.buttonsMinus);
     }
-  }
-
-  _initializeButtons(counterList) {
-    counterList.forEach((item, i) => {
-      const element = this.listElements[i];
-      if (item.isMin) {
-        const minus = this._getElement('count-decrement', element);
-        minus.disabled = true;
-      }
-      if (item.isMax) {
-        const plus = this._getElement('count-increment', element);
-        plus.disabled = true;
-      }
-    });
   }
 
   _bindEventListeners() {
@@ -92,32 +82,64 @@ class DropDown {
     }
     this.wrapper.addEventListener('click', this._handleDropDownClickWrapper);
     this.wrapper.addEventListener('focusin', this._handleDropDownFocusinWrapper);
-    document.addEventListener('click', this._handleDropDownClickDoc);
-    document.addEventListener('focusin', this._handleDropDownFocusinDoc);
+    document.addEventListener('click', this._handleDropDownClickDocument);
+    document.addEventListener('focusin', this._handleDropDownFocusinDocument);
     window.addEventListener('resize', this._handleDropDownResizeLoadWindow);
     window.addEventListener('load', this._handleDropDownResizeLoadWindow);
   }
 
-  _handleDropDownClickCounter(e) {
-    const element = e.currentTarget;
-    const text = e.target.parentElement.parentElement
-      .firstElementChild.innerText.toLowerCase();
-    let editedCounter;
-    if (element.classList.contains(`${this.elementName}__count-decrement`)) {
-      element.parentElement.lastElementChild.disabled = false;
-      const currentCounter = parseInt(e.target.nextElementSibling.innerText, 10);
-      editedCounter = String(currentCounter - 1);
-      e.target.nextElementSibling.innerText = editedCounter;
-    } else {
-      element.parentElement.firstElementChild.disabled = false;
-      if (this.clearApplyButtons) {
-        this.buttonClear.classList.remove(`${this.elementName}__button_hidden`);
-      }
-      const currentCounter = parseInt(e.target.previousElementSibling.innerText, 10);
-      editedCounter = String(currentCounter + 1);
-      e.target.previousElementSibling.innerText = editedCounter;
+  _handleDropDownClickCounter(event) {
+    const button = event.currentTarget;
+    const wrapper = event.target.closest(`.${this.elementName}__category-wrapper`);
+    const name = wrapper.querySelector(`.${this.elementName}__category`).innerText;
+    const {
+      type, currentCount, minCount, maxCount, maxTypeCount,
+    } = this.categories.find(
+      (category) => category.name === name.toLowerCase(),
+    );
+
+    const categoriesOfType = this.categories.filter((category) => category.type === type);
+
+    const currentTypeCount = categoriesOfType
+      .reduce((sum, category) => category.currentCount + sum, 0);
+
+    const updateCategory = (newCounter, newCounterType) => {
+      this.categories.forEach((category) => {
+        const item = category;
+        if (category.name === name.toLowerCase()) { item.currentCount = newCounter; }
+        if (category.type === type) { item.currentTypeCount = newCounterType; }
+      });
+      wrapper.querySelector(`.${this.elementName}__count-value`).innerText = newCounter;
+    };
+
+    if (button.classList.contains(`${this.elementName}__count-increment`)) {
+      const buttonMinus = wrapper.querySelector(`.js-${this.elementName}__count-decrement`);
+      buttonMinus.disabled = false;
+
+      const countNew = currentCount + 1;
+      const currentTypeCountNew = currentTypeCount + 1;
+      if (currentTypeCountNew <= maxTypeCount && countNew <= maxCount) {
+        updateCategory(countNew, currentTypeCountNew);
+      } else return false;
+      this._updateCategoriesList(this.categories);
+      return this._updateButtons(this.categories, true);
     }
-    this._updateCounterList(text, editedCounter);
+
+    categoriesOfType.forEach((category) => {
+      if (category.currentTypeCount <= category.maxTypeCount) {
+        const categoryWrapper = this.listElements[category.index];
+        const buttonPlus = categoryWrapper.querySelector(`.js-${this.elementName}__count-increment`);
+        buttonPlus.disabled = false;
+      }
+    });
+
+    const countNew = currentCount - 1;
+    const currentTypeCountNew = currentTypeCount - 1;
+    if (countNew >= minCount) {
+      updateCategory(countNew, currentTypeCountNew);
+    } else return false;
+    this._updateCategoriesList(this.categories);
+    return this._updateButtons(this.categories);
   }
 
   _handleDropDownMousedownInput() {
@@ -140,9 +162,11 @@ class DropDown {
     this.clickOnList = true;
   }
 
-  _handleDropDownClickDoc(e) {
-    const condition = (e.target !== this.input && e.target !== this.inputWrapper
-      && Array.of(this.counts).some((element) => element === e.target));
+  _handleDropDownClickDocument(event) {
+    const condition = (event.target !== this.input && event.target !== this.inputWrapper
+      && !event.target.classList.contains(`js-${this.elementName}__count-decrement`)
+      && !event.target.classList.contains(`js-${this.elementName}__count-increment`)
+      && !event.target.closest(`.js-${this.elementName}__button-clear`));
     if (condition) {
       this._toggle(false);
     } else {
@@ -154,7 +178,7 @@ class DropDown {
     this.focusOnList = true;
   }
 
-  _handleDropDownFocusinDoc() {
+  _handleDropDownFocusinDocument() {
     if (this.focusOnList === false) {
       this._toggle(false);
     } else {
@@ -167,75 +191,28 @@ class DropDown {
   }
 
   _handleDropDownClickClear() {
-    this.countValues.forEach((item, i) => {
-      this.countValues[i].innerText = this.counters[i].minCount;
-      this._updateCounterList(
-        this.counters[i].text,
-        item.innerText,
-      );
+    this.countValues.forEach((countValue, i) => {
+      const item = countValue;
+      item.innerText = this.categories[i].minCount;
+      this.categories[i].currentCount = 0;
+      this.categories[i].currentTypeCount = 0;
+    });
+    this.buttonsMinus.forEach((buttonMinus) => {
+      const button = buttonMinus;
+      button.disabled = true;
+    });
+    this.buttonsPlus.forEach((buttonPlus) => {
+      const button = buttonPlus;
+      button.disabled = false;
     });
     this.input.value = '';
-  }
-
-  _handleDropDownResizeLoadWindow() {
-    this._toggle(false);
-  }
-
-  _updateCounterList(text, editedCounter) {
-    this.counters = this.counters.map((counter) => {
-      if (counter.text === text) {
-        const object = {
-          text: counter.text,
-          type: counter.type,
-          declensions: counter.declensions,
-          count: editedCounter,
-          minCount: counter.minCount,
-          maxCount: counter.maxCount,
-        };
-        switch (editedCounter) {
-          case counter.minCount:
-            object.isMin = true;
-            break;
-          case counter.maxCount:
-            object.isMax = true;
-            break;
-          default:
-            object.isMin = false;
-            object.isMax = false;
-        }
-        return object;
-      } return counter;
-    });
-    this._updateButtons(this.counters);
-    this._updateCategoriesList(this.counters);
-  }
-
-  _updateButtons(counters) {
-    counters.forEach((item, i) => {
-      const { count } = item;
-      const countToChange = this.listElements[i].querySelector(`.${this.elementName}__count-value`);
-      countToChange.innerText = count;
-      if (item.isMin) {
-        countToChange.previousElementSibling.disabled = true;
-      }
-      if (item.isMax) {
-        countToChange.nextElementSibling.disabled = true;
-      }
-    });
-
     if (this.clearApplyButtons) {
       this._hideButtonClear(this.buttonsMinus);
     }
   }
 
-  _hideButtonClear(buttonsMinus) {
-    const arr = [];
-    buttonsMinus.forEach((button) => arr.push(button.disabled));
-    let isCleared = arr.find((item) => item === false);
-    if (isCleared === undefined) {
-      isCleared = true;
-      this.buttonClear.classList.add(`${this.elementName}__button_hidden`);
-    }
+  _handleDropDownResizeLoadWindow() {
+    this._toggle(false);
   }
 
   _updateCategoriesList(changedCounters) {
@@ -244,12 +221,13 @@ class DropDown {
     changedCounters.forEach((counter, i, array) => {
       const check = i === 0 || (i > 0 && counter.type !== array[i - 1].type);
       if (check) {
-        const { type, declensions, count } = counter;
-        this.countersToDisplay.push({ type, count, declensions: declensions.split(',') });
+        const { type, declensions, currentCount } = counter;
+        this.countersToDisplay.push({ type, currentCount, declensions: declensions.split(',') });
       }
       if (i > 0 && counter.type === array[i - 1].type) {
         const element = this.countersToDisplay.find((item) => item.type === counter.type);
-        element.count = String(parseInt(element.count, 10) + parseInt(counter.count, 10));
+        element.currentCount = parseInt(element.currentCount, 10)
+          + parseInt(counter.currentCount, 10);
       }
     });
 
@@ -268,16 +246,46 @@ class DropDown {
     }
     let value = '';
     countersToDisplay.forEach((counter) => {
-      if (parseInt(counter.count, 10) !== 0) {
-        value += `${counter.count} ${
-          getWordForm(
-            parseInt(counter.count, 10),
-            counter.declensions,
-          )
-        }, `;
+      if (parseInt(counter.currentCount, 10) !== 0) {
+        value += `${counter.currentCount} ${getWordForm(
+          parseInt(counter.currentCount, 10),
+          counter.declensions,
+        )}, `;
       }
     });
     this.input.value = value.substring(0, value.length - 2);
+  }
+
+  _updateButtons(categories, isIncrease = false) {
+    categories.forEach((category, i) => {
+      const isMax = category.currentCount >= category.maxCount
+        || category.currentTypeCount >= category.maxTypeCount;
+      const isMin = category.currentCount <= category.minCount;
+      const categoryWrapper = this.listElements[i];
+      if (isIncrease && isMax) {
+        const buttonPlus = categoryWrapper.querySelector(`.js-${this.elementName}__count-increment`);
+        buttonPlus.disabled = true;
+      }
+      if (!isIncrease && isMin) {
+        const buttonMinus = categoryWrapper.querySelector(`.js-${this.elementName}__count-decrement`);
+        buttonMinus.disabled = true;
+      }
+    });
+
+    if (this.clearApplyButtons) {
+      this._hideButtonClear(this.buttonsMinus);
+    }
+  }
+
+  _hideButtonClear(buttonsMinus) {
+    const arr = [];
+    buttonsMinus.forEach((button) => arr.push(button.disabled));
+    const isCleared = arr.find((item) => item === false);
+    if (isCleared === undefined) {
+      this.buttonClear.classList.add(`${this.elementName}__button_hidden`);
+    } else {
+      this.buttonClear.classList.remove(`${this.elementName}__button_hidden`);
+    }
   }
 
   _toggle(isExpanded) {
