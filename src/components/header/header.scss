@@ -96,6 +96,7 @@
           display: flex;
           padding-top: 7px;
           padding-right: 17px;
+          outline-offset: 5px;
 
           &::after {
             @include tip-style;
@@ -107,6 +108,7 @@
           @include font-body;
           color: $colorText;
           text-decoration: none;
+          outline-offset: 5px;
         }
       }
     }
@@ -128,6 +130,7 @@
           color: $colorText;
           text-decoration: none;
           line-height: 10px;
+          outline-offset: 5px;
         }
 
         &_expanded {
