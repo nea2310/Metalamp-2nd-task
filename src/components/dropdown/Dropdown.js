@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import './dropdown.scss';
 
 class DropDown {
@@ -163,11 +164,8 @@ class DropDown {
   }
 
   _handleDropDownClickDocument(event) {
-    const condition = (event.target !== this.input && event.target !== this.inputWrapper
-      && !event.target.classList.contains(`js-${this.elementName}__count-decrement`)
-      && !event.target.classList.contains(`js-${this.elementName}__count-increment`)
-      && !event.target.closest(`.js-${this.elementName}__button-clear`));
-    if (condition) {
+    if (event.target !== this.input
+      && !event.target.closest(`.js-${this.elementName}__list-wrapper`)) {
       this._toggle(false);
     } else {
       this.clickOnList = false;
