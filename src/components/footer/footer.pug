@@ -27,7 +27,7 @@ mixin footer({ menu = [] } = {})
                     a(class = `${elementName}__item-link` href = "https://test/test")= subValue
       div(class = `${elementName}__items`) подписка
         span(class = `${elementName}__long-text`) Получайте специальные предложения и новости сервиса
-        div(class = `${elementName}__subscription`)
+        form(class = `${elementName}__subscription`)
           +input-field({
             width: 'medium-narrow',
             placeholder: 'Email',
