@@ -35,6 +35,7 @@ class SearchRoom {
   }
 
   _handleSearchRoomSubmit(event) {
+    event.preventDefault();
     this.dates.forEach((date) => {
       if (/^\d{4}-\d{2}-\d{2}$/.test(date.value)) {
         date.classList.remove(this.errorModifier);
@@ -53,9 +54,19 @@ class SearchRoom {
     );
 
     if (isError) {
-      event.preventDefault();
       this._showErrorMessageWrapper();
       this.errorMessage.toggleErrorMessage(true, 'Заполните все поля!');
+    } else {
+      window.location = 'search-room-page.html';
+      /*
+      1) если отправлять форму без setTimeout, т.е. просто написать this.wrapper.submit(),
+      то текущая страница перезагрузится, редиректа на search-room-page не будет.
+      Но другого способа сделать редирект при сабмите формы найти не могу
+
+      2) адрес страницы, на которую нужно перейти после успешной обработки формы,
+      не приходит с бэкенда?
+      */
+      setTimeout(() => this.wrapper.submit, 500);
     }
   }
 

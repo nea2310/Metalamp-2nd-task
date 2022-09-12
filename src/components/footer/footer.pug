@@ -4,7 +4,11 @@ include ../logo/logo.pug
 mixin footer({ menu = [] } = {})
   -
     const elementName = 'footer'
-    const social = ['twitter', 'facebook', 'instagram']
+    const social = [
+      {name: 'twitter', link: 'https://twitter.com'}, 
+      {name: 'facebook', link: 'https://www.facebook.com'}, 
+      {name: 'instagram', link: 'https://www.instagram.com'},
+      ]
 
   footer(class = elementName role = "contentinfo")
     div(class = `${elementName}__wrapper-top`)
@@ -37,5 +41,5 @@ mixin footer({ menu = [] } = {})
       div(class = `${elementName}__copyright`) Copyright © 2018 Toxin отель. Все права защищены.
       div(class = `${elementName}__social-links`)
         each value in social
-          a(class = `${elementName}__social-link ${elementName}__social-link_${value}` href = "https://test/test")
-            img(class = `${elementName}__social-link-image ${elementName}__social-link-image_${value}` src = require(`@com/footer/image/${value}.svg`) alt = `${value} link`)
+          a(class = `${elementName}__social-link ${elementName}__social-link_${value}` href = value.link target = "_blank" rel = "noopener noreferrer")
+            img(class = `${elementName}__social-link-image ${elementName}__social-link-image_${value}` src = require(`@com/footer/image/${value.name}.svg`) alt = `${value.name} link`)
