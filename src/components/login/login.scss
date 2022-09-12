@@ -8,17 +8,15 @@
   width: 100%;
   position: relative;
 
-  &__message{
-    @include font-body;
-    color: $colorBorderError;
-    font-weight: bold;
+  &__error-message {
     position: absolute;
-    top: 10px;
-    right: 10px;
     display: none;
-  
-    &_active{
-      display: inline;
+    top: 30px;
+    right: 30px;
+    left: 30px;
+
+    &_active {
+      display: block;
     }
   }
 
@@ -58,7 +56,7 @@
     }
   }
 
-  &__create{
+  &__create {
     flex-shrink: 1;
   }
 

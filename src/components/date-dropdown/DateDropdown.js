@@ -1,5 +1,6 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
+import ErrorMessage from '../error-message/ErrorMessage';
 
 class DateDropDown {
   constructor(elementName, element) {
@@ -120,7 +121,8 @@ class DateDropDown {
     const prepareDate = (date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
     this.inputWrappers = this._getElements(['input-wrapper']);
-    this.message = this._getElement('message');
+    this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
+    this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
     [this.inputWrapperFrom, this.inputWrapperTo] = this.inputWrappers;
     this.isFilter = this.inputWrappers.length === 1;
 
@@ -194,17 +196,9 @@ class DateDropDown {
 
     const regexpDate = /^\d{2}\.\d{2}\.\d{4}$/;
 
-    this.dateCurrentTxt = `${this.dateCurrent.getDate()}.
-                           ${this.dateCurrent.getMonth() + 1}.
-                           ${this.dateCurrent.getFullYear()}`;
-
-    this.dateTomorrowTxt = `${this.dateTomorrow.getDate()}.
-                            ${this.dateTomorrow.getMonth() + 1}.
-                            ${this.dateTomorrow.getFullYear()}`;
-
-    this.datePlusYearTxt = `${this.datePlusYear.getDate()}.
-                            ${this.datePlusYear.getMonth() + 1}.
-                            ${this.datePlusYear.getFullYear()}`;
+    this.dateCurrentTxt = `${this.dateCurrent.getDate()}.${this.dateCurrent.getMonth() + 1}.${this.dateCurrent.getFullYear()}`;
+    this.dateTomorrowTxt = `${this.dateTomorrow.getDate()}.${this.dateTomorrow.getMonth() + 1}.${this.dateTomorrow.getFullYear()}`;
+    this.datePlusYearTxt = `${this.datePlusYear.getDate()}.${this.datePlusYear.getMonth() + 1}.${this.datePlusYear.getFullYear()}`;
 
     const formatDate = (dateValue) => {
       let date = dateValue;
@@ -449,9 +443,13 @@ class DateDropDown {
       || dateSelected > this.datePlusYear
       || DateDropDown.isFormatIncorrect(dateSelected);
     if (needCorrectFormat) {
-      this._toggleMessage(true, `Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
+      this._showErrorMessageWrapper();
+      this.errorMessage.toggleErrorMessage(true, `Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
       e.target.value = this.dateCurrentTxt;
-    } else this._toggleMessage();
+    } else {
+      this._hideErrorMessageWrapper();
+      this.errorMessage.toggleErrorMessage();
+    }
   }
 
   _checkRangeDouble(e) {
@@ -466,9 +464,13 @@ class DateDropDown {
       || datePlusYearSelected > this.datePlusYear
       || DateDropDown.isFormatIncorrect(datePlusYearSelected);
     if (needCorrectFormat) {
-      this._toggleMessage(true, `Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
+      this._showErrorMessageWrapper();
+      this.errorMessage.toggleErrorMessage(true, `Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
       e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;
-    } else this._toggleMessage();
+    } else {
+      this._hideErrorMessageWrapper();
+      this.errorMessage.toggleErrorMessage();
+    }
   }
 
   _getElement(selector, wrapper = this.wrapper) {
@@ -484,13 +486,12 @@ class DateDropDown {
     return this.wrapper.querySelectorAll(string);
   }
 
-  _toggleMessage(isError = false, message = '') {
-    if (isError) {
-      this.message.classList.add(`${this.elementName}__message_active`);
-      this.message.innerText = message;
-      return;
-    }
-    this.message.classList.remove(`${this.elementName}__message_active`);
+  _showErrorMessageWrapper() {
+    this.errorMessageWrapper.classList.add(`${this.elementName}__error-message_active`);
+  }
+
+  _hideErrorMessageWrapper() {
+    this.errorMessageWrapper.classList.remove(`${this.elementName}__error-message_active`);
   }
 }
 

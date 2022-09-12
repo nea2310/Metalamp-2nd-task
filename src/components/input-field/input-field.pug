@@ -1,3 +1,5 @@
+include ../error-message/error-message.pug
+
 mixin input-field(options ={})
   -
     const { 
@@ -23,7 +25,8 @@ mixin input-field(options ={})
     });
 
   div(class = `${elementName} js-${elementName} ${elementName}_width_${widthChecked} js-${elementName}_validation_${validationChecked}`)
-    span(class = `${elementName}__message js-${elementName}__message`)
+    div(class = `${elementName}__error-message js-${elementName}__error-message`)
+      +error-message()
     label(class = `${elementName}__label`)
       if labelText
         h3(class = `${elementName}__label-text`)= labelText

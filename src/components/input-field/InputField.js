@@ -1,3 +1,5 @@
+import ErrorMessage from '../error-message/ErrorMessage';
+
 class InputField {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
@@ -66,7 +68,10 @@ class InputField {
 
   _init() {
     this.input = this._getElement('input');
-    this.message = this._getElement('message');
+    this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
+
+    this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
+
     if (this.date) {
       this.dateCurrent = new Date();
       this.dateMinusHundred = new Date(+this.dateCurrent
@@ -76,13 +81,9 @@ class InputField {
       this.regexpDate = /^\d{2}\.\d{2}\.\d{4}$/;
       this.regexInput = /[^0-9.]/g;
 
-      this.dateMinusHundredTxt = `${this.dateMinusHundred.getDate()}.
-                                  ${this.dateMinusHundred.getMonth() + 1}.
-                                  ${this.dateMinusHundred.getFullYear()}`;
+      this.dateMinusHundredTxt = `${this.dateMinusHundred.getDate()}.${this.dateMinusHundred.getMonth() + 1}.${this.dateMinusHundred.getFullYear()}`;
 
-      this.dateMinusEighteenTxt = `${this.dateMinusEighteen.getDate()}.
-                                   ${this.dateMinusEighteen.getMonth() + 1}.
-                                   ${this.dateMinusEighteen.getFullYear()}`;
+      this.dateMinusEighteenTxt = `${this.dateMinusEighteen.getDate()}.${this.dateMinusEighteen.getMonth() + 1}.${this.dateMinusEighteen.getFullYear()}`;
 
       const formatDate = (dateValue) => {
         let date = dateValue;
@@ -151,9 +152,13 @@ class InputField {
         || dateSelected > this.dateMinusEighteen
         || Number.isNaN(+dateSelected);
       if (needCorrectFormat) {
-        this._toggleMessage(true, `Введите дату от ${this.dateMinusHundredTxt} до ${this.dateMinusEighteenTxt}`);
+        this._showErrorMessageWrapper();
+        this.errorMessage.toggleErrorMessage(true, `Введите дату от ${this.dateMinusHundredTxt} до ${this.dateMinusEighteenTxt}`);
         e.target.value = '';
-      } else this._toggleMessage();
+      } else {
+        this._hideErrorMessageWrapper();
+        this.errorMessage.toggleErrorMessagee();
+      }
     }
   }
 
@@ -168,21 +173,24 @@ class InputField {
   _testEmail(value) {
     const test = /.+@.+\..+/i.test(value);
     if (value && !test) {
-      this._toggleMessage(true, `Введенный e-mail ${value} имеет некорректный формат`);
-    } else this._toggleMessage();
+      this._showErrorMessageWrapper();
+      this.errorMessage.toggleErrorMessage(true, `Введенный e-mail ${value} имеет некорректный формат`);
+    } else {
+      this._hideErrorMessageWrapper();
+      this.errorMessage.toggleErrorMessage();
+    }
   }
 
   _getElement(selector, wrapper = this.wrapper) {
     return wrapper.querySelector(`.js-${this.elementName}__${selector}`);
   }
 
-  _toggleMessage(isError = false, message = '') {
-    if (isError) {
-      this.message.classList.add(`${this.elementName}__message_active`);
-      this.message.innerText = message;
-      return;
-    }
-    this.message.classList.remove(`${this.elementName}__message_active`);
+  _showErrorMessageWrapper() {
+    this.errorMessageWrapper.classList.add(`${this.elementName}__error-message_active`);
+  }
+
+  _hideErrorMessageWrapper() {
+    this.errorMessageWrapper.classList.remove(`${this.elementName}__error-message_active`);
   }
 }
 

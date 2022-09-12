@@ -1,0 +1,49 @@
+.error-message {
+  @include font-body;
+  position: absolute;
+  right: 0;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  background-color: $colorTextBackground;
+  z-index: 2;
+  padding: 30px 20px;
+  text-align: center;
+  display: none;
+
+  &__close-button {
+    @include button-reset-style;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    cursor: pointer;
+    top: 13px;
+    right: 8px;
+
+    &:before,
+    &:after {
+      z-index: 3;
+      border-radius: 1px;
+      content: "";
+      background-color: $colorMain;
+      position: absolute;
+      width: 2px;
+      height: 15px;
+      top: 0;
+      right: 7px;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+
+  &_active {
+    display: block;
+  }
+}

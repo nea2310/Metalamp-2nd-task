@@ -10,24 +10,32 @@
   position: relative;
 
   @include media-breakpoint-down($xs) {
-    padding: 20px;
+    padding: 30px 20px;
   }
 
   @include media-breakpoint-down($xxs) {
-    padding: 10px;
+    padding: 30px 10px;
   }
 
-  &__message {
-    @include font-body;
-    color: $colorBorderError;
-    font-weight: bold;
+  &__error-message {
     position: absolute;
-    top: 10px;
-    right: 10px;
     display: none;
+    top: 30px;
+    right: 30px;
+    left: 30px;
+
+    @include media-breakpoint-down($xs) {
+      right: 20px;
+      left: 20px;
+    }
+
+    @include media-breakpoint-down($xxs) {
+      right: 10px;
+      left: 10px;
+    }
 
     &_active {
-      display: inline;
+      display: block;
     }
   }
 
@@ -46,7 +54,6 @@
 
   &__search {
     margin-top: 31px;
-    // padding-right: 2px;
   }
 
   &_error {

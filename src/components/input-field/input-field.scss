@@ -4,19 +4,14 @@
   flex-direction: column;
   position: relative;
 
-  &__message {
-    @include font-body;
-    font-weight: bold;
-    color: $colorBorderError;
+  &__error-message {
     position: absolute;
-    right: 0;
-    top: -20px;
-    z-index: 1;
     display: none;
-    text-align: end;
+    right: 30px;
+    left: 30px;
 
     &_active {
-      display: inline;
+      display: block;
     }
   }
 

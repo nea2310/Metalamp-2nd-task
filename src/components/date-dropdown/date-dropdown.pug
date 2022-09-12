@@ -51,4 +51,5 @@ mixin date-dropdown(options = {})
             text: 'применить', 
             type: 'plain-text',
           })
-    span(class = `${elementName}__message js-${elementName}__message`)
+    div(class = `${elementName}__error-message js-${elementName}__error-message`)
+      +error-message()
