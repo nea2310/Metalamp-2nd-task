@@ -318,22 +318,22 @@ class DateDropDown {
     if (this.calendarWrapper.classList
       .contains(`${this.elementName}__calendar-wrapper_hidden`)) {
       this._toggle(true);
-      this._toggleMessage();
+      this._hideErrorMessageWrapper();
     }
   }
 
   _handleDateDropDownClickDateFromTo() {
     if (this.calendarWrapper.classList.contains(`${this.elementName}__calendar-wrapper_hidden`)) {
       this._toggle(true);
-      this._toggleMessage();
+      this._hideErrorMessageWrapper();
     }
   }
 
   _handleDateDropDownClickApply() {
     if (this.myDatepicker.selectedDates.length === 1) {
-      this._toggleMessage(true, 'Введите дату выезда');
+      this._showErrorMessageWrapper('Введите дату выезда');
     } else {
-      this._toggleMessage();
+      this._hideErrorMessageWrapper();
       this.calendarWrapper.classList
         .add(`${this.elementName}__calendar-wrapper_hidden`);
       this._toggle(false);
@@ -443,12 +443,10 @@ class DateDropDown {
       || dateSelected > this.datePlusYear
       || DateDropDown.isFormatIncorrect(dateSelected);
     if (needCorrectFormat) {
-      this._showErrorMessageWrapper();
-      this.errorMessage.toggleErrorMessage(true, `Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
+      this._showErrorMessageWrapper(`Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
       e.target.value = this.dateCurrentTxt;
     } else {
       this._hideErrorMessageWrapper();
-      this.errorMessage.toggleErrorMessage();
     }
   }
 
@@ -464,12 +462,10 @@ class DateDropDown {
       || datePlusYearSelected > this.datePlusYear
       || DateDropDown.isFormatIncorrect(datePlusYearSelected);
     if (needCorrectFormat) {
-      this._showErrorMessageWrapper();
-      this.errorMessage.toggleErrorMessage(true, `Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
+      this._showErrorMessageWrapper(`Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
       e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;
     } else {
       this._hideErrorMessageWrapper();
-      this.errorMessage.toggleErrorMessage();
     }
   }
 
@@ -486,12 +482,14 @@ class DateDropDown {
     return this.wrapper.querySelectorAll(string);
   }
 
-  _showErrorMessageWrapper() {
+  _showErrorMessageWrapper(message) {
     this.errorMessageWrapper.classList.add(`${this.elementName}__error-message_active`);
+    this.errorMessage.toggleErrorMessage(true, message);
   }
 
   _hideErrorMessageWrapper() {
     this.errorMessageWrapper.classList.remove(`${this.elementName}__error-message_active`);
+    this.errorMessage.toggleErrorMessage();
   }
 }
 

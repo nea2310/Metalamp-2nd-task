@@ -146,7 +146,6 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 
 @mixin page-background($imagePath) {
   background: url($imagePath) no-repeat center;
-  background-size: cover;
 }
 
 @mixin font-h1() {
