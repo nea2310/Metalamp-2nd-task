@@ -1,5 +1,5 @@
 .landing-page {
-  @include page-background("@pag/landing-page/image/living-room.jpg");
+  @include page-background("@pag/landing-page/image/living-room.jpg", -70px);
   width: 100%;
   flex-grow: 1;
 

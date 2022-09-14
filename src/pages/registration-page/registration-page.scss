@@ -1,12 +1,12 @@
 .registration-page {
-  @include page-background('@pag/registration-page/image/bedroom.jpg');
+  @include page-background("@pag/registration-page/image/bedroom.jpg", -70px);
   flex-grow: 1;
-  min-height: 686px;
+  min-height: 683px;
   display: grid;
   align-items: center;
 
-    &__registration-wrapper{
-      display: flex;
-      justify-content: center;
-    }
+  &__registration-wrapper {
+    display: flex;
+    justify-content: center;
+  }
 }

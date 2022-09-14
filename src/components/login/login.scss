@@ -3,7 +3,7 @@
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  padding: 30px;
+  padding: 30px 30px 30px 28px;
   max-width: 380px;
   width: 100%;
   position: relative;
@@ -26,26 +26,26 @@
 
   &__header {
     @include font-h1;
-    margin: 10px 0 0;
+    margin: 11px 0 0;
   }
 
   &__credentials {
     @include fieldset-reset-style;
-    margin-top: 17px;
+    margin-top: 16px;
   }
 
   &__password {
-    margin-top: 5px;
+    margin-top: 6px;
   }
 
   &__login-button {
-    margin-top: 20px;
+    margin-top: 19px;
     display: flex;
     justify-content: center;
   }
 
   &__go-to-registration {
-    margin-top: 30px;
+    margin-top: 29px;
     display: flex;
     justify-content: space-between;
     align-items: center;

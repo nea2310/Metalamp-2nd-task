@@ -172,7 +172,7 @@
   &__input {
     @include font-body;
     cursor: pointer;
-    padding: 8px 0;
+    padding: 7px 0 9px;
     text-indent: 12px;
     border-radius: 5px;
     border: 1px solid $colorBorder;
@@ -197,8 +197,8 @@
 
       &::after {
         @include tip-style;
-        right: 19px;
-        bottom: 18px;
+        right: 18px;
+        bottom: 20px;
       }
 
       &_expanded {
@@ -246,8 +246,15 @@
       display: none;
     }
 
+    &::-webkit-datetime-edit-day-field,
+    &::-webkit-datetime-edit-month-field,
+    &::-webkit-datetime-edit-year-field,
+    &::-webkit-datetime-edit-text {
+      padding: 0;
+    }
+
     &[type="date"] {
-      text-indent: 6px;
+      text-indent: 7px;
     }
   }
 

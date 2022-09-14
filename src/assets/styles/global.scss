@@ -144,8 +144,9 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
   top: 1px;
 }
 
-@mixin page-background($imagePath) {
+@mixin page-background($imagePath, $imageShift) {
   background: url($imagePath) no-repeat center;
+  background-position: 0 $imageShift;
 }
 
 @mixin font-h1() {

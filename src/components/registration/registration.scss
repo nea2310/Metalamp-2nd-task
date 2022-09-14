@@ -5,7 +5,7 @@
   border-radius: 4px;
   max-width: 380px;
   width: 100%;
-  padding: 30px;
+  padding: 30px 28px 30px 29px;
   position: relative;
 
   &__error-message {
@@ -23,12 +23,12 @@
   &__header {
     @include font-h1;
     margin: 0;
-    margin-top: 10px;
+    margin-top: 12px;
   }
 
   &__name-surname {
     @include fieldset-reset-style;
-    margin-top: 16px;
+    margin-top: 15px;
   }
 
   &__surname {
@@ -36,11 +36,11 @@
   }
 
   &__radiobuttons {
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
   &__birth-date {
-    margin-top: 22px;
+    margin-top: 25px;
   }
 
   &__credentials {
@@ -57,11 +57,11 @@
   }
 
   &__special-offer {
-    margin-top: 11px;
+    margin-top: 9px;
   }
 
   &__search {
-    margin-top: 23px;
+    margin-top: 24px;
   }
 
   &__go-to-login {

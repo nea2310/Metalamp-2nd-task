@@ -1,12 +1,12 @@
 .sign-in-page {
-  @include page-background('@pag/sign-in-page/image/bedroom.jpg');
+  @include page-background("@pag/sign-in-page/image/bedroom.jpg", -70px);
   flex-grow: 1;
-  min-height: 700px;
+  min-height: 701px;
   display: grid;
   align-items: center;
 
-    &__login-wrapper{
-      display: flex;
-      justify-content: center;
-    }
+  &__login-wrapper {
+    display: flex;
+    justify-content: center;
+  }
 }
