@@ -41,7 +41,6 @@
         "maxCount": 3
       }
     ],
-    "type": "dropDownRooms",
     "placeholder": "Сколько комнат",
     "labelText": "удобства номера",
     "width": "narrow"

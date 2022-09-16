@@ -35,27 +35,21 @@
     @include media-breakpoint-down($md) {
       min-height: 250px;
       grid-template-rows: repeat(5, auto);
-      grid-template-columns: auto auto;
+      grid-template-columns: repeat(2, 266px);
       grid-template-areas:
         "calendar guests"
-        "price-filter house-rules"
-        "price-filter accessability"
         "price-filter facilities"
-        "facilities-adv facilities-adv";
+        "price-filter facilities"
+        "price-filter house-rules"
+        "accessability facilities-adv";
+      justify-content: center;
+      column-gap: 30px;
     }
 
     @include media-breakpoint-down($xs) {
       display: block;
-      height: auto;
-      max-width: 320px;
       box-shadow: none;
-    }
-
-    @include media-breakpoint-down($xxs) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding-left: 26px;
     }
 
     &_hidden {
@@ -67,18 +61,22 @@
     display: none;
 
     @include media-breakpoint-down($xs) {
+      position: absolute;
+      left: 0;
+      top: 80px;
       align-self: flex-start;
       padding: 10px;
       display: flex;
       cursor: pointer;
       width: 20px;
       height: 20px;
+      margin-left: 10px;
       background: url("@com/filter-form/image/filter.svg");
     }
   }
 
   &__calendar-wrapper {
-    margin-bottom: 20px;
+    margin-bottom: 21px;
 
     @include media-breakpoint-down($lg) {
       margin: 0;
@@ -104,7 +102,7 @@
   }
 
   &__price-filter-wrapper {
-    margin-bottom: 23px;
+    margin-bottom: 24px;
 
     @include media-breakpoint-down($lg) {
       margin: 0;
@@ -117,7 +115,7 @@
   }
 
   &__house-rules-wrapper {
-    margin-bottom: 35px;
+    margin-bottom: 21px;
 
     @include media-breakpoint-down($lg) {
       grid-area: house-rules;
@@ -131,7 +129,7 @@
   }
 
   &__accessability-wrapper {
-    margin-bottom: 29px;
+    margin-bottom: 20px;
 
     @include media-breakpoint-down($lg) {
       grid-area: accessability;

@@ -1,13 +1,9 @@
-.dropdown__input_rounded.dropdown__input_expanded {
+.dropdown__input.dropdown__input_expanded {
   border-color: $colorTextLight;
   border-bottom: none;
+  padding-bottom: 9px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-}
-
-.dropdown__input_not-rounded.dropdown__input_expanded {
-  border-color: $colorTextLight;
-  border-bottom: none;
 }
 
 .dropdown {
@@ -43,12 +39,11 @@
     cursor: pointer;
     text-overflow: ellipsis;
     padding: 9px 90px 8px 14px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
     border: 1px solid $colorBorder;
     margin-top: 5px;
     width: 100%;
     display: block;
+    border-radius: 5px;
 
     &::placeholder {
       color: $colorTextNormal;
@@ -63,10 +58,6 @@
       outline: none;
     }
 
-    &_rounded {
-      border-bottom-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-    }
     &-wrapper {
       &::after {
         @include tip-style;

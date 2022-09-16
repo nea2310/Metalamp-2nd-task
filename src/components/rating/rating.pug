@@ -1,0 +1,11 @@
+mixin rating({ rating = 5 } = {})
+  -
+    const elementName = 'rating'
+
+  div(class = elementName)
+    -let n = 0
+    while n < rating
+      span(class = `${elementName}__star ${elementName}__star_filled` data-rate = n++)
+    -let k = 0
+    while k < 5-rating
+      span(class = `${elementName}__star` data-rate = k++)

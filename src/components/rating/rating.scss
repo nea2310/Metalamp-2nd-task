@@ -1,0 +1,22 @@
+.rating {
+  &__star {
+    position: relative;
+    margin-right: 24px;
+
+    &::after {
+      position: absolute;
+      content: "☆";
+      color: $colorMain;
+      font-size: 27px;
+    }
+
+    &_filled {
+      &::after {
+        position: absolute;
+        content: "★";
+        color: $colorMain;
+        font-size: 27px;
+      }
+    }
+  }
+}

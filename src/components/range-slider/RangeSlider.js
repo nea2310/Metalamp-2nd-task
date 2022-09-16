@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-console */
 import 'ion-rangeslider/js/ion.rangeSlider.min';
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 
@@ -21,8 +23,12 @@ class RangeSlider {
       const { from, to } = data;
       priceFrom.value = `${from.toLocaleString()}₽`;
       priceTo.value = `${to.toLocaleString()}₽`;
-      priceFrom.style.width = `${(priceFrom.value.length) * 7.7}px`;
-      priceTo.style.width = `${(priceTo.value.length) * 7.7}px`;
+      const priceFromWidth = this._getInputWidth(priceFrom.value);
+      const priceToWidth = this._getInputWidth(priceTo.value);
+
+      priceFrom.style.width = `${priceFromWidth}px`;
+      priceTo.style.width = `${priceToWidth}px`;
+      console.log(priceFrom.value);
     };
 
     $(this.slider).ionRangeSlider({
@@ -41,10 +47,10 @@ class RangeSlider {
         [valueType]: value,
       });
       const input = inputType;
-      input.style.width = `${(inputType.value.length) * 7.7}px`;
+      input.style.width = `${(inputType.value.length)}px`;
       if (e.type === 'change') {
         input.value = `${parseInt(value, 10).toLocaleString()}₽`;
-        input.style.width = `${(inputType.value.length) * 7.7}px`;
+        input.style.width = `${(inputType.value.length)}px`;
       }
     };
 
@@ -73,6 +79,18 @@ class RangeSlider {
     string = string.substring(0, string.length - 1);
     return this.wrapper
       .querySelectorAll(string);
+  }
+
+  _getInputWidth(text) {
+    const element = document.createElement('span');
+    element.style.fontSize = '12px';
+    element.style.fontFamily = 'Montserrat';
+    element.innerHTML = text;
+    const html = document.querySelector('html');
+    html.appendChild(element);
+    const result = element.offsetWidth;
+    html.removeChild(element);
+    return result;
   }
 }
 

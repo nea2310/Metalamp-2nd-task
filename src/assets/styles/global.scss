@@ -37,6 +37,14 @@ $arrowSize: 10px;
 
 $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 
+@mixin visually-hidden() {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
 @mixin cell-background($width, $height, $left, $right) {
   left: $left;
   right: $right;

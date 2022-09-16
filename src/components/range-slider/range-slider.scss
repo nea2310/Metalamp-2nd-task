@@ -7,31 +7,34 @@
     @include font-h3;
     white-space: nowrap;
     margin: 0;
-    width: 50%;
 
     &-wrapper {
       display: flex;
       justify-content: space-between;
       margin-bottom: -3px;
+      max-width: 320px;
     }
   }
 
   &__price {
     display: flex;
     justify-content: flex-end;
-    width: 50%;
 
     &-delimiter {
-      width: 5px;
+      width: 12px;
+      padding: 0;
       text-align: center;
     }
 
     &-from {
       text-align: end;
+      padding: 0;
+      width: auto;
     }
 
     &-to {
       text-align: end;
+      padding: 0;
     }
 
     &-from,
@@ -60,10 +63,15 @@
     border-radius: 3px;
   }
 
+  .irs--flat {
+    height: 42px;
+  }
+
   .irs--flat .irs-handle {
-    width: 14px;
-    height: 14px;
-    margin-top: -1px;
+    box-sizing: content-box;
+    width: 12px;
+    height: 12px;
+    margin-top: -2px;
     background: $gradientSecondary;
     border: 2px solid $colorTextBackground;
     border-radius: 50%;

@@ -100,7 +100,6 @@
         "maxCount": 3
       }
     ],
-    "type": "dropDownRooms",
     "placeholder": "Сколько комнат",
     "labelText": "dropdown",
     "width": "narrow"
@@ -132,7 +131,6 @@
         "maxCount": 10
       }
     ],
-    "type": "dropDownGuests",
     "placeholder": "Сколько гостей",
     "hasButtons": true,
     "buttons": true,

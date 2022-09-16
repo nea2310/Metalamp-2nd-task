@@ -13,10 +13,10 @@ mixin checklist(options = {})
       elementName,
       style,
       tabindexValue,
-      nameStyle,
+      categoryStyle,
     } = prepareOptions({
-        isExpandable,
-        isRich,
+      isExpandable,
+      isRich,
       });
 
   div(class = `${elementName} js-${elementName} ${style}`)
@@ -26,11 +26,11 @@ mixin checklist(options = {})
         each category in categories
           - const {value = '', description = '', checkBoxName = ''} = category
           li(class = `${elementName}__category-wrapper`)
-            label(class = `${elementName}__category`)
+            label(class = `${elementName}__category ${categoryStyle}`)
               if value
                 input(class = `${elementName}__category-checkbox` type = "checkbox" name = checkBoxName value = value)
                 span(class = `${elementName}__category-checkmark`)
                 div(class = `${elementName}__category-text`)
-                  span(class = `${elementName}__category-name ${nameStyle}`)= value
+                  span(class = `${elementName}__category-name`)= value
                   if isRich && description
                     span(class = `${elementName}__category-description`)= description

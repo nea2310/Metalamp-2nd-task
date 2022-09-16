@@ -6,7 +6,7 @@
 
   &__slider {
     position: relative;
-    min-height: 152px;
+    min-height: 150px;
   }
 
   &__photos::before {
@@ -97,7 +97,7 @@
     justify-content: space-between;
     position: absolute;
     z-index: 3;
-    bottom: 16px;
+    bottom: 14px;
     right: 15px;
   }
 
@@ -120,9 +120,9 @@
   }
 
   &__details {
-    padding-left: 18px;
-    padding-right: 18px;
-    margin-top: 17px;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-top: 19px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -156,7 +156,7 @@
     &-lux {
       @include font-h3;
       color: $colorMain;
-      padding-left: 4px;
+      padding-left: 8px;
     }
 
     &-price {
@@ -183,20 +183,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 11px;
+    margin-top: 5px;
     margin-bottom: 3px;
     padding-left: 22px;
     padding-right: 20px;
     gap: 5px;
   }
 
-  &__rate {
-    margin-bottom: 18px;
-  }
-
   &__feedback {
     @include font-body;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 14px;
 
     &-amount {
       font-weight: bold;

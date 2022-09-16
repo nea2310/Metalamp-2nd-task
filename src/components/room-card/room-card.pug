@@ -1,4 +1,4 @@
-include ../rate-button/rate-button.pug
+include ../rating/rating.pug
 
 mixin room-card(options = {})
   -
@@ -37,7 +37,7 @@ mixin room-card(options = {})
         span(class = `${elementName}__detail-label` role = "region" aria-label = "в сутки") в сутки
     div(class = `${elementName}__rating`)
       div(class = `${elementName}__rate`)
-        +rate-button({ratingName})
+        +rating({rating: 3})
       div(class = `${elementName}__feedback`)
         span(class = `${elementName}__feedback-amount` role = "region" aria-label = "количество отзывов")= feedbackAmount
         span(class = `${elementName}__feedback-mark` role = "region" aria-label = "отзывы") Отзывов
