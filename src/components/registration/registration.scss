@@ -8,6 +8,10 @@
   padding: 30px 28px 30px 29px;
   position: relative;
 
+  @include media-breakpoint-down($xs) {
+    padding: 30px 10px;
+  }
+
   &__error-message {
     position: absolute;
     display: none;
@@ -73,6 +77,7 @@
     &-legend {
       @include font-body;
       margin: 0;
+      color: $colorTitle;
     }
   }
 

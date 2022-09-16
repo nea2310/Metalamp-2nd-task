@@ -7,8 +7,8 @@ class Header {
     this._handleHeaderClickTip = this._handleHeaderClickTip.bind(this);
     this._handleHeaderClickBurger = this._handleHeaderClickBurger.bind(this);
     this._handleHeaderResizeWindow = this._handleHeaderResizeWindow.bind(this);
-    this._handleHeaderClickDoc = this._handleHeaderClickDoc.bind(this);
-    this._handleHeaderFocusinDoc = this._handleHeaderFocusinDoc.bind(this);
+    this._handleHeaderClickDocument = this._handleHeaderClickDocument.bind(this);
+    this._handleHeaderFocusinDocument = this._handleHeaderFocusinDocument.bind(this);
     this._handleHeaderFocusLinkLevel1 = this._handleHeaderFocusLinkLevel1.bind(this);
     this._handleHeaderKeydownNavLevel2 = this._handleHeaderKeydownNavLevel2.bind(this);
 
@@ -39,8 +39,8 @@ class Header {
       element.addEventListener('keydown', this._handleHeaderKeydownTip);
     });
     this.burger.addEventListener('click', this._handleHeaderClickBurger);
-    document.addEventListener('click', this._handleHeaderClickDoc);
-    document.addEventListener('focusin', this._handleHeaderFocusinDoc);
+    document.addEventListener('click', this._handleHeaderClickDocument);
+    document.addEventListener('focusin', this._handleHeaderFocusinDocument);
     window.addEventListener('resize', this._handleHeaderResizeWindow);
   }
 
@@ -81,14 +81,14 @@ class Header {
     }
   }
 
-  _handleHeaderClickDoc(e) {
+  _handleHeaderClickDocument(e) {
     if (!e.target.closest(`.${this.elementName}__nav-level2`)
       && (!e.target.className.match('tip'))) {
       this._closeLevel2Menu();
     }
   }
 
-  _handleHeaderFocusinDoc(e) {
+  _handleHeaderFocusinDocument(e) {
     if (!e.target.className.match('item-link')) {
       this._closeLevel2Menu();
     }
