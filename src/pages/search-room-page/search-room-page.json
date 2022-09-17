@@ -1,0 +1,78 @@
+{
+  "roomcards": [
+    {
+      "roomNumber": 888,
+      "lux": "люкс",
+      "roomPrice": 9990,
+      "feedbackAmount": 145,
+      "rating": 5
+    },
+    {
+      "roomNumber": 840,
+      "roomPrice": 9900,
+      "feedbackAmount": 65,
+      "rating": 4
+    },
+    {
+      "roomNumber": 980,
+      "lux": "люкс",
+      "roomPrice": 8500,
+      "feedbackAmount": 35,
+      "rating": 3
+    },
+    {
+      "roomNumber": 856,
+      "roomPrice": 7300,
+      "feedbackAmount": 19,
+      "rating": 5
+    },
+    {
+      "roomNumber": 740,
+      "roomPrice": 6000,
+      "feedbackAmount": 44,
+      "rating": 4
+    },
+    {
+      "roomNumber": 982,
+      "roomPrice": 5800,
+      "feedbackAmount": 56,
+      "rating": 3
+    },
+    {
+      "roomNumber": 678,
+      "roomPrice": 5500,
+      "feedbackAmount": 45,
+      "rating": 5
+    },
+    {
+      "roomNumber": 450,
+      "roomPrice": 5300,
+      "feedbackAmount": 39,
+      "rating": 4
+    },
+    {
+      "roomNumber": 350,
+      "roomPrice": 5000,
+      "feedbackAmount": 77,
+      "rating": 3
+    },
+    {
+      "roomNumber": 666,
+      "roomPrice": 5000,
+      "feedbackAmount": 25,
+      "rating": 5
+    },
+    {
+      "roomNumber": 444,
+      "roomPrice": 5000,
+      "feedbackAmount": 15,
+      "rating": 3
+    },
+    {
+      "roomNumber": 352,
+      "roomPrice": 5000,
+      "feedbackAmount": 55,
+      "rating": 3
+    }
+  ]
+}

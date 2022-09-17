@@ -45,6 +45,7 @@
       font-size: 12px;
       text-transform: uppercase;
       line-height: initial;
+      color: $colorText;
     }
   }
 
@@ -52,6 +53,7 @@
     @include font-body;
     margin: 0;
     font-size: 12px;
+    color: $colorText;
   }
 
   .irs-line {

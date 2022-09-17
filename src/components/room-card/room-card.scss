@@ -1,12 +1,23 @@
 .room-card {
-  border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   background-color: $colorTextBackground;
 
   &__slider {
     position: relative;
-    min-height: 150px;
+    min-height: 151px;
+    width: auto;
+    aspect-ratio: 16/9;
+  }
+
+  &__slider:hover &__previous,
+  &__slider:hover &__next {
+    @include slider-background;
+  }
+
+  &__slider:hover &__previous::after,
+  &__slider:hover &__next::after {
+    @include slider-tip;
   }
 
   &__photos::before {
@@ -52,44 +63,19 @@
     position: absolute;
     z-index: 2;
 
-    &:hover,
     &:focus {
-      border-top-left-radius: 4px;
-      background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
-    }
-  }
-
-  &__previous {
-    bottom: 0px;
-
-    &:hover::after,
-    &:focus::after {
-      @include tip-style;
-      border-left: 3px solid $colorTextBackground;
-      border-bottom: 3px solid $colorTextBackground;
-      transform: rotate(45deg);
-      right: 18px;
-      bottom: 73px;
+      @include slider-background;
     }
   }
 
   &__next {
     right: 0px;
+    transform: matrix(-1, 0, 0, 1, 0, 0);
+  }
 
-    &:hover::after,
-    &:focus::after {
-      @include tip-style;
-      border-left: 3px solid $colorTextBackground;
-      border-bottom: 3px solid $colorTextBackground;
-      transform: rotate(45deg);
-      right: 18px;
-      bottom: 73px;
-    }
-
-    &:hover,
-    &:focus {
-      transform: matrix(-1, 0, 0, 1, 0, 0);
-    }
+  &__next:focus::after,
+  &__previous:focus::after {
+    @include slider-tip;
   }
 
   &__dots {
@@ -162,7 +148,7 @@
     &-price {
       @include font-body;
       font-weight: bold;
-      color: $colorTextLight;
+      color: $colorText;
 
       &-currency {
         @include font-body;
@@ -174,7 +160,7 @@
     &-label {
       @include font-body;
       font-size: 12px;
-      color: $colorTextLight;
+      color: $colorText;
       padding-left: 3px;
     }
   }
@@ -197,11 +183,12 @@
 
     &-amount {
       font-weight: bold;
-      color: $colorTextLight;
+      color: $colorText;
     }
 
     &-mark {
       padding-left: 4px;
+      color: $colorText;
     }
   }
 }

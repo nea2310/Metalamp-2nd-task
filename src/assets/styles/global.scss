@@ -12,7 +12,7 @@ $colorText: rgba(31, 32, 65, 0.5);
 $colorTextNormal: rgba(31, 32, 65, 0.75);
 $colorTextLight: #8f8fa0;
 $colorBorder: rgba(31, 32, 65, 0.25);
-$colorFooterDelimiter: rgba(31, 32, 65, 0.15);
+$colorFooterDelimiter: rgba(31, 32, 65, 0.1);
 $colorBackground: rgba(31, 32, 65, 0.05);
 $colorBorderError: #ff0000;
 $colorMain: #bc9cff;
@@ -150,6 +150,20 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
   color: $colorMain;
   font-size: 27px;
   top: 1px;
+}
+
+@mixin slider-tip() {
+  @include tip-style;
+  border-left: 3px solid $colorTextBackground;
+  border-bottom: 3px solid $colorTextBackground;
+  transform: rotate(45deg);
+  right: 18px;
+  bottom: 73px;
+}
+
+@mixin slider-background() {
+  border-top-left-radius: 4px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 99.99%, rgba(255, 255, 255, 0) 100%);
 }
 
 @mixin page-background($imagePath, $imageShift) {

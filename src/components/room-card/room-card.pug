@@ -6,10 +6,14 @@ mixin room-card(options = {})
       roomNumber = 0,
       roomPrice = 0,
       feedbackAmount = 0,
-      ratingName = '',
       lux = '',
-      imageList = []
+      imageList = [],
+      rating
     } = options
+
+    const prepareOptions = require ('@com/room-card/room-card-utils.js').default;
+
+    const { ratingChecked } = prepareOptions({ rating });
 
     const elementName = 'room-card'
 
@@ -37,7 +41,7 @@ mixin room-card(options = {})
         span(class = `${elementName}__detail-label` role = "region" aria-label = "в сутки") в сутки
     div(class = `${elementName}__rating`)
       div(class = `${elementName}__rate`)
-        +rating({rating: 3})
+        +rating({rating: ratingChecked})
       div(class = `${elementName}__feedback`)
         span(class = `${elementName}__feedback-amount` role = "region" aria-label = "количество отзывов")= feedbackAmount
         span(class = `${elementName}__feedback-mark` role = "region" aria-label = "отзывы") Отзывов

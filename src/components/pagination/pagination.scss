@@ -12,7 +12,7 @@
     @include font-body;
     text-decoration: none;
     font-size: 12px;
-    color: $colorTextLight;
+    color: $colorText;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -50,6 +50,7 @@
   &__label {
     @include font-body;
     margin: 0;
-    padding-top: 8px;
+    padding-top: 10px;
+    color: $colorTextNormal;
   }
 }

@@ -56,6 +56,7 @@
     &_rich &-name {
       font-family: $fontMain;
       font-weight: bold;
+      color: $colorTextNormal;
     }
 
     &-text {
@@ -65,11 +66,7 @@
     }
 
     &-checkbox {
-      position: absolute;
-      clip: rect(0 0 0 0);
-      width: 1px;
-      height: 1px;
-      margin: -1px;
+      @include visually-hidden;
     }
 
     &-checkmark {
@@ -120,6 +117,7 @@
       line-height: 17px;
       padding-top: 2px;
       max-width: 210px;
+      color: $colorText;
     }
 
     &-description {
@@ -129,7 +127,7 @@
       font-weight: normal;
       font-size: 12px;
       line-height: 14px;
-      color: $colorTextNormal;
+      color: $colorText;
       padding-top: 5px;
     }
   }
