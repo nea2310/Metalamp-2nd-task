@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import './dropdown.scss';
 
 class DropDown {
@@ -19,6 +18,10 @@ class DropDown {
 
     this._render();
     this._bindEventListeners();
+  }
+
+  subscribeGuestsSelect(handler) {
+    this.guestsSelectHandler = handler;
   }
 
   _render() {
@@ -252,6 +255,7 @@ class DropDown {
       }
     });
     this.input.value = value.substring(0, value.length - 2);
+    this.guestsSelectHandler(this.input.value);
   }
 
   _updateButtons(categories, isIncrease = false) {

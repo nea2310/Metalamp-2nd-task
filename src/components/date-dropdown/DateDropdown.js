@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable class-methods-use-this */
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import ErrorMessage from '../error-message/ErrorMessage';
@@ -31,6 +33,10 @@ class DateDropDown {
     this._setDefaultDate();
     this._processDate();
     this._bindEventListeners();
+  }
+
+  subscribeDateSelect(handler) {
+    this.dateSelectHandler = handler;
   }
 
   static processTextInput(e) {
@@ -170,6 +176,7 @@ class DateDropDown {
         } else {
           this.inputDate.value = this.inputDate.value.toLowerCase();
         }
+        this.dateSelectHandler(date);
       },
     });
 
