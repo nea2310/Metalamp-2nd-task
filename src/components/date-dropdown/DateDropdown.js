@@ -372,6 +372,7 @@ class DateDropDown {
     if (!this.isFilter) {
       this.inputDateFrom.value = '';
       this.inputDateTo.value = '';
+      this.dateSelectHandler(['2000-01-01', '2000-01-01']);
     }
   }
 

@@ -207,6 +207,7 @@ class DropDown {
       button.disabled = false;
     });
     this.input.value = '';
+    this.guestsSelectHandler('0 гостей');
     if (this.clearApplyButtons) {
       this._hideButtonClear(this.buttonsMinus);
     }

@@ -63,10 +63,10 @@ class Booking {
 
   _calculateCost() {
     const base = this.daysAmount * this.guestsAmount * this.price;
-    const total = base - this._calculateDiscount() + this.extra;
+    const total = base - this._calculateDiscount();
     this.days.innerText = `${this.price.toLocaleString('ru-RU')}₽ x ${this.daysAmount} суток`;
     this.baseCost.innerText = `${Math.trunc(base).toLocaleString('ru-RU')}₽`;
-    this.totalCost.innerText = total > 0 ? `${Math.trunc(total).toLocaleString('ru-RU')}₽` : '0₽';
+    this.totalCost.innerText = total > 0 ? `${Math.trunc(total + this.extra).toLocaleString('ru-RU')}₽` : '0₽';
   }
 
   _calculateDiscount() {
