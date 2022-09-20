@@ -1,5 +1,6 @@
 include ../button/button.pug
 include ../error-message/error-message.pug
+include ../info-sign/info-sign.pug
 
 mixin booking(options = {})
   -
@@ -42,8 +43,12 @@ mixin booking(options = {})
       div(class = `js-${elementName}__price-base-name ${elementName}__price-base-name`)= `${roomPrice.toLocaleString('ru-RU')}₽ x ${daysAmount} суток`
       div(class = `js-${elementName}__price-base-cost ${elementName}__price-base-cost`)= `${totalPrice.toLocaleString('ru-RU')}₽`
       div(class = `js-${elementName}__price-service-name ${elementName}__price-service-name` data-discount = sale)= `Сбор за услуги: скидка ${(sale *4).toLocaleString('ru-RU')}₽`
+      div(class = `${elementName}__price-service-info`)
+        +info-sign({text: 'Описание для "Сбор за услуги"'})
       div(class = `${elementName}__price-service-cost`)= `${saleTotal}₽`
       div(class = `${elementName}__price-extra-name`) Сбор за дополнительные услуги
+      div(class = `${elementName}__price-extra-info`)
+        +info-sign({text: 'Описание для "Сбор за дополнительные услуги"'})
       div(class = `js-${elementName}__price-extra-cost ${elementName}__price-extra-cost` data-extra = extraTotal)= `${extraTotal.toLocaleString('ru-RU')}₽`
       div(class = `${elementName}__price-total-name`) Итого
       div(class = `js-${elementName}__price-total-cost ${elementName}__price-total-cost`)= `${totalAmount.toLocaleString('ru-RU')}₽`

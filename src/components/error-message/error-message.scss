@@ -12,6 +12,10 @@
   text-align: center;
   display: none;
 
+  &_active {
+    display: block;
+  }
+
   &__close-button {
     @include button-reset-style;
     width: 20px;
@@ -41,9 +45,5 @@
     &:after {
       transform: rotate(-45deg);
     }
-  }
-
-  &_active {
-    display: block;
   }
 }

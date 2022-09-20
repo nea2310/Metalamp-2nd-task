@@ -1,0 +1,68 @@
+.info-sign {
+  @include button-reset-style;
+  font-family: $fontMain;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 1px solid $colorBorder;
+  color: $colorBorder;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__text {
+    display: none;
+    position: absolute;
+    width: 250px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    background-color: $colorTextBackground;
+    z-index: 2;
+    padding: 30px 20px;
+    text-align: center;
+    font-weight: normal;
+    color: $colorTextNormal;
+
+    &:focus {
+      outline: none;
+    }
+
+    &_active {
+      display: block;
+    }
+  }
+
+  &__close-button {
+    @include button-reset-style;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    cursor: pointer;
+    top: 10px;
+    right: 8px;
+
+    &:before,
+    &:after {
+      z-index: 3;
+      border-radius: 1px;
+      content: "";
+      background-color: $colorMain;
+      position: absolute;
+      width: 2px;
+      height: 15px;
+      top: 0;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}

@@ -7,6 +7,7 @@ class Booking {
     this.wrapper = element;
     this.elementName = elementName.replace(/^.js-/, '');
     this.errorModifier = `${this.elementName}_error`;
+    this.day = 86400000; // 86400000 - кол-во милисекунд в сутках
     this._render();
     this._bindEventListeners();
   }
@@ -48,8 +49,7 @@ class Booking {
 
   _handleDateSelect(date) {
     if (date.length === 2) {
-      // 86400000 - кол-во милисекунд в сутках
-      this.daysAmount = (new Date(date[1]) - new Date(date[0])) / 86400000;
+      this.daysAmount = (new Date(date[1]) - new Date(date[0])) / this.day;
       this._calculateCost();
     }
   }

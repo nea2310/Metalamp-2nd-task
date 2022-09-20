@@ -5,7 +5,7 @@
   border-radius: 4px;
   max-width: 380px;
   width: 100%;
-  padding: 40px 30px 23px 26px;
+  padding: 40px 29px 23px 29px;
   margin-block-end: 0;
   position: relative;
 
@@ -28,18 +28,19 @@
 
     &-price {
       margin-top: 6px;
+      color: $colorBackground;
     }
   }
 
   &__detail {
     &-mark {
       @include font-h3;
-      padding-left: 1px;
+      font-size: 14px;
     }
 
     &-number {
       @include font-h1;
-      padding-left: 6px;
+      padding-left: 4px;
     }
 
     &-lux {
@@ -63,7 +64,7 @@
   }
 
   &__date-dropdown {
-    margin-top: 19px;
+    margin-top: 18px;
   }
 
   &__guests {
@@ -74,16 +75,19 @@
     &-breakdown {
       @include font-body;
       display: grid;
-      grid-template-columns: 2.5fr 1fr;
+      grid-template-columns: 2.7fr 18px 1fr;
       grid-template-rows: repeat(4, auto);
+      padding-left: 1px;
       margin-top: 22px;
-      line-height: 19px;
-      row-gap: 15px;
+      line-height: 18px;
+      row-gap: 16px;
     }
 
     &-base {
       &-cost {
         justify-self: end;
+        grid-column-start: 3;
+        grid-column-end: 4;
       }
     }
 
@@ -91,16 +95,14 @@
       &-name {
         width: 100%;
         position: relative;
-
-        &::after {
-          @include info-sign-style;
-          right: -11px;
-          top: -1px;
-        }
       }
 
       &-cost {
         justify-self: end;
+      }
+
+      &-info {
+        margin-top: -2px;
       }
     }
 
@@ -108,16 +110,14 @@
       &-name {
         width: 100%;
         position: relative;
-
-        &::after {
-          @include info-sign-style;
-          right: -11px;
-          top: -1px;
-        }
       }
 
       &-cost {
         justify-self: end;
+      }
+
+      &-info {
+        margin-top: -2px;
       }
     }
 
@@ -131,6 +131,8 @@
       &-cost {
         justify-self: end;
         white-space: nowrap;
+        grid-column-start: 3;
+        grid-column-end: 4;
       }
 
       &-name {
@@ -138,7 +140,7 @@
         &::after {
           position: absolute;
           content: "";
-          right: 0;
+          right: -18px;
           left: 60px;
           bottom: 4px;
           border-bottom: 1px dotted $colorBorder;

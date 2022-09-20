@@ -1,0 +1,11 @@
+mixin info-sign(options = {})
+  -
+    const {
+      text = '',
+    } = options
+
+    const elementName = 'info-sign'
+
+  div(class = `${elementName} js-${elementName}` tabindex = "0") i
+    div(class = `${elementName}__text js-${elementName}__text` tabindex = "0")= text
+      button(class = `${elementName}__close-button js-${elementName}__close-button` type = "button")
