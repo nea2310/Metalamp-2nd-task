@@ -116,12 +116,13 @@
     &-item {
       box-sizing: border-box;
       max-width: 280px;
+      padding-bottom: 23px;
 
       &:first-of-type {
         margin-top: 25px;
       }
       &:not(:first-of-type) {
-        margin-top: 48px;
+        margin-top: 26px;
       }
 
       &:not(:last-child) {
@@ -199,7 +200,7 @@
     &-wrapper {
       padding-right: 70px;
       padding-left: 4px;
-      padding-top: 36px;
+      padding-top: 11px;
       grid-area: feedback;
 
       @include media-breakpoint-between($sm, $lg) {

@@ -18,15 +18,17 @@
     outline-offset: 5px;
     border: 1px solid $colorBorder;
     min-width: 40px;
-    padding: 2px 0px 4px 21px;
+    padding-left: 21px;
+    padding-right: 4px;
     border-radius: 22px;
     cursor: pointer;
     display: flex;
     align-items: center;
+    line-height: 10px;
 
     &::after {
       position: absolute;
-      top: 1px;
+      top: 5px;
       left: 5px;
       content: "♡";
       color: $colorBorder;
@@ -39,7 +41,7 @@
 
       &::after {
         position: absolute;
-        top: 4px;
+        // top: 4px;
         content: "❤";
         color: $colorMain;
         font-size: 10px;
@@ -53,6 +55,8 @@
 
   &__counter {
     @include font-body;
+    padding-top: 4px;
+    padding-bottom: 3px;
     font-size: 9px;
     line-height: 12px;
   }
