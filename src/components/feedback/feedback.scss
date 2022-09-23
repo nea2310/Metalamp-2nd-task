@@ -28,7 +28,7 @@
     @include font-body;
     display: flex;
     align-items: center;
-    line-height: 12px;
+    line-height: 16px;
     margin: 0;
     grid-area: post-3;
     font-size: 14px;
@@ -45,7 +45,7 @@
   &__description {
     @include font-body;
     grid-area: post-5;
-    margin-top: 13px;
+    margin-top: 12px;
     font-size: 14px;
   }
 }

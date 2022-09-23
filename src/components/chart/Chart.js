@@ -70,7 +70,7 @@ class Chart {
       this.ctx.fillText(
         this.votes,
         this.canvas.width / 2,
-        this.canvas.height / 2,
+        this.canvas.height / 2 - 2,
       );
       this.ctx.font = 'normal 15px Montserrat';
       this.ctx.fillStyle = '#BC9CFF';
@@ -78,7 +78,7 @@ class Chart {
       this.ctx.fillText(
         'голосов',
         this.canvas.width / 2,
-        this.canvas.height / 2 + 20,
+        this.canvas.height / 2 + 16,
       );
     });
   }

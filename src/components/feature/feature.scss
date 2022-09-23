@@ -1,32 +1,40 @@
 .feature {
   max-width: 280px;
   width: 100%;
-  border-bottom: 1px solid rgba(31, 32, 65, 0.1);
   display: grid;
   grid-template-rows: repeat(2, auto);
   grid-template-columns: auto 1fr;
   grid-template-areas:
     "post-1 post-2"
     "post-1 post-3";
+  row-gap: 14px;
 
-  &__image {
+  &__image-wrapper {
     grid-area: post-1;
+    min-width: 43px;
+    display: grid;
+    justify-items: center;
     margin-right: 13px;
   }
 
   &__name {
+    box-sizing: border-box;
     grid-area: post-2;
     font-family: $fontMain;
     font-weight: bold;
     color: $colorTextNormal;
     font-size: 14px;
-    margin-bottom: 5px;
+    display: grid;
+    align-items: end;
+    line-height: 10px;
   }
 
   &__description {
     @include font-body;
+    box-sizing: border-box;
     grid-area: post-3;
-    font-size: 14px;
-    margin-bottom: 19px;
+    line-height: 10px;
+    display: grid;
+    align-items: start;
   }
 }
