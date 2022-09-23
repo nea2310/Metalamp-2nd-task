@@ -82,8 +82,9 @@ class Header {
   }
 
   _handleHeaderClickDocument(e) {
-    if (!e.target.closest(`.${this.elementName}__nav-level2`)
-      && (!e.target.className.match('tip'))) {
+    const condition = (!e.target.closest(`.${this.elementName}__nav-level2`)
+      && e.target.className && (!e.target.className.match('tip')));
+    if (condition) {
       this._closeLevel2Menu();
     }
   }
