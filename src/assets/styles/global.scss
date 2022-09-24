@@ -69,6 +69,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 @mixin indents() {
   padding-top: 0;
   padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 30px;
   margin: 0;
 }
