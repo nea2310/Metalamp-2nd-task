@@ -4,12 +4,12 @@ include ../input-field/input-field.pug
 include ../radiobuttons/radiobuttons.pug
 include ../toggle/toggle.pug
 
-mixin registration()
+mixin registration({ actionAddress = '/test.php' } = {})
   -
     const elementName = 'registration'
 
   div(class = `${elementName} js-${elementName}`)
-    form(class = `${elementName}__registration-form js-${elementName}__registration-form`)
+    form(class = `${elementName}__registration-form js-${elementName}__registration-form` method = "post" action = actionAddress)
       div(class = `${elementName}__error-message js-${elementName}__error-message`)
         +error-message()
       h1(class = `${elementName}__header`) Регистрация аккаунта

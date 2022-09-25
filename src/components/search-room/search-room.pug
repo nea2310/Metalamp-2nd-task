@@ -3,7 +3,7 @@ include ../date-dropdown/date-dropdown.pug
 include ../dropdown/dropdown.pug
 include ../error-message/error-message.pug
 
-mixin search-room()
+mixin search-room({ actionAddress = '/test.php' } = {})
   -
     const {
       dropdownGuests,
@@ -13,7 +13,7 @@ mixin search-room()
 
     const elementName = 'search-room'
 
-  form(class = `${elementName} js-${elementName}`)
+  form(class = `${elementName} js-${elementName}` method = "get" action = actionAddress)
     div(class = `${elementName}__error-message js-${elementName}__error-message`)
       +error-message()
     h1(class = `${elementName}__header`) Найдём номера под ваши пожелания

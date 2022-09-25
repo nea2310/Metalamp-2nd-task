@@ -14,6 +14,7 @@ mixin booking(options = {})
       saleTotal = 0,
       extraTotal = 0,
       totalAmount = 0,
+      actionAddress = '/test.php',
     } = options
 
     const {
@@ -24,7 +25,7 @@ mixin booking(options = {})
 
     const elementName = 'booking'
 
-  form(class = `${elementName} js-${elementName}`)
+  form(class = `${elementName} js-${elementName}` method = "get" action = actionAddress)
     div(class = `${elementName}__error-message js-${elementName}__error-message`)
       +error-message()
     div(class = `${elementName}__details`)

@@ -1,7 +1,7 @@
 include ../input-field/input-field.pug
 include ../logo/logo.pug
 
-mixin footer({ menu = [] } = {})
+mixin footer({ menu = [], actionAddress = '/test.php' } = {})
   -
     const elementName = 'footer'
     const social = [
@@ -27,7 +27,7 @@ mixin footer({ menu = [] } = {})
                     a(class = `${elementName}__item-link` href = "https://test/test")= subValue
       div(class = `${elementName}__items`) подписка
         span(class = `${elementName}__long-text`) Получайте специальные предложения и новости сервиса
-        form(class = `${elementName}__subscription`)
+        form(class = `${elementName}__subscription` method = "post" action = actionAddress)
           +input-field({
             width: 'medium-narrow',
             placeholder: 'Email',

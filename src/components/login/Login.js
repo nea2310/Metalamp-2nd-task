@@ -33,7 +33,6 @@ class Login {
   }
 
   _handleLoginSubmit(event) {
-    event.preventDefault();
     this.inputs.forEach((input) => {
       if (input.value.trim() === '') {
         input.classList.add(this.errorModifier);
