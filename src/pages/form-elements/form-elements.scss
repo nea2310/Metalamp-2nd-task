@@ -9,6 +9,10 @@ $compWrapperTopRightMap: (1 0, 2 0, 3 12, 4 29, 5 32, 6 28, 7 20, 8 2, 9 233, 10
   max-width: 1270px;
   margin: 143px auto 100px;
 
+  &__column {
+    max-width: 320px;
+  }
+
   &__label {
     @include font-h3;
     display: inline-block;
@@ -94,7 +98,7 @@ $compWrapperTopRightMap: (1 0, 2 0, 3 12, 4 29, 5 32, 6 28, 7 20, 8 2, 9 233, 10
 
       &:nth-child(6) {
         width: 100%;
-        max-width: 200px;
+        max-width: 300px;
       }
     }
 

@@ -1,4 +1,6 @@
 import ErrorMessage from '../error-message/ErrorMessage';
+import DateDropDown from '../date-dropdown/DateDropdown';
+import DropDown from '../dropdown/Dropdown';
 
 class SearchRoom {
   constructor(elementName, element) {
@@ -20,6 +22,12 @@ class SearchRoom {
     this._handleSearchRoomSubmit = this._handleSearchRoomSubmit.bind(this);
     this._handleSearchRoomFocus = this._handleSearchRoomFocus.bind(this);
     this._handleSearchRoomClick = this._handleSearchRoomClick.bind(this);
+
+    const dateDropDownElement = this.wrapper.querySelector('.js-date-dropdown');
+    const dropDownElement = this.wrapper.querySelector('.js-dropdown');
+
+    this.dateDropDown = new DateDropDown('.js-date-dropdown', dateDropDownElement);
+    this.dropDown = new DropDown('.js-dropdown', dropDownElement);
   }
 
   _bindEventListeners() {
