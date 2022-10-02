@@ -43,7 +43,6 @@ class SearchRoom {
   }
 
   _handleSearchRoomSubmit(event) {
-    event.preventDefault();
     this.dates.forEach((date) => {
       if (/^\d{4}-\d{2}-\d{2}$/.test(date.value)) {
         date.classList.remove(this.errorModifier);
@@ -62,11 +61,9 @@ class SearchRoom {
     );
 
     if (isError) {
+      event.preventDefault();
       this._showErrorMessageWrapper();
       this.errorMessage.toggleErrorMessage(true, 'Заполните все поля!');
-    } else {
-      window.location = 'search-room-page.html';
-      setTimeout(() => this.wrapper.submit, 500);
     }
   }
 
