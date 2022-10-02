@@ -160,6 +160,10 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 @mixin page-background($imagePath, $imageShift) {
   background: url($imagePath) no-repeat center;
   background-position: 0 $imageShift;
+
+  @include media-breakpoint-up($xl) {
+    background-size: cover;
+  }
 }
 
 @mixin font-h1() {
