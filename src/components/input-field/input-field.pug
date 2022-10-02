@@ -17,11 +17,13 @@ mixin input-field(options ={})
 
     const {
       elementName,
+      arrowModifier,
       widthChecked,
       validationChecked
       } = prepareOptions({
         width,
         validation,
+        hasArrow,
     });
 
   div(class = `${elementName} js-${elementName} ${elementName}_width_${widthChecked} js-${elementName}_validation_${validationChecked}`)
@@ -32,4 +34,4 @@ mixin input-field(options ={})
         h3(class = `${elementName}__label-text`)= labelText
       if hasArrow
         button(class = `${elementName}__link` aria-label = name)
-      input(class = `${elementName}__input js-${elementName}__input` placeholder = placeholder type = inputType min = inputMin max = inputMax )
+      input(class = `${elementName}__input js-${elementName}__input${arrowModifier}` placeholder = placeholder type = inputType min = inputMin max = inputMax )

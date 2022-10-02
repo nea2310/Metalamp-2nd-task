@@ -11,6 +11,8 @@
   padding: 30px 20px;
   text-align: center;
   display: none;
+  overflow: hidden;
+  word-break: break-word;
 
   &_active {
     display: block;
