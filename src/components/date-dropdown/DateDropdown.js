@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable class-methods-use-this */
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import ErrorMessage from '../error-message/ErrorMessage';
