@@ -207,7 +207,9 @@ class DropDown {
       button.disabled = false;
     });
     this.input.value = '';
-    this.guestsSelectHandler('0 гостей');
+    if (this.guestsSelectHandler) {
+      this.guestsSelectHandler('0 гостей');
+    }
     if (this.clearApplyButtons) {
       this._hideButtonClear(this.buttonsMinus);
     }
@@ -256,7 +258,9 @@ class DropDown {
       }
     });
     this.input.value = value.substring(0, value.length - 2);
-    this.guestsSelectHandler(this.input.value);
+    if (this.guestsSelectHandler) {
+      this.guestsSelectHandler(this.input.value);
+    }
   }
 
   _updateButtons(categories, isIncrease = false) {
