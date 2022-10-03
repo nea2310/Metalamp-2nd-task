@@ -31,10 +31,21 @@
       }
 
       .air-datepicker {
-        width: 320px;
+        width: 317px;
+
+        @include media-breakpoint-down($xs) {
+          width: 100%;
+        }
+
         &-body--cells.-days- {
           grid-template-columns: repeat(7, 39.88px);
           grid-auto-rows: 40px;
+
+          @include media-breakpoint-down($xs) {
+            grid-template-columns: repeat(7, 39px);
+            width: calc(39.88px * 7);
+            margin: auto;
+          }
         }
 
         &-cell {
@@ -143,6 +154,9 @@
   }
 
   &__calendar-wrapper {
+    background-color: $colorTextBackground;
+    border: 1px solid $colorBorder;
+    border-radius: 5px;
     position: absolute;
     z-index: 3;
     top: 70px;
@@ -150,13 +164,17 @@
     flex-direction: column-reverse;
     align-items: flex-end;
 
+    @include media-breakpoint-down($xs) {
+      left: 0;
+      right: 0;
+    }
+
     &_hidden {
       display: none;
     }
   }
 
   &__buttons {
-    border: 1px solid $colorText;
     border-top: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -165,8 +183,8 @@
     display: flex;
     justify-content: space-between;
     padding: 0 19px 19px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    // border-bottom-left-radius: 5px;
+    // border-bottom-right-radius: 5px;
   }
 
   &__input {
@@ -224,10 +242,6 @@
         @include media-breakpoint-down($xs) {
           min-width: initial;
         }
-
-        @include media-breakpoint-down($xxs) {
-          min-width: 140px;
-        }
       }
 
       &_wide {
@@ -263,10 +277,10 @@
     z-index: 10;
     box-sizing: border-box;
     border: none;
-    border: 1px solid $colorText;
-    border-bottom: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    // border: 1px solid $colorText;
+    // border-bottom: none;
+    // border-bottom-left-radius: 0;
+    // border-bottom-right-radius: 0;
 
     &-nav {
       border: none;
@@ -315,6 +329,13 @@
     }
 
     &-body {
+      &--day-names {
+        @include media-breakpoint-down($xs) {
+          width: calc(39.88px * 7);
+          margin: auto;
+        }
+      }
+
       &--day-name {
         @include font-h3;
         text-transform: capitalize;
@@ -329,6 +350,10 @@
     &--content {
       padding: 17px 18px 20px 20px;
       background-color: $colorTextBackground;
+
+      @include media-breakpoint-down($xs) {
+        padding: 17px 0;
+      }
     }
 
     &-cell.-day- {

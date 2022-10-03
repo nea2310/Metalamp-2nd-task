@@ -33,6 +33,7 @@
 
     @include media-breakpoint-down($sm) {
       justify-self: center;
+      margin: 0 10px;
     }
   }
 
