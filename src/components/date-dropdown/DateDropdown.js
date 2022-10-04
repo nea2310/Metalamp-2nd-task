@@ -24,12 +24,11 @@ class DateDropDown {
     this._handleDateDropDownResizeLoadWindow = this._handleDateDropDownResizeLoadWindow.bind(this);
     this._handleDateDropDownFocusinWrapper = this._handleDateDropDownFocusinWrapper.bind(this);
     this._handleDateDropDownFocusinDocument = this._handleDateDropDownFocusinDocument.bind(this);
-    this._handleDateDropDownInput = this._handleDateDropDownInput.bind(this);
 
     this._render();
     this._init();
     this._setDefaultDate();
-    this._processDate();
+    this._prepareDates();
     this._bindEventListeners();
   }
 
@@ -125,8 +124,7 @@ class DateDropDown {
     const prepareDate = (date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
     this.inputWrappers = this._getElements(['input-wrapper']);
-    this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
-    this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
+
     [this.inputWrapperFrom, this.inputWrapperTo] = this.inputWrappers;
     this.isFilter = this.inputWrappers.length === 1;
 
@@ -146,6 +144,10 @@ class DateDropDown {
     this.calendarWrapper = this._getElement('calendar-wrapper');
     this.buttonClear = this._getElement('button-clear');
     this.buttonApply = this._getElement('button-apply');
+
+    this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
+    const targetElement = this.isFilter ? this.inputDate : this.inputDateFrom;
+    this.errorMessage = new ErrorMessage(this.errorMessageWrapper, targetElement);
   }
 
   _init() {
@@ -165,16 +167,14 @@ class DateDropDown {
       prevHtml: '<image src="">',
       nextHtml: '<image src="">',
       onSelect: (selectedDate) => {
-        const date = selectedDate.formattedDate;
-        if (!this.isFilter) {
-          const dateArr = date;
-          const value = (dateArr.length === 1) ? '' : dateArr[1];
-          [this.inputDateFrom.value] = dateArr;
-          this.inputDateTo.value = value;
-        } else {
+        const dates = selectedDate.formattedDate;
+        if (dates.length === 0) return;
+        if (this.isFilter) {
           this.inputDate.value = this.inputDate.value.toLowerCase();
         }
-        this.dateSelectHandler(date);
+        if (this.dateSelectHandler) {
+          this.dateSelectHandler(dates);
+        }
       },
     });
 
@@ -190,7 +190,7 @@ class DateDropDown {
     }
   }
 
-  _processDate() {
+  _prepareDates() {
     this.dateCurrent = new Date();
 
     this.dateTomorrow = new Date(+this.dateCurrent
@@ -199,29 +199,29 @@ class DateDropDown {
     this.datePlusYear = new Date(+this.dateCurrent
       + (new Date('2020-12-31') - new Date('2020-01-01')));
 
-    const regexpDate = /^\d{2}\.\d{2}\.\d{4}$/;
+    const currentTxt = `${this.dateCurrent.getFullYear()}-${this.dateCurrent.getMonth() + 1}-${this.dateCurrent.getDate()}`;
+    const tomorrowTxt = `${this.dateTomorrow.getFullYear()}-${this.dateTomorrow.getMonth() + 1}-${this.dateTomorrow.getDate()}`;
+    const plusYearTxt = `${this.datePlusYear.getFullYear()}-${this.datePlusYear.getMonth() + 1}-${this.datePlusYear.getDate()}`;
 
-    this.dateCurrentTxt = `${this.dateCurrent.getDate()}.${this.dateCurrent.getMonth() + 1}.${this.dateCurrent.getFullYear()}`;
-    this.dateTomorrowTxt = `${this.dateTomorrow.getDate()}.${this.dateTomorrow.getMonth() + 1}.${this.dateTomorrow.getFullYear()}`;
-    this.datePlusYearTxt = `${this.datePlusYear.getDate()}.${this.datePlusYear.getMonth() + 1}.${this.datePlusYear.getFullYear()}`;
+    const regexpDate = /^\d{2}-\d{2}-\d{4}$/;
 
     const formatDate = (dateValue) => {
       let date = dateValue;
       if (regexpDate.test(date) === false) {
-        const dateSplit = date.split('.');
+        const dateSplit = date.split('-');
         const newDateSplit = dateSplit.map((element) => {
           const result = element.length === 1 ? `0${element}` : element;
           return result;
         });
 
-        date = newDateSplit.join('.');
+        date = newDateSplit.join('-');
       }
       return date;
     };
 
-    this.dateCurrentTxt = formatDate(this.dateCurrentTxt);
-    this.dateTomorrowTxt = formatDate(this.dateTomorrowTxt);
-    this.datePlusYearTxt = formatDate(this.datePlusYearTxt);
+    this.dateCurrentTxt = formatDate(currentTxt);
+    this.dateTomorrowTxt = formatDate(tomorrowTxt);
+    this.datePlusYearTxt = formatDate(plusYearTxt);
   }
 
   _bindEventListeners() {
@@ -286,37 +286,96 @@ class DateDropDown {
   }
 
   _handleDateDropDownInputFilter(e) {
+    const changeFormat = (string) => string.split('.').reverse().join('-');
+
+    if (this.calendarDouble) {
+      DateDropDown.processTextInput(e);
+    }
     if (e.target.value.length === 23) {
-      const dateFromString = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
-      const dateToString = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
-      this.myDatepicker.clear();
-      this.myDatepicker.selectDate(new Date(`${dateToString[2]}-${dateToString[1]}-${dateToString[0]}`));
-      this.myDatepicker.selectDate(new Date(`${dateFromString[2]}-${dateFromString[1]}-${dateFromString[0]}`));
+      const dateFromRaw = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/);
+      const dateToRaw = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/);
+
+      const dateFrom = dateFromRaw ? changeFormat(dateFromRaw[0]) : '';
+      const dateTo = dateToRaw ? changeFormat(dateToRaw[0]) : '';
+
+      this._processRange(dateFrom, dateTo, true);
     }
   }
 
   _handleDateDropDownInputNoFilter(e) {
     const currentInput = e.target;
-    const secondInput = currentInput.classList.contains(`.${this.elementName}__input_from`)
+    const secondInput = currentInput.classList.contains(`${this.elementName}__input_from`)
       ? this.inputDateTo : this.inputDateFrom;
 
     if (e.target.value[0] !== '0') {
-      const dateFrom = currentInput.value;
-      const dateTo = secondInput.value;
-      this.myDatepicker.clear();
-      if (secondInput.value) {
-        this.myDatepicker.selectDate(
-          new Date(dateTo),
-        );
-        this.myDatepicker.selectDate(
-          new Date(dateFrom),
-        );
-      } else {
-        this.myDatepicker.selectDate(
-          new Date(dateFrom),
-        );
-      }
+      const dateFrom = currentInput.classList.contains(`${this.elementName}__input_from`)
+        ? currentInput.value : secondInput.value;
+
+      const dateTo = currentInput.classList.contains(`${this.elementName}__input_to`)
+        ? currentInput.value : secondInput.value;
+
+      this._processRange(dateFrom, dateTo);
     }
+  }
+
+  _processRange(dateFrom, dateTo, isFilter = false) {
+    this.myDatepicker.clear();
+    const checkResult = this._checkRange(dateFrom, dateTo);
+    if (checkResult) {
+      this.myDatepicker.selectDate(
+        new Date(dateTo),
+      );
+      this.myDatepicker.selectDate(
+        new Date(dateFrom),
+      );
+      return true;
+    }
+
+    if (checkResult !== null) {
+      if (isFilter) {
+        this.inputDate.value = '';
+      } else {
+        this.inputDateFrom.value = '';
+        this.inputDateTo.value = '';
+      }
+
+      const changeFormat = (string) => string.split('-').reverse().join('.');
+
+      return this._showErrorMessageWrapper(`Введите даты в диапазоне от ${changeFormat(this.dateCurrentTxt)} до ${changeFormat(this.datePlusYearTxt)}`);
+    }
+    return false;
+  }
+
+  _checkRange(from, to) {
+    const dateFrom = Date.parse(from);
+    const dateTo = Date.parse(to);
+
+    const isFromExist = !Number.isNaN(dateFrom);
+    const isToExist = !Number.isNaN(dateTo);
+
+    let isFromValid = false;
+    if (isFromExist) {
+      isFromValid = dateFrom >= this.dateCurrent && dateFrom <= this.datePlusYear;
+    }
+
+    let isToValid = false;
+    if (isToExist) {
+      isToValid = dateTo >= this.dateCurrent && dateTo <= this.datePlusYear;
+    }
+
+    if (!isFromExist || !isToExist) {
+      return null;
+    }
+
+    if (!isFromValid || !isToValid) {
+      return false;
+    }
+
+    if (dateTo <= dateFrom) {
+      return false;
+    }
+
+    return true;
   }
 
   _handleDateDropDownClickDate() {
@@ -370,7 +429,9 @@ class DateDropDown {
     if (!this.isFilter) {
       this.inputDateFrom.value = '';
       this.inputDateTo.value = '';
-      this.dateSelectHandler(['2000-01-01', '2000-01-01']);
+      if (this.dateSelectHandler) {
+        this.dateSelectHandler(['2000-01-01', '2000-01-01']);
+      }
     }
   }
 
@@ -414,19 +475,6 @@ class DateDropDown {
     }
   }
 
-  _handleDateDropDownInput(e) {
-    if (this.calendarDouble) {
-      DateDropDown.processTextInput(e);
-    }
-    if (this.calendarSingle && e.target.value[0] !== '0') {
-      this._checkRangeSingle(e);
-    }
-
-    if (this.calendarDouble && e.target.value.length === 23) {
-      this._checkRangeDouble(e);
-    }
-  }
-
   _toggle(isExpanded) {
     const wrap = `${this.elementName}__`;
     if (isExpanded) {
@@ -441,38 +489,6 @@ class DateDropDown {
       input.classList.remove(`${wrap}input-wrapper_expanded`);
     });
     return true;
-  }
-
-  _checkRangeSingle(e) {
-    const dateSelected = new Date(e.target.value);
-    const needCorrectFormat = dateSelected < this.dateCurrent
-      || dateSelected > this.datePlusYear
-      || DateDropDown.isFormatIncorrect(dateSelected);
-    if (needCorrectFormat) {
-      this._showErrorMessageWrapper(`Введите дату от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
-      e.target.value = this.dateCurrentTxt;
-    } else {
-      this._hideErrorMessageWrapper();
-    }
-  }
-
-  _checkRangeDouble(e) {
-    const dateFrom = e.target.value.match(/^\d{2}\.\d{2}\.\d{4}/)[0].split('.');
-    const dateTo = e.target.value.match(/\d{2}\.\d{2}\.\d{4}$/)[0].split('.');
-    const dateCurrentSelected = new Date(`${dateFrom[2]}-${dateFrom[1]}-${dateFrom[0]}`);
-    const datePlusYearSelected = new Date(`${dateTo[2]}-${dateTo[1]}-${dateTo[0]}`);
-    const needCorrectFormat = dateCurrentSelected < this.dateCurrent
-      || dateCurrentSelected > this.datePlusYear
-      || DateDropDown.isFormatIncorrect(dateCurrentSelected)
-      || datePlusYearSelected < this.dateCurrent
-      || datePlusYearSelected > this.datePlusYear
-      || DateDropDown.isFormatIncorrect(datePlusYearSelected);
-    if (needCorrectFormat) {
-      this._showErrorMessageWrapper(`Введите даты в диапазоне от ${this.dateCurrentTxt} до ${this.datePlusYearTxt}`);
-      e.target.value = `${this.dateCurrentTxt} - ${this.dateTomorrowTxt}`;
-    } else {
-      this._hideErrorMessageWrapper();
-    }
   }
 
   _getElement(selector, wrapper = this.wrapper) {
