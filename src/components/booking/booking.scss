@@ -9,6 +9,11 @@
   margin-block-end: 0;
   position: relative;
 
+  @include media-breakpoint-down($xs) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   &__error-message {
     position: absolute;
     display: none;

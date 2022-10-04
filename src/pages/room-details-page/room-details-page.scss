@@ -180,6 +180,11 @@
         margin: 0 auto;
         padding-bottom: $lg-padding-bottom;
       }
+
+      @include media-breakpoint-down($xs) {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }
   }
 

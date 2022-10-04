@@ -8,5 +8,10 @@
   &__registration-wrapper {
     display: flex;
     justify-content: center;
+
+    @include media-breakpoint-down($xs) {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
   }
 }
