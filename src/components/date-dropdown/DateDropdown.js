@@ -36,6 +36,16 @@ class DateDropDown {
     this.dateSelectHandler = handler;
   }
 
+  setDate(from, to) {
+    this._processRange(from, to, this.isFilter);
+    if (this.isFilter) {
+      this.inputDate.value = `${from} - ${to}`;
+    } else {
+      this.inputDateFrom.value = from;
+      this.inputDateTo.value = to;
+    }
+  }
+
   static processTextInput(e) {
     let isInputAllowed = false;
     const allowedInputTypes = ['insertText',
@@ -120,6 +130,22 @@ class DateDropDown {
     return Number.isNaN(+date);
   }
 
+  static formatDate(dateValue) {
+    const regexpDate = /^\d{2}-\d{2}-\d{4}$/;
+
+    let date = dateValue;
+    if (regexpDate.test(date) === false) {
+      const dateSplit = date.split('-');
+      const newDateSplit = dateSplit.map((element) => {
+        const result = element.length === 1 ? `0${element}` : element;
+        return result;
+      });
+
+      date = newDateSplit.join('-');
+    }
+    return date;
+  }
+
   _render() {
     const prepareDate = (date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
@@ -171,6 +197,10 @@ class DateDropDown {
         if (dates.length === 0) return;
         if (this.isFilter) {
           this.inputDate.value = this.inputDate.value.toLowerCase();
+        } else {
+          const value = (dates.length === 1) ? '' : dates[1];
+          [this.inputDateFrom.value] = dates;
+          this.inputDateTo.value = value;
         }
         if (this.dateSelectHandler) {
           this.dateSelectHandler(dates);
@@ -192,7 +222,6 @@ class DateDropDown {
 
   _prepareDates() {
     this.dateCurrent = new Date();
-
     this.dateTomorrow = new Date(+this.dateCurrent
       + (new Date('2020-12-31') - new Date('2020-12-30')));
 
@@ -203,25 +232,9 @@ class DateDropDown {
     const tomorrowTxt = `${this.dateTomorrow.getFullYear()}-${this.dateTomorrow.getMonth() + 1}-${this.dateTomorrow.getDate()}`;
     const plusYearTxt = `${this.datePlusYear.getFullYear()}-${this.datePlusYear.getMonth() + 1}-${this.datePlusYear.getDate()}`;
 
-    const regexpDate = /^\d{2}-\d{2}-\d{4}$/;
-
-    const formatDate = (dateValue) => {
-      let date = dateValue;
-      if (regexpDate.test(date) === false) {
-        const dateSplit = date.split('-');
-        const newDateSplit = dateSplit.map((element) => {
-          const result = element.length === 1 ? `0${element}` : element;
-          return result;
-        });
-
-        date = newDateSplit.join('-');
-      }
-      return date;
-    };
-
-    this.dateCurrentTxt = formatDate(currentTxt);
-    this.dateTomorrowTxt = formatDate(tomorrowTxt);
-    this.datePlusYearTxt = formatDate(plusYearTxt);
+    this.dateCurrentTxt = DateDropDown.formatDate(currentTxt);
+    this.dateTomorrowTxt = DateDropDown.formatDate(tomorrowTxt);
+    this.datePlusYearTxt = DateDropDown.formatDate(plusYearTxt);
   }
 
   _bindEventListeners() {
@@ -321,6 +334,7 @@ class DateDropDown {
   _processRange(dateFrom, dateTo, isFilter = false) {
     this.myDatepicker.clear();
     const checkResult = this._checkRange(dateFrom, dateTo);
+
     if (checkResult) {
       this.myDatepicker.selectDate(
         new Date(dateTo),
@@ -355,7 +369,10 @@ class DateDropDown {
 
     let isFromValid = false;
     if (isFromExist) {
-      isFromValid = dateFrom >= this.dateCurrent && dateFrom <= this.datePlusYear;
+      /* 86400000 - кол-во милисекунд в сутках.
+      Прибавляем это число, т.к. поверяем,
+      что this.dateCurrent больше конца дня dateFrom, а не начала */
+      isFromValid = dateFrom + 86400000 >= this.dateCurrent && dateFrom <= this.datePlusYear;
     }
 
     let isToValid = false;

@@ -24,6 +24,10 @@ class DropDown {
     this.guestsSelectHandler = handler;
   }
 
+  setData(data) {
+    data.forEach((item) => this._changeCategoryCounter(item.name, item.currentCount));
+  }
+
   _render() {
     this.clickOnList = false;
     this.focusOnList = false;
@@ -92,58 +96,80 @@ class DropDown {
     window.addEventListener('load', this._handleDropDownResizeLoadWindow);
   }
 
+  _updateCategory(newCounter, newCounterType, name, type, element) {
+    this.categories.forEach((category) => {
+      const item = category;
+      if (category.name === name.toLowerCase()) { item.currentCount = newCounter; }
+      if (category.type === type) { item.currentTypeCount = newCounterType; }
+    });
+    const wrapper = element;
+    wrapper.querySelector(`.${this.elementName}__count-value`).innerText = newCounter;
+  }
+
+  _findCategory(name) {
+    return this.categories.find(
+      (category) => category.name === name.toLowerCase(),
+    );
+  }
+
+  _filterCategory(type) {
+    return this.categories.filter((category) => category.type === type);
+  }
+
+  static _reduceCategory(categoriesOfType) {
+    return categoriesOfType
+      .reduce((sum, category) => category.currentCount + sum, 0);
+  }
+
+  _changeCategoryCounter(name, counter) {
+    const span = this.listWrapper.querySelector(`[data-name="${name}"]`);
+    const wrapper = span.closest(`.${this.elementName}__category-wrapper`);
+
+    const {
+      type, minCount, maxCount, maxTypeCount,
+    } = this._findCategory(name);
+
+    const categoriesOfType = this._filterCategory(type);
+
+    const currentTypeCount = DropDown._reduceCategory(categoriesOfType);
+
+    const countNew = Math.abs(counter);
+
+    if (countNew > minCount) {
+      const data = {
+        wrapper, currentTypeCount, maxTypeCount, countNew, maxCount, name, type,
+      };
+      this._increaseCounter(data, true);
+    }
+    return false;
+  }
+
   _handleDropDownClickCounter(event) {
     const button = event.currentTarget;
     const wrapper = event.target.closest(`.${this.elementName}__category-wrapper`);
     const name = wrapper.querySelector(`.${this.elementName}__category`).innerText;
     const {
       type, currentCount, minCount, maxCount, maxTypeCount,
-    } = this.categories.find(
-      (category) => category.name === name.toLowerCase(),
-    );
+    } = this._findCategory(name);
 
-    const categoriesOfType = this.categories.filter((category) => category.type === type);
+    const categoriesOfType = this._filterCategory(type);
 
-    const currentTypeCount = categoriesOfType
-      .reduce((sum, category) => category.currentCount + sum, 0);
-
-    const updateCategory = (newCounter, newCounterType) => {
-      this.categories.forEach((category) => {
-        const item = category;
-        if (category.name === name.toLowerCase()) { item.currentCount = newCounter; }
-        if (category.type === type) { item.currentTypeCount = newCounterType; }
-      });
-      wrapper.querySelector(`.${this.elementName}__count-value`).innerText = newCounter;
-    };
+    const currentTypeCount = DropDown._reduceCategory(categoriesOfType);
 
     if (button.classList.contains(`${this.elementName}__count-increment`)) {
-      const buttonMinus = wrapper.querySelector(`.js-${this.elementName}__count-decrement`);
-      buttonMinus.disabled = false;
+      const data = {
+        wrapper, currentTypeCount, maxTypeCount, maxCount, name, type, currentCount,
+      };
+      this._increaseCounter(data);
 
-      const countNew = currentCount + 1;
-      const currentTypeCountNew = currentTypeCount + 1;
-      if (currentTypeCountNew <= maxTypeCount && countNew <= maxCount) {
-        updateCategory(countNew, currentTypeCountNew);
-      } else return false;
-      this._updateCategoriesList(this.categories);
-      return this._updateButtons(this.categories, true);
+      return true;
     }
 
-    categoriesOfType.forEach((category) => {
-      if (category.currentTypeCount <= category.maxTypeCount) {
-        const categoryWrapper = this.listElements[category.index];
-        const buttonPlus = categoryWrapper.querySelector(`.js-${this.elementName}__count-increment`);
-        buttonPlus.disabled = false;
-      }
-    });
-
-    const countNew = currentCount - 1;
-    const currentTypeCountNew = currentTypeCount - 1;
-    if (countNew >= minCount) {
-      updateCategory(countNew, currentTypeCountNew);
-    } else return false;
-    this._updateCategoriesList(this.categories);
-    return this._updateButtons(this.categories);
+    const data = {
+      categoriesOfType, wrapper, currentTypeCount, minCount, name, type, currentCount,
+    };
+    this._decreaseCounter(data);
+    return true;
   }
 
   _handleDropDownMousedownInput() {
@@ -217,6 +243,52 @@ class DropDown {
 
   _handleDropDownResizeLoadWindow() {
     this._toggle(false);
+  }
+
+  _increaseCounter(data, isInitial = false) {
+    const {
+      wrapper, currentTypeCount, maxTypeCount, maxCount, name, type, currentCount,
+    } = data;
+    let { countNew } = data;
+    const buttonMinus = wrapper.querySelector(`.js-${this.elementName}__count-decrement`);
+    buttonMinus.disabled = false;
+
+    let currentTypeCountNew = 0;
+
+    if (!isInitial) {
+      countNew = currentCount + 1;
+      currentTypeCountNew = currentTypeCount + 1;
+    } else {
+      currentTypeCountNew = currentTypeCount + countNew;
+    }
+
+    if (currentTypeCountNew <= maxTypeCount && countNew <= maxCount) {
+      this._updateCategory(countNew, currentTypeCountNew, name, type, wrapper);
+    } else return false;
+    this._updateCategoriesList(this.categories);
+    return this._updateButtons(this.categories, true);
+  }
+
+  _decreaseCounter(data) {
+    const {
+      categoriesOfType, wrapper, currentTypeCount, minCount, name, type, currentCount,
+    } = data;
+
+    categoriesOfType.forEach((category) => {
+      if (category.currentTypeCount <= category.maxTypeCount) {
+        const categoryWrapper = this.listElements[category.index];
+        const buttonPlus = categoryWrapper.querySelector(`.js-${this.elementName}__count-increment`);
+        buttonPlus.disabled = false;
+      }
+    });
+
+    const countNew = currentCount - 1;
+    const currentTypeCountNew = currentTypeCount - 1;
+    if (countNew >= minCount) {
+      this._updateCategory(countNew, currentTypeCountNew, name, type, wrapper);
+    } else return false;
+    this._updateCategoriesList(this.categories);
+    return this._updateButtons(this.categories);
   }
 
   _updateCategoriesList(changedCounters) {

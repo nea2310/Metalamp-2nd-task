@@ -36,7 +36,7 @@ mixin dropdown(options = {})
             - const {displayName = '', categoryType = '', declensions = '', defaultCount = 0, minCount = 0, maxCount = 10, maxTypeCount = 10} = value
             li(class = `${elementName}__category-wrapper js-${elementName}__category-wrapper`)
               span(class = `${elementName}__category js-${elementName}__category`
-                data-type = categoryType data-declensions = declensions)= displayName
+                data-type = categoryType data-declensions = declensions data-name = displayName)= displayName
               div(class = `${elementName}__count-wrapper`)
                 button(class = `${elementName}__count-decrement js-${elementName}__count-decrement`
                   data-min = minCount type = "button" aria-label = "уменьшить количество")= minus

@@ -12,6 +12,22 @@ class Booking {
     this._bindEventListeners();
   }
 
+  static formatDate(dateValue) {
+    const regexpDate = /^\d{2}-\d{2}-\d{4}$/;
+
+    let date = dateValue;
+    if (regexpDate.test(date) === false) {
+      const dateSplit = date.split('-');
+      const newDateSplit = dateSplit.map((element) => {
+        const result = element.length === 1 ? `0${element}` : element;
+        return result;
+      });
+
+      date = newDateSplit.join('-');
+    }
+    return date;
+  }
+
   _render() {
     this.dates = this.wrapper.querySelectorAll('.js-date-dropdown__input');
     this.guests = this.wrapper.querySelector('.js-dropdown__input');
@@ -44,7 +60,22 @@ class Booking {
     this.dropDown = new DropDown('.js-dropdown', dropDownElement);
 
     this.dateDropDown.subscribeDateSelect(this._handleDateSelect);
+    const dateCurrent = new Date();
+    const currentTxt = `${dateCurrent.getFullYear()}-${dateCurrent.getMonth() + 1}-${dateCurrent.getDate()}`;
+
+    const datePlusFour = new Date(+dateCurrent
+      + (new Date('2020-12-31') - new Date('2020-12-27')));
+    const plusFourTxt = `${datePlusFour.getFullYear()}-${datePlusFour.getMonth() + 1}-${datePlusFour.getDate()}`;
+
+    const dateCurrentTxt = Booking.formatDate(currentTxt);
+    const datePlusFourTxt = Booking.formatDate(plusFourTxt);
+
+    this.dateDropDown.setDate(dateCurrentTxt, datePlusFourTxt);
+
     this.dropDown.subscribeGuestsSelect(this._handleGuestsSelect);
+    this.dropDown.setData([
+      { name: 'взрослые', currentCount: 1 },
+    ]);
   }
 
   _handleDateSelect(date) {
