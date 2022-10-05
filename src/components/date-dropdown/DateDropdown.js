@@ -461,19 +461,9 @@ class DateDropDown {
   }
 
   _handleDateDropDownClickDocument(e) {
-    const isFilter = this.isFilter && e.target !== this.inputDate
-      && e.target !== this.inputWrapperFrom;
-
-    const isNotFilter = !this.isFilter
-      && (e.target !== this.inputDateFrom && e.target !== this.inputDateTo
-        && e.target !== this.inputWrapperFrom && e.target !== this.inputWrapperTo);
-
     const isNotDataDropDown = e.target.closest(`.${this.elementName}`) == null;
 
-    const condFull = (isFilter || isNotFilter || isNotDataDropDown)
-      && this.clickOnCalendar === false;
-
-    if (condFull) {
+    if (isNotDataDropDown) {
       this._toggle(false);
     } else {
       this.clickOnCalendar = false;

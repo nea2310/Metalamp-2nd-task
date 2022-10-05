@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-/* eslint-disable no-console */
 import 'ion-rangeslider/js/ion.rangeSlider.min';
 import 'ion-rangeslider/css/ion.rangeSlider.min.css';
 
@@ -23,12 +21,11 @@ class RangeSlider {
       const { from, to } = data;
       priceFrom.value = `${from.toLocaleString()}₽`;
       priceTo.value = `${to.toLocaleString()}₽`;
-      const priceFromWidth = this._getInputWidth(priceFrom.value);
-      const priceToWidth = this._getInputWidth(priceTo.value);
+      const priceFromWidth = RangeSlider._getInputWidth(priceFrom.value);
+      const priceToWidth = RangeSlider._getInputWidth(priceTo.value);
 
       priceFrom.style.width = `${priceFromWidth}px`;
       priceTo.style.width = `${priceToWidth}px`;
-      console.log(priceFrom.value);
     };
 
     $(this.slider).ionRangeSlider({
@@ -81,7 +78,7 @@ class RangeSlider {
       .querySelectorAll(string);
   }
 
-  _getInputWidth(text) {
+  static _getInputWidth(text) {
     const element = document.createElement('span');
     element.style.fontSize = '12px';
     element.style.fontFamily = 'Montserrat';

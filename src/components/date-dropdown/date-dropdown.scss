@@ -96,9 +96,20 @@
 
       .air-datepicker {
         width: 266px;
+
+        @include media-breakpoint-down($xs) {
+          width: auto;
+          margin: 0 auto;
+        }
+
         &-body--cells.-days- {
           grid-template-columns: repeat(7, 32px);
           grid-auto-rows: 32px;
+
+          @include media-breakpoint-down($xs) {
+            width: calc(32px * 7);
+            margin: 0 auto;
+          }
         }
 
         &-cell {
@@ -183,8 +194,6 @@
     display: flex;
     justify-content: space-between;
     padding: 0 19px 19px;
-    // border-bottom-left-radius: 5px;
-    // border-bottom-right-radius: 5px;
   }
 
   &__input {
@@ -277,10 +286,6 @@
     z-index: 10;
     box-sizing: border-box;
     border: none;
-    // border: 1px solid $colorText;
-    // border-bottom: none;
-    // border-bottom-left-radius: 0;
-    // border-bottom-right-radius: 0;
 
     &-nav {
       border: none;
@@ -333,6 +338,10 @@
         @include media-breakpoint-down($xs) {
           width: calc(39.88px * 7);
           margin: auto;
+        }
+
+        @include media-breakpoint-down($xs) {
+          width: calc(32px * 7);
         }
       }
 

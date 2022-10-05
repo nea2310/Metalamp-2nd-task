@@ -191,7 +191,7 @@
     "categories": [
       {
         "value": "Широкий коридор",
-        "description": "Ширина коридоров в номере не менее 91 см",
+        "description": "Ширина коридоров в номере                не менее 91 см",
         "checkBoxName": "wideСorridor"
       },
       {

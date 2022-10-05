@@ -18,8 +18,8 @@
   }
 
   @include media-breakpoint-down($sm) {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
   &__filter-form-wrapper {
@@ -73,7 +73,7 @@
 
     &-wrapper {
       flex-grow: 1;
-      padding-left: 59px;
+      padding-left: 60px;
 
       @include media-breakpoint-down($lg) {
         padding: 0;
