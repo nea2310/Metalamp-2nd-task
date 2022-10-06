@@ -12,6 +12,7 @@
 
   &__category {
     @include font-body;
+    color: $colorTextNormal;
     position: relative;
     padding-left: 4px;
     margin-bottom: 10px;

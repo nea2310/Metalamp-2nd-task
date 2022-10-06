@@ -20,6 +20,7 @@
 
   &__category {
     @include font-body;
+    color: $colorTextNormal;
     display: flex;
     align-items: center;
     position: relative;

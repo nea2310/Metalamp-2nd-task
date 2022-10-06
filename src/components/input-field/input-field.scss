@@ -59,6 +59,7 @@
 
   &__input {
     @include font-body;
+    color: $colorTextNormal;
     padding: 9px 0;
     text-indent: 14px;
     border-radius: 5px;

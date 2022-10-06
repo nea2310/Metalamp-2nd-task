@@ -36,6 +36,7 @@
 
   &__input {
     @include font-body;
+    color: $colorTextNormal;
     cursor: pointer;
     text-overflow: ellipsis;
     padding: 9px 90px 9px 14px;

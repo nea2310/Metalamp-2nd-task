@@ -198,6 +198,7 @@
 
   &__input {
     @include font-body;
+    color: $colorTextNormal;
     cursor: pointer;
     padding: 7px 0 9px;
     text-indent: 12px;

@@ -1,5 +1,6 @@
 .error-message {
   @include font-body;
+  color: $colorTextNormal;
   position: absolute;
   right: 0;
   left: 0;

@@ -10,7 +10,7 @@ $wrapperWidth: 1170px;
 $colorTitle: #1f2041;
 $colorText: rgba(31, 32, 65, 0.5);
 $colorTextNormal: rgba(31, 32, 65, 0.75);
-$colorTextLight: #8f8fa0;
+$colorTextLight: #1f20417f;
 $colorBorder: rgba(31, 32, 65, 0.25);
 $colorFooterDelimiter: rgba(31, 32, 65, 0.1);
 $colorBackground: rgba(31, 32, 65, 0.05);
@@ -196,7 +196,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;
-  color: $colorTextNormal;
+  // color: $colorTextNormal;
 }
 
 @mixin media-breakpoint-up($width) {

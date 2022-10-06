@@ -31,6 +31,7 @@
 
   &__description {
     @include font-body;
+    color: $colorTextNormal;
     box-sizing: border-box;
     grid-area: post-3;
     line-height: 10px;

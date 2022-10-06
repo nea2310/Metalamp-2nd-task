@@ -281,6 +281,7 @@
 
   &__cancel {
     @include font-body;
+    color: $colorTextNormal;
     margin: 19px 0 0;
 
     @include media-breakpoint-down($sm) {

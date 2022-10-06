@@ -178,6 +178,7 @@
 
   &__feedback {
     @include font-body;
+    color: $colorTextNormal;
     margin-top: 5px;
     margin-bottom: 14px;
 

@@ -142,6 +142,7 @@
 
   &__long-text {
     @include font-body;
+    color: $colorTextNormal;
     cursor: initial;
     text-transform: initial;
     margin-top: 18px;
@@ -158,6 +159,7 @@
 
   &__copyright {
     @include font-body;
+    color: $colorTextNormal;
 
     @include media-breakpoint-down($md) {
       text-align: center;

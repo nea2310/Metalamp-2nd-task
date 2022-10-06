@@ -54,6 +54,7 @@
 
   &__counter {
     @include font-body;
+    color: $colorTextNormal;
     padding-top: 4px;
     padding-bottom: 3px;
     font-size: 9px;

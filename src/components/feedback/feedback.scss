@@ -26,6 +26,7 @@
 
   &__date {
     @include font-body;
+    color: $colorTextNormal;
     display: flex;
     align-items: center;
     line-height: 16px;
@@ -36,6 +37,7 @@
 
   &__like {
     @include font-body;
+    color: $colorTextNormal;
     margin-top: 13px;
     margin-left: 3px;
     margin-right: 3px;
@@ -45,6 +47,7 @@
 
   &__description {
     @include font-body;
+    color: $colorTextNormal;
     grid-area: post-5;
     margin-top: 12px;
     font-size: 14px;

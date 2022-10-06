@@ -54,6 +54,7 @@
 
   &__name {
     @include font-body;
+    color: $colorTextNormal;
     margin: 0;
     cursor: pointer;
     line-height: 19px;

@@ -39,6 +39,7 @@
 
   &__text {
     @include font-body;
+    color: $colorTextNormal;
     padding-bottom: 20px;
     max-width: 265px;
     text-align: end;
