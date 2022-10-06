@@ -1,7 +1,7 @@
 .dropdown__input.dropdown__input_expanded {
   border-color: $colorTextLight;
   border-bottom: none;
-  padding-bottom: 10px;
+  padding-bottom: 9px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
@@ -76,7 +76,7 @@
 
   &__list {
     @include ul-reset-style;
-    padding-top: 6px;
+    padding-top: 4px;
 
     &-wrapper {
       background-color: $colorTextBackground;
