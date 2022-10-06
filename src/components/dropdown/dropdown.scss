@@ -75,7 +75,7 @@
 
   &__list {
     @include ul-reset-style;
-    padding-top: 4px;
+    padding-top: 6px;
 
     &-wrapper {
       background-color: $colorTextBackground;

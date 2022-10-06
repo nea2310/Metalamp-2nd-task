@@ -190,16 +190,28 @@
   }
 
   &__profile {
-    border-left: 1px solid rgba(31, 32, 65, 0.1);
-    line-height: 30px;
+    line-height: 34px;
     padding-left: 20px;
+    position: relative;
 
     @include media-breakpoint-down($md) {
       border: none;
     }
 
+    &::before {
+      box-sizing: border-box;
+      content: "";
+      left: 0;
+      top: 2px;
+      height: 30px;
+      width: 3px;
+      border-left: 1px solid rgba(31, 32, 65, 0.1);
+      position: absolute;
+    }
+
     &-name {
       @include font-body;
+      color: $colorText;
       text-decoration: none;
 
       @include media-breakpoint-down($md) {
