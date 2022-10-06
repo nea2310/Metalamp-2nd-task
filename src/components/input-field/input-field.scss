@@ -38,22 +38,25 @@
   &__link {
     @include button-reset-style;
     position: absolute;
-    bottom: 28px;
-    right: 28px;
+    bottom: 22px;
+    right: 24px;
     cursor: pointer;
 
     &:focus {
-      outline: solid 1px $colorBorder;
+      outline: solid 2px black;
+      outline-offset: 10px;
     }
 
     &::before {
       @include arrow-basis-style($colorMain);
-      top: 5px;
-      right: -12px;
+      top: 0;
+      left: -7px;
     }
 
     &::after {
       @include arrow-tip-style($colorMain);
+      top: -5px;
+      left: -6px;
     }
   }
 

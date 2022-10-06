@@ -35,8 +35,9 @@
     }
 
     &-checkbox:checked + &-radiomark {
+      box-sizing: border-box;
       border: 1px solid $colorMain;
-      box-shadow: inset 0px 0px 0px 3.5px $colorTextBackground;
+      box-shadow: inset 0px 0px 0px 3px $colorTextBackground;
       background: linear-gradient(180deg, $colorMain 0%, #8ba4f9 100%);
     }
 
@@ -45,7 +46,7 @@
       display: block;
       position: relative;
       border: 1px solid $colorBorder;
-      width: 20.5px;
+      width: 20px;
       height: 20px;
       border-radius: 50%;
       content: "";

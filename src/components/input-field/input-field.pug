@@ -32,6 +32,6 @@ mixin input-field(options ={})
     label(class = `${elementName}__label`)
       if labelText
         h3(class = `${elementName}__label-text`)= labelText
+      input(class = `${elementName}__input js-${elementName}__input${arrowModifier}` placeholder = placeholder type = inputType min = inputMin max = inputMax )
       if hasArrow
         button(class = `${elementName}__link` aria-label = name)
-      input(class = `${elementName}__input js-${elementName}__input${arrowModifier}` placeholder = placeholder type = inputType min = inputMin max = inputMax )
