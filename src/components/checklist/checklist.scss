@@ -96,9 +96,11 @@
         top: 4px;
         width: 4px;
         height: 6px;
-        border-left: 2px solid $colorMain;
         border-top: 2px solid $colorGradientBorder;
+        border-left: 2px solid $colorGradientBorder;
         transform: rotate(-135deg);
+        border-image-source: linear-gradient($colorGradientBorder 0%, $colorMain 100%);
+        border-image-slice: 1;
       }
     }
 
@@ -113,6 +115,7 @@
     }
 
     &-description {
+      margin: 0;
       max-width: 230px;
       cursor: pointer;
       font-family: $fontMain;
@@ -121,7 +124,6 @@
       line-height: 14px;
       color: $colorText;
       padding-top: 5px;
-      white-space: pre-wrap;
     }
   }
 }

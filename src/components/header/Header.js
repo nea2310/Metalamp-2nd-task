@@ -81,18 +81,26 @@ class Header {
     }
   }
 
-  _handleHeaderClickDocument(e) {
-    const condition = (!e.target.closest(`.${this.elementName}__nav-level2`)
-      && (!e.target.className.match('tip')));
-    if (e.target.className) {
+  _handleHeaderClickDocument(event) {
+    const element = event.target;
+
+    if (!element) return;
+
+    const condition = (!element.closest(`.${this.elementName}__nav-level2`)
+      && (!element.className.match('tip')));
+    if (element.className) {
       if (condition) {
         this._closeLevel2Menu();
       }
     }
   }
 
-  _handleHeaderFocusinDocument(e) {
-    if (!e.target.className.match('item-link')) {
+  _handleHeaderFocusinDocument(event) {
+    const element = event.target;
+
+    if (!element) return;
+
+    if (!element.className.match('item-link')) {
       this._closeLevel2Menu();
     }
   }

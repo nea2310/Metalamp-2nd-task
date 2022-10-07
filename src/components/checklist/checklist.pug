@@ -1,6 +1,7 @@
 mixin checklist(options = {})
   -
     const {
+      description = ['a', 'b', 'c'],
       categories = [],
       isExpandable = false,
       isRich = false,
@@ -19,6 +20,8 @@ mixin checklist(options = {})
       isRich,
       });
 
+    const text = description.reduce((result, element)=> element + '&NewLine;' + result, '')
+
   div(class = `${elementName} js-${elementName} ${style}`)
     h3(class = `${elementName}__label js-${elementName}__label` tabindex = tabindexValue)= labelText
     ul(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper`)
@@ -33,4 +36,4 @@ mixin checklist(options = {})
                 div(class = `${elementName}__category-text`)
                   span(class = `${elementName}__category-name`)= value
                   if isRich && description
-                    span(class = `${elementName}__category-description`)= description
+                    pre(class = `${elementName}__category-description`)= description

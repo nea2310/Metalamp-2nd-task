@@ -129,7 +129,7 @@
   }
 
   &__accessability-wrapper {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 
     @include media-breakpoint-down($lg) {
       grid-area: accessability;
