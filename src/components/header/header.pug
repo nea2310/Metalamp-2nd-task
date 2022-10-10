@@ -24,7 +24,7 @@ mixin header({ menu = [], isAuthorized = false } = {})
                       ul(class = `${elementName}__nav-level2 js-${elementName}__nav-level2`)
                         each subValue in subMenu
                           li(class = `${elementName}__nav-level2-item`) 
-                            a(class = `${elementName}__nav-level2-item-link` href = "https://test/test")= subValue
+                            a(class = `${elementName}__nav-level2-item-link js-${elementName}__nav-level2-item-link` href = "https://test/test")= subValue
                     if Array.isArray(subMenu) && subMenu.length
                       div(class = `${elementName}__nav-level1-item-tip js-${elementName}__nav-level1-item-tip` tabindex = 0)
           div(class = `${elementName}__auth ${elementName}__auth_is-authorized_${isAuthorized}`) 

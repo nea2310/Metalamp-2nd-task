@@ -87,7 +87,7 @@ class Header {
     if (!element) return;
 
     const condition = (!element.closest(`.${this.elementName}__nav-level2`)
-      && (!element.className.match('tip')));
+      && (!element.classList.contains(`js-${this.elementName}__nav-level1-item-tip`)));
     if (element.className) {
       if (condition) {
         this._closeLevel2Menu();
@@ -100,7 +100,7 @@ class Header {
 
     if (!element) return;
 
-    if (!element.className.match('item-link')) {
+    if (!element.classList.contains(`js-${this.elementName}__nav-level2-item-link`)) {
       this._closeLevel2Menu();
     }
   }

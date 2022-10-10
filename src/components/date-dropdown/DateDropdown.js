@@ -462,7 +462,8 @@ class DateDropDown {
   }
 
   _handleDateDropDownClickDocument(e) {
-    const isNotDataDropDown = e.target.closest(`.${this.elementName}`) == null;
+    const isNotDataDropDown = e.target.closest(`.${this.elementName}`)
+      == null && !e.target.classList.contains('air-datepicker-cell');
 
     if (isNotDataDropDown) {
       this._toggle(false);
