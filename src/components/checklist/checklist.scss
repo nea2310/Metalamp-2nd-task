@@ -8,6 +8,16 @@
   &_temporarily-collapsing {
     .checklist__list-wrapper {
       position: absolute;
+      width: calc(100% + 20px);
+
+      @include media-breakpoint-down($lg) {
+        top: 25px;
+        left: -10px;
+        padding-left: 10px;
+        border-radius: 4px;
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+      }
     }
 
     .checklist__label {

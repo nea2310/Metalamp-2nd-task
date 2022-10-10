@@ -14,15 +14,20 @@
     min-width: 319px;
   }
 
+  @include media-breakpoint-down($xxs) {
+    min-width: initial;
+  }
+
   &__wrapper {
     @include media-breakpoint-down($lg) {
-      padding: 20px 5px;
+      padding: 20px 40px;
       box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
       border-radius: 4px;
       width: 100%;
       min-height: 195px;
       display: grid;
       column-gap: 9px;
+      row-gap: 30px;
       grid-template-rows: repeat(4, auto);
       grid-template-columns: repeat(3, auto);
       grid-template-areas:
@@ -35,7 +40,8 @@
     @include media-breakpoint-down($md) {
       min-height: 250px;
       grid-template-rows: repeat(5, auto);
-      grid-template-columns: repeat(2, 266px);
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
       grid-template-areas:
         "calendar guests"
         "price-filter facilities"
@@ -43,13 +49,11 @@
         "price-filter house-rules"
         "accessability facilities-adv";
       justify-content: center;
-      column-gap: 30px;
     }
 
     @include media-breakpoint-down($xs) {
       display: block;
       box-shadow: none;
-      padding-left: 26px;
     }
 
     &_hidden {
@@ -126,6 +130,10 @@
       margin-bottom: 20px;
       display: block;
     }
+
+    @include media-breakpoint-between($xxs, $md) {
+      min-width: 266px;
+    }
   }
 
   &__accessability-wrapper {
@@ -138,6 +146,10 @@
 
     @include media-breakpoint-down($xs) {
       margin-bottom: 20px;
+    }
+
+    @include media-breakpoint-between($xxs, $md) {
+      min-width: 266px;
     }
   }
 
@@ -158,6 +170,10 @@
     @include media-breakpoint-down($lg) {
       margin: 0;
       grid-area: facilities-adv;
+    }
+
+    @include media-breakpoint-between($xxs, $md) {
+      min-width: 266px;
     }
   }
 }
