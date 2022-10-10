@@ -51,7 +51,9 @@ mixin booking(options = {})
       div(class = `${elementName}__price-extra-info`)
         +info-sign({text: 'Описание для "Сбор за дополнительные услуги"'})
       div(class = `js-${elementName}__price-extra-cost ${elementName}__price-extra-cost` data-extra = extraTotal)= `${extraTotal.toLocaleString('ru-RU')}₽`
+    div(class = `${elementName}__price-total-wrapper`)
       div(class = `${elementName}__price-total-name`) Итого
+      div(class = `${elementName}__price-total-delimiter`)
       div(class = `js-${elementName}__price-total-cost ${elementName}__price-total-cost`)= `${totalAmount.toLocaleString('ru-RU')}₽`
     div(class = `${elementName}__book-button`)
       +button(button)
