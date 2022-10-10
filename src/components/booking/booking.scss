@@ -10,8 +10,8 @@
   position: relative;
 
   @include media-breakpoint-down($xs) {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   &__error-message {
@@ -82,7 +82,7 @@
       color: $colorTextNormal;
       display: grid;
       grid-template-columns: 2.7fr 18px 1fr;
-      grid-template-rows: repeat(4, auto);
+      grid-template-rows: repeat(3, auto);
       padding-left: 1px;
       margin-top: 22px;
       line-height: 18px;
@@ -126,10 +126,23 @@
     }
 
     &-total {
+      &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 29px;
+        padding-left: 2px;
+      }
+
+      &-delimiter {
+        flex-grow: 2;
+        margin-left: 5px;
+        border-bottom: 1px dotted $colorBorder;
+        height: 18px;
+      }
+
       &-name,
       &-cost {
         @include font-h2;
-        padding-top: 13px;
       }
 
       &-cost {
@@ -141,14 +154,6 @@
 
       &-name {
         position: relative;
-        &::after {
-          position: absolute;
-          content: "";
-          right: -18px;
-          left: 60px;
-          bottom: 4px;
-          border-bottom: 1px dotted $colorBorder;
-        }
       }
     }
   }

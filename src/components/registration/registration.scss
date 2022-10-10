@@ -9,7 +9,7 @@
   position: relative;
 
   @include media-breakpoint-down($xs) {
-    padding: 30px 10px;
+    padding: 30px 20px;
   }
 
   &__error-message {
@@ -28,10 +28,6 @@
     @include font-h1;
     margin: 0;
     margin-top: 12px;
-
-    @include media-breakpoint-down($xs) {
-      font-size: 22px;
-    }
   }
 
   &__name-surname {

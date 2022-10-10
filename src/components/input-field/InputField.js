@@ -157,7 +157,7 @@ class InputField {
         e.target.value = '';
       } else {
         this._hideErrorMessageWrapper();
-        this.errorMessage.toggleErrorMessagee();
+        this.errorMessage.toggleErrorMessage();
       }
     }
   }
