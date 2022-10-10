@@ -282,12 +282,13 @@ class DateDropDown {
       const monthString = String(startDate.getMonth() + 1);
       let startMonth = monthString.length === 1 ? `0${monthString}` : monthString;
       startMonth = startMonth === '12' ? '01' : startMonth;
-      const endDateString = String(endDate.getDate());
+      const endDateString = endDate ? String(endDate.getDate()) : '';
       const endDay = endDateString.length === 1 ? `0${endDateString}` : endDateString;
-      const endMonthString = String(endDate.getMonth() + 1);
+      const endMonthString = endDate ? String(endDate.getMonth() + 1) : '';
       let endMonth = endMonthString.length === 1 ? `0${endMonthString}` : endMonthString;
       endMonth = endMonth === '12' ? '01' : endMonth;
-      e.target.value = `${startDay}.${startMonth}.${startDate.getFullYear()} - ${endDay}.${endMonth}.${endDate.getFullYear()}`;
+      const startDateText = `${startDay}.${startMonth}.${startDate.getFullYear()}`;
+      e.target.value = endDate ? `${startDateText} - ${endDay}.${endMonth}.${endDate.getFullYear()}` : `${startDateText}`;
       this.initDateParsed = this.inputDate.value;
     }
   }
