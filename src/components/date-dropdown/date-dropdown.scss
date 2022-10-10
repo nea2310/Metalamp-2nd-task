@@ -42,14 +42,18 @@
           grid-auto-rows: 40px;
 
           @include media-breakpoint-down($xs) {
-            grid-template-columns: repeat(7, 39px);
-            width: calc(39.88px * 7);
+            grid-template-columns: repeat(7, 32px);
+            width: calc(32px * 7);
+            grid-auto-rows: 32px;
             margin: auto;
           }
         }
 
         &-cell {
           height: 40px;
+          @include media-breakpoint-down($xs) {
+            height: initial;
+          }
         }
       }
 
@@ -58,20 +62,32 @@
         &.-in-range-.-current- {
           &::before {
             @include cell-background-rounded(39.88px, 40px);
+            @include media-breakpoint-down($xs) {
+              @include cell-background-rounded(33px, 32px);
+            }
           }
 
           &::after {
             @include cell-background(20px, 40px, initial, 0px);
+            @include media-breakpoint-down($xs) {
+              @include cell-background(16px, 32px, initial, 0px);
+            }
           }
         }
 
         &.-range-to- {
           &::before {
             @include cell-background-rounded(39.88px, 40px);
+            @include media-breakpoint-down($xs) {
+              @include cell-background-rounded(33px, 32px);
+            }
           }
 
           &::after {
             @include cell-background(20px, 40px, 0px, initial);
+            @include media-breakpoint-down($xs) {
+              @include cell-background(16px, 32px, 0px, initial);
+            }
           }
         }
 
@@ -80,10 +96,16 @@
 
           &::before {
             @include cell-background-rounded(39.88px, 40px);
+            @include media-breakpoint-down($xs) {
+              @include cell-background-rounded(33px, 32px);
+            }
           }
 
           &::after {
             @include cell-background(40px, 40px, 0px, 0px);
+            @include media-breakpoint-down($xs) {
+              @include cell-background(33px, 32px, 0px, 0px);
+            }
           }
         }
       }
@@ -227,6 +249,10 @@
         @include tip-style;
         right: 18px;
         bottom: 20px;
+
+        @include media-breakpoint-down($xs) {
+          right: 10px;
+        }
       }
 
       &_expanded {
@@ -337,7 +363,7 @@
     &-body {
       &--day-names {
         @include media-breakpoint-down($xs) {
-          width: calc(39.88px * 7);
+          // width: calc(39.88px * 7);
           margin: auto;
         }
 
