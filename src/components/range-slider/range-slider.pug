@@ -3,37 +3,58 @@ mixin range-slider(options = {})
     const {
       labelText = '',
       text = '',
-      sliderType = 0,
-      min = 0,
-      max = 0,
-      step = 0,
-      from = 0,
-      to = 0,
-      isMinMaxHidden = true,
-      isFromToHidden = true,
+      min,
+      max,
+      from,
+      to,
+      vertical,
+      range,
+      bar,
+      tip,
+      scale,
+      scaleBase,
+      step,
+      interval,
+      sticky,
+      shiftOnKeyDown,
+      shiftOnKeyHold
     } = options
 
     const prepareOptions = require ('@com/range-slider/range-slider-utils.js').default;
 
     const {
-      elementName,
-      isMinMaxHiddenChecked,
-      isFromToHiddenChecked,
-      sliderTypeChecked,
-      minChecked,
-      maxChecked,
-      stepChecked,
-      fromChecked,
-      toChecked,
+    elementName,
+    verticalChecked,
+    rangeChecked,
+    barChecked,
+    tipChecked,
+    scaleChecked,
+    stickyChecked,
+    minChecked,
+    maxChecked,
+    fromChecked,
+    toChecked,
+    stepChecked,
+    intervalChecked,
+    shiftOnKeyDownChecked,
+    shiftOnKeyHoldChecked,
+    scaleBaseChecked,
     } = prepareOptions({
-      isMinMaxHidden,
-      isFromToHidden,
-      sliderType,
       min,
       max,
-      step,
       from,
       to,
+      vertical,
+      range,
+      bar,
+      tip,
+      scale,
+      scaleBase,
+      step,
+      interval,
+      sticky,
+      shiftOnKeyDown,
+      shiftOnKeyHold
     });
 
   div(class = `${elementName} js-${elementName}`)
@@ -45,7 +66,21 @@ mixin range-slider(options = {})
           input(class = `${elementName}__price-from` type = "text")
           span(class = `${elementName}__price-delimiter`) -
           input(class = `${elementName}__price-to` type = "text")
-      input(class = `${elementName}__slider` type = "text"
-        data-type = sliderTypeChecked data-min = minChecked data-max = maxChecked data-step = stepChecked 
-        data-from = fromChecked data-to = toChecked data-hide-min-max = isMinMaxHiddenChecked data-hide-from-to = isFromToHiddenChecked)
+      input(class = 'slider-metalamp js-slider-metalamp' 
+        data-min = minChecked
+        data-max = maxChecked
+        data-from = fromChecked
+        data-to = toChecked
+        data-vertical = verticalChecked
+        data-range = rangeChecked
+        data-bar = barChecked
+        data-tip = tipChecked
+        data-scale = scaleChecked
+        data-scalebase = scaleBaseChecked
+        data-step = stepChecked
+        data-interval = intervalChecked
+        data-sticky = stickyChecked
+        data-shiftonkeydown = shiftOnKeyDownChecked
+        data-shiftonkeyhold = shiftOnKeyHoldChecked
+        )
       span(class = `${elementName}__text`)= text

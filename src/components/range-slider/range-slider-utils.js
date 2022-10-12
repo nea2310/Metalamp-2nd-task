@@ -2,27 +2,44 @@ import getValidValue from '../../shared/helpers/getValidValue';
 
 export default function prepareOptions(options) {
   const {
-    sliderType,
     min,
     max,
-    step,
     from,
     to,
-    isMinMaxHidden,
-    isFromToHidden,
+    vertical,
+    range,
+    bar,
+    tip,
+    scale,
+    scaleBase,
+    step,
+    interval,
+    sticky,
+    shiftOnKeyDown,
+    shiftOnKeyHold,
   } = options;
 
   const validStates = ['true', 'false'];
+  const validScaleBases = ['step', 'interval'];
 
   return {
     elementName: 'range-slider',
-    isMinMaxHiddenChecked: getValidValue(validStates, isMinMaxHidden, 'true'),
-    isFromToHiddenChecked: getValidValue(validStates, isFromToHidden, 'true'),
-    sliderTypeChecked: Number.isFinite(sliderType) ? sliderType : 0,
-    minChecked: Number.isFinite(min) ? min : 0,
-    maxChecked: Number.isFinite(max) ? max : 0,
-    stepChecked: Number.isFinite(step) ? step : 0,
-    fromChecked: Number.isFinite(from) ? from : 0,
-    toChecked: Number.isFinite(to) ? to : 0,
+
+    minChecked: Number.isFinite(Number(min)) ? min : '0',
+    maxChecked: Number.isFinite(Number(max)) ? max : '0',
+    fromChecked: Number.isFinite(Number(from)) ? from : '0',
+    toChecked: Number.isFinite(Number(to)) ? to : '0',
+    stepChecked: Number.isFinite(Number(step)) ? step : '0',
+    intervalChecked: Number.isFinite(Number(interval)) ? interval : '0',
+    shiftOnKeyDownChecked: Number.isFinite(Number(shiftOnKeyDown)) ? shiftOnKeyDown : '0',
+    shiftOnKeyHoldChecked: Number.isFinite(Number(shiftOnKeyHold)) ? shiftOnKeyHold : '0',
+
+    verticalChecked: getValidValue(validStates, vertical, 'false'),
+    rangeChecked: getValidValue(validStates, range, 'true'),
+    barChecked: getValidValue(validStates, bar, 'true'),
+    tipChecked: getValidValue(validStates, tip, 'false'),
+    scaleChecked: getValidValue(validStates, scale, 'false'),
+    stickyChecked: getValidValue(validStates, sticky, 'false'),
+    scaleBaseChecked: getValidValue(validScaleBases, scaleBase, 'step'),
   };
 }

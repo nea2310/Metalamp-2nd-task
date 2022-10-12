@@ -1,10 +1,11 @@
-import 'ion-rangeslider/js/ion.rangeSlider.min';
-import 'ion-rangeslider/css/ion.rangeSlider.min.css';
+import '../../shared/plugins/slider-metalamp/plugin';
+import '../../shared/plugins/slider-metalamp/plugin.css';
 
 class RangeSlider {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
     this.wrapper = element;
+    this.regexp = /\D/g;
     this._render();
   }
 
@@ -12,11 +13,20 @@ class RangeSlider {
     this.slider = this._getElement('slider');
     this.priceFrom = this._getElement('price-from');
     this.priceTo = this._getElement('price-to');
+    this.from = Number(this.priceFrom.value.replace(this.regexp, ''));
+    this.to = Number(this.priceTo.value.replace(this.regexp, ''));
+
+    this._handleChangePriceFrom = this._handleChangePriceFrom.bind(this);
+    this._handleChangePriceTo = this._handleChangePriceTo.bind(this);
+    this._updatePrice = this._updatePrice.bind(this);
+
     this._init();
+    this._bindEventListeners();
   }
 
   _init() {
     const { priceFrom, priceTo } = this;
+
     const displayPrice = (data) => {
       const { from, to } = data;
       priceFrom.value = `${from.toLocaleString()}₽`;
@@ -28,40 +38,52 @@ class RangeSlider {
       priceTo.style.width = `${priceToWidth}px`;
     };
 
-    $(this.slider).ionRangeSlider({
-      onStart(data) {
-        displayPrice(data);
+    this.rangeSlider = $('.js-slider-metalamp').SliderMetaLamp(
+      {
+        onStart(data) {
+          displayPrice(data);
+        },
+        onChange(data) {
+          displayPrice(data);
+        },
       },
-      onChange(data) {
-        displayPrice(data);
-      },
+    ).data('SliderMetaLamp');
+  }
+
+  _bindEventListeners() {
+    this.priceFrom.addEventListener('input', RangeSlider._handleInput);
+    this.priceTo.addEventListener('input', RangeSlider._handleInput);
+
+    this.priceFrom.addEventListener('keyup', this._handleChangePriceFrom);
+    this.priceFrom.addEventListener('change', this._handleChangePriceFrom);
+    this.priceTo.addEventListener('keyup', this._handleChangePriceTo);
+    this.priceTo.addEventListener('change', this._handleChangePriceTo);
+  }
+
+  static _handleInput(e) {
+    e.target.value = e.target.value.replace(this.regexp, '');
+  }
+
+  _handleChangePriceFrom(e) {
+    this.from = Number(e.target.value);
+    this._updatePrice(e, this.priceFrom, 'from');
+  }
+
+  _handleChangePriceTo(e) {
+    this.to = Number(e.target.value);
+    if (this.from <= this.to) { this._updatePrice(e, this.priceTo, 'to'); }
+  }
+
+  _updatePrice(e, inputType, valueType) {
+    const value = inputType.value.replace(this.regexp, '');
+    this.rangeSlider.update({
+      [valueType]: value,
     });
-
-    const instance = $(this.slider).data('ionRangeSlider');
-    const updatePrice = (e, inputType, valueType) => {
-      const value = inputType.value.replace(/\D/g, '');
-      instance.update({
-        [valueType]: value,
-      });
-      const input = inputType;
-      input.style.width = `${(inputType.value.length)}px`;
-      if (e.type === 'change') {
-        input.value = `${parseInt(value, 10).toLocaleString()}₽`;
-        input.style.width = `${(inputType.value.length)}px`;
-      }
-    };
-
-    const handleChangePriceFrom = (e) => {
-      updatePrice(e, this.priceFrom, 'from');
-    };
-    const handleChangePriceTo = (e) => {
-      updatePrice(e, this.priceTo, 'to');
-    };
-
-    this.priceFrom.addEventListener('keyup', handleChangePriceFrom);
-    this.priceFrom.addEventListener('change', handleChangePriceFrom);
-    this.priceTo.addEventListener('keyup', handleChangePriceTo);
-    this.priceTo.addEventListener('change', handleChangePriceTo);
+    const input = inputType;
+    if (e.type === 'change') {
+      input.value = `${parseInt(value, 10).toLocaleString()}₽`;
+      input.style.width = RangeSlider._getInputWidth(input.value);
+    }
   }
 
   _getElement(selector, wrapper = this.wrapper) {

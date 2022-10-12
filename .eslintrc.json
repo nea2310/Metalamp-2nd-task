@@ -14,6 +14,9 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
+  "ignorePatterns": [
+    "**/slider-metalamp/*.js"
+  ],
   "rules": {
     "fsd/hof-name-prefix": "error",
     "fsd/no-heavy-constructor": "error",

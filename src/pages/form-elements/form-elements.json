@@ -55,12 +55,11 @@
   ],
   "rangeSlider": {
     "labelText": "range slider",
-    "sliderType": "double",
-    "min": 1000,
-    "max": 15000,
-    "step": 1,
-    "from": 5000,
-    "to": 10000
+    "min": "0",
+    "max": "15000",
+    "from": "5000",
+    "to": "10000",
+    "shiftOnKeyHold": "100"
   },
   "dateDropdown": {
     "width": "wide",
@@ -196,7 +195,7 @@
       },
       {
         "value": "Помощник для инвалидов",
-        "description": "На 1 этаже вас встретит специалист и проводит до номера",
+        "description": "На 1 этаже вас встретит специалист\nи проводит до номера",
         "checkBoxName": "assistance"
       }
     ],
