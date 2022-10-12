@@ -8,9 +8,6 @@
     justify-content: center;
     align-items: center;
     margin-block-end: 0;
-  }
-
-  @include media-breakpoint-down($xs) {
     min-width: 319px;
   }
 
@@ -52,8 +49,16 @@
     }
 
     @include media-breakpoint-down($xs) {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      align-items: center;
       box-shadow: none;
+      padding: 20px 0;
+    }
+
+    @include media-breakpoint-down($xxs) {
+      display: block;
     }
 
     &_hidden {
