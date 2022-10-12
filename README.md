@@ -8,7 +8,7 @@ https://nea2310.github.io/Metalamp-2nd-task/index.html
 
 ## Dependency
 [jQuery](https://jquery.com/)<br>
-[Ion.RangeSlider](https://github.com/IonDen/ion.rangeSlider)<br>
+[Range slider Metalamp](https://github.com/nea2310/Metalamp-4th-task)<br>
 [Air Datepicker](https://github.com/t1m0n/air-datepicker)<br>
 
 
@@ -111,9 +111,12 @@ assets
 shared
 └─── helpers
 └─── images
+└─── plugins
+  └─── slider-metalamp
 ```
 `helpers` contains service functions used for data validation in components<br><br>
 `images` contains images shared among more than one component<br><br>
+`plugins` contains custom plugins not published on npm<br><br>
 
 #### `public`
 `public` has the following structure:
