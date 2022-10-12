@@ -5,6 +5,11 @@
   display: grid;
   align-items: center;
 
+  @include media-breakpoint-down($xs) {
+    min-height: 753px;
+    background-position: initial;
+  }
+
   &__registration-wrapper {
     display: flex;
     justify-content: center;
