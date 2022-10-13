@@ -55,7 +55,7 @@
     max-width: $md;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 12.25px;
+    grid-column-gap: 12px;
     grid-row-gap: 20.8px;
 
     @include media-breakpoint-down($lg) {
@@ -73,7 +73,7 @@
 
     &-wrapper {
       flex-grow: 1;
-      padding-left: 59.5px;
+      padding-left: 61px;
 
       @include media-breakpoint-down($lg) {
         padding: 0;
