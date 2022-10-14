@@ -5,8 +5,8 @@
   grid-template-rows: repeat(2, auto);
   grid-template-columns: auto 1fr;
   grid-template-areas:
-    "post-1 post-2"
-    "post-1 post-3";
+    'post-1 post-2'
+    'post-1 post-3';
   row-gap: 14px;
 
   &__image-wrapper {

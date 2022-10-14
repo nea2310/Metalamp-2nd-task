@@ -30,7 +30,7 @@
       position: absolute;
       top: 5px;
       left: 5px;
-      content: "♡";
+      content: '♡';
       color: $colorBorder;
       font-size: 15px;
     }
@@ -41,7 +41,7 @@
 
       &::after {
         position: absolute;
-        content: "❤";
+        content: '❤';
         color: $colorMain;
         font-size: 10px;
       }

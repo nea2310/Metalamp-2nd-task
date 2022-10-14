@@ -303,7 +303,7 @@
       padding: 0;
     }
 
-    &[type="date"] {
+    &[type='date'] {
       text-indent: 7px;
     }
   }
@@ -333,7 +333,7 @@
       }
 
       &--action {
-        &[data-action="prev"] {
+        &[data-action='prev'] {
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;
@@ -346,7 +346,7 @@
           }
         }
 
-        &[data-action="next"] {
+        &[data-action='next'] {
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;

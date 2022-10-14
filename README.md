@@ -23,6 +23,26 @@ https://nea2310.github.io/Metalamp-2nd-task/index.html
 `pixel-perfect` contains layout files<br><br>
 
 
+#### `public`
+`public` has the following structure:
+
+```
+public
+└─── images
+  └─── feedback
+  └─── room-card
+  └─── room-details
+```
+
+`images` contains mock images used by components or pages. These images will be replaced by real data from back-end in production mode<br><br>
+
+#### `vendors`
+`vendors` contains custom plugins not published on npm<br><br>
+```
+vendors
+└─── slider-metalamp
+```
+
 #### `src`
 ```
 src
@@ -95,6 +115,7 @@ assets
 | └─── favicons-main
 | └─── manifest
 └─── fonts
+└─── images
 └─── styles
 ```
 
@@ -102,6 +123,7 @@ assets
 * `favicons-extra` - additional favicons for different browsers and screen resolution
 * `manifest` -  manifest file
 * `fonts` - font files
+* `images` contains images shared among more than one component<br><br>
 * `styles` - files with global styles of the project<br><br>
 
 #### `shared`
@@ -110,26 +132,9 @@ assets
 ```
 shared
 └─── helpers
-└─── images
-└─── plugins
-  └─── slider-metalamp
 ```
 `helpers` contains service functions used for data validation in components<br><br>
-`images` contains images shared among more than one component<br><br>
-`plugins` contains custom plugins not published on npm<br><br>
 
-#### `public`
-`public` has the following structure:
-
-```
-public
-└─── images
-  └─── feedback
-  └─── room-card
-  └─── room-details
-```
-
-`images` contains mock images used by components or pages. These images will be replaced by real data from back-end in production mode<br><br>
 
 ## How to work
 #### Install dependencies

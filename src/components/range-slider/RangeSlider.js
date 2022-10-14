@@ -1,5 +1,5 @@
-import '../../shared/plugins/slider-metalamp/plugin';
-import '../../shared/plugins/slider-metalamp/plugin.css';
+import '../../../vendors/slider-metalamp/plugin';
+import '../../../vendors/slider-metalamp/plugin.css';
 
 class RangeSlider {
   constructor(elementName, element) {

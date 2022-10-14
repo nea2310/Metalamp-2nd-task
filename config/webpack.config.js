@@ -6,6 +6,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
+const root = path.join(__dirname, '../');
 const src = path.join(__dirname, '../src');
 const dist = path.join(__dirname, '../dist');
 const PAGES_DIR = path.join(src, 'pages/');
@@ -23,7 +24,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': src,
-      '@pub': `${src}/public`,
+      '@pub': `${root}/public`,
       '@fav': `${src}/assets/favicons`,
       '@com': `${src}/components`,
       '@pag': `${src}/pages`,

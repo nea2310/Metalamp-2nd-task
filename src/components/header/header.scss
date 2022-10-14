@@ -200,7 +200,7 @@
 
     &::before {
       box-sizing: border-box;
-      content: "";
+      content: '';
       left: 0;
       top: 2px;
       height: 30px;
@@ -250,7 +250,7 @@
       &:after {
         @include media-breakpoint-down($md) {
           border-radius: 1px;
-          content: "";
+          content: '';
           background-color: $colorMain;
           position: absolute;
           width: 100%;

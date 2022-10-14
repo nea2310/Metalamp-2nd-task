@@ -27,7 +27,7 @@ $gradientMain: linear-gradient($colorMain 0%, $colorGradientBorder 100%);
 $gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 100%);
 
 $headerHeight: 70px;
-$lg-padding-bottom: 30px;
+$lgPaddingBottom: 30px;
 
 $formWidth: 380px;
 $infoSignWidth: 250px;
@@ -38,7 +38,7 @@ $tipTransition: all 0.3s ease 0s;
 
 $arrowSize: 10px;
 
-$fontMain: "Montserrat", Arial, Helvetica, sans-serif;
+$fontMain: Montserrat, Arial, Helvetica, sans-serif;
 
 @mixin visually-hidden() {
   position: absolute;
@@ -52,7 +52,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
   left: $left;
   right: $right;
   position: absolute;
-  content: "";
+  content: '';
   width: $width;
   height: $height;
   background: $colorBackgroundDataDropdown;
@@ -61,7 +61,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 
 @mixin cell-background-rounded($width, $height) {
   position: absolute;
-  content: "";
+  content: '';
   width: $width;
   height: $height;
   background: $gradientMain;
@@ -106,7 +106,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 @mixin tip-style() {
   cursor: pointer;
   position: absolute;
-  content: "";
+  content: '';
   height: $tipSize;
   width: $tipSize;
   border-left: $tipBorder;
@@ -118,7 +118,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 @mixin arrow-tip-style($color) {
   cursor: pointer;
   position: absolute;
-  content: "";
+  content: '';
   height: $arrowSize;
   width: $arrowSize;
   border-left: 2px solid $color;
@@ -129,7 +129,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 @mixin arrow-basis-style($color) {
   cursor: pointer;
   position: absolute;
-  content: "";
+  content: '';
   height: 2px;
   width: 14px;
   background-color: $color;
@@ -137,7 +137,7 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
 
 @mixin star-style() {
   position: absolute;
-  content: "★";
+  content: '★';
   color: $colorMain;
   font-size: 27px;
   top: 1px;
@@ -196,7 +196,6 @@ $fontMain: "Montserrat", Arial, Helvetica, sans-serif;
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;
-  // color: $colorTextNormal;
 }
 
 @mixin media-breakpoint-up($width) {

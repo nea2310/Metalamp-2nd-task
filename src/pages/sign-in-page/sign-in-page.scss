@@ -1,5 +1,5 @@
 .sign-in-page {
-  @include page-background("@pag/sign-in-page/image/bedroom.jpg", -70px);
+  @include page-background('@pag/sign-in-page/image/bedroom.jpg', -70px);
   flex-grow: 1;
   min-height: 701px;
   display: grid;

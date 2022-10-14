@@ -4,7 +4,7 @@ $cardStyle: (1 49, 2 39, 3 2);
   display: grid;
   grid-template-rows: 60px;
   grid-template-columns: 40px 457px;
-  grid-template-areas: "post-1 post-2";
+  grid-template-areas: 'post-1 post-2';
 
   @include media-breakpoint-down($sm) {
     display: flex;

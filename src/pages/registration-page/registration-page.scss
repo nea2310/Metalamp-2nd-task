@@ -1,5 +1,5 @@
 .registration-page {
-  @include page-background("@pag/registration-page/image/bedroom.jpg", -70px);
+  @include page-background('@pag/registration-page/image/bedroom.jpg', -70px);
   flex-grow: 1;
   min-height: 683px;
   display: grid;
