@@ -5,13 +5,13 @@
     max-width: 1440px;
     margin: 0 auto;
   }
-  
+
   &__cards {
     padding-top: 33px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    
+
     @include media-breakpoint-down($lg) {
       display: block;
     }
@@ -28,7 +28,9 @@
     padding-right: 100px;
 
     @include media-breakpoint-down($lg) {
+      padding-top: 50px;
       padding-left: 40px;
+      padding-bottom: 40px;
     }
 
     @include media-breakpoint-down($sm) {
