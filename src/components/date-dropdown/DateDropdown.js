@@ -1,3 +1,5 @@
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-console */
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import ErrorMessage from '../error-message/ErrorMessage';
@@ -168,6 +170,10 @@ class DateDropDown {
     }
     this.tips = this._getElements(['image']);
     this.calendarWrapper = this._getElement('calendar-wrapper');
+
+    this.isVisible = !this.calendarWrapper.classList.contains(`${this.elementName}__calendar-wrapper_hidden`);
+    console.log('this.isVisible>>>', this.isVisible);
+
     this.buttonClear = this._getElement('button-clear');
     this.buttonApply = this._getElement('button-apply');
 
@@ -454,7 +460,9 @@ class DateDropDown {
   }
 
   _handleDateDropDownResizeLoadWindow() {
-    this._toggle(false);
+    if (!this.isVisible) {
+      this._toggle(false);
+    }
   }
 
   _handleDateDropDownClickCalendar() {
@@ -465,7 +473,7 @@ class DateDropDown {
     const isNotDataDropDown = e.target.closest(`.${this.elementName}`)
       == null && !e.target.classList.contains('air-datepicker-cell');
 
-    if (isNotDataDropDown) {
+    if (isNotDataDropDown && !this.isVisible) {
       this._toggle(false);
     } else {
       this.clickOnCalendar = false;
@@ -477,7 +485,7 @@ class DateDropDown {
   }
 
   _handleDateDropDownFocusinDocument() {
-    if (this.focusOnList === false) {
+    if (this.focusOnList === false && !this.isVisible) {
       this._toggle(false);
     } else {
       this.focusOnList = false;

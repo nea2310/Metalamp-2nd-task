@@ -1,88 +1,207 @@
 .cards {
   flex-grow: 1;
   width: 100%;
-  margin: 0 auto;
+  margin: 38px auto 0;
   max-width: 1160px;
-  gap: 0px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  background-color: #f4f4f6;
+  row-gap: 36px;
+  column-gap: 40px;
+  display: grid;
+  grid-template-columns: 380px 380px 270px 50px;
+  grid-template-rows: 374px 100px 100px auto;
+  background-color: $colorUIKitground;
   padding-bottom: 20px;
 
-  &__column {
-    @include media-breakpoint-down($md) {
-      margin: 0 auto;
-    }
+  @include media-breakpoint-down($lg) {
+    max-width: 800px;
+    grid-template-columns: 380px 270px 80px;
+    grid-template-rows: 374px 100px 367px 113px 85px;
   }
+
+  @include media-breakpoint-down($md) {
+    max-width: 380px;
+    grid-template-columns: 270px 70px;
+    grid-template-rows: auto auto auto auto 410px 257px 257px;
+  }
+
+  @include media-breakpoint-down($xs) {
+    display: block;
+    padding: 20px 10px;
+  }
+
   &__search-room {
-    margin-top: 151px;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
 
     @include media-breakpoint-down($md) {
-      margin: 20px;
-      padding: 0;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 20px;
     }
   }
 
   &__registration {
-    margin-top: 38px;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    margin-top: 3px;
 
     @include media-breakpoint-down($md) {
-      margin: 20px;
-      padding: 0;
+      grid-row-start: 3;
+      grid-row-end: 4;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 20px;
     }
   }
 
   &__booking {
-    margin-top: 151px;
-    padding-left: 2px;
+    margin-top: 3px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    @include media-breakpoint-down($lg) {
+      grid-row-start: 1;
+      grid-row-end: 2;
+      grid-column-start: 2;
+      grid-column-end: 4;
+    }
 
     @include media-breakpoint-down($md) {
-      margin: 20px;
-      padding: 0;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 20px;
     }
   }
 
   &__login {
-    margin-top: 42px;
-    padding-left: 2px;
+    margin-top: 8px;
+    margin-left: 1px;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+    @include media-breakpoint-down($lg) {
+      grid-row-start: 3;
+      grid-row-end: 4;
+      grid-column-start: 2;
+      grid-column-end: 4;
+    }
 
     @include media-breakpoint-down($md) {
-      margin: 20px;
-      padding: 0;
+      grid-row-start: 4;
+      grid-row-end: 5;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 20px;
     }
   }
 
   &__date-dropdown {
-    margin-top: 146px;
+    overflow: hidden;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    position: relative;
+
+    @include media-breakpoint-down($lg) {
+      grid-row-start: 5;
+      grid-row-end: 7;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
 
     @include media-breakpoint-down($md) {
-      margin: 0;
-      padding: 0;
+      grid-row-start: 5;
+      grid-row-end: 6;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+
+    @include media-breakpoint-down($xs) {
+      height: 350px;
+      margin-bottom: 20px;
+    }
+  }
+
+  &__calendar-wrapper {
+    border: 1px solid black;
+    position: absolute;
+    top: -71px;
+    min-width: 319px;
+
+    @include media-breakpoint-down($xs) {
+      min-width: 300px;
     }
   }
 
   &__room-card {
-    max-width: 270px;
+    &:nth-last-child(2) {
+      grid-row-start: 2;
+      grid-row-end: 3;
+      grid-column-start: 3;
+      grid-column-end: 4;
 
-    &:nth-child(2) {
-      margin-top: 364px;
+      @include media-breakpoint-down($lg) {
+        grid-row-start: 4;
+        grid-row-end: 5;
+        grid-column-start: 2;
+        grid-column-end: 3;
+      }
 
       @include media-breakpoint-down($md) {
-        margin: 0;
-        padding: 0;
+        grid-row-start: 6;
+        grid-row-end: 7;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+
+      @include media-breakpoint-down($xs) {
+        margin-bottom: 20px;
       }
     }
     &:last-child {
-      margin-top: 37px;
+      margin-top: 24px;
+      grid-row-start: 4;
+      grid-row-end: 5;
+      grid-column-start: 3;
+      grid-column-end: 4;
+
+      @include media-breakpoint-down($lg) {
+        grid-row-start: 6;
+        grid-row-end: 7;
+        grid-column-start: 2;
+        grid-column-end: 3;
+      }
 
       @include media-breakpoint-down($md) {
-        margin: 0;
-        padding: 0;
+        margin-top: 0;
+        grid-row-start: 7;
+        grid-row-end: 8;
+        grid-column-start: 1;
+        grid-column-end: 2;
       }
     }
-  }
-  @include media-breakpoint-down($xl) {
-    justify-content: space-around;
   }
 }

@@ -2,7 +2,8 @@
   "header": {
     "menu": [
       {
-        "name": "О нас"
+        "name": "О нас",
+        "isActive": true
       },
       {
         "name": "Услуги",

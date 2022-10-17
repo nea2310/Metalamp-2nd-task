@@ -7,8 +7,9 @@ html(lang = "ru")
     +head()
     block title
       title Layout
-  body(class = "ui-kit-layout")
-    div(class = "ui-kit-layout__logo")
-      block logo
-    block content
+  block body
+    body(class = "ui-kit-layout")
+      div(class = "ui-kit-layout__logo")
+        block logo
+      block content
 

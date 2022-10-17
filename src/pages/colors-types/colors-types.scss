@@ -4,28 +4,35 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    padding-top: 77px;
   }
   
   &__cards {
-    padding-top: 68px;
+    padding-top: 33px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    
+    @include media-breakpoint-down($lg) {
+      display: block;
+    }
   }
 
   &__colors-wrapper {
     padding-left: 150px;
 
-    @include media-breakpoint-down($sm) {
-      padding-left: 20px;
+    @include media-breakpoint-down($lg) {
+      padding-left: 40px;
     }
   }
   &__types-wrapper {
     padding-right: 100px;
 
+    @include media-breakpoint-down($lg) {
+      padding-left: 40px;
+    }
+
     @include media-breakpoint-down($sm) {
-      padding-right: 20px;
+      padding-right: 10px;
     }
   }
 }

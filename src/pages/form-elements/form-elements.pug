@@ -24,6 +24,7 @@ block content
   -
     const {
       textField,
+      textField2,
       dropdownRooms,
       dropdownGuests,
       checkListExpandable,
@@ -49,14 +50,14 @@ block content
 
   main(class = "form-elements")
     div(class = "form-elements__wrapper-top")
-      div(class = "form-elements__column")
+      div(class = "form-elements__column form-elements__column_position_top")
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
           +input-field(textField)
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
-          +input-field(textField)
+          +input-field(textField2)
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
           +dropdown({
-            ...dropdownRooms, 
+            ...dropdownGuests, 
             width: 'wide',
           })
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
@@ -75,58 +76,65 @@ block content
           +checklist(checkListExpandable)
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
           +checklist(checkListExpandable)
-      div(class = "form-elements__column")
+      div(class = "form-elements__column form-elements__column_position_top")
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
           +checklist(checkListCheckBox)
-        span(class = "form-elements__label form-elements__label_position_top-middle") radio buttons
-        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
-          +radiobuttons(radiobuttons)
-        span(class = "form-elements__label form-elements__label_position_top-middle") toggle
-        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
-          +toggle(toggles)
-          +toggle({ value: toggles.value })
-        span(class = "form-elements__label form-elements__label_position_top-middle") like-button
-        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
-          +like-button(likeButtons[0])
-          +like-button(likeButtons[1])
-        span(class = "form-elements__label form-elements__label_position_top-middle") rate button
-        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
-          +rate-button({ ratingName: rateButtons[0] })
-          +rate-button({ ratingName: rateButtons[1] })
+        section(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
+          span(class = "form-elements__label form-elements__label_type_radio") radio buttons
+          div(class = "form-elements__inner-wrapper_type_radio")
+            +radiobuttons(radiobuttons)
+        section(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
+          span(class = "form-elements__label form-elements__label_type_toggle") toggle
+          div(class = "form-elements__inner-wrapper_type_toggle")
+            +toggle(toggles)
+            +toggle({ value: toggles.value })
+        section(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
+          span(class = "form-elements__label form-elements__label_type_like-button") like button
+          div(class = "form-elements__inner-wrapper_type_like-button")
+            +like-button(likeButtons[0])
+            +like-button(likeButtons[1])
+        section(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
+          span(class = "form-elements__label form-elements__label_type_rate-button") rate button
+          div(class = "form-elements__inner-wrapper_type_rate-button")
+            +rate-button({ ratingName: rateButtons[0] })
+            +rate-button({ ratingName: rateButtons[1] })
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
           +dropdown(dropdownGuests)
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-middle")
           +checklist(checkListRichCheckBox)
-      div(class = "form-elements__column")
+      div(class = "form-elements__column form-elements__column_position_top")
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
           +range-slider(rangeSlider)
-        span(class = "form-elements__label form-elements__label_position_top-right") buttons
-        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
-          +button(buttonDarkShort)
-        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
-          +button(buttonLightShort)
-        div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
-          +button({
-            text: buttonPlain.text,
-            type: buttonPlain.type,
-          })
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
-          +button(buttonDarkLong)
-        span(class='form-elements__label form-elements__label_position_top-right') pagination
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
-          +pagination()
+        section(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
+          span(class = "form-elements__label form-elements__label_type_buttons") buttons
+          div(class = "form-elements__inner-wrapper_type_buttons")
+            +button(buttonDarkShort)
+          div(class = "form-elements__inner-wrapper_type_buttons")
+            +button(buttonLightShort)
+          div(class = "form-elements__inner-wrapper_type_buttons")
+            +button({
+              text: buttonPlain.text,
+              type: buttonPlain.type,
+            })
+          div(class="form-elements__inner-wrapper_type_buttons")
+            +button(buttonDarkLong)
+        section(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
+          span(class='form-elements__label form-elements__label_type_pagination') pagination
+          div(class="form-elements__inner-wrapper_type_pagination")
+            +pagination()
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
           +dropdown(dropdownGuests)
-        span(class='form-elements__label form-elements__label_position_top-right') bullet list
-        div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
-          +bullet-list({ categories: bulletList.categories })
+        section(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-right")
+          span(class='form-elements__label form-elements__label_type_bullet-list') bullet list
+          div(class="form-elements__inner-wrapper_type_bullet-list")
+            +bullet-list({ categories: bulletList.categories })
     div(class="form-elements__wrapper-bottom")
-      div(class = "form-elements__column")
+      div(class = "form-elements__column form-elements__column_position_bottom")
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-left")
           +feature(features[0])
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-left")
           +feature(features[1])
-      div(class = "form-elements__column")
+      div(class = "form-elements__column form-elements__column_position_bottom")
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_bottom-right")
           +feedback({
             ...feedback,

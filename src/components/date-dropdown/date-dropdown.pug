@@ -7,6 +7,7 @@ mixin date-dropdown(options = {})
       labelTextFrom = '', 
       labelTextTo = '', 
       labelTextFromTo = '',
+      visibility = false,
     } = options
 
     const prepareOptions = require ('@com/date-dropdown/date-dropdown-utils.js').default;
@@ -14,9 +15,13 @@ mixin date-dropdown(options = {})
     const {
       elementName,
       typeChecked,
-      modifier,
       width,
-    } = prepareOptions({ type });
+      modifiers,
+      visibilityChecked
+    } = prepareOptions({ 
+      type,
+      visibility 
+    });
 
   div(class = `${elementName} js-${elementName} js-${elementName}_type_${typeChecked} ${elementName}${width}`)
     if typeChecked === 'dateDropDown'
@@ -39,7 +44,7 @@ mixin date-dropdown(options = {})
             h3(class = `${elementName}__label-text`)= labelTextFromTo
           input(class=`${elementName}__input js-${elementName}__input ${elementName}__input_from-to js-${elementName}__input_from-to ${elementName}__input_width_wide`
             type = "text" name = "dates")
-    div(class = `${elementName}__calendar-wrapper js-${elementName}__calendar-wrapper ${elementName}__calendar-wrapper_hidden ${modifier}`)
+    div(class = `${elementName}__calendar-wrapper js-${elementName}__calendar-wrapper ${modifiers}`)
       div(class = `${elementName}__buttons`)
         div(class = `${elementName}__button-clear js-${elementName}__button-clear`)
           +button({

@@ -6,6 +6,13 @@
     "inputType": "email",
     "validation": "email"
   },
+  "textField2": {
+    "width": "wide",
+    "placeholder": "This is pretty awesome",
+    "labelText": "text field",
+    "inputType": "email",
+    "validation": "email"
+  },
   "maskedTextField": {
     "width": "wide",
     "placeholder": "ДД.ММ.ГГГГ",

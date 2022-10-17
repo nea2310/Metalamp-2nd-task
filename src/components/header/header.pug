@@ -17,9 +17,11 @@ mixin header({ menu = [], isAuthorized = false } = {})
             ul(class = `${elementName}__nav-level1-items`)
               if Array.isArray(menu) && menu.length
                 each value in menu
-                  - const {name = '', subMenu = []} = value
+                  - 
+                    const {name = '', isActive, subMenu = []} = value
+                    const activeModifier = isActive ? `${elementName}__nav-level1-item-link_active` : ''
                   li(class = `${elementName}__nav-level1-item js-${elementName}__nav-level1-item`)
-                    a(class = `${elementName}__nav-level1-item-link js-${elementName}__nav-level1-item-link` href = "https://test/test")= name
+                    a(class = `${elementName}__nav-level1-item-link ${activeModifier} js-${elementName}__nav-level1-item-link` href = "https://test/test")= name
                     if Array.isArray(subMenu) && subMenu.length
                       ul(class = `${elementName}__nav-level2 js-${elementName}__nav-level2`)
                         each subValue in subMenu

@@ -10,16 +10,15 @@ include ../../components/date-dropdown/date-dropdown.pug
 
 block title
   title Cards
-block logo 
-  +logo({ backgroundColor: 'grey' })
-block content 
-  main(class = "cards")
-    div(class = "cards__column")
+block body
+  body(class = "ui-kit-layout ui-kit-layout_background_grey")
+    div(class = "ui-kit-layout__logo")
+      block logo 
+        +logo({ backgroundColor: 'grey' })
+  block content 
+    main(class = "cards")
       div(class = "cards__search-room")
         +search-room()
-      div(class = "cards__registration")
-        +registration()
-    div(class = "cards__column")
       div(class = "cards__booking")
         +booking({
           roomNumber: 888,
@@ -32,18 +31,21 @@ block content
           extraTotal: 300,
           totalAmount: 38081,
         })
+      div(class = "cards__registration")
+        +registration()
       div(class = "cards__login")
         +login()
-    div(class = "cards__column")
       div(class = "cards__date-dropdown")
-        +date-dropdown({
-          width:'wide',
-          type:'dateDropDown',
-        })
+        div(class = "cards__calendar-wrapper")
+          +date-dropdown({
+            width:'wide',
+            type:'dateDropDown',
+            visibility: true,
+          })
       div(class = "cards__room-card")
         +room-card({
           imageList: [
-            require('@pub/images/room-card/room-1.jpg'),
+            require('@pub/images/room-card/888.jpg'),
             require('@pub/images/room-card/room-2.jpg'),
             require('@pub/images/room-card/room-3.jpg'),
             require('@pub/images/room-card/room-4.jpg'),
@@ -52,12 +54,12 @@ block content
           lux: 'люкс',
           roomPrice: 9990,
           feedbackAmount: 145,
-          ratingName: 'room888Rating',
+          rating: 5,
         })
       div(class = 'cards__room-card')
         +room-card({
           imageList: [
-            require('@pub/images/room-card/room-1.jpg'),
+            require('@pub/images/room-card/840.jpg'),
             require('@pub/images/room-card/room-2.jpg'),
             require('@pub/images/room-card/room-3.jpg'),
             require('@pub/images/room-card/room-4.jpg'),
@@ -65,5 +67,5 @@ block content
           roomNumber: 840,
           roomPrice: 9900,
           feedbackAmount: 65,
-          ratingName: 'room840Rating',
+          rating: 4
         })
