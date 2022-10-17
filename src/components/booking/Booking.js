@@ -31,7 +31,6 @@ class Booking {
   _render() {
     this.dates = this.wrapper.querySelectorAll('.js-date-dropdown__input');
     this.guests = this.wrapper.querySelector('.js-dropdown__input');
-    this.inputs = this.wrapper.querySelectorAll('.js-dropdown__input, .js-date-dropdown__input');
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
 
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
@@ -117,14 +116,16 @@ class Booking {
 
   _bindEventListeners() {
     this.wrapper.addEventListener('submit', this._handleBookingSubmit);
-    this.inputs.forEach((input) => input.addEventListener('focus', this._handleBookingFocus));
+    this.dates.forEach((input) => input.addEventListener('focus', this._handleBookingFocus));
+    this.guests.addEventListener('focus', this._handleBookingFocus);
     this.errorMessageWrapper.addEventListener('click', this._handleBookingClick);
   }
 
   _handleBookingClick(event) {
     event.preventDefault();
     this._hideErrorMessageWrapper();
-    this.inputs.forEach((input) => input.classList.remove(this.errorModifier));
+    this.dates.forEach((input) => input.classList.remove(this.errorModifier));
+    this.guests.classList.remove(this.errorModifier);
   }
 
   _handleBookingSubmit(event) {
@@ -141,7 +142,7 @@ class Booking {
       this.guests.classList.remove(this.errorModifier);
     }
 
-    const isError = Array.from(this.inputs).some(
+    const isError = Array.from(this.dates).concat(this.guests).some(
       (item) => item.classList.contains(this.errorModifier),
     );
     if (isError) {
