@@ -9,6 +9,7 @@ mixin booking(options = {})
       lux = '',
       roomPrice = 0,
       daysAmount = 0,
+      wordForm = 'суток',
       totalPrice = 0,
       sale = 0,
       saleTotal = 0,
@@ -41,7 +42,7 @@ mixin booking(options = {})
     div(class = `${elementName}__guests`)
       +dropdown(dropdownGuests)
     div(class = `${elementName}__price-breakdown`)
-      div(class = `js-${elementName}__price-base-name ${elementName}__price-base-name`)= `${roomPrice.toLocaleString('ru-RU')}₽ x ${daysAmount} суток`
+      div(class = `js-${elementName}__price-base-name ${elementName}__price-base-name`)= `${roomPrice.toLocaleString('ru-RU')}₽ x ${daysAmount} ${wordForm}`
       div(class = `js-${elementName}__price-base-cost ${elementName}__price-base-cost`)= `${totalPrice.toLocaleString('ru-RU')}₽`
       div(class = `js-${elementName}__price-service-name ${elementName}__price-service-name` data-discount = sale)= `Сбор за услуги: скидка ${(sale *4).toLocaleString('ru-RU')}₽`
       div(class = `${elementName}__price-service-info`)

@@ -93,9 +93,18 @@ class Booking {
   }
 
   _calculateCost() {
+    function getWordForm(count) {
+      let value = count;
+      value = Math.abs(value) % 100;
+      const number = value % 10;
+      if (number > 1 && number < 20) return 'суток';
+      if (number === 1) return 'сутки';
+      return 'суток';
+    }
+
     const base = this.daysAmount * this.guestsAmount * this.price;
     const total = base - this._calculateDiscount();
-    this.days.innerText = `${this.price.toLocaleString('ru-RU')}₽ x ${this.daysAmount} суток`;
+    this.days.innerText = `${this.price.toLocaleString('ru-RU')}₽ x ${this.daysAmount} ${getWordForm(this.daysAmount)}`;
     this.baseCost.innerText = `${Math.trunc(base).toLocaleString('ru-RU')}₽`;
     this.totalCost.innerText = total > 0 ? `${Math.trunc(total + this.extra).toLocaleString('ru-RU')}₽` : '0₽';
   }

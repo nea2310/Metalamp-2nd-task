@@ -63,6 +63,16 @@ class Chart {
   }
 
   _writeText() {
+    function getWordForm(count) {
+      let value = count;
+      value = Math.abs(value) % 100;
+      const number = value % 10;
+      if (value > 10 && value < 20) return 'голосов';
+      if (number > 1 && number < 5) return 'голоса';
+      if (number === 1) return 'голос';
+      return 'голосов';
+    }
+
     document.fonts.ready.then(() => {
       this.ctx.font = '700 24px Montserrat';
       this.ctx.fillStyle = '#BC9CFF';
@@ -76,7 +86,7 @@ class Chart {
       this.ctx.fillStyle = '#BC9CFF';
       this.ctx.textAlign = 'center';
       this.ctx.fillText(
-        'голосов',
+        getWordForm(this.votes),
         this.canvas.width / 2,
         this.canvas.height / 2 + 16,
       );
