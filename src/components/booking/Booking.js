@@ -59,15 +59,19 @@ class Booking {
     this.dropDown = new DropDown('.js-dropdown', dropDownElement);
 
     this.dateDropDown.subscribeDateSelect(this._handleDateSelect);
-    const dateCurrent = new Date();
-    const currentTxt = `${dateCurrent.getFullYear()}-${dateCurrent.getMonth() + 1}-${dateCurrent.getDate()}`;
+    const datePlusFour = new Date(new Date().setDate(new Date().getDate() + 4));
 
-    const datePlusFour = new Date(+dateCurrent
-      + (new Date('2020-12-31') - new Date('2020-12-27')));
-    const plusFourTxt = `${datePlusFour.getFullYear()}-${datePlusFour.getMonth() + 1}-${datePlusFour.getDate()}`;
+    const formatDate = (date) => {
+      const day = String(date.getDate());
+      const month = String(date.getMonth() + 1);
+      const dd = day.length === 1 ? `0${day}` : day;
+      const mm = month.length === 1 ? `0${month}` : month;
+      const yyyy = String(date.getFullYear());
+      return `${yyyy}-${mm}-${dd}`;
+    };
 
-    const dateCurrentTxt = Booking.formatDate(currentTxt);
-    const datePlusFourTxt = Booking.formatDate(plusFourTxt);
+    const dateCurrentTxt = formatDate(new Date());
+    const datePlusFourTxt = formatDate(datePlusFour);
 
     this.dateDropDown.setDate(dateCurrentTxt, datePlusFourTxt);
 
