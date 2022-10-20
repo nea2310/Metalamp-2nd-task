@@ -1,4 +1,4 @@
-include ../input-field/input-field.pug
+include ../input-email/input-email.pug
 include ../logo/logo.pug
 
 mixin footer({ menu = [], actionAddress = '/test.php' } = {})
@@ -28,13 +28,10 @@ mixin footer({ menu = [], actionAddress = '/test.php' } = {})
       div(class = `${elementName}__items`) подписка
         span(class = `${elementName}__long-text`) Получайте специальные предложения и новости сервиса
         form(class = `${elementName}__subscription` method = "post" action = actionAddress)
-          +input-field({
+          +input-email({
             width: 'medium-narrow',
-            placeholder: 'Email',
             hasArrow: true,
             name: 'оформить подписку',
-            inputType: 'email',
-            validation: 'email',
           })
     div(class = `${elementName}__wrapper-middle`)
     div(class = `${elementName}__wrapper-bottom`)

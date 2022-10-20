@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 class InfoSign {
   constructor(elementName, element) {
     this.wrapper = element;

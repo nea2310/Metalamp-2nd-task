@@ -1,10 +1,8 @@
-/* eslint-disable no-console */
-
 class ErrorMessage {
-  constructor(element, targetElement = null) {
+  constructor(element, focusElement = null) {
     this.elementName = 'error-message';
     this.wrapper = element;
-    this.targetElement = targetElement;
+    this.focusElement = focusElement;
     this._render();
     this._bindEventListeners();
   }
@@ -20,8 +18,8 @@ class ErrorMessage {
     }
 
     this.errorMessage.classList.remove(`${this.elementName}_active`);
-    if (this.targetElement) {
-      this.targetElement.focus();
+    if (this.focusElement) {
+      this.focusElement.focus();
     }
   }
 

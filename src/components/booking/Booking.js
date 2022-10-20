@@ -77,7 +77,7 @@ class Booking {
 
     this.dropDown.subscribeGuestsSelect(this._handleGuestsSelect);
     this.dropDown.setData([
-      { name: 'взрослые', currentCount: 1 },
+      { name: 'взрослые', currentCount: 3 },
     ]);
   }
 
@@ -105,15 +105,15 @@ class Booking {
       return 'суток';
     }
 
-    const base = this.daysAmount * this.guestsAmount * this.price;
-    const total = base - this._calculateDiscount();
+    const base = this.daysAmount * this.price;
+    const total = base.toFixed(0) - this._calculateDiscount().toFixed(0);
     this.days.innerText = `${this.price.toLocaleString('ru-RU')}₽ x ${this.daysAmount} ${getWordForm(this.daysAmount)}`;
     this.baseCost.innerText = `${Math.trunc(base).toLocaleString('ru-RU')}₽`;
-    this.totalCost.innerText = total > 0 ? `${Math.trunc(total + this.extra).toLocaleString('ru-RU')}₽` : '0₽';
+    this.totalCost.innerText = total > 0 ? `${(Math.trunc(total) + Math.trunc(this.extra)).toLocaleString('ru-RU')}₽` : '0₽';
   }
 
   _calculateDiscount() {
-    const result = this.discount * this.daysAmount;
+    const result = this.discount * this.daysAmount * this.guestsAmount;
     this.service.innerText = `Сбор за услуги: скидка ${Math.trunc(result).toLocaleString('ru-RU')}₽`;
     return result;
   }

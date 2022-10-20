@@ -1,5 +1,6 @@
 include ../button/button.pug
 include ../input-field/input-field.pug
+include ../input-email/input-email.pug
 include ../error-message/error-message.pug
 
 mixin login({ actionAddress = '/test.php' } = {})
@@ -13,11 +14,8 @@ mixin login({ actionAddress = '/test.php' } = {})
       h1(class = `${elementName}__header`) Войти
       fieldset(class = `${elementName}__credentials`) 
         div(class = `${elementName}__email`)
-          +input-field({
+          +input-email({
             width: 'wide',
-            placeholder: 'Email',
-            inputType: 'email',
-            validation: 'email',
           })
         div(class = `${elementName}__password`)
           +input-field({

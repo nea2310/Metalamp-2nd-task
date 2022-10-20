@@ -1,0 +1,71 @@
+.input-date {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+
+  &__error-message {
+    position: absolute;
+    display: none;
+    right: 30px;
+    left: 30px;
+
+    &_active {
+      display: block;
+    }
+  }
+
+  &_width {
+    &_medium {
+      max-width: 266px;
+    }
+
+    &_medium-narrow {
+      max-width: 260px;
+    }
+  }
+
+  &__label {
+    position: relative;
+
+    &-text {
+      @include font-h3;
+      margin: 0;
+    }
+  }
+
+  &__input {
+    @include font-body;
+    color: $colorTextNormal;
+    padding: 9px 0;
+    text-indent: 14px;
+    border-radius: 5px;
+    border: 1px solid $colorBorder;
+    margin-top: 4px;
+    width: 100%;
+    outline: none;
+
+    &_color {
+      &_light {
+        &::placeholder {
+          color: $colorBorder;
+        }
+      }
+
+      &_dark {
+        &::placeholder {
+          color: $colorTextNormal;
+        }
+      }
+    }
+
+    &:hover {
+      border-color: $colorTextLight;
+    }
+
+    &:focus {
+      border-color: $colorTextLight;
+    }
+  }
+}

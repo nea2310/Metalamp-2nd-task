@@ -1,0 +1,30 @@
+include ../error-message/error-message.pug
+
+mixin input-date(options ={})
+  -
+    const { 
+      width = '',
+      labelText = '',
+      placeholderColor = 'light',
+      isCustomValidation = false,
+    } = options
+
+    const prepareOptions = require ('@com/input-date/input-date-utils.js').default;
+
+    const {
+      elementName,
+      widthChecked,
+      placeholderColorChecked,
+      } = prepareOptions({
+        width,
+        placeholderColor,
+    });
+
+  div(class = `${elementName} js-${elementName} ${elementName}_width_${widthChecked}`)
+    if !isCustomValidation
+      div(class = `${elementName}__error-message js-${elementName}__error-message`)
+        +error-message()
+    label(class = `${elementName}__label`)
+      if labelText
+        h3(class = `${elementName}__label-text`)= labelText
+      input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_color_${placeholderColorChecked}` placeholder = "ДД.ММ.ГГГГ")

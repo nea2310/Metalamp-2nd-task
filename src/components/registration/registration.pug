@@ -1,6 +1,8 @@
 include ../button/button.pug
+include ../input-date/input-date.pug
 include ../error-message/error-message.pug
 include ../input-field/input-field.pug
+include ../input-email/input-email.pug
 include ../radiobuttons/radiobuttons.pug
 include ../toggle/toggle.pug
 
@@ -33,21 +35,15 @@ mixin registration({ actionAddress = '/test.php' } = {})
           radioGroupName: 'gender'
         })
       div(class = `${elementName}__birth-date`)
-        +input-field({
+        +input-date({
           width: 'wide',
-          placeholder: 'ДД.ММ.ГГГГ',
           labelText: 'дата рождения',
-          inputType: 'text',
-          validation: 'date',
         })
       fieldset(class = `${elementName}__credentials`) 
         legend(class = `${elementName}__credentials-legend`) данные для входа в сервис
         div(class = `${elementName}__email`)
-          +input-field({
+          +input-email({
             width: 'wide',
-            placeholder: 'Email',
-            inputType: 'email',
-            validation: 'email',
           })
         div(class = `${elementName}__password`)
           +input-field({

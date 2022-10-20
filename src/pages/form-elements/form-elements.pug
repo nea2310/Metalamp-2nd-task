@@ -3,6 +3,8 @@ extends ../ui-kit-layout/ui-kit-layout.pug
 include ../../components/logo/logo.pug
 include ../../components/date-dropdown/date-dropdown.pug
 include ../../components/input-field/input-field.pug
+include ../../components/input-date/input-date.pug
+include ../../components/input-email/input-email.pug
 include ../../components/dropdown/dropdown.pug
 include ../../components/checklist/checklist.pug
 include ../../components/radiobuttons/radiobuttons.pug
@@ -23,8 +25,8 @@ block logo
 block content
   -
     const {
+      emailField,
       textField,
-      textField2,
       dropdownRooms,
       dropdownGuests,
       checkListExpandable,
@@ -52,22 +54,22 @@ block content
     div(class = "form-elements__wrapper-top")
       div(class = "form-elements__column form-elements__column_position_top")
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
-          +input-field(textField)
+          +input-email(emailField)
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
-          +input-field(textField2)
+          +input-field(textField)
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
           +dropdown({
             ...dropdownGuests, 
             width: 'wide',
           })
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
-          +input-field(maskedTextField)
+          +input-date(maskedTextField)
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
           +date-dropdown(dateDropdown)
         div(class="form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
           +date-dropdown(filterDateDropdown)
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
-          +input-field(subscriptionTextField)
+          +input-email(subscriptionTextField)
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
           +dropdown(dropdownRooms)
         div(class = "form-elements__comp-wrapper form-elements__comp-wrapper_position_top-left")
