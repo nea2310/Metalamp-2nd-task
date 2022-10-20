@@ -86,10 +86,6 @@
           margin-top: 20px;
         }
 
-        &_active {
-          font-weight: bold;
-        }
-
         &-tip {
           position: relative;
           margin-left: 9px;
@@ -112,6 +108,7 @@
 
           &_active {
             font-weight: bold;
+            color: $colorTextNormal;
           }
         }
       }

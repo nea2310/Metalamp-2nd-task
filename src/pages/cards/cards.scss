@@ -51,7 +51,7 @@
     grid-row-end: 3;
     grid-column-start: 1;
     grid-column-end: 2;
-    margin-top: 3px;
+    margin-top: 4px;
 
     @include media-breakpoint-down($md) {
       grid-row-start: 3;
@@ -65,7 +65,7 @@
   }
 
   &__booking {
-    margin-top: 3px;
+    margin-top: 2px;
     grid-row-start: 1;
     grid-row-end: 3;
     grid-column-start: 2;
@@ -91,7 +91,7 @@
   }
 
   &__login {
-    margin-top: 8px;
+    margin-top: 9px;
     margin-left: 1px;
     grid-row-start: 3;
     grid-row-end: 4;

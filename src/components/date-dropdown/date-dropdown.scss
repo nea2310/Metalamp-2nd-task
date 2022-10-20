@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-
+  gap: 22px;
   @include media-breakpoint-down($xs) {
     gap: 10px;
   }
@@ -176,16 +176,6 @@
     }
   }
 
-  &__label {
-    width: 100%;
-    position: relative;
-
-    &-text {
-      @include font-h3;
-      margin: 0;
-    }
-  }
-
   &__calendar-wrapper {
     background-color: $colorTextBackground;
     border: 1px solid $colorBorder;
@@ -219,27 +209,11 @@
   }
 
   &__input {
-    @include font-body;
-    color: $colorTextNormal;
-    cursor: pointer;
-    padding: 7px 0 9px;
-    text-indent: 12px;
-    border-radius: 5px;
-    border: 1px solid $colorBorder;
-    margin-top: 5px;
-
-    @include media-breakpoint-down($xs) {
-      width: 100%;
-    }
-
-    &::placeholder {
-      color: $colorTextNormal;
-    }
-
     &-wrapper {
       position: relative;
       display: flex;
       flex-direction: column;
+      width: 100%;
 
       @include media-breakpoint-down($xs) {
         width: 100%;
@@ -260,6 +234,10 @@
           transform: rotate(135deg);
         }
       }
+
+      &_type_from-to {
+        min-width: 266px;
+      }
     }
 
     &:hover {
@@ -269,42 +247,6 @@
     &:focus {
       border-color: $colorText;
       outline: none;
-    }
-
-    &_width {
-      &_narrow {
-        min-width: 150px;
-
-        @include media-breakpoint-down($xs) {
-          min-width: initial;
-        }
-      }
-
-      &_wide {
-        min-width: 266px;
-      }
-    }
-
-    &::-webkit-datetime-edit-fields-wrapper {
-      font-family: $fontMain;
-      color: $colorTextNormal;
-      text-transform: uppercase;
-    }
-
-    &::-webkit-calendar-picker-indicator {
-      -webkit-appearance: none;
-      display: none;
-    }
-
-    &::-webkit-datetime-edit-day-field,
-    &::-webkit-datetime-edit-month-field,
-    &::-webkit-datetime-edit-year-field,
-    &::-webkit-datetime-edit-text {
-      padding: 0;
-    }
-
-    &[type='date'] {
-      text-indent: 7px;
     }
   }
 
@@ -333,7 +275,7 @@
       }
 
       &--action {
-        &[data-action='prev'] {
+        &[data-action="prev"] {
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;
@@ -346,7 +288,7 @@
           }
         }
 
-        &[data-action='next'] {
+        &[data-action="next"] {
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;
@@ -363,7 +305,6 @@
     &-body {
       &--day-names {
         @include media-breakpoint-down($xs) {
-          // width: calc(39.88px * 7);
           margin: auto;
         }
 

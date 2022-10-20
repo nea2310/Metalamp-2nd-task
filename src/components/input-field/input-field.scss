@@ -5,17 +5,6 @@
   position: relative;
   width: 100%;
 
-  &__error-message {
-    position: absolute;
-    display: none;
-    right: 30px;
-    left: 30px;
-
-    &_active {
-      display: block;
-    }
-  }
-
   &_width {
     &_medium {
       max-width: 266px;
@@ -32,31 +21,6 @@
     &-text {
       @include font-h3;
       margin: 0;
-    }
-  }
-
-  &__link {
-    @include button-reset-style;
-    position: absolute;
-    bottom: 22px;
-    right: 24px;
-    cursor: pointer;
-
-    &:focus {
-      outline: solid 2px black;
-      outline-offset: 10px;
-    }
-
-    &::before {
-      @include arrow-basis-style($colorMain);
-      top: 0;
-      left: -7px;
-    }
-
-    &::after {
-      @include arrow-tip-style($colorMain);
-      top: -5px;
-      left: -6px;
     }
   }
 
@@ -85,21 +49,6 @@
 
     &:focus {
       border-color: $colorTextLight;
-    }
-
-    &::-webkit-datetime-edit-fields-wrapper {
-      font-family: $fontMain;
-      color: $colorTextNormal;
-      text-transform: uppercase;
-    }
-
-    &::-webkit-calendar-picker-indicator {
-      -webkit-appearance: none;
-      display: none;
-    }
-
-    &[type='date'] {
-      text-indent: 6px;
     }
   }
 }
