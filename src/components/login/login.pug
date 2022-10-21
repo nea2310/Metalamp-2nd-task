@@ -17,7 +17,7 @@ mixin login({ actionAddress = '/test.php' } = {})
           +input-email({
             width: 'wide',
           })
-        div(class = `${elementName}__password`)
+        div(class = `${elementName}__password js-${elementName}__password`)
           +input-field({
             width: 'wide',
             placeholder: 'Пароль',

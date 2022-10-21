@@ -46,6 +46,10 @@
     width: 100%;
     outline: none;
 
+    &_error {
+      outline: 1px solid $colorBorderError;
+    }
+
     &_color {
       &_light {
         &::placeholder {

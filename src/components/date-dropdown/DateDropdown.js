@@ -31,6 +31,14 @@ class DateDropDown {
     }
   }
 
+  validate() {
+    if (this.isFilter) return [this.inputDate.validate()];
+    const validationResults = [];
+    validationResults.push(this.inputFrom.validate());
+    validationResults.push(this.inputTo.validate());
+    return validationResults;
+  }
+
   static isFormatIncorrect(date) {
     return Number.isNaN(+date);
   }

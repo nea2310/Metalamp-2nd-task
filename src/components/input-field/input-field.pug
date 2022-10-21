@@ -22,4 +22,4 @@ mixin input-field(options ={})
     label(class = `${elementName}__label`)
       if labelText
         h3(class = `${elementName}__label-text`)= labelText
-      input(class = `${elementName}__input` placeholder = placeholder type = inputType )
+      input(class = `${elementName}__input js-${elementName}__input` placeholder = placeholder type = inputType )

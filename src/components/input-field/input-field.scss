@@ -35,8 +35,8 @@
     width: 100%;
     outline: none;
 
-    &_with-arrow {
-      padding-right: 40px;
+    &_error {
+      outline: 1px solid $colorBorderError;
     }
 
     &::placeholder {

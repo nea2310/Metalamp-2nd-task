@@ -16,13 +16,13 @@ mixin registration({ actionAddress = '/test.php' } = {})
         +error-message()
       h1(class = `${elementName}__header`) Регистрация аккаунта
       fieldset(class = `${elementName}__name-surname`)
-        div(class = `${elementName}__name`)
+        div(class = `${elementName}__name js-${elementName}__name`)
           +input-field({
             width: 'wide',
             placeholder: 'Имя',
             inputType: 'text',
           })
-        div(class = `${elementName}__surname`)
+        div(class = `${elementName}__surname js-${elementName}__surname`)
           +input-field({
             width: 'wide',
             placeholder: 'Фамилия',
@@ -45,7 +45,7 @@ mixin registration({ actionAddress = '/test.php' } = {})
           +input-email({
             width: 'wide',
           })
-        div(class = `${elementName}__password`)
+        div(class = `${elementName}__password js-${elementName}__password`)
           +input-field({
             width: 'wide',
             placeholder: 'Пароль',

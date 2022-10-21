@@ -13,7 +13,7 @@ $buttons: (2 28, 3 31, 4 29);
     max-width: 320px;
   }
 
-  &__column_position_top {
+  &__column-top {
     max-width: 320px;
 
     @include media-breakpoint-down($lg) {
@@ -39,8 +39,8 @@ $buttons: (2 28, 3 31, 4 29);
     margin-bottom: 16px;
   }
 
-  &__comp-wrapper_position {
-    &_top-left {
+  &__component-wrapper {
+    &-top-left {
       @each $key, $value in $compWrapperTopLeftMap {
         &:nth-child(#{$key}) {
           margin-top: #{$value}px;
@@ -52,7 +52,7 @@ $buttons: (2 28, 3 31, 4 29);
       }
     }
 
-    &_top-middle {
+    &-top-middle {
       @each $key, $value in $compWrapperTopMiddleMap {
         &:nth-child(#{$key}) {
           margin-top: #{$value}px;
@@ -76,7 +76,7 @@ $buttons: (2 28, 3 31, 4 29);
       }
     }
 
-    &_top-right {
+    &-top-right {
       @each $key, $value in $compWrapperTopRightMap {
         &:nth-child(#{$key}) {
           margin-top: #{$value}px;
@@ -97,7 +97,7 @@ $buttons: (2 28, 3 31, 4 29);
       }
     }
 
-    &_bottom-left {
+    &-bottom-left {
       padding-left: 1px;
       border-bottom: 1px solid $colorFooterDelimiter;
       padding-bottom: 23px;
@@ -116,7 +116,7 @@ $buttons: (2 28, 3 31, 4 29);
       }
     }
 
-    &_bottom-right {
+    &-bottom-right {
       &:nth-child(1) {
         margin-top: 221px;
         width: 100%;
@@ -187,24 +187,24 @@ $buttons: (2 28, 3 31, 4 29);
     }
   }
 
-  &__inner-wrapper_type {
-    &_toggle {
+  &__inner-wrapper {
+    &-toggle {
       min-height: 54px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-    &_like-button {
+    &-like-button {
       display: flex;
       gap: 10px;
     }
-    &_rate-button {
+    &-rate-button {
       padding-left: 3px;
       display: flex;
       gap: 25px;
     }
 
-    &_buttons {
+    &-buttons {
       @each $key, $value in $buttons {
         &:nth-child(#{$key}) {
           margin-bottom: #{$value}px;
@@ -228,11 +228,11 @@ $buttons: (2 28, 3 31, 4 29);
     }
   }
 
-  &__label_type {
-    &_like-button {
+  &__label {
+    &-like-button {
       margin-bottom: 15px;
     }
-    &_bullet-list {
+    &-bullet-list {
       margin-bottom: 13px;
     }
   }

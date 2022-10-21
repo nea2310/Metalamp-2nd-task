@@ -4,10 +4,18 @@ class InputEmail {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
     this.wrapper = element;
+    this.regexp = /.+@.+\..+/i;
 
     this._init();
     this._bindEventListeners();
     this._addEventListeners();
+  }
+
+  validate() {
+    const result = this.regexp.test(this.input.value);
+    if (!result) this.input.classList.add(`${this.elementName}__input_error`);
+    else this.input.classList.remove(`${this.elementName}__input_error`);
+    return [result];
   }
 
   _init() {
@@ -21,13 +29,19 @@ class InputEmail {
   _bindEventListeners() {
     this._handleInputFieldChange = this._handleInputFieldChange.bind(this);
     this._handleInputFieldClick = this._handleInputFieldClick.bind(this);
+    this._handleInputFieldFocus = this._handleInputFieldFocus.bind(this);
   }
 
   _addEventListeners() {
     this.input.addEventListener('change', this._handleInputFieldChange);
+    this.input.addEventListener('focus', this._handleInputFieldFocus);
     if (this.link) {
       this.link.addEventListener('click', this._handleInputFieldClick);
     }
+  }
+
+  _handleInputFieldFocus() {
+    this.input.classList.remove(`${this.elementName}__input_error`);
   }
 
   _handleInputFieldChange() {
@@ -39,7 +53,7 @@ class InputEmail {
   }
 
   _checkEmail(value) {
-    const test = /.+@.+\..+/i.test(value);
+    const test = this.regexp.test(value);
     if (value && !test) {
       this._showErrorMessageWrapper();
       this.errorMessage.toggleErrorMessage(true, `Введенный e-mail ${value} имеет некорректный формат`);

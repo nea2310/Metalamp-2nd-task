@@ -11,10 +11,10 @@ mixin feedback(options = {})
       isLiked = false,
       likeAmount = 0,
     } = options
-    
+
     const elementName = 'feedback'
 
-  div(class = elementName)
+  div(class = `${elementName} js-${elementName}`)
     img(class = `${elementName}__image` src = imagePath alt = alt)
     span(class = `${elementName}__name`)= name
     span(class = `${elementName}__date`)= date

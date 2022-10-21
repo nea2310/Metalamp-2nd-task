@@ -30,13 +30,11 @@ class Booking {
 
   _render() {
     this.dates = this.wrapper.querySelectorAll('.js-date-dropdown__input');
-    this.guests = this.wrapper.querySelector('.js-dropdown__input');
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
 
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
 
     this._handleBookingSubmit = this._handleBookingSubmit.bind(this);
-    this._handleBookingFocus = this._handleBookingFocus.bind(this);
     this._handleBookingClick = this._handleBookingClick.bind(this);
     this._handleDateSelect = this._handleDateSelect.bind(this);
     this._handleGuestsSelect = this._handleGuestsSelect.bind(this);
@@ -120,46 +118,21 @@ class Booking {
 
   _bindEventListeners() {
     this.wrapper.addEventListener('submit', this._handleBookingSubmit);
-    this.dates.forEach((input) => input.addEventListener('focus', this._handleBookingFocus));
-    this.guests.addEventListener('focus', this._handleBookingFocus);
     this.errorMessageWrapper.addEventListener('click', this._handleBookingClick);
   }
 
   _handleBookingClick(event) {
     event.preventDefault();
     this._hideErrorMessageWrapper();
-    this.dates.forEach((input) => input.classList.remove(this.errorModifier));
-    this.guests.classList.remove(this.errorModifier);
   }
 
   _handleBookingSubmit(event) {
-    this.dates.forEach((date) => {
-      if (/^\d{4}-\d{2}-\d{2}$/.test(date.value)) {
-        date.classList.remove(this.errorModifier);
-      } else {
-        date.classList.add(this.errorModifier);
-      }
-    });
-    if (this.guests.value.trim() === '') {
-      this.guests.classList.add(this.errorModifier);
-    } else {
-      this.guests.classList.remove(this.errorModifier);
-    }
-
-    const isError = Array.from(this.dates).concat(this.guests).some(
-      (item) => item.classList.contains(this.errorModifier),
-    );
-    if (isError) {
+    const validationsResults = this.dateDropDown.validate().concat(this.dropDown.validate());
+    if (validationsResults.includes(false)) {
       event.preventDefault();
       this._showErrorMessageWrapper();
       this.errorMessage.toggleErrorMessage(true, 'Заполните все поля!');
     }
-  }
-
-  _handleBookingFocus(event) {
-    event.currentTarget.classList.remove(this.errorModifier);
-    this._hideErrorMessageWrapper();
-    this.errorMessage.toggleErrorMessage();
   }
 
   _showErrorMessageWrapper() {

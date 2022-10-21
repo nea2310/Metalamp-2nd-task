@@ -59,6 +59,10 @@
       outline: none;
     }
 
+    &_error {
+      outline: 1px solid $colorBorderError;
+    }
+
     &-wrapper {
       &::after {
         @include tip-style;

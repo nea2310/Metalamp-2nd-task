@@ -1,4 +1,6 @@
 import ErrorMessage from '../error-message/ErrorMessage';
+import InputField from '../input-field/InputField';
+import InputEmail from '../input-email/InputEmail';
 
 class Login {
   constructor(elementName, element) {
@@ -10,52 +12,38 @@ class Login {
   }
 
   _render() {
-    this.inputs = this.wrapper.querySelectorAll('input');
-    this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
+    const emailElement = this.wrapper.querySelector('.js-input-email');
+    const passwordElement = this.wrapper.querySelector('.js-input-field');
 
+    this.email = new InputEmail('.js-input-email', emailElement);
+    this.password = new InputField('.js-input-field', passwordElement);
+
+    this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
 
     this._handleLoginSubmit = this._handleLoginSubmit.bind(this);
-    this._handleLoginFocus = this._handleLoginFocus.bind(this);
     this._handleSearchRoomClick = this._handleSearchRoomClick.bind(this);
   }
 
   _bindEventListeners() {
     this.wrapper.addEventListener('submit', this._handleLoginSubmit);
-    this.inputs.forEach((input) => input.addEventListener('focus', this._handleLoginFocus));
     this.errorMessageWrapper.addEventListener('click', this._handleSearchRoomClick);
   }
 
   _handleSearchRoomClick(event) {
     event.preventDefault();
     this._hideErrorMessageWrapper();
-    this.inputs.forEach((input) => input.classList.remove(this.errorModifier));
   }
 
   _handleLoginSubmit(event) {
-    this.inputs.forEach((input) => {
-      if (input.value.trim() === '') {
-        input.classList.add(this.errorModifier);
-      } else {
-        input.classList.remove(this.errorModifier);
-      }
-    });
-
-    const isError = Array.from(this.inputs).some(
-      (item) => item.classList.contains(this.errorModifier),
+    const validationsResults = this.email.validate().concat(
+      this.password.validate(),
     );
-
-    if (isError) {
+    if (validationsResults.includes(false)) {
       event.preventDefault();
       this._showErrorMessageWrapper();
       this.errorMessage.toggleErrorMessage(true, 'Заполните все поля!');
     }
-  }
-
-  _handleLoginFocus(event) {
-    event.currentTarget.classList.remove(this.errorModifier);
-    this._hideErrorMessageWrapper();
-    this.errorMessage.toggleErrorMessage();
   }
 
   _showErrorMessageWrapper() {

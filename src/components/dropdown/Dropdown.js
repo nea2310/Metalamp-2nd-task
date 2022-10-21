@@ -28,6 +28,13 @@ class DropDown {
     data.forEach((item) => this._changeCategoryCounter(item.name, item.currentCount));
   }
 
+  validate() {
+    const result = /^[1-9] гост/.test(this.input.value);
+    if (!result) this.input.classList.add(`${this.elementName}__input_error`);
+    else this.input.classList.remove(`${this.elementName}__input_error`);
+    return [result];
+  }
+
   _render() {
     this.clickOnList = false;
     this.focusOnList = false;

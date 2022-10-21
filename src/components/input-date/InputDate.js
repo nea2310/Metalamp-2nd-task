@@ -17,6 +17,14 @@ class InputDate {
     this.dateInputHandler = handler;
   }
 
+  validate() {
+    const regexp = this.isSingle ? /^\d{2}.\d{2}.\d{4}$/ : /^\d{2}.\d{2}.\d{4} - \d{2}.\d{2}.\d{4}$/;
+    const result = regexp.test(this.input.value);
+    if (!result) this.input.classList.add(`${this.elementName}__input_error`);
+    else this.input.classList.remove(`${this.elementName}__input_error`);
+    return result;
+  }
+
   _checkDayFormat(dd) {
     const day = dd.replace(/[^0-9.]/g, '');
     const { length } = day;
@@ -132,10 +140,16 @@ class InputDate {
   _bindEventListeners() {
     this._handleInputFieldInput = this._handleInputFieldInput.bind(this);
     this._checkBirthDate = this._checkBirthDate.bind(this);
+    this._handleInputFieldFocus = this._handleInputFieldFocus.bind(this);
   }
 
   _addEventListeners() {
     this.input.addEventListener('input', this._handleInputFieldInput);
+    this.input.addEventListener('focus', this._handleInputFieldFocus);
+  }
+
+  _handleInputFieldFocus() {
+    this.input.classList.remove(`${this.elementName}__input_error`);
   }
 
   _handleInputFieldInput(e) {

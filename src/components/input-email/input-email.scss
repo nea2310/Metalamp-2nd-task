@@ -71,6 +71,10 @@
     width: 100%;
     outline: none;
 
+    &_error {
+      outline: 1px solid $colorBorderError;
+    }
+
     &_with-arrow {
       padding-right: 40px;
     }
