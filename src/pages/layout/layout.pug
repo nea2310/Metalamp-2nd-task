@@ -11,8 +11,9 @@ html(lang = "ru")
     +head()
     block title
       title Layout
-  body(class = "layout")
-    +header(header)
+  body(class = "layout js-layout")
+    div(class = "js-layout__header")
+      +header(header)
     block content
       main
     +footer(footer)

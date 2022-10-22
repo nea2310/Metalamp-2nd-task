@@ -8,30 +8,31 @@ include ../../components/go-up-button/go-up-button.pug
 block title
   title Search room
 block content 
-  main(class = "search-room-page")
-    section(class = "search-room-page__filter-form-wrapper")
+  main(class = "search-room-page js-search-room-page")
+    section(class = "search-room-page__filter-form-wrapper js-search-room-page__filter-form")
       +filter-form()
     section(class = "search-room-page__search-results-wrapper")
       h1(class = "search-room-page__title") Номера, которые мы для вас подобрали
       div(class = "search-room-page__search-results")
         -const { roomcards } = require('@pag/search-room-page/search-room-page.json')
           each value in roomcards
-            +room-card({
-              imageList: [
-                require(`@pub/images/room-card/${value.roomNumber}.jpg`),
-                require('@pub/images/room-card/room-2.jpg'),
-                require('@pub/images/room-card/room-3.jpg'),
-                require('@pub/images/room-card/room-4.jpg'),
-              ],
-              roomNumber: value.roomNumber,
-              lux: value.lux,
-              roomPrice: value.roomPrice,
-              feedbackAmount: value.feedbackAmount,
-              rating: value.rating
-            })
+            div(class = "js-search-room-page__room-card")
+              +room-card({
+                imageList: [
+                  require(`@pub/images/room-card/${value.roomNumber}.jpg`),
+                  require('@pub/images/room-card/room-2.jpg'),
+                  require('@pub/images/room-card/room-3.jpg'),
+                  require('@pub/images/room-card/room-4.jpg'),
+                ],
+                roomNumber: value.roomNumber,
+                lux: value.lux,
+                roomPrice: value.roomPrice,
+                feedbackAmount: value.feedbackAmount,
+                rating: value.rating
+              })
       div(class = "search-room-page__pagination-wrapper")
         +pagination()
-      div(class = "search-room-page__go-up-button-wrapper")
+      div(class = "search-room-page__go-up-button-wrapper js-search-room-page__go-up-button")
         +go-up-button()
   div(class = "search-room-page__delimiter")
 

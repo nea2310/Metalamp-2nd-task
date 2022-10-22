@@ -1,11 +1,15 @@
-import Registration from '../../components/registration/Registration';
+import Booking from '../../components/booking/Booking';
+import Chart from '../../components/chart/Chart';
+import Feedback from '../../components/feedback/Feedback';
 
 const components = [
-  { registration: Registration },
+  { booking: Booking },
+  { chart: Chart },
+  { feedback: Feedback },
 ];
 
 (() => {
-  const selectorName = '.js-registration-page';
+  const selectorName = '.js-room-details-page';
   const page = document.querySelector(selectorName);
 
   if (page) {

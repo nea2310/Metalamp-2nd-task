@@ -1,11 +1,11 @@
-import Registration from '../../components/registration/Registration';
+import Header from '../../components/header/Header';
 
 const components = [
-  { registration: Registration },
+  { header: Header },
 ];
 
 (() => {
-  const selectorName = '.js-registration-page';
+  const selectorName = '.js-layout';
   const page = document.querySelector(selectorName);
 
   if (page) {

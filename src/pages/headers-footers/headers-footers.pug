@@ -14,10 +14,10 @@ block body
     -
       const { header, footer } = require('@pag/headers-footers/headers-footers.json')
 
-    main(class = "headers-footers")
-      div(class = "headers-footers__header")
+    main(class = "headers-footers js-headers-footers")
+      div(class = "headers-footers__header js-headers-footers__header")
         +header(header)
-      div(class = "headers-footers__header")
+      div(class = "headers-footers__header js-headers-footers__header")
         +header({
           ...header, 
           isAuthorized: true,

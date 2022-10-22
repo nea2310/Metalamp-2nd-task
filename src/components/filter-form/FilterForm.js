@@ -1,3 +1,8 @@
+import DateDropDown from '../date-dropdown/DateDropdown';
+import DropDown from '../dropdown/Dropdown';
+import CheckList from '../checklist/CheckList';
+import RangeSlider from '../range-slider/RangeSlider';
+
 class FilterForm {
   constructor(elementName, element) {
     this.elementName = elementName.replace(/^.js-/, '');
@@ -13,6 +18,16 @@ class FilterForm {
   _render() {
     this.button = this._getElement('show-filter');
     this.form = this._getElement('wrapper');
+
+    const dateDropDownElement = this.wrapper.querySelector('.js-date-dropdown');
+    const dropDownElements = this.wrapper.querySelectorAll('.js-dropdown');
+    const rangeSlider = this.wrapper.querySelector('.js-range-slider');
+    const checkListElements = this.wrapper.querySelectorAll('.js-checklist');
+
+    this.dateDropDown = new DateDropDown('.js-date-dropdown', dateDropDownElement);
+    dropDownElements.forEach((element) => new DropDown('.js-dropdown', element));
+    this.rangeSlider = new RangeSlider('.js-range-slider', rangeSlider);
+    checkListElements.forEach((element) => new CheckList('.js-checklist', element));
   }
 
   _bindEventListeners() {

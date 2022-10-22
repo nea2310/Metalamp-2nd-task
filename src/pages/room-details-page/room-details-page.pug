@@ -19,7 +19,7 @@ block content
     bulletList
       } = require('@pag/room-details-page/room-details-page.json')
 
-  main(class = "room-details-page")
+  main(class = "room-details-page js-room-details-page")
     h1(class = "room-details-page__header") подробная информация о номере
     section(class = "room-details-page__banner-wrapper")
       img(class = "room-details-page__image-1" alt = "фоновое изображение - спальня" src = require('@pub/images/room-details/room-details-1.jpg'))
@@ -52,7 +52,7 @@ block content
             })
       div(class = "room-details-page__room-impress-wrapper")
         h2(class = "room-details-page__room-impress-header") Впечатления от номера
-        div(class = "room-details-page__room-impress")
+        div(class = "room-details-page__room-impress js-room-details-page__chart")
           +chart({
             excellent: {
               rate: 130, 
@@ -71,7 +71,7 @@ block content
               label: 'Разочарован',
             },
           })
-      div(class = "room-details-page__booking-wrapper")
+      div(class = "room-details-page__booking-wrapper js-room-details-page__booking")
         +booking({
           roomNumber: 888,
           lux: 'люкс',
@@ -80,13 +80,13 @@ block content
           sale: 181.584,
           saleTotal: 0,
           extraTotal: 300,
-})
+        })
       div(class = "room-details-page__feedback-wrapper")
         div(class = "room-details-page__feedback-header")
           h2(class = "room-details-page__feedback-header-label") Отзывы посетителей номера
           span(class = "room-details-page__feedback-header-quantity") 2 отзыва
         div(class = "room-details-page__feedback")
-          div(class = "room-details-page__feedback-item")
+          div(class = "room-details-page__feedback-item js-room-details-page__feedback")
             +feedback({
               imagePath: require('@pub/images/feedback/murad.jpg'),
               name: feedbacks[0].name,
@@ -96,7 +96,7 @@ block content
               isLiked: feedbacks[0].isLiked, 
               likeAmount: feedbacks[0].likeAmount,
             })
-          div(class = "room-details-page__feedback-item")
+          div(class = "room-details-page__feedback-item js-room-details-page__feedback")
             +feedback({
               imagePath: require('@pub/images/feedback/patricia.jpg'),
               name: feedbacks[1].name,

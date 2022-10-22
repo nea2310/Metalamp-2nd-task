@@ -1,6 +1,7 @@
 import ErrorMessage from '../error-message/ErrorMessage';
 import DateDropDown from '../date-dropdown/DateDropdown';
 import DropDown from '../dropdown/Dropdown';
+import InfoSign from '../info-sign/InfoSign';
 
 class Booking {
   constructor(elementName, element) {
@@ -41,6 +42,7 @@ class Booking {
 
     const dateDropDownElement = this.wrapper.querySelector('.js-date-dropdown');
     const dropDownElement = this.wrapper.querySelector('.js-dropdown');
+    const infoSignElements = this.wrapper.querySelectorAll('.js-info-sign');
 
     this.days = this.wrapper.querySelector(`.js-${this.elementName}__price-base-name`);
     this.baseCost = this.wrapper.querySelector(`.js-${this.elementName}__price-base-cost`);
@@ -55,6 +57,7 @@ class Booking {
 
     this.dateDropDown = new DateDropDown('.js-date-dropdown', dateDropDownElement);
     this.dropDown = new DropDown('.js-dropdown', dropDownElement);
+    infoSignElements.forEach((element) => new InfoSign('.js-info-sign', element));
 
     this.dateDropDown.subscribeDateSelect(this._handleDateSelect);
     const datePlusFour = new Date(new Date().setDate(new Date().getDate() + 4));

@@ -1,11 +1,11 @@
-import Registration from '../../components/registration/Registration';
+import SearchRoom from '../../components/search-room/SearchRoom';
 
 const components = [
-  { registration: Registration },
+  { 'search-room': SearchRoom },
 ];
 
 (() => {
-  const selectorName = '.js-registration-page';
+  const selectorName = '.js-landing-page';
   const page = document.querySelector(selectorName);
 
   if (page) {

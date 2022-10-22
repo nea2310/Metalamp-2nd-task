@@ -1,11 +1,11 @@
-import Registration from '../../components/registration/Registration';
+import Login from '../../components/login/Login';
 
 const components = [
-  { registration: Registration },
+  { login: Login },
 ];
 
 (() => {
-  const selectorName = '.js-registration-page';
+  const selectorName = '.js-sign-in-page';
   const page = document.querySelector(selectorName);
 
   if (page) {
