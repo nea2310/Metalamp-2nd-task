@@ -11,7 +11,7 @@ class InputEmail {
     this._addEventListeners();
   }
 
-  validate() {
+  validateInputValue() {
     const result = this.regexp.test(this.input.value);
     if (!result) this.input.classList.add(`${this.elementName}__input_error`);
     else this.input.classList.remove(`${this.elementName}__input_error`);

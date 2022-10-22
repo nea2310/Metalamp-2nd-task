@@ -36,8 +36,8 @@ class Login {
   }
 
   _handleLoginSubmit(event) {
-    const validationsResults = this.email.validate().concat(
-      this.password.validate(),
+    const validationsResults = this.email.validateInputValue().concat(
+      this.password.validateInputValue(),
     );
     if (validationsResults.includes(false)) {
       event.preventDefault();

@@ -43,11 +43,11 @@ class Registration {
   }
 
   _handleRegistrationSubmit(event) {
-    const validationsResults = this.name.validate().concat(
-      this.surname.validate(),
-      this.birthDate.validate(),
-      this.email.validate(),
-      this.password.validate(),
+    const validationsResults = this.name.validateInputValue().concat(
+      this.surname.validateInputValue(),
+      this.birthDate.validateInputValue(),
+      this.email.validateInputValue(),
+      this.password.validateInputValue(),
     );
     if (validationsResults.includes(false)) {
       event.preventDefault();

@@ -37,7 +37,9 @@ class SearchRoom {
   }
 
   _handleSearchRoomSubmit(event) {
-    const validationsResults = this.dateDropDown.validate().concat(this.dropDown.validate());
+    const validationsResults = this.dateDropDown.validateInputValue().concat(
+      this.dropDown.validateInputValue(),
+    );
     if (validationsResults.includes(false)) {
       event.preventDefault();
       this._showErrorMessageWrapper();

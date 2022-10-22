@@ -7,7 +7,7 @@ class InputField {
     this._addEventListeners();
   }
 
-  validate() {
+  validateInputValue() {
     const result = /.{2,}/.test(this.input.value);
     if (!result) this.input.classList.add(`${this.elementName}__input_error`);
     else this.input.classList.remove(`${this.elementName}__input_error`);

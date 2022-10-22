@@ -24,18 +24,18 @@ class DateDropDown {
   setDate(from, to) {
     this._processRange(from, to, this.isFilter);
     if (this.isFilter) {
-      this.inputDate.value = `${from} - ${to}`;
+      this.inputInstance.setValue(`${from} - ${to}`);
     } else {
-      this.inputDateFrom.value = from;
-      this.inputDateTo.value = to;
+      this.inputFromInstance.setValue(from);
+      this.inputToInstance.setValue(to);
     }
   }
 
-  validate() {
-    if (this.isFilter) return [this.inputDate.validate()];
+  validateInputValue() {
+    if (this.isFilter) return [this.inputInstance.validateInputValue()];
     const validationResults = [];
-    validationResults.push(this.inputFrom.validate());
-    validationResults.push(this.inputTo.validate());
+    validationResults.push(this.inputFromInstance.validateInputValue());
+    validationResults.push(this.inputToInstance.validateInputValue());
     return validationResults;
   }
 
@@ -53,29 +53,23 @@ class DateDropDown {
 
   _render() {
     this.inputWrappers = this._getElements(['input-wrapper']);
-    [this.inputWrapperFrom, this.inputWrapperTo] = this.inputWrappers;
     this.isFilter = this.inputWrappers.length === 1;
 
+    const initInputInstance = (wrapper, callback) => {
+      const inputElement = wrapper.querySelector('.js-input-date');
+      const inputInstance = new InputDate('.js-input-date', inputElement, !this.isFilter, true);
+      inputInstance.subscribeDateInput(callback);
+      return inputInstance;
+    };
+
     if (!this.isFilter) {
-      const wrapperFrom = this._getElement('input-wrapper_type_from');
-      const wrapperTo = this._getElement('input-wrapper_type_to');
-
-      this.inputDateFrom = wrapperFrom.querySelector('.js-input-date__input');
-      this.inputDateTo = wrapperTo.querySelector('.js-input-date__input');
-
-      const inputElementFrom = wrapperFrom.querySelector('.js-input-date');
-      this.inputFrom = new InputDate('.js-input-date', inputElementFrom, !this.isFilter, true);
-      this.inputFrom.subscribeDateInput(this._handleDateInputFrom);
-
-      const inputElementTo = wrapperTo.querySelector('.js-input-date');
-      this.inputTo = new InputDate('.js-input-date', inputElementTo, !this.isFilter, true);
-      this.inputTo.subscribeDateInput(this._handleDateInputTo);
+      this.inputFromInstance = initInputInstance(this.inputWrappers[0], this._handleDateInputFrom);
+      this.inputToInstance = initInputInstance(this.inputWrappers[1], this._handleDateInputTo);
     } else {
-      this.inputDate = this.wrapper.querySelector('.js-input-date__input');
-      const inputElement = this.wrapper.querySelector('.js-input-date');
-      this.input = new InputDate('.js-input-date', inputElement, !this.isFilter, true);
-      this.input.subscribeDateInput(this._handleDateInputFromTo);
+      this.inputInstance = initInputInstance(this.inputWrappers[0], this._handleDateInputFromTo);
+      this.inputAlt = this._getElement('input-alt');
     }
+
     this.tips = this._getElements(['image']);
     this.calendarWrapper = this._getElement('calendar-wrapper');
 
@@ -91,9 +85,9 @@ class DateDropDown {
   _init() {
     const separator = this.isFilter ? ' - ' : ',';
     this.myDatepicker = new AirDatepicker(this.calendarWrapper, {
-      dateFormat: 'yyyy-MM-dd',
+      dateFormat: 'dd.MM.yyyy',
       disableNavWhenOutOfRange: false,
-      altField: this.inputDate,
+      altField: this.inputAlt,
       altFieldDateFormat: 'dd MMM',
       multipleDatesSeparator: separator,
       navTitles: {
@@ -102,17 +96,18 @@ class DateDropDown {
       minDate: new Date(),
       range: true,
       multipleDates: true,
-      prevHtml: '<image src="">',
-      nextHtml: '<image src="">',
+      prevHtml: '',
+      nextHtml: '',
       onSelect: (selectedDate) => {
         const dates = selectedDate.formattedDate;
         if (dates.length === 0) return;
         if (this.isFilter) {
-          this.inputDate.value = this.inputDate.value.toLowerCase();
+          this.inputInstance.setValue(this.inputAlt.value.toLowerCase());
         } else {
-          const value = (dates.length === 1) ? '' : dates[1];
-          this.inputDateFrom.value = DateDropDown._changeDashToDot(dates[0]);
-          this.inputDateTo.value = DateDropDown._changeDashToDot(value);
+          this.inputFromInstance.setValue(dates[0]);
+          if (dates.length === 2) {
+            this.inputToInstance.setValue(dates[1]);
+          }
         }
         if (this.dateSelectHandler) {
           this.dateSelectHandler(dates);
@@ -158,30 +153,16 @@ class DateDropDown {
     this._handleDateDropDownClickClear = this._handleDateDropDownClickClear.bind(this);
     this._handleDateDropDownClickWrapper = this._handleDateDropDownClickWrapper.bind(this);
     this._handleDateDropDownClickApply = this._handleDateDropDownClickApply.bind(this);
-    this._handleDateDropDownClickDateFromTo = this._handleDateDropDownClickDateFromTo.bind(this);
     this._handleDateDropDownClickDate = this._handleDateDropDownClickDate.bind(this);
     this._handleDateDropDownClickDocument = this._handleDateDropDownClickDocument.bind(this);
     this._handleDateDropDownClickCalendar = this._handleDateDropDownClickCalendar.bind(this);
-    this._handleDateDropDownBlurDate = this._handleDateDropDownBlurDate.bind(this);
-    this._handleDateDropDownFocusDate = this._handleDateDropDownFocusDate.bind(this);
     this._handleDateDropDownResizeLoadWindow = this._handleDateDropDownResizeLoadWindow.bind(this);
     this._handleDateDropDownFocusinWrapper = this._handleDateDropDownFocusinWrapper.bind(this);
     this._handleDateDropDownFocusinDocument = this._handleDateDropDownFocusinDocument.bind(this);
   }
 
   _addEventListeners() {
-    if (this.isFilter) {
-      this.inputDate.addEventListener('focus', this._handleDateDropDownFocusDate);
-      this.inputDate.addEventListener('blur', this._handleDateDropDownBlurDate);
-      this.inputWrapperFrom.addEventListener('click', this._handleDateDropDownClickDate);
-      this.inputDate.addEventListener('click', this._handleDateDropDownClickDate);
-    } else {
-      this.inputWrapperFrom.addEventListener('click', this._handleDateDropDownClickDateFromTo);
-      this.inputDateFrom.addEventListener('click', this._handleDateDropDownClickDateFromTo);
-      this.inputWrapperTo.addEventListener('click', this._handleDateDropDownClickDateFromTo);
-      this.inputDateTo.addEventListener('click', this._handleDateDropDownClickDateFromTo);
-    }
-
+    this.inputWrappers.forEach((element) => element.addEventListener('click', this._handleDateDropDownClickDate));
     this.wrapper.addEventListener('input', this._handleDateDropDownClickWrapper);
     this.buttonApply.addEventListener('click', this._handleDateDropDownClickApply);
     this.buttonClear.addEventListener('click', this._handleDateDropDownClickClear);
@@ -201,55 +182,19 @@ class DateDropDown {
 
   _handleDateInputFrom(date) {
     const dateFrom = DateDropDown._changeDotToDash(date);
-    const dateTo = DateDropDown._changeDotToDash(this.inputDateTo.value);
+    const dateTo = DateDropDown._changeDotToDash(this.inputToInstance.getValue());
     this._processRange(dateFrom, dateTo);
   }
 
   _handleDateInputTo(date) {
     const dateTo = DateDropDown._changeDotToDash(date);
-    const dateFrom = DateDropDown._changeDotToDash(this.inputDateFrom.value);
+    const dateFrom = DateDropDown._changeDotToDash(this.inputFromInstance.getValue());
     this._processRange(dateFrom, dateTo);
-  }
-
-  _handleDateDropDownFocusDate(e) {
-    this.initDate = this.inputDate.value;
-    const startDate = this.myDatepicker.selectedDates[0];
-    const endDate = this.myDatepicker.selectedDates[1];
-
-    if (startDate || endDate) {
-      const dateString = String(startDate.getDate());
-      const startDay = dateString.length === 1 ? `0${dateString}` : dateString;
-      const monthString = String(startDate.getMonth() + 1);
-      let startMonth = monthString.length === 1 ? `0${monthString}` : monthString;
-      startMonth = startMonth === '12' ? '01' : startMonth;
-      const endDateString = endDate ? String(endDate.getDate()) : '';
-      const endDay = endDateString.length === 1 ? `0${endDateString}` : endDateString;
-      const endMonthString = endDate ? String(endDate.getMonth() + 1) : '';
-      let endMonth = endMonthString.length === 1 ? `0${endMonthString}` : endMonthString;
-      endMonth = endMonth === '12' ? '01' : endMonth;
-      const startDateText = `${startDay}.${startMonth}.${startDate.getFullYear()}`;
-      e.target.value = endDate ? `${startDateText}
-    - ${endDay}.${endMonth}.${endDate.getFullYear()}` : `${startDateText}`;
-      this.initDateParsed = this.inputDate.value;
-    }
-  }
-
-  _handleDateDropDownBlurDate() {
-    if (this.inputDate.value === this.initDateParsed) {
-      this.inputDate.value = this.initDate;
-    }
   }
 
   _handleDateDropDownClickDate() {
     if (this.calendarWrapper.classList
       .contains(`${this.elementName}__calendar-wrapper_hidden`)) {
-      this._toggle(true);
-      this._hideErrorMessageWrapper();
-    }
-  }
-
-  _handleDateDropDownClickDateFromTo() {
-    if (this.calendarWrapper.classList.contains(`${this.elementName}__calendar-wrapper_hidden`)) {
       this._toggle(true);
       this._hideErrorMessageWrapper();
     }
@@ -270,7 +215,7 @@ class DateDropDown {
     if (e.target.value === '') {
       switch (e.target) {
         case this.inputDateFrom: {
-          this.inputDateTo.value = '';
+          this.inputToInstance.setValue();
           this.myDatepicker.clear();
           break;
         }
@@ -289,8 +234,8 @@ class DateDropDown {
     this.clickOnCalendar = true;
     this.myDatepicker.clear();
     if (!this.isFilter) {
-      this.inputDateFrom.value = '';
-      this.inputDateTo.value = '';
+      this.inputFromInstance.setValue();
+      this.inputToInstance.setValue();
       if (this.dateSelectHandler) {
         this.dateSelectHandler(['2000-01-01', '2000-01-01']);
       }
@@ -339,8 +284,8 @@ class DateDropDown {
 
     let isFromValid = false;
     if (isFromExist) {
-      /* 86400000 - кол-во милисекунд в сутках.
-      Прибавляем это число, т.к. поверяем,
+      /* 86400000 - кол-во миллисекунд в сутках.
+      Прибавляем это число, т.к. проверяем,
       что this.dateCurrent больше конца дня dateFrom, а не начала */
       isFromValid = dateFrom + 86400000 >= this.dateCurrent && dateFrom <= this.datePlusYear;
     }
@@ -372,17 +317,19 @@ class DateDropDown {
       }
 
       if (!isFilter) {
-        this.inputDateFrom.value = dateFrom ? DateDropDown._changeDashToDot(dateFrom) : '';
-        this.inputDateTo.value = dateTo ? DateDropDown._changeDashToDot(dateTo) : '';
+        const valueFrom = dateFrom ? DateDropDown._changeDashToDot(dateFrom) : '';
+        this.inputFromInstance.setValue(valueFrom);
+        const valueTo = dateTo ? DateDropDown._changeDashToDot(dateTo) : '';
+        this.inputToInstance.setValue(valueTo);
       }
       return true;
     }
 
     if (isFilter) {
-      this.inputDate.value = '';
+      this.inputInstance.setValue();
     } else {
-      this.inputDateFrom.value = '';
-      this.inputDateTo.value = '';
+      this.inputFromInstance.setValue();
+      this.inputToInstance.setValue();
     }
 
     return this._showErrorMessageWrapper(`Введите даты в диапазоне от ${DateDropDown._changeDashToDot(this.dateCurrentTxt)} до ${DateDropDown._changeDashToDot(this.datePlusYearTxt)}`);

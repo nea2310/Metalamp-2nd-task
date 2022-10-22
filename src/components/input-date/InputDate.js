@@ -17,7 +17,15 @@ class InputDate {
     this.dateInputHandler = handler;
   }
 
-  validate() {
+  setValue(value = '') {
+    this.input.value = value;
+  }
+
+  getValue() {
+    return this.input.value;
+  }
+
+  validateInputValue() {
     const regexp = this.isSingle ? /^\d{2}.\d{2}.\d{4}$/ : /^\d{2}.\d{2}.\d{4} - \d{2}.\d{2}.\d{4}$/;
     const result = regexp.test(this.input.value);
     if (!result) this.input.classList.add(`${this.elementName}__input_error`);

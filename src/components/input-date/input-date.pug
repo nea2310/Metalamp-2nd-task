@@ -7,6 +7,7 @@ mixin input-date(options ={})
       labelText = '',
       placeholderColor = 'light',
       isCustomValidation = false,
+      placeholder = 'ДД.ММ.ГГГГ'
     } = options
 
     const prepareOptions = require ('@com/input-date/input-date-utils.js').default;
@@ -27,4 +28,4 @@ mixin input-date(options ={})
     label(class = `${elementName}__label`)
       if labelText
         h3(class = `${elementName}__label-text`)= labelText
-      input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_color_${placeholderColorChecked}` placeholder = "ДД.ММ.ГГГГ")
+      input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_color_${placeholderColorChecked}` placeholder = placeholder)

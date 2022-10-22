@@ -8,6 +8,10 @@
     gap: 10px;
   }
 
+  &__input-alt {
+    @include visually-hidden;
+  }
+
   &__error-message {
     position: absolute;
     display: none;
@@ -214,7 +218,7 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-
+      min-width: 100px;
       @include media-breakpoint-down($xs) {
         width: 100%;
       }
@@ -224,7 +228,7 @@
         right: 18px;
         bottom: 20px;
 
-        @include media-breakpoint-down($xs) {
+        @include media-breakpoint-down($xxs) {
           right: 10px;
         }
       }
