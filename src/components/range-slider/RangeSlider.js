@@ -15,6 +15,7 @@ class RangeSlider {
     this.priceTo = this._getElement('price-to');
     this.from = Number(this.priceFrom.value.replace(this.regexp, ''));
     this.to = Number(this.priceTo.value.replace(this.regexp, ''));
+    this.measureTextBox = this._getElement('measure-text-length');
 
     this._handleChangePriceFrom = this._handleChangePriceFrom.bind(this);
     this._handleChangePriceTo = this._handleChangePriceTo.bind(this);
@@ -31,8 +32,8 @@ class RangeSlider {
       const { from, to } = data;
       priceFrom.value = `${from.toLocaleString()}₽`;
       priceTo.value = `${to.toLocaleString()}₽`;
-      const priceFromWidth = RangeSlider._getInputWidth(priceFrom.value);
-      const priceToWidth = RangeSlider._getInputWidth(priceTo.value);
+      const priceFromWidth = this._getInputWidth(priceFrom.value);
+      const priceToWidth = this._getInputWidth(priceTo.value);
 
       priceFrom.style.width = `${priceFromWidth}px`;
       priceTo.style.width = `${priceToWidth}px`;
@@ -82,7 +83,7 @@ class RangeSlider {
     const input = inputType;
     if (e.type === 'change') {
       input.value = `${parseInt(value, 10).toLocaleString()}₽`;
-      input.style.width = RangeSlider._getInputWidth(input.value);
+      input.style.width = this._getInputWidth(input.value);
     }
   }
 
@@ -100,16 +101,9 @@ class RangeSlider {
       .querySelectorAll(string);
   }
 
-  static _getInputWidth(text) {
-    const element = document.createElement('span');
-    element.style.fontSize = '12px';
-    element.style.fontFamily = 'Montserrat';
-    element.innerHTML = text;
-    const html = document.querySelector('html');
-    html.appendChild(element);
-    const result = element.offsetWidth;
-    html.removeChild(element);
-    return result;
+  _getInputWidth(text) {
+    this.measureTextBox.innerHTML = text;
+    return this.measureTextBox.offsetWidth;
   }
 }
 
