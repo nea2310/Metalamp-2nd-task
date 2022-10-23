@@ -1,8 +1,9 @@
 class ErrorMessage {
-  constructor(element, focusElement = null) {
+  constructor(element, focusElement = null, callback = null) {
     this.elementName = 'error-message';
     this.wrapper = element;
     this.focusElement = focusElement;
+    this.callback = callback;
     this._render();
     this._bindEventListeners();
   }
@@ -20,6 +21,9 @@ class ErrorMessage {
     this.errorMessage.classList.remove(`${this.elementName}_active`);
     if (this.focusElement) {
       this.focusElement.focus();
+    }
+    if (this.callback) {
+      this.callback();
     }
   }
 

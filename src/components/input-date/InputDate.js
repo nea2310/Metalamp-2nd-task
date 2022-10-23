@@ -33,6 +33,10 @@ class InputDate {
     return result;
   }
 
+  focusInput() {
+    this.input.focus();
+  }
+
   _checkDayFormat(dd) {
     const day = dd.replace(/[^0-9.]/g, '');
     const { length } = day;

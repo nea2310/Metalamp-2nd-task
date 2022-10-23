@@ -78,8 +78,15 @@ class DateDropDown {
     this.buttonApply = this._getElement('button-apply');
 
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
-    const targetElement = this.isFilter ? this.inputDate : this.inputDateFrom;
-    this.errorMessage = new ErrorMessage(this.errorMessageWrapper, targetElement);
+    this.errorMessage = new ErrorMessage(this.errorMessageWrapper, null, this.focusInput);
+  }
+
+  focusInput() {
+    if (this.isFilter) {
+      this.inputInstance.focusInput();
+    } else {
+      this.inputFromInstance.focusInput();
+    }
   }
 
   _init() {
@@ -154,9 +161,9 @@ class DateDropDown {
     this._handleDateInputFromTo = this._handleDateInputFromTo.bind(this);
     this._handleDateInputFrom = this._handleDateInputFrom.bind(this);
     this._handleDateInputTo = this._handleDateInputTo.bind(this);
+    this.focusInput = this.focusInput.bind(this);
 
     this._handleDateDropDownClickClear = this._handleDateDropDownClickClear.bind(this);
-    this._handleDateDropDownClickWrapper = this._handleDateDropDownClickWrapper.bind(this);
     this._handleDateDropDownClickApply = this._handleDateDropDownClickApply.bind(this);
     this._handleDateDropDownClickDate = this._handleDateDropDownClickDate.bind(this);
     this._handleDateDropDownClickDocument = this._handleDateDropDownClickDocument.bind(this);
@@ -168,7 +175,6 @@ class DateDropDown {
 
   _addEventListeners() {
     this.inputWrappers.forEach((element) => element.addEventListener('click', this._handleDateDropDownClickDate));
-    this.wrapper.addEventListener('input', this._handleDateDropDownClickWrapper);
     this.buttonApply.addEventListener('click', this._handleDateDropDownClickApply);
     this.buttonClear.addEventListener('click', this._handleDateDropDownClickClear);
     this.calendar.addEventListener('click', this._handleDateDropDownClickCalendar);
@@ -216,24 +222,26 @@ class DateDropDown {
     }
   }
 
-  _handleDateDropDownClickWrapper(e) {
-    if (e.target.value === '') {
-      switch (e.target) {
-        case this.inputDateFrom: {
-          this.inputToInstance.setValue();
-          this.myDatepicker.clear();
-          break;
-        }
-        case this.inputDateTo: {
-          const date = this.myDatepicker.selectedDates[1];
-          this.myDatepicker.unselectDate(date);
-          break;
-        }
-        default: return false;
-      }
-    }
-    return true;
-  }
+  // _handleDateDropDownClickWrapper(e) {
+  //   console.log('_handleDateDropDownClickWrapper');
+
+  //   if (e.target.value === '') {
+  //     switch (e.target) {
+  //       case this.inputDateFrom: {
+  //         this.inputToInstance.setValue();
+  //         this.myDatepicker.clear();
+  //         break;
+  //       }
+  //       case this.inputDateTo: {
+  //         const date = this.myDatepicker.selectedDates[1];
+  //         this.myDatepicker.unselectDate(date);
+  //         break;
+  //       }
+  //       default: return false;
+  //     }
+  //   }
+  //   return true;
+  // }
 
   _handleDateDropDownClickClear() {
     this.clickOnCalendar = true;
