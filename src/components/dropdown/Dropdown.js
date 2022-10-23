@@ -4,28 +4,17 @@ class DropDown {
   constructor(element, elementName = 'dropdown') {
     this.elementName = elementName;
     this.wrapper = element;
-    this._handleDropDownClickCounter = this._handleDropDownClickCounter.bind(this);
-    this._handleDropDownMousedownInput = this._handleDropDownMousedownInput.bind(this);
-    this._handleDropDownMouseupInput = this._handleDropDownMouseupInput.bind(this);
-    this._handleDropDownFocusInput = this._handleDropDownFocusInput.bind(this);
-    this._handleDropDownClickWrapper = this._handleDropDownClickWrapper.bind(this);
-    this._handleDropDownClickDocument = this._handleDropDownClickDocument.bind(this);
-    this._handleDropDownFocusinWrapper = this._handleDropDownFocusinWrapper.bind(this);
-    this._handleDropDownFocusinDocument = this._handleDropDownFocusinDocument.bind(this);
-    this._handleDropDownClickApply = this._handleDropDownClickApply.bind(this);
-    this._handleDropDownClickClear = this._handleDropDownClickClear.bind(this);
-    this._handleDropDownResizeLoadWindow = this._handleDropDownResizeLoadWindow.bind(this);
 
-    this._render();
     this._bindEventListeners();
-  }
-
-  subscribeGuestsSelect(handler) {
-    this.guestsSelectHandler = handler;
+    this._render();
   }
 
   setData(data) {
     data.forEach((item) => this._changeCategoryCounter(item.name, item.currentCount));
+  }
+
+  subscribeGuestsSelect(handler) {
+    this.guestsSelectHandler = handler;
   }
 
   validateInputValue() {
@@ -33,6 +22,11 @@ class DropDown {
     if (!result) this.input.classList.add(`${this.elementName}__input_error`);
     else this.input.classList.remove(`${this.elementName}__input_error`);
     return [result];
+  }
+
+  static _reduceCategory(categoriesOfType) {
+    return categoriesOfType
+      .reduce((sum, category) => category.currentCount + sum, 0);
   }
 
   _render() {
@@ -51,7 +45,42 @@ class DropDown {
     this.buttonsMinus = this._getElements(['count-decrement']);
     this.buttonsPlus = this._getElements(['count-increment']);
     this.clearApplyButtons = this.buttonClear != null && this.buttonApply != null;
+
+    this._addEventListeners();
     this._getInitialCounterList(this.listElements);
+  }
+
+  _bindEventListeners() {
+    this._handleDropDownClickCounter = this._handleDropDownClickCounter.bind(this);
+    this._handleDropDownMousedownInput = this._handleDropDownMousedownInput.bind(this);
+    this._handleDropDownMouseupInput = this._handleDropDownMouseupInput.bind(this);
+    this._handleDropDownFocusInput = this._handleDropDownFocusInput.bind(this);
+    this._handleDropDownClickWrapper = this._handleDropDownClickWrapper.bind(this);
+    this._handleDropDownClickDocument = this._handleDropDownClickDocument.bind(this);
+    this._handleDropDownFocusinWrapper = this._handleDropDownFocusinWrapper.bind(this);
+    this._handleDropDownFocusinDocument = this._handleDropDownFocusinDocument.bind(this);
+    this._handleDropDownClickApply = this._handleDropDownClickApply.bind(this);
+    this._handleDropDownClickClear = this._handleDropDownClickClear.bind(this);
+    this._handleDropDownResizeLoadWindow = this._handleDropDownResizeLoadWindow.bind(this);
+  }
+
+  _addEventListeners() {
+    this.inputWrapper.addEventListener('mousedown', this._handleDropDownMousedownInput);
+    this.inputWrapper.addEventListener('mouseup', this._handleDropDownMouseupInput);
+    this.input.addEventListener('focus', this._handleDropDownFocusInput);
+    this.counts.forEach((element) => element.addEventListener('click', this._handleDropDownClickCounter));
+    if (this.clearApplyButtons) {
+      this.buttonApply.addEventListener('click', this._handleDropDownClickApply);
+    }
+    if (this.clearApplyButtons) {
+      this.buttonClear.addEventListener('click', this._handleDropDownClickClear);
+    }
+    this.wrapper.addEventListener('click', this._handleDropDownClickWrapper);
+    this.wrapper.addEventListener('focusin', this._handleDropDownFocusinWrapper);
+    document.addEventListener('click', this._handleDropDownClickDocument);
+    document.addEventListener('focusin', this._handleDropDownFocusinDocument);
+    window.addEventListener('resize', this._handleDropDownResizeLoadWindow);
+    window.addEventListener('load', this._handleDropDownResizeLoadWindow);
   }
 
   _getInitialCounterList(counterList) {
@@ -84,25 +113,6 @@ class DropDown {
     }
   }
 
-  _bindEventListeners() {
-    this.inputWrapper.addEventListener('mousedown', this._handleDropDownMousedownInput);
-    this.inputWrapper.addEventListener('mouseup', this._handleDropDownMouseupInput);
-    this.input.addEventListener('focus', this._handleDropDownFocusInput);
-    this.counts.forEach((element) => element.addEventListener('click', this._handleDropDownClickCounter));
-    if (this.clearApplyButtons) {
-      this.buttonApply.addEventListener('click', this._handleDropDownClickApply);
-    }
-    if (this.clearApplyButtons) {
-      this.buttonClear.addEventListener('click', this._handleDropDownClickClear);
-    }
-    this.wrapper.addEventListener('click', this._handleDropDownClickWrapper);
-    this.wrapper.addEventListener('focusin', this._handleDropDownFocusinWrapper);
-    document.addEventListener('click', this._handleDropDownClickDocument);
-    document.addEventListener('focusin', this._handleDropDownFocusinDocument);
-    window.addEventListener('resize', this._handleDropDownResizeLoadWindow);
-    window.addEventListener('load', this._handleDropDownResizeLoadWindow);
-  }
-
   _updateCategory(newCounter, newCounterType, name, type, element) {
     this.categories.forEach((category) => {
       const item = category;
@@ -121,11 +131,6 @@ class DropDown {
 
   _filterCategory(type) {
     return this.categories.filter((category) => category.type === type);
-  }
-
-  static _reduceCategory(categoriesOfType) {
-    return categoriesOfType
-      .reduce((sum, category) => category.currentCount + sum, 0);
   }
 
   _changeCategoryCounter(name, counter) {

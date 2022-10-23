@@ -3,17 +3,9 @@ class CheckList {
     this.elementName = elementName;
     this.wrapper = element;
     this.breakPoint = 1199;
-    this._handleCheckListMouseDownLabel = this._handleCheckListMouseDownLabel.bind(this);
-    this._handleCheckListMouseUpLabel = this._handleCheckListMouseUpLabel.bind(this);
-    this._handleCheckListFocusLabel = this._handleCheckListFocusLabel.bind(this);
-    this._handleCheckListClickWrapper = this._handleCheckListClickWrapper.bind(this);
-    this._handleCheckListFocusWrapper = this._handleCheckListFocusWrapper.bind(this);
-    this._handleCheckListResizeLoadWindow = this._handleCheckListResizeLoadWindow.bind(this);
-    this._handleCheckListClickFocusDoc = this._handleCheckListClickFocusDoc.bind(this);
-    this._needCollapse = this._needCollapse.bind(this);
 
-    this._render();
     this._bindEventListeners();
+    this._render();
   }
 
   _render() {
@@ -23,9 +15,22 @@ class CheckList {
     this.label = this._getElement('label');
     this.listWrapper = this._getElement('list-wrapper');
     this.clickOnList = false;
+
+    this._addEventListeners();
   }
 
   _bindEventListeners() {
+    this._handleCheckListMouseDownLabel = this._handleCheckListMouseDownLabel.bind(this);
+    this._handleCheckListMouseUpLabel = this._handleCheckListMouseUpLabel.bind(this);
+    this._handleCheckListFocusLabel = this._handleCheckListFocusLabel.bind(this);
+    this._handleCheckListClickWrapper = this._handleCheckListClickWrapper.bind(this);
+    this._handleCheckListFocusWrapper = this._handleCheckListFocusWrapper.bind(this);
+    this._handleCheckListResizeLoadWindow = this._handleCheckListResizeLoadWindow.bind(this);
+    this._handleCheckListClickFocusDoc = this._handleCheckListClickFocusDoc.bind(this);
+    this._needCollapse = this._needCollapse.bind(this);
+  }
+
+  _addEventListeners() {
     this.wrapper.addEventListener('mousedown', this._handleCheckListMouseDownLabel);
     this.wrapper.addEventListener('mouseup', this._handleCheckListMouseUpLabel);
     this.label.addEventListener('focus', this._handleCheckListFocusLabel);

@@ -7,8 +7,9 @@ class Login {
     this.wrapper = element;
     this.elementName = elementName;
     this.errorModifier = `${this.elementName}_error`;
-    this._render();
+
     this._bindEventListeners();
+    this._render();
   }
 
   _render() {
@@ -21,11 +22,15 @@ class Login {
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
 
+    this._addEventListeners();
+  }
+
+  _bindEventListeners() {
     this._handleLoginSubmit = this._handleLoginSubmit.bind(this);
     this._handleSearchRoomClick = this._handleSearchRoomClick.bind(this);
   }
 
-  _bindEventListeners() {
+  _addEventListeners() {
     this.wrapper.addEventListener('submit', this._handleLoginSubmit);
     this.errorMessageWrapper.addEventListener('click', this._handleSearchRoomClick);
   }

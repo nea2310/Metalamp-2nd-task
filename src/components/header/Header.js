@@ -3,17 +3,8 @@ class Header {
     this.elementName = elementName;
     this.wrapper = element;
 
-    this._handleHeaderKeydownTip = this._handleHeaderKeydownTip.bind(this);
-    this._handleHeaderClickTip = this._handleHeaderClickTip.bind(this);
-    this._handleHeaderClickBurger = this._handleHeaderClickBurger.bind(this);
-    this._handleHeaderResizeWindow = this._handleHeaderResizeWindow.bind(this);
-    this._handleHeaderClickDocument = this._handleHeaderClickDocument.bind(this);
-    this._handleHeaderFocusinDocument = this._handleHeaderFocusinDocument.bind(this);
-    this._handleHeaderFocusLinkLevel1 = this._handleHeaderFocusLinkLevel1.bind(this);
-    this._handleHeaderKeydownNavLevel2 = this._handleHeaderKeydownNavLevel2.bind(this);
-
-    this._render();
     this._bindEventListeners();
+    this._render();
   }
 
   _render() {
@@ -23,9 +14,22 @@ class Header {
     this.navLevel2 = this._getElements(['nav-level2']);
     this.tips = this._getElements(['nav-level1-item-tip']);
     this.linksLevel1 = this._getElements(['nav-level1-item-link']);
+
+    this._addEventListeners();
   }
 
   _bindEventListeners() {
+    this._handleHeaderKeydownTip = this._handleHeaderKeydownTip.bind(this);
+    this._handleHeaderClickTip = this._handleHeaderClickTip.bind(this);
+    this._handleHeaderClickBurger = this._handleHeaderClickBurger.bind(this);
+    this._handleHeaderResizeWindow = this._handleHeaderResizeWindow.bind(this);
+    this._handleHeaderClickDocument = this._handleHeaderClickDocument.bind(this);
+    this._handleHeaderFocusinDocument = this._handleHeaderFocusinDocument.bind(this);
+    this._handleHeaderFocusLinkLevel1 = this._handleHeaderFocusLinkLevel1.bind(this);
+    this._handleHeaderKeydownNavLevel2 = this._handleHeaderKeydownNavLevel2.bind(this);
+  }
+
+  _addEventListeners() {
     this.linksLevel1.forEach((element) => {
       element.addEventListener('focus', this._handleHeaderFocusLinkLevel1);
     });

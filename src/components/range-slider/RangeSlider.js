@@ -6,7 +6,13 @@ class RangeSlider {
     this.elementName = elementName;
     this.wrapper = element;
     this.regexp = /\D/g;
+
+    this._bindEventListeners();
     this._render();
+  }
+
+  static _handleInput(e) {
+    e.target.value = e.target.value.replace(this.regexp, '');
   }
 
   _render() {
@@ -17,12 +23,8 @@ class RangeSlider {
     this.to = Number(this.priceTo.value.replace(this.regexp, ''));
     this.measureTextBox = this._getElement('measure-text-length');
 
-    this._handleChangePriceFrom = this._handleChangePriceFrom.bind(this);
-    this._handleChangePriceTo = this._handleChangePriceTo.bind(this);
-    this._updatePrice = this._updatePrice.bind(this);
-
     this._init();
-    this._bindEventListeners();
+    this._addEventListeners();
   }
 
   _init() {
@@ -52,6 +54,12 @@ class RangeSlider {
   }
 
   _bindEventListeners() {
+    this._handleChangePriceFrom = this._handleChangePriceFrom.bind(this);
+    this._handleChangePriceTo = this._handleChangePriceTo.bind(this);
+    this._updatePrice = this._updatePrice.bind(this);
+  }
+
+  _addEventListeners() {
     this.priceFrom.addEventListener('input', RangeSlider._handleInput);
     this.priceTo.addEventListener('input', RangeSlider._handleInput);
 
@@ -59,10 +67,6 @@ class RangeSlider {
     this.priceFrom.addEventListener('change', this._handleChangePriceFrom);
     this.priceTo.addEventListener('keyup', this._handleChangePriceTo);
     this.priceTo.addEventListener('change', this._handleChangePriceTo);
-  }
-
-  static _handleInput(e) {
-    e.target.value = e.target.value.replace(this.regexp, '');
   }
 
   _handleChangePriceFrom(e) {
@@ -89,16 +93,6 @@ class RangeSlider {
 
   _getElement(selector, wrapper = this.wrapper) {
     return wrapper.querySelector(`.${this.elementName}__${selector}`);
-  }
-
-  _getElements(selectors) {
-    let string = '';
-    selectors.forEach((selector) => {
-      string += `.js-${this.elementName}__${selector},`;
-    });
-    string = string.substring(0, string.length - 1);
-    return this.wrapper
-      .querySelectorAll(string);
   }
 
   _getInputWidth(text) {

@@ -9,8 +9,9 @@ class Booking {
     this.elementName = elementName;
     this.errorModifier = `${this.elementName}_error`;
     this.day = 86400000; // 86400000 - кол-во милисекунд в сутках
-    this._render();
+
     this._bindEventListeners();
+    this._render();
   }
 
   static formatDate(dateValue) {
@@ -32,13 +33,7 @@ class Booking {
   _render() {
     this.dates = this.wrapper.querySelectorAll('.js-date-dropdown__input');
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
-
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
-
-    this._handleBookingSubmit = this._handleBookingSubmit.bind(this);
-    this._handleBookingClick = this._handleBookingClick.bind(this);
-    this._handleDateSelect = this._handleDateSelect.bind(this);
-    this._handleGuestsSelect = this._handleGuestsSelect.bind(this);
 
     const dateDropDownElement = this.wrapper.querySelector('.js-date-dropdown');
     const dropDownElement = this.wrapper.querySelector('.js-dropdown');
@@ -80,6 +75,20 @@ class Booking {
     this.dropDown.setData([
       { name: 'взрослые', currentCount: 3 },
     ]);
+
+    this._addEventListeners();
+  }
+
+  _bindEventListeners() {
+    this._handleBookingSubmit = this._handleBookingSubmit.bind(this);
+    this._handleBookingClick = this._handleBookingClick.bind(this);
+    this._handleDateSelect = this._handleDateSelect.bind(this);
+    this._handleGuestsSelect = this._handleGuestsSelect.bind(this);
+  }
+
+  _addEventListeners() {
+    this.wrapper.addEventListener('submit', this._handleBookingSubmit);
+    this.errorMessageWrapper.addEventListener('click', this._handleBookingClick);
   }
 
   _handleDateSelect(date) {
@@ -120,11 +129,6 @@ class Booking {
     const result = this.discount * this.daysAmount * this.guestsAmount;
     this.service.innerText = `Сбор за услуги: скидка ${Math.trunc(result).toLocaleString('ru-RU')}₽`;
     return result;
-  }
-
-  _bindEventListeners() {
-    this.wrapper.addEventListener('submit', this._handleBookingSubmit);
-    this.errorMessageWrapper.addEventListener('click', this._handleBookingClick);
   }
 
   _handleBookingClick(event) {

@@ -11,14 +11,14 @@ class DateDropDown {
 
     this._bindEventListeners();
     this._render();
-    this._init();
-    this._prepareDates();
-    this._setDefaultDate();
-    this._addEventListeners();
   }
 
-  subscribeDateSelect(handler) {
-    this.dateSelectHandler = handler;
+  focusInput() {
+    if (this.isFilter) {
+      this.inputInstance.focusInput();
+    } else {
+      this.inputFromInstance.focusInput();
+    }
   }
 
   setDate(from, to) {
@@ -31,16 +31,16 @@ class DateDropDown {
     }
   }
 
+  subscribeDateSelect(handler) {
+    this.dateSelectHandler = handler;
+  }
+
   validateInputValue() {
     if (this.isFilter) return [this.inputInstance.validateInputValue()];
     const validationResults = [];
     validationResults.push(this.inputFromInstance.validateInputValue());
     validationResults.push(this.inputToInstance.validateInputValue());
     return validationResults;
-  }
-
-  static isFormatIncorrect(date) {
-    return Number.isNaN(+date);
   }
 
   static _changeDotToDash(string) {
@@ -79,14 +79,39 @@ class DateDropDown {
 
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper, null, this.focusInput);
+
+    this._init();
+    this._prepareDates();
+    this._setDefaultDate();
+    this._addEventListeners();
   }
 
-  focusInput() {
-    if (this.isFilter) {
-      this.inputInstance.focusInput();
-    } else {
-      this.inputFromInstance.focusInput();
-    }
+  _bindEventListeners() {
+    this._handleDateInputFromTo = this._handleDateInputFromTo.bind(this);
+    this._handleDateInputFrom = this._handleDateInputFrom.bind(this);
+    this._handleDateInputTo = this._handleDateInputTo.bind(this);
+    this.focusInput = this.focusInput.bind(this);
+
+    this._handleDateDropDownClickClear = this._handleDateDropDownClickClear.bind(this);
+    this._handleDateDropDownClickApply = this._handleDateDropDownClickApply.bind(this);
+    this._handleDateDropDownClickDate = this._handleDateDropDownClickDate.bind(this);
+    this._handleDateDropDownClickDocument = this._handleDateDropDownClickDocument.bind(this);
+    this._handleDateDropDownClickCalendar = this._handleDateDropDownClickCalendar.bind(this);
+    this._handleDateDropDownResizeLoadWindow = this._handleDateDropDownResizeLoadWindow.bind(this);
+    this._handleDateDropDownFocusinWrapper = this._handleDateDropDownFocusinWrapper.bind(this);
+    this._handleDateDropDownFocusinDocument = this._handleDateDropDownFocusinDocument.bind(this);
+  }
+
+  _addEventListeners() {
+    this.inputWrappers.forEach((element) => element.addEventListener('click', this._handleDateDropDownClickDate));
+    this.buttonApply.addEventListener('click', this._handleDateDropDownClickApply);
+    this.buttonClear.addEventListener('click', this._handleDateDropDownClickClear);
+    this.calendar.addEventListener('click', this._handleDateDropDownClickCalendar);
+    this.wrapper.addEventListener('focusin', this._handleDateDropDownFocusinWrapper);
+    document.addEventListener('click', this._handleDateDropDownClickDocument);
+    document.addEventListener('focusin', this._handleDateDropDownFocusinDocument);
+    window.addEventListener('resize', this._handleDateDropDownResizeLoadWindow);
+    window.addEventListener('load', this._handleDateDropDownResizeLoadWindow);
   }
 
   _init() {
@@ -155,34 +180,6 @@ class DateDropDown {
     this.dateCurrentTxt = formatDate(this.dateCurrent);
     this.dateTomorrowTxt = formatDate(this.dateTomorrow);
     this.datePlusYearTxt = formatDate(this.datePlusYear);
-  }
-
-  _bindEventListeners() {
-    this._handleDateInputFromTo = this._handleDateInputFromTo.bind(this);
-    this._handleDateInputFrom = this._handleDateInputFrom.bind(this);
-    this._handleDateInputTo = this._handleDateInputTo.bind(this);
-    this.focusInput = this.focusInput.bind(this);
-
-    this._handleDateDropDownClickClear = this._handleDateDropDownClickClear.bind(this);
-    this._handleDateDropDownClickApply = this._handleDateDropDownClickApply.bind(this);
-    this._handleDateDropDownClickDate = this._handleDateDropDownClickDate.bind(this);
-    this._handleDateDropDownClickDocument = this._handleDateDropDownClickDocument.bind(this);
-    this._handleDateDropDownClickCalendar = this._handleDateDropDownClickCalendar.bind(this);
-    this._handleDateDropDownResizeLoadWindow = this._handleDateDropDownResizeLoadWindow.bind(this);
-    this._handleDateDropDownFocusinWrapper = this._handleDateDropDownFocusinWrapper.bind(this);
-    this._handleDateDropDownFocusinDocument = this._handleDateDropDownFocusinDocument.bind(this);
-  }
-
-  _addEventListeners() {
-    this.inputWrappers.forEach((element) => element.addEventListener('click', this._handleDateDropDownClickDate));
-    this.buttonApply.addEventListener('click', this._handleDateDropDownClickApply);
-    this.buttonClear.addEventListener('click', this._handleDateDropDownClickClear);
-    this.calendar.addEventListener('click', this._handleDateDropDownClickCalendar);
-    this.wrapper.addEventListener('focusin', this._handleDateDropDownFocusinWrapper);
-    document.addEventListener('click', this._handleDateDropDownClickDocument);
-    document.addEventListener('focusin', this._handleDateDropDownFocusinDocument);
-    window.addEventListener('resize', this._handleDateDropDownResizeLoadWindow);
-    window.addEventListener('load', this._handleDateDropDownResizeLoadWindow);
   }
 
   _handleDateInputFromTo(date) {

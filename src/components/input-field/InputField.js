@@ -2,9 +2,9 @@ class InputField {
   constructor(element, elementName = 'input-field') {
     this.elementName = elementName;
     this.wrapper = element;
-    this._init();
+
     this._bindEventListeners();
-    this._addEventListeners();
+    this._render();
   }
 
   validateInputValue() {
@@ -14,8 +14,10 @@ class InputField {
     return [result];
   }
 
-  _init() {
+  _render() {
     this.input = this.wrapper.querySelector(`.js-${this.elementName}__input`);
+
+    this._addEventListeners();
   }
 
   _bindEventListeners() {

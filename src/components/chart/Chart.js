@@ -4,16 +4,15 @@ class Chart {
   constructor(element, elementName = 'chart') {
     this.elementName = elementName;
     this.wrapper = element;
+
     this._render();
-    this._drawCircles();
-    this._writeText();
   }
 
   _render() {
-    this.canvas = this._getElement('image');
+    this.canvas = this.wrapper.querySelector(`.js-${this.elementName}__image`);
     if (this.canvas.getContext) {
       this.ctx = this.canvas.getContext('2d');
-      this.legendItems = this._getElements(['legend-item']);
+      this.legendItems = this.wrapper.querySelectorAll(`.js-${this.elementName}__legend-item`);
       this.data = {};
       this.colors = {
         good: { color1: '#66D2EA', color2: '#6FCF97' },
@@ -37,6 +36,8 @@ class Chart {
 
       this._draw();
     }
+    this._drawCircles();
+    this._writeText();
   }
 
   _drawCircles() {
@@ -182,19 +183,6 @@ class Chart {
       this.borderColor,
       true,
     );
-  }
-
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(`.js-${this.elementName}__${selector}`);
-  }
-
-  _getElements(selectors) {
-    let string = '';
-    selectors.forEach((selector) => {
-      string += `.js-${this.elementName}__${selector},`;
-    });
-    string = string.substring(0, string.length - 1);
-    return this.wrapper.querySelectorAll(string);
   }
 }
 

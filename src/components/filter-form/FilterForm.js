@@ -8,11 +8,9 @@ class FilterForm {
     this.elementName = elementName;
     this.breakPoint = 575;
     this.wrapper = element;
-    this._handleFilterFormClickButton = this._handleFilterFormClickButton.bind(this);
-    this._handleFilterFormResizeWindow = this._handleFilterFormResizeWindow.bind(this);
-    this._handleFilterFormLoadWindow = this._handleFilterFormLoadWindow.bind(this);
-    this._render();
+
     this._bindEventListeners();
+    this._render();
   }
 
   _render() {
@@ -28,9 +26,17 @@ class FilterForm {
     dropDownElements.forEach((element) => new DropDown(element));
     this.rangeSlider = new RangeSlider(rangeSlider);
     checkListElements.forEach((element) => new CheckList(element));
+
+    this._addEventListeners();
   }
 
   _bindEventListeners() {
+    this._handleFilterFormClickButton = this._handleFilterFormClickButton.bind(this);
+    this._handleFilterFormResizeWindow = this._handleFilterFormResizeWindow.bind(this);
+    this._handleFilterFormLoadWindow = this._handleFilterFormLoadWindow.bind(this);
+  }
+
+  _addEventListeners() {
     this.button.addEventListener('click', this._handleFilterFormClickButton);
     window.addEventListener('resize', this._handleFilterFormResizeWindow);
     window.addEventListener('load', this._handleFilterFormLoadWindow);

@@ -6,9 +6,8 @@ class InputEmail {
     this.wrapper = element;
     this.regexp = /.+@.+\..+/i;
 
-    this._init();
     this._bindEventListeners();
-    this._addEventListeners();
+    this._render();
   }
 
   validateInputValue() {
@@ -18,12 +17,13 @@ class InputEmail {
     return [result];
   }
 
-  _init() {
+  _render() {
     this.input = this.wrapper.querySelector(`.js-${this.elementName}__input`);
-
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
     this.link = this.wrapper.querySelector(`${this.elementName}__link`);
+
+    this._addEventListeners();
   }
 
   _bindEventListeners() {

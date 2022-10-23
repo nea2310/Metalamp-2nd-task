@@ -2,18 +2,24 @@ class LikeButton {
   constructor(element, elementName = 'like-button') {
     this.elementName = elementName;
     this.wrapper = element;
-    this._handleLikeButtonClick = this._handleLikeButtonClick.bind(this);
-    this._render();
+
     this._bindEventListeners();
+    this._render();
   }
 
   _render() {
     this.button = this._getElement('button');
     this.image = this._getElement('image');
     this.counter = this._getElement('counter');
+
+    this._addEventListeners();
   }
 
   _bindEventListeners() {
+    this._handleLikeButtonClick = this._handleLikeButtonClick.bind(this);
+  }
+
+  _addEventListeners() {
     this.button.addEventListener('click', this._handleLikeButtonClick);
   }
 

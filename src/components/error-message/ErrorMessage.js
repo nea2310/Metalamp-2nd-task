@@ -4,8 +4,9 @@ class ErrorMessage {
     this.wrapper = element;
     this.focusElement = focusElement;
     this.callback = callback;
-    this._render();
+
     this._bindEventListeners();
+    this._render();
   }
 
   toggleErrorMessage(isError = false, message = '') {
@@ -31,11 +32,16 @@ class ErrorMessage {
     this.errorMessage = this.wrapper.querySelector(`.js-${this.elementName}`);
     this.errorMessageText = this.wrapper.querySelector(`.js-${this.elementName}__text`);
     this.errorMessageCloseButton = this.wrapper.querySelector(`.js-${this.elementName}__close-button`);
+
+    this._addEventListeners();
+  }
+
+  _bindEventListeners() {
     this._handleErrorMessageClick = this._handleErrorMessageClick.bind(this);
     this._handleErrorMessageKeydown = this._handleErrorMessageKeydown.bind(this);
   }
 
-  _bindEventListeners() {
+  _addEventListeners() {
     this.errorMessageCloseButton.addEventListener('click', this._handleErrorMessageClick);
     this.errorMessageCloseButton.addEventListener('keydown', this._handleErrorMessageKeydown);
   }

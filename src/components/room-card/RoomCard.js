@@ -2,12 +2,9 @@ class RoomCard {
   constructor(element, elementName = 'room-card') {
     this.elementName = elementName;
     this.wrapper = element;
-    this._handleRoomCardClickDot = this._handleRoomCardClickDot.bind(this);
-    this._handleRoomCardClickButton = this._handleRoomCardClickButton.bind(this);
-    this._render();
-    this._createDots();
-    this._swipe();
+
     this._bindEventListeners();
+    this._render();
   }
 
   _render() {
@@ -16,6 +13,20 @@ class RoomCard {
     this.buttonPrevious = this._getElement('previous');
     this.buttonNext = this._getElement('next');
     this.images = this._getElements(['photo']);
+
+    this._createDots();
+    this._swipe();
+    this._addEventListeners();
+  }
+
+  _bindEventListeners() {
+    this._handleRoomCardClickDot = this._handleRoomCardClickDot.bind(this);
+    this._handleRoomCardClickButton = this._handleRoomCardClickButton.bind(this);
+  }
+
+  _addEventListeners() {
+    this.buttonPrevious.addEventListener('click', this._handleRoomCardClickButton);
+    this.buttonNext.addEventListener('click', this._handleRoomCardClickButton);
   }
 
   _createDots() {
@@ -55,11 +66,6 @@ class RoomCard {
     };
     this.slider.addEventListener('touchstart', handleTouchStart);
     this.slider.addEventListener('touchmove', handleTouchMove);
-  }
-
-  _bindEventListeners() {
-    this.buttonPrevious.addEventListener('click', this._handleRoomCardClickButton);
-    this.buttonNext.addEventListener('click', this._handleRoomCardClickButton);
   }
 
   _handleRoomCardClickButton(e) {

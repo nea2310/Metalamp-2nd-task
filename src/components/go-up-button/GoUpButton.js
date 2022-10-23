@@ -2,8 +2,9 @@ class GoUpButton {
   constructor(element, elementName = 'go-up-button') {
     this.elementName = elementName;
     this.wrapper = element;
-    this._handleGoUpButtonScroll = this._handleGoUpButtonScroll.bind(this);
+
     this._bindEventListeners();
+    this._addEventListeners();
   }
 
   static _handleGoUpButtonClick() {
@@ -11,6 +12,10 @@ class GoUpButton {
   }
 
   _bindEventListeners() {
+    this._handleGoUpButtonScroll = this._handleGoUpButtonScroll.bind(this);
+  }
+
+  _addEventListeners() {
     window.addEventListener('scroll', this._handleGoUpButtonScroll);
     this.wrapper.addEventListener('click', GoUpButton._handleGoUpButtonClick);
   }

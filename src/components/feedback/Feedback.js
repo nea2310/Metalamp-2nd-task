@@ -4,10 +4,11 @@ class Feedback {
   constructor(element, elementName = 'feedback') {
     this.elementName = elementName;
     this.wrapper = element;
-    this._init();
+
+    this._render();
   }
 
-  _init() {
+  _render() {
     const likeButtonElement = this.wrapper.querySelector('.js-like-button');
     this.likeButton = new LikeButton(likeButtonElement);
   }

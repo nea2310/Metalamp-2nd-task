@@ -7,26 +7,29 @@ class SearchRoom {
     this.wrapper = element;
     this.elementName = elementName;
     this.errorModifier = `${this.elementName}_error`;
-    this._render();
     this._bindEventListeners();
+    this._render();
   }
 
   _render() {
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
-
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
-
-    this._handleSearchRoomSubmit = this._handleSearchRoomSubmit.bind(this);
-    this._handleSearchRoomClick = this._handleSearchRoomClick.bind(this);
 
     const dateDropDownElement = this.wrapper.querySelector('.js-date-dropdown');
     const dropDownElement = this.wrapper.querySelector('.js-dropdown');
 
     this.dateDropDown = new DateDropDown(dateDropDownElement);
     this.dropDown = new DropDown(dropDownElement);
+
+    this._addEventListeners();
   }
 
   _bindEventListeners() {
+    this._handleSearchRoomSubmit = this._handleSearchRoomSubmit.bind(this);
+    this._handleSearchRoomClick = this._handleSearchRoomClick.bind(this);
+  }
+
+  _addEventListeners() {
     this.wrapper.addEventListener('submit', this._handleSearchRoomSubmit);
     this.errorMessageWrapper.addEventListener('click', this._handleSearchRoomClick);
   }

@@ -8,9 +8,8 @@ class InputDate {
     this.isSingle = isSingle;
     this.inputLengthLimit = isSingle ? 10 : 23;
 
-    this._init();
     this._bindEventListeners();
-    this._addEventListeners();
+    this._render();
   }
 
   subscribeDateInput(handler) {
@@ -35,6 +34,77 @@ class InputDate {
 
   focusInput() {
     this.input.focus();
+  }
+
+  _render() {
+    this.input = this.wrapper.querySelector(`.js-${this.elementName}__input`);
+
+    this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
+    if (this.errorMessageWrapper) {
+      this.errorMessage = new ErrorMessage(this.errorMessageWrapper, this.input);
+    }
+
+    const getNewDate = (date = 0) => {
+      const newDate = new Date(new Date().setFullYear(new Date().getFullYear() + date));
+      return newDate;
+    };
+
+    this.dateMinusHundred = getNewDate(-100);
+    this.dateMinusEighteen = getNewDate(-18);
+
+    const formatDate = (date) => {
+      const day = String(date.getDate());
+      const month = String(date.getMonth() + 1);
+      const dd = day.length === 1 ? `0${day}` : day;
+      const mm = month.length === 1 ? `0${month}` : month;
+      const yyyy = String(date.getFullYear());
+      return `${dd}.${mm}.${yyyy}`;
+    };
+
+    this.dateMinusHundredTxt = formatDate(this.dateMinusHundred);
+    this.dateMinusEighteenTxt = formatDate(this.dateMinusEighteen);
+
+    this._addEventListeners();
+  }
+
+  _bindEventListeners() {
+    this._handleInputFieldInput = this._handleInputFieldInput.bind(this);
+    this._checkBirthDate = this._checkBirthDate.bind(this);
+    this._handleInputFieldFocus = this._handleInputFieldFocus.bind(this);
+  }
+
+  _addEventListeners() {
+    this.input.addEventListener('input', this._handleInputFieldInput);
+    this.input.addEventListener('focus', this._handleInputFieldFocus);
+  }
+
+  _handleInputFieldFocus() {
+    this.input.classList.remove(`${this.elementName}__input_error`);
+  }
+
+  _handleInputFieldInput(e) {
+    if (e.inputType !== 'insertText') {
+      e.target.value = '';
+      return;
+    }
+    const { value } = e.target;
+    if (value.length <= 10) {
+      e.target.value = this._checkDayFormat(value);
+    }
+    if (value.length > 10 && this.isSingle) {
+      e.target.value = value.slice(0, 10);
+    }
+    if (value.length > 10 && !this.isSingle) {
+      e.target.value = `${value.slice(0, 10)} - ${this._checkDayFormat(e.target.value.slice(10))}`;
+    }
+    if (value.length === this.inputLengthLimit) {
+      if (!this.isCustomValidation) {
+        e.target.value = this._checkBirthDate(e.target.value);
+      }
+      if (this.dateInputHandler) {
+        this.dateInputHandler(e.target.value);
+      }
+    }
   }
 
   _checkDayFormat(dd) {
@@ -118,75 +188,6 @@ class InputDate {
       return this.isSingle ? `${dd}.${mm}.${yyyy}` : `${dd}.${mm}.${yyyy} - `;
     }
     return '';
-  }
-
-  _init() {
-    this.input = this.wrapper.querySelector(`.js-${this.elementName}__input`);
-
-    this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
-    if (this.errorMessageWrapper) {
-      this.errorMessage = new ErrorMessage(this.errorMessageWrapper, this.input);
-    }
-
-    const getNewDate = (date = 0) => {
-      const newDate = new Date(new Date().setFullYear(new Date().getFullYear() + date));
-      return newDate;
-    };
-
-    this.dateMinusHundred = getNewDate(-100);
-    this.dateMinusEighteen = getNewDate(-18);
-
-    const formatDate = (date) => {
-      const day = String(date.getDate());
-      const month = String(date.getMonth() + 1);
-      const dd = day.length === 1 ? `0${day}` : day;
-      const mm = month.length === 1 ? `0${month}` : month;
-      const yyyy = String(date.getFullYear());
-      return `${dd}.${mm}.${yyyy}`;
-    };
-
-    this.dateMinusHundredTxt = formatDate(this.dateMinusHundred);
-    this.dateMinusEighteenTxt = formatDate(this.dateMinusEighteen);
-  }
-
-  _bindEventListeners() {
-    this._handleInputFieldInput = this._handleInputFieldInput.bind(this);
-    this._checkBirthDate = this._checkBirthDate.bind(this);
-    this._handleInputFieldFocus = this._handleInputFieldFocus.bind(this);
-  }
-
-  _addEventListeners() {
-    this.input.addEventListener('input', this._handleInputFieldInput);
-    this.input.addEventListener('focus', this._handleInputFieldFocus);
-  }
-
-  _handleInputFieldFocus() {
-    this.input.classList.remove(`${this.elementName}__input_error`);
-  }
-
-  _handleInputFieldInput(e) {
-    if (e.inputType !== 'insertText') {
-      e.target.value = '';
-      return;
-    }
-    const { value } = e.target;
-    if (value.length <= 10) {
-      e.target.value = this._checkDayFormat(value);
-    }
-    if (value.length > 10 && this.isSingle) {
-      e.target.value = value.slice(0, 10);
-    }
-    if (value.length > 10 && !this.isSingle) {
-      e.target.value = `${value.slice(0, 10)} - ${this._checkDayFormat(e.target.value.slice(10))}`;
-    }
-    if (value.length === this.inputLengthLimit) {
-      if (!this.isCustomValidation) {
-        e.target.value = this._checkBirthDate(e.target.value);
-      }
-      if (this.dateInputHandler) {
-        this.dateInputHandler(e.target.value);
-      }
-    }
   }
 
   _checkBirthDate(value) {

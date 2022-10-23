@@ -8,8 +8,9 @@ class Registration {
     this.wrapper = element;
     this.elementName = elementName;
     this.errorModifier = `${this.elementName}_error`;
-    this._render();
+
     this._bindEventListeners();
+    this._render();
   }
 
   _render() {
@@ -28,11 +29,15 @@ class Registration {
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper);
 
+    this._addEventListeners();
+  }
+
+  _bindEventListeners() {
     this._handleRegistrationSubmit = this._handleRegistrationSubmit.bind(this);
     this._handleRegistrationClick = this._handleRegistrationClick.bind(this);
   }
 
-  _bindEventListeners() {
+  _addEventListeners() {
     this.wrapper.addEventListener('submit', this._handleRegistrationSubmit);
     this.errorMessageWrapper.addEventListener('click', this._handleRegistrationClick);
   }
