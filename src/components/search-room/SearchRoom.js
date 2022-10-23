@@ -3,9 +3,9 @@ import DateDropDown from '../date-dropdown/DateDropdown';
 import DropDown from '../dropdown/Dropdown';
 
 class SearchRoom {
-  constructor(elementName, element) {
+  constructor(element, elementName = 'search-room') {
     this.wrapper = element;
-    this.elementName = elementName.replace(/^.js-/, '');
+    this.elementName = elementName;
     this.errorModifier = `${this.elementName}_error`;
     this._render();
     this._bindEventListeners();
@@ -22,8 +22,8 @@ class SearchRoom {
     const dateDropDownElement = this.wrapper.querySelector('.js-date-dropdown');
     const dropDownElement = this.wrapper.querySelector('.js-dropdown');
 
-    this.dateDropDown = new DateDropDown('.js-date-dropdown', dateDropDownElement);
-    this.dropDown = new DropDown('.js-dropdown', dropDownElement);
+    this.dateDropDown = new DateDropDown(dateDropDownElement);
+    this.dropDown = new DropDown(dropDownElement);
   }
 
   _bindEventListeners() {

@@ -1,6 +1,6 @@
 class ErrorMessage {
-  constructor(element, focusElement = null, callback = null) {
-    this.elementName = 'error-message';
+  constructor(element, focusElement = null, callback = null, elementName = 'error-message') {
+    this.elementName = elementName;
     this.wrapper = element;
     this.focusElement = focusElement;
     this.callback = callback;

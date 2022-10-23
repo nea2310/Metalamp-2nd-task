@@ -1,8 +1,8 @@
 import './chart.scss';
 
 class Chart {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'chart') {
+    this.elementName = elementName;
     this.wrapper = element;
     this._render();
     this._drawCircles();

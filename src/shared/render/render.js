@@ -4,7 +4,7 @@ function render(components, wrapper, selectorName) {
       const elements = wrapper.querySelectorAll(`${selectorName}__${key}`);
       elements.forEach((item) => {
         const element = item.querySelector(`.js-${key}`);
-        return new Value(`.js-${key}`, element);
+        return new Value(element);
       });
     });
   });

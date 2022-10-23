@@ -3,9 +3,9 @@ import InputField from '../input-field/InputField';
 import InputEmail from '../input-email/InputEmail';
 
 class Login {
-  constructor(elementName, element) {
+  constructor(element, elementName = 'login') {
     this.wrapper = element;
-    this.elementName = elementName.replace(/^.js-/, '');
+    this.elementName = elementName;
     this.errorModifier = `${this.elementName}_error`;
     this._render();
     this._bindEventListeners();
@@ -15,8 +15,8 @@ class Login {
     const emailElement = this.wrapper.querySelector('.js-input-email');
     const passwordElement = this.wrapper.querySelector('.js-input-field');
 
-    this.email = new InputEmail('.js-input-email', emailElement);
-    this.password = new InputField('.js-input-field', passwordElement);
+    this.email = new InputEmail(emailElement);
+    this.password = new InputField(passwordElement);
 
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper);

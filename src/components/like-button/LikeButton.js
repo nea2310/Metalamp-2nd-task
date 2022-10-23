@@ -1,6 +1,6 @@
 class LikeButton {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'like-button') {
+    this.elementName = elementName;
     this.wrapper = element;
     this._handleLikeButtonClick = this._handleLikeButtonClick.bind(this);
     this._render();

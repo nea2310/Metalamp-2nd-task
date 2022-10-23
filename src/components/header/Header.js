@@ -1,6 +1,6 @@
 class Header {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'header') {
+    this.elementName = elementName;
     this.wrapper = element;
 
     this._handleHeaderKeydownTip = this._handleHeaderKeydownTip.bind(this);

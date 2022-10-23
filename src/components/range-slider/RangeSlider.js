@@ -2,8 +2,8 @@ import '../../../vendors/slider-metalamp/plugin';
 import '../../../vendors/slider-metalamp/plugin.css';
 
 class RangeSlider {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'range-slider') {
+    this.elementName = elementName;
     this.wrapper = element;
     this.regexp = /\D/g;
     this._render();

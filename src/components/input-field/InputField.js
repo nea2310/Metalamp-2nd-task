@@ -1,6 +1,6 @@
 class InputField {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'input-field') {
+    this.elementName = elementName;
     this.wrapper = element;
     this._init();
     this._bindEventListeners();

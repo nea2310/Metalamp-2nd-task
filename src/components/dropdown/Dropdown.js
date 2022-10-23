@@ -1,8 +1,8 @@
 import './dropdown.scss';
 
 class DropDown {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'dropdown') {
+    this.elementName = elementName;
     this.wrapper = element;
     this._handleDropDownClickCounter = this._handleDropDownClickCounter.bind(this);
     this._handleDropDownMousedownInput = this._handleDropDownMousedownInput.bind(this);

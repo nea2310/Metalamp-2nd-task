@@ -4,8 +4,8 @@ import ErrorMessage from '../error-message/ErrorMessage';
 import InputDate from '../input-date/InputDate';
 
 class DateDropDown {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'date-dropdown') {
+    this.elementName = elementName;
     this.wrapper = element;
     this.focusOnList = false;
 
@@ -57,7 +57,7 @@ class DateDropDown {
 
     const initInputInstance = (wrapper, callback) => {
       const inputElement = wrapper.querySelector('.js-input-date');
-      const inputInstance = new InputDate('.js-input-date', inputElement, !this.isFilter, true);
+      const inputInstance = new InputDate(inputElement, !this.isFilter, true);
       inputInstance.subscribeDateInput(callback);
       return inputInstance;
     };

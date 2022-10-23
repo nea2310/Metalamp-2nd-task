@@ -4,9 +4,9 @@ import InputDate from '../input-date/InputDate';
 import InputEmail from '../input-email/InputEmail';
 
 class Registration {
-  constructor(elementName, element) {
+  constructor(element, elementName = 'registration') {
     this.wrapper = element;
-    this.elementName = elementName.replace(/^.js-/, '');
+    this.elementName = elementName;
     this.errorModifier = `${this.elementName}_error`;
     this._render();
     this._bindEventListeners();
@@ -19,11 +19,11 @@ class Registration {
     const emailElement = this.wrapper.querySelector('.js-input-email');
     const passwordElement = this._getElement('password').querySelector('.js-input-field');
 
-    this.name = new InputField('.js-input-field', nameElement);
-    this.surname = new InputField('.js-input-field', surnameElement);
-    this.birthDate = new InputDate('.js-input-date', birthDateElement);
-    this.email = new InputEmail('.js-input-email', emailElement);
-    this.password = new InputField('.js-input-field', passwordElement);
+    this.name = new InputField(nameElement);
+    this.surname = new InputField(surnameElement);
+    this.birthDate = new InputDate(birthDateElement);
+    this.email = new InputEmail(emailElement);
+    this.password = new InputField(passwordElement);
 
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper);

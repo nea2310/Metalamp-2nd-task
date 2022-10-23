@@ -1,8 +1,8 @@
 import ErrorMessage from '../error-message/ErrorMessage';
 
 class InputDate {
-  constructor(elementName, element, isSingle = true, isCustomValidation = false) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, isSingle = true, isCustomValidation = false, elementName = 'input-date') {
+    this.elementName = elementName;
     this.wrapper = element;
     this.isCustomValidation = isCustomValidation;
     this.isSingle = isSingle;

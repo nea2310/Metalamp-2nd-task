@@ -1,6 +1,6 @@
 class GoUpButton {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'go-up-button') {
+    this.elementName = elementName;
     this.wrapper = element;
     this._handleGoUpButtonScroll = this._handleGoUpButtonScroll.bind(this);
     this._bindEventListeners();

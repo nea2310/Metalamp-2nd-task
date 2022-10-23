@@ -1,6 +1,6 @@
 class RoomCard {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'room-card') {
+    this.elementName = elementName;
     this.wrapper = element;
     this._handleRoomCardClickDot = this._handleRoomCardClickDot.bind(this);
     this._handleRoomCardClickButton = this._handleRoomCardClickButton.bind(this);

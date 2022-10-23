@@ -1,6 +1,6 @@
 class CheckList {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'checklist') {
+    this.elementName = elementName;
     this.wrapper = element;
     this.breakPoint = 1199;
     this._handleCheckListMouseDownLabel = this._handleCheckListMouseDownLabel.bind(this);

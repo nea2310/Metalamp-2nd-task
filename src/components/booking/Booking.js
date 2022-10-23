@@ -4,9 +4,9 @@ import DropDown from '../dropdown/Dropdown';
 import InfoSign from '../info-sign/InfoSign';
 
 class Booking {
-  constructor(elementName, element) {
+  constructor(element, elementName = 'booking') {
     this.wrapper = element;
-    this.elementName = elementName.replace(/^.js-/, '');
+    this.elementName = elementName;
     this.errorModifier = `${this.elementName}_error`;
     this.day = 86400000; // 86400000 - кол-во милисекунд в сутках
     this._render();
@@ -55,9 +55,9 @@ class Booking {
     this.daysAmount = 0;
     this.guestsAmount = 0;
 
-    this.dateDropDown = new DateDropDown('.js-date-dropdown', dateDropDownElement);
-    this.dropDown = new DropDown('.js-dropdown', dropDownElement);
-    infoSignElements.forEach((element) => new InfoSign('.js-info-sign', element));
+    this.dateDropDown = new DateDropDown(dateDropDownElement);
+    this.dropDown = new DropDown(dropDownElement);
+    infoSignElements.forEach((element) => new InfoSign(element));
 
     this.dateDropDown.subscribeDateSelect(this._handleDateSelect);
     const datePlusFour = new Date(new Date().setDate(new Date().getDate() + 4));

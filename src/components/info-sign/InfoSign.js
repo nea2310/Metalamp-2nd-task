@@ -1,7 +1,7 @@
 class InfoSign {
-  constructor(elementName, element) {
+  constructor(element, elementName = 'info-sign') {
     this.wrapper = element;
-    this.elementName = elementName.replace(/^.js-/, '');
+    this.elementName = elementName;
     this._render();
     this._bindEventListeners();
   }

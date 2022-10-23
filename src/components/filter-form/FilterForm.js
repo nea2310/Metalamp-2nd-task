@@ -4,8 +4,8 @@ import CheckList from '../checklist/CheckList';
 import RangeSlider from '../range-slider/RangeSlider';
 
 class FilterForm {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'filter-form') {
+    this.elementName = elementName;
     this.breakPoint = 575;
     this.wrapper = element;
     this._handleFilterFormClickButton = this._handleFilterFormClickButton.bind(this);
@@ -24,10 +24,10 @@ class FilterForm {
     const rangeSlider = this.wrapper.querySelector('.js-range-slider');
     const checkListElements = this.wrapper.querySelectorAll('.js-checklist');
 
-    this.dateDropDown = new DateDropDown('.js-date-dropdown', dateDropDownElement);
-    dropDownElements.forEach((element) => new DropDown('.js-dropdown', element));
-    this.rangeSlider = new RangeSlider('.js-range-slider', rangeSlider);
-    checkListElements.forEach((element) => new CheckList('.js-checklist', element));
+    this.dateDropDown = new DateDropDown(dateDropDownElement);
+    dropDownElements.forEach((element) => new DropDown(element));
+    this.rangeSlider = new RangeSlider(rangeSlider);
+    checkListElements.forEach((element) => new CheckList(element));
   }
 
   _bindEventListeners() {

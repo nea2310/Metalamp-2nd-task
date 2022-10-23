@@ -1,8 +1,8 @@
 import ErrorMessage from '../error-message/ErrorMessage';
 
 class InputEmail {
-  constructor(elementName, element) {
-    this.elementName = elementName.replace(/^.js-/, '');
+  constructor(element, elementName = 'input-email') {
+    this.elementName = elementName;
     this.wrapper = element;
     this.regexp = /.+@.+\..+/i;
 
