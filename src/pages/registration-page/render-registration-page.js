@@ -1,22 +1,13 @@
 import Registration from '../../components/registration/Registration';
+import render from '../../shared/render/render';
 
 const components = [
   { registration: Registration },
 ];
 
-(() => {
-  const selectorName = '.js-registration-page';
-  const page = document.querySelector(selectorName);
+const selectorName = '.js-registration-page';
+const page = document.querySelector(selectorName);
 
-  if (page) {
-    components.forEach((component) => {
-      Object.entries(component).forEach(([key, Value]) => {
-        const elements = page.querySelectorAll(`${selectorName}__${key}`);
-        elements.forEach((item) => {
-          const element = item.querySelector(`.js-${key}`);
-          return new Value(`.js-${key}`, element);
-        });
-      });
-    });
-  }
-})();
+if (page) {
+  render(components, page, selectorName);
+}

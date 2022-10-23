@@ -6,6 +6,7 @@ import InputEmail from '../../components/input-email/InputEmail';
 import LikeButton from '../../components/like-button/LikeButton';
 import RangeSlider from '../../components/range-slider/RangeSlider';
 import Feedback from '../../components/feedback/Feedback';
+import render from '../../shared/render/render';
 
 const components = [
   { dropdown: DropDown },
@@ -18,19 +19,9 @@ const components = [
   { feedback: Feedback },
 ];
 
-(() => {
-  const selectorName = '.js-form-elements';
-  const page = document.querySelector(selectorName);
+const selectorName = '.js-form-elements';
+const page = document.querySelector(selectorName);
 
-  if (page) {
-    components.forEach((component) => {
-      Object.entries(component).forEach(([key, Value]) => {
-        const elements = page.querySelectorAll(`${selectorName}__${key}`);
-        elements.forEach((item) => {
-          const element = item.querySelector(`.js-${key}`);
-          return new Value(`.js-${key}`, element);
-        });
-      });
-    });
-  }
-})();
+if (page) {
+  render(components, page, selectorName);
+}

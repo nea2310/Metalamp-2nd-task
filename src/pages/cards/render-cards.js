@@ -4,6 +4,7 @@ import SearchRoom from '../../components/search-room/SearchRoom';
 import Booking from '../../components/booking/Booking';
 import Registration from '../../components/registration/Registration';
 import Login from '../../components/login/Login';
+import render from '../../shared/render/render';
 
 const components = [
   { 'date-dropdown': DateDropDown },
@@ -13,20 +14,9 @@ const components = [
   { registration: Registration },
   { login: Login },
 ];
+const selectorName = '.js-cards';
+const page = document.querySelector(selectorName);
 
-(() => {
-  const selectorName = '.js-cards';
-  const page = document.querySelector(selectorName);
-
-  if (page) {
-    components.forEach((component) => {
-      Object.entries(component).forEach(([key, Value]) => {
-        const elements = page.querySelectorAll(`${selectorName}__${key}`);
-        elements.forEach((item) => {
-          const element = item.querySelector(`.js-${key}`);
-          return new Value(`.js-${key}`, element);
-        });
-      });
-    });
-  }
-})();
+if (page) {
+  render(components, page, selectorName);
+}
