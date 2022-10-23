@@ -101,16 +101,21 @@ class DateDropDown {
       onSelect: (selectedDate) => {
         const dates = selectedDate.formattedDate;
         if (dates.length === 0) return;
+        const dateFrom = dates[0];
+        let dateTo = '';
         if (this.isFilter) {
           this.inputInstance.setValue(this.inputAlt.value.toLowerCase());
         } else {
-          this.inputFromInstance.setValue(dates[0]);
           if (dates.length === 2) {
-            this.inputToInstance.setValue(dates[1]);
+            [, dateTo] = dates;
           }
+          this.inputFromInstance.setValue(dateFrom);
+          this.inputToInstance.setValue(dateTo);
         }
         if (this.dateSelectHandler) {
-          this.dateSelectHandler(dates);
+          this.dateSelectHandler(
+            [DateDropDown._changeDotToDash(dateFrom), DateDropDown._changeDotToDash(dateTo)],
+          );
         }
       },
     });
