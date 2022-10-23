@@ -48,8 +48,8 @@ class Booking {
     this.baseCost = this.wrapper.querySelector(`.js-${this.elementName}__price-base-cost`);
     this.totalCost = this.wrapper.querySelector(`.js-${this.elementName}__price-total-cost`);
     this.service = this.wrapper.querySelector(`.js-${this.elementName}__price-service-name`);
-
-    this.price = Number(this.wrapper.querySelector(`.js-${this.elementName}__detail-price`).getAttribute('data-price'));
+    this.priceField = this.wrapper.querySelector(`.js-${this.elementName}__detail-price`);
+    this.price = Number((this.priceField).getAttribute('data-price'));
     this.discount = Number(this.service.getAttribute('data-discount'));
     this.extra = Number(this.wrapper.querySelector(`.js-${this.elementName}__price-extra-cost`).getAttribute('data-extra'));
     this.daysAmount = 0;
@@ -106,9 +106,10 @@ class Booking {
       return 'суток';
     }
 
-    const base = this.daysAmount * this.price;
+    const base = this.daysAmount * this.price * this.guestsAmount;
     const total = base.toFixed(0) - this._calculateDiscount().toFixed(0);
     this.days.innerText = `${this.price.toLocaleString('ru-RU')}₽ x ${this.daysAmount} ${getWordForm(this.daysAmount)}`;
+    this.priceField.innerText = `${(this.price * this.guestsAmount).toLocaleString('ru-RU')}₽`;
     this.baseCost.innerText = `${Math.trunc(base).toLocaleString('ru-RU')}₽`;
     this.totalCost.innerText = total > 0 ? `${(Math.trunc(total) + Math.trunc(this.extra)).toLocaleString('ru-RU')}₽` : '0₽';
   }
