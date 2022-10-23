@@ -242,7 +242,7 @@ class DateDropDown {
       this.inputFromInstance.setValue();
       this.inputToInstance.setValue();
       if (this.dateSelectHandler) {
-        this.dateSelectHandler(['2000-01-01', '2000-01-01']);
+        this.dateSelectHandler();
       }
     }
   }

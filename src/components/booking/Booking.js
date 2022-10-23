@@ -83,14 +83,16 @@ class Booking {
   }
 
   _handleDateSelect(date) {
-    if (date.length === 2) {
+    this.daysAmount = 0;
+    if (date) {
       this.daysAmount = (new Date(date[1]) - new Date(date[0])) / this.day;
-      this._calculateCost();
     }
+    this._calculateCost();
   }
 
   _handleGuestsSelect(guests) {
-    const amount = (guests.match(/^\d*(?= гост)/));
+    let amount = 0;
+    if (guests) { amount = (guests.match(/^\d*(?= гост)/)); }
     this.guestsAmount = amount ? Number(amount[0]) : 0;
 
     this._calculateCost();

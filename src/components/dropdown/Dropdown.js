@@ -241,7 +241,7 @@ class DropDown {
     });
     this.input.value = '';
     if (this.guestsSelectHandler) {
-      this.guestsSelectHandler('0 гостей');
+      this.guestsSelectHandler();
     }
     if (this.clearApplyButtons) {
       this._hideButtonClear(this.buttonsMinus);
