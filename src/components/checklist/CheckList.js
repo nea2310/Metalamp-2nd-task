@@ -8,6 +8,13 @@ class CheckList {
     this._render();
   }
 
+  /* Для события mousedown действием по-умолчанию является установка фокуса.
+  Если отменить событие mousedown, то фокусирования не произойдёт =>
+  при клике одновременно с ним не сработает фокус и выпадающий список раскроется */
+  static _handleCheckListMousedownLabel(event) {
+    event.preventDefault();
+  }
+
   _render() {
     this.label = this._getElement('label');
     this.listWrapper = this._getElement('list-wrapper');
@@ -25,6 +32,7 @@ class CheckList {
   _addEventListeners() {
     this.label.addEventListener('click', this._handleCheckListClickLabel);
     this.label.addEventListener('focus', this._handleCheckListFocusLabel);
+    this.label.addEventListener('mousedown', CheckList._handleCheckListMousedownLabel);
     document.addEventListener('click', this._handleCheckListClickFocusDocument);
     document.addEventListener('focusin', this._handleCheckListClickFocusDocument);
     window.addEventListener('resize', this._handleCheckListResizeLoadWindow);

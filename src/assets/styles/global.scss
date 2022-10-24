@@ -21,7 +21,7 @@ $colorGradientBorder: #8ba4f9;
 $colorGradientBorderHover: rgba(139, 164, 249, 0.5);
 $colorSecondary: #6fcf97;
 $colorTextBackground: #ffffff;
-$colorUIKitground: #F4F4F6;
+$colorUIKitground: #f4f4f6;
 $colorGradientSecondary: #66d2ea;
 $colorBackgroundDataDropdown: #e6e8fe;
 $gradientMain: linear-gradient($colorMain 0%, $colorGradientBorder 100%);
@@ -53,7 +53,7 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
   left: $left;
   right: $right;
   position: absolute;
-  content: '';
+  content: "";
   width: $width;
   height: $height;
   background: $colorBackgroundDataDropdown;
@@ -62,7 +62,7 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
 
 @mixin cell-background-rounded($width, $height) {
   position: absolute;
-  content: '';
+  content: "";
   width: $width;
   height: $height;
   background: $gradientMain;
@@ -107,7 +107,7 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
 @mixin tip-style() {
   cursor: pointer;
   position: absolute;
-  content: '';
+  content: "";
   height: $tipSize;
   width: $tipSize;
   border-left: $tipBorder;
@@ -119,7 +119,7 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
 @mixin arrow-tip-style($color) {
   cursor: pointer;
   position: absolute;
-  content: '';
+  content: "";
   height: $arrowSize;
   width: $arrowSize;
   border-left: 2px solid $color;
@@ -130,7 +130,7 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
 @mixin arrow-basis-style($color) {
   cursor: pointer;
   position: absolute;
-  content: '';
+  content: "";
   height: 2px;
   width: 14px;
   background-color: $color;
@@ -138,7 +138,7 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
 
 @mixin star-style() {
   position: absolute;
-  content: '★';
+  content: "★";
   color: $colorMain;
   font-size: 27px;
   top: 1px;
@@ -150,7 +150,6 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
   border-bottom: 3px solid $colorTextBackground;
   transform: rotate(45deg);
   right: 18px;
-  bottom: 73px;
 }
 
 @mixin slider-background() {

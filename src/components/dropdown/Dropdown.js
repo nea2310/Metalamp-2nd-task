@@ -83,6 +83,108 @@ class DropDown {
     window.addEventListener('load', this._handleDropDownResizeLoadWindow);
   }
 
+  _handleDropDownClickCounter(event) {
+    const button = event.currentTarget;
+    const wrapper = event.target.closest(`.${this.elementName}__category-wrapper`);
+    const name = wrapper.querySelector(`.${this.elementName}__category`).innerText;
+    const {
+      type, currentCount, minCount, maxCount, maxTypeCount,
+    } = this._findCategory(name);
+
+    const categoriesOfType = this._filterCategory(type);
+
+    const currentTypeCount = DropDown._reduceCategory(categoriesOfType);
+
+    if (button.classList.contains(`${this.elementName}__count-increment`)) {
+      const data = {
+        wrapper, currentTypeCount, maxTypeCount, maxCount, name, type, currentCount,
+      };
+      this._increaseCounter(data);
+
+      return true;
+    }
+
+    const data = {
+      categoriesOfType, wrapper, currentTypeCount, minCount, name, type, currentCount,
+    };
+    this._decreaseCounter(data);
+    return true;
+  }
+
+  _handleDropDownMousedownInput() {
+    this.mouseDown = true;
+  }
+
+  _handleDropDownMouseupInput() {
+    this._toggle(true);
+    this.mouseDown = false;
+  }
+
+  _handleDropDownFocusInput() {
+    this.input.classList.remove(`${this.elementName}__input_error`);
+    if (this.listWrapper.classList.contains(`${this.elementName}__list-wrapper_hidden`)
+      && this.mouseDown === false) {
+      this._toggle(true);
+    }
+  }
+
+  _handleDropDownClickWrapper() {
+    this.clickOnList = true;
+  }
+
+  _handleDropDownClickDocument(event) {
+    if (event.target !== this.input
+      && !event.target.closest(`.js-${this.elementName}__list-wrapper`)) {
+      this._toggle(false);
+    } else {
+      this.clickOnList = false;
+    }
+  }
+
+  _handleDropDownFocusinWrapper() {
+    this.focusOnList = true;
+  }
+
+  _handleDropDownFocusinDocument() {
+    if (this.focusOnList === false) {
+      this._toggle(false);
+    } else {
+      this.focusOnList = false;
+    }
+  }
+
+  _handleDropDownClickApply() {
+    this._toggle(true);
+  }
+
+  _handleDropDownClickClear() {
+    this.countValues.forEach((countValue, i) => {
+      const item = countValue;
+      item.innerText = this.categories[i].minCount;
+      this.categories[i].currentCount = 0;
+      this.categories[i].currentTypeCount = 0;
+    });
+    this.buttonsMinus.forEach((buttonMinus) => {
+      const button = buttonMinus;
+      button.disabled = true;
+    });
+    this.buttonsPlus.forEach((buttonPlus) => {
+      const button = buttonPlus;
+      button.disabled = false;
+    });
+    this.input.value = '';
+    if (this.guestsSelectHandler) {
+      this.guestsSelectHandler();
+    }
+    if (this.clearApplyButtons) {
+      this._hideButtonClear(this.buttonsMinus);
+    }
+  }
+
+  _handleDropDownResizeLoadWindow() {
+    this._toggle(false);
+  }
+
   _getInitialCounterList(counterList) {
     this.categories = [];
 
@@ -154,107 +256,6 @@ class DropDown {
       this._increaseCounter(data, true);
     }
     return false;
-  }
-
-  _handleDropDownClickCounter(event) {
-    const button = event.currentTarget;
-    const wrapper = event.target.closest(`.${this.elementName}__category-wrapper`);
-    const name = wrapper.querySelector(`.${this.elementName}__category`).innerText;
-    const {
-      type, currentCount, minCount, maxCount, maxTypeCount,
-    } = this._findCategory(name);
-
-    const categoriesOfType = this._filterCategory(type);
-
-    const currentTypeCount = DropDown._reduceCategory(categoriesOfType);
-
-    if (button.classList.contains(`${this.elementName}__count-increment`)) {
-      const data = {
-        wrapper, currentTypeCount, maxTypeCount, maxCount, name, type, currentCount,
-      };
-      this._increaseCounter(data);
-
-      return true;
-    }
-
-    const data = {
-      categoriesOfType, wrapper, currentTypeCount, minCount, name, type, currentCount,
-    };
-    this._decreaseCounter(data);
-    return true;
-  }
-
-  _handleDropDownMousedownInput() {
-    this.mouseDown = true;
-  }
-
-  _handleDropDownMouseupInput() {
-    this._toggle(true);
-    this.mouseDown = false;
-  }
-
-  _handleDropDownFocusInput() {
-    if (this.listWrapper.classList.contains(`${this.elementName}__list-wrapper_hidden`)
-      && this.mouseDown === false) {
-      this._toggle(true);
-    }
-  }
-
-  _handleDropDownClickWrapper() {
-    this.clickOnList = true;
-  }
-
-  _handleDropDownClickDocument(event) {
-    if (event.target !== this.input
-      && !event.target.closest(`.js-${this.elementName}__list-wrapper`)) {
-      this._toggle(false);
-    } else {
-      this.clickOnList = false;
-    }
-  }
-
-  _handleDropDownFocusinWrapper() {
-    this.focusOnList = true;
-  }
-
-  _handleDropDownFocusinDocument() {
-    if (this.focusOnList === false) {
-      this._toggle(false);
-    } else {
-      this.focusOnList = false;
-    }
-  }
-
-  _handleDropDownClickApply() {
-    this._toggle(true);
-  }
-
-  _handleDropDownClickClear() {
-    this.countValues.forEach((countValue, i) => {
-      const item = countValue;
-      item.innerText = this.categories[i].minCount;
-      this.categories[i].currentCount = 0;
-      this.categories[i].currentTypeCount = 0;
-    });
-    this.buttonsMinus.forEach((buttonMinus) => {
-      const button = buttonMinus;
-      button.disabled = true;
-    });
-    this.buttonsPlus.forEach((buttonPlus) => {
-      const button = buttonPlus;
-      button.disabled = false;
-    });
-    this.input.value = '';
-    if (this.guestsSelectHandler) {
-      this.guestsSelectHandler();
-    }
-    if (this.clearApplyButtons) {
-      this._hideButtonClear(this.buttonsMinus);
-    }
-  }
-
-  _handleDropDownResizeLoadWindow() {
-    this._toggle(false);
   }
 
   _increaseCounter(data, isInitial = false) {

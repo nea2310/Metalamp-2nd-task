@@ -142,7 +142,9 @@ class DateDropDown {
             [, dateTo] = dates;
           }
           this.inputFromInstance.setValue(dateFrom);
+          this.inputFromInstance.focusInput();
           this.inputToInstance.setValue(dateTo);
+          this.inputToInstance.focusInput();
         }
         if (this.dateSelectHandler) {
           this.dateSelectHandler(
@@ -218,27 +220,6 @@ class DateDropDown {
       this._toggle(false);
     }
   }
-
-  // _handleDateDropDownClickWrapper(e) {
-  //   console.log('_handleDateDropDownClickWrapper');
-
-  //   if (e.target.value === '') {
-  //     switch (e.target) {
-  //       case this.inputDateFrom: {
-  //         this.inputToInstance.setValue();
-  //         this.myDatepicker.clear();
-  //         break;
-  //       }
-  //       case this.inputDateTo: {
-  //         const date = this.myDatepicker.selectedDates[1];
-  //         this.myDatepicker.unselectDate(date);
-  //         break;
-  //       }
-  //       default: return false;
-  //     }
-  //   }
-  //   return true;
-  // }
 
   _handleDateDropDownClickClear() {
     this.clickOnCalendar = true;

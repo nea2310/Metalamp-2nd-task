@@ -119,7 +119,7 @@ class Booking {
 
     const base = this.daysAmount * this.price * this.guestsAmount;
     const total = base.toFixed(0) - this._calculateDiscount().toFixed(0);
-    this.days.innerText = `${this.price.toLocaleString('ru-RU')}₽ x ${this.daysAmount} ${getWordForm(this.daysAmount)}`;
+    this.days.innerText = `${(this.price * this.guestsAmount).toLocaleString('ru-RU')}₽ x ${this.daysAmount} ${getWordForm(this.daysAmount)}`;
     this.priceField.innerText = `${(this.price * this.guestsAmount).toLocaleString('ru-RU')}₽`;
     this.baseCost.innerText = `${Math.trunc(base).toLocaleString('ru-RU')}₽`;
     this.totalCost.innerText = total > 0 ? `${(Math.trunc(total) + Math.trunc(this.extra)).toLocaleString('ru-RU')}₽` : '0₽';
