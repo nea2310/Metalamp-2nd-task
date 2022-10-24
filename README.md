@@ -132,8 +132,10 @@ assets
 ```
 shared
 └─── helpers
+└─── render
 ```
 `helpers` contains service functions used for data validation in components<br><br>
+`render` contains functions used for rendering of components<br><br>
 
 
 ## How to work
