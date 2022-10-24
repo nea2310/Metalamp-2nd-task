@@ -22,12 +22,12 @@
 
     .checklist__label {
       cursor: pointer;
-    }
 
-    &::after {
-      @include tip-style;
-      right: 18px;
-      bottom: 5px;
+      &::after {
+        @include tip-style;
+        right: 18px;
+        bottom: 5px;
+      }
     }
   }
 
@@ -36,8 +36,10 @@
       display: block;
     }
 
-    &::after {
-      transform: rotate(135deg);
+    .checklist__label {
+      &::after {
+        transform: rotate(135deg);
+      }
     }
   }
 
@@ -100,7 +102,7 @@
       border: 1px solid $colorMain;
 
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         left: 6px;
         top: 4px;
