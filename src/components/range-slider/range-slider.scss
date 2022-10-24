@@ -48,8 +48,7 @@
       color: $colorText;
 
       &:focus {
-        outline: none;
-        border: 1px solid $colorTextLight;
+        outline: 1px solid $colorTextLight;
       }
     }
   }
