@@ -20,7 +20,6 @@ class Chart {
         satisfied: { color1: '#8BA4F9', color2: '#BC9CFF' },
         bad: { color1: '#3D4975', color2: '#909090' },
       };
-      const getColor = (rateType) => this.colors[rateType];
       this.legendItems = Array.from(this.legendItems).reverse();
       this.votes = 0;
       this.legendItems.forEach((item) => {
@@ -28,8 +27,8 @@ class Chart {
         const mark = item.getAttribute('data-mark');
         this.data[item.innerText] = {
           rate,
-          color1: getColor(mark).color1,
-          color2: getColor(mark).color2,
+          color1: this.colors[mark].color1,
+          color2: this.colors[mark].color2,
         };
         this.votes += parseInt(rate, 10);
       });
@@ -41,16 +40,15 @@ class Chart {
   }
 
   _drawCircles() {
-    const getColor = (rateType) => this.colors[rateType];
     this.legendItems.forEach((item) => {
       const circle = document.createElement('span');
       circle.className = `${this.elementName}__legend-item-mark`;
       circle.style.backgroundImage = `
         -webkit-gradient(
           linear, left bottom, left top, color-stop(
-            0, ${getColor(item.getAttribute('data-mark')).color1}
+            0, ${this.colors[item.getAttribute('data-mark')].color1}
             ), color-stop(
-              1, ${getColor(item.getAttribute('data-mark')).color2}
+              1, ${this.colors[item.getAttribute('data-mark')].color2}
             )
           )
         `;
