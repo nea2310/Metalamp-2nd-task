@@ -1,12 +1,7 @@
-.logo{
+.logo {
   margin: 0 auto;
-  display: block;
 
-    &_background_grey{
-      background-color: $colorUIKitground;
-    }
+  &_background_grey {
+    background-color: $colorUIKitground;
+  }
 }
-
-
-
-
