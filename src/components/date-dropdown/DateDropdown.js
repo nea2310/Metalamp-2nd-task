@@ -150,6 +150,7 @@ class DateDropDown {
           this.inputFromInstance.focusInput();
           this.inputToInstance.setValue(dateTo);
           this.inputToInstance.focusInput();
+          this.inputToInstance.blurInput();
         }
         if (this.dateSelectHandler) {
           this.dateSelectHandler(

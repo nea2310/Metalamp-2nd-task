@@ -36,6 +36,10 @@ class InputDate {
     this.input.focus();
   }
 
+  blurInput() {
+    this.input.blur();
+  }
+
   _render() {
     this.input = this.wrapper.querySelector(`.js-${this.elementName}__input`);
 
