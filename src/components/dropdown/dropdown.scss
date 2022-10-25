@@ -68,6 +68,10 @@
         @include tip-style;
         right: 18px;
         bottom: 18px;
+
+        @include media-breakpoint-down($xs) {
+          right: 10px;
+        }
       }
 
       &_expanded {

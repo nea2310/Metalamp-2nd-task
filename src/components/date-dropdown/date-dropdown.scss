@@ -199,6 +199,10 @@
     &_hidden {
       display: none;
     }
+
+    &_plain {
+      position: initial;
+    }
   }
 
   &__buttons {
@@ -228,7 +232,7 @@
         right: 18px;
         bottom: 20px;
 
-        @include media-breakpoint-down($xxs) {
+        @include media-breakpoint-down($xs) {
           right: 10px;
         }
       }
@@ -268,6 +272,7 @@
       &--title {
         @include font-h2;
         cursor: inherit;
+        margin-left: 2px;
 
         i {
           color: $colorTitle;
@@ -279,7 +284,7 @@
       }
 
       &--action {
-        &[data-action='prev'] {
+        &[data-action="prev"] {
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;
@@ -292,7 +297,7 @@
           }
         }
 
-        &[data-action='next'] {
+        &[data-action="next"] {
           &::before {
             @include arrow-basis-style($colorMain);
             align-self: center;

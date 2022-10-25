@@ -5,7 +5,7 @@
   border-radius: 4px;
   max-width: $formWidth;
   width: 100%;
-  padding: 30px 29px 30px 29px;
+  padding: 31px 29px 30px 29px;
   position: relative;
 
   @include media-breakpoint-down($xs) {
@@ -65,7 +65,7 @@
   }
 
   &__search {
-    margin-top: 24px;
+    margin-top: 25px;
   }
 
   &__go-to-login {

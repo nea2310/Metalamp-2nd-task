@@ -3,205 +3,75 @@
   width: 100%;
   margin: 38px auto 0;
   max-width: 1160px;
-  row-gap: 36px;
   column-gap: 40px;
   display: grid;
-  grid-template-columns: 380px 380px 270px 50px;
-  grid-template-rows: 374px 100px 100px auto;
+  grid-template-columns: 380px 380px 320px;
   background-color: $colorUIKitground;
   padding-bottom: 20px;
 
   @include media-breakpoint-down($lg) {
-    max-width: 800px;
-    grid-template-columns: 380px 270px 80px;
-    grid-template-rows: 374px 100px 367px 113px 85px;
+    padding: 50px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @include media-breakpoint-down($md) {
-    max-width: 380px;
-    grid-template-columns: 270px 70px;
-    grid-template-rows: auto auto auto auto 410px 257px 257px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   @include media-breakpoint-down($xs) {
-    display: block;
-    padding: 20px 10px;
+    padding: 10px;
   }
 
-  &__search-room {
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 2;
-
-    @include media-breakpoint-down($md) {
-      grid-row-start: 1;
-      grid-row-end: 2;
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-
-    @include media-breakpoint-down($xs) {
-      margin-bottom: 20px;
-    }
-  }
-
-  &__registration {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    margin-top: 4px;
-
-    @include media-breakpoint-down($md) {
-      grid-row-start: 3;
-      grid-row-end: 4;
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-    @include media-breakpoint-down($xs) {
-      margin-bottom: 20px;
-    }
-  }
-
-  &__booking {
-    margin-top: 2px;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    grid-column-start: 2;
-    grid-column-end: 3;
+  &__column-right {
+    display: grid;
+    grid-template-columns: 270px 50px;
+    grid-template-rows: auto auto 1fr;
 
     @include media-breakpoint-down($lg) {
-      grid-row-start: 1;
-      grid-row-end: 2;
-      grid-column-start: 2;
-      grid-column-end: 4;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      display: flex;
+      justify-content: space-between;
     }
 
     @include media-breakpoint-down($md) {
-      grid-row-start: 2;
-      grid-row-end: 3;
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-
-    @include media-breakpoint-down($xs) {
-      margin-bottom: 20px;
+      display: block;
     }
   }
 
-  &__login {
-    margin-top: 9px;
-    margin-left: 1px;
-    grid-row-start: 3;
-    grid-row-end: 4;
-    grid-column-start: 2;
-    grid-column-end: 3;
+  &__column-center {
+    padding-top: 2px;
+  }
 
-    @include media-breakpoint-down($lg) {
-      grid-row-start: 3;
-      grid-row-end: 4;
-      grid-column-start: 2;
-      grid-column-end: 4;
-    }
-
-    @include media-breakpoint-down($md) {
-      grid-row-start: 4;
-      grid-row-end: 5;
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-
-    @include media-breakpoint-down($xs) {
-      margin-bottom: 20px;
-    }
+  &__search-room,
+  &__registration,
+  &__booking,
+  &__login,
+  &__date-dropdown,
+  &__room-card {
+    margin-bottom: 40px;
   }
 
   &__date-dropdown {
-    overflow: hidden;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    grid-column-start: 3;
-    grid-column-end: 5;
-    position: relative;
-
-    @include media-breakpoint-down($lg) {
-      grid-row-start: 5;
-      grid-row-end: 7;
-      grid-column-start: 1;
-      grid-column-end: 2;
-    }
-
-    @include media-breakpoint-down($md) {
-      grid-row-start: 5;
-      grid-row-end: 6;
-      grid-column-start: 1;
-      grid-column-end: 3;
-    }
-
-    @include media-breakpoint-down($xs) {
-      height: 350px;
-      margin-bottom: 20px;
-    }
-  }
-
-  &__calendar-wrapper {
-    border: 1px solid black;
-    position: absolute;
-    top: -71px;
-    min-width: 319px;
-
-    @include media-breakpoint-down($xs) {
-      min-width: 300px;
-    }
+    grid-column-start: 1;
+    grid-column-end: 3;
   }
 
   &__room-card {
     &:nth-last-child(2) {
       grid-row-start: 2;
       grid-row-end: 3;
-      grid-column-start: 3;
-      grid-column-end: 4;
-
-      @include media-breakpoint-down($lg) {
-        grid-row-start: 4;
-        grid-row-end: 5;
-        grid-column-start: 2;
-        grid-column-end: 3;
-      }
-
-      @include media-breakpoint-down($md) {
-        grid-row-start: 6;
-        grid-row-end: 7;
-        grid-column-start: 1;
-        grid-column-end: 2;
-      }
-
-      @include media-breakpoint-down($xs) {
-        margin-bottom: 20px;
-      }
+      grid-column-start: 1;
+      grid-column-end: 2;
     }
+
     &:last-child {
-      margin-top: 24px;
-      grid-row-start: 4;
-      grid-row-end: 5;
-      grid-column-start: 3;
-      grid-column-end: 4;
-
-      @include media-breakpoint-down($lg) {
-        grid-row-start: 6;
-        grid-row-end: 7;
-        grid-column-start: 2;
-        grid-column-end: 3;
-      }
-
-      @include media-breakpoint-down($md) {
-        margin-top: 0;
-        grid-row-start: 7;
-        grid-row-end: 8;
-        grid-column-start: 1;
-        grid-column-end: 2;
-      }
+      grid-row-start: 3;
+      grid-row-end: 4;
+      grid-column-start: 1;
+      grid-column-end: 2;
     }
   }
 }

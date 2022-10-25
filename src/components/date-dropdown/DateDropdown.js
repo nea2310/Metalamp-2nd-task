@@ -53,6 +53,7 @@ class DateDropDown {
 
   _render() {
     this.inputWrappers = this._getElements(['input-wrapper']);
+    this.isPlain = this.inputWrappers.length === 0;
     this.isFilter = this.inputWrappers.length === 1;
 
     const initInputInstance = (wrapper, callback) => {
@@ -61,16 +62,20 @@ class DateDropDown {
       inputInstance.subscribeDateInput(callback);
       return inputInstance;
     };
-
-    if (!this.isFilter) {
-      this.inputFromInstance = initInputInstance(this.inputWrappers[0], this._handleDateInputFrom);
-      this.inputToInstance = initInputInstance(this.inputWrappers[1], this._handleDateInputTo);
-    } else {
-      this.inputInstance = initInputInstance(this.inputWrappers[0], this._handleDateInputFromTo);
-      this.inputAlt = this._getElement('input-alt');
+    if (!this.isPlain) {
+      if (!this.isFilter) {
+        this.inputFromInstance = initInputInstance(
+          this.inputWrappers[0],
+          this._handleDateInputFrom,
+        );
+        this.inputToInstance = initInputInstance(this.inputWrappers[1], this._handleDateInputTo);
+      } else {
+        this.inputInstance = initInputInstance(this.inputWrappers[0], this._handleDateInputFromTo);
+        this.inputAlt = this._getElement('input-alt');
+      }
+      this.tips = this._getElements(['image']);
     }
 
-    this.tips = this._getElements(['image']);
     this.calendarWrapper = this._getElement('calendar-wrapper');
 
     this.isVisible = !this.calendarWrapper.classList.contains(`${this.elementName}__calendar-wrapper_hidden`);
@@ -132,7 +137,7 @@ class DateDropDown {
       nextHtml: '',
       onSelect: (selectedDate) => {
         const dates = selectedDate.formattedDate;
-        if (dates.length === 0) return;
+        if (dates.length === 0 || this.isPlain) return;
         const dateFrom = dates[0];
         let dateTo = '';
         if (this.isFilter) {

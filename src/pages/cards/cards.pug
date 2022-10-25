@@ -17,53 +17,55 @@ block body
         +logo({ backgroundColor: 'grey' })
   block content 
     main(class = "cards js-cards")
-      div(class = "cards__search-room js-cards__search-room")
-        +search-room()
-      div(class = "cards__booking js-cards__booking")
-        +booking({
-          roomNumber: 888,
-          lux: 'люкс',
-          roomPrice: 3330,
-          daysAmount: 4,
-          sale: 181.584,
-          saleTotal: 0,
-          extraTotal: 300,
-        })
-      div(class = "cards__registration js-cards__registration")
-        +registration()
-      div(class = "cards__login js-cards__login")
-        +login()
-      div(class = "cards__date-dropdown js-cards__date-dropdown")
-        div(class = "cards__calendar-wrapper")
+      div(class = "cards__column-left")
+        div(class = "cards__search-room js-cards__search-room")
+          +search-room()
+        div(class = "cards__registration js-cards__registration")
+          +registration()
+      div(class = "cards__column-center")
+        div(class = "cards__booking js-cards__booking")
+          +booking({
+            roomNumber: 888,
+            lux: 'люкс',
+            roomPrice: 3330,
+            daysAmount: 4,
+            sale: 181.584,
+            saleTotal: 0,
+            extraTotal: 300,
+          })
+        div(class = "cards__login js-cards__login")
+          +login()
+      div(class = "cards__column-right")
+        div(class = "cards__date-dropdown js-cards__date-dropdown")
           +date-dropdown({
             width:'wide',
-            type:'dateDropDown',
+            type:'plain',
             visibility: true,
           })
-      div(class = "cards__room-card js-cards__room-card")
-        +room-card({
-          imageList: [
-            require('@pub/images/room-card/888.jpg'),
-            require('@pub/images/room-card/room-2.jpg'),
-            require('@pub/images/room-card/room-3.jpg'),
-            require('@pub/images/room-card/room-4.jpg'),
-            ],
-          roomNumber: 888,
-          lux: 'люкс',
-          roomPrice: 9990,
-          feedbackAmount: 145,
-          rating: 5,
-        })
-      div(class = 'cards__room-card js-cards__room-card')
-        +room-card({
-          imageList: [
-            require('@pub/images/room-card/840.jpg'),
-            require('@pub/images/room-card/room-2.jpg'),
-            require('@pub/images/room-card/room-3.jpg'),
-            require('@pub/images/room-card/room-4.jpg'),
-            ],
-          roomNumber: 840,
-          roomPrice: 9900,
-          feedbackAmount: 65,
-          rating: 4
-        })
+        div(class = "cards__room-card js-cards__room-card")
+          +room-card({
+            imageList: [
+              require('@pub/images/room-card/888.jpg'),
+              require('@pub/images/room-card/room-2.jpg'),
+              require('@pub/images/room-card/room-3.jpg'),
+              require('@pub/images/room-card/room-4.jpg'),
+              ],
+            roomNumber: 888,
+            lux: 'люкс',
+            roomPrice: 9990,
+            feedbackAmount: 145,
+            rating: 5,
+          })
+        div(class = 'cards__room-card js-cards__room-card')
+          +room-card({
+            imageList: [
+              require('@pub/images/room-card/840.jpg'),
+              require('@pub/images/room-card/room-2.jpg'),
+              require('@pub/images/room-card/room-3.jpg'),
+              require('@pub/images/room-card/room-4.jpg'),
+              ],
+            roomNumber: 840,
+            roomPrice: 9900,
+            feedbackAmount: 65,
+            rating: 4
+          })

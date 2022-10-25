@@ -6,7 +6,7 @@ export default function prepareOptions(options) {
     visibility,
   } = options;
 
-  const validTypes = ['dateDropDown', 'filterDateDropDown'];
+  const validTypes = ['dateDropDown', 'filterDateDropDown', 'plain'];
   const validVisibilities = [true, false];
   const elementName = 'date-dropdown';
 
@@ -15,6 +15,10 @@ export default function prepareOptions(options) {
 
   if (type === 'filterDateDropDown') {
     modifiers.push(`${elementName}__calendar-wrapper_width_narrow`);
+  }
+
+  if (type === 'plain') {
+    modifiers.push(`${elementName}__calendar-wrapper_plain`);
   }
 
   if (!visibilityChecked) {
