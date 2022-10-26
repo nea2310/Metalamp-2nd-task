@@ -1,6 +1,6 @@
 import render from '../../shared/render/render';
 
-const pageSelector = '.js-form-elements';
+const pageSelector = '.js-sign-in-page';
 const page = document.querySelector(pageSelector);
 
 if (page) {

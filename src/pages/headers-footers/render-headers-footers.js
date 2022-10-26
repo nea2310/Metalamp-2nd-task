@@ -1,13 +1,8 @@
-import Header from '../../components/header/Header';
 import render from '../../shared/render/render';
 
-const components = [
-  { header: Header },
-];
-
-const selectorName = '.js-headers-footers';
-const page = document.querySelector(selectorName);
+const pageSelector = '.js-headers-footers';
+const page = document.querySelector(pageSelector);
 
 if (page) {
-  render(components, page, selectorName);
+  render(page, pageSelector);
 }

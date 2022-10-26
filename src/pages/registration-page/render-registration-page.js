@@ -1,13 +1,8 @@
-import Registration from '../../components/registration/Registration';
 import render from '../../shared/render/render';
 
-const components = [
-  { registration: Registration },
-];
-
-const selectorName = '.js-registration-page';
-const page = document.querySelector(selectorName);
+const pageSelector = '.js-registration-page';
+const page = document.querySelector(pageSelector);
 
 if (page) {
-  render(components, page, selectorName);
+  render(page, pageSelector);
 }
