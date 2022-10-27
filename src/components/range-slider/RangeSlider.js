@@ -1,3 +1,5 @@
+import FontFaceObserver from 'fontfaceobserver';
+
 import '../../../vendors/slider-metalamp/plugin';
 import '../../../vendors/slider-metalamp/plugin.css';
 
@@ -30,15 +32,22 @@ class RangeSlider {
   _init() {
     const { priceFrom, priceTo } = this;
 
+    const fontObserver = new FontFaceObserver('Montserrat');
+
     const displayPrice = (data) => {
       const { from, to } = data;
       priceFrom.value = `${from.toLocaleString()}₽`;
       priceTo.value = `${to.toLocaleString()}₽`;
-      const priceFromWidth = this._getInputWidth(priceFrom.value);
-      const priceToWidth = this._getInputWidth(priceTo.value);
 
-      priceFrom.style.width = `${priceFromWidth}px`;
-      priceTo.style.width = `${priceToWidth}px`;
+      fontObserver.load().then(() => {
+        const priceFromWidth = this._getInputWidth(priceFrom.value);
+        const priceToWidth = this._getInputWidth(priceTo.value);
+
+        priceFrom.style.width = `${priceFromWidth}px`;
+        priceTo.style.width = `${priceToWidth}px`;
+      })
+        // eslint-disable-next-line no-console
+        .catch(() => console.log('Font Montserrat is not available'));
     };
 
     this.rangeSlider = $('.js-slider-metalamp').SliderMetaLamp(
