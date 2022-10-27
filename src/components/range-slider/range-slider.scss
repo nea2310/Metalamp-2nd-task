@@ -107,7 +107,6 @@
   &__measure-text-length {
     font-family: $fontMain;
     font-size: 12px;
-    position: absolute;
-    left: -200%;
+    visibility: hidden;
   }
 }
