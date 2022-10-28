@@ -1,4 +1,5 @@
 import getDatePlusShift from '../../shared/utils/getDatePlusShift';
+import getDateString from '../../shared/utils/getDateString';
 import getWordForm from '../../shared/utils/getWordForm';
 import ErrorMessage from '../error-message/ErrorMessage';
 import DateDropDown from '../date-dropdown/DateDropdown';
@@ -15,22 +16,6 @@ class Booking {
 
     this._bindEventListeners();
     this._render();
-  }
-
-  static formatDate(dateValue) {
-    const regexpDate = /^\d{2}-\d{2}-\d{4}$/;
-
-    let date = dateValue;
-    if (regexpDate.test(date) === false) {
-      const dateSplit = date.split('-');
-      const newDateSplit = dateSplit.map((element) => {
-        const result = element.length === 1 ? `0${element}` : element;
-        return result;
-      });
-
-      date = newDateSplit.join('-');
-    }
-    return date;
   }
 
   _render() {
@@ -60,17 +45,8 @@ class Booking {
     this.dateDropDown.subscribeDateSelect(this._handleDateSelect);
     const datePlusFour = getDatePlusShift(4);
 
-    const formatDate = (date) => {
-      const day = String(date.getDate());
-      const month = String(date.getMonth() + 1);
-      const dd = day.length === 1 ? `0${day}` : day;
-      const mm = month.length === 1 ? `0${month}` : month;
-      const yyyy = String(date.getFullYear());
-      return `${yyyy}-${mm}-${dd}`;
-    };
-
-    const dateCurrentTxt = formatDate(new Date());
-    const datePlusFourTxt = formatDate(datePlusFour);
+    const dateCurrentTxt = getDateString(new Date(), false);
+    const datePlusFourTxt = getDateString(datePlusFour, false);
 
     this.dateDropDown.setDate(dateCurrentTxt, datePlusFourTxt);
 
