@@ -4,7 +4,7 @@ class InputEmail {
   constructor(element, elementName = 'input-email') {
     this.elementName = elementName;
     this.wrapper = element;
-    this.regexp = /.+@.+\..+/i;
+    this.regexp = /\w+@\w+\.\w+/i;
 
     this._bindEventListeners();
     this._render();

@@ -189,8 +189,8 @@ class InputDate {
   }
 
   _checkBirthDate(value) {
-    const a = value.split('.');
-    const dateSelected = new Date(`${a[2]}-${a[1]}-${a[0]}`);
+    const dateFraction = value.split('.');
+    const dateSelected = new Date(`${dateFraction[2]}-${dateFraction[1]}-${dateFraction[0]}`);
     const needCorrectFormat = dateSelected < this.dateMinusHundred
       || dateSelected > this.dateMinusEighteen
       || Number.isNaN(+dateSelected);
