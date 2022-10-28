@@ -1,3 +1,6 @@
+import getElement from '../../shared/utils/getElement';
+import getElements from '../../shared/utils/getElements';
+import getWordForm from '../../shared/utils/getWordForm';
 import './dropdown.scss';
 
 class DropDown {
@@ -34,16 +37,16 @@ class DropDown {
     this.focusOnList = false;
     this.mouseDown = false;
 
-    this.input = this._getElement('input');
-    this.inputWrapper = this._getElement('input-wrapper');
-    this.listWrapper = this._getElement('list-wrapper');
-    this.counts = this._getElements(['count-decrement', 'count-increment']);
-    this.countValues = this._getElements(['count-value']);
-    this.listElements = this._getElements(['category-wrapper']);
-    this.buttonClear = this._getElement('button-clear');
-    this.buttonApply = this._getElement('button-apply');
-    this.buttonsMinus = this._getElements(['count-decrement']);
-    this.buttonsPlus = this._getElements(['count-increment']);
+    this.input = getElement('input', this.wrapper, this.elementName);
+    this.inputWrapper = getElement('input-wrapper', this.wrapper, this.elementName);
+    this.listWrapper = getElement('list-wrapper', this.wrapper, this.elementName);
+    this.counts = getElements(['count-decrement', 'count-increment'], this.wrapper, this.elementName);
+    this.countValues = getElements(['count-value'], this.wrapper, this.elementName);
+    this.listElements = getElements(['category-wrapper'], this.wrapper, this.elementName);
+    this.buttonClear = getElement('button-clear', this.wrapper, this.elementName);
+    this.buttonApply = getElement('button-apply', this.wrapper, this.elementName);
+    this.buttonsMinus = getElements(['count-decrement'], this.wrapper, this.elementName);
+    this.buttonsPlus = getElements(['count-increment'], this.wrapper, this.elementName);
     this.clearApplyButtons = this.buttonClear != null && this.buttonApply != null;
 
     this._addEventListeners();
@@ -190,14 +193,14 @@ class DropDown {
 
     counterList.forEach((item, i) => {
       const dropDownObject = {};
-      const categoryName = this._getElement('category', item);
-      const categoryCount = this._getElement('count-value', item);
-      const categoryIncrement = this._getElement('count-increment', item);
-      const categoryDecrement = this._getElement('count-decrement', item);
+      const categoryName = getElement('category', item, this.elementName);
+      const categoryCount = getElement('count-value', item, this.elementName);
+      const categoryIncrement = getElement('count-increment', item, this.elementName);
+      const categoryDecrement = getElement('count-decrement', item, this.elementName);
 
       dropDownObject.name = categoryName.innerText.toLowerCase();
       dropDownObject.type = categoryName.getAttribute('data-type');
-      dropDownObject.declensions = categoryName.getAttribute('data-declensions');
+      dropDownObject.wordForms = categoryName.getAttribute('data-wordForms');
       dropDownObject.defaultCount = Number(categoryCount.innerText);
       dropDownObject.currentCount = dropDownObject.defaultCount;
       dropDownObject.maxCount = Number(categoryIncrement.getAttribute('data-max'));
@@ -310,8 +313,8 @@ class DropDown {
     changedCounters.forEach((counter, i, array) => {
       const check = i === 0 || (i > 0 && counter.type !== array[i - 1].type);
       if (check) {
-        const { type, declensions, currentCount } = counter;
-        this.countersToDisplay.push({ type, currentCount, declensions: declensions.split(',') });
+        const { type, wordForms, currentCount } = counter;
+        this.countersToDisplay.push({ type, currentCount, wordForms: wordForms.split(',') });
       }
       if (i > 0 && counter.type === array[i - 1].type) {
         const element = this.countersToDisplay.find((item) => item.type === counter.type);
@@ -324,21 +327,12 @@ class DropDown {
   }
 
   _updateInput(countersToDisplay) {
-    function getWordForm(count, words) {
-      let value = count;
-      value = Math.abs(value) % 100;
-      const number = value % 10;
-      if (value > 10 && value < 20) return words[2];
-      if (number > 1 && number < 5) return words[1];
-      if (number === 1) return words[0];
-      return words[2];
-    }
     let value = '';
     countersToDisplay.forEach((counter) => {
       if (parseInt(counter.currentCount, 10) !== 0) {
         value += `${counter.currentCount} ${getWordForm(
           parseInt(counter.currentCount, 10),
-          counter.declensions,
+          counter.wordForms,
         )}, `;
       }
     });
@@ -394,19 +388,6 @@ class DropDown {
       this.input.classList.remove(`${wrapper}input_expanded`);
       this.input.classList.add(`${wrapper}input_collapsed`);
     }
-  }
-
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(`.js-${this.elementName}__${selector}`);
-  }
-
-  _getElements(selectors) {
-    let string = '';
-    selectors.forEach((selector) => {
-      string += `.js-${this.elementName}__${selector},`;
-    });
-    string = string.substring(0, string.length - 1);
-    return this.wrapper.querySelectorAll(string);
   }
 }
 

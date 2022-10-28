@@ -1,3 +1,5 @@
+import getDatePlusShift from '../../shared/utils/getDatePlusShift';
+import getWordForm from '../../shared/utils/getWordForm';
 import ErrorMessage from '../error-message/ErrorMessage';
 import DateDropDown from '../date-dropdown/DateDropdown';
 import DropDown from '../dropdown/Dropdown';
@@ -9,6 +11,7 @@ class Booking {
     this.elementName = elementName;
     this.errorModifier = `${this.elementName}_error`;
     this.day = 86400000; // 86400000 - кол-во милисекунд в сутках
+    this.wordForms = ['сутки', 'суток', 'суток'];
 
     this._bindEventListeners();
     this._render();
@@ -55,7 +58,7 @@ class Booking {
     infoSignElements.forEach((element) => new InfoSign(element));
 
     this.dateDropDown.subscribeDateSelect(this._handleDateSelect);
-    const datePlusFour = new Date(new Date().setDate(new Date().getDate() + 4));
+    const datePlusFour = getDatePlusShift(4);
 
     const formatDate = (date) => {
       const day = String(date.getDate());
@@ -108,18 +111,9 @@ class Booking {
   }
 
   _calculateCost() {
-    function getWordForm(count) {
-      let value = count;
-      value = Math.abs(value) % 100;
-      const number = value % 10;
-      if (number > 1 && number < 20) return 'суток';
-      if (number === 1) return 'сутки';
-      return 'суток';
-    }
-
     const base = this.daysAmount * this.price * this.guestsAmount;
     const total = base.toFixed(0) - this._calculateDiscount().toFixed(0);
-    this.days.innerText = `${(this.price * this.guestsAmount).toLocaleString('ru-RU')}₽ x ${this.daysAmount} ${getWordForm(this.daysAmount)}`;
+    this.days.innerText = `${(this.price * this.guestsAmount).toLocaleString('ru-RU')}₽ x ${this.daysAmount} ${getWordForm(this.daysAmount, this.wordForms)}`;
     this.priceField.innerText = `${(this.price * this.guestsAmount).toLocaleString('ru-RU')}₽`;
     this.baseCost.innerText = `${Math.trunc(base).toLocaleString('ru-RU')}₽`;
     this.totalCost.innerText = total > 0 ? `${(Math.trunc(total) + Math.trunc(this.extra)).toLocaleString('ru-RU')}₽` : '0₽';

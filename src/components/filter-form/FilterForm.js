@@ -1,3 +1,4 @@
+import getElement from '../../shared/utils/getElement';
 import DateDropDown from '../date-dropdown/DateDropdown';
 import DropDown from '../dropdown/Dropdown';
 import CheckList from '../checklist/CheckList';
@@ -14,8 +15,8 @@ class FilterForm {
   }
 
   _render() {
-    this.button = this._getElement('show-filter');
-    this.form = this._getElement('wrapper');
+    this.button = getElement('show-filter', this.wrapper, this.elementName);
+    this.form = getElement('wrapper', this.wrapper, this.elementName);
 
     const dateDropDownElement = this.wrapper.querySelector('.js-date-dropdown');
     const dropDownElements = this.wrapper.querySelectorAll('.js-dropdown');
@@ -65,10 +66,6 @@ class FilterForm {
   _hideForm() {
     this.form.classList.add(`${this.elementName}__wrapper_hidden`);
     this.wrapper.classList.add(`${this.elementName}_hidden`);
-  }
-
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(`.${this.elementName}__${selector}`);
   }
 }
 

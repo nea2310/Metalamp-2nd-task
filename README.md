@@ -136,6 +136,7 @@ shared
 ```
 `helpers` contains service functions used for data validation in components<br><br>
 `render` contains functions used for rendering of components<br><br>
+`utils` contains tools used by more than one component<br><br>
 
 
 ## How to work

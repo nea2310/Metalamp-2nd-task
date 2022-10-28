@@ -1,13 +1,8 @@
-import SearchRoom from '../../components/search-room/SearchRoom';
 import render from '../../shared/render/render';
 
-const components = [
-  { 'search-room': SearchRoom },
-];
-
-const selectorName = '.js-landing-page';
-const page = document.querySelector(selectorName);
+const pageSelector = '.js-landing-page';
+const page = document.querySelector(pageSelector);
 
 if (page) {
-  render(components, page, selectorName);
+  render(page, pageSelector);
 }

@@ -1,5 +1,9 @@
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
+import getDatePlusShift from '../../shared/utils/getDatePlusShift';
+import getDateString from '../../shared/utils/getDateString';
+import getElement from '../../shared/utils/getElement';
+import getElements from '../../shared/utils/getElements';
 import ErrorMessage from '../error-message/ErrorMessage';
 import InputDate from '../input-date/InputDate';
 
@@ -52,7 +56,7 @@ class DateDropDown {
   }
 
   _render() {
-    this.inputWrappers = this._getElements(['input-wrapper']);
+    this.inputWrappers = getElements(['input-wrapper'], this.wrapper, this.elementName);
     this.isPlain = this.inputWrappers.length === 0;
     this.isFilter = this.inputWrappers.length === 1;
 
@@ -71,16 +75,16 @@ class DateDropDown {
         this.inputToInstance = initInputInstance(this.inputWrappers[1], this._handleDateInputTo);
       } else {
         this.inputInstance = initInputInstance(this.inputWrappers[0], this._handleDateInputFromTo);
-        this.inputAlt = this._getElement('input-alt');
+        this.inputAlt = getElement('input-alt', this.wrapper, this.elementName);
       }
-      this.tips = this._getElements(['image']);
+      this.tips = getElements(['image'], this.wrapper, this.elementName);
     }
 
-    this.calendarWrapper = this._getElement('calendar-wrapper');
+    this.calendarWrapper = getElement('calendar-wrapper', this.wrapper, this.elementName);
 
     this.isVisible = !this.calendarWrapper.classList.contains(`${this.elementName}__calendar-wrapper_hidden`);
-    this.buttonClear = this._getElement('button-clear');
-    this.buttonApply = this._getElement('button-apply');
+    this.buttonClear = getElement('button-clear', this.wrapper, this.elementName);
+    this.buttonApply = getElement('button-apply', this.wrapper, this.elementName);
 
     this.errorMessageWrapper = this.wrapper.querySelector(`.js-${this.elementName}__error-message`);
     this.errorMessage = new ErrorMessage(this.errorMessageWrapper, null, this.focusInput);
@@ -172,22 +176,13 @@ class DateDropDown {
 
   _prepareDates() {
     this.dateCurrent = new Date();
-    this.dateTomorrow = new Date(new Date().setDate(new Date().getDate() + 1));
-    this.datePlusFourDays = new Date(new Date().setDate(new Date().getDate() + 4));
-    this.datePlusYear = new Date(new Date().setFullYear(new Date().getFullYear() + 1));
+    this.dateTomorrow = getDatePlusShift(1);
+    this.datePlusFourDays = getDatePlusShift(4);
+    this.datePlusYear = getDatePlusShift(1, 'year');
 
-    const formatDate = (date) => {
-      const day = String(date.getDate());
-      const month = String(date.getMonth() + 1);
-      const dd = day.length === 1 ? `0${day}` : day;
-      const mm = month.length === 1 ? `0${month}` : month;
-      const yyyy = String(date.getFullYear());
-      return `${yyyy}-${mm}-${dd}`;
-    };
-
-    this.dateCurrentTxt = formatDate(this.dateCurrent);
-    this.dateTomorrowTxt = formatDate(this.dateTomorrow);
-    this.datePlusYearTxt = formatDate(this.datePlusYear);
+    this.dateCurrentTxt = getDateString(this.dateCurrent, false);
+    this.dateTomorrowTxt = getDateString(this.dateTomorrow, false);
+    this.datePlusYearTxt = getDateString(this.datePlusYear, false);
   }
 
   _handleDateInputFromTo(date) {
@@ -346,19 +341,6 @@ class DateDropDown {
       input.classList.remove(`${wrap}input-wrapper_expanded`);
     });
     return true;
-  }
-
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(`.js-${this.elementName}__${selector}`);
-  }
-
-  _getElements(selectors) {
-    let string = '';
-    selectors.forEach((item) => {
-      string += `.js-${this.elementName}__${item},`;
-    });
-    string = string.substring(0, string.length - 1);
-    return this.wrapper.querySelectorAll(string);
   }
 
   _showErrorMessageWrapper(message) {

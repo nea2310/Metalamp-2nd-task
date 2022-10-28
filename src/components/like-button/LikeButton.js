@@ -1,3 +1,5 @@
+import getElement from '../../shared/utils/getElement';
+
 class LikeButton {
   constructor(element, elementName = 'like-button') {
     this.elementName = elementName;
@@ -8,9 +10,9 @@ class LikeButton {
   }
 
   _render() {
-    this.button = this._getElement('button');
-    this.image = this._getElement('image');
-    this.counter = this._getElement('counter');
+    this.button = getElement('button', this.wrapper, this.elementName);
+    this.image = getElement('image', this.wrapper, this.elementName);
+    this.counter = getElement('counter', this.wrapper, this.elementName);
 
     this._addEventListeners();
   }
@@ -31,10 +33,6 @@ class LikeButton {
     } else {
       this.counter.innerText = value - 1;
     }
-  }
-
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(`.${this.elementName}__${selector}`);
   }
 }
 

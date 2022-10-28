@@ -1,3 +1,6 @@
+import getElement from '../../shared/utils/getElement';
+import getElements from '../../shared/utils/getElements';
+
 class RoomCard {
   constructor(element, elementName = 'room-card') {
     this.elementName = elementName;
@@ -8,11 +11,11 @@ class RoomCard {
   }
 
   _render() {
-    this.slider = this._getElement('slider');
-    this.dotsWrapper = this._getElement('dots');
-    this.buttonPrevious = this._getElement('previous');
-    this.buttonNext = this._getElement('next');
-    this.images = this._getElements(['photo']);
+    this.slider = getElement('slider', this.wrapper, this.elementName);
+    this.dotsWrapper = getElement('dots', this.wrapper, this.elementName);
+    this.buttonPrevious = getElement('previous', this.wrapper, this.elementName);
+    this.buttonNext = getElement('next', this.wrapper, this.elementName);
+    this.images = getElements(['photo'], this.wrapper, this.elementName);
 
     this._createDots();
     this._swipe();
@@ -39,7 +42,7 @@ class RoomCard {
       dot.setAttribute('tabindex', '-1');
       this.dotsWrapper.append(dot);
     });
-    this.dots = this._getElements(['dot']);
+    this.dots = getElements(['dot'], this.wrapper, this.elementName);
     this.dots[0].classList.add(`${this.elementName}__dot_active`);
     this.dots.forEach((dot) => {
       dot.addEventListener('click', this._handleRoomCardClickDot);
@@ -73,31 +76,31 @@ class RoomCard {
   }
 
   _clickPrevNext(element) {
-    const currentPhoto = this._getElement('photo_shown');
-    const currentDot = this._getElement('dot_active');
+    const currentPhoto = getElement('photo_shown', this.wrapper, this.elementName);
+    const currentDot = getElement('dot_active', this.wrapper, this.elementName);
     const i = parseInt(currentPhoto.getAttribute('data-sequence'), 10);
     let newPhoto;
     let newDot;
 
     if (element.className.match('previous') || element === 'leftSwipe') {
       if (i !== 0) {
-        newPhoto = this._getElemAdvanced(
+        newPhoto = this._getElements(
           'photo',
           'data-sequence',
           i - 1,
         );
-        newDot = this._getElemAdvanced(
+        newDot = this._getElements(
           'dot',
           'data-sequence',
           i - 1,
         );
       } else {
-        newPhoto = this._getElemAdvanced(
+        newPhoto = this._getElements(
           'photo',
           'data-sequence',
           this.images.length - 1,
         );
-        newDot = this._getElemAdvanced(
+        newDot = this._getElements(
           'dot',
           'data-sequence',
           this.images.length - 1,
@@ -105,19 +108,19 @@ class RoomCard {
       }
     } else if (element.className.match('next') || element === 'rightSwipe') {
       if (i !== this.images.length - 1) {
-        newPhoto = this._getElemAdvanced(
+        newPhoto = this._getElements(
           'photo',
           'data-sequence',
           i + 1,
         );
-        newDot = this._getElemAdvanced(
+        newDot = this._getElements(
           'dot',
           'data-sequence',
           i + 1,
         );
       } else {
-        newPhoto = this._getElemAdvanced('photo', 'data-sequence', '0');
-        newDot = this._getElemAdvanced('dot', 'data-sequence', '0');
+        newPhoto = this._getElements('photo', 'data-sequence', '0');
+        newDot = this._getElements('dot', 'data-sequence', '0');
       }
     }
     this._toggle(currentPhoto, currentDot, newPhoto, newDot);
@@ -126,9 +129,9 @@ class RoomCard {
   _handleRoomCardClickDot(e) {
     const element = e.currentTarget;
     const sec = element.getAttribute('data-sequence');
-    const currentPhoto = this._getElement('photo_shown');
-    const currentDot = this._getElement('dot_active');
-    const newPhoto = this._getElemAdvanced('photo', 'data-sequence', sec);
+    const currentPhoto = getElement('photo_shown', this.wrapper, this.elementName);
+    const currentDot = getElement('dot_active', this.wrapper, this.elementName);
+    const newPhoto = this._getElements('photo', 'data-sequence', sec);
     this._toggle(currentPhoto, currentDot, newPhoto, element);
   }
 
@@ -139,21 +142,8 @@ class RoomCard {
     newDot.classList.add(`${this.elementName}__dot_active`);
   }
 
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(`.${this.elementName}__${selector}`);
-  }
-
-  _getElemAdvanced(className, attrName, attrVal, wrap = this.wrapper) {
+  _getElements(className, attrName, attrVal, wrap = this.wrapper) {
     return wrap.querySelector(`.${this.elementName}__${className}[${attrName}='${attrVal}']`);
-  }
-
-  _getElements(selectors) {
-    let string = '';
-    selectors.forEach((selector) => {
-      string += `.js-${this.elementName}__${selector},`;
-    });
-    string = string.substring(0, string.length - 1);
-    return this.wrapper.querySelectorAll(string);
   }
 }
 

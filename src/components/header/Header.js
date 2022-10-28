@@ -1,3 +1,6 @@
+import getElement from '../../shared/utils/getElement';
+import getElements from '../../shared/utils/getElements';
+
 class Header {
   constructor(element, elementName = 'header') {
     this.elementName = elementName;
@@ -8,12 +11,12 @@ class Header {
   }
 
   _render() {
-    this.burger = this._getElement('burger-button');
-    this.content = this._getElement('content');
-    this.navLevel1 = this._getElement('nav-level1');
-    this.navLevel2 = this._getElements(['nav-level2']);
-    this.tips = this._getElements(['nav-level1-item-tip']);
-    this.linksLevel1 = this._getElements(['nav-level1-item-link']);
+    this.burger = getElement('burger-button', this.wrapper, this.elementName);
+    this.content = getElement('content', this.wrapper, this.elementName);
+    this.navLevel1 = getElement('nav-level1', this.wrapper, this.elementName);
+    this.navLevel2 = getElements(['nav-level2'], this.wrapper, this.elementName);
+    this.tips = getElements(['nav-level1-item-tip'], this.wrapper, this.elementName);
+    this.linksLevel1 = getElements(['nav-level1-item-link'], this.wrapper, this.elementName);
 
     this._addEventListeners();
   }
@@ -116,19 +119,6 @@ class Header {
 
   _closeLevel2Menu() {
     this.navLevel2.forEach((item) => item.classList.remove(`${this.elementName}__nav-level2-item_expanded`));
-  }
-
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(`.${this.elementName}__${selector}`);
-  }
-
-  _getElements(selectors) {
-    let string = '';
-    selectors.forEach((selector) => {
-      string += `.js-${this.elementName}__${selector},`;
-    });
-    string = string.substring(0, string.length - 1);
-    return this.wrapper.querySelectorAll(string);
   }
 }
 

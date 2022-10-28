@@ -73,7 +73,7 @@
       {
         "displayName": "спальни",
         "categoryType": "спальня",
-        "declensions": "спальня,спальни,спален",
+        "wordForms": "спальня,спальни,спален",
         "defaultCount": 0,
         "minCount": 0,
         "maxCount": 5
@@ -81,7 +81,7 @@
       {
         "displayName": "кровати",
         "categoryType": "кровать",
-        "declensions": "кровать,кровати,кроватей",
+        "wordForms": "кровать,кровати,кроватей",
         "defaultCount": 0,
         "minCount": 0,
         "maxCount": 10
@@ -89,7 +89,7 @@
       {
         "displayName": "ванные комнаты",
         "categoryType": "ванная комната",
-        "declensions": "ванная комната,ванные комнаты,ванных комнат",
+        "wordForms": "ванная комната,ванные комнаты,ванных комнат",
         "defaultCount": 0,
         "minCount": 0,
         "maxCount": 3
@@ -104,7 +104,7 @@
       {
         "displayName": "взрослые",
         "categoryType": "гость",
-        "declensions": "гость,гостя,гостей",
+        "wordForms": "гость,гостя,гостей",
         "defaultCount": 0,
         "minCount": 0,
         "maxCount": 10
@@ -112,7 +112,7 @@
       {
         "displayName": "дети",
         "categoryType": "гость",
-        "declensions": "гость,гостя,гостей",
+        "wordForms": "гость,гостя,гостей",
         "defaultCount": 0,
         "minCount": 0,
         "maxCount": 10
@@ -120,7 +120,7 @@
       {
         "displayName": "младенцы",
         "categoryType": "младенец",
-        "declensions": "младенец,младенца,младенцев",
+        "wordForms": "младенец,младенца,младенцев",
         "defaultCount": 0,
         "minCount": 0,
         "maxCount": 10

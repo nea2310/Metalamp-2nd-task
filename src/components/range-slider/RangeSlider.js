@@ -2,6 +2,7 @@ import FontFaceObserver from 'fontfaceobserver';
 
 import '../../../vendors/slider-metalamp/plugin';
 import '../../../vendors/slider-metalamp/plugin.css';
+import getElement from '../../shared/utils/getElement';
 
 class RangeSlider {
   constructor(element, elementName = 'range-slider') {
@@ -18,12 +19,12 @@ class RangeSlider {
   }
 
   _render() {
-    this.slider = this._getElement('slider');
-    this.priceFrom = this._getElement('price-from');
-    this.priceTo = this._getElement('price-to');
+    this.slider = getElement('slider', this.wrapper, this.elementName);
+    this.priceFrom = getElement('price-from', this.wrapper, this.elementName);
+    this.priceTo = getElement('price-to', this.wrapper, this.elementName);
     this.from = Number(this.priceFrom.value.replace(this.regexp, ''));
     this.to = Number(this.priceTo.value.replace(this.regexp, ''));
-    this.measureTextBox = this._getElement('measure-text-length');
+    this.measureTextBox = getElement('measure-text-length', this.wrapper, this.elementName);
 
     this._init();
     this._addEventListeners();
@@ -98,10 +99,6 @@ class RangeSlider {
       input.value = `${parseInt(value, 10).toLocaleString()}₽`;
       input.style.width = this._getInputWidth(input.value);
     }
-  }
-
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(`.${this.elementName}__${selector}`);
   }
 
   _getInputWidth(text) {

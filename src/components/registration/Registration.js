@@ -1,3 +1,4 @@
+import getElement from '../../shared/utils/getElement';
 import ErrorMessage from '../error-message/ErrorMessage';
 import InputField from '../input-field/InputField';
 import InputDate from '../input-date/InputDate';
@@ -14,11 +15,11 @@ class Registration {
   }
 
   _render() {
-    const nameElement = this._getElement('name').querySelector('.js-input-field');
-    const surnameElement = this._getElement('surname').querySelector('.js-input-field');
+    const nameElement = getElement('name', this.wrapper, this.elementName).querySelector('.js-input-field');
+    const surnameElement = getElement('surname', this.wrapper, this.elementName).querySelector('.js-input-field');
     const birthDateElement = this.wrapper.querySelector('.js-input-date');
     const emailElement = this.wrapper.querySelector('.js-input-email');
-    const passwordElement = this._getElement('password').querySelector('.js-input-field');
+    const passwordElement = getElement('password', this.wrapper, this.elementName).querySelector('.js-input-field');
 
     this.name = new InputField(nameElement);
     this.surname = new InputField(surnameElement);
@@ -67,10 +68,6 @@ class Registration {
 
   _hideErrorMessageWrapper() {
     this.errorMessageWrapper.classList.remove(`${this.elementName}__error-message_active`);
-  }
-
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(`.js-${this.elementName}__${selector}`);
   }
 }
 

@@ -1,3 +1,5 @@
+import getElement from '../../shared/utils/getElement';
+
 class CheckList {
   constructor(element, elementName = 'checklist') {
     this.elementName = elementName;
@@ -16,8 +18,8 @@ class CheckList {
   }
 
   _render() {
-    this.label = this._getElement('label');
-    this.listWrapper = this._getElement('list-wrapper');
+    this.label = getElement('label', this.wrapper, this.elementName);
+    this.listWrapper = getElement('list-wrapper', this.wrapper, this.elementName);
 
     this._addEventListeners();
   }
@@ -71,10 +73,6 @@ class CheckList {
   _isCollapsing() {
     return this.wrapper.classList.contains(`${this.elementName}_collapsing`)
       || this.wrapper.classList.contains(`${this.elementName}_temporarily-collapsing`);
-  }
-
-  _getElement(selector, wrapper = this.wrapper) {
-    return wrapper.querySelector(`.js-${this.elementName}__${selector}`);
   }
 }
 

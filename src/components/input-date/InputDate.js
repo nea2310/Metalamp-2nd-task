@@ -1,3 +1,4 @@
+import getDateString from '../../shared/utils/getDateString';
 import ErrorMessage from '../error-message/ErrorMessage';
 
 class InputDate {
@@ -56,17 +57,8 @@ class InputDate {
     this.dateMinusHundred = getNewDate(-100);
     this.dateMinusEighteen = getNewDate(-18);
 
-    const formatDate = (date) => {
-      const day = String(date.getDate());
-      const month = String(date.getMonth() + 1);
-      const dd = day.length === 1 ? `0${day}` : day;
-      const mm = month.length === 1 ? `0${month}` : month;
-      const yyyy = String(date.getFullYear());
-      return `${dd}.${mm}.${yyyy}`;
-    };
-
-    this.dateMinusHundredTxt = formatDate(this.dateMinusHundred);
-    this.dateMinusEighteenTxt = formatDate(this.dateMinusEighteen);
+    this.dateMinusHundredTxt = getDateString(this.dateMinusHundred);
+    this.dateMinusEighteenTxt = getDateString(this.dateMinusEighteen);
 
     this._addEventListeners();
   }

@@ -33,10 +33,10 @@ mixin dropdown(options = {})
       ul(class = `${elementName}__list`)
         if Array.isArray(categories) && categories.length
           each value in categories
-            - const {displayName = '', categoryType = '', declensions = '', defaultCount = 0, minCount = 0, maxCount = 10, maxTypeCount = 10} = value
+            - const {displayName = '', categoryType = '', wordForms = '', defaultCount = 0, minCount = 0, maxCount = 10, maxTypeCount = 10} = value
             li(class = `${elementName}__category-wrapper js-${elementName}__category-wrapper`)
               span(class = `${elementName}__category js-${elementName}__category`
-                data-type = categoryType data-declensions = declensions data-name = displayName)= displayName
+                data-type = categoryType data-wordForms = wordForms data-name = displayName)= displayName
               div(class = `${elementName}__count-wrapper`)
                 button(class = `${elementName}__count-decrement js-${elementName}__count-decrement`
                   data-min = minCount type = "button" aria-label = "уменьшить количество")= minus
