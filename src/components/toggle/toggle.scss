@@ -10,7 +10,7 @@
   }
 
   &__checkmark {
-    border: 1px solid $colorBorder;
+    border: 1px solid $color-border;
   }
 
   &__ball {
@@ -20,7 +20,7 @@
     top: 3px;
     left: 3px;
     position: absolute;
-    background-color: $colorBorder;
+    background-color: $color-border;
   }
 
   &__checkbox {
@@ -36,26 +36,26 @@
     cursor: pointer;
     display: inline-block;
     position: relative;
-    border: 1px solid $colorBorder;
+    border: 1px solid $color-border;
     width: 40px;
     height: 20px;
     border-radius: 22px;
-    background-color: $colorTextBackground;
+    background-color: $color-text-background;
   }
 
   &__checkbox:checked + &__checkmark {
-    border: 1px solid $colorMain;
+    border: 1px solid $color-main;
   }
 
   &__checkbox:checked + &__checkmark &__ball {
-    background-image: $gradientMain;
+    background-image: $gradient-main;
     right: 3px;
     left: auto;
   }
 
   &__name {
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     margin: 0;
     cursor: pointer;
     line-height: 19px;

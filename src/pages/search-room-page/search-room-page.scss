@@ -3,7 +3,7 @@
   display: flex;
   margin: 0 auto;
   padding-top: 31px;
-  max-width: calc($wrapperWidth - 10px);
+  max-width: calc($wrapper-width - 10px);
   width: 100%;
   justify-content: space-between;
 
@@ -108,6 +108,6 @@
 
   &__delimiter {
     height: 2px;
-    border-top: 1px solid $colorBorder;
+    border-top: 1px solid $color-border;
   }
 }

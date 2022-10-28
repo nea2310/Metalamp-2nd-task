@@ -1,13 +1,13 @@
 .error-message {
   @include font-body;
-  color: $colorTextNormal;
+  color: $color-text-normal;
   position: absolute;
   right: 0;
   left: 0;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  background-color: $colorTextBackground;
+  background-color: $color-text-background;
   z-index: 2;
   padding: 30px 20px;
   text-align: center;
@@ -33,7 +33,7 @@
       z-index: 3;
       border-radius: 1px;
       content: '';
-      background-color: $colorMain;
+      background-color: $color-main;
       position: absolute;
       width: 2px;
       height: 15px;

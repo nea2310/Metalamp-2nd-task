@@ -12,7 +12,7 @@
     @include font-body;
     text-decoration: none;
     font-size: 12px;
-    color: $colorText;
+    color: $color-text;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -26,22 +26,22 @@
 
     &-first-last-page {
       @include font-h3;
-      background: $gradientMain;
-      color: $colorTextBackground;
+      background: $gradient-main;
+      color: $color-text-background;
       cursor: pointer;
     }
 
     &-next-previous {
-      background: $gradientSecondary;
+      background: $gradient-secondary;
       cursor: pointer;
 
       &::before {
-        @include arrow-basis-style($colorTextBackground);
+        @include arrow-basis-style($color-text-background);
         align-self: center;
       }
 
       &::after {
-        @include arrow-tip-style($colorTextBackground);
+        @include arrow-tip-style($color-text-background);
         align-self: center;
       }
     }
@@ -51,6 +51,6 @@
     @include font-body;
     margin: 0;
     padding-top: 8px;
-    color: $colorTextNormal;
+    color: $color-text-normal;
   }
 }

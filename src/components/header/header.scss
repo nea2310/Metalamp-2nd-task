@@ -1,19 +1,19 @@
 .header {
   width: 100%;
-  min-height: $headerHeight;
+  min-height: $header-height;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-  background-color: $colorTextBackground;
+  background-color: $color-text-background;
 
   @include media-breakpoint-down($sm) {
     position: relative;
   }
 
   &__wrapper {
-    max-width: $wrapperWidth;
+    max-width: $wrapper-width;
     width: 100%;
     margin: 0 auto;
     padding: 0 5px;
@@ -28,7 +28,7 @@
     @include media-breakpoint-down($md) {
       display: none;
       position: absolute;
-      background-color: $colorTextBackground;
+      background-color: $color-text-background;
       right: 0;
       top: 70px;
       padding: 20px 0;
@@ -102,13 +102,13 @@
 
         &-link {
           @include font-body;
-          color: $colorText;
+          color: $color-text;
           text-decoration: none;
           outline-offset: 5px;
 
           &_active {
             font-weight: bold;
-            color: $colorTextNormal;
+            color: $color-text-normal;
           }
         }
       }
@@ -118,7 +118,7 @@
       @include ul-reset-style;
       position: absolute;
       z-index: 1;
-      background-color: $colorTextBackground;
+      background-color: $color-text-background;
       display: none;
 
       &-item {
@@ -128,7 +128,7 @@
 
         &-link {
           @include font-body;
-          color: $colorText;
+          color: $color-text;
           text-decoration: none;
           line-height: 10px;
           outline-offset: 5px;
@@ -212,7 +212,7 @@
 
     &-name {
       @include font-body;
-      color: $colorText;
+      color: $color-text;
       text-decoration: none;
 
       @include media-breakpoint-down($md) {
@@ -226,7 +226,7 @@
 
     @include media-breakpoint-down($md) {
       position: absolute;
-      background-color: $colorMain;
+      background-color: $color-main;
       left: 0;
       width: 100%;
       height: 2px;
@@ -252,7 +252,7 @@
         @include media-breakpoint-down($md) {
           border-radius: 1px;
           content: '';
-          background-color: $colorMain;
+          background-color: $color-main;
           position: absolute;
           width: 100%;
           height: 2px;
@@ -264,14 +264,14 @@
       &:before {
         @include media-breakpoint-down($md) {
           top: 0;
-          background-color: $colorMain;
+          background-color: $color-main;
         }
       }
 
       &:after {
         @include media-breakpoint-down($md) {
           bottom: 0;
-          background-color: $colorMain;
+          background-color: $color-main;
         }
       }
 

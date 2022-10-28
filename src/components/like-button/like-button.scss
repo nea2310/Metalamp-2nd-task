@@ -16,7 +16,7 @@
     @include button-reset-style;
     position: relative;
     outline-offset: 5px;
-    border: 1px solid $colorBorder;
+    border: 1px solid $color-border;
     min-width: 40px;
     padding-left: 21px;
     padding-right: 4px;
@@ -31,30 +31,30 @@
       top: 5px;
       left: 5px;
       content: '♡';
-      color: $colorBorder;
+      color: $color-border;
       font-size: 15px;
     }
 
     &_liked {
-      border: 1px solid $colorMain;
+      border: 1px solid $color-main;
       position: relative;
 
       &::after {
         position: absolute;
         content: '❤';
-        color: $colorMain;
+        color: $color-main;
         font-size: 10px;
       }
 
       .like-button__counter {
-        color: $colorMain;
+        color: $color-main;
       }
     }
   }
 
   &__counter {
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     padding-top: 4px;
     padding-bottom: 3px;
     font-size: 9px;

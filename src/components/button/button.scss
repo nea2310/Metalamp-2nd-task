@@ -19,13 +19,13 @@ $button-style-map: (long 196, short 99, very-short 87);
     padding-right: 35px;
 
     &::before {
-      @include arrow-basis-style($colorTextBackground);
+      @include arrow-basis-style($color-text-background);
       align-self: center;
       right: 16px;
     }
 
     &::after {
-      @include arrow-tip-style($colorTextBackground);
+      @include arrow-tip-style($color-text-background);
       align-self: center;
       right: 16px;
     }
@@ -46,20 +46,20 @@ $button-style-map: (long 196, short 99, very-short 87);
   }
 
   &_plain-text {
-    color: $colorMain;
+    color: $color-main;
     border: none;
     background: none;
     padding: 0;
     &:hover,
     &:focus {
-      color: $colorTextLight;
+      color: $color-text-light;
     }
   }
 
   &_color {
     &_dark {
-      background: $gradientMain;
-      color: $colorTextBackground;
+      background: $gradient-main;
+      color: $color-text-background;
 
       &:hover,
       &:focus {
@@ -68,13 +68,13 @@ $button-style-map: (long 196, short 99, very-short 87);
     }
 
     &_light {
-      background-color: $colorTextBackground;
-      box-shadow: inset 0px 2px 0px 0px $colorMain, inset 0px 0px 0px 2px $colorGradientBorder;
-      color: $colorMain;
+      background-color: $color-text-background;
+      box-shadow: inset 0px 2px 0px 0px $color-main, inset 0px 0px 0px 2px $color-gradient-border;
+      color: $color-main;
 
       &:hover,
       &:focus {
-        box-shadow: inset 0px 2px 0px 0px $colorMainHover, inset 0px 0px 0px 2px $colorGradientBorderHover;
+        box-shadow: inset 0px 2px 0px 0px $color-main-hover, inset 0px 0px 0px 2px $color-gradient-border-hover;
       }
     }
   }

@@ -20,9 +20,9 @@
   &__name {
     box-sizing: border-box;
     grid-area: post-2;
-    font-family: $fontMain;
+    font-family: $font-main;
     font-weight: bold;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     font-size: 14px;
     display: grid;
     align-items: end;
@@ -31,7 +31,7 @@
 
   &__description {
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     box-sizing: border-box;
     grid-area: post-3;
     line-height: 10px;

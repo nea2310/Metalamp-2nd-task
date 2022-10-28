@@ -9,7 +9,7 @@
   &__legend {
     @include ul-reset-style;
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     margin-left: 30px;
     padding-top: 23px;
 

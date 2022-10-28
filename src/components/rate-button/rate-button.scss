@@ -19,7 +19,7 @@ $starStyle: (1 2 116, 2 25 92, 3 49 68, 4 73 44, 5 96 20);
     &::after {
       position: absolute;
       content: '☆☆☆☆☆';
-      color: $colorMain;
+      color: $color-main;
       font-size: 27px;
       letter-spacing: 1px;
       top: 1px;
@@ -84,7 +84,7 @@ $starStyle: (1 2 116, 2 25 92, 3 49 68, 4 73 44, 5 96 20);
         &::after {
           position: absolute;
           content: '☆☆☆☆☆';
-          color: $colorMain;
+          color: $color-main;
           font-size: 27px;
           letter-spacing: 1px;
           top: 1px;

@@ -1,9 +1,9 @@
 .booking {
-  background-color: $colorTextBackground;
+  background-color: $color-text-background;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  max-width: $formWidth;
+  max-width: $form-width;
   width: 100%;
   padding: 40px 29px 23px 29px;
   margin-block-end: 0;
@@ -33,7 +33,7 @@
 
     &-price {
       margin-top: 6px;
-      color: $colorBackground;
+      color: $color-background;
     }
   }
 
@@ -50,20 +50,20 @@
 
     &-lux {
       @include font-h3;
-      color: $colorMain;
+      color: $color-main;
       padding-left: 9px;
     }
 
     &-price {
       @include font-body;
       font-weight: bold;
-      color: $colorTextLight;
+      color: $color-text-light;
     }
 
     &-label {
       @include font-body;
       font-size: 12px;
-      color: $colorTextLight;
+      color: $color-text-light;
       padding-left: 3px;
     }
   }
@@ -79,7 +79,7 @@
   &__price {
     &-breakdown {
       @include font-body;
-      color: $colorTextNormal;
+      color: $color-text-normal;
       display: grid;
       grid-template-columns: 2.7fr 18px 1fr;
       grid-template-rows: repeat(3, auto);
@@ -136,7 +136,7 @@
       &-delimiter {
         flex-grow: 2;
         margin-left: 5px;
-        border-bottom: 1px dotted $colorBorder;
+        border-bottom: 1px dotted $color-border;
         height: 18px;
       }
 

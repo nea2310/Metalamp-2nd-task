@@ -1,6 +1,6 @@
 .room-details-page {
   flex-grow: 1;
-  border-bottom: 1px solid $colorBorder;
+  border-bottom: 1px solid $color-border;
 
   @include media-breakpoint-down($xs) {
     padding-top: 40px;
@@ -71,7 +71,7 @@
   }
 
   &__main-info-wrapper {
-    max-width: $wrapperWidth;
+    max-width: $wrapper-width;
     width: 100%;
     margin: 70px auto;
     display: grid;
@@ -139,7 +139,7 @@
 
       @include media-breakpoint-between($sm, $lg) {
         margin: 0 20px;
-        padding-bottom: $lgPaddingBottom;
+        padding-bottom: $lg-padding-bottom;
       }
 
       @include media-breakpoint-down($sm) {
@@ -160,7 +160,7 @@
 
       @include media-breakpoint-between($sm, $lg) {
         margin: 0 20px;
-        padding-bottom: $lgPaddingBottom;
+        padding-bottom: $lg-padding-bottom;
       }
 
       @include media-breakpoint-down($sm) {
@@ -178,7 +178,7 @@
 
       @include media-breakpoint-down($lg) {
         margin: 0 auto;
-        padding-bottom: $lgPaddingBottom;
+        padding-bottom: $lg-padding-bottom;
       }
 
       @include media-breakpoint-down($xs) {
@@ -211,7 +211,7 @@
 
       &-quantity {
         @include font-body;
-        color: $colorText;
+        color: $color-text;
         line-height: 28px;
         white-space: nowrap;
         margin: 0;
@@ -229,7 +229,7 @@
       grid-area: feedback;
 
       @include media-breakpoint-between($sm, $lg) {
-        padding-bottom: $lgPaddingBottom;
+        padding-bottom: $lg-padding-bottom;
         margin: 0 20px;
         padding-right: 0;
         padding-top: 0;
@@ -252,7 +252,7 @@
       grid-area: rules;
 
       @include media-breakpoint-between($sm, $lg) {
-        padding-bottom: $lgPaddingBottom;
+        padding-bottom: $lg-padding-bottom;
         padding-top: 0;
         margin: 0 20px;
       }
@@ -281,7 +281,7 @@
 
   &__cancel {
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     margin: 19px 0 0;
 
     @include media-breakpoint-down($sm) {
@@ -302,7 +302,7 @@
       }
 
       @include media-breakpoint-between($sm, $lg) {
-        padding-bottom: $lgPaddingBottom;
+        padding-bottom: $lg-padding-bottom;
         padding-top: 0;
         padding-right: 0;
         margin: 0 20px;

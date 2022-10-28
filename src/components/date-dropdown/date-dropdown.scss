@@ -181,8 +181,8 @@
   }
 
   &__calendar-wrapper {
-    background-color: $colorTextBackground;
-    border: 1px solid $colorBorder;
+    background-color: $color-text-background;
+    border: 1px solid $color-border;
     border-radius: 5px;
     position: absolute;
     z-index: 3;
@@ -210,7 +210,7 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     width: 100%;
-    background-color: $colorTextBackground;
+    background-color: $color-text-background;
     display: flex;
     justify-content: space-between;
     padding: 0 19px 19px;
@@ -249,11 +249,11 @@
     }
 
     &:hover {
-      border-color: $colorText;
+      border-color: $color-text;
     }
 
     &:focus {
-      border-color: $colorText;
+      border-color: $color-text;
       outline: none;
     }
   }
@@ -275,7 +275,7 @@
         margin-left: 2px;
 
         i {
-          color: $colorTitle;
+          color: $color-title;
         }
 
         &:hover {
@@ -284,27 +284,27 @@
       }
 
       &--action {
-        &[data-action="prev"] {
+        &[data-action='prev'] {
           &::before {
-            @include arrow-basis-style($colorMain);
+            @include arrow-basis-style($color-main);
             align-self: center;
           }
 
           &::after {
-            @include arrow-tip-style($colorMain);
+            @include arrow-tip-style($color-main);
             align-self: center;
             transform: rotate(45deg);
           }
         }
 
-        &[data-action="next"] {
+        &[data-action='next'] {
           &::before {
-            @include arrow-basis-style($colorMain);
+            @include arrow-basis-style($color-main);
             align-self: center;
           }
 
           &::after {
-            @include arrow-tip-style($colorMain);
+            @include arrow-tip-style($color-main);
             align-self: center;
           }
         }
@@ -325,7 +325,7 @@
       &--day-name {
         @include font-h3;
         text-transform: capitalize;
-        color: $colorMain;
+        color: $color-main;
       }
 
       &--cells {
@@ -335,7 +335,7 @@
 
     &--content {
       padding: 17px 18px 20px 20px;
-      background-color: $colorTextBackground;
+      background-color: $color-text-background;
 
       @include media-breakpoint-down($xs) {
         padding: 17px 0;
@@ -344,26 +344,26 @@
 
     &-cell.-day- {
       @include font-h3;
-      color: $colorText;
+      color: $color-text;
       font-weight: normal;
       border: none;
 
       &.-disabled- {
-        color: $colorBorder;
+        color: $color-border;
       }
 
       &.-current- {
-        color: $colorTextBackground;
+        color: $color-text-background;
         font-weight: 700;
         border-radius: 50%;
-        background: $gradientSecondary;
+        background: $gradient-secondary;
       }
 
       &.-focus- {
         font-weight: 700;
         position: relative;
         border-radius: 50%;
-        background: $gradientMain;
+        background: $gradient-main;
 
         &.-disabled- {
           background: none;
@@ -372,20 +372,20 @@
       }
 
       &.-selected- {
-        color: $colorTextBackground;
+        color: $color-text-background;
         font-weight: 700;
         position: relative;
         border-radius: 50%;
-        background: $gradientMain;
+        background: $gradient-main;
       }
 
       &.-focus-.-selected- {
-        background: $gradientMain;
+        background: $gradient-main;
         font-weight: 700;
       }
 
       &.-in-range- {
-        background: $colorBackgroundDataDropdown;
+        background: $color-background-data-dropdown;
       }
 
       &.-range-from-.-disabled- {

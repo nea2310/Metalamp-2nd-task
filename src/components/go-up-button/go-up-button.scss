@@ -1,6 +1,6 @@
 .go-up-button {
   @include button-reset-style;
-  border: 2px solid $colorMain;
+  border: 2px solid $color-main;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -8,14 +8,14 @@
   position: relative;
 
   &::before {
-    @include arrow-basis-style($colorMain);
+    @include arrow-basis-style($color-main);
     transform: rotate(90deg);
     top: 17px;
     left: 11px;
   }
   
   &::after {
-    @include arrow-tip-style($colorMain);
+    @include arrow-tip-style($color-main);
     transform: rotate(135deg);
     top: 11px;
     left: 12px;

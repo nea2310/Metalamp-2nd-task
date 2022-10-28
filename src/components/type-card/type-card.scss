@@ -41,14 +41,14 @@ $cardStyle: (1 49, 2 39, 3 2);
       &1,
       &2,
       &3 {
-        color: $colorBorder;
+        color: $color-border;
         font-weight: normal;
       }
     }
 
     &_body {
       @include font-body;
-      color: $colorBorder;
+      color: $color-border;
     }
   }
 
@@ -71,7 +71,7 @@ $cardStyle: (1 49, 2 39, 3 2);
 
     &_body {
       @include font-body;
-      color: $colorTextNormal;
+      color: $color-text-normal;
       max-width: 335px;
     }
   }

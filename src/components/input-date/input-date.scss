@@ -37,39 +37,39 @@
 
   &__input {
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     padding: 9px 0;
     text-indent: 14px;
     border-radius: 5px;
-    border: 1px solid $colorBorder;
+    border: 1px solid $color-border;
     margin-top: 4px;
     width: 100%;
     outline: none;
 
     &_error {
-      outline: 1px solid $colorBorderError;
+      outline: 1px solid $color-border-error;
     }
 
     &_color {
       &_light {
         &::placeholder {
-          color: $colorBorder;
+          color: $color-border;
         }
       }
 
       &_dark {
         &::placeholder {
-          color: $colorTextNormal;
+          color: $color-text-normal;
         }
       }
     }
 
     &:hover {
-      border-color: $colorTextLight;
+      border-color: $color-text-light;
     }
 
     &:focus {
-      border-color: $colorTextLight;
+      border-color: $color-text-light;
     }
   }
 }

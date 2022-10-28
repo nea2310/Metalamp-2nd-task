@@ -6,7 +6,7 @@
     &::after {
       position: absolute;
       content: '☆';
-      color: $colorMain;
+      color: $color-main;
       font-size: 27px;
     }
 
@@ -14,7 +14,7 @@
       &::after {
         position: absolute;
         content: '★';
-        color: $colorMain;
+        color: $color-main;
         font-size: 27px;
       }
     }

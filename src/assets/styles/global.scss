@@ -5,41 +5,41 @@ $md: 991px;
 $lg: 1199px;
 $xl: 1440px;
 $xxl: 1920px;
-$wrapperWidth: 1170px;
+$wrapper-width: 1170px;
 
-$colorTitle: #1f2041;
-$colorText: rgba(31, 32, 65, 0.5);
-$colorTextNormal: rgba(31, 32, 65, 0.75);
-$colorTextLight: #1f20417f;
-$colorBorder: rgba(31, 32, 65, 0.25);
-$colorFooterDelimiter: rgba(31, 32, 65, 0.1);
-$colorBackground: rgba(31, 32, 65, 0.05);
-$colorBorderError: #ff0000;
-$colorMain: #bc9cff;
-$colorMainHover: rgba(188, 156, 255, 0.5);
-$colorGradientBorder: #8ba4f9;
-$colorGradientBorderHover: rgba(139, 164, 249, 0.5);
-$colorSecondary: #6fcf97;
-$colorTextBackground: #ffffff;
-$colorUIKitground: #f4f4f6;
-$colorGradientSecondary: #66d2ea;
-$colorBackgroundDataDropdown: #e6e8fe;
-$gradientMain: linear-gradient($colorMain 0%, $colorGradientBorder 100%);
-$gradientSecondary: linear-gradient($colorSecondary 0%, $colorGradientSecondary 100%);
+$color-title: #1f2041;
+$color-text: rgba(31, 32, 65, 0.5);
+$color-text-normal: rgba(31, 32, 65, 0.75);
+$color-text-light: #1f20417f;
+$color-border: rgba(31, 32, 65, 0.25);
+$color-footer-delimiter: rgba(31, 32, 65, 0.1);
+$color-background: rgba(31, 32, 65, 0.05);
+$color-border-error: #ff0000;
+$color-main: #bc9cff;
+$color-main-hover: rgba(188, 156, 255, 0.5);
+$color-gradient-border: #8ba4f9;
+$color-gradient-border-hover: rgba(139, 164, 249, 0.5);
+$color-secondary: #6fcf97;
+$color-text-background: #ffffff;
+$color-UI-Kit-background: #f4f4f6;
+$color-gradient-secondary: #66d2ea;
+$color-background-data-dropdown: #e6e8fe;
+$gradient-main: linear-gradient($color-main 0%, $color-gradient-border 100%);
+$gradient-secondary: linear-gradient($color-secondary 0%, $color-gradient-secondary 100%);
 
-$headerHeight: 70px;
-$lgPaddingBottom: 30px;
+$header-height: 70px;
+$lg-padding-bottom: 30px;
 
-$formWidth: 380px;
-$infoSignWidth: 250px;
+$form-width: 380px;
+$info-sign-width: 250px;
 
-$tipBorder: 2px solid $colorText;
-$tipSize: 6px;
-$tipTransition: all 0.3s ease 0s;
+$tip-border: 2px solid $color-text;
+$tip-size: 6px;
+$tip-transition: all 0.3s ease 0s;
 
-$arrowSize: 10px;
+$arrow-size: 10px;
 
-$fontMain: Montserrat, Arial, Helvetica, sans-serif;
+$font-main: Montserrat, Arial, Helvetica, sans-serif;
 
 @mixin visually-hidden() {
   position: absolute;
@@ -53,19 +53,19 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
   left: $left;
   right: $right;
   position: absolute;
-  content: "";
+  content: '';
   width: $width;
   height: $height;
-  background: $colorBackgroundDataDropdown;
+  background: $color-background-data-dropdown;
   z-index: -2;
 }
 
 @mixin cell-background-rounded($width, $height) {
   position: absolute;
-  content: "";
+  content: '';
   width: $width;
   height: $height;
-  background: $gradientMain;
+  background: $gradient-main;
   border-radius: 50%;
   z-index: -1;
 }
@@ -79,7 +79,7 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
 }
 
 @mixin card-border() {
-  background-color: $colorTextBackground;
+  background-color: $color-text-background;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
@@ -107,21 +107,21 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
 @mixin tip-style() {
   cursor: pointer;
   position: absolute;
-  content: "";
-  height: $tipSize;
-  width: $tipSize;
-  border-left: $tipBorder;
-  border-bottom: $tipBorder;
+  content: '';
+  height: $tip-size;
+  width: $tip-size;
+  border-left: $tip-border;
+  border-bottom: $tip-border;
   transform: rotate(-45deg);
-  transition: $tipTransition;
+  transition: $tip-transition;
 }
 
 @mixin arrow-tip-style($color) {
   cursor: pointer;
   position: absolute;
-  content: "";
-  height: $arrowSize;
-  width: $arrowSize;
+  content: '';
+  height: $arrow-size;
+  width: $arrow-size;
   border-left: 2px solid $color;
   border-bottom: 2px solid $color;
   transform: rotate(-135deg);
@@ -130,7 +130,7 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
 @mixin arrow-basis-style($color) {
   cursor: pointer;
   position: absolute;
-  content: "";
+  content: '';
   height: 2px;
   width: 14px;
   background-color: $color;
@@ -138,16 +138,16 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
 
 @mixin star-style() {
   position: absolute;
-  content: "★";
-  color: $colorMain;
+  content: '★';
+  color: $color-main;
   font-size: 27px;
   top: 1px;
 }
 
 @mixin slider-tip() {
   @include tip-style;
-  border-left: 3px solid $colorTextBackground;
-  border-bottom: 3px solid $colorTextBackground;
+  border-left: 3px solid $color-text-background;
+  border-bottom: 3px solid $color-text-background;
   transform: rotate(45deg);
   right: 18px;
 }
@@ -167,32 +167,32 @@ $fontMain: Montserrat, Arial, Helvetica, sans-serif;
 }
 
 @mixin font-h1() {
-  font-family: $fontMain;
+  font-family: $font-main;
   font-weight: bold;
   font-size: 24px;
   line-height: 29px;
-  color: $colorTitle;
+  color: $color-title;
 }
 
 @mixin font-h2() {
-  font-family: $fontMain;
+  font-family: $font-main;
   font-weight: bold;
   font-size: 19px;
   line-height: 23px;
-  color: $colorTitle;
+  color: $color-title;
 }
 
 @mixin font-h3() {
-  font-family: $fontMain;
+  font-family: $font-main;
   font-weight: bold;
   font-size: 12px;
   line-height: 15px;
-  color: $colorTitle;
+  color: $color-title;
   text-transform: uppercase;
 }
 
 @mixin font-body() {
-  font-family: $fontMain;
+  font-family: $font-main;
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;

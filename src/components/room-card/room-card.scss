@@ -1,6 +1,6 @@
 .room-card {
   border-radius: 4px;
-  background-color: $colorTextBackground;
+  background-color: $color-text-background;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,16 +94,16 @@
     margin-left: 3px;
     width: 8px;
     height: 8px;
-    border: 1px solid $colorTextBackground;
+    border: 1px solid $color-text-background;
     border-radius: 50%;
     cursor: pointer;
     &:hover,
     &:focus {
-      background-color: $colorTextBackground;
+      background-color: $color-text-background;
     }
 
     &_active {
-      background-color: $colorTextBackground;
+      background-color: $color-text-background;
     }
   }
 
@@ -143,26 +143,26 @@
 
     &-lux {
       @include font-h3;
-      color: $colorMain;
+      color: $color-main;
       padding-left: 8px;
     }
 
     &-price {
       @include font-body;
       font-weight: bold;
-      color: $colorText;
+      color: $color-text;
 
       &-currency {
         @include font-body;
         font-weight: bold;
-        color: $colorTextLight;
+        color: $color-text-light;
       }
     }
 
     &-label {
       @include font-body;
       font-size: 12px;
-      color: $colorText;
+      color: $color-text;
       padding-left: 3px;
     }
   }
@@ -180,18 +180,18 @@
 
   &__feedback {
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     margin-top: 5px;
     margin-bottom: 14px;
 
     &-amount {
       font-weight: bold;
-      color: $colorText;
+      color: $color-text;
     }
 
     &-mark {
       padding-left: 4px;
-      color: $colorText;
+      color: $color-text;
     }
   }
 }

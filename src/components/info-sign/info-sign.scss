@@ -1,31 +1,31 @@
 .info-sign {
   @include button-reset-style;
-  font-family: $fontMain;
+  font-family: $font-main;
   font-weight: bold;
   cursor: pointer;
   width: 20px;
   height: 20px;
-  border: 1px solid $colorBorder;
-  color: $colorBorder;
+  border: 1px solid $color-border;
+  color: $color-border;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 
   &__text {
-    width: $infoSignWidth;
-    left: calc($formWidth / 2 - $infoSignWidth / 2);
+    width: $info-sign-width;
+    left: calc($form-width / 2 - $info-sign-width / 2);
     display: none;
     position: absolute;
     border: 1px solid rgba(0, 0, 0, 0.12);
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-    background-color: $colorTextBackground;
+    background-color: $color-text-background;
     z-index: 2;
     padding: 30px 20px;
     text-align: center;
     font-weight: normal;
-    color: $colorTextNormal;
+    color: $color-text-normal;
 
     &:focus {
       outline: none;
@@ -50,7 +50,7 @@
       z-index: 3;
       border-radius: 1px;
       content: '';
-      background-color: $colorMain;
+      background-color: $color-main;
       position: absolute;
       width: 2px;
       height: 15px;

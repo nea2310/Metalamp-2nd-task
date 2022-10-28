@@ -1,9 +1,9 @@
 .registration {
-  background-color: $colorTextBackground;
+  background-color: $color-text-background;
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  max-width: $formWidth;
+  max-width: $form-width;
   width: 100%;
   padding: 31px 29px 30px 29px;
   position: relative;
@@ -77,7 +77,7 @@
     &-legend {
       @include font-body;
       margin: 0;
-      color: $colorTitle;
+      color: $color-title;
     }
   }
 

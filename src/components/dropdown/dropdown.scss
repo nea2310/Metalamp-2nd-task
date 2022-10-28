@@ -1,5 +1,5 @@
 .dropdown__input.dropdown__input_expanded {
-  border-color: $colorTextLight;
+  border-color: $color-text-light;
   border-bottom: none;
   padding-bottom: 10px;
   border-bottom-left-radius: 0;
@@ -36,31 +36,31 @@
 
   &__input {
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     cursor: pointer;
     text-overflow: ellipsis;
     padding: 9px 90px 9px 14px;
-    border: 1px solid $colorBorder;
+    border: 1px solid $color-border;
     margin-top: 5px;
     width: 100%;
     display: block;
     border-radius: 5px;
 
     &::placeholder {
-      color: $colorTextNormal;
+      color: $color-text-normal;
     }
 
     &:hover {
-      border-color: $colorTextLight;
+      border-color: $color-text-light;
     }
 
     &:focus {
-      border-color: $colorTextLight;
+      border-color: $color-text-light;
       outline: none;
     }
 
     &_error {
-      outline: 1px solid $colorBorderError;
+      outline: 1px solid $color-border-error;
     }
 
     &-wrapper {
@@ -87,11 +87,11 @@
     padding-top: 4px;
 
     &-wrapper {
-      background-color: $colorTextBackground;
+      background-color: $color-text-background;
       width: 100%;
       position: absolute;
       z-index: 3;
-      border: 1px solid $colorTextLight;
+      border: 1px solid $color-text-light;
       box-sizing: border-box;
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px;
@@ -133,14 +133,14 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background-color: $colorTextBackground;
-      border: 1px solid $colorTextLight;
-      color: $colorTextLight;
+      background-color: $color-text-background;
+      border: 1px solid $color-text-light;
+      color: $color-text-light;
 
       &[disabled] {
         cursor: initial;
-        border: 1px solid $colorBorder;
-        color: $colorBorder;
+        border: 1px solid $color-border;
+        color: $color-border;
       }
     }
 

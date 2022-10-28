@@ -1,7 +1,7 @@
 .index {
   &__main {
     flex-grow: 1;
-    background-color: $colorBackground;
+    background-color: $color-background;
   }
 
   &__pages {
@@ -16,7 +16,7 @@
     &:hover,
     &:visited,
     &:focus {
-      color: $colorBorder;
+      color: $color-border;
     }
   }
 

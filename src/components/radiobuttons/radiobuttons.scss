@@ -20,7 +20,7 @@
 
   &__category {
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     display: flex;
     align-items: center;
     position: relative;
@@ -36,21 +36,21 @@
 
     &-checkbox:checked + &-radiomark {
       box-sizing: border-box;
-      border: 1px solid $colorMain;
-      box-shadow: inset 0px 0px 0px 3px $colorTextBackground;
-      background: linear-gradient(180deg, $colorMain 0%, #8ba4f9 100%);
+      border: 1px solid $color-main;
+      box-shadow: inset 0px 0px 0px 3px $color-text-background;
+      background: linear-gradient(180deg, $color-main 0%, #8ba4f9 100%);
     }
 
     &-radiomark {
       cursor: pointer;
       display: block;
       position: relative;
-      border: 1px solid $colorBorder;
+      border: 1px solid $color-border;
       width: 20px;
       height: 20px;
       border-radius: 50%;
       content: '';
-      background-color: $colorTextBackground;
+      background-color: $color-text-background;
     }
 
     &-name {
@@ -60,11 +60,11 @@
       line-height: 15px;
       padding-left: 9px;
       flex-shrink: 10;
-      color: $colorText;
+      color: $color-text;
     }
 
     &-checkbox:checked ~ &-name {
-      color: $colorTextNormal;
+      color: $color-text-normal;
     }
   }
 }

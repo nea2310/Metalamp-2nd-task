@@ -3,7 +3,7 @@
   padding-top: 100px;
   margin: 0 auto;
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-  background-color: $colorTextBackground;
+  background-color: $color-text-background;
 
   @include media-breakpoint-down($md) {
     padding: 0;
@@ -12,7 +12,7 @@
   &__wrapper {
     &-top {
       min-height: 272px;
-      max-width: $wrapperWidth;
+      max-width: $wrapper-width;
       width: 100%;
       margin: 0 auto;
       display: flex;
@@ -33,7 +33,7 @@
     &-bottom {
       align-items: center;
       min-height: 72px;
-      max-width: $wrapperWidth;
+      max-width: $wrapper-width;
       margin: 0 auto;
       padding: 0 4px;
       display: flex;
@@ -53,7 +53,7 @@
 
     &-middle {
       height: 1px;
-      background-color: $colorFooterDelimiter;
+      background-color: $color-footer-delimiter;
 
       @include media-breakpoint-down($md) {
         display: none;
@@ -84,7 +84,7 @@
     &-header {
       @include font-body;
       font-weight: bold;
-      color: $colorTitle;
+      color: $color-title;
       font-size: 12px;
       line-height: 15px;
       text-transform: uppercase;
@@ -136,13 +136,13 @@
       @include font-body;
       text-decoration: none;
       line-height: 17px;
-      color: $colorText;
+      color: $color-text;
     }
   }
 
   &__long-text {
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
     cursor: initial;
     text-transform: initial;
     margin-top: 18px;
@@ -159,7 +159,7 @@
 
   &__copyright {
     @include font-body;
-    color: $colorTextNormal;
+    color: $color-text-normal;
 
     @include media-breakpoint-down($md) {
       text-align: center;
