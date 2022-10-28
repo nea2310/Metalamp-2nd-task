@@ -32,8 +32,8 @@ class RangeSlider {
 
   _init() {
     const { priceFrom, priceTo } = this;
-
-    const fontObserver = new FontFaceObserver('Montserrat');
+    const fontName = 'Montserrat';
+    const fontObserver = new FontFaceObserver(fontName);
 
     const displayPrice = (data) => {
       const { from, to } = data;
@@ -48,7 +48,7 @@ class RangeSlider {
         priceTo.style.width = `${priceToWidth}px`;
       })
         // eslint-disable-next-line no-console
-        .catch(() => console.log('Font Montserrat is not available'));
+        .catch(() => console.log(`Font ${fontName} is not available`));
     };
 
     this.rangeSlider = $('.js-slider-metalamp').SliderMetaLamp(
