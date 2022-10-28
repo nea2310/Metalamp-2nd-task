@@ -8,6 +8,8 @@ class InputDate {
     this.isCustomValidation = isCustomValidation;
     this.isSingle = isSingle;
     this.inputLengthLimit = isSingle ? 10 : 23;
+    this.lowerAgeLimit = -100;
+    this.upperAgeLimit = -18;
 
     this._bindEventListeners();
     this._render();
@@ -54,8 +56,8 @@ class InputDate {
       return newDate;
     };
 
-    this.dateMinusHundred = getNewDate(-100);
-    this.dateMinusEighteen = getNewDate(-18);
+    this.dateMinusHundred = getNewDate(this.upperLowerLimit);
+    this.dateMinusEighteen = getNewDate(this.upperAgeLimit);
 
     this.dateMinusHundredTxt = getDateString(this.dateMinusHundred);
     this.dateMinusEighteenTxt = getDateString(this.dateMinusEighteen);
