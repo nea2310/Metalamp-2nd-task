@@ -8,7 +8,7 @@ class InputField {
   }
 
   validateInputValue() {
-    const result = /.{2,}/.test(this.input.value);
+    const result = this.input.value.length > 1;
     if (!result) this.input.classList.add(`${this.elementName}__input_error`);
     else this.input.classList.remove(`${this.elementName}__input_error`);
     return [result];
