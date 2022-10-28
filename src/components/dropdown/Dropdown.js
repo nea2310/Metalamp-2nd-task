@@ -72,18 +72,16 @@ class DropDown {
     this.inputWrapper.addEventListener('mouseup', this._handleDropDownMouseupInput);
     this.input.addEventListener('focus', this._handleDropDownFocusInput);
     this.counts.forEach((element) => element.addEventListener('click', this._handleDropDownClickCounter));
-    if (this.clearApplyButtons) {
-      this.buttonApply.addEventListener('click', this._handleDropDownClickApply);
-    }
-    if (this.clearApplyButtons) {
-      this.buttonClear.addEventListener('click', this._handleDropDownClickClear);
-    }
     this.wrapper.addEventListener('click', this._handleDropDownClickWrapper);
     this.wrapper.addEventListener('focusin', this._handleDropDownFocusinWrapper);
     document.addEventListener('click', this._handleDropDownClickDocument);
     document.addEventListener('focusin', this._handleDropDownFocusinDocument);
     window.addEventListener('resize', this._handleDropDownResizeLoadWindow);
     window.addEventListener('load', this._handleDropDownResizeLoadWindow);
+    if (this.clearApplyButtons) {
+      this.buttonApply.addEventListener('click', this._handleDropDownClickApply);
+      this.buttonClear.addEventListener('click', this._handleDropDownClickClear);
+    }
   }
 
   _handleDropDownClickCounter(event) {
