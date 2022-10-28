@@ -56,7 +56,7 @@ class InputDate {
       return newDate;
     };
 
-    this.dateMinusHundred = getNewDate(this.upperLowerLimit);
+    this.dateMinusHundred = getNewDate(this.lowerAgeLimit);
     this.dateMinusEighteen = getNewDate(this.upperAgeLimit);
 
     this.dateMinusHundredTxt = getDateString(this.dateMinusHundred);
