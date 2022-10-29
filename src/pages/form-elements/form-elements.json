@@ -5,7 +5,7 @@
   },
   "textField": {
     "width": "wide",
-    "placeholder": "This is pretty awesome",
+    "value": "This is pretty awesome",
     "labelText": "text field"
   },
   "maskedTextField": {
@@ -45,10 +45,6 @@
       "likeAmount": 12
     }
   ],
-  "rateButtons": [
-    "rateButtonLeft",
-    "rateButtonRight"
-  ],
   "rangeSlider": {
     "labelText": "range slider",
     "min": "0",
@@ -74,7 +70,7 @@
         "displayName": "спальни",
         "categoryType": "спальня",
         "wordForms": "спальня,спальни,спален",
-        "defaultCount": 0,
+        "defaultCount": 2,
         "minCount": 0,
         "maxCount": 5
       },
@@ -82,7 +78,7 @@
         "displayName": "кровати",
         "categoryType": "кровать",
         "wordForms": "кровать,кровати,кроватей",
-        "defaultCount": 0,
+        "defaultCount": 2,
         "minCount": 0,
         "maxCount": 10
       },
@@ -140,15 +136,18 @@
       },
       {
         "value": "Письменный стол",
-        "checkBoxName": "desk"
+        "checkBoxName": "desk",
+        "isChecked": true
       },
       {
         "value": "Стул для кормления",
-        "checkBoxName": "babyChair"
+        "checkBoxName": "babyChair",
+        "isChecked": true
       },
       {
         "value": "Кроватка",
-        "checkBoxName": "babyBad"
+        "checkBoxName": "babyBad",
+        "isChecked": true
       },
       {
         "value": "Телевизор",
@@ -171,11 +170,13 @@
       },
       {
         "value": "Можно с питомцами",
-        "checkBoxName": "petsAllowed"
+        "checkBoxName": "petsAllowed",
+        "isChecked": true
       },
       {
         "value": "Можно пригласить гостей (до 10 человек)",
-        "checkBoxName": "guestsAllowed"
+        "checkBoxName": "guestsAllowed",
+        "isChecked": true
       }
     ],
     "isExpandable": false,
@@ -255,5 +256,13 @@
     "alt": "Мурад Сарафанов",
     "isLiked": true,
     "likeAmount": 12
+  },
+  "rateButton1": {
+    "ratingName": "rateButton1",
+    "rating": 4
+  },
+  "rateButton2": {
+    "ratingName": "rateButton2",
+    "rating": 5
   }
 }

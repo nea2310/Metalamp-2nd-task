@@ -39,7 +39,6 @@ block content
       radiobuttons,
       toggles,
       likeButtons,
-      rateButtons,
       rangeSlider,
       buttonDarkShort,
       buttonLightShort,
@@ -47,7 +46,9 @@ block content
       buttonDarkLong,
       bulletList,
       features,
-      feedback
+      feedback,
+      rateButton1,
+      rateButton2
     } = require('@pag/form-elements/form-elements.json')
 
   main(class = "form-elements js-form-elements")
@@ -111,8 +112,8 @@ block content
         section(class = "form-elements__component-wrapper-top-middle")
           span(class = "form-elements__label form-elements__label-rate-button") rate button
           div(class = "form-elements__inner-wrapper-rate-button")
-            +rate-button({ ratingName: rateButtons[0] })
-            +rate-button({ ratingName: rateButtons[1] })
+            +rate-button(rateButton1)
+            +rate-button(rateButton2)
         div(class = "form-elements__component-wrapper-top-middle")
           div(class = "js-form-elements__dropdown")
             +dropdown(dropdownGuests)
@@ -142,11 +143,36 @@ block content
             +pagination()
         div(class = "form-elements__component-wrapper-top-right")
           div(class = "js-form-elements__dropdown")
-            +dropdown(dropdownGuests)
-        section(class = "form-elements__component-wrapper-top-right")
-          span(class = "form-elements__label form-elements__label-bullet-list") bullet list
-          div(class = "form-elements__inner-wrapper-bullet-list")
-            +bullet-list({ categories: bulletList.categories })
+            +dropdown({...dropdownGuests,  categories: [
+              {
+                displayName: "взрослые",
+                categoryType: "гость",
+                wordForms: "гость,гостя,гостей",
+                defaultCount: 3,
+                minCount: 0,
+                maxCount: 10
+              },
+              {
+                displayName: "дети",
+                categoryType: "гость",
+                wordForms: "гость,гостя,гостей",
+                defaultCount: 0,
+                minCount: 0,
+                maxCount: 10
+              },
+              {
+                displayName: "младенцы",
+                categoryType: "младенец",
+                wordForms: "младенец,младенца,младенцев",
+                defaultCount: 0,
+                minCount: 0,
+                maxCount: 10
+              }
+            ]})
+      section(class = "form-elements__component-wrapper-top-right")
+        span(class = "form-elements__label form-elements__label-bullet-list") bullet list
+        div(class = "form-elements__inner-wrapper-bullet-list")
+          +bullet-list({ categories: bulletList.categories })
     div(class = "form-elements__wrapper-bottom")
       div(class = "form-elements__column-bottom")
         div(class = "form-elements__component-wrapper-bottom-left")

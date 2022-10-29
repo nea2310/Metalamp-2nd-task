@@ -86,15 +86,18 @@
       },
       {
         "value": "Письменный стол",
-        "checkBoxName": "desk"
+        "checkBoxName": "desk",
+        "isChecked": true
       },
       {
         "value": "Стул для кормления",
-        "checkBoxName": "babyChair"
+        "checkBoxName": "babyChair",
+        "isChecked": true
       },
       {
         "value": "Кроватка",
-        "checkBoxName": "babyBad"
+        "checkBoxName": "babyBad",
+        "isChecked": true
       },
       {
         "value": "Телевизор",
@@ -117,11 +120,13 @@
       },
       {
         "value": "Можно с питомцами",
-        "checkBoxName": "petsAllowed"
+        "checkBoxName": "petsAllowed",
+        "isChecked": true
       },
       {
         "value": "Можно пригласить гостей (до 10 человек)",
-        "checkBoxName": "guestsAllowed"
+        "checkBoxName": "guestsAllowed",
+        "isChecked": true
       }
     ],
     "isExpandable": false,

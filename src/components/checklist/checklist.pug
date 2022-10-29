@@ -27,11 +27,11 @@ mixin checklist(options = {})
     ul(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper`)
       if Array.isArray(categories) && categories.length
         each category in categories
-          - const {value = '', description = '', checkBoxName = ''} = category
+          - const {value = '', description = '', checkBoxName = '', isChecked = false} = category
           li(class = `${elementName}__category-wrapper`)
             label(class = `${elementName}__category ${categoryStyle}`)
               if value
-                input(class = `${elementName}__category-checkbox` type = "checkbox" name = checkBoxName value = value)
+                input(class = `${elementName}__category-checkbox` type = "checkbox" name = checkBoxName value = value checked = isChecked)
                 span(class = `${elementName}__category-checkmark`)
                 div(class = `${elementName}__category-text`)
                   span(class = `${elementName}__category-name`)= value

@@ -214,6 +214,7 @@ class DropDown {
     if (this.clearApplyButtons) {
       this._hideButtonClear(this.buttonsMinus);
     }
+    this._updateCategoriesList(this.categories);
   }
 
   _updateCategory(newCounter, newCounterType, name, type, element) {
