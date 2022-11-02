@@ -229,8 +229,8 @@
 
       &::after {
         @include tip-style;
-        right: 18px;
-        bottom: 20px;
+        right: 17px;
+        bottom: 19px;
 
         @include media-breakpoint-down($xs) {
           right: 10px;
@@ -284,7 +284,7 @@
       }
 
       &--action {
-        &[data-action='prev'] {
+        &[data-action="prev"] {
           &::before {
             @include arrow-basis-style($color-main);
             align-self: center;
@@ -297,7 +297,7 @@
           }
         }
 
-        &[data-action='next'] {
+        &[data-action="next"] {
           &::before {
             @include arrow-basis-style($color-main);
             align-self: center;

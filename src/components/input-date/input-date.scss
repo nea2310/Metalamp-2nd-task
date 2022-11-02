@@ -37,12 +37,13 @@
 
   &__input {
     @include font-body;
+    line-height: 23.5px;
     color: $color-text-normal;
     padding: 9px 0;
     text-indent: 14px;
     border-radius: 5px;
     border: 1px solid $color-border;
-    margin-top: 4px;
+    margin-top: 5px;
     width: 100%;
     outline: none;
 

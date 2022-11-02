@@ -31,9 +31,10 @@
     text-indent: 14px;
     border-radius: 5px;
     border: 1px solid $color-border;
-    margin-top: 4px;
+    margin-top: 5px;
     width: 100%;
     outline: none;
+    letter-spacing: -0.1px;
 
     &_error {
       outline: 1px solid $color-border-error;

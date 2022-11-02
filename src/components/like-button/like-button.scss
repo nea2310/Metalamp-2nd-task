@@ -18,8 +18,7 @@
     outline-offset: 5px;
     border: 1px solid $color-border;
     min-width: 40px;
-    padding-left: 21px;
-    padding-right: 4px;
+    padding-left: 20px;
     border-radius: 22px;
     cursor: pointer;
     display: flex;
@@ -30,7 +29,7 @@
       position: absolute;
       top: 5px;
       left: 5px;
-      content: '♡';
+      content: "♡";
       color: $color-border;
       font-size: 15px;
     }
@@ -41,7 +40,7 @@
 
       &::after {
         position: absolute;
-        content: '❤';
+        content: "❤";
         color: $color-main;
         font-size: 10px;
       }

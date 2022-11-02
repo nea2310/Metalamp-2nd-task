@@ -86,7 +86,7 @@
         "displayName": "ванные комнаты",
         "categoryType": "ванная комната",
         "wordForms": "ванная комната,ванные комнаты,ванных комнат",
-        "defaultCount": 0,
+        "defaultCount": 1,
         "minCount": 0,
         "maxCount": 3
       }
@@ -187,7 +187,7 @@
     "categories": [
       {
         "value": "Широкий коридор",
-        "description": "Ширина коридоров в номере\n не менее 91 см",
+        "description": "Ширина коридоров в номере\nне менее 91 см",
         "checkBoxName": "wideСorridor"
       },
       {
