@@ -1,9 +1,9 @@
 .ui-kit-layout {
-&_background{
-  &_grey{
-    background-color: $color-UI-Kit-background;
+  &_background {
+    &_grey {
+      background-color: $color-UI-Kit-background;
+    }
   }
-}
 
   &__logo {
     max-width: $xl;

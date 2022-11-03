@@ -21,6 +21,137 @@
   }
 
   &__footer {
-    margin-top: 40px;
+    &:nth-last-child(2) {
+      margin-top: 40px;
+      .footer {
+        @include media-breakpoint-down($md) {
+          padding: 0;
+        }
+
+        &__wrapper {
+          &-top {
+            @include media-breakpoint-down($md) {
+              padding: 0;
+              justify-content: center;
+              min-height: 179px;
+            }
+          }
+
+          &-bottom {
+            @include media-breakpoint-down($md) {
+              flex-direction: column;
+              justify-content: start;
+              padding-bottom: 114px;
+            }
+          }
+
+          &-middle {
+            @include media-breakpoint-down($md) {
+              display: none;
+            }
+          }
+        }
+
+        &__items {
+          @include media-breakpoint-down($md) {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+          }
+
+          &:not(:first-child) {
+            @include media-breakpoint-down($md) {
+              display: none;
+            }
+          }
+
+          &:last-child {
+            @include media-breakpoint-down($md) {
+              display: none;
+            }
+          }
+        }
+
+        &__item {
+          @include media-breakpoint-down($md) {
+            display: none;
+          }
+        }
+
+        &__long-text {
+          @include media-breakpoint-down($md) {
+            display: none;
+          }
+        }
+
+        &__copyright {
+          @include media-breakpoint-down($md) {
+            text-align: center;
+          }
+        }
+
+        &__social-links {
+          @include media-breakpoint-down($md) {
+            padding-top: 25px;
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      max-width: 768px;
+      margin: 40px auto 140px;
+      .footer {
+        padding: 0;
+
+        &__wrapper {
+          &-top {
+            padding: 0;
+            justify-content: center;
+            min-height: 179px;
+          }
+
+          &-bottom {
+            flex-direction: column;
+            justify-content: start;
+            padding-bottom: 114px;
+          }
+
+          &-middle {
+            display: none;
+          }
+        }
+
+        &__items {
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+
+          &:not(:first-child) {
+            display: none;
+          }
+
+          &:last-child {
+            display: none;
+          }
+        }
+
+        &__item {
+          display: none;
+        }
+
+        &__long-text {
+          display: none;
+        }
+
+        &__copyright {
+          text-align: center;
+        }
+
+        &__social-links {
+          padding-top: 25px;
+        }
+      }
+    }
   }
 }
