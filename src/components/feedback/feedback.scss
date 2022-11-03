@@ -3,9 +3,9 @@
   grid-template-rows: repeat(3, auto);
   grid-template-columns: minmax(57px, auto) auto;
   grid-template-areas:
-    "post-1 post-2"
-    "post-1 post-3"
-    "post-4 post-5";
+    'post-1 post-2'
+    'post-1 post-3'
+    'post-4 post-5';
 
   &__image {
     border: 1px solid $color-text-background;
