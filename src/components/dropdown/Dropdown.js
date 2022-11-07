@@ -12,6 +12,11 @@ class DropDown {
     this._render();
   }
 
+  static _reduceCategory(categoriesOfType) {
+    return categoriesOfType
+      .reduce((sum, category) => category.currentCount + sum, 0);
+  }
+
   setData(data) {
     data.forEach((item) => this._changeCategoryCounter(item.name, item.currentCount));
   }
@@ -25,11 +30,6 @@ class DropDown {
     if (!result) this.input.classList.add(`${this.elementName}__input_error`);
     else this.input.classList.remove(`${this.elementName}__input_error`);
     return [result];
-  }
-
-  static _reduceCategory(categoriesOfType) {
-    return categoriesOfType
-      .reduce((sum, category) => category.currentCount + sum, 0);
   }
 
   _render() {

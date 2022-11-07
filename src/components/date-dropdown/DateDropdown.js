@@ -17,6 +17,14 @@ class DateDropDown {
     this._render();
   }
 
+  static _changeDotToDash(string) {
+    return string.split('.').reverse().join('-');
+  }
+
+  static _changeDashToDot(string) {
+    return string.split('-').reverse().join('.');
+  }
+
   focusInput() {
     if (this.isFilter) {
       this.inputInstance.focusInput();
@@ -45,14 +53,6 @@ class DateDropDown {
     validationResults.push(this.inputFromInstance.validateInputValue());
     validationResults.push(this.inputToInstance.validateInputValue());
     return validationResults;
-  }
-
-  static _changeDotToDash(string) {
-    return string.split('.').reverse().join('-');
-  }
-
-  static _changeDashToDot(string) {
-    return string.split('-').reverse().join('.');
   }
 
   _render() {
