@@ -25,9 +25,9 @@ function render(page, pageSelector) {
             return null;
           });
         })
-        .catch(() => {
+        .catch((error) => {
           // eslint-disable-next-line no-console
-          console.log(`Could not load component ${componentSelector}`);
+          console.warn(error, `: could not load component ${componentSelector}`);
         });
     }
   });

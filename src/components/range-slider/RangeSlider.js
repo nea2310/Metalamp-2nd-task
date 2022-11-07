@@ -48,7 +48,7 @@ class RangeSlider {
         priceTo.style.width = `${priceToWidth}px`;
       })
         // eslint-disable-next-line no-console
-        .catch(() => console.log(`Font ${fontName} is not available`));
+        .catch((error) => console.warn(error, `: Font ${fontName} is not available`));
     };
 
     this.rangeSlider = $('.js-slider-metalamp').SliderMetaLamp(
