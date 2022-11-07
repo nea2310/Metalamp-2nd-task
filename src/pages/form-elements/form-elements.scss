@@ -208,6 +208,10 @@ $buttons: (2 29, 3 31, 4 29);
       gap: 24px;
     }
 
+    &_pagination{
+      margin-top: 17px;
+    }
+
     &-buttons {
       @each $key, $value in $buttons {
         &:nth-child(#{$key}) {

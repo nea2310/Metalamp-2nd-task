@@ -5,10 +5,6 @@
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   background-color: $color-text-background;
 
-  // @include media-breakpoint-down($md) {
-  //   padding: 0;
-  // }
-
   &__wrapper {
     &-top {
       min-height: 272px;
@@ -22,17 +18,11 @@
         padding-left: 20px;
         padding-right: 20px;
       }
-
-      // @include media-breakpoint-down($md) {
-      //   padding: 0;
-      //   justify-content: center;
-      //   min-height: 179px;
-      // }
     }
 
     &-bottom {
       align-items: center;
-      min-height: 72px;
+      min-height: 71px;
       max-width: $wrapper-width;
       margin: 0 auto;
       padding: 0 4px;
@@ -43,21 +33,11 @@
         padding-left: 20px;
         padding-right: 20px;
       }
-
-      // @include media-breakpoint-down($md) {
-      //   flex-direction: column;
-      //   justify-content: start;
-      //   padding-bottom: 114px;
-      // }
     }
 
     &-middle {
       height: 1px;
       background-color: $color-footer-delimiter;
-
-      // @include media-breakpoint-down($md) {
-      //   display: none;
-      // }
     }
   }
 
@@ -74,12 +54,6 @@
       margin-top: 5px;
     }
 
-    // @include media-breakpoint-down($md) {
-    //   display: flex;
-    //   justify-content: center;
-    //   align-items: flex-end;
-    // }
-
     &-link,
     &-header {
       @include font-body;
@@ -89,11 +63,6 @@
       line-height: 15px;
       text-transform: uppercase;
     }
-    // &:not(:first-child) {
-    //   @include media-breakpoint-down($md) {
-    //     display: none;
-    //   }
-    // }
 
     &:nth-child(1) {
       max-width: 270px;
@@ -104,10 +73,6 @@
       max-width: 270px;
       display: flex;
       flex-direction: column;
-
-      // @include media-breakpoint-down($md) {
-      //   display: none;
-      // }
     }
 
     &:not(:first-child):not(:last-child) {
@@ -128,10 +93,6 @@
     text-transform: initial;
     padding-top: 20px;
 
-    // @include media-breakpoint-down($md) {
-    //   display: none;
-    // }
-
     &-link {
       @include font-body;
       text-decoration: none;
@@ -146,10 +107,6 @@
     cursor: initial;
     text-transform: initial;
     margin-top: 18px;
-
-    // @include media-breakpoint-down($md) {
-    //   display: none;
-    // }
   }
 
   &__subscription {
@@ -160,10 +117,6 @@
   &__copyright {
     @include font-body;
     color: $color-text-normal;
-
-    // @include media-breakpoint-down($md) {
-    //   text-align: center;
-    // }
   }
 
   &__social-link {
@@ -177,9 +130,5 @@
     width: 100%;
     padding-top: 3px;
     padding-right: 2px;
-
-    // @include media-breakpoint-down($md) {
-    //   padding-top: 25px;
-    // }
   }
 }

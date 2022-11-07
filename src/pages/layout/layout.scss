@@ -10,7 +10,7 @@
           @include media-breakpoint-down($md) {
             padding: 0;
             justify-content: center;
-            min-height: 179px;
+            min-height: 177px;
           }
         }
 
@@ -18,7 +18,7 @@
           @include media-breakpoint-down($md) {
             flex-direction: column;
             justify-content: start;
-            padding-bottom: 114px;
+            padding-bottom: 116px;
           }
         }
 
@@ -69,7 +69,7 @@
 
       &__social-links {
         @include media-breakpoint-down($md) {
-          padding-top: 25px;
+          padding-top: 23px;
         }
       }
     }

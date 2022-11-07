@@ -50,20 +50,20 @@
     &::before {
       @include arrow-basis-style($color-main);
       top: 0;
-      left: -7px;
+      left: -6px;
     }
 
     &::after {
       @include arrow-tip-style($color-main);
       top: -5px;
-      left: -6px;
+      left: -4px;
     }
   }
 
   &__input {
     @include font-body;
     color: $color-text-normal;
-    padding: 9px 0;
+    padding: 10px 0 8px;
     text-indent: 14px;
     border-radius: 5px;
     border: 1px solid $color-border;
