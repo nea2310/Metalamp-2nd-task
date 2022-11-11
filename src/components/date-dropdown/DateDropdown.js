@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import getDatePlusShift from '../../shared/utils/getDatePlusShift';
@@ -100,7 +101,8 @@ class DateDropDown {
     this._handleDateInputFrom = this._handleDateInputFrom.bind(this);
     this._handleDateInputTo = this._handleDateInputTo.bind(this);
     this.focusInput = this.focusInput.bind(this);
-
+    this._handleDateDropDownMouseoverDate = this._handleDateDropDownMouseoverDate.bind(this);
+    this._handleDateDropDownMouseoutDate = this._handleDateDropDownMouseoutDate.bind(this);
     this._handleDateDropDownClickClear = this._handleDateDropDownClickClear.bind(this);
     this._handleDateDropDownClickApply = this._handleDateDropDownClickApply.bind(this);
     this._handleDateDropDownClickDate = this._handleDateDropDownClickDate.bind(this);
@@ -113,6 +115,8 @@ class DateDropDown {
 
   _addEventListeners() {
     this.inputWrappers.forEach((element) => element.addEventListener('click', this._handleDateDropDownClickDate));
+    this.inputWrappers.forEach((element) => element.addEventListener('mouseover', this._handleDateDropDownMouseoverDate));
+    this.inputWrappers.forEach((element) => element.addEventListener('mouseout', this._handleDateDropDownMouseoutDate));
     this.buttonApply.addEventListener('click', this._handleDateDropDownClickApply);
     this.buttonClear.addEventListener('click', this._handleDateDropDownClickClear);
     this.calendar.addEventListener('click', this._handleDateDropDownClickCalendar);
@@ -206,7 +210,33 @@ class DateDropDown {
     if (this.calendarWrapper.classList
       .contains(`${this.elementName}__calendar-wrapper_hidden`)) {
       this._toggle(true);
-      this._hideErrorMessageWrapper();
+    } else {
+      this._toggle(false);
+    }
+    this._hideErrorMessageWrapper();
+  }
+
+  _handleDateDropDownMouseoverDate(event) {
+    if (this.isFilter) {
+      this.inputInstance.highlightInput();
+    }
+    if (this._isInputWrapperFrom(event.target)) {
+      this.inputFromInstance.highlightInput();
+    }
+    if (this._isInputWrapperTo(event.target)) {
+      this.inputToInstance.highlightInput();
+    }
+  }
+
+  _handleDateDropDownMouseoutDate(event) {
+    if (this.isFilter) {
+      this.inputInstance.highlightInput(false);
+    }
+    if (this._isInputWrapperFrom(event.target)) {
+      this.inputFromInstance.highlightInput(false);
+    }
+    if (this._isInputWrapperTo(event.target)) {
+      this.inputToInstance.highlightInput(false);
     }
   }
 
@@ -350,6 +380,14 @@ class DateDropDown {
   _hideErrorMessageWrapper() {
     this.errorMessageWrapper.classList.remove(`${this.elementName}__error-message_active`);
     this.errorMessage.toggleErrorMessage();
+  }
+
+  _isInputWrapperFrom(element) {
+    return element.classList.contains(`js-${this.elementName}__input-wrapper_type_from`);
+  }
+
+  _isInputWrapperTo(element) {
+    return element.classList.contains(`js-${this.elementName}__input-wrapper_type_to`);
   }
 }
 

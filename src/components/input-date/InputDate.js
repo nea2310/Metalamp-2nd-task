@@ -43,6 +43,14 @@ class InputDate {
     this.input.blur();
   }
 
+  highlightInput(isHighlighted = true) {
+    if (isHighlighted) {
+      this.input.classList.add(`${this.elementName}__input_highlighted`);
+    } else {
+      this.input.classList.remove(`${this.elementName}__input_highlighted`);
+    }
+  }
+
   _render() {
     this.input = this.wrapper.querySelector(`.js-${this.elementName}__input`);
 

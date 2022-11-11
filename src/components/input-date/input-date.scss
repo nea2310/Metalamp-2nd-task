@@ -72,5 +72,9 @@
     &:focus {
       border-color: $color-text-light;
     }
+
+    &_highlighted {
+      border-color: $color-text-light;
+    }
   }
 }

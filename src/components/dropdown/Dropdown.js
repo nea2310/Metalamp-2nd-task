@@ -17,6 +17,13 @@ class DropDown {
       .reduce((sum, category) => category.currentCount + sum, 0);
   }
 
+  /* Для события mousedown действием по-умолчанию является установка фокуса.
+  Если отменить событие mousedown, то фокусирования не произойдёт =>
+  при клике одновременно с ним не сработает фокус и выпадающий список раскроется */
+  static _handleDropDownMousedownInput(event) {
+    event.preventDefault();
+  }
+
   setData(data) {
     data.forEach((item) => this._changeCategoryCounter(item.name, item.currentCount));
   }
@@ -54,13 +61,10 @@ class DropDown {
   }
 
   _bindEventListeners() {
-    this._handleDropDownClickCounter = this._handleDropDownClickCounter.bind(this);
-    this._handleDropDownMousedownInput = this._handleDropDownMousedownInput.bind(this);
-    this._handleDropDownMouseupInput = this._handleDropDownMouseupInput.bind(this);
+    this._handleDropDownClickInputWrapper = this._handleDropDownClickInputWrapper.bind(this);
     this._handleDropDownFocusInput = this._handleDropDownFocusInput.bind(this);
-    this._handleDropDownClickWrapper = this._handleDropDownClickWrapper.bind(this);
+    this._handleDropDownClickCounter = this._handleDropDownClickCounter.bind(this);
     this._handleDropDownClickDocument = this._handleDropDownClickDocument.bind(this);
-    this._handleDropDownFocusinWrapper = this._handleDropDownFocusinWrapper.bind(this);
     this._handleDropDownFocusinDocument = this._handleDropDownFocusinDocument.bind(this);
     this._handleDropDownClickApply = this._handleDropDownClickApply.bind(this);
     this._handleDropDownClickClear = this._handleDropDownClickClear.bind(this);
@@ -68,12 +72,10 @@ class DropDown {
   }
 
   _addEventListeners() {
-    this.inputWrapper.addEventListener('mousedown', this._handleDropDownMousedownInput);
-    this.inputWrapper.addEventListener('mouseup', this._handleDropDownMouseupInput);
+    this.inputWrapper.addEventListener('click', this._handleDropDownClickInputWrapper);
     this.input.addEventListener('focus', this._handleDropDownFocusInput);
+    this.input.addEventListener('mousedown', DropDown._handleDropDownMousedownInput);
     this.counts.forEach((element) => element.addEventListener('click', this._handleDropDownClickCounter));
-    this.wrapper.addEventListener('click', this._handleDropDownClickWrapper);
-    this.wrapper.addEventListener('focusin', this._handleDropDownFocusinWrapper);
     document.addEventListener('click', this._handleDropDownClickDocument);
     document.addEventListener('focusin', this._handleDropDownFocusinDocument);
     window.addEventListener('resize', this._handleDropDownResizeLoadWindow);
@@ -82,6 +84,15 @@ class DropDown {
       this.buttonApply.addEventListener('click', this._handleDropDownClickApply);
       this.buttonClear.addEventListener('click', this._handleDropDownClickClear);
     }
+  }
+
+  _handleDropDownClickInputWrapper(e) {
+    if (e.target.classList.contains('dropdown__label-text')) return;
+    this._toggle(true);
+  }
+
+  _handleDropDownFocusInput() {
+    this._toggle(true);
   }
 
   _handleDropDownClickCounter(event) {
@@ -112,45 +123,18 @@ class DropDown {
     return true;
   }
 
-  _handleDropDownMousedownInput() {
-    this.mouseDown = true;
-  }
-
-  _handleDropDownMouseupInput() {
-    this._toggle(true);
-    this.mouseDown = false;
-  }
-
-  _handleDropDownFocusInput() {
-    this.input.classList.remove(`${this.elementName}__input_error`);
-    if (this.listWrapper.classList.contains(`${this.elementName}__list-wrapper_hidden`)
-      && this.mouseDown === false) {
-      this._toggle(true);
-    }
-  }
-
-  _handleDropDownClickWrapper() {
-    this.clickOnList = true;
-  }
-
   _handleDropDownClickDocument(event) {
-    if (event.target !== this.input
-      && !event.target.closest(`.js-${this.elementName}__list-wrapper`)) {
+    const condition = event.target !== this.input
+      && !event.target.closest(`.js-${this.elementName}__input-wrapper`)
+      && !event.target.closest(`.js-${this.elementName}__list-wrapper`);
+    if (condition) {
       this._toggle(false);
-    } else {
-      this.clickOnList = false;
     }
   }
 
-  _handleDropDownFocusinWrapper() {
-    this.focusOnList = true;
-  }
-
-  _handleDropDownFocusinDocument() {
-    if (this.focusOnList === false) {
+  _handleDropDownFocusinDocument(event) {
+    if (!event.target.closest(`.js-${this.elementName}`)) {
       this._toggle(false);
-    } else {
-      this.focusOnList = false;
     }
   }
 

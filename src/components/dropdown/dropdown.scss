@@ -34,6 +34,10 @@
     }
   }
 
+  &__input-wrapper:hover &__input {
+    border-color: $color-text-light;
+  }
+
   &__input {
     @include font-body;
     color: $color-text-normal;

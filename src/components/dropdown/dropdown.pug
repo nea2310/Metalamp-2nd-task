@@ -28,7 +28,7 @@ mixin dropdown(options = {})
         if labelText
           h3(class = `${elementName}__label-text`)= labelText
           input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_collapsed`
-            readonly = true value = "" placeholder = placeholder type = "text" name = "data")
+            readonly = true value = "" placeholder = placeholder type = "text" name = "data" tabindex = "0")
     div(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper ${elementName}__list-wrapper_hidden`)
       ul(class = `${elementName}__list`)
         if Array.isArray(categories) && categories.length
