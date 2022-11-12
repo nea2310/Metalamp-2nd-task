@@ -38,7 +38,6 @@ class CheckList {
     document.addEventListener('click', this._handleCheckListClickFocusDocument);
     document.addEventListener('focusin', this._handleCheckListClickFocusDocument);
     window.addEventListener('resize', this._handleCheckListResizeLoadWindow);
-    window.addEventListener('load', this._handleCheckListResizeLoadWindow);
   }
 
   _handleCheckListClickLabel() {

@@ -82,10 +82,42 @@ block content
             +dropdown(dropdownRooms)
         div(class = "form-elements__component-wrapper-top-left")
           div(class = "js-form-elements__dropdown")
-            +dropdown(dropdownRooms)
+            +dropdown({
+              ...dropdownRooms, 
+              isCollapsed: false,
+              categories: [
+              {
+                "displayName": "спальни",
+                "categoryType": "спальня",
+                "wordForms": "спальня,спальни,спален",
+                "defaultCount": 2,
+                "minCount": 0,
+                "maxCount": 5
+              },
+              {
+                "displayName": "кровати",
+                "categoryType": "кровать",
+                "wordForms": "кровать,кровати,кроватей",
+                "defaultCount": 2,
+                "minCount": 0,
+                "maxCount": 10
+              },
+              {
+                "displayName": "ванные комнаты",
+                "categoryType": "ванная комната",
+                "wordForms": "ванная комната,ванные комнаты,ванных комнат",
+                "defaultCount": 0,
+                "minCount": 0,
+                "maxCount": 3
+              }
+            ],
+            })
         div(class = "form-elements__component-wrapper-top-left")
           div(class = "js-form-elements__checklist")
-            +checklist(checkListExpandable)
+            +checklist({
+              ...checkListExpandable,
+              isCollapsed: true,
+              })
         div(class = "form-elements__component-wrapper-top-left")
           div(class = "js-form-elements__checklist")
             +checklist(checkListExpandable)
@@ -116,7 +148,10 @@ block content
             +rate-button(rateButton2)
         div(class = "form-elements__component-wrapper-top-middle")
           div(class = "js-form-elements__dropdown")
-            +dropdown(dropdownGuests)
+            +dropdown({
+              ...dropdownGuests,
+              isCollapsed: false,
+              })
         div(class = "form-elements__component-wrapper-top-middle")
           div(class = "js-form-elements__checklist")
             +checklist(checkListRichCheckBox)
@@ -143,12 +178,15 @@ block content
             +pagination()
         div(class = "form-elements__component-wrapper-top-right")
           div(class = "js-form-elements__dropdown")
-            +dropdown({...dropdownGuests,  categories: [
+            +dropdown({
+            ...dropdownGuests,
+            isCollapsed: false,
+            categories: [
               {
                 displayName: "взрослые",
                 categoryType: "гость",
                 wordForms: "гость,гостя,гостей",
-                defaultCount: 3,
+                defaultCount: 2,
                 minCount: 0,
                 maxCount: 10
               },
@@ -156,7 +194,7 @@ block content
                 displayName: "дети",
                 categoryType: "гость",
                 wordForms: "гость,гостя,гостей",
-                defaultCount: 0,
+                defaultCount: 1,
                 minCount: 0,
                 maxCount: 10
               },

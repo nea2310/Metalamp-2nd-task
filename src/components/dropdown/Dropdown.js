@@ -79,7 +79,6 @@ class DropDown {
     document.addEventListener('click', this._handleDropDownClickDocument);
     document.addEventListener('focusin', this._handleDropDownFocusinDocument);
     window.addEventListener('resize', this._handleDropDownResizeLoadWindow);
-    window.addEventListener('load', this._handleDropDownResizeLoadWindow);
     if (this.clearApplyButtons) {
       this.buttonApply.addEventListener('click', this._handleDropDownClickApply);
       this.buttonClear.addEventListener('click', this._handleDropDownClickClear);

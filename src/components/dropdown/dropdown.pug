@@ -9,6 +9,7 @@ mixin dropdown(options = {})
       placeholder = '', 
       hasButtons = false, 
       labelText = '',
+      isCollapsed = true,
     } = options
 
     const prepareOptions = require ('@com/dropdown/dropdown-utils.js').default;
@@ -18,18 +19,21 @@ mixin dropdown(options = {})
       inputWidth,
       minus,
       plus,
+      inputModifier,
+      listWrapperModifier
     } = prepareOptions({
       width,
+      isCollapsed,
       });
 
   div(class = `${elementName} js-${elementName} ${elementName}${inputWidth}`)
-    div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper`)
+    div(class = `${elementName}__input-wrapper js-${elementName}__input-wrapper${inputWrapperModifier}`)
       label(class = `${elementName}__label`)
         if labelText
           h3(class = `${elementName}__label-text`)= labelText
-          input(class = `${elementName}__input js-${elementName}__input ${elementName}__input_collapsed`
+          input(class = `${elementName}__input js-${elementName}__input${inputModifier}`
             readonly = true value = "" placeholder = placeholder type = "text" name = "data" tabindex = "0")
-    div(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper ${elementName}__list-wrapper_hidden`)
+    div(class = `${elementName}__list-wrapper js-${elementName}__list-wrapper${listWrapperModifier}`)
       ul(class = `${elementName}__list`)
         if Array.isArray(categories) && categories.length
           each value in categories
