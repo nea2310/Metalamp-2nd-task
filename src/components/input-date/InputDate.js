@@ -19,6 +19,10 @@ class InputDate {
     this.dateInputHandler = handler;
   }
 
+  subscribeDateBlur(handler) {
+    this.dateBlurHandler = handler;
+  }
+
   setValue(value = '') {
     this.input.value = value;
   }
@@ -75,12 +79,14 @@ class InputDate {
 
   _bindEventListeners() {
     this._handleInputFieldInput = this._handleInputFieldInput.bind(this);
+    this._handleInputFieldBlur = this._handleInputFieldBlur.bind(this);
     this._checkBirthDate = this._checkBirthDate.bind(this);
     this._handleInputFieldFocus = this._handleInputFieldFocus.bind(this);
   }
 
   _addEventListeners() {
     this.input.addEventListener('input', this._handleInputFieldInput);
+    this.input.addEventListener('blur', this._handleInputFieldBlur);
     this.input.addEventListener('focus', this._handleInputFieldFocus);
   }
 
@@ -110,6 +116,12 @@ class InputDate {
       if (this.dateInputHandler) {
         this.dateInputHandler(e.target.value);
       }
+    }
+  }
+
+  _handleInputFieldBlur(event) {
+    if (this.dateBlurHandler) {
+      this.dateBlurHandler(event.target.value);
     }
   }
 

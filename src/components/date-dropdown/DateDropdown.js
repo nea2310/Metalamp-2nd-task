@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import AirDatepicker from 'air-datepicker';
 import 'air-datepicker/air-datepicker.css';
 import getDatePlusShift from '../../shared/utils/getDatePlusShift';
@@ -26,9 +25,18 @@ class DateDropDown {
     return string.split('-').reverse().join('.');
   }
 
-  focusInput() {
+  focusInput(event) {
     if (this.isFilter) {
       this.inputInstance.focusInput();
+    }
+
+    if (!this.isFilter && event) {
+      if (this._isInputWrapperFrom(event.target)) {
+        this.inputFromInstance.focusInput();
+      }
+      if (this._isInputWrapperTo(event.target)) {
+        this.inputToInstance.focusInput();
+      }
     } else {
       this.inputFromInstance.focusInput();
     }
@@ -61,10 +69,11 @@ class DateDropDown {
     this.isPlain = this.inputWrappers.length === 0;
     this.isFilter = this.inputWrappers.length === 1;
 
-    const initInputInstance = (wrapper, callback) => {
+    const initInputInstance = (wrapper, onInputHandler) => {
       const inputElement = wrapper.querySelector('.js-input-date');
       const inputInstance = new InputDate(inputElement, !this.isFilter, true);
-      inputInstance.subscribeDateInput(callback);
+      inputInstance.subscribeDateInput(onInputHandler);
+      inputInstance.subscribeDateBlur(onInputHandler);
       return inputInstance;
     };
     if (!this.isPlain) {
@@ -73,7 +82,10 @@ class DateDropDown {
           this.inputWrappers[0],
           this._handleDateInputFrom,
         );
-        this.inputToInstance = initInputInstance(this.inputWrappers[1], this._handleDateInputTo);
+        this.inputToInstance = initInputInstance(
+          this.inputWrappers[1],
+          this._handleDateInputTo,
+        );
       } else {
         this.inputInstance = initInputInstance(this.inputWrappers[0], this._handleDateInputFromTo);
         this.inputAlt = getElement('input-alt', this.wrapper, this.elementName);
@@ -107,7 +119,6 @@ class DateDropDown {
     this._handleDateDropDownClickApply = this._handleDateDropDownClickApply.bind(this);
     this._handleDateDropDownClickDate = this._handleDateDropDownClickDate.bind(this);
     this._handleDateDropDownClickDocument = this._handleDateDropDownClickDocument.bind(this);
-    this._handleDateDropDownClickCalendar = this._handleDateDropDownClickCalendar.bind(this);
     this._handleDateDropDownResizeLoadWindow = this._handleDateDropDownResizeLoadWindow.bind(this);
     this._handleDateDropDownFocusinWrapper = this._handleDateDropDownFocusinWrapper.bind(this);
     this._handleDateDropDownFocusinDocument = this._handleDateDropDownFocusinDocument.bind(this);
@@ -119,7 +130,6 @@ class DateDropDown {
     this.inputWrappers.forEach((element) => element.addEventListener('mouseout', this._handleDateDropDownMouseoutDate));
     this.buttonApply.addEventListener('click', this._handleDateDropDownClickApply);
     this.buttonClear.addEventListener('click', this._handleDateDropDownClickClear);
-    this.calendar.addEventListener('click', this._handleDateDropDownClickCalendar);
     this.wrapper.addEventListener('focusin', this._handleDateDropDownFocusinWrapper);
     document.addEventListener('click', this._handleDateDropDownClickDocument);
     document.addEventListener('focusin', this._handleDateDropDownFocusinDocument);
@@ -155,9 +165,7 @@ class DateDropDown {
             [, dateTo] = dates;
           }
           this.inputFromInstance.setValue(dateFrom);
-          this.inputFromInstance.focusInput();
           this.inputToInstance.setValue(dateTo);
-          this.inputToInstance.focusInput();
         }
         if (this.dateSelectHandler) {
           this.dateSelectHandler(
@@ -206,14 +214,13 @@ class DateDropDown {
     this._processRange(dateFrom, dateTo);
   }
 
-  _handleDateDropDownClickDate() {
+  _handleDateDropDownClickDate(event) {
     if (this.calendarWrapper.classList
       .contains(`${this.elementName}__calendar-wrapper_hidden`)) {
       this._toggle(true);
-    } else {
+    } else if (event.target === event.currentTarget) {
       this._toggle(false);
     }
-    this._hideErrorMessageWrapper();
   }
 
   _handleDateDropDownMouseoverDate(event) {
@@ -241,6 +248,7 @@ class DateDropDown {
   }
 
   _handleDateDropDownClickApply() {
+    if (!this.inputWrappers.length) return;
     if (this.myDatepicker.selectedDates.length === 1) {
       this._showErrorMessageWrapper('Введите дату выезда');
     } else {
@@ -252,8 +260,8 @@ class DateDropDown {
   }
 
   _handleDateDropDownClickClear() {
-    this.clickOnCalendar = true;
     this.myDatepicker.clear();
+    if (!this.inputWrappers.length) return;
     if (!this.isFilter) {
       this.inputFromInstance.setValue();
       this.inputToInstance.setValue();
@@ -269,18 +277,12 @@ class DateDropDown {
     }
   }
 
-  _handleDateDropDownClickCalendar() {
-    this.clickOnCalendar = true;
-  }
-
   _handleDateDropDownClickDocument(e) {
     const isNotDataDropDown = e.target.closest(`.${this.elementName}`)
       == null && !e.target.classList.contains('air-datepicker-cell');
 
     if (isNotDataDropDown && !this.isVisible) {
       this._toggle(false);
-    } else {
-      this.clickOnCalendar = false;
     }
   }
 
