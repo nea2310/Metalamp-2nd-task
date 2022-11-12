@@ -1,6 +1,6 @@
 $compWrapperTopLeftMap: (2 21, 3 21, 4 23, 5 41, 6 41, 7 42, 8 101, 9 20, 10 174, 11 49);
-$compWrapperTopMiddleMap: (1 0, 2 28, 3 39, 4 42, 5 39, 6 198, 7 256, 9 17, 10 199, 11 256);
-$compWrapperTopRightMap: (1 0, 2 13, 3 37, 4 234, 5 253, 6 28, 7 20, 8 2, 9 233, 10 255);
+$compWrapperTopMiddleMap: (1 0, 2 28, 3 39, 4 42, 5 39, 6 197, 7 257, 9 17, 10 199, 11 256);
+$compWrapperTopRightMap: (1 0, 2 13, 3 37, 4 233, 5 254, 6 28, 7 20, 8 2, 9 233, 10 255);
 $buttons: (2 29, 3 31, 4 29);
 
 .form-elements {
@@ -208,7 +208,7 @@ $buttons: (2 29, 3 31, 4 29);
       gap: 24px;
     }
 
-    &_pagination{
+    &_pagination {
       margin-top: 17px;
     }
 

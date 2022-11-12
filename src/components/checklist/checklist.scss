@@ -39,6 +39,7 @@
     .checklist__label {
       &::after {
         transform: rotate(135deg);
+        top: 4px;
       }
     }
   }
