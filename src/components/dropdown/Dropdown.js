@@ -87,8 +87,10 @@ class DropDown {
   }
 
   _handleDropDownClickInputWrapper(e) {
-    if (e.target.classList.contains('dropdown__label-text')) return;
-    this._toggle(true);
+    if (e.target === e.currentTarget
+      || e.target === this.input) {
+      this._toggle(true);
+    } else e.preventDefault();
   }
 
   _handleDropDownFocusInput() {
@@ -124,10 +126,11 @@ class DropDown {
   }
 
   _handleDropDownClickDocument(event) {
-    const condition = event.target !== this.input
-      && !event.target.closest(`.js-${this.elementName}__input-wrapper`)
+    const isNotDropDown = event.target !== this.input
+      && event.target !== this.inputWrapper
       && !event.target.closest(`.js-${this.elementName}__list-wrapper`);
-    if (condition) {
+
+    if (isNotDropDown) {
       this._toggle(false);
     }
   }

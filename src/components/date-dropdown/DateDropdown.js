@@ -278,9 +278,12 @@ class DateDropDown {
   }
 
   _handleDateDropDownClickDocument(e) {
-    const isNotDataDropDown = e.target.closest(`.${this.elementName}`)
-      == null && !e.target.classList.contains('air-datepicker-cell');
-
+    const isNotDataDropDown = (e.target.closest(`.${this.elementName}`)
+      == null && !e.target.classList.contains('air-datepicker-cell'))
+      || (
+        e.target.classList.contains(`${this.elementName}__input-wrapper`)
+        && !Array.from(this.inputWrappers).includes(e.target)
+      );
     if (isNotDataDropDown && !this.isVisible) {
       this._toggle(false);
     }
