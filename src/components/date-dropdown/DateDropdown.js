@@ -7,6 +7,8 @@ import getElements from '../../shared/utils/getElements';
 import ErrorMessage from '../error-message/ErrorMessage';
 import InputDate from '../input-date/InputDate';
 
+const DAY = 86400000;
+
 class DateDropDown {
   constructor(element, elementName = 'date-dropdown') {
     this.elementName = elementName;
@@ -180,20 +182,18 @@ class DateDropDown {
 
   _setDefaultDate() {
     if (this.isFilter) {
-      this.myDatepicker.selectDate(new Date(this.dateCurrent));
-      this.myDatepicker.selectDate(new Date(this.datePlusFourDays));
+      this.myDatepicker.selectDate(new Date(this.dateFromMin));
+      this.myDatepicker.selectDate(new Date(this.dateToDefault));
     }
   }
 
   _prepareDates() {
-    this.dateCurrent = new Date();
-    this.dateTomorrow = getDatePlusShift(1);
-    this.datePlusFourDays = getDatePlusShift(4);
-    this.datePlusYear = getDatePlusShift(1, 'year');
+    this.dateFromMin = new Date();
+    this.dateToDefault = getDatePlusShift(4);
+    this.dateToMax = getDatePlusShift(1, 'year');
 
-    this.dateCurrentTxt = getDateString(this.dateCurrent, false);
-    this.dateTomorrowTxt = getDateString(this.dateTomorrow, false);
-    this.datePlusYearTxt = getDateString(this.datePlusYear, false);
+    this.dateFromMinTxt = getDateString(this.dateFromMin, false);
+    this.dateToMaxTxt = getDateString(this.dateToMax, false);
   }
 
   _handleDateInputFromTo(date) {
@@ -310,16 +310,16 @@ class DateDropDown {
 
     let isFromValid = false;
     if (isFromExist) {
-      /* 86400000 - кол-во миллисекунд в сутках.
+      /* DAY - кол-во миллисекунд в сутках.
       Прибавляем это число, т.к. проверяем,
-      что this.dateCurrent больше конца дня dateFrom, а не начала */
-      isFromValid = dateFrom + 86400000 >= this.dateCurrent && dateFrom <= this.datePlusYear;
+      что this.dateFromMin больше конца дня dateFrom, а не начала */
+      isFromValid = dateFrom + DAY >= this.dateFromMin && dateFrom <= this.dateToMax;
     }
     if (isFromExist && !isFromValid) return false;
 
     let isToValid = false;
     if (isToExist) {
-      isToValid = dateTo >= this.dateCurrent && dateTo <= this.datePlusYear;
+      isToValid = dateTo >= this.dateFromMin && dateTo <= this.dateToMax;
     }
 
     if (isToExist && !isToValid) return false;
@@ -358,7 +358,7 @@ class DateDropDown {
       this.inputToInstance.setValue();
     }
 
-    return this._showErrorMessageWrapper(`Введите даты в диапазоне от ${DateDropDown._changeDashToDot(this.dateCurrentTxt)} до ${DateDropDown._changeDashToDot(this.datePlusYearTxt)}`);
+    return this._showErrorMessageWrapper(`Введите даты в диапазоне от ${DateDropDown._changeDashToDot(this.dateFromMinTxt)} до ${DateDropDown._changeDashToDot(this.dateToMaxTxt)}`);
   }
 
   _toggle(isExpanded) {

@@ -6,12 +6,14 @@ import DateDropDown from '../date-dropdown/DateDropdown';
 import DropDown from '../dropdown/Dropdown';
 import InfoSign from '../info-sign/InfoSign';
 
+// 86400000 - кол-во миллисекунд в сутках
+const DAY = 86400000;
+
 class Booking {
   constructor(element, elementName = 'booking') {
     this.wrapper = element;
     this.elementName = elementName;
     this.errorModifier = `${this.elementName}_error`;
-    this.day = 86400000; // 86400000 - кол-во милисекунд в сутках
     this.wordForms = ['сутки', 'суток', 'суток'];
 
     this._bindEventListeners();
@@ -73,7 +75,7 @@ class Booking {
   _handleDateSelect(date) {
     this.daysAmount = 0;
     if (date) {
-      this.daysAmount = (new Date(date[1]) - new Date(date[0])) / this.day;
+      this.daysAmount = (new Date(date[1]) - new Date(date[0])) / DAY;
     }
     this._calculateCost();
   }

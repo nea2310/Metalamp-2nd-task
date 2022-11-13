@@ -1,6 +1,9 @@
 import getDateString from '../../shared/utils/getDateString';
 import ErrorMessage from '../error-message/ErrorMessage';
 
+const AGE_MAX = -100;
+const AGE_MIN = -18;
+
 class InputDate {
   constructor(element, isSingle = true, isCustomValidation = false, elementName = 'input-date') {
     this.elementName = elementName;
@@ -8,8 +11,6 @@ class InputDate {
     this.isCustomValidation = isCustomValidation;
     this.isSingle = isSingle;
     this.inputLengthLimit = isSingle ? 10 : 23;
-    this.lowerAgeLimit = -100;
-    this.upperAgeLimit = -18;
 
     this._bindEventListeners();
     this._render();
@@ -68,11 +69,11 @@ class InputDate {
       return newDate;
     };
 
-    this.dateMinusHundred = getNewDate(this.lowerAgeLimit);
-    this.dateMinusEighteen = getNewDate(this.upperAgeLimit);
+    this.birthDateMax = getNewDate(AGE_MAX);
+    this.birthDateMin = getNewDate(AGE_MIN);
 
-    this.dateMinusHundredTxt = getDateString(this.dateMinusHundred);
-    this.dateMinusEighteenTxt = getDateString(this.dateMinusEighteen);
+    this.birthDateMaxTxt = getDateString(this.birthDateMax);
+    this.birthDateMinTxt = getDateString(this.birthDateMin);
 
     this._addEventListeners();
   }
@@ -211,12 +212,12 @@ class InputDate {
   _checkBirthDate(value) {
     const dateFraction = value.split('.');
     const dateSelected = new Date(`${dateFraction[2]}-${dateFraction[1]}-${dateFraction[0]}`);
-    const needCorrectFormat = dateSelected < this.dateMinusHundred
-      || dateSelected > this.dateMinusEighteen
+    const needCorrectFormat = dateSelected < this.birthDateMax
+      || dateSelected > this.birthDateMin
       || Number.isNaN(+dateSelected);
     if (needCorrectFormat) {
       this._showErrorMessageWrapper();
-      this.errorMessage.toggleErrorMessage(true, `Введите дату от ${this.dateMinusHundredTxt} до ${this.dateMinusEighteenTxt}`);
+      this.errorMessage.toggleErrorMessage(true, `Введите дату от ${this.birthDateMaxTxt} до ${this.birthDateMinTxt}`);
       return '';
     }
     this._hideErrorMessageWrapper();
