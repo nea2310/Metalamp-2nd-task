@@ -86,10 +86,6 @@ $buttons: (2 29, 3 31, 4 29);
         }
       }
 
-      &:nth-child(3) {
-        padding-left: 1px;
-      }
-
       &:nth-child(5) {
         width: auto;
         display: inline-block;
@@ -165,7 +161,7 @@ $buttons: (2 29, 3 31, 4 29);
 
     &-bottom {
       display: grid;
-      grid-template-columns: 38.6% auto;
+      grid-template-columns: 38.5% auto;
       row-gap: 40px;
 
       @include media-breakpoint-down($lg) {

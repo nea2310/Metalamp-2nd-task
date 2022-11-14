@@ -9,6 +9,7 @@
     .checklist__list-wrapper {
       position: absolute;
       width: calc(100% + 20px);
+      padding-top: 17px;
 
       @include media-breakpoint-down($lg) {
         top: 25px;
@@ -39,7 +40,7 @@
     .checklist__label {
       &::after {
         transform: rotate(135deg);
-        top: 4px;
+        top: 5px;
       }
     }
   }
@@ -77,7 +78,7 @@
     }
 
     &-text {
-      margin-left: 10px;
+      margin-left: 9px;
       display: flex;
       flex-direction: column;
     }

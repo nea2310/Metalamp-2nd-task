@@ -20,7 +20,7 @@
   }
 
   &_width_narrow {
-    max-width: 266px;
+    max-width: 265px;
     width: 100%;
   }
 
@@ -43,7 +43,7 @@
     color: $color-text-normal;
     cursor: pointer;
     text-overflow: ellipsis;
-    padding: 8px 90px 9px 14px;
+    padding: 8px 90px 9px 13px;
     border: 1px solid $color-border;
     margin-top: 5px;
     width: 100%;
@@ -91,7 +91,6 @@
     padding-top: 6px;
 
     &-wrapper {
-      padding-bottom: 2px;
       background-color: $color-text-background;
       width: 100%;
       position: absolute;
@@ -109,13 +108,13 @@
 
   &__category {
     @include font-h3;
-    margin: 0;
-    margin-left: 14px;
+    margin-left: 13px;
+    margin-bottom: 2px;
 
     &-wrapper {
       display: flex;
       justify-content: space-between;
-      padding-bottom: 6px;
+      padding-bottom: 7px;
       align-items: center;
     }
   }
@@ -124,7 +123,7 @@
     &-wrapper {
       box-sizing: border-box;
       margin-right: 6px;
-      max-width: 93px;
+      max-width: 92px;
       width: 100%;
       display: flex;
       justify-content: space-between;
@@ -153,6 +152,7 @@
       @include font-h3;
       width: 20%;
       text-align: center;
+      margin-bottom: 3px;
     }
   }
 
@@ -169,6 +169,6 @@
   &__buttons {
     display: flex;
     justify-content: flex-end;
-    margin: 17px 7px 9px 14px;
+    margin: 14px 7px 10px 12px;
   }
 }

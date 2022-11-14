@@ -26,6 +26,7 @@
 
     &-first-last-page {
       @include font-h3;
+      line-height: 14px;
       background: $gradient-main;
       color: $color-text-background;
       cursor: pointer;
@@ -37,11 +38,13 @@
 
       &::before {
         @include arrow-basis-style($color-text-background);
+        top: 2px;
         align-self: center;
       }
 
       &::after {
         @include arrow-tip-style($color-text-background);
+        top: 2px;
         align-self: center;
       }
     }
