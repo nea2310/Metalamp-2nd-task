@@ -30,6 +30,7 @@ class DateDropDown {
   focusInput(event) {
     if (this.isFilter) {
       this.inputInstance.focusInput();
+      return;
     }
 
     if (!this.isFilter && event) {
