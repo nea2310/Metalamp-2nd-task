@@ -8,6 +8,7 @@ import InfoSign from '../info-sign/InfoSign';
 
 // 86400000 - кол-во миллисекунд в сутках
 const DAY = 86400000;
+const DAYS_DELTA = 4;
 
 class Booking {
   constructor(element, elementName = 'booking') {
@@ -45,12 +46,12 @@ class Booking {
     infoSignElements.forEach((element) => new InfoSign(element));
 
     this.dateDropDown.subscribeDateSelect(this._handleDateSelect);
-    const datePlusFour = getDatePlusShift(4);
+    const dateTo = getDatePlusShift(DAYS_DELTA);
 
-    const dateCurrentTxt = getDateString(new Date(), false);
-    const datePlusFourTxt = getDateString(datePlusFour, false);
+    const dateFromTxt = getDateString(new Date(), false);
+    const dateToTxt = getDateString(dateTo, false);
 
-    this.dateDropDown.setDate(dateCurrentTxt, datePlusFourTxt);
+    this.dateDropDown.setDate(dateFromTxt, dateToTxt);
 
     this.dropDown.subscribeGuestsSelect(this._handleGuestsSelect);
     this.dropDown.setData([
