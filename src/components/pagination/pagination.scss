@@ -35,16 +35,17 @@
     &-next-previous {
       background: $gradient-secondary;
       cursor: pointer;
+      position: relative;
 
       &::before {
         @include arrow-basis-style($color-text-background);
-        top: 2px;
+        top: 19px;
         align-self: center;
       }
 
       &::after {
         @include arrow-tip-style($color-text-background);
-        top: 2px;
+        top: 14px;
         align-self: center;
       }
     }
